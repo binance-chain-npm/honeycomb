@@ -1,0 +1,89 @@
+{
+  "name": "@binance-chain/honeycomb",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/honeycomb.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "start-storybook -p 6006",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom --passWithNoTests",
+    "cypress": "cypress",
+    "lint": "tsdx lint src",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,css,json,md,html}'",
+    "clean": "rimraf .rts2_cache_cjs .rts2_cache_esm dist public storybook-static *.log stats.*",
+    "semantic-release": "semantic-release"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "styled-components": "^4.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "printWidth": 100,
+    "proseWrap": "always",
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@percy/cypress": "^2.2.0",
+    "@rollup/plugin-image": "^2.0.0",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8",
+    "@types/jest": "^24.0.23",
+    "@types/js-base64": "^2.3.1",
+    "@types/nanoid": "^2.1.0",
+    "@types/react": "^16.9.16",
+    "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^4.4.1",
+    "babel-loader": "^8.0.6",
+    "cypress": "^3.8.0",
+    "husky": "^3.1.0",
+    "query-string": "^6.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "rimraf": "^3.0.0",
+    "rollup-plugin-svgo": "^1.1.0",
+    "rollup-plugin-visualizer": "^3.3.1",
+    "semantic-release": "^16.0.0-beta.43",
+    "styled-components": "^4.4.1",
+    "svg-inline-loader": "^0.8.0",
+    "svgo-loader": "^2.2.1",
+    "tsdx": "^0.11.0",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "@tippy.js/react": "^3.1.1",
+    "js-base64": "^2.5.1",
+    "nanoid": "^2.1.7",
+    "polished": "^3.4.2",
+    "react-spring": "^8.0.27"
+  },
+  "resolutions": {
+    "@types/react": "16.9.16"
+  }
+}

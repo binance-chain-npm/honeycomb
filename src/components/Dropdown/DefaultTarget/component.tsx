@@ -1,0 +1,39 @@
+import React, { useContext } from 'react';
+import { animated } from 'react-spring';
+
+import { ShowingContext } from '../context';
+import { Icon } from '../../Icon';
+import { Styleless } from '../../Styleless';
+import { useHoverSpring } from '../../../modules/hovering';
+
+import { Container } from './Container';
+import { ContentWrapper } from './ContentWrapper';
+import { IconWrapper } from './IconWrapper';
+
+export const Component = (
+  props: Partial<React.ComponentPropsWithoutRef<typeof Styleless>> & { children: React.ReactNode },
+) => {
+  const isShowing = useContext(ShowingContext);
+  const { style, mouseEnter, mouseLeave } = useHoverSpring({
+    onMouseLeave: props.onMouseLeave,
+    onMouseEnter: props.onMouseEnter,
+  });
+  return (
+    <Container
+      tag="button"
+      {...props}
+      isShowing={isShowing}
+      onMouseEnter={mouseEnter}
+      onMouseLeave={mouseLeave}
+    >
+      <ContentWrapper as={animated.div} style={style}>
+        {props.children}
+      </ContentWrapper>
+      <IconWrapper>
+        <Icon src={Icon.Src.CaretDown} />
+      </IconWrapper>
+    </Container>
+  );
+};
+
+Component.displayName = 'DefaultTarget';
