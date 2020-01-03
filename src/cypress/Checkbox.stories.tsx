@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { Checkbox } from '../../src/components/Checkbox';
-import { Sections } from '../../src/modules/sections';
+import { Checkbox } from '../components/Checkbox';
+import { Sections } from '../modules/sections';
 
 export default {
   title: `${Sections.Tests}|Checkbox`,
@@ -12,8 +12,8 @@ export const Default = () => {
   return (
     <Checkbox
       id="input"
-      onChange={(evt) => setChecked(evt.target.value)}
-      value={checked}
+      onChange={(evt) => setChecked(evt.target.checked)}
+      checked={checked}
       label="A value"
       data-testid="Checkbox"
     />

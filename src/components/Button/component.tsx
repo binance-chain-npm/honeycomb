@@ -8,7 +8,7 @@ import { Styleless } from '../../components/Styleless';
 import { Styled, Look } from './styled';
 import { Wrapper } from './Wrapper';
 
-export type Props = React.HTMLAttributes<HTMLButtonElement> &
+export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   Testable & {
     tag: React.ComponentProps<typeof Styleless>['tag'];
     look: Look;

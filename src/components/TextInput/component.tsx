@@ -7,7 +7,7 @@ import { useBuildTestId, Testable } from '../../modules/test-ids';
 import { Container } from './Container';
 import { Input } from './Input';
 
-export type Props = React.HTMLAttributes<HTMLInputElement> &
+export type Props = React.InputHTMLAttributes<HTMLInputElement> &
   Testable & {
     label?: React.ReactNode;
   };

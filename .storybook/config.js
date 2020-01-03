@@ -13,4 +13,3 @@ addParameters({
 addDecorator(withStyledTheme);
 
 configure(require.context('../src', true, /\.stories\.tsx$/), module);
-configure(require.context('../cypress/stories', true, /\.stories\.tsx$/), module);

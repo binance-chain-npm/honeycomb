@@ -7,7 +7,7 @@ import { Label } from './Label';
 import { Input } from './Input';
 import { LabelContent } from './LabelContent';
 
-export type Props = React.HTMLAttributes<HTMLInputElement> &
+export type Props = React.InputHTMLAttributes<HTMLInputElement> &
   Testable & {
     label?: string;
   };
