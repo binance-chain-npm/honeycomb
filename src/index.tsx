@@ -1,3 +1,5 @@
+export { ThemeProvider } from './modules/themes';
+
 export { Button } from './components/Button';
 export { TextInput } from './components/TextInput';
 export { Styleless } from './components/Styleless';
