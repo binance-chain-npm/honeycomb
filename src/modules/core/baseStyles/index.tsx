@@ -5,7 +5,8 @@ import { fontNames } from '../fonts';
 export const baseStyles = css`
   box-sizing: border-box;
   font-family: ${fontNames.join(',')}, -apple-system, '.SFNSText-Regular', 'San Francisco',
-    BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    BlinkMacSystemFont, '.PingFang-SC-Regular', 'Microsoft YaHei', 'Segoe UI', 'Helvetica Neue',
+    Helvetica, Arial, sans-serif;
 
   *,
   *::before,
