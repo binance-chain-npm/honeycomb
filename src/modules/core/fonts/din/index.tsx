@@ -15,7 +15,7 @@ import medium from './DINNextLTPro-Medium.otf';
 import mediumItalic from './DINNextLTPro-MediumItalic.otf';
 import regular from './DINNextLTPro-Regular.otf';
 
-export const fontName = 'DINNextLTPro';
+export const fontName = 'DINNext';
 
 const fontVariants: FontVariantMap = {
   bold,
