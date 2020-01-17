@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { Styleless } from '../Styleless';
+import { baseStyles } from '../../modules/core';
 
 export enum Look {
   Default = 'Default',
@@ -22,6 +23,8 @@ const primaryBefore = css`
 `;
 
 export const Styled = styled(Styleless)<Props>`
+  ${baseStyles};
+
   position: relative;
   color: ${({ theme }) => theme.color.readable(theme.color.secondary)};
   background: ${({ theme }) => theme.color.secondary};

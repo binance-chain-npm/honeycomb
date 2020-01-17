@@ -1,4 +1,11 @@
 export { ThemeProvider } from './modules/themes';
+export {
+  GlobalFontFaces,
+  GlobalColors,
+  GlobalSizing,
+  GlobalFonts,
+  GlobalStyles,
+} from './modules/core';
 
 export { Button } from './components/Button';
 export { TextInput } from './components/TextInput';
