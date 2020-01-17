@@ -1,6 +1,7 @@
 const svgo = require('rollup-plugin-svgo');
 const visualizer = require('rollup-plugin-visualizer');
 const typescript = require('rollup-plugin-typescript2');
+const url = require('@rollup/plugin-url');
 
 module.exports = {
   rollup(config, options) {
@@ -13,6 +14,7 @@ module.exports = {
       ...config,
       plugins: [
         svgo(),
+        url({ include: ['**/*.png', '**/*.jpg', '**/*.gif', '**/*.otf'], limit: 0 }),
         ...config.plugins.slice(0, tsPluginIndex),
         typescript({
           typescript: require('typescript'),
