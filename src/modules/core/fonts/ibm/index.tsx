@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-import { getFontWeight, getFontStyle, FontVariantMap, requireIfNeeded } from '../utils';
+import { getFontWeight, getFontStyle, FontVariantMap } from '../utils';
 
 import bold from './IBMPlexSans-Bold.otf';
 import boldItalic from './IBMPlexSans-BoldItalic.otf';
@@ -41,9 +41,7 @@ export const fontFaces = () =>
     (variantName) =>
       css`@font-face {
         font-family: "${fontName}";
-        src: url(${requireIfNeeded(
-          fontVariants[variantName as keyof FontVariantMap],
-        )}) format('opentype');
+        src: url(${fontVariants[variantName as keyof FontVariantMap]}) format('opentype');
         font-weight: ${getFontWeight(variantName)};
         font-style: ${getFontStyle(variantName)};
       }`,

@@ -16,8 +16,7 @@ module.exports = {
         svgo(),
         url({
           include: ['**/*.png', '**/*.jpg', '**/*.gif', '**/*.otf'],
-          limit: 0,
-          publicPath: '~~',
+          limit: Infinity,
         }),
         ...config.plugins.slice(0, tsPluginIndex),
         typescript({

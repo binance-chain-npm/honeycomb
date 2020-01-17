@@ -12,12 +12,6 @@ export const getFontWeight = (variantName: string) => {
   return 400;
 };
 
-export const requireIfNeeded = (importValue: unknown) =>
-  needsRequire(importValue) ? require(importValue.replace('~~', './')) : importValue;
-
-const needsRequire = (importValue: unknown): importValue is string =>
-  typeof importValue === 'string' && importValue.startsWith('~~');
-
 export interface FontVariantMap {
   bold: string;
   boldItalic: string;
