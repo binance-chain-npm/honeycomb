@@ -17,7 +17,7 @@ module.exports = {
         url({
           include: ['**/*.png', '**/*.jpg', '**/*.gif', '**/*.otf'],
           limit: 0,
-          publicPath: './',
+          publicPath: '~~',
         }),
         ...config.plugins.slice(0, tsPluginIndex),
         typescript({
