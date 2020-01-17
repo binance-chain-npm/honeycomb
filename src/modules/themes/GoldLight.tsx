@@ -6,10 +6,12 @@ const bg = '#fff';
 
 export const GoldLight: DefaultTheme = {
   ...GoldDark,
-
-  color: {
-    ...GoldDark.color,
-    bg,
-    secondary: '#eaecef',
+  honeycomb: {
+    ...GoldDark.honeycomb,
+    color: {
+      ...GoldDark.honeycomb.color,
+      bg,
+      secondary: '#eaecef',
+    },
   },
 };

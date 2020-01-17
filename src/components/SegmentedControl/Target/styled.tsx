@@ -25,7 +25,7 @@ export const Styled = styled(Component)`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${({ theme }) => transitions(['background', 'color'], theme.duration.normal)};
+  ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
 
   ::after {
     content: '';
@@ -35,9 +35,9 @@ export const Styled = styled(Component)`
     width: ${em(16)};
     left: calc(50% - ${em(16 / 2)});
     border-radius: 3px;
-    background: ${({ theme }) => theme.color.primary};
+    background: ${({ theme }) => theme.honeycomb.color.primary};
     opacity: 0;
-    ${({ theme }) => transitions(['opacity'], theme.duration.normal)};
+    ${({ theme }) => transitions(['opacity'], theme.honeycomb.duration.normal)};
   }
 
   ${({ isSelected }) => isSelected && selected};

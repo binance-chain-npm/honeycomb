@@ -2,7 +2,7 @@ import { createGlobalStyle as css } from 'styled-components';
 
 export const GlobalColors = css`
   :root {
-    background: ${({ theme }) => theme.color.bg};
-    color: ${({ theme }) => theme.color.readable(theme.color.bg)};
+    background: ${({ theme }) => theme.honeycomb.color.bg};
+    color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.bg)};
   }
 `;

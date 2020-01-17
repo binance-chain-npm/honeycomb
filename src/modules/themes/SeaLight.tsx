@@ -4,9 +4,11 @@ import { GoldLight } from './GoldLight';
 
 export const SeaLight: DefaultTheme = {
   ...GoldLight,
-
-  color: {
-    ...GoldLight.color,
-    primary: '#4653c8',
+  honeycomb: {
+    ...GoldLight.honeycomb,
+    color: {
+      ...GoldLight.honeycomb.color,
+      primary: '#4653c8',
+    },
   },
 };

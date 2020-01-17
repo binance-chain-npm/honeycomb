@@ -5,10 +5,12 @@ import { SeaLight } from './SeaLight';
 
 export const SeaDark: DefaultTheme = {
   ...SeaLight,
-
-  color: {
-    ...SeaLight.color,
-    bg: GoldDark.color.bg,
-    secondary: GoldDark.color.secondary,
+  honeycomb: {
+    ...SeaLight.honeycomb,
+    color: {
+      ...SeaLight.honeycomb.color,
+      bg: GoldDark.honeycomb.color.bg,
+      secondary: GoldDark.honeycomb.color.secondary,
+    },
   },
 };

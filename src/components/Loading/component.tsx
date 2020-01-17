@@ -12,14 +12,14 @@ const fillViewportStyle = css`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: ${({ theme }) => transparentize(0.4, theme.color.bg)};
+  background: ${({ theme }) => transparentize(0.4, theme.honeycomb.color.bg)};
 `;
 
 const Spinner = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.honeycomb.color.primary};
   ${({ fillViewport }) => fillViewport && fillViewportStyle};
 `;
 

@@ -8,22 +8,28 @@ export const Input = styled.input`
   outline: none;
   border: 1px solid transparent;
   text-decoration: none;
-  background: ${({ theme }) => theme.color.secondary};
+  background: ${({ theme }) => theme.honeycomb.color.secondary};
   font: inherit;
-  color: ${({ theme }) => theme.color.readable(theme.color.secondary)};
-  height: ${({ theme }) => em(theme.size.touchable, theme.fontSize.small)};
-  border-radius: ${({ theme }) => em(theme.size.touchable / 2, theme.fontSize.small)};
-  text-indent: ${({ theme }) => em(theme.size.touchable / 2, theme.fontSize.small)};
-  padding-right: ${({ theme }) => em(theme.size.touchable / 2, theme.fontSize.small)};
-  font-size: ${({ theme }) => em(theme.fontSize.small)};
+  color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
+  height: ${({ theme }) => em(theme.honeycomb.size.touchable, theme.honeycomb.fontSize.small)};
+  border-radius: ${({ theme }) =>
+    em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.small)};
+  text-indent: ${({ theme }) =>
+    em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.small)};
+  padding-right: ${({ theme }) =>
+    em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.small)};
+  font-size: ${({ theme }) => em(theme.honeycomb.fontSize.small)};
   ${({ theme }) =>
-    transitions(['color', 'background', 'border'], `${theme.duration.normal} ease-in-out`)};
+    transitions(
+      ['color', 'background', 'border'],
+      `${theme.honeycomb.duration.normal} ease-in-out`,
+    )};
 
   ::placeholder {
-    color: ${({ theme }) => theme.color.placeholder};
+    color: ${({ theme }) => theme.honeycomb.color.placeholder};
   }
 
   :focus {
-    border: 1px solid ${({ theme }) => theme.color.primary};
+    border: 1px solid ${({ theme }) => theme.honeycomb.color.primary};
   }
 `;
