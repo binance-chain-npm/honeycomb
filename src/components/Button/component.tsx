@@ -9,6 +9,7 @@ import { Styled, Look } from './styled';
 import { Wrapper } from './Wrapper';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
     tag: React.ComponentProps<typeof Styleless>['tag'];
     look: Look;
