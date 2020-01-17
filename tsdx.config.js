@@ -14,7 +14,11 @@ module.exports = {
       ...config,
       plugins: [
         svgo(),
-        url({ include: ['**/*.png', '**/*.jpg', '**/*.gif', '**/*.otf'], limit: 0 }),
+        url({
+          include: ['**/*.png', '**/*.jpg', '**/*.gif', '**/*.otf'],
+          limit: 0,
+          publicPath: './',
+        }),
         ...config.plugins.slice(0, tsPluginIndex),
         typescript({
           typescript: require('typescript'),
