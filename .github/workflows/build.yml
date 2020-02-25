@@ -2,19 +2,17 @@ name: Build
 
 on:
   push:
-    branches:
-      - '*'
 
 jobs:
   test:
     name: Test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1.4.0
         with:
-          node-version: 10.x
+          node-version: 12.x
 
       - name: Dependencies
         run: yarn install --frozen-lockfile
@@ -35,14 +33,14 @@ jobs:
   build:
     name: Build
     needs: test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha'
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1.4.0
         with:
-          node-version: 10.x
+          node-version: 12.x
 
       - name: Dependencies
         run: yarn install --frozen-lockfile
