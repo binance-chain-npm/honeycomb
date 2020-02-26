@@ -8,7 +8,6 @@ import { useHoverSpring } from '../../../modules/hovering';
 
 import { Container } from './Container';
 import { ContentWrapper } from './ContentWrapper';
-import { IconWrapper } from './IconWrapper';
 
 export const Component = (
   props: Partial<React.ComponentPropsWithoutRef<typeof Styleless>> & { children: React.ReactNode },
@@ -29,9 +28,7 @@ export const Component = (
       <ContentWrapper as={animated.div} style={style}>
         {props.children}
       </ContentWrapper>
-      <IconWrapper>
-        <Icon src={Icon.Src.CaretDown} />
-      </IconWrapper>
+      <Icon src={Icon.Src.CaretDown} />
     </Container>
   );
 };
