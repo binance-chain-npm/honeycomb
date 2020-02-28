@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 
 import { Testable } from '../../modules/test-ids';
 import { TextInput } from '../TextInput';
@@ -10,11 +10,28 @@ const MIN_LENGTH = 8;
 
 export type Props = Omit<React.ComponentProps<typeof TextInput>, 'type'> & Testable;
 
-export const Component = ({ value, ...otherProps }: Props) => {
+export const Component = ({ value, onFocus, onBlur, ...otherProps }: Props) => {
   const [isLongEnough, setIsLongEnough] = useState(false);
   const [hasUpperCase, setHasUpperCase] = useState(false);
   const [hasSymbol, setHasSymbol] = useState(false);
   const [hasDigit, setHasDigit] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const focus = useCallback<NonNullable<Props['onFocus']>>(
+    (evt) => {
+      setIsFocused(true);
+      if (onFocus) onFocus(evt);
+    },
+    [onFocus],
+  );
+
+  const blur = useCallback<NonNullable<Props['onBlur']>>(
+    (evt) => {
+      setIsFocused(false);
+      if (onBlur) onBlur(evt);
+    },
+    [onBlur],
+  );
 
   useEffect(() => {
     if (typeof value !== 'string') {
@@ -51,10 +68,14 @@ export const Component = ({ value, ...otherProps }: Props) => {
           </List>
         </>
       }
-      disabled={isValid}
+      enabled={!isValid}
+      trigger="manual"
+      visible={isFocused}
     >
       <TextInput
         {...otherProps}
+        onFocus={focus}
+        onBlur={blur}
         value={value}
         type="password"
         state={isValid ? undefined : TextInput.State.Danger}
