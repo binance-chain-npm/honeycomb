@@ -4,7 +4,6 @@ import { em, transitions } from 'polished';
 import { baseStyles } from '../../../modules/core';
 
 export enum State {
-  Default = 'Default',
   Good = 'Good',
   Danger = 'Danger',
 }
@@ -17,7 +16,7 @@ const danger = css`
   border-color: ${({ theme }) => theme.honeycomb.color.danger};
 `;
 
-export const Input = styled.input<{ state: State }>`
+export const Input = styled.input<{ state?: State }>`
   ${baseStyles};
 
   display: flex;

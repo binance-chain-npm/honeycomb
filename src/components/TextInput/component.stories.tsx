@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
 
@@ -10,14 +10,23 @@ export default {
   title: `${Sections.Inputs}|TextInput`,
 };
 
-export const text = () => <TextInput onClick={action('clicked')} defaultValue="Some text…" />;
+export const Text = () => {
+  const [value, setValue] = useState('Some text…');
+  return (
+    <TextInput
+      onClick={action('clicked')}
+      value={value}
+      onChange={(evt) => setValue(evt.target.value)}
+    />
+  );
+};
 
-export const withLabel = () => (
-  <TextInput onClick={action('clicked')} placeholder="Some placeholder…" label="A label" />
+export const WithLabel = () => (
+  <TextInput onClick={action('clicked')} placeholder="Some placeholder…" label="A label" value="" />
 );
 
-export const placeholder = () => (
-  <TextInput onClick={action('clicked')} placeholder="Some placeholder…" />
+export const Placeholder = () => (
+  <TextInput onClick={action('clicked')} placeholder="Some placeholder…" value="" />
 );
 
 const CustomTextInput = styled(TextInput)`
@@ -35,6 +44,11 @@ const CustomTextInput = styled(TextInput)`
   }
 `;
 
-export const customStyles = () => (
-  <CustomTextInput onClick={action('clicked')} placeholder="Some placeholder…" label="A label" />
+export const CustomStyles = () => (
+  <CustomTextInput
+    onClick={action('clicked')}
+    placeholder="Some placeholder…"
+    label="A label"
+    value=""
+  />
 );

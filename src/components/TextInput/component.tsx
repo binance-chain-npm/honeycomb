@@ -7,10 +7,11 @@ import { useBuildTestId, Testable } from '../../modules/test-ids';
 import { Container } from './Container';
 import { Input, State } from './Input';
 
-export type Props = React.InputHTMLAttributes<HTMLInputElement> &
+export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> &
   Testable & {
     label?: React.ReactNode;
-    state: State;
+    state?: State;
+    value: NonNullable<React.InputHTMLAttributes<HTMLInputElement>['value']>;
   };
 
 export const Component = (props: Props) => {
@@ -30,9 +31,6 @@ export const Component = (props: Props) => {
 };
 
 Component.displayName = 'TextInput';
-Component.defaultProps = {
-  state: State.Default,
-};
 
 Component.Label = Label;
 Component.Input = Input;
