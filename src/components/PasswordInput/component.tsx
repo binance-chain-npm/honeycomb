@@ -10,7 +10,7 @@ const MIN_LENGTH = 8;
 
 export type Props = Omit<React.ComponentProps<typeof TextInput>, 'type'> & Testable;
 
-export const Component = ({ onChange, value, ...otherProps }: Props) => {
+export const Component = ({ value, ...otherProps }: Props) => {
   const [isLongEnough, setIsLongEnough] = useState(false);
   const [hasUpperCase, setHasUpperCase] = useState(false);
   const [hasSymbol, setHasSymbol] = useState(false);
