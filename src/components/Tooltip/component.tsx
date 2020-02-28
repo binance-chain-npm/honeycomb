@@ -6,6 +6,8 @@ import 'tippy.js/animations/shift-away.css';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
+import { Styles } from './styles';
+
 export type TriggerValue = 'mouseenter' | 'focus' | 'click';
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
@@ -28,20 +30,23 @@ export const Component = (props: Props) => {
   }, [props.trigger]);
 
   return (
-    <Tippy
-      {...props}
-      className={props.className}
-      trigger={trigger}
-      theme={props.theme || 'tooltip'}
-      arrow={props.arrow}
-      animation="shift-away"
-      hideOnClick={false}
-      placement="bottom-start"
-      enabled={!props.disabled}
-      content={<div data-testid={buildTestId('content')}>{props.content}</div>}
-    >
-      <div data-testid={buildTestId('target')}>{props.children}</div>
-    </Tippy>
+    <>
+      <Styles />
+      <Tippy
+        {...props}
+        className={props.className}
+        trigger={trigger}
+        theme={props.theme || 'tooltip'}
+        arrow={props.arrow}
+        animation="shift-away"
+        hideOnClick={false}
+        placement="bottom-start"
+        enabled={!props.disabled}
+        content={<div data-testid={buildTestId('content')}>{props.content}</div>}
+      >
+        <div data-testid={buildTestId('target')}>{props.children}</div>
+      </Tippy>
+    </>
   );
 };
 
