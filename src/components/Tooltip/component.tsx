@@ -9,11 +9,15 @@ import { useBuildTestId, Testable } from '../../modules/test-ids';
 export type TriggerValue = 'mouseenter' | 'focus' | 'click';
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
-  Pick<React.ComponentProps<typeof Tippy>, 'arrow' | 'className' | 'theme' | 'onShow' | 'onHide'> &
+  Pick<
+    React.ComponentProps<typeof Tippy>,
+    'arrow' | 'className' | 'theme' | 'onShow' | 'onHide' | 'visible'
+  > &
   Testable & {
     content: React.ReactNode;
     trigger: TriggerValue | TriggerValue[];
     target: React.ReactNode;
+    disabled?: boolean;
   };
 
 export const Component = (props: Props) => {
@@ -31,7 +35,9 @@ export const Component = (props: Props) => {
       theme={props.theme || 'tooltip'}
       arrow={props.arrow}
       animation="shift-away"
+      hideOnClick={false}
       placement="bottom-start"
+      enabled={!props.disabled}
       content={<div data-testid={buildTestId('content')}>{props.content}</div>}
     >
       <div data-testid={buildTestId('target')}>{props.children}</div>
