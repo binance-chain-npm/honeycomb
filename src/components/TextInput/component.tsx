@@ -5,11 +5,12 @@ import { Label } from '../internal/Label';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
 import { Container } from './Container';
-import { Input } from './Input';
+import { Input, State } from './Input';
 
 export type Props = React.InputHTMLAttributes<HTMLInputElement> &
   Testable & {
     label?: React.ReactNode;
+    state: State;
   };
 
 export const Component = (props: Props) => {
@@ -29,6 +30,10 @@ export const Component = (props: Props) => {
 };
 
 Component.displayName = 'TextInput';
+Component.defaultProps = {
+  state: State.Default,
+};
 
 Component.Label = Label;
 Component.Input = Input;
+Component.State = State;

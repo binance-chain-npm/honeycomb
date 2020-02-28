@@ -1,7 +1,25 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { em, transitions } from 'polished';
 
-export const Input = styled.input`
+import { baseStyles } from '../../../modules/core';
+
+export enum State {
+  Default = 'Default',
+  Good = 'Good',
+  Danger = 'Danger',
+}
+
+const good = css`
+  border-color: ${({ theme }) => theme.honeycomb.color.good};
+`;
+
+const danger = css`
+  border-color: ${({ theme }) => theme.honeycomb.color.danger};
+`;
+
+export const Input = styled.input<{ state: State }>`
+  ${baseStyles};
+
   display: flex;
   margin: 0;
   padding: 0;
@@ -9,7 +27,6 @@ export const Input = styled.input`
   border: 1px solid transparent;
   text-decoration: none;
   background: ${({ theme }) => theme.honeycomb.color.secondary};
-  font: inherit;
   color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
   height: ${({ theme }) => em(theme.honeycomb.size.touchable, theme.honeycomb.fontSize.small)};
   border-radius: ${({ theme }) =>
@@ -19,6 +36,8 @@ export const Input = styled.input`
   padding-right: ${({ theme }) =>
     em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.small)};
   font-size: ${({ theme }) => em(theme.honeycomb.fontSize.small)};
+  ${({ state }) => state === State.Good && good};
+  ${({ state }) => state === State.Danger && danger};
   ${({ theme }) =>
     transitions(
       ['color', 'background', 'border'],
@@ -30,6 +49,6 @@ export const Input = styled.input`
   }
 
   :focus {
-    border: 1px solid ${({ theme }) => theme.honeycomb.color.primary};
+    border-color: ${({ theme }) => theme.honeycomb.color.primary};
   }
 `;
