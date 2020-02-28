@@ -14,6 +14,9 @@ export const GoldDark: DefaultTheme = {
       secondary: '#252d38',
       readable: (bgColor) => readableColor(bgColor, bg, '#fff'),
 
+      good: '#02c076',
+      danger: '#d9304e',
+
       placeholder: '#999',
 
       gradient: {

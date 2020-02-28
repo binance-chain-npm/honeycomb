@@ -8,6 +8,9 @@ export interface HoneycombTheme {
       secondary: string;
       readable: (bg: string) => string;
 
+      good: string;
+      danger: string;
+
       placeholder: string;
 
       gradient: {
