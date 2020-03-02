@@ -17,7 +17,7 @@ module.exports = ({ config, mode }) => {
         {
           loader: 'svgo-loader',
           options: {
-            plugins: [{ removeViewBox: false }],
+            plugins: [{ removeViewBox: false }, { removeDimensions: true }],
           },
         },
       ],

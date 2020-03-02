@@ -13,7 +13,9 @@ module.exports = {
     return {
       ...config,
       plugins: [
-        svgo(),
+        svgo({
+          plugins: [{ removeViewBox: false }, { removeDimensions: true }],
+        }),
         url({
           include: ['**/*.png', '**/*.jpg', '**/*.gif', '**/*.otf'],
           limit: Infinity,
