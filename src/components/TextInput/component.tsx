@@ -49,7 +49,7 @@ export const Component = (props: Props) => {
         </Label>
       )}
       <InputContainer isFocused={isFocused}>
-        {props.left && <Left>{props.left}</Left>}
+        {props.left && <Left data-testid={buildTestId('left')}>{props.left}</Left>}
         <Input
           {...otherProps}
           data-testid={buildTestId('native-input')}
@@ -57,7 +57,7 @@ export const Component = (props: Props) => {
           onFocus={focus}
           onBlur={blur}
         />
-        {props.right && <Right>{props.right}</Right>}
+        {props.right && <Right data-testid={buildTestId('right')}>{props.right}</Right>}
       </InputContainer>
     </Container>
   );

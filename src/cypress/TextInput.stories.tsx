@@ -15,7 +15,25 @@ export const Default = () => {
         <span>Value: </span>
         <span id="value">{text}</span>
       </div>
-      <TextInput id="input" onChange={(evt) => setText(evt.target.value)} data-testid="TextInput" />
+      <TextInput
+        id="input"
+        label="Write something here"
+        onChange={(evt) => setText(evt.target.value)}
+        data-testid="TextInput"
+        value={text}
+      />
     </>
+  );
+};
+
+export const LeftRight = () => {
+  return (
+    <TextInput
+      id="input"
+      data-testid="TextInput"
+      value=""
+      left={<div id="left-content" />}
+      right={<div id="right-content" />}
+    />
   );
 };

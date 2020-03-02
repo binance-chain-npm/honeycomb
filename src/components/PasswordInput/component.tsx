@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 
-import { Testable } from '../../modules/test-ids';
+import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { TextInput } from '../TextInput';
 import { Tooltip } from '../Tooltip';
 import { Icon } from '../Icon';
@@ -8,7 +8,7 @@ import { Styleless } from '../Styleless';
 
 import { List, Item } from './styled';
 
-export type Props = Omit<React.ComponentProps<typeof TextInput>, 'type'> &
+export type Props = Omit<React.ComponentProps<typeof TextInput>, 'type' | 'left' | 'right'> &
   Testable & {
     minLenght: number;
     mustHaveUpperCase: boolean;
@@ -24,8 +24,10 @@ export const Component = ({
   mustHaveDigit,
   mustHaveSymbol,
   mustHaveUpperCase,
+  'data-testid': testId,
   ...otherProps
 }: Props) => {
+  const buildTestId = useBuildTestId(testId);
   const [isLongEnough, setIsLongEnough] = useState(false);
   const [hasUpperCase, setHasUpperCase] = useState(false);
   const [hasSymbol, setHasSymbol] = useState(false);
@@ -85,10 +87,20 @@ export const Component = ({
         <>
           Your password must have:
           <List>
-            {!isLongEnough && <Item>8 or more characters.</Item>}
-            {mustHaveUpperCase && !hasUpperCase && <Item>At least one upper case character.</Item>}
-            {mustHaveDigit && !hasDigit && <Item>At least one digit.</Item>}
-            {mustHaveSymbol && !hasSymbol && <Item>At least one symbol.</Item>}
+            {!isLongEnough && (
+              <Item data-testid={buildTestId('error-length')}>8 or more characters.</Item>
+            )}
+            {mustHaveUpperCase && !hasUpperCase && (
+              <Item data-testid={buildTestId('error-upper-case')}>
+                At least one upper case character.
+              </Item>
+            )}
+            {mustHaveDigit && !hasDigit && (
+              <Item data-testid={buildTestId('error-digit')}>At least one digit.</Item>
+            )}
+            {mustHaveSymbol && !hasSymbol && (
+              <Item data-testid={buildTestId('error-symbol')}>At least one symbol.</Item>
+            )}
           </List>
         </>
       }
@@ -99,6 +111,7 @@ export const Component = ({
     >
       <TextInput
         {...otherProps}
+        data-testid={testId}
         onFocus={focus}
         onBlur={blur}
         value={value}
@@ -106,6 +119,7 @@ export const Component = ({
         state={isValid ? undefined : TextInput.State.Danger}
         right={
           <Styleless
+            data-testid={buildTestId('toggle-show')}
             tag="button"
             onClick={() => setShouldDisplay(!shouldDisplay)}
             style={{ fontSize: 24 }}
