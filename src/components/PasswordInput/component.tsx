@@ -20,7 +20,7 @@ export const Component = ({ value, onFocus, onBlur, ...otherProps }: Props) => {
   const focus = useCallback<NonNullable<Props['onFocus']>>(
     (evt) => {
       setIsFocused(true);
-      if (onFocus) onFocus(evt);
+      onFocus?.(evt);
     },
     [onFocus],
   );
@@ -28,7 +28,7 @@ export const Component = ({ value, onFocus, onBlur, ...otherProps }: Props) => {
   const blur = useCallback<NonNullable<Props['onBlur']>>(
     (evt) => {
       setIsFocused(false);
-      if (onBlur) onBlur(evt);
+      onBlur?.(evt);
     },
     [onBlur],
   );

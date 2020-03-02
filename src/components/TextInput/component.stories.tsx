@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
 
 import { Sections } from '../../modules/sections';
+import { Button } from '../Button';
 
 import { TextInput } from './';
 
@@ -12,21 +12,23 @@ export default {
 
 export const Text = () => {
   const [value, setValue] = useState('Some text…');
-  return (
-    <TextInput
-      onClick={action('clicked')}
-      value={value}
-      onChange={(evt) => setValue(evt.target.value)}
-    />
-  );
+  return <TextInput value={value} onChange={(evt) => setValue(evt.target.value)} />;
 };
 
 export const WithLabel = () => (
-  <TextInput onClick={action('clicked')} placeholder="Some placeholder…" label="A label" value="" />
+  <TextInput placeholder="Some placeholder…" label="A label" value="" />
 );
 
-export const Placeholder = () => (
-  <TextInput onClick={action('clicked')} placeholder="Some placeholder…" value="" />
+export const Placeholder = () => <TextInput placeholder="Some placeholder…" value="" />;
+
+export const LeftAndRightAppendixes = () => (
+  <TextInput
+    label="Amount"
+    placeholder="Some placeholder…"
+    value=""
+    left={<div style={{ display: 'flex', alignItems: 'center' }}>€</div>}
+    right={<Button look={Button.Look.Primary}>MAX</Button>}
+  />
 );
 
 const CustomTextInput = styled(TextInput)`
@@ -45,10 +47,5 @@ const CustomTextInput = styled(TextInput)`
 `;
 
 export const CustomStyles = () => (
-  <CustomTextInput
-    onClick={action('clicked')}
-    placeholder="Some placeholder…"
-    label="A label"
-    value=""
-  />
+  <CustomTextInput placeholder="Some placeholder…" label="A label" value="" />
 );
