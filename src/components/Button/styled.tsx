@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { Styleless } from '../Styleless';
-import { baseStyles } from '../../modules/core';
 
 export enum Look {
   Default = 'Default',
