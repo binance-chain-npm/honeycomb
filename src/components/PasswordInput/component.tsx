@@ -71,6 +71,7 @@ export const Component = ({ value, onFocus, onBlur, ...otherProps }: Props) => {
       enabled={!isValid}
       trigger="manual"
       visible={isFocused}
+      hideOnClick={false}
     >
       <TextInput
         {...otherProps}
