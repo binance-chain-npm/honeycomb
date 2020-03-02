@@ -1,14 +1,10 @@
 import React, { useMemo } from 'react';
 import queryString from 'query-string';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { makeDecorator, useChannel, useState, useEffect, useParameter } from '@storybook/addons';
 
-import { GlobalFontFaces, GlobalColors } from '../../src/modules/core';
+import { GlobalStyles } from '../../src/modules/core';
 import { Events, PARAM_KEY } from './constants';
-
-const StoryContainer = styled.div`
-  color: #f00; /* This reminds us to set the color explicitly in every component */
-`;
 
 export default makeDecorator({
   name: 'withStyledTheme',
@@ -26,9 +22,8 @@ export default makeDecorator({
 
     return (
       <ThemeProvider theme={themes[themeName]}>
-        <GlobalFontFaces />
-        <GlobalColors />
-        <StoryContainer>{storyFn(context)}</StoryContainer>
+        <GlobalStyles />
+        {storyFn(context)}
       </ThemeProvider>
     );
   },

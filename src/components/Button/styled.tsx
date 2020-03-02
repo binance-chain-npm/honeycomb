@@ -23,8 +23,6 @@ const primaryBefore = css`
 `;
 
 export const Styled = styled(Styleless)<Props>`
-  ${baseStyles};
-
   position: relative;
   color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
   background: ${({ theme }) => theme.honeycomb.color.secondary};

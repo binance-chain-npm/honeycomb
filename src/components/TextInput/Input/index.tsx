@@ -10,7 +10,7 @@ export const Input = styled.input`
   border: none;
   text-decoration: none;
   background: transparent;
-  color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
+  color: inherit;
   height: ${({ theme }) => em(theme.honeycomb.size.touchable, theme.honeycomb.fontSize.small)};
   text-indent: ${({ theme }) =>
     em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.small)};
