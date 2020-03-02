@@ -8,6 +8,7 @@ export const Label = styled.label`
 
   display: block;
   font-size: ${({ theme }) => em(theme.honeycomb.fontSize.small)};
+  color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.bg)};
   font-weight: 600;
   text-overflow: ellipsis;
   overflow: hidden;
