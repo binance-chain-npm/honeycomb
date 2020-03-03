@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { PasswordInput } from '../../src/components/PasswordInput';
+import { PasswordInput, usePasswordInputValidation } from '../../src/components/PasswordInput';
 import { Sections } from '../../src/modules/sections';
 
 export default {
@@ -8,13 +8,15 @@ export default {
 };
 
 export const Default = () => {
-  const [text, setText] = useState('');
+  const [value, setValue] = useState('');
+  const validationProps = usePasswordInputValidation({ value, 'data-testid': 'PasswordInput' });
   return (
     <PasswordInput
+      {...validationProps}
       label="Write something here"
-      onChange={(evt) => setText(evt.target.value)}
+      onChange={(evt) => setValue(evt.target.value)}
       data-testid="PasswordInput"
-      value={text}
+      value={value}
     />
   );
 };

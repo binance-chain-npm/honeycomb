@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { action } from '@storybook/addon-actions';
 
 import { Sections } from '../../modules/sections';
 
-import { PasswordInput } from './';
+import { PasswordInput, usePasswordInputValidation } from './';
 
 export default {
   title: `${Sections.Inputs}|PasswordInput`,
@@ -11,9 +10,16 @@ export default {
 
 export const Text = () => {
   const [value, setValue] = useState('Some text…');
+  const validationProps = usePasswordInputValidation({
+    value,
+    minLenght: 0,
+    mustHaveDigit: false,
+    mustHaveSymbol: false,
+    mustHaveUpperCase: false,
+  });
   return (
     <PasswordInput
-      onClick={action('clicked')}
+      {...validationProps}
       value={value}
       onChange={(evt) => setValue(evt.target.value)}
     />
