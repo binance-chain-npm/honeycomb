@@ -41,5 +41,9 @@ export interface HoneycombTheme {
     duration: {
       normal: string;
     };
+
+    tooltip: {
+      bg: string;
+    };
   };
 }

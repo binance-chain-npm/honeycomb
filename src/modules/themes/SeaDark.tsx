@@ -12,5 +12,7 @@ export const SeaDark: DefaultTheme = {
       bg: GoldDark.honeycomb.color.bg,
       secondary: GoldDark.honeycomb.color.secondary,
     },
+
+    tooltip: GoldDark.honeycomb.tooltip,
   },
 };

@@ -2,6 +2,7 @@ import { DefaultTheme } from 'styled-components';
 import { readableColor, modularScale, stripUnit } from 'polished';
 
 const bg = '#12161c';
+const secondary = '#252d38';
 
 const scale: DefaultTheme['honeycomb']['size']['scale'] = (steps, base) =>
   modularScale(steps, base, 'majorSecond');
@@ -11,7 +12,7 @@ export const GoldDark: DefaultTheme = {
     color: {
       bg,
       primary: '#f0b90b',
-      secondary: '#252d38',
+      secondary,
       readable: (bgColor) => readableColor(bgColor, bg, '#fff'),
 
       good: '#02c076',
@@ -43,6 +44,10 @@ export const GoldDark: DefaultTheme = {
 
     duration: {
       normal: '150ms',
+    },
+
+    tooltip: {
+      bg: secondary,
     },
   },
 };

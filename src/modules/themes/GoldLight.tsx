@@ -13,5 +13,9 @@ export const GoldLight: DefaultTheme = {
       bg,
       secondary: '#eaecef',
     },
+
+    tooltip: {
+      bg,
+    },
   },
 };
