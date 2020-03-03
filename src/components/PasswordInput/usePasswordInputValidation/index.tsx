@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import { TextInput } from '../../TextInput';
-import { List, Item } from '../styled';
+import { List, Item, TooltipContent } from '../styled';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 
 export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
@@ -57,7 +57,7 @@ export const usePasswordInputValidation = ({
   ]);
 
   const tooltipContent = (
-    <>
+    <TooltipContent>
       Your password must have:
       <List>
         {!isLongEnough && (
@@ -75,7 +75,7 @@ export const usePasswordInputValidation = ({
           <Item data-testid={buildTestId('error-symbol')}>At least one symbol.</Item>
         )}
       </List>
-    </>
+    </TooltipContent>
   );
 
   return { isValid, tooltipContent };

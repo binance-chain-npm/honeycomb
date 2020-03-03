@@ -45,6 +45,7 @@ export const Component = ({
     <Tooltip
       content={tooltipContent}
       enabled={!!tooltipContent && !isValid}
+      theme="bare"
       trigger="manual"
       visible={isFocused}
       hideOnClick={false}
