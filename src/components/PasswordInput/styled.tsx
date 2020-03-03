@@ -8,8 +8,8 @@ export const List = styled.ul`
 `;
 
 export const TooltipContent = styled.div`
-  padding: ${({ theme }) => em(theme.honeycomb.size.touchable / 4)}
-    ${({ theme }) => em(theme.honeycomb.size.touchable / 2)};
+  padding: ${({ theme }) => em(theme.honeycomb.size.inputHorizontalPadding / 2)}
+    ${({ theme }) => em(theme.honeycomb.size.inputHorizontalPadding)};
 `;
 
 export const Item = styled.li``;

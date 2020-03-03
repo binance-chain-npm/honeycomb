@@ -28,6 +28,7 @@ export const GoldDark: DefaultTheme = {
       touchable: 44,
       touchableSwitch: 44 * (5 / 8),
       scale,
+      inputHorizontalPadding: 44 / 2,
     },
 
     radius: {

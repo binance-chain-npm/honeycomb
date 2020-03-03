@@ -24,7 +24,7 @@ export const InputContainer = styled.div<{ state?: State; isFocused?: boolean }>
   background: ${({ theme }) => theme.honeycomb.color.secondary};
   border: 1px solid transparent;
   border-radius: ${({ theme }) =>
-    em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.small)};
+    em(theme.honeycomb.size.inputHorizontalPadding, theme.honeycomb.fontSize.small)};
   color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
   overflow: hidden;
   ${({ state }) => state === State.Good && good};

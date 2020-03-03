@@ -26,7 +26,7 @@ export const Styled = styled(Styleless)<Props>`
   color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
   background: ${({ theme }) => theme.honeycomb.color.secondary};
   border-radius: ${({ theme }) =>
-    em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.small)};
+    em(theme.honeycomb.size.inputHorizontalPadding, theme.honeycomb.fontSize.small)};
   cursor: pointer;
   height: ${({ theme }) => em(theme.honeycomb.size.touchable, theme.honeycomb.fontSize.small)};
   padding: 0 1em;
@@ -43,7 +43,7 @@ export const Styled = styled(Styleless)<Props>`
     content: '';
     position: absolute;
     border-radius: ${({ theme }) =>
-      em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.small)};
+      em(theme.honeycomb.size.inputHorizontalPadding, theme.honeycomb.fontSize.small)};
     left: 0;
     right: 0;
     bottom: 0;

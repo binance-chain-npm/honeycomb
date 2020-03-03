@@ -6,5 +6,5 @@ export const Left = styled.div`
   flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
-  padding-left: ${({ theme }) => em(theme.honeycomb.size.touchable / 2)};
+  padding-left: ${({ theme }) => em(theme.honeycomb.size.inputHorizontalPadding)};
 `;

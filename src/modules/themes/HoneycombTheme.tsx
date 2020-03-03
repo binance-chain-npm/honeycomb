@@ -25,6 +25,7 @@ export interface HoneycombTheme {
         steps: Parameters<typeof modularScale>[0],
         base?: Parameters<typeof modularScale>[1],
       ) => ReturnType<typeof modularScale>;
+      inputHorizontalPadding: number;
     };
 
     radius: {
