@@ -20,7 +20,7 @@ export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultVa
   };
 
 export const Component = (props: Props) => {
-  const { className, label, 'data-testid': testId, onFocus, onBlur, ...otherProps } = props;
+  const { className, label, 'data-testid': testId, onFocus, onBlur, state, ...otherProps } = props;
   const buildTestId = useBuildTestId(testId);
   const id = useMemo(() => props.id || `id-${nanoid()}`, [props.id]);
   const [isFocused, setFocused] = useState(false);
@@ -48,7 +48,7 @@ export const Component = (props: Props) => {
           {label}
         </Label>
       )}
-      <InputContainer isFocused={isFocused}>
+      <InputContainer isFocused={isFocused} state={state}>
         {props.left && <Left data-testid={buildTestId('left')}>{props.left}</Left>}
         <Input
           {...otherProps}

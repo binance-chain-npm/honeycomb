@@ -10,13 +10,7 @@ export default {
 
 export const Text = () => {
   const [value, setValue] = useState('Some text…');
-  const validationProps = usePasswordInputValidation({
-    value,
-    minLenght: 0,
-    mustHaveDigit: false,
-    mustHaveSymbol: false,
-    mustHaveUpperCase: false,
-  });
+  const validationProps = usePasswordInputValidation({ value });
   return (
     <PasswordInput
       {...validationProps}
