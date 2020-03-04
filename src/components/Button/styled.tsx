@@ -10,7 +10,7 @@ export enum Look {
 
 export interface Props {
   look: Look;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 const primary = css`
