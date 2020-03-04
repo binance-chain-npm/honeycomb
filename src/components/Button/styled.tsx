@@ -10,6 +10,7 @@ export enum Look {
 
 export interface Props {
   look: Look;
+  disabled: boolean;
 }
 
 const primary = css`
@@ -19,6 +20,16 @@ const primary = css`
 
 const primaryBefore = css`
   opacity: 1;
+`;
+
+const disabled = css`
+  background: ${({ theme }) => theme.honeycomb.color.placeholder};
+  color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.placeholder)};
+  cursor: not-allowed;
+
+  ::before {
+    content: none;
+  }
 `;
 
 export const Styled = styled(Styleless)<Props>`
@@ -65,4 +76,13 @@ export const Styled = styled(Styleless)<Props>`
       opacity: 1;
     }
   }
+
+  ${({ disabled: isDisabled }) => isDisabled && disabled};
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 `;
