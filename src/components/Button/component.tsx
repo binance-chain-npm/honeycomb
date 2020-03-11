@@ -19,6 +19,7 @@ export const Component = ({
   onMouseEnter,
   onMouseLeave,
   href,
+  disabled,
   as: asProp,
   'data-testid': testId,
   ...otherProps
@@ -39,10 +40,11 @@ export const Component = ({
     <Styled
       {...otherProps}
       as={as}
-      href={href}
+      href={disabled ? undefined : href}
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
       data-testid={buildTestId()}
+      disabled={disabled}
     >
       <Wrapper as={animated.div} style={style} data-testid={buildTestId('wrapper')}>
         {children}
