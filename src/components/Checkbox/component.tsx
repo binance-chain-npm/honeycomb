@@ -3,9 +3,7 @@ import nanoid from 'nanoid';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Label } from './Label';
-import { Input } from './Input';
-import { LabelContent } from './LabelContent';
+import { Label, Input, LabelContent } from './styled';
 
 export type Props = React.InputHTMLAttributes<HTMLInputElement> &
   Testable & {

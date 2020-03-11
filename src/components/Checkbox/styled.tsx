@@ -1,9 +1,20 @@
 import styled, { DefaultTheme } from 'styled-components';
-import { em, transitions } from 'polished';
+import { transitions, em } from 'polished';
 
-import { Input } from '../Input';
-import { Icon } from '../../Icon';
-import { svgAsBase64 } from '../../../modules/svg';
+import { Icon } from '../Icon';
+import { svgAsBase64 } from '../../modules/svg';
+
+export const Input = styled.input`
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  cursor: inherit;
+  opacity: 0;
+`;
 
 const iconSize = (theme: DefaultTheme) => theme.honeycomb.size.touchableSwitch * (2 / 3);
 
@@ -37,4 +48,9 @@ export const Label = styled.label`
       background-position: center;
     }
   }
+`;
+
+export const LabelContent = styled.span`
+  font-size: ${({ theme }) => em(theme.honeycomb.fontSize.small)};
+  margin-left: ${({ theme }) => em(8, theme.honeycomb.fontSize.small)};
 `;
