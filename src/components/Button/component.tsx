@@ -11,7 +11,7 @@ export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
     as?: React.ComponentProps<typeof Styleless>['as'];
-    look: Look;
+    look?: Look;
   };
 
 export const Component = ({
@@ -22,6 +22,7 @@ export const Component = ({
   disabled,
   as: asProp,
   'data-testid': testId,
+  look = Look.Default,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -45,6 +46,7 @@ export const Component = ({
       onMouseLeave={mouseLeave}
       data-testid={buildTestId()}
       disabled={disabled}
+      look={look}
     >
       <Wrapper as={animated.div} style={style} data-testid={buildTestId('wrapper')}>
         {children}
@@ -54,6 +56,3 @@ export const Component = ({
 };
 
 Component.displayName = 'Button';
-Component.defaultProps = {
-  look: Look.Default,
-} as Props;
