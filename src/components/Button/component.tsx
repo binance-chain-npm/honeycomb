@@ -10,7 +10,7 @@ import { Styled, Look, Wrapper } from './styled';
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
-    as: React.ComponentProps<typeof Styleless>['as'];
+    as?: React.ComponentProps<typeof Styleless>['as'];
     look: Look;
   };
 
