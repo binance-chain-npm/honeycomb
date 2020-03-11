@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { Svg } from './Svg';
+import { Svg } from './styled';
 
 export type Props = {
   className?: string;
