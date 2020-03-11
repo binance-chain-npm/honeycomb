@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { animated } from 'react-spring';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
@@ -10,21 +10,36 @@ import { Styled, Look, Wrapper } from './styled';
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
-    tag: React.ComponentProps<typeof Styleless>['tag'];
+    as: React.ComponentProps<typeof Styleless>['as'];
     look: Look;
   };
 
-export const Component = (props: Props) => {
-  const { children, onMouseEnter, onMouseLeave, 'data-testid': testId, ...otherProps } = props;
+export const Component = ({
+  children,
+  onMouseEnter,
+  onMouseLeave,
+  href,
+  as: asProp,
+  'data-testid': testId,
+  ...otherProps
+}: Props) => {
   const buildTestId = useBuildTestId(testId);
   const { style, mouseEnter, mouseLeave } = useHoverSpring({
     onMouseEnter,
     onMouseLeave,
   });
 
+  const as = useMemo(() => {
+    if (!!asProp) return asProp;
+    if (!!href) return 'a';
+    return 'button';
+  }, [asProp, href]);
+
   return (
     <Styled
       {...otherProps}
+      as={as}
+      href={href}
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
       data-testid={buildTestId()}
@@ -38,6 +53,5 @@ export const Component = (props: Props) => {
 
 Component.displayName = 'Button';
 Component.defaultProps = {
-  tag: 'button',
   look: Look.Default,
 } as Props;

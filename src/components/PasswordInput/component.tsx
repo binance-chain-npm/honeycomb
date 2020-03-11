@@ -61,7 +61,7 @@ export const Component = ({
         right={
           <Styleless
             data-testid={buildTestId('toggle-show')}
-            tag="button"
+            as="button"
             onClick={() => setShouldDisplay(!shouldDisplay)}
             style={{ fontSize: 24 }}
           >

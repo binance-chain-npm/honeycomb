@@ -19,7 +19,7 @@ export const Component = (
   });
   return (
     <Container
-      tag="button"
+      as="button"
       {...props}
       isShowing={isShowing}
       onMouseEnter={mouseEnter}

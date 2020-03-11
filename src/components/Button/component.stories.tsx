@@ -18,7 +18,7 @@ export const Disabled = () => (
 );
 
 export const AsAnchor = () => (
-  <Button onClick={action('clicked')} tag="a" href="https://binance.org" target="_blank">
+  <Button onClick={action('clicked')} href="https://binance.org" target="_blank">
     A button
   </Button>
 );

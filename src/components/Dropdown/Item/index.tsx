@@ -24,7 +24,7 @@ export const Item = (
 
   return (
     <Container
-      tag="button"
+      as="button"
       {...props}
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
