@@ -6,7 +6,7 @@ import 'tippy.js/animations/shift-away.css';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Styles } from './styles';
+import { Styles } from './styled';
 
 export type TriggerValue = 'mouseenter' | 'click' | 'manual';
 
