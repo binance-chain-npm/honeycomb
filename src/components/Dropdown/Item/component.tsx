@@ -1,35 +1,39 @@
 import React, { useContext } from 'react';
 import { animated } from 'react-spring';
 
-import { ShowingContext } from '../context';
-import { Icon } from '../../Icon';
 import { Styleless } from '../../Styleless';
+import { TestIdContext } from '../context';
+import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { useHoverSpring } from '../../../modules/hovering';
 
-import { Container, ContentWrapper } from './styled';
+import { ContentWrapper, Container } from './styled';
 
 export const Component = (
-  props: Partial<React.ComponentPropsWithoutRef<typeof Styleless>> & { children: React.ReactNode },
+  props: Partial<React.ComponentPropsWithoutRef<typeof Styleless>> &
+    Testable & {
+      children: React.ReactNode;
+    },
 ) => {
-  const isShowing = useContext(ShowingContext);
+  const parentTestId = useContext(TestIdContext);
+  const buildTestId = useBuildTestId(props['data-testid'] ? parentTestId : undefined);
   const { style, mouseEnter, mouseLeave } = useHoverSpring({
     onMouseLeave: props.onMouseLeave,
     onMouseEnter: props.onMouseEnter,
   });
+
   return (
     <Container
       as="button"
       {...props}
-      isShowing={isShowing}
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
+      data-testid={buildTestId(props['data-testid'])}
     >
       <ContentWrapper as={animated.div} style={style}>
         {props.children}
       </ContentWrapper>
-      <Icon src={Icon.Src.CaretDown} />
     </Container>
   );
 };
 
-Component.displayName = 'Dropdown.DefaultTarget';
+Component.displayName = 'Dropdown.Item';

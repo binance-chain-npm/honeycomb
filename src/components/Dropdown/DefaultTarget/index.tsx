@@ -1,5 +1,5 @@
 import { Component } from './component';
-import { ContentWrapper } from './ContentWrapper';
+import { ContentWrapper } from './styled';
 
 export const DefaultTarget = Component as typeof Component & { Wrapper: typeof ContentWrapper };
 

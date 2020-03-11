@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { transitions, em, lighten } from 'polished';
 
-import { Styleless } from '../../../Styleless';
+import { Styleless } from '../../Styleless';
 
 export const Container = styled(Styleless)`
   background: transparent;
@@ -16,4 +16,11 @@ export const Container = styled(Styleless)`
     color: ${({ theme }) =>
       theme.honeycomb.color.readable(lighten(0.025, theme.honeycomb.color.secondary))};
   }
+`;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 `;

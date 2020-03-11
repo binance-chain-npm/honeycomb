@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Tooltip } from '../Tooltip';
 
-import { Styles } from './styles';
+import { Styles } from './styled';
 import { ShowingContext, TestIdContext } from './context';
 
 export type TriggerValue = 'mouseenter' | 'focus' | 'click';
