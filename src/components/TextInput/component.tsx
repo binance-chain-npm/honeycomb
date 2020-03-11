@@ -4,11 +4,7 @@ import nanoid from 'nanoid';
 import { Label } from '../internal/Label';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Container } from './Container';
-import { Input } from './Input';
-import { Left } from './Left';
-import { Right } from './Right';
-import { InputContainer, State } from './InputContainer';
+import { Container, Input, Left, Right, InputContainer, State } from './styled';
 
 export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> &
   Testable & {
