@@ -66,7 +66,6 @@ export const Styled = styled(Styleless)<Props>`
   }
 
   :hover,
-  :focus,
   :active {
     border: none;
     color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.primary)};
@@ -75,6 +74,11 @@ export const Styled = styled(Styleless)<Props>`
       background: ${({ theme }) => theme.honeycomb.color.gradient.primary};
       opacity: 1;
     }
+  }
+
+  :focus,
+  :focus-within {
+    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary};
   }
 
   ${({ disabled: isDisabled }) => isDisabled && disabled};
