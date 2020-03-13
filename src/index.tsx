@@ -17,3 +17,4 @@ export { Icon } from './components/Icon';
 export { Tooltip } from './components/Tooltip';
 export { Dropdown } from './components/Dropdown';
 export { Loading } from './components/Loading';
+export { MnemonicPhrase } from './components/MnemonicPhrase';
