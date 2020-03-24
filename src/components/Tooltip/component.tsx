@@ -21,27 +21,27 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     target: React.ReactNode;
   };
 
-export const Component = (props: Props) => {
-  const buildTestId = useBuildTestId(props['data-testid']);
+export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
+  const buildTestId = useBuildTestId(testId);
   const trigger = useMemo(() => {
-    if (!Array.isArray(props.trigger)) return props.trigger;
-    return props.trigger.join(' ');
-  }, [props.trigger]);
+    if (!Array.isArray(otherProps.trigger)) return otherProps.trigger;
+    return otherProps.trigger.join(' ');
+  }, [otherProps.trigger]);
 
   return (
     <>
       <Styles />
       <Tippy
-        {...props}
-        className={props.className}
+        {...otherProps}
+        className={otherProps.className}
         trigger={trigger}
-        theme={props.theme || 'tooltip'}
-        arrow={props.arrow}
+        theme={otherProps.theme || 'tooltip'}
+        arrow={otherProps.arrow}
         animation="shift-away"
         placement="bottom-start"
-        content={<div data-testid={buildTestId('content')}>{props.content}</div>}
+        content={<div data-testid={buildTestId('content')}>{otherProps.content}</div>}
       >
-        <div data-testid={buildTestId('target')}>{props.children}</div>
+        <div data-testid={buildTestId('target')}>{otherProps.children}</div>
       </Tippy>
     </>
   );
