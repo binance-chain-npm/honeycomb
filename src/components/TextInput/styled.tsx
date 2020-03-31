@@ -47,7 +47,13 @@ const focused = css`
   border-color: ${({ theme }) => theme.honeycomb.color.primary};
 `;
 
-export const InputContainer = styled.div<{ state?: State; isFocused?: boolean }>`
+export type Props = {
+  state?: State;
+  isFocused?: boolean;
+  isPristine?: boolean;
+};
+
+export const InputContainer = styled.div<Props>`
   display: flex;
   flex-direction: row;
   background: ${({ theme }) => theme.honeycomb.color.secondary};
@@ -57,7 +63,7 @@ export const InputContainer = styled.div<{ state?: State; isFocused?: boolean }>
   color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
   overflow: hidden;
   ${({ state }) => state === State.Good && good};
-  ${({ state }) => state === State.Danger && danger};
+  ${({ state, isPristine }) => state === State.Danger && !isPristine && danger};
   ${({ theme }) =>
     transitions(
       ['color', 'background', 'border'],

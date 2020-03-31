@@ -1,7 +1,23 @@
 describe('PasswordInput', () => {
-  it('shows password recommedations when focused', () => {
+  it('renders a pristine component by default', () => {
     cy.visitStory({ storyId: 'tests-passwordinput--default' });
 
+    cy.percySnapshot('PasswordInput with invalid value in pristine state');
+  });
+
+  it('renders with "danger" styles after turning non-pristine', () => {
+    cy.get('[data-testid="PasswordInput-native-input"]').focus();
+
+    cy.percySnapshot('PasswordInput with invalid value while focused');
+
+    cy.get('[data-testid="PasswordInput-native-input"]')
+      .type('a{backspace}')
+      .blur();
+
+    cy.percySnapshot('PasswordInput with invalid value in non-pristine state');
+  });
+
+  it('shows password recommedations when focused', () => {
     cy.get('[data-testid="PasswordInput-error-length"]').should('not.exist');
     cy.get('[data-testid="PasswordInput-error-upper-case"]').should('not.exist');
     cy.get('[data-testid="PasswordInput-error-digit"]').should('not.exist');
