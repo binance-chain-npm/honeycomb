@@ -25,6 +25,9 @@ jobs:
         run: yarn lint
 
       - name: UI tests
+        if:
+          (github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/alpha') ||
+          (github.event_name == 'pull_request')
         run: |
           yarn build-storybook
           yarn percy exec -- cypress run -e CI=true
