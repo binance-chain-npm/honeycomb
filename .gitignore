@@ -9,4 +9,5 @@ dist
 public
 /storybook-static
 /cypress/videos
+/cypress/screenshots
 /stats.*
