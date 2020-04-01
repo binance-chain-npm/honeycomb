@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
