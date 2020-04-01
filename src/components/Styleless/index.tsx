@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Styleless = styled.div`
+export const styleless = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,4 +14,8 @@ export const Styleless = styled.div`
   color: inherit;
   list-style: none;
   width: 100%;
+`;
+
+export const Styleless = styled.div`
+  ${styleless};
 `;
