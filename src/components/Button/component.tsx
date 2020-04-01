@@ -3,14 +3,13 @@ import { animated } from 'react-spring';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { useHoverSpring } from '../../modules/hovering';
-import { Styleless } from '../../components/Styleless';
 
 import { Styled, Look, Wrapper } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
-    as?: React.ComponentProps<typeof Styleless>['as'];
+    as?: React.ComponentProps<typeof Styled>['as'];
     look?: Look;
   };
 

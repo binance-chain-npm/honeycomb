@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+/** The CSS styles of the `<Styleless />` component. */
 export const styleless = css`
   display: flex;
   align-items: center;
@@ -16,6 +17,7 @@ export const styleless = css`
   width: 100%;
 `;
 
+/** A component with reset styles so that it looks like a bare `<div />`. */
 export const Styleless = styled.div`
   ${styleless};
 `;
