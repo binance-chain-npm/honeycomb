@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
 import { animated } from 'react-spring';
 
-import { Styleless } from '../../Styleless';
 import { TestIdContext } from '../context';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { useHoverSpring } from '../../../modules/hovering';
 
 import { ContentWrapper, Container } from './styled';
 
-export const Component = (
-  props: Partial<React.ComponentPropsWithoutRef<typeof Styleless>> &
-    Testable & {
-      children: React.ReactNode;
-    },
-) => {
+export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> &
+  Testable & {
+    as?: React.ComponentProps<typeof Container>['as'];
+  };
+
+export const Component = (props: Props) => {
   const parentTestId = useContext(TestIdContext);
   const buildTestId = useBuildTestId(props['data-testid'] ? parentTestId : undefined);
   const { style, mouseEnter, mouseLeave } = useHoverSpring({

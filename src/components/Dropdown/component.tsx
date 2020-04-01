@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Tooltip } from '../Tooltip';
@@ -16,6 +16,10 @@ export type Props = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'child
 export const Component = (props: Props) => {
   const [isShowing, setShowing] = useState(false);
   const buildTestId = useBuildTestId(props['data-testid']);
+
+  const show = useCallback(() => setShowing(true), [setShowing]);
+  const hide = useCallback(() => setShowing(false), [setShowing]);
+
   return (
     <>
       <Styles />
@@ -23,8 +27,8 @@ export const Component = (props: Props) => {
         className={props.className}
         trigger="click"
         theme="dropdown"
-        onShow={() => setShowing(true)}
-        onHide={() => setShowing(false)}
+        onShow={show}
+        onHide={hide}
         content={
           <TestIdContext.Provider value={buildTestId('content')}>
             {props.children}

@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Styleless = styled.div`
+/** The CSS styles of the `<Styleless />` component. */
+export const styleless = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,4 +15,9 @@ export const Styleless = styled.div`
   color: inherit;
   list-style: none;
   width: 100%;
+`;
+
+/** A component with reset styles so that it looks like a bare `<div />`. */
+export const Styleless = styled.div`
+  ${styleless};
 `;

@@ -10,5 +10,6 @@
     ".rts2_cache_*": true,
     "public": true,
     "storybook-static": true
-  }
+  },
+  "typescript.preferences.importModuleSpecifier": "relative"
 }

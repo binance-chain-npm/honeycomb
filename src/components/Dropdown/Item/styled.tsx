@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { transitions, em, lighten } from 'polished';
 
-import { Styleless } from '../../Styleless';
+import { styleless } from '../../Styleless';
 
-export const Container = styled(Styleless)`
+export const Container = styled.button`
+  ${styleless};
+
   background: transparent;
   height: ${({ theme }) => em(theme.honeycomb.size.touchable)};
   padding: 0 ${({ theme }) => theme.honeycomb.size.scale(1)};

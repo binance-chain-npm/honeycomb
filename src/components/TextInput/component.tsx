@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, useState } from 'react';
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 
 import { Label } from '../internal/Label';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
