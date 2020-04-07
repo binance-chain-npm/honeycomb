@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { em } from 'polished';
 
 import { Styleless } from '../Styleless';
+import { hcStyle } from '../../modules/themes';
 
 export enum Look {
   Default = 'Default',
@@ -36,25 +36,23 @@ export const Styled = styled(Styleless)<Props>`
   position: relative;
   color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
   background: ${({ theme }) => theme.honeycomb.color.secondary};
-  border-radius: ${({ theme }) =>
-    em(theme.honeycomb.size.inputHorizontalPadding, theme.honeycomb.fontSize.small)};
+  border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
   cursor: pointer;
-  height: ${({ theme }) => em(theme.honeycomb.size.touchable, theme.honeycomb.fontSize.small)};
-  padding: 0 1em;
+  height: ${hcStyle.huge({ forFontSize: 'reduced' })};
+  padding: 0 ${hcStyle.normal({ forFontSize: 'reduced' })};
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
   transition: color 300ms;
   font-weight: 600;
-  font-size: ${({ theme }) => em(theme.honeycomb.fontSize.small)};
+  font-size: ${hcStyle.reduced()};
   ${({ look }) => look === Look.Primary && primary};
 
   ::before {
     content: '';
     position: absolute;
-    border-radius: ${({ theme }) =>
-      em(theme.honeycomb.size.inputHorizontalPadding, theme.honeycomb.fontSize.small)};
+    border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
     left: 0;
     right: 0;
     bottom: 0;

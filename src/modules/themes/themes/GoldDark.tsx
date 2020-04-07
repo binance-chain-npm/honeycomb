@@ -1,19 +1,23 @@
-import { DefaultTheme } from 'styled-components';
-import { readableColor, modularScale, stripUnit } from 'polished';
+import { readableColor, modularScale as modularScaleOriginal } from 'polished';
 
 const bg = '#12161c';
 const secondary = '#252d38';
 
-const scale: DefaultTheme['honeycomb']['size']['scale'] = (steps, base) =>
-  modularScale(steps, base, 'majorSecond');
+export const modularScale = (steps: number) => modularScaleOriginal(steps, '16px', 'augFourth');
 
-export const GoldDark: DefaultTheme = {
+export const reduced = modularScale(-1);
+export const normal = modularScale(0);
+export const increased = modularScale(1);
+export const large = modularScale(2);
+export const huge = modularScale(3);
+
+export const GoldDark = {
   honeycomb: {
     color: {
       bg,
       primary: '#f0b90b',
       secondary,
-      readable: (bgColor) => readableColor(bgColor, bg, '#fff'),
+      readable: (bgColor: string) => readableColor(bgColor, bg, '#fff'),
 
       good: '#02c076',
       danger: '#d9304e',
@@ -26,20 +30,17 @@ export const GoldDark: DefaultTheme = {
     },
 
     size: {
-      touchable: 44,
-      touchableSwitch: 44 * (5 / 8),
-      scale,
-      inputHorizontalPadding: 44 / 2,
+      modularScale,
+      small: modularScale(-2),
+      reduced: modularScale(-1),
+      normal: modularScale(0),
+      increased: modularScale(1),
+      large: modularScale(2),
+      huge: modularScale(3),
     },
 
     radius: {
       normal: 3,
-    },
-
-    fontSize: {
-      tiny: 16 * stripUnit(scale(-2)),
-      small: 16 * stripUnit(scale(-1)),
-      normal: 16 * stripUnit(scale(0)),
     },
 
     duration: {
