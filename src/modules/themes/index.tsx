@@ -1,2 +1,2 @@
 export { ThemeProvider } from './ThemeProvider';
-export { HoneycombTheme } from './HoneycombTheme';
+export { HoneycombTheme } from './themes/HoneycombTheme';

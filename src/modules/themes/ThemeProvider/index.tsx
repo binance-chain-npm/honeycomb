@@ -1,10 +1,10 @@
 import React from 'react';
 import { ThemeProvider as Provider, DefaultTheme } from 'styled-components';
 
-import { GoldDark } from './GoldDark';
-import { GoldLight } from './GoldLight';
-import { SeaDark } from './SeaDark';
-import { SeaLight } from './SeaLight';
+import { GoldDark } from '../themes/GoldDark';
+import { GoldLight } from '../themes/GoldLight';
+import { SeaDark } from '../themes/SeaDark';
+import { SeaLight } from '../themes/SeaLight';
 
 export type Props = { children?: React.ReactNode; theme: DefaultTheme };
 
