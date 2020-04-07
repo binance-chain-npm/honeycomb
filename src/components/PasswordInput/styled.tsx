@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { em } from 'polished';
+
+import { hcStyle } from '../../modules/themes';
 
 export const List = styled.ul`
   margin: 0;
@@ -8,8 +9,7 @@ export const List = styled.ul`
 `;
 
 export const TooltipContent = styled.div`
-  padding: ${({ theme }) => em(theme.honeycomb.size.inputHorizontalPadding / 2)}
-    ${({ theme }) => em(theme.honeycomb.size.inputHorizontalPadding)};
+  padding: ${hcStyle.reduced()} ${hcStyle.increased()};
 `;
 
 export const Item = styled.li``;
