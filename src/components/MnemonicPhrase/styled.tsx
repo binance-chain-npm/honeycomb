@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import { em } from 'polished';
+
+import { hcStyle } from '../../modules/themes';
 
 export const Container = styled.ol`
   counter-reset: listCounter;
   display: flex;
   list-style: none;
-  margin: -${({ theme }) => theme.honeycomb.size.scale(-5)};
+  margin: -${hcStyle.reduced()};
   padding: 0;
   align-items: center;
   justify-content: center;
@@ -18,30 +19,28 @@ export const Item = styled.li`
   min-width: 50px;
   background: ${({ theme }) => theme.honeycomb.color.secondary};
   color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
-  border-radius: ${({ theme }) => em(theme.honeycomb.size.touchable / 2)};
+  border-radius: ${hcStyle.halfOf(hcStyle.huge())};
   flex-grow: 1;
   flex-shrink: 0;
   align-items: center;
   justify-content: flex-start;
-  margin: ${({ theme }) => theme.honeycomb.size.scale(-5)};
-  padding-right: ${({ theme }) => theme.honeycomb.size.scale(1)};
-  height: ${({ theme }) => em(theme.honeycomb.size.touchable)};
+  margin: ${hcStyle.reduced()};
+  padding-right: ${hcStyle.increased()};
+  height: ${hcStyle.huge()};
 
   ::before {
     content: '#' counter(listCounter);
-    font-size: ${({ theme }) => em(theme.honeycomb.fontSize.tiny)};
-    min-width: ${({ theme }) => em(theme.honeycomb.size.touchable, theme.honeycomb.fontSize.tiny)};
-    height: ${({ theme }) => em(theme.honeycomb.size.touchable, theme.honeycomb.fontSize.tiny)};
+    font-size: ${hcStyle.reduced()};
+    min-width: ${hcStyle.huge({ forFontSize: 'reduced' })};
+    height: ${hcStyle.huge({ forFontSize: 'reduced' })};
     background: ${({ theme }) => theme.honeycomb.color.bg};
     border: 1px solid ${({ theme }) => theme.honeycomb.color.secondary};
     border-right: none;
-    border-top-left-radius: ${({ theme }) =>
-      em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.tiny)};
-    border-bottom-left-radius: ${({ theme }) =>
-      em(theme.honeycomb.size.touchable / 2, theme.honeycomb.fontSize.tiny)};
+    border-top-left-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
+    border-bottom-left-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
     display: flex;
-    padding: 0 ${({ theme }) => theme.honeycomb.size.scale(-3)};
-    margin-right: ${({ theme }) => theme.honeycomb.size.scale(3)};
+    padding: 0 ${hcStyle.reduced({ forFontSize: 'reduced' })};
+    margin-right: ${hcStyle.increased({ forFontSize: 'reduced' })};
     align-items: center;
     justify-content: center;
   }
