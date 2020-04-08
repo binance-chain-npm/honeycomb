@@ -10,7 +10,7 @@ export {
 export { Button } from './components/Button';
 export { TextInput } from './components/TextInput';
 export { PasswordInput, usePasswordInputValidation } from './components/PasswordInput';
-export { Styleless } from './components/Styleless';
+export { Styleless, styleless } from './components/Styleless';
 export { SegmentedControl } from './components/SegmentedControl';
 export { Checkbox } from './components/Checkbox';
 export { Icon } from './components/Icon';
