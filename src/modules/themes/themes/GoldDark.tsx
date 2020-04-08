@@ -3,7 +3,7 @@ import { readableColor, modularScale as modularScaleOriginal } from 'polished';
 const bg = '#12161c';
 const secondary = '#252d38';
 
-const modularScale = (steps: number) => modularScaleOriginal(steps, '16px', 'augFourth');
+const modularScale = (steps: number) => modularScaleOriginal(steps, '16px', 'majorSecond');
 
 export const GoldDark = {
   honeycomb: {
@@ -28,9 +28,9 @@ export const GoldDark = {
       small: modularScale(-2),
       reduced: modularScale(-1),
       normal: modularScale(0),
-      increased: modularScale(1),
-      large: modularScale(2),
-      huge: modularScale(3),
+      increased: modularScale(4),
+      large: modularScale(7),
+      huge: modularScale(9),
     },
 
     radius: {
