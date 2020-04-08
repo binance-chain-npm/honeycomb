@@ -1,8 +1,9 @@
-import styled, { DefaultTheme } from 'styled-components';
-import { transitions, em } from 'polished';
+import styled from 'styled-components';
+import { transitions } from 'polished';
 
 import { Icon } from '../Icon';
 import { svgAsBase64 } from '../../modules/svg';
+import { hcStyle } from '../../modules/themes';
 
 export const Input = styled.input`
   position: absolute;
@@ -16,8 +17,6 @@ export const Input = styled.input`
   opacity: 0;
 `;
 
-const iconSize = (theme: DefaultTheme) => theme.honeycomb.size.touchableSwitch * (2 / 3);
-
 export const Label = styled.label`
   display: flex;
   flex-direction: row;
@@ -28,8 +27,8 @@ export const Label = styled.label`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: ${({ theme }) => em(theme.honeycomb.size.touchableSwitch)};
-    height: ${({ theme }) => em(theme.honeycomb.size.touchableSwitch)};
+    width: ${hcStyle.increased()};
+    height: ${hcStyle.increased()};
     background: transparent;
     border: 1px solid ${({ theme }) => theme.honeycomb.color.primary};
     border-radius: ${({ theme }) => theme.honeycomb.radius.normal}px;
@@ -43,7 +42,7 @@ export const Label = styled.label`
       border-color: transparent;
       background: ${({ theme }) => theme.honeycomb.color.primary};
       background-image: url(${svgAsBase64(Icon.sourceFor(Icon.Src.Tick))});
-      background-size: ${({ theme }) => em(iconSize(theme))};
+      background-size: ${hcStyle.normal()};
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -51,6 +50,6 @@ export const Label = styled.label`
 `;
 
 export const LabelContent = styled.span`
-  font-size: ${({ theme }) => em(theme.honeycomb.fontSize.small)};
-  margin-left: ${({ theme }) => em(8, theme.honeycomb.fontSize.small)};
+  font-size: ${hcStyle.reduced()};
+  margin-left: ${hcStyle.reduced({ forFontSize: 'reduced' })};
 `;

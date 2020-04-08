@@ -1,14 +1,15 @@
 import styled from 'styled-components';
-import { transitions, em, lighten } from 'polished';
+import { transitions, lighten } from 'polished';
 
 import { styleless } from '../../Styleless';
+import { hcStyle } from '../../../modules/themes';
 
 export const Container = styled.button`
   ${styleless};
 
   background: transparent;
-  height: ${({ theme }) => em(theme.honeycomb.size.touchable)};
-  padding: 0 ${({ theme }) => theme.honeycomb.size.scale(1)};
+  height: ${hcStyle.huge()};
+  padding: 0 ${hcStyle.increased()};
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
 
   :focus,

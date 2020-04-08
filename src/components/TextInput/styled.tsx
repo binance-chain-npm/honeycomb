@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
-import { em, transitions } from 'polished';
+import { transitions } from 'polished';
+
+import { hcStyle } from '../../modules/themes';
 
 export enum State {
   Good = 'Good',
@@ -21,12 +23,10 @@ export const Input = styled.input`
   text-decoration: none;
   background: transparent;
   color: inherit;
-  height: ${({ theme }) => em(theme.honeycomb.size.touchable, theme.honeycomb.fontSize.small)};
-  text-indent: ${({ theme }) =>
-    em(theme.honeycomb.size.inputHorizontalPadding, theme.honeycomb.fontSize.small)};
-  padding-right: ${({ theme }) =>
-    em(theme.honeycomb.size.inputHorizontalPadding, theme.honeycomb.fontSize.small)};
-  font-size: ${({ theme }) => em(theme.honeycomb.fontSize.small)};
+  height: ${hcStyle.huge({ forFontSize: 'reduced' })};
+  text-indent: ${hcStyle.increased({ forFontSize: 'reduced' })};
+  padding-right: ${hcStyle.increased({ forFontSize: 'reduced' })};
+  font-size: ${hcStyle.reduced()};
 
   ${({ theme }) => transitions(['color'], `${theme.honeycomb.duration.normal} ease-in-out`)};
 
@@ -58,8 +58,7 @@ export const InputContainer = styled.div<Props>`
   flex-direction: row;
   background: ${({ theme }) => theme.honeycomb.color.secondary};
   border: 1px solid transparent;
-  border-radius: ${({ theme }) =>
-    em(theme.honeycomb.size.inputHorizontalPadding, theme.honeycomb.fontSize.small)};
+  border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
   color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
   overflow: hidden;
   ${({ state }) => state === State.Good && good};
@@ -78,7 +77,7 @@ export const Left = styled.div`
   flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
-  padding-left: ${({ theme }) => em(theme.honeycomb.size.inputHorizontalPadding)};
+  padding-left: ${hcStyle.increased()};
 `;
 
 export const Right = styled.div`
@@ -86,5 +85,5 @@ export const Right = styled.div`
   flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
-  padding-right: ${({ theme }) => em(theme.honeycomb.size.inputHorizontalPadding)};
+  padding-right: ${hcStyle.increased()};
 `;

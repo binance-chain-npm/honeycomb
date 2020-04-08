@@ -1,14 +1,15 @@
 import styled from 'styled-components';
-import { transitions, em } from 'polished';
+import { transitions } from 'polished';
 
 import { Styleless } from '../../Styleless';
+import { hcStyle } from '../../../modules/themes';
 
 export const Container = styled(Styleless)<{ isShowing: boolean }>`
   background: ${({ theme }) => theme.honeycomb.color.secondary};
-  border-radius: ${({ theme }) => em(theme.honeycomb.size.inputHorizontalPadding)};
+  border-radius: ${hcStyle.halfOf(hcStyle.huge())};
   color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
-  height: ${({ theme }) => em(theme.honeycomb.size.touchable)};
-  padding: 0 ${({ theme }) => theme.honeycomb.size.scale(2)};
+  height: ${hcStyle.huge()};
+  padding: 0 ${hcStyle.increased()};
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
 `;
 
