@@ -6,6 +6,7 @@ export {
   GlobalFonts,
   GlobalStyles,
 } from './modules/core';
+export { useBreadcrumbs, useAddBreadcrumbEffect, BreadcrumbProvider } from './modules/breadcrumbs';
 
 export { Button } from './components/Button';
 export { TextInput } from './components/TextInput';
