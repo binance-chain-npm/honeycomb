@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 
 import { Sections } from '../modules/sections';
 import { BreadcrumbProvider, useAddBreadcrumbEffect, useBreadcrumbs } from '../modules/breadcrumbs';
@@ -10,7 +9,7 @@ export default {
 
 const PageA = () => {
   const [show2, setShow2] = useState(false);
-  useAddBreadcrumbEffect({ label: 'Page A' });
+  useAddBreadcrumbEffect({ label: 'Page A', href: '/a' });
   return (
     <div data-testid="view.A">
       <h1>Page A</h1>
@@ -23,17 +22,17 @@ const PageA = () => {
 };
 
 const PageA1 = () => {
-  useAddBreadcrumbEffect({ label: 'A.1' });
+  useAddBreadcrumbEffect({ label: 'A.1', href: '/a1' });
   return <h2 data-testid="view.A1">Page A.1</h2>;
 };
 
 const PageA2 = () => {
-  useAddBreadcrumbEffect({ label: 'A.2' });
+  useAddBreadcrumbEffect({ label: 'A.2', href: '/a2' });
   return <h2 data-testid="view.A2">Page A.2</h2>;
 };
 
 const PageB = () => {
-  useAddBreadcrumbEffect({ label: 'Page B' });
+  useAddBreadcrumbEffect({ label: 'Page B', href: '/b' });
   return <h1 data-testid="view.B">Page B</h1>;
 };
 
@@ -66,10 +65,8 @@ const RenderBreadcrumbs = () => {
 export const Default = () => {
   return (
     <BreadcrumbProvider>
-      <BrowserRouter>
-        <RenderBreadcrumbs />
-        <Root />
-      </BrowserRouter>
+      <RenderBreadcrumbs />
+      <Root />
     </BreadcrumbProvider>
   );
 };

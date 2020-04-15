@@ -1,11 +1,9 @@
 import { useEffect, useContext } from 'react';
-import { useRouteMatch } from 'react-router-dom';
 
 import { Breadcrumb, BreadcrumbContext } from '../context';
 
-export const useAddBreadcrumbEffect = ({ label }: Pick<Breadcrumb, 'label'>) => {
+export const useAddBreadcrumbEffect = ({ label, href }: Pick<Breadcrumb, 'label' | 'href'>) => {
   const { addBreadcrumb, removeBreadcrumb } = useContext(BreadcrumbContext);
-  const { url } = useRouteMatch();
 
   if (!addBreadcrumb || !removeBreadcrumb) {
     throw new Error(
@@ -14,7 +12,7 @@ export const useAddBreadcrumbEffect = ({ label }: Pick<Breadcrumb, 'label'>) => 
   }
 
   useEffect(() => {
-    const { id } = addBreadcrumb({ label, href: url });
+    const { id } = addBreadcrumb({ label, href });
     return () => removeBreadcrumb(id);
-  }, [addBreadcrumb, removeBreadcrumb, label, url]);
+  }, [addBreadcrumb, removeBreadcrumb, label, href]);
 };
