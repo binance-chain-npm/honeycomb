@@ -59,7 +59,7 @@ export const increased = ({ forFontSize }: FontParam = defaultFont) => ({
   theme: DefaultTheme;
 }) => rebaseEm({ size: theme.honeycomb.size.increased, toBase: theme.honeycomb.size[forFontSize] });
 
-export const base = ({ forFontSize }: FontParam = defaultFont) => ({
+export const normal = ({ forFontSize }: FontParam = defaultFont) => ({
   theme,
 }: {
   theme: DefaultTheme;
