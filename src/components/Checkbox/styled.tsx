@@ -30,7 +30,7 @@ export const Label = styled.label`
     width: ${hcStyle.increased()};
     height: ${hcStyle.increased()};
     background: transparent;
-    border: 1px solid ${({ theme }) => theme.honeycomb.color.primary};
+    border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
     border-radius: ${({ theme }) => theme.honeycomb.radius.normal}px;
     display: flex;
     ${({ theme }) => transitions(['background', 'border'], theme.honeycomb.duration.normal)};
@@ -38,9 +38,10 @@ export const Label = styled.label`
 
   ${Input}:checked ~ & {
     ::before {
-      color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.primary)};
+      color: ${({ theme }) =>
+        theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.normal)};
       border-color: transparent;
-      background: ${({ theme }) => theme.honeycomb.color.primary};
+      background: ${({ theme }) => theme.honeycomb.color.primary.normal};
       background-image: url(${svgAsBase64(Icon.sourceFor(Icon.Src.Tick))});
       background-size: ${hcStyle.normal()};
       background-repeat: no-repeat;
