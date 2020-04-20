@@ -17,8 +17,9 @@ export const Item = styled.li`
   counter-increment: listCounter;
   display: flex;
   min-width: 50px;
-  background: ${({ theme }) => theme.honeycomb.color.secondary};
-  color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
+  background: ${({ theme }) => theme.honeycomb.color.bg.masked};
+  color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
   border-radius: ${hcStyle.halfOf(hcStyle.huge())};
   flex-grow: 1;
   flex-shrink: 0;
@@ -27,17 +28,14 @@ export const Item = styled.li`
   margin: ${hcStyle.reduced()};
   padding-right: ${hcStyle.increased()};
   height: ${hcStyle.huge()};
+  overflow: hidden;
 
   ::before {
     content: '#' counter(listCounter);
     font-size: ${hcStyle.reduced()};
     min-width: ${hcStyle.huge({ forFontSize: 'reduced' })};
     height: ${hcStyle.huge({ forFontSize: 'reduced' })};
-    background: ${({ theme }) => theme.honeycomb.color.bg};
-    border: 1px solid ${({ theme }) => theme.honeycomb.color.secondary};
-    border-right: none;
-    border-top-left-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
-    border-bottom-left-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
+    background: ${({ theme }) => theme.honeycomb.color.bg.normal};
     display: flex;
     padding: 0 ${hcStyle.reduced({ forFontSize: 'reduced' })};
     margin-right: ${hcStyle.increased({ forFontSize: 'reduced' })};

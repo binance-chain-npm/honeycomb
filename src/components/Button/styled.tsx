@@ -64,7 +64,7 @@ export const Styled = styled(Styleless)<Props>`
 
   :focus,
   :focus-within {
-    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary};
+    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary.normal};
   }
 
   ${({ look }) => look === Look.Primary && primary};
