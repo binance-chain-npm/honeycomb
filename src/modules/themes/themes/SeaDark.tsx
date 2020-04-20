@@ -10,9 +10,7 @@ export const SeaDark: DefaultTheme = {
     color: {
       ...SeaLight.honeycomb.color,
       bg: GoldDark.honeycomb.color.bg,
-      secondary: GoldDark.honeycomb.color.secondary,
+      text: GoldDark.honeycomb.color.text,
     },
-
-    tooltip: GoldDark.honeycomb.tooltip,
   },
 };

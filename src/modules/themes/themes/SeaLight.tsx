@@ -8,7 +8,10 @@ export const SeaLight: DefaultTheme = {
     ...GoldLight.honeycomb,
     color: {
       ...GoldLight.honeycomb.color,
-      primary: '#4653c8',
+      primary: {
+        normal: '#4653c8',
+        active: '#4653c8',
+      },
     },
   },
 };
