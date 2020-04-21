@@ -1,8 +1,6 @@
 import React, { useMemo } from 'react';
-import { animated } from 'react-spring';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { useHoverSpring } from '../../modules/hovering';
 
 import { Styled, Look, Wrapper } from './styled';
 
@@ -25,10 +23,6 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
-  const { style, mouseEnter, mouseLeave } = useHoverSpring({
-    onMouseEnter,
-    onMouseLeave,
-  });
 
   const as = useMemo(() => {
     if (!!asProp) return asProp;
@@ -41,15 +35,11 @@ export const Component = ({
       {...otherProps}
       as={as}
       href={disabled ? undefined : href}
-      onMouseEnter={mouseEnter}
-      onMouseLeave={mouseLeave}
       data-testid={buildTestId()}
       disabled={disabled}
       look={look}
     >
-      <Wrapper as={animated.div} style={style} data-testid={buildTestId('wrapper')}>
-        {children}
-      </Wrapper>
+      <Wrapper data-testid={buildTestId('wrapper')}>{children}</Wrapper>
     </Styled>
   );
 };

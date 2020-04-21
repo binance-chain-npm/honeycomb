@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { transitions, lighten } from 'polished';
+import { transitions } from 'polished';
 
 import { styleless } from '../../Styleless';
 import { hcStyle } from '../../../modules/themes';
@@ -15,9 +15,8 @@ export const Container = styled.button`
   :focus,
   :hover,
   :active {
-    background: ${({ theme }) => lighten(0.025, theme.honeycomb.color.secondary)};
-    color: ${({ theme }) =>
-      theme.honeycomb.color.readable(lighten(0.025, theme.honeycomb.color.secondary))};
+    background: ${({ theme }) => theme.honeycomb.color.bg.masked};
+    color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   }
 `;
 

@@ -31,20 +31,32 @@ export const Input = styled.input`
   ${({ theme }) => transitions(['color'], `${theme.honeycomb.duration.normal} ease-in-out`)};
 
   ::placeholder {
-    color: ${({ theme }) => theme.honeycomb.color.placeholder};
+    color: ${({ theme }) => theme.honeycomb.color.text.masked};
   }
 `;
 
 const good = css`
-  border-color: ${({ theme }) => theme.honeycomb.color.good};
+  border-color: ${({ theme }) => theme.honeycomb.color.good.normal};
+
+  :focus {
+    border-color: ${({ theme }) => theme.honeycomb.color.good.active};
+  }
 `;
 
 const danger = css`
-  border-color: ${({ theme }) => theme.honeycomb.color.danger};
+  border-color: ${({ theme }) => theme.honeycomb.color.danger.normal};
+
+  :focus {
+    border-color: ${({ theme }) => theme.honeycomb.color.danger.active};
+  }
 `;
 
 const focused = css`
-  border-color: ${({ theme }) => theme.honeycomb.color.primary};
+  border-color: ${({ theme }) => theme.honeycomb.color.primary.normal};
+
+  :focus {
+    border-color: ${({ theme }) => theme.honeycomb.color.primary.active};
+  }
 `;
 
 export type Props = {
@@ -56,10 +68,10 @@ export type Props = {
 export const InputContainer = styled.div<Props>`
   display: flex;
   flex-direction: row;
-  background: ${({ theme }) => theme.honeycomb.color.secondary};
+  background: ${({ theme }) => theme.honeycomb.color.bg.masked};
   border: 1px solid transparent;
   border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
-  color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
+  color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
   ${({ state }) => state === State.Good && good};
   ${({ state, isPristine }) => state === State.Danger && !isPristine && danger};

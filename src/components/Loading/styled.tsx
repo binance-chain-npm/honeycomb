@@ -7,7 +7,7 @@ const fillViewportStyle = css`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: ${({ theme }) => transparentize(0.4, theme.honeycomb.color.bg)};
+  background: ${({ theme }) => transparentize(0.4, theme.honeycomb.color.bg.normal)};
 `;
 
 export interface Props {
@@ -18,7 +18,7 @@ export const Spinner = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.honeycomb.color.primary};
+  color: ${({ theme }) => theme.honeycomb.color.primary.normal};
   ${({ fillViewport }) => fillViewport && fillViewportStyle};
 `;
 

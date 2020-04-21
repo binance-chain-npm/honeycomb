@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { transitions } from 'polished';
 
 import { Styleless } from '../Styleless';
 import { hcStyle } from '../../modules/themes';
@@ -15,27 +16,32 @@ export interface Props {
 
 const primary = css`
   border: none;
-  color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.primary)};
-`;
+  background: ${({ theme }) => theme.honeycomb.color.primary.normal};
+  color: ${({ theme }) =>
+    theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.normal)};
 
-const primaryBefore = css`
-  opacity: 1;
+  :hover,
+  :active {
+    border: none;
+    background: ${({ theme }) => theme.honeycomb.color.primary.active};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
+  }
 `;
 
 const disabled = css`
-  background: ${({ theme }) => theme.honeycomb.color.placeholder};
-  color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.placeholder)};
-  cursor: not-allowed;
-
-  ::before {
-    content: none;
-  }
+  border: none !important;
+  background: ${({ theme }) => theme.honeycomb.color.bg.disabled} !important;
+  color: ${({ theme }) =>
+    theme.honeycomb.color.readable.disabled(theme.honeycomb.color.bg.disabled)} !important;
+  cursor: not-allowed !important;
 `;
 
 export const Styled = styled(Styleless)<Props>`
   position: relative;
-  color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.secondary)};
-  background: ${({ theme }) => theme.honeycomb.color.secondary};
+  color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.normal)};
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
   border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
   cursor: pointer;
   height: ${hcStyle.huge({ forFontSize: 'reduced' })};
@@ -44,41 +50,24 @@ export const Styled = styled(Styleless)<Props>`
   flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
-  transition: color 300ms;
   font-weight: 600;
   font-size: ${hcStyle.reduced()};
-  ${({ look }) => look === Look.Primary && primary};
-
-  ::before {
-    content: '';
-    position: absolute;
-    border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    opacity: 0;
-    transition: opacity 300ms;
-    background: ${({ theme }) => theme.honeycomb.color.gradient.primary};
-    ${({ look }) => look === Look.Primary && primaryBefore};
-  }
+  ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
 
   :hover,
   :active {
-    border: none;
-    color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.primary)};
-
-    ::before {
-      background: ${({ theme }) => theme.honeycomb.color.gradient.primary};
-      opacity: 1;
-    }
+    border-color: ${({ theme }) => theme.honeycomb.color.primary.active};
+    background: ${({ theme }) => theme.honeycomb.color.primary.active};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
   }
 
   :focus,
   :focus-within {
-    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary};
+    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary.normal};
   }
 
+  ${({ look }) => look === Look.Primary && primary};
   ${({ disabled: isDisabled }) => isDisabled && disabled};
 `;
 
