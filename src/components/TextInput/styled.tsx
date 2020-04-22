@@ -4,7 +4,7 @@ import { transitions } from 'polished';
 import { hcStyle } from '../../modules/themes';
 
 export enum State {
-  Good = 'Good',
+  Success = 'Success',
   Danger = 'Danger',
 }
 
@@ -35,7 +35,7 @@ export const Input = styled.input`
   }
 `;
 
-const good = css`
+const success = css`
   border-color: ${({ theme }) => theme.honeycomb.color.success.normal};
 
   :focus {
@@ -73,7 +73,7 @@ export const InputContainer = styled.div<Props>`
   border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
-  ${({ state }) => state === State.Good && good};
+  ${({ state }) => state === State.Success && success};
   ${({ state, isPristine }) => state === State.Danger && !isPristine && danger};
   ${({ theme }) =>
     transitions(
