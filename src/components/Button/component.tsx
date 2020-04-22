@@ -8,7 +8,7 @@ export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
     as?: React.ComponentProps<typeof Styled>['as'];
-    variant?: Variant;
+    variant: Variant;
   };
 
 export const Component = ({
@@ -19,7 +19,7 @@ export const Component = ({
   disabled,
   as: asProp,
   'data-testid': testId,
-  variant = 'default',
+  variant,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);

@@ -4,7 +4,7 @@ import { transitions } from 'polished';
 import { Styleless } from '../Styleless';
 import { hcStyle } from '../../modules/themes';
 
-export const variants = ['default', 'primary', 'success', 'danger', 'buy', 'sell'] as const;
+export const variants = ['primary', 'secondary', 'success', 'danger', 'buy', 'sell'] as const;
 export type Variant = typeof variants[number];
 
 export interface Props {
@@ -22,6 +22,19 @@ const primary = css`
   :active {
     border: none;
     background: ${({ theme }) => theme.honeycomb.color.primary.active};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
+  }
+`;
+
+const secondary = css`
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+  background: transparent;
+  color: inherit;
+
+  :hover,
+  :active {
+    border-color: 1px solid ${({ theme }) => theme.honeycomb.color.primary.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
   }
@@ -95,9 +108,6 @@ const disabled = css`
 
 export const Styled = styled(Styleless)<Props>`
   position: relative;
-  color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.normal)};
-  background: transparent;
-  border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
   border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
   cursor: pointer;
   height: ${hcStyle.huge({ forFontSize: 'reduced' })};
@@ -127,6 +137,7 @@ export const Styled = styled(Styleless)<Props>`
   ${({ variant }) => variant === 'buy' && buy};
   ${({ variant }) => variant === 'danger' && danger};
   ${({ variant }) => variant === 'sell' && sell};
+  ${({ variant }) => variant === 'secondary' && secondary};
   ${({ variant }) => variant === 'primary' && primary};
   ${({ disabled: isDisabled }) => isDisabled && disabled};
 `;
