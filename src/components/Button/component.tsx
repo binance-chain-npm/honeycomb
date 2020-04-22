@@ -2,13 +2,14 @@ import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Styled, Variant, Wrapper } from './styled';
+import { Styled, Variant, Wrapper, Size } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
     as?: React.ComponentProps<typeof Styled>['as'];
     variant: Variant;
+    size?: Size;
   };
 
 export const Component = ({
@@ -20,6 +21,7 @@ export const Component = ({
   as: asProp,
   'data-testid': testId,
   variant,
+  size = 'huge',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -38,6 +40,7 @@ export const Component = ({
       data-testid={buildTestId()}
       disabled={disabled}
       variant={variant}
+      size={size}
     >
       <Wrapper data-testid={buildTestId('wrapper')}>{children}</Wrapper>
     </Styled>

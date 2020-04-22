@@ -18,8 +18,12 @@ export const variants = [
 ] as const;
 export type Variant = typeof variants[number];
 
+export const sizes = ['huge', 'large'] as const;
+export type Size = typeof sizes[number];
+
 export interface Props {
   variant: Variant;
+  size: Size;
   disabled?: boolean;
 }
 
@@ -174,6 +178,11 @@ const disabled = css`
   cursor: not-allowed !important;
 `;
 
+const large = css`
+  border-radius: ${hcStyle.halfOf(hcStyle.large({ forFontSize: 'reduced' }))};
+  height: ${hcStyle.large({ forFontSize: 'reduced' })};
+`;
+
 export const Styled = styled(Styleless)<Props>`
   position: relative;
   border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
@@ -203,6 +212,9 @@ export const Styled = styled(Styleless)<Props>`
   ${({ variant }) => variant === 'sell-masked' && sellMasked};
   ${({ variant }) => variant === 'secondary' && secondary};
   ${({ variant }) => variant === 'primary' && primary};
+
+  ${({ size }) => size === 'large' && large};
+
   ${({ disabled: isDisabled }) => isDisabled && disabled};
 `;
 
