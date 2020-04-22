@@ -36,10 +36,10 @@ export const Input = styled.input`
 `;
 
 const good = css`
-  border-color: ${({ theme }) => theme.honeycomb.color.good.normal};
+  border-color: ${({ theme }) => theme.honeycomb.color.success.normal};
 
   :focus {
-    border-color: ${({ theme }) => theme.honeycomb.color.good.active};
+    border-color: ${({ theme }) => theme.honeycomb.color.success.active};
   }
 `;
 

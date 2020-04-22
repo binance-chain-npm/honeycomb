@@ -2,13 +2,13 @@ import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Styled, Look, Wrapper } from './styled';
+import { Styled, Variant, Wrapper } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
     as?: React.ComponentProps<typeof Styled>['as'];
-    look?: Look;
+    variant?: Variant;
   };
 
 export const Component = ({
@@ -19,7 +19,7 @@ export const Component = ({
   disabled,
   as: asProp,
   'data-testid': testId,
-  look = Look.Default,
+  variant = 'default',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -37,7 +37,7 @@ export const Component = ({
       href={disabled ? undefined : href}
       data-testid={buildTestId()}
       disabled={disabled}
-      look={look}
+      variant={variant}
     >
       <Wrapper data-testid={buildTestId('wrapper')}>{children}</Wrapper>
     </Styled>

@@ -13,7 +13,7 @@ export const Default = () => <Loading />;
 
 export const FillViewport = () => (
   <>
-    <Button look={Button.Look.Primary}>A test</Button>
+    <Button variant={Button.Look.Primary}>A test</Button>
     <Loading fillViewport />
   </>
 );
