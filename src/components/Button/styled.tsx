@@ -4,7 +4,18 @@ import { transitions } from 'polished';
 import { Styleless } from '../Styleless';
 import { hcStyle } from '../../modules/themes';
 
-export const variants = ['primary', 'secondary', 'success', 'danger', 'buy', 'sell'] as const;
+export const variants = [
+  'primary',
+  'secondary',
+  'success',
+  'success-masked',
+  'danger',
+  'danger-masked',
+  'buy',
+  'buy-masked',
+  'sell',
+  'sell-masked',
+] as const;
 export type Variant = typeof variants[number];
 
 export interface Props {
@@ -34,7 +45,8 @@ const secondary = css`
 
   :hover,
   :active {
-    border-color: 1px solid ${({ theme }) => theme.honeycomb.color.primary.active};
+    border-color: ${({ theme }) => theme.honeycomb.color.primary.active};
+    background: ${({ theme }) => theme.honeycomb.color.primary.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
   }
@@ -55,6 +67,20 @@ const success = css`
   }
 `;
 
+const successMasked = css`
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.success.normal};
+  background: transparent;
+  color: ${({ theme }) => theme.honeycomb.color.success.normal};
+
+  :hover,
+  :active {
+    border-color: ${({ theme }) => theme.honeycomb.color.success.active};
+    background: ${({ theme }) => theme.honeycomb.color.success.active};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.success.active)};
+  }
+`;
+
 const buy = css`
   border: none;
   background: ${({ theme }) => theme.honeycomb.color.buy.normal};
@@ -63,6 +89,20 @@ const buy = css`
   :hover,
   :active {
     border: none;
+    background: ${({ theme }) => theme.honeycomb.color.buy.active};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.buy.active)};
+  }
+`;
+
+const buyMasked = css`
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.buy.normal};
+  background: transparent;
+  color: ${({ theme }) => theme.honeycomb.color.buy.normal};
+
+  :hover,
+  :active {
+    border-color: ${({ theme }) => theme.honeycomb.color.buy.active};
     background: ${({ theme }) => theme.honeycomb.color.buy.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.buy.active)};
@@ -84,6 +124,20 @@ const danger = css`
   }
 `;
 
+const dangerMasked = css`
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.danger.normal};
+  background: transparent;
+  color: ${({ theme }) => theme.honeycomb.color.danger.normal};
+
+  :hover,
+  :active {
+    border-color: ${({ theme }) => theme.honeycomb.color.danger.active};
+    background: ${({ theme }) => theme.honeycomb.color.danger.active};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.danger.active)};
+  }
+`;
+
 const sell = css`
   border: none;
   background: ${({ theme }) => theme.honeycomb.color.sell.normal};
@@ -92,6 +146,20 @@ const sell = css`
   :hover,
   :active {
     border: none;
+    background: ${({ theme }) => theme.honeycomb.color.sell.active};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.sell.active)};
+  }
+`;
+
+const sellMasked = css`
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.sell.normal};
+  background: transparent;
+  color: ${({ theme }) => theme.honeycomb.color.sell.normal};
+
+  :hover,
+  :active {
+    border-color: ${({ theme }) => theme.honeycomb.color.sell.active};
     background: ${({ theme }) => theme.honeycomb.color.sell.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.sell.active)};
@@ -120,23 +188,19 @@ export const Styled = styled(Styleless)<Props>`
   font-size: ${hcStyle.reduced()};
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
 
-  :hover,
-  :active {
-    border-color: ${({ theme }) => theme.honeycomb.color.primary.active};
-    background: ${({ theme }) => theme.honeycomb.color.primary.active};
-    color: ${({ theme }) =>
-      theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
-  }
-
   :focus,
   :focus-within {
     box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary.normal};
   }
 
   ${({ variant }) => variant === 'success' && success};
+  ${({ variant }) => variant === 'success-masked' && successMasked};
   ${({ variant }) => variant === 'buy' && buy};
+  ${({ variant }) => variant === 'buy-masked' && buyMasked};
   ${({ variant }) => variant === 'danger' && danger};
+  ${({ variant }) => variant === 'danger-masked' && dangerMasked};
   ${({ variant }) => variant === 'sell' && sell};
+  ${({ variant }) => variant === 'sell-masked' && sellMasked};
   ${({ variant }) => variant === 'secondary' && secondary};
   ${({ variant }) => variant === 'primary' && primary};
   ${({ disabled: isDisabled }) => isDisabled && disabled};
