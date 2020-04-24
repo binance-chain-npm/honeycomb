@@ -27,7 +27,11 @@ export const LeftAndRightAppendixes = () => (
     placeholder="Some placeholder…"
     value=""
     left={<div style={{ display: 'flex', alignItems: 'center' }}>€</div>}
-    right={<Button look={Button.Look.Primary}>MAX</Button>}
+    right={
+      <Button variant="primary" size="large">
+        MAX
+      </Button>
+    }
   />
 );
 

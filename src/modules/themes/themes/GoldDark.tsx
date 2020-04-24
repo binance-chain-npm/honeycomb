@@ -32,7 +32,7 @@ export const GoldDark = {
         active: '#f8d12f',
       },
 
-      good: {
+      success: {
         normal: '#02c076',
         active: '#2ed191',
       },
