@@ -187,6 +187,7 @@ export const Styled = styled(Styleless)<Props>`
   position: relative;
   border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
   cursor: pointer;
+  width: 100%;
   height: ${hcStyle.huge({ forFontSize: 'reduced' })};
   padding: 0 ${hcStyle.normal({ forFontSize: 'reduced' })};
   display: flex;

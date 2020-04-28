@@ -14,7 +14,6 @@ export const styleless = css`
   font: inherit;
   color: inherit;
   list-style: none;
-  width: 100%;
 `;
 
 /** A component with reset styles so that it looks like a bare `<div />`. */
