@@ -12,8 +12,8 @@ export const GoldDark = {
   honeycomb: {
     color: {
       bg: {
-        normal: '#14151a',
-        masked: '#76808f',
+        normal: '#0b0e11',
+        masked: '#14151a',
         disabled: '#f5f5f5',
       },
 
@@ -25,7 +25,7 @@ export const GoldDark = {
 
       readable,
 
-      border: '#e6e8ea',
+      border: '#2b2f36',
 
       primary: {
         normal: '#f0b90b',

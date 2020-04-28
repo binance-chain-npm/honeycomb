@@ -14,6 +14,8 @@ export const GoldLight: DefaultTheme = {
         disabled: '#f5f5f5',
       },
 
+      border: '#e6e8ea',
+
       text: {
         normal: GoldDark.honeycomb.color.readable.normal('white'),
         masked: GoldDark.honeycomb.color.readable.masked('white'),

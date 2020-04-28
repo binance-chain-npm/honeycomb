@@ -43,9 +43,9 @@ const primary = css`
 `;
 
 const secondary = css`
-  border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
   background: transparent;
-  color: inherit;
+  color: ${({ theme }) => theme.honeycomb.color.primary.normal};
 
   :hover,
   :active {
