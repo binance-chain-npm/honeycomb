@@ -14,7 +14,7 @@ export const GoldDark = {
       bg: {
         normal: '#0b0e11',
         masked: '#14151a',
-        disabled: '#f5f5f5',
+        disabled: '#2b2f36',
       },
 
       text: {
@@ -25,11 +25,12 @@ export const GoldDark = {
 
       readable,
 
-      border: '#2b2f36',
+      border: '#474d57',
 
       primary: {
         normal: '#f0b90b',
         active: '#f8d12f',
+        masked: '#3c2e10',
       },
 
       success: {

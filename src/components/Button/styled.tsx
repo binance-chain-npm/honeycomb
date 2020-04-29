@@ -6,6 +6,7 @@ import { hcStyle } from '../../modules/themes';
 
 export const variants = [
   'primary',
+  'primary-masked',
   'secondary',
   'success',
   'success-masked',
@@ -42,7 +43,7 @@ const primary = css`
   }
 `;
 
-const secondary = css`
+const primaryMasked = css`
   border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
   background: transparent;
   color: ${({ theme }) => theme.honeycomb.color.primary.normal};
@@ -50,9 +51,21 @@ const secondary = css`
   :hover,
   :active {
     border-color: ${({ theme }) => theme.honeycomb.color.primary.active};
-    background: ${({ theme }) => theme.honeycomb.color.primary.active};
-    color: ${({ theme }) =>
-      theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
+    background: ${({ theme }) => theme.honeycomb.color.primary.masked};
+    color: ${({ theme }) => theme.honeycomb.color.primary.active};
+  }
+`;
+
+const secondary = css`
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+  background: transparent;
+  color: inherit;
+
+  :hover,
+  :active {
+    border-color: ${({ theme }) => theme.honeycomb.color.primary.active};
+    background: ${({ theme }) => theme.honeycomb.color.primary.masked};
+    color: ${({ theme }) => theme.honeycomb.color.primary.active};
   }
 `;
 
@@ -212,6 +225,7 @@ export const Styled = styled(Styleless)<Props>`
   ${({ variant }) => variant === 'sell' && sell};
   ${({ variant }) => variant === 'sell-masked' && sellMasked};
   ${({ variant }) => variant === 'secondary' && secondary};
+  ${({ variant }) => variant === 'primary-masked' && primaryMasked};
   ${({ variant }) => variant === 'primary' && primary};
 
   ${({ size }) => size === 'large' && large};
