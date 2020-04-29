@@ -192,13 +192,12 @@ const disabled = css`
 `;
 
 const large = css`
-  border-radius: ${hcStyle.halfOf(hcStyle.large({ forFontSize: 'reduced' }))};
   height: ${hcStyle.large({ forFontSize: 'reduced' })};
 `;
 
 export const Styled = styled(Styleless)<Props>`
   position: relative;
-  border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
+  border-radius: ${hcStyle.radiusNormal({ forFontSize: 'reduced' })};
   cursor: pointer;
   width: 100%;
   height: ${hcStyle.huge({ forFontSize: 'reduced' })};

@@ -31,7 +31,7 @@ export const Label = styled.label`
     height: ${hcStyle.increased()};
     background: transparent;
     border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
-    border-radius: ${({ theme }) => theme.honeycomb.radius.normal}px;
+    border-radius: ${hcStyle.radiusNormal({ forFontSize: 'reduced' })};
     display: flex;
     ${({ theme }) => transitions(['background', 'border'], theme.honeycomb.duration.normal)};
   }
