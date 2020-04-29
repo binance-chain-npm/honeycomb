@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { TestIdContext } from '../context';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 
-import { ContentWrapper, Container } from './styled';
+import { Container } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
