@@ -11,6 +11,7 @@ export const SeaLight: DefaultTheme = {
       primary: {
         normal: '#4653c8',
         active: '#4653c8',
+        masked: '#4653c8',
       },
     },
   },
