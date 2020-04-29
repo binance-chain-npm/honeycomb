@@ -1,4 +1,4 @@
-import { createGlobalStyle as css } from 'styled-components';
+import styled, { createGlobalStyle as css } from 'styled-components';
 import { em } from 'polished';
 
 export const Styles = css`
@@ -10,13 +10,17 @@ export const Styles = css`
       top: 0 !important;
       left: 0;
       min-width: ${em(200)};
-      border-radius: 0;
       font-size: 1em;
       pointer-events: all;
+      overflow: hidden;
     }
 
     .tippy-content {
       padding: 0;
     }
   }
+`;
+
+export const TargetContainer = styled.div`
+  cursor: pointer;
 `;

@@ -3,7 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Tooltip } from '../Tooltip';
 
-import { Styles } from './styled';
+import { Styles, TargetContainer } from './styled';
 import { ShowingContext, TestIdContext } from './context';
 
 export type TriggerValue = 'mouseenter' | 'focus' | 'click';
@@ -37,7 +37,9 @@ export const Component = (props: Props) => {
         data-testid={props['data-testid']}
         arrow={false}
       >
-        <ShowingContext.Provider value={isShowing}>{props.target}</ShowingContext.Provider>
+        <TargetContainer>
+          <ShowingContext.Provider value={isShowing}>{props.target}</ShowingContext.Provider>
+        </TargetContainer>
       </Tooltip>
     </>
   );

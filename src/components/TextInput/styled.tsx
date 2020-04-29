@@ -70,7 +70,7 @@ export const InputContainer = styled.div<Props>`
   flex-direction: row;
   background: ${({ theme }) => theme.honeycomb.color.bg.masked};
   border: 1px solid transparent;
-  border-radius: ${hcStyle.halfOf(hcStyle.huge({ forFontSize: 'reduced' }))};
+  border-radius: ${hcStyle.radiusNormal({ forFontSize: 'reduced' })};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
   ${({ state }) => state === State.Success && success};
