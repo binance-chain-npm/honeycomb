@@ -234,8 +234,8 @@ export const Styled = styled(Styleless)<Props>`
   padding: 0 ${hcStyle.normal({ forFontSize: 'reduced' })};
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  justify-content: stretch;
+  align-items: center;
+  justify-content: center;
   font-weight: 600;
   font-size: ${hcStyle.reduced()};
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
@@ -262,11 +262,4 @@ export const Styled = styled(Styleless)<Props>`
 
   ${({ size }) => size === 'large' && large};
   ${({ size }) => size === 'auto' && auto};
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
 `;
