@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Styled, Variant, Wrapper, Size } from './styled';
+import { Styled, Variant, Size } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
@@ -42,7 +42,7 @@ export const Component = ({
       variant={variant}
       size={size}
     >
-      <Wrapper data-testid={buildTestId('wrapper')}>{children}</Wrapper>
+      {children}
     </Styled>
   );
 };

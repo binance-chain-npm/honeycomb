@@ -5,6 +5,7 @@ import { Styleless } from '../Styleless';
 import { hcStyle } from '../../modules/themes';
 
 export const variants = [
+  'styleless',
   'primary',
   'primary-masked',
   'secondary',
@@ -19,7 +20,7 @@ export const variants = [
 ] as const;
 export type Variant = typeof variants[number];
 
-export const sizes = ['huge', 'large'] as const;
+export const sizes = ['huge', 'large', 'fit'] as const;
 export type Size = typeof sizes[number];
 
 export interface Props {
@@ -184,19 +185,55 @@ const sellMasked = css`
 `;
 
 const disabled = css`
-  border: none !important;
-  background: ${({ theme }) => theme.honeycomb.color.bg.disabled} !important;
+  border: none;
+  background: ${({ theme }) => theme.honeycomb.color.bg.disabled};
   color: ${({ theme }) =>
-    theme.honeycomb.color.readable.disabled(theme.honeycomb.color.bg.disabled)} !important;
-  cursor: not-allowed !important;
+    theme.honeycomb.color.readable.disabled(theme.honeycomb.color.bg.disabled)};
+  cursor: not-allowed;
+
+  :hover,
+  :active {
+    border: none;
+    background: ${({ theme }) => theme.honeycomb.color.bg.disabled};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.disabled(theme.honeycomb.color.bg.disabled)};
+    cursor: not-allowed;
+  }
 `;
 
 const large = css`
   height: ${hcStyle.large({ forFontSize: 'reduced' })};
 `;
 
+const fit = css`
+  height: auto;
+  height: fit-content;
+  width: auto;
+  width: fit-content;
+`;
+
+const styleless = css`
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+
+  :hover,
+  :active {
+    border: none;
+    background: transparent;
+    color: inherit;
+  }
+
+  :focus,
+  :focus-within {
+    box-shadow: none;
+  }
+`;
+
 export const Styled = styled(Styleless)<Props>`
-  position: relative;
   border-radius: ${hcStyle.radiusNormal({ forFontSize: 'reduced' })};
   cursor: pointer;
   width: 100%;
@@ -204,8 +241,8 @@ export const Styled = styled(Styleless)<Props>`
   padding: 0 ${hcStyle.normal({ forFontSize: 'reduced' })};
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  justify-content: stretch;
+  align-items: center;
+  justify-content: center;
   font-weight: 600;
   font-size: ${hcStyle.reduced()};
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
@@ -227,14 +264,9 @@ export const Styled = styled(Styleless)<Props>`
   ${({ variant }) => variant === 'primary-masked' && primaryMasked};
   ${({ variant }) => variant === 'primary' && primary};
 
-  ${({ size }) => size === 'large' && large};
-
   ${({ disabled: isDisabled }) => isDisabled && disabled};
-`;
+  ${({ variant }) => variant === 'styleless' && styleless};
 
-export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
+  ${({ size }) => size === 'large' && large};
+  ${({ size }) => size === 'fit' && fit};
 `;
