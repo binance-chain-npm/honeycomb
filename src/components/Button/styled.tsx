@@ -226,6 +226,11 @@ const styleless = css`
     background: transparent;
     color: inherit;
   }
+
+  :focus,
+  :focus-within {
+    box-shadow: none;
+  }
 `;
 
 export const Styled = styled(Styleless)<Props>`
