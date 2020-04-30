@@ -20,7 +20,7 @@ export const variants = [
 ] as const;
 export type Variant = typeof variants[number];
 
-export const sizes = ['huge', 'large', 'auto'] as const;
+export const sizes = ['huge', 'large', 'fit'] as const;
 export type Size = typeof sizes[number];
 
 export interface Props {
@@ -205,9 +205,11 @@ const large = css`
   height: ${hcStyle.large({ forFontSize: 'reduced' })};
 `;
 
-const auto = css`
+const fit = css`
   height: auto;
+  height: fit-content;
   width: auto;
+  width: fit-content;
 `;
 
 const styleless = css`
@@ -261,5 +263,5 @@ export const Styled = styled(Styleless)<Props>`
   ${({ variant }) => variant === 'styleless' && styleless};
 
   ${({ size }) => size === 'large' && large};
-  ${({ size }) => size === 'auto' && auto};
+  ${({ size }) => size === 'fit' && fit};
 `;
