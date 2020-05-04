@@ -25,6 +25,9 @@ export const MyApp = () => {
 };
 ```
 
+You may use the optional `localTheme` prop to merge your own theme with the Honeycomb one. Do not
+try to add or overwrite stuff inside the `{ honeycomb }` property, though.
+
 ### TypeScript integration
 
 To get a perfect integration with TypeScript when writing your styles, you can create a declaration
