@@ -6,6 +6,6 @@ import { SeaLight } from './themes/SeaLight';
 
 const HoneycombTheme = { GoldDark, GoldLight, SeaDark, SeaLight } as const;
 
-export { ThemeProvider } from './ThemeProvider';
+export { HoneycombThemeProvider } from './HoneycombThemeProvider';
 export { HoneycombThemeType } from './themes/HoneycombThemeType';
 export { hcStyle, HoneycombTheme };

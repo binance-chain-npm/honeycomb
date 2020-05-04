@@ -6,7 +6,24 @@ Honeycomb is a collection of reusable UI components based on [React](https://rea
 ## Getting started
 
 Install this library as a dependency with `yarn add @binance-chain/honeycomb` and start using our
-components. That's it!
+components.
+
+Make sure you choose a theme with `<HoneycombThemeProvider />` in your app before using any
+Honeycomb components.
+
+```tsx
+import React from 'react';
+import { HoneycombThemeProvider, Button } from '@binance-chain/honeycomb';
+
+export const MyApp = () => {
+  return (
+    <HoneycombThemeProvider family="gold" variant="light">
+      <h1>My cool app</h1>
+      <Button variant="primary">Click here!</Button>
+    </HoneycombThemeProvider>
+  );
+};
+```
 
 ### Customizing components
 
