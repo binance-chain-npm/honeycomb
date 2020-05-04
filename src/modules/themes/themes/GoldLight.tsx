@@ -1,8 +1,7 @@
-import { DefaultTheme } from 'styled-components';
-
 import { GoldDark } from './GoldDark';
+import { HoneycombThemeType } from './HoneycombThemeType';
 
-export const GoldLight: DefaultTheme = {
+export const GoldLight: HoneycombThemeType = {
   ...GoldDark,
   honeycomb: {
     ...GoldDark.honeycomb,
