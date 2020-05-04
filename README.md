@@ -25,6 +25,24 @@ export const MyApp = () => {
 };
 ```
 
+### TypeScript integration
+
+To get a perfect integration with TypeScript when writing your styles, you can create a declaration
+file as shown below.
+
+```tsx
+// DefaultTheme.d.ts
+import 'styled-components';
+import { HoneycombThemeType } from '@binance-chain/honeycomb';
+
+import { YourOwnTheme } from './your-own-theme';
+
+declare module 'styled-components' {
+  type ThemeType = HoneycombThemeType & typeof YourOwnTheme;
+  export interface DefaultTheme extends ThemeType {}
+}
+```
+
 ### Customizing components
 
 We export the inner pieces that our components are composed of as static properties. You can use
