@@ -1,11 +1,11 @@
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import withStyledTheme from './themeAddon/decorator';
 
-import { ThemeProvider } from '../src/modules/themes';
+import { HoneycombTheme } from '../src/modules/themes';
 
 addParameters({
   themeSwitch: {
-    themes: ThemeProvider.Theme,
+    themes: HoneycombTheme,
     defaultThemeName: 'GoldDark',
   },
 });

@@ -1,9 +1,8 @@
-import { DefaultTheme } from 'styled-components';
-
 import { GoldDark } from './GoldDark';
 import { SeaLight } from './SeaLight';
+import { HoneycombThemeType } from './HoneycombThemeType';
 
-export const SeaDark: DefaultTheme = {
+export const SeaDark: HoneycombThemeType = {
   ...SeaLight,
   honeycomb: {
     ...SeaLight.honeycomb,

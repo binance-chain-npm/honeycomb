@@ -6,7 +6,45 @@ Honeycomb is a collection of reusable UI components based on [React](https://rea
 ## Getting started
 
 Install this library as a dependency with `yarn add @binance-chain/honeycomb` and start using our
-components. That's it!
+components.
+
+Make sure you choose a theme with `<HoneycombThemeProvider />` in your app before using any
+Honeycomb components.
+
+```tsx
+import React from 'react';
+import { HoneycombThemeProvider, Button } from '@binance-chain/honeycomb';
+
+export const MyApp = () => {
+  return (
+    <HoneycombThemeProvider family="gold" variant="light">
+      <h1>My cool app</h1>
+      <Button variant="primary">Click here!</Button>
+    </HoneycombThemeProvider>
+  );
+};
+```
+
+You may use the optional `localTheme` prop to merge your own theme with the Honeycomb one. Do not
+try to add or overwrite stuff inside the `{ honeycomb }` property, though.
+
+### TypeScript integration
+
+To get a perfect integration with TypeScript when writing your styles, you can create a declaration
+file as shown below.
+
+```tsx
+// DefaultTheme.d.ts
+import 'styled-components';
+import { HoneycombThemeType } from '@binance-chain/honeycomb';
+
+import { YourOwnTheme } from './your-own-theme';
+
+declare module 'styled-components' {
+  type ThemeType = HoneycombThemeType & typeof YourOwnTheme;
+  export interface DefaultTheme extends ThemeType {}
+}
+```
 
 ### Customizing components
 

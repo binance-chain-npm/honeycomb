@@ -1,10 +1,10 @@
 import { DefaultTheme } from 'styled-components';
 import { getValueAndUnit as getValueAndUnitOriginal } from 'polished';
 
-import { HoneycombTheme } from '../themes/HoneycombTheme';
+import { HoneycombThemeType } from '../themes/HoneycombThemeType';
 
 export type Sizes = keyof Pick<
-  HoneycombTheme['honeycomb']['size'],
+  HoneycombThemeType['honeycomb']['size'],
   'huge' | 'increased' | 'large' | 'normal' | 'reduced' | 'small'
 >;
 
