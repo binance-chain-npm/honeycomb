@@ -88,9 +88,9 @@ For example, `<Checkbox data-testid="MyCheckbox" label="A value" />` would rende
 following:
 
 ```html
-<input data-testid="MyCheckbox-native-input" id="…" type="checkbox" class="…" value="false" />
-<label data-testid="MyCheckbox-label" for="…" class="…">
-  <span data-testid="MyCheckbox-label-content" class="…">A value</span>
+<input data-testid="MyCheckbox.native-input" id="…" type="checkbox" class="…" value="false" />
+<label data-testid="MyCheckbox.label" for="…" class="…">
+  <span data-testid="MyCheckbox.label-content" class="…">A value</span>
 </label>
 ```
 
