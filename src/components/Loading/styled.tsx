@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { transparentize } from 'polished';
+import { transparentize, em } from 'polished';
 
 const fillViewportStyle = css`
   position: fixed;
@@ -34,10 +34,10 @@ const spinnerAnimation = keyframes`
 
 const rect = css`
   background-color: currentColor;
-  height: 35px;
-  width: 3px;
+  height: ${em(35, 35)};
+  width: ${em(3, 35)};
   display: block;
-  margin-right: 6px;
+  margin-right: ${em(6, 35)};
   animation: ${spinnerAnimation} 1.2s infinite ease-in-out;
 `;
 
