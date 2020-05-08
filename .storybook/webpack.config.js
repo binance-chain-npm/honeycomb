@@ -1,4 +1,4 @@
-const svgTemplate = require('../svg.template');
+const svgrConfig = require('../svgr.config');
 
 module.exports = ({ config, mode }) => {
   // Make sure SVGs are not loaded with `file-loader`.
@@ -17,18 +17,7 @@ module.exports = ({ config, mode }) => {
       use: [
         {
           loader: '@svgr/webpack',
-          options: {
-            expandProps: 'end',
-            template: svgTemplate,
-            svgoConfig: {
-              plugins: [
-                { sortAttrs: true },
-                { removeViewBox: false },
-                { removeDimensions: true },
-                { convertColors: { currentColor: true } },
-              ],
-            },
-          },
+          options: svgrConfig,
         },
         'url-loader',
       ],
