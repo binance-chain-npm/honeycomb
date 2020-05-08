@@ -30,7 +30,7 @@ module.exports = ({ config, mode }) => {
             },
           },
         },
-        'file-loader',
+        'url-loader',
       ],
     },
   );

@@ -66,7 +66,6 @@
     "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^9.1.2",
     "cypress": "^4.3.0",
-    "file-loader": "^6.0.0",
     "husky": "^4.2.3",
     "query-string": "^6.11.1",
     "react": "^16.13.1",
@@ -78,7 +77,8 @@
     "svg-inline-loader": "^0.8.2",
     "tsdx": "^0.13.1",
     "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "url-loader": "^4.1.0"
   },
   "dependencies": {
     "@tippy.js/react": "^3.1.1",
