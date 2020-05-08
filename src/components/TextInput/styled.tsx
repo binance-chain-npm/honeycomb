@@ -3,10 +3,7 @@ import { transitions } from 'polished';
 
 import { hcStyle } from '../../modules/themes';
 
-export enum State {
-  Success = 'Success',
-  Danger = 'Danger',
-}
+export type State = 'success' | 'danger';
 
 export const Container = styled.div`
   display: flex;
@@ -73,8 +70,8 @@ export const InputContainer = styled.div<Props>`
   border-radius: ${hcStyle.radiusNormal({ forFontSize: 'reduced' })};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
-  ${({ state }) => state === State.Success && success};
-  ${({ state, isPristine }) => state === State.Danger && !isPristine && danger};
+  ${({ state }) => state === 'success' && success};
+  ${({ state, isPristine }) => state === 'danger' && !isPristine && danger};
   ${({ theme }) =>
     transitions(
       ['color', 'background', 'border'],
