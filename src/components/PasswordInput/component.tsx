@@ -65,7 +65,7 @@ export const Component = ({
             onClick={() => setShouldDisplay(!shouldDisplay)}
             style={{ fontSize: 24 }}
           >
-            <Icon src={shouldDisplay ? Icon.Src.EyeBlocked : Icon.Src.Eye} />
+            {shouldDisplay ? <Icon.EyeBlocked /> : <Icon.Eye />}
           </Styleless>
         }
       />

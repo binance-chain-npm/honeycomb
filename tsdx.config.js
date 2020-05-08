@@ -1,7 +1,9 @@
-const svgo = require('rollup-plugin-svgo');
 const visualizer = require('rollup-plugin-visualizer');
 const typescript = require('rollup-plugin-typescript2');
 const url = require('@rollup/plugin-url');
+const svgr = require('@svgr/rollup').default;
+
+const svgTemplate = require('./svg.template');
 
 module.exports = {
   rollup(config, options) {
@@ -13,12 +15,21 @@ module.exports = {
     return {
       ...config,
       plugins: [
-        svgo({
-          plugins: [{ removeViewBox: false }, { removeDimensions: true }],
-        }),
         url({
-          include: ['**/*.png', '**/*.jpg', '**/*.gif', '**/*.otf'],
+          include: ['**/*.png', '**/*.jpg', '**/*.gif', '**/*.otf', '**/*.svg'],
           limit: Infinity,
+        }),
+        svgr({
+          expandProps: 'end',
+          template: svgTemplate,
+          svgoConfig: {
+            plugins: [
+              { sortAttrs: true },
+              { removeViewBox: false },
+              { removeDimensions: true },
+              { convertColors: { currentColor: true } },
+            ],
+          },
         }),
         ...config.plugins.slice(0, tsPluginIndex),
         typescript({

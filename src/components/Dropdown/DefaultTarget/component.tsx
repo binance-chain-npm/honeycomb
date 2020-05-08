@@ -14,7 +14,7 @@ export const Component = (
     <Container as="button" {...props} isShowing={isShowing}>
       {props.children}
       &nbsp;
-      <Icon src={Icon.Src.CaretDown} />
+      <Icon.CaretDown />
     </Container>
   );
 };
