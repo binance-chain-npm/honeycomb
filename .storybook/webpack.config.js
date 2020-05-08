@@ -1,3 +1,5 @@
+const svgrConfig = require('../svgr.config');
+
 module.exports = ({ config, mode }) => {
   // Make sure SVGs are not loaded with `file-loader`.
   config.module.rules[3].test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/;
@@ -13,13 +15,11 @@ module.exports = ({ config, mode }) => {
     {
       test: /\.svg$/,
       use: [
-        { loader: 'svg-inline-loader' },
         {
-          loader: 'svgo-loader',
-          options: {
-            plugins: [{ removeViewBox: false }, { removeDimensions: true }],
-          },
+          loader: '@svgr/webpack',
+          options: svgrConfig,
         },
+        'url-loader',
       ],
     },
   );

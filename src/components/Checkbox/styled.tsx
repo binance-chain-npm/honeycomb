@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { transitions } from 'polished';
 
-import { Icon } from '../Icon';
-import { svgAsBase64 } from '../../modules/svg';
+import { icons } from '../Icon';
 import { hcStyle } from '../../modules/themes';
 
 export const Input = styled.input`
@@ -42,7 +41,7 @@ export const Label = styled.label`
         theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.normal)};
       border-color: transparent;
       background: ${({ theme }) => theme.honeycomb.color.primary.normal};
-      background-image: url(${svgAsBase64(Icon.sourceFor(Icon.Src.Tick))});
+      background-image: url(${icons.Tick});
       background-size: ${hcStyle.normal()};
       background-repeat: no-repeat;
       background-position: center;
