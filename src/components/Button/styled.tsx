@@ -20,7 +20,7 @@ export const variants = [
 ] as const;
 export type Variant = typeof variants[number];
 
-export const sizes = ['huge', 'large', 'fit'] as const;
+export const sizes = ['huge', 'large', 'fit', 'circle-huge', 'circle-large'] as const;
 export type Size = typeof sizes[number];
 
 export interface Props {
@@ -212,6 +212,20 @@ const fit = css`
   width: fit-content;
 `;
 
+const circleHuge = css`
+  border-radius: 50%;
+  height: ${hcStyle.huge({ forFontSize: 'reduced' })};
+  width: ${hcStyle.huge({ forFontSize: 'reduced' })};
+  padding: 0;
+`;
+
+const circleLarge = css`
+  border-radius: 50%;
+  height: ${hcStyle.large({ forFontSize: 'reduced' })};
+  width: ${hcStyle.large({ forFontSize: 'reduced' })};
+  padding: 0;
+`;
+
 const styleless = css`
   border-radius: 0;
   background: transparent;
@@ -269,4 +283,6 @@ export const Styled = styled(Styleless)<Props>`
 
   ${({ size }) => size === 'large' && large};
   ${({ size }) => size === 'fit' && fit};
+  ${({ size }) => size === 'circle-huge' && circleHuge};
+  ${({ size }) => size === 'circle-large' && circleLarge};
 `;

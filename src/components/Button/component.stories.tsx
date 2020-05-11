@@ -2,6 +2,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import { Sections } from '../../modules/sections';
+import { Icon } from '../Icon';
 
 import { variants, sizes } from './styled';
 
@@ -9,6 +10,18 @@ import { Button } from './';
 
 export default {
   title: `${Sections.Elements}|Button`,
+};
+
+const getText = ({
+  size,
+  variant,
+}: Pick<React.ComponentProps<typeof Button>, 'size' | 'variant'>) => {
+  if (size && /^circle-/i.test(size)) return <Icon.Tick />;
+  return (
+    <>
+      A {size} {variant} button
+    </>
+  );
 };
 
 export const Default = () => (
@@ -22,7 +35,7 @@ export const Default = () => (
             variant={variant}
             size={size}
           >
-            A {size} {variant} button
+            {getText({ size, variant })}
           </Button>
         </div>
       )),
@@ -42,7 +55,7 @@ export const Disabled = () => (
             size={size}
             disabled
           >
-            A {size} {variant} button
+            {getText({ size, variant })}
           </Button>
         </div>
       )),
@@ -62,7 +75,7 @@ export const AsAnchor = () => (
             variant={variant}
             size={size}
           >
-            A {size} {variant} button
+            {getText({ size, variant })}
           </Button>
         </div>
       )),
