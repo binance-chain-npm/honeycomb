@@ -65,6 +65,7 @@ export const GoldDark = {
     },
 
     radius: {
+      reduced: em(2),
       normal: em(4),
     },
 

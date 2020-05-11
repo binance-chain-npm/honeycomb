@@ -88,3 +88,9 @@ export const radiusNormal = ({ forFontSize }: FontParam = defaultFont) => ({
 }: {
   theme: DefaultTheme;
 }) => rebaseEm({ size: theme.honeycomb.radius.normal, toBase: theme.honeycomb.size[forFontSize] });
+
+export const radiusReduced = ({ forFontSize }: FontParam = defaultFont) => ({
+  theme,
+}: {
+  theme: DefaultTheme;
+}) => rebaseEm({ size: theme.honeycomb.radius.reduced, toBase: theme.honeycomb.size[forFontSize] });

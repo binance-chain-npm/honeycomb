@@ -30,9 +30,10 @@ export const Label = styled.label`
     height: ${hcStyle.increased()};
     background: transparent;
     border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
-    border-radius: ${hcStyle.radiusNormal({ forFontSize: 'reduced' })};
+    border-radius: ${hcStyle.radiusReduced({ forFontSize: 'reduced' })};
     display: flex;
-    ${({ theme }) => transitions(['background', 'border'], theme.honeycomb.duration.normal)};
+    cursor: pointer;
+    ${({ theme }) => transitions(['background-color', 'border'], theme.honeycomb.duration.normal)};
   }
 
   ${Input}:checked ~ & {
@@ -42,7 +43,7 @@ export const Label = styled.label`
       border-color: transparent;
       background: ${({ theme }) => theme.honeycomb.color.primary.normal};
       background-image: url(${icons.Tick});
-      background-size: ${hcStyle.normal()};
+      background-size: ${hcStyle.halfOf(hcStyle.increased())};
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -50,6 +51,7 @@ export const Label = styled.label`
 `;
 
 export const LabelContent = styled.span`
+  cursor: pointer;
   font-size: ${hcStyle.reduced()};
   margin-left: ${hcStyle.reduced({ forFontSize: 'reduced' })};
 `;
