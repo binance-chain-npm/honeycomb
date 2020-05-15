@@ -2,7 +2,6 @@
 import { stripUnit } from 'polished';
 
 import { GoldDark } from '../../themes/GoldDark';
-
 import * as hcStyle from '..';
 
 const MockedTheme = { theme: GoldDark };
