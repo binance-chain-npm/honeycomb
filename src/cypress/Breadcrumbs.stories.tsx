@@ -55,7 +55,7 @@ const RenderBreadcrumbs = () => {
       {breadcrumbs.map((it, index) => (
         <span key={it.id.toString()}>
           <span data-testid={`breadcrumb.${index}`}>{it.label}</span>
-          {index < breadcrumbs.length - 1 && <span> > </span>}
+          {index < breadcrumbs.length - 1 && <span> &gt; </span>}
         </span>
       ))}
     </div>
