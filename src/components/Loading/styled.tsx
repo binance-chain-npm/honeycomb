@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-import { transparentize } from 'polished';
+import { transparentize, em } from 'polished';
 
 const fillViewportStyle = css`
   position: fixed;
@@ -7,7 +7,7 @@ const fillViewportStyle = css`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: ${({ theme }) => transparentize(0.4, theme.honeycomb.color.bg)};
+  background: ${({ theme }) => transparentize(0.4, theme.honeycomb.color.bg.normal)};
 `;
 
 export interface Props {
@@ -18,7 +18,7 @@ export const Spinner = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.honeycomb.color.primary};
+  color: ${({ theme }) => theme.honeycomb.color.primary.normal};
   ${({ fillViewport }) => fillViewport && fillViewportStyle};
 `;
 
@@ -34,10 +34,10 @@ const spinnerAnimation = keyframes`
 
 const rect = css`
   background-color: currentColor;
-  height: 35px;
-  width: 3px;
+  height: ${em(35, 35)};
+  width: ${em(3, 35)};
   display: block;
-  margin-right: 6px;
+  margin-right: ${em(6, 35)};
   animation: ${spinnerAnimation} 1.2s infinite ease-in-out;
 `;
 

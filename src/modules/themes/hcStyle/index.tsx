@@ -1,10 +1,10 @@
 import { DefaultTheme } from 'styled-components';
 import { getValueAndUnit as getValueAndUnitOriginal } from 'polished';
 
-import { HoneycombTheme } from '../themes/HoneycombTheme';
+import { HoneycombThemeType } from '../themes/HoneycombThemeType';
 
 export type Sizes = keyof Pick<
-  HoneycombTheme['honeycomb']['size'],
+  HoneycombThemeType['honeycomb']['size'],
   'huge' | 'increased' | 'large' | 'normal' | 'reduced' | 'small'
 >;
 
@@ -82,3 +82,15 @@ export const small = ({ forFontSize }: FontParam = defaultFont) => ({
 }: {
   theme: DefaultTheme;
 }) => rebaseEm({ size: theme.honeycomb.size.small, toBase: theme.honeycomb.size[forFontSize] });
+
+export const radiusNormal = ({ forFontSize }: FontParam = defaultFont) => ({
+  theme,
+}: {
+  theme: DefaultTheme;
+}) => rebaseEm({ size: theme.honeycomb.radius.normal, toBase: theme.honeycomb.size[forFontSize] });
+
+export const radiusReduced = ({ forFontSize }: FontParam = defaultFont) => ({
+  theme,
+}: {
+  theme: DefaultTheme;
+}) => rebaseEm({ size: theme.honeycomb.radius.reduced, toBase: theme.honeycomb.size[forFontSize] });

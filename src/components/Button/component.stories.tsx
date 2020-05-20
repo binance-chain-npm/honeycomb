@@ -2,6 +2,9 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import { Sections } from '../../modules/sections';
+import { Icon } from '../Icon';
+
+import { variants, sizes } from './styled';
 
 import { Button } from './';
 
@@ -9,28 +12,73 @@ export default {
   title: `${Sections.Elements}|Button`,
 };
 
-export const Default = () => <Button onClick={action('clicked')}>A button</Button>;
+const getText = ({
+  size,
+  variant,
+}: Pick<React.ComponentProps<typeof Button>, 'size' | 'variant'>) => {
+  if (size && /^circle-/i.test(size)) return <Icon.Tick />;
+  return (
+    <>
+      A {size} {variant} button
+    </>
+  );
+};
+
+export const Default = () => (
+  <>
+    {sizes.map((size) =>
+      variants.map((variant) => (
+        <div style={{ marginBottom: '1em' }}>
+          <Button
+            onClick={action('clicked')}
+            key={`${size}-${variant}`}
+            variant={variant}
+            size={size}
+          >
+            {getText({ size, variant })}
+          </Button>
+        </div>
+      )),
+    )}
+  </>
+);
 
 export const Disabled = () => (
-  <Button onClick={action('clicked')} disabled>
-    A disabled button
-  </Button>
+  <>
+    {sizes.map((size) =>
+      variants.map((variant) => (
+        <div style={{ marginBottom: '1em' }}>
+          <Button
+            onClick={action('clicked')}
+            key={`${size}-${variant}`}
+            variant={variant}
+            size={size}
+            disabled
+          >
+            {getText({ size, variant })}
+          </Button>
+        </div>
+      )),
+    )}
+  </>
 );
 
 export const AsAnchor = () => (
-  <Button onClick={action('clicked')} href="https://binance.org" target="_blank">
-    A button
-  </Button>
-);
-
-export const Primary = () => (
-  <Button onClick={action('clicked')} look={Button.Look.Primary}>
-    A button
-  </Button>
-);
-
-export const PrimaryDisabled = () => (
-  <Button onClick={action('clicked')} disabled look={Button.Look.Primary}>
-    A disabled button
-  </Button>
+  <>
+    {sizes.map((size) =>
+      variants.map((variant) => (
+        <div style={{ marginBottom: '1em' }}>
+          <Button
+            href="https://binance.org"
+            onClick={action('clicked')}
+            key={`${size}-${variant}`}
+            variant={variant}
+            size={size}
+          >
+            {getText({ size, variant })}
+          </Button>
+        </div>
+      )),
+    )}
+  </>
 );

@@ -83,6 +83,5 @@ Component.displayName = 'TextInput';
 
 Component.Label = Label;
 Component.Input = Input;
-Component.State = State;
 Component.Left = Left;
 Component.Right = Right;

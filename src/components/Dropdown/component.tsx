@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Tooltip } from '../Tooltip';
+import { Button } from '../Button';
 
 import { Styles } from './styled';
 import { ShowingContext, TestIdContext } from './context';
@@ -37,7 +38,9 @@ export const Component = (props: Props) => {
         data-testid={props['data-testid']}
         arrow={false}
       >
-        <ShowingContext.Provider value={isShowing}>{props.target}</ShowingContext.Provider>
+        <Button as="div" variant="styleless" size="fit">
+          <ShowingContext.Provider value={isShowing}>{props.target}</ShowingContext.Provider>
+        </Button>
       </Tooltip>
     </>
   );

@@ -1,25 +1,56 @@
-import { readableColor, modularScale as modularScaleOriginal } from 'polished';
-
-const bg = '#12161c';
-const secondary = '#252d38';
+import { readableColor, modularScale as modularScaleOriginal, em } from 'polished';
 
 const modularScale = (steps: number) => modularScaleOriginal(steps, '16px', 'majorSecond');
+
+const readable = {
+  normal: (bg: string) => readableColor(bg, '#1e2026', '#ffffff'),
+  masked: (bg: string) => readableColor(bg, '#76808f', '#5e6673'),
+  disabled: (bg: string) => readableColor(bg, '#aeb4bc', '#aeb4bc'),
+} as const;
 
 export const GoldDark = {
   honeycomb: {
     color: {
-      bg,
-      primary: '#f0b90b',
-      secondary,
-      readable: (bgColor: string) => readableColor(bgColor, bg, '#fff'),
+      bg: {
+        normal: '#0b0e11',
+        masked: '#14151a',
+        disabled: '#2b2f36',
+      },
 
-      good: '#02c076',
-      danger: '#d9304e',
+      text: {
+        normal: readable.normal('black'),
+        masked: readable.masked('black'),
+        disabled: readable.disabled('black'),
+      },
 
-      placeholder: '#999',
+      readable,
 
-      gradient: {
-        primary: 'linear-gradient(90deg, #efb80b 0%, #fbda3c 100%)',
+      border: '#474d57',
+
+      primary: {
+        normal: '#f0b90b',
+        active: '#f8d12f',
+        masked: '#3c2e10',
+      },
+
+      success: {
+        normal: '#02c076',
+        active: '#2ed191',
+      },
+
+      danger: {
+        normal: '#d9304e',
+        active: '#f84960',
+      },
+
+      buy: {
+        normal: '#02c076',
+        active: '#2ed191',
+      },
+
+      sell: {
+        normal: '#f84960',
+        active: '#fc6e75',
       },
     },
 
@@ -28,21 +59,18 @@ export const GoldDark = {
       small: modularScale(-2),
       reduced: modularScale(-1),
       normal: modularScale(0),
-      increased: modularScale(4),
-      large: modularScale(7),
+      increased: modularScale(2),
+      large: modularScale(6),
       huge: modularScale(9),
     },
 
     radius: {
-      normal: 3,
+      reduced: em(2),
+      normal: em(4),
     },
 
     duration: {
       normal: '150ms',
-    },
-
-    tooltip: {
-      bg: secondary,
     },
   },
 };

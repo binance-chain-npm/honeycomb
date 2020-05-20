@@ -57,7 +57,7 @@ export const Component = ({
         onBlur={blur}
         value={value}
         type={shouldDisplay ? 'text' : 'password'}
-        state={isValid ? undefined : TextInput.State.Danger}
+        state={isValid ? undefined : 'danger'}
         right={
           <Styleless
             data-testid={buildTestId('toggle-show')}
@@ -65,7 +65,7 @@ export const Component = ({
             onClick={() => setShouldDisplay(!shouldDisplay)}
             style={{ fontSize: 24 }}
           >
-            <Icon src={shouldDisplay ? Icon.Src.EyeBlocked : Icon.Src.Eye} />
+            {shouldDisplay ? <Icon.EyeBlocked /> : <Icon.Eye />}
           </Styleless>
         }
       />
