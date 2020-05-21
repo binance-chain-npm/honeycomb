@@ -1,7 +1,5 @@
-import { Src, sourceFor } from './source';
-import { Styled } from './styled';
+import * as _Icon from './components';
+import * as _icons from './urls';
 
-export const Icon = Styled as typeof Styled & { Src: typeof Src; sourceFor: typeof sourceFor };
-
-Icon.Src = Src;
-Icon.sourceFor = sourceFor;
+export const Icon = _Icon;
+export const icons = _icons;

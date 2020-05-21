@@ -1,4 +1,9 @@
-export { ThemeProvider, HoneycombTheme, hcStyle } from './modules/themes';
+export {
+  HoneycombThemeProvider,
+  HoneycombTheme,
+  HoneycombThemeType,
+  hcStyle,
+} from './modules/themes';
 export {
   GlobalFontFaces,
   GlobalColors,
@@ -6,13 +11,14 @@ export {
   GlobalFonts,
   GlobalStyles,
 } from './modules/core';
+export { useBreadcrumbs, useAddBreadcrumbEffect, BreadcrumbProvider } from './modules/breadcrumbs';
+export { useBuildTestId, Testable } from './modules/test-ids';
 
 export { Button } from './components/Button';
 export { TextInput } from './components/TextInput';
 export { TextArea } from './components/TextArea';
 export { PasswordInput, usePasswordInputValidation } from './components/PasswordInput';
 export { Styleless, styleless } from './components/Styleless';
-export { SegmentedControl } from './components/SegmentedControl';
 export { Checkbox } from './components/Checkbox';
 export { Icon } from './components/Icon';
 export { Tooltip } from './components/Tooltip';

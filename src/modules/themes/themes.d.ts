@@ -1,6 +1,6 @@
 import 'styled-components';
-import { HoneycombTheme } from './themes/HoneycombTheme';
+import { HoneycombThemeType } from './themes/HoneycombThemeType';
 
 declare module 'styled-components' {
-  export interface DefaultTheme extends HoneycombTheme {}
+  export interface DefaultTheme extends HoneycombThemeType {}
 }

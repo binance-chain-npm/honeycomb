@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { transitions } from 'polished';
 
-import { Icon } from '../Icon';
-import { svgAsBase64 } from '../../modules/svg';
+import { icons } from '../Icon';
 import { hcStyle } from '../../modules/themes';
 
 export const Input = styled.input`
@@ -30,19 +29,21 @@ export const Label = styled.label`
     width: ${hcStyle.increased()};
     height: ${hcStyle.increased()};
     background: transparent;
-    border: 1px solid ${({ theme }) => theme.honeycomb.color.primary};
-    border-radius: ${({ theme }) => theme.honeycomb.radius.normal}px;
+    border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
+    border-radius: ${hcStyle.radiusReduced({ forFontSize: 'reduced' })};
     display: flex;
-    ${({ theme }) => transitions(['background', 'border'], theme.honeycomb.duration.normal)};
+    cursor: pointer;
+    ${({ theme }) => transitions(['background-color', 'border'], theme.honeycomb.duration.normal)};
   }
 
   ${Input}:checked ~ & {
     ::before {
-      color: ${({ theme }) => theme.honeycomb.color.readable(theme.honeycomb.color.primary)};
+      color: ${({ theme }) =>
+        theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.normal)};
       border-color: transparent;
-      background: ${({ theme }) => theme.honeycomb.color.primary};
-      background-image: url(${svgAsBase64(Icon.sourceFor(Icon.Src.Tick))});
-      background-size: ${hcStyle.normal()};
+      background: ${({ theme }) => theme.honeycomb.color.primary.normal};
+      background-image: url(${icons.Tick});
+      background-size: ${hcStyle.halfOf(hcStyle.increased())};
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -50,6 +51,7 @@ export const Label = styled.label`
 `;
 
 export const LabelContent = styled.span`
+  cursor: pointer;
   font-size: ${hcStyle.reduced()};
   margin-left: ${hcStyle.reduced({ forFontSize: 'reduced' })};
 `;

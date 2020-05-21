@@ -1,16 +1,15 @@
 import React, { useMemo } from 'react';
-import { animated } from 'react-spring';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { useHoverSpring } from '../../modules/hovering';
 
-import { Styled, Look, Wrapper } from './styled';
+import { Styled, Variant, Size } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
     as?: React.ComponentProps<typeof Styled>['as'];
-    look?: Look;
+    variant: Variant;
+    size?: Size;
   };
 
 export const Component = ({
@@ -21,14 +20,11 @@ export const Component = ({
   disabled,
   as: asProp,
   'data-testid': testId,
-  look = Look.Default,
+  variant,
+  size = 'huge',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
-  const { style, mouseEnter, mouseLeave } = useHoverSpring({
-    onMouseEnter,
-    onMouseLeave,
-  });
 
   const as = useMemo(() => {
     if (!!asProp) return asProp;
@@ -41,15 +37,12 @@ export const Component = ({
       {...otherProps}
       as={as}
       href={disabled ? undefined : href}
-      onMouseEnter={mouseEnter}
-      onMouseLeave={mouseLeave}
       data-testid={buildTestId()}
       disabled={disabled}
-      look={look}
+      variant={variant}
+      size={size}
     >
-      <Wrapper as={animated.div} style={style} data-testid={buildTestId('wrapper')}>
-        {children}
-      </Wrapper>
+      {children}
     </Styled>
   );
 };
