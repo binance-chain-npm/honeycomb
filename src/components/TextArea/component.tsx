@@ -2,6 +2,7 @@ import React, { useMemo, useCallback, useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import { Label } from '../internal/Label';
+import { Description } from '../internal/Description';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
 import { Container, Input, Left, Right, InputContainer, State } from './styled';
@@ -9,6 +10,7 @@ import { Container, Input, Left, Right, InputContainer, State } from './styled';
 export type Props = Omit<React.InputHTMLAttributes<HTMLTextAreaElement>, 'defaultValue' | 'value'> &
   Testable & {
     label?: React.ReactNode;
+    description: React.ReactNode;
     state?: State;
     value: NonNullable<React.InputHTMLAttributes<HTMLTextAreaElement>['value']>;
     left?: React.ReactNode;
@@ -18,6 +20,7 @@ export type Props = Omit<React.InputHTMLAttributes<HTMLTextAreaElement>, 'defaul
 export const Component = ({
   className,
   label,
+  description,
   'data-testid': testId,
   onFocus,
   onBlur,
@@ -75,6 +78,9 @@ export const Component = ({
         />
         {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
       </InputContainer>
+      {!!description && (
+        <Description data-testid={buildTestId('description')}>{description}</Description>
+      )}
     </Container>
   );
 };

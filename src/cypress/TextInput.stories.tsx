@@ -18,6 +18,7 @@ export const Default = () => {
       <TextInput
         id="input"
         label="Write something here"
+        description="Super important input"
         onChange={(evt) => setText(evt.target.value)}
         data-testid="TextInput"
         value={text}
