@@ -19,6 +19,10 @@ export const WithLabel = () => (
   <TextInput placeholder="Some placeholder…" label="A label" value="" />
 );
 
+export const WithLabelAndDescription = () => (
+  <TextInput placeholder="Some placeholder…" label="A label" description="A description" value="" />
+);
+
 export const Placeholder = () => <TextInput placeholder="Some placeholder…" value="" />;
 
 export const LeftAndRightAppendixes = () => (

@@ -10,11 +10,12 @@ import { Container, Input, Left, Right, InputContainer, State } from './styled';
 export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> &
   Testable & {
     label?: React.ReactNode;
-    description: React.ReactNode;
+    description?: React.ReactNode;
     state?: State;
     value: NonNullable<React.InputHTMLAttributes<HTMLInputElement>['value']>;
     left?: React.ReactNode;
     right?: React.ReactNode;
+    element?: 'input' | 'textarea';
   };
 
 export const Component = ({
@@ -28,6 +29,7 @@ export const Component = ({
   onChange,
   left,
   right,
+  element = 'input',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -75,6 +77,7 @@ export const Component = ({
           onFocus={focus}
           onBlur={blur}
           onChange={change}
+          as={element}
         />
         {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
       </InputContainer>

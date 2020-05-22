@@ -19,6 +19,10 @@ export const WithLabel = () => (
   <TextArea placeholder="Some placeholder…" label="A label" value="" />
 );
 
+export const WithLabelAndDescription = () => (
+  <TextArea placeholder="Some placeholder…" label="A label" description="A description" value="" />
+);
+
 export const Placeholder = () => <TextArea placeholder="Some placeholder…" value="" />;
 
 export const LeftAndRightAppendixes = () => (
@@ -27,7 +31,7 @@ export const LeftAndRightAppendixes = () => (
     placeholder="Some placeholder…"
     value=""
     left={<div style={{ display: 'flex', alignItems: 'center' }}>€</div>}
-    right={<Button look={Button.Look.Primary}>MAX</Button>}
+    right={<Button variant="primary">MAX</Button>}
   />
 );
 
