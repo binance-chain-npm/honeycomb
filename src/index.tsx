@@ -16,6 +16,7 @@ export { useBuildTestId, Testable } from './modules/test-ids';
 
 export { Button } from './components/Button';
 export { TextInput } from './components/TextInput';
+export { TextArea } from './components/TextArea';
 export { PasswordInput, usePasswordInputValidation } from './components/PasswordInput';
 export { Styleless, styleless } from './components/Styleless';
 export { Checkbox } from './components/Checkbox';

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import { TextInput } from '../../src/components/TextInput';
+import { TextArea } from '../../src/components/TextArea';
 import { Sections } from '../../src/modules/sections';
 
 export default {
-  title: `${Sections.Tests}|TextInput`,
+  title: `${Sections.Tests}|TextArea`,
 };
 
 export const Default = () => {
@@ -15,12 +15,12 @@ export const Default = () => {
         <span>Value: </span>
         <span id="value">{text}</span>
       </div>
-      <TextInput
+      <TextArea
         id="input"
         label="Write something here"
         description="Super important input"
         onChange={(evt) => setText(evt.target.value)}
-        data-testid="TextInput"
+        data-testid="TextArea"
         value={text}
       />
     </>
@@ -29,9 +29,9 @@ export const Default = () => {
 
 export const LeftRight = () => {
   return (
-    <TextInput
+    <TextArea
       id="input"
-      data-testid="TextInput"
+      data-testid="TextArea"
       value=""
       left={<div id="left-content" />}
       right={<div id="right-content" />}

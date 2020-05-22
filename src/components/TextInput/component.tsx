@@ -2,6 +2,7 @@ import React, { useMemo, useCallback, useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import { Label } from '../internal/Label';
+import { Description } from '../internal/Description';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
 import { Container, Input, Left, Right, InputContainer, State } from './styled';
@@ -9,15 +10,18 @@ import { Container, Input, Left, Right, InputContainer, State } from './styled';
 export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> &
   Testable & {
     label?: React.ReactNode;
+    description?: React.ReactNode;
     state?: State;
     value: NonNullable<React.InputHTMLAttributes<HTMLInputElement>['value']>;
     left?: React.ReactNode;
     right?: React.ReactNode;
+    element?: 'input' | 'textarea';
   };
 
 export const Component = ({
   className,
   label,
+  description,
   'data-testid': testId,
   onFocus,
   onBlur,
@@ -25,6 +29,7 @@ export const Component = ({
   onChange,
   left,
   right,
+  element = 'input',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -72,9 +77,13 @@ export const Component = ({
           onFocus={focus}
           onBlur={blur}
           onChange={change}
+          as={element}
         />
         {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
       </InputContainer>
+      {!!description && (
+        <Description data-testid={buildTestId('description')}>{description}</Description>
+      )}
     </Container>
   );
 };

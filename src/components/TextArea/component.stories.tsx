@@ -4,47 +4,43 @@ import styled from 'styled-components';
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 
-import { TextInput } from './';
+import { TextArea } from './';
 
 export default {
-  title: `${Sections.Inputs}|TextInput`,
+  title: `${Sections.Inputs}|TextArea`,
 };
 
 export const Text = () => {
   const [value, setValue] = useState('Some text…');
-  return <TextInput value={value} onChange={(evt) => setValue(evt.target.value)} />;
+  return <TextArea value={value} onChange={(evt) => setValue(evt.target.value)} />;
 };
 
 export const WithLabel = () => (
-  <TextInput placeholder="Some placeholder…" label="A label" value="" />
+  <TextArea placeholder="Some placeholder…" label="A label" value="" />
 );
 
 export const WithLabelAndDescription = () => (
-  <TextInput placeholder="Some placeholder…" label="A label" description="A description" value="" />
+  <TextArea placeholder="Some placeholder…" label="A label" description="A description" value="" />
 );
 
-export const Placeholder = () => <TextInput placeholder="Some placeholder…" value="" />;
+export const Placeholder = () => <TextArea placeholder="Some placeholder…" value="" />;
 
 export const LeftAndRightAppendixes = () => (
-  <TextInput
+  <TextArea
     label="Amount"
     placeholder="Some placeholder…"
     value=""
     left={<div style={{ display: 'flex', alignItems: 'center' }}>€</div>}
-    right={
-      <Button variant="primary" size="large">
-        MAX
-      </Button>
-    }
+    right={<Button variant="primary">MAX</Button>}
   />
 );
 
-const CustomTextInput = styled(TextInput)`
-  ${TextInput.Label} {
+const CustomTextArea = styled(TextArea)`
+  ${TextArea.Label} {
     color: #f8bbd0;
   }
 
-  ${TextInput.Input} {
+  ${TextArea.Input} {
     background: #e8f5e9;
     color: #64b5f6;
 
@@ -55,5 +51,5 @@ const CustomTextInput = styled(TextInput)`
 `;
 
 export const CustomStyles = () => (
-  <CustomTextInput placeholder="Some placeholder…" label="A label" value="" />
+  <CustomTextArea placeholder="Some placeholder…" label="A label" value="" />
 );
