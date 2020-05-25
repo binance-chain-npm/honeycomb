@@ -1,13 +1,14 @@
 import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
+import { Styleless } from '../Styleless';
 
 import { Styled, Variant, Size } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
-    as?: React.ComponentProps<typeof Styled>['as'];
+    htmlTag?: Pick<React.ComponentPropsWithoutRef<typeof Styleless>, 'htmlTag'>;
     variant: Variant;
     size?: Size;
   };
@@ -18,7 +19,7 @@ export const Component = ({
   onMouseLeave,
   href,
   disabled,
-  as: asProp,
+  htmlTag,
   'data-testid': testId,
   variant,
   size = 'huge',
@@ -26,16 +27,16 @@ export const Component = ({
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
-  const as = useMemo(() => {
-    if (!!asProp) return asProp;
+  const asProp = useMemo(() => {
+    if (!!htmlTag) return htmlTag;
     if (!!href) return 'a';
     return 'button';
-  }, [asProp, href]);
+  }, [htmlTag, href]);
 
   return (
     <Styled
       {...otherProps}
-      as={as}
+      as={asProp as any}
       href={disabled ? undefined : href}
       data-testid={buildTestId()}
       disabled={disabled}

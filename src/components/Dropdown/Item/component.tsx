@@ -8,16 +8,16 @@ import { Container } from './styled';
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
-    as?: React.ComponentProps<typeof Container>['as'];
+    htmlTag?: React.ComponentProps<typeof Container>['as'];
   };
 
-export const Component = (props: Props) => {
+export const Component = ({ htmlTag = 'button', ...otherProps }: Props) => {
   const parentTestId = useContext(TestIdContext);
-  const buildTestId = useBuildTestId(props['data-testid'] ? parentTestId : undefined);
+  const buildTestId = useBuildTestId(otherProps['data-testid'] ? parentTestId : undefined);
 
   return (
-    <Container as="button" {...props} data-testid={buildTestId(props['data-testid'])}>
-      {props.children}
+    <Container {...otherProps} as={htmlTag} data-testid={buildTestId(otherProps['data-testid'])}>
+      {otherProps.children}
     </Container>
   );
 };

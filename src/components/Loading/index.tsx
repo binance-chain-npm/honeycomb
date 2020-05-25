@@ -1,3 +1,1 @@
-import { Component } from './component';
-
-export const Loading = Component as typeof Component;
+export { Component as Loading } from './component';
