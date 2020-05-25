@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { transitions } from 'polished';
 
-import { Styleless } from '../../Styleless';
+import { styleless } from '../../Styleless';
 import { hcStyle } from '../../../modules/themes';
 
-export const Container = styled(Styleless)<{ isShowing: boolean }>`
+export const Container = styled.div<{ isShowing: boolean }>`
+  ${styleless};
+
   background: ${({ theme }) => theme.honeycomb.color.bg.masked};
   border-radius: ${hcStyle.radiusNormal()};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.normal)};
