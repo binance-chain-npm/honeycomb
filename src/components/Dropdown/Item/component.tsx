@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 
 import { TestIdContext } from '../context';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
+import { HtmlTag } from '../../../modules/html-tag';
 
 import { Container } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
-    htmlTag?: React.ComponentProps<typeof Container>['as'];
+    htmlTag?: HtmlTag;
   };
 
 export const Component = ({ htmlTag = 'button', ...otherProps }: Props) => {
@@ -16,7 +17,11 @@ export const Component = ({ htmlTag = 'button', ...otherProps }: Props) => {
   const buildTestId = useBuildTestId(otherProps['data-testid'] ? parentTestId : undefined);
 
   return (
-    <Container {...otherProps} as={htmlTag} data-testid={buildTestId(otherProps['data-testid'])}>
+    <Container
+      {...otherProps}
+      as={htmlTag as any}
+      data-testid={buildTestId(otherProps['data-testid'])}
+    >
       {otherProps.children}
     </Container>
   );

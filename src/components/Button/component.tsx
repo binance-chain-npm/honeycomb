@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { Styleless } from '../Styleless';
+import { HtmlTag } from '../../modules/html-tag';
 
 import { Styled, Variant, Size } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
-    htmlTag?: Pick<React.ComponentPropsWithoutRef<typeof Styleless>, 'htmlTag'>;
+    htmlTag?: HtmlTag;
     variant: Variant;
     size?: Size;
   };
