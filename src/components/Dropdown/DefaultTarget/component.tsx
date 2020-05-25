@@ -6,13 +6,14 @@ import { Styleless } from '../../Styleless';
 
 import { Container } from './styled';
 
-export const Component = (
-  props: Partial<React.ComponentPropsWithoutRef<typeof Styleless>> & { children: React.ReactNode },
-) => {
+export const Component = ({
+  htmlTag = 'button',
+  ...otherProps
+}: Partial<React.ComponentPropsWithoutRef<typeof Styleless>> & { children: React.ReactNode }) => {
   const isShowing = useContext(ShowingContext);
   return (
-    <Container as="button" {...props} isShowing={isShowing}>
-      {props.children}
+    <Container {...otherProps} as={htmlTag as any} isShowing={isShowing}>
+      {otherProps.children}
       &nbsp;
       <Icon.CaretDown />
     </Container>

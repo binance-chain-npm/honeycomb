@@ -15,7 +15,7 @@ export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultVa
     value: NonNullable<React.InputHTMLAttributes<HTMLInputElement>['value']>;
     left?: React.ReactNode;
     right?: React.ReactNode;
-    element?: 'input' | 'textarea';
+    htmlTag?: 'input' | 'textarea';
   };
 
 export const Component = ({
@@ -29,7 +29,7 @@ export const Component = ({
   onChange,
   left,
   right,
-  element = 'input',
+  htmlTag = 'input',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -77,7 +77,7 @@ export const Component = ({
           onFocus={focus}
           onBlur={blur}
           onChange={change}
-          as={element}
+          as={htmlTag}
         />
         {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
       </InputContainer>

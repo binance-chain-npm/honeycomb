@@ -5,10 +5,10 @@ import { TextInput } from '../TextInput';
 
 import { StyledTextInput } from './styled';
 
-export type Props = React.ComponentPropsWithoutRef<typeof TextInput>;
+export type Props = Omit<React.ComponentPropsWithoutRef<typeof TextInput>, 'htmlTag'>;
 
 export const Component = (props: Props) => {
-  return <StyledTextInput {...props} element="textarea" />;
+  return <StyledTextInput {...props} htmlTag="textarea" />;
 };
 
 Component.displayName = 'TextArea';

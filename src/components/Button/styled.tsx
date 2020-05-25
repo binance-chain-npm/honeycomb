@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { transitions } from 'polished';
 
-import { Styleless } from '../Styleless';
+import { styleless as stylelessCommon } from '../Styleless';
 import { hcStyle } from '../../modules/themes';
 
 export const variants = [
@@ -247,7 +247,9 @@ const styleless = css`
   }
 `;
 
-export const Styled = styled(Styleless)<Props>`
+export const Styled = styled.button<Props>`
+  ${stylelessCommon};
+
   border-radius: ${hcStyle.radiusNormal({ forFontSize: 'reduced' })};
   cursor: pointer;
   width: 100%;
