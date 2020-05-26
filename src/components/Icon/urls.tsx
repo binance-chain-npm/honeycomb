@@ -5,3 +5,4 @@ export { default as EyeBlocked } from './assets/EyeBlocked.svg';
 export { default as LeftArrow } from './assets/LeftArrow.svg';
 export { default as AddFilled } from './assets/AddFilled.svg';
 export { default as Add } from './assets/Add.svg';
+export { default as Copy } from './assets/Copy.svg';
