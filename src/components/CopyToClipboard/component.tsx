@@ -2,18 +2,20 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
 
 import { Icon } from '../Icon';
+import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Container, Text, IconContainer, IconWrapper } from './styled';
 
-export type Props = { value: string };
+export type Props = Testable & { className?: string; value: string };
 
-export const Component = (props: Props) => {
+export const Component = ({ value, 'data-testid': testId, className }: Props) => {
+  const buildTestId = useBuildTestId(testId);
   const [wasJustCopied, setWasJustCopied] = useState(false);
 
   const copy = useCallback(() => {
-    navigator.clipboard.writeText(props.value);
+    navigator.clipboard.writeText(value);
     setWasJustCopied(true);
-  }, [props.value]);
+  }, [value]);
 
   const transitions = useTransition(wasJustCopied, null, {
     from: { opacity: 0 },
@@ -28,17 +30,23 @@ export const Component = (props: Props) => {
   }, [wasJustCopied]);
 
   return (
-    <Container wasJustCopied={wasJustCopied} disabled={wasJustCopied} onClick={copy}>
-      <Text>{props.value}</Text>
+    <Container
+      className={className}
+      wasJustCopied={wasJustCopied}
+      disabled={wasJustCopied}
+      onClick={copy}
+      data-testid={buildTestId()}
+    >
+      <Text data-testid={buildTestId('text')}>{value}</Text>
       <IconContainer>
         {transitions.map(({ item, key, props }) =>
           item ? (
             <IconWrapper as={animated.div} key={key} style={props}>
-              <Icon.Tick />
+              <Icon.Tick data-testid={buildTestId('tick-icon')} />
             </IconWrapper>
           ) : (
             <IconWrapper as={animated.div} key={key} style={props}>
-              <Icon.Copy />
+              <Icon.Copy data-testid={buildTestId('copy-icon')} />
             </IconWrapper>
           ),
         )}
