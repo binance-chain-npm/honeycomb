@@ -5,7 +5,7 @@ import { hcStyle } from '../../modules/themes';
 import { styleless } from '../Styleless';
 
 const justCopied = css`
-  background: ${({ theme }) => theme.honeycomb.color.success.active};
+  background: ${({ theme }) => theme.honeycomb.color.success.normal};
   color: ${({ theme }) =>
     theme.honeycomb.color.readable.normal(theme.honeycomb.color.success.normal)};
 `;
