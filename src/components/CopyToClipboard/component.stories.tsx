@@ -8,4 +8,6 @@ export default {
   title: `${Sections.Elements}|CopyToClipboard`,
 };
 
-export const Default = () => <CopyToClipboard value="a value here" />;
+export const Default = () => (
+  <CopyToClipboard value="a value here" data-testid="copy-to-clipboard" />
+);
