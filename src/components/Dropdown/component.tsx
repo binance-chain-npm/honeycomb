@@ -38,7 +38,7 @@ export const Component = (props: Props) => {
         data-testid={props['data-testid']}
         arrow={false}
       >
-        <Button as="div" variant="styleless" size="fit">
+        <Button htmlTag="div" variant="styleless" size="fit">
           <ShowingContext.Provider value={isShowing}>{props.target}</ShowingContext.Provider>
         </Button>
       </Tooltip>
