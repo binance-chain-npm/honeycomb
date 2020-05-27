@@ -46,7 +46,8 @@
       }
     },
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.svg$": "<rootDir>/__mocks__/svgMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
     }
   },
@@ -64,6 +65,7 @@
     "@types/jest": "^25.2.2",
     "@types/js-base64": "^2.3.1",
     "@types/nanoid": "^2.1.0",
+    "@types/qrcode.react": "^1.0.1",
     "@types/react": "16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.0",
@@ -90,9 +92,10 @@
     "js-base64": "^2.5.2",
     "nanoid": "^3.1.7",
     "polished": "^3.6.3",
+    "qrcode.react": "^1.0.0",
     "react-spring": "^8.0.27"
   },
   "resolutions": {
-    "@types/react": "16.9.31"
+    "@types/react": "16.9.35"
   }
 }

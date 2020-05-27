@@ -18,7 +18,7 @@ export const Component = ({ value, 'data-testid': testId, className }: Props) =>
   }, [value]);
 
   const transitions = useTransition(wasJustCopied, null, {
-    from: { opacity: 0 },
+    from: { opacity: 1 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
