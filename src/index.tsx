@@ -26,3 +26,4 @@ export { Dropdown } from './components/Dropdown';
 export { Loading } from './components/Loading';
 export { MnemonicPhrase } from './components/MnemonicPhrase';
 export { CopyToClipboard } from './components/CopyToClipboard';
+export { QRCode } from './components/QRCode';
