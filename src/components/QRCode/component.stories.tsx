@@ -11,6 +11,9 @@ export default {
 export const Default = () => (
   <>
     <div style={{ marginBottom: '1em' }}>
+      <QRCode value="a value here" />
+    </div>
+    <div style={{ marginBottom: '1em' }}>
       <QRCode value="a value here" style={{ fontSize: 100 }} />
     </div>
     <QRCode value="a value here" style={{ fontSize: 300 }} />
@@ -19,6 +22,9 @@ export const Default = () => (
 
 export const WithFrame = () => (
   <>
+    <div style={{ marginBottom: '1em' }}>
+      <QRCode value="a value here" hasFrame />
+    </div>
     <div style={{ marginBottom: '1em' }}>
       <QRCode value="a value here" style={{ fontSize: 100 }} hasFrame />
     </div>
