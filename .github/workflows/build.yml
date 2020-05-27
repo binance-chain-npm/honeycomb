@@ -2,43 +2,14 @@ name: Build
 
 on:
   push:
-  pull_request:
+    branches:
+      - master
+      - alpha
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-18.04
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1.4.0
-        with:
-          node-version: 12.x
-
-      - name: Dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Test
-        run: yarn test
-
-      - name: Lint
-        run: yarn lint
-
-      - name: UI tests
-        if:
-          (github.ref == 'refs/heads/master') || (github.ref == 'refs/heads/alpha') ||
-          (github.event_name == 'pull_request')
-        run: |
-          yarn build-storybook
-          yarn percy exec -- cypress run -e CI=true
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-
   build:
     name: Build
-    needs: test
     runs-on: ubuntu-18.04
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/alpha'
 
     steps:
       - uses: actions/checkout@v2
