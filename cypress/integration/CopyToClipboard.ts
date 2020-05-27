@@ -3,10 +3,13 @@ describe('CopyToClipboard', () => {
     cy.visitStory({ storyId: 'elements-copytoclipboard--default', themeName: 'GoldLight' });
 
     cy.get('[data-testid="copy-to-clipboard.text"]');
-    cy.percySnapshot('CopyToClipboard in Gold Light theme');
 
     cy.clock();
+    cy.tick(100000);
+    cy.percySnapshot('CopyToClipboard in Gold Light theme');
+
     cy.get('[data-testid="copy-to-clipboard.text"]').click();
+
     cy.tick(1000);
     cy.percySnapshot('CopyToClipboard after clicking in Gold Light theme');
   });
@@ -15,10 +18,13 @@ describe('CopyToClipboard', () => {
     cy.visitStory({ storyId: 'elements-copytoclipboard--default', themeName: 'GoldDark' });
 
     cy.get('[data-testid="copy-to-clipboard.text"]');
-    cy.percySnapshot('CopyToClipboard in Gold Dark theme');
 
     cy.clock();
+    cy.tick(100000);
+    cy.percySnapshot('CopyToClipboard in Gold Dark theme');
+
     cy.get('[data-testid="copy-to-clipboard.text"]').click();
+
     cy.tick(1000);
     cy.percySnapshot('CopyToClipboard after clicking in Gold Dark theme');
   });
