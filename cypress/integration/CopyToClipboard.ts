@@ -7,7 +7,7 @@ describe('CopyToClipboard', () => {
     cy.percySnapshot('CopyToClipboard in Gold Light theme');
 
     cy.get('[data-testid="copy-to-clipboard.text"]').click();
-    cy.tick(10000);
+    cy.tick(1000);
     cy.get('[data-testid="copy-to-clipboard.tick-icon"]').should('be.visible');
     cy.percySnapshot('CopyToClipboard after clicking in Gold Light theme');
   });
@@ -20,7 +20,7 @@ describe('CopyToClipboard', () => {
     cy.percySnapshot('CopyToClipboard in Gold Dark theme');
 
     cy.get('[data-testid="copy-to-clipboard.text"]').click();
-    cy.tick(10000);
+    cy.tick(1000);
     cy.get('[data-testid="copy-to-clipboard.tick-icon"]').should('be.visible');
     cy.percySnapshot('CopyToClipboard after clicking in Gold Dark theme');
   });
