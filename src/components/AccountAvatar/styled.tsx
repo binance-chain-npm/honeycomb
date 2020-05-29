@@ -30,4 +30,5 @@ export const TextContainer = styled.div`
   left: 0;
   font-size: 0.75em;
   text-transform: uppercase;
+  color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
 `;

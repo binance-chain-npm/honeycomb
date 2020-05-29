@@ -32,7 +32,7 @@ export const Component = ({
         <Square values={values} startIndex={4} color={theme.honeycomb.color.success.normal} />
         <Square values={values} startIndex={8} color={theme.honeycomb.color.danger.normal} />
       </Svg>
-      <TextContainer>{initial}</TextContainer>
+      <TextContainer>{initial[0]}</TextContainer>
     </Container>
   );
 };
