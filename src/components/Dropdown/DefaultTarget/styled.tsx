@@ -8,10 +8,11 @@ export const Container = styled.div<{ isShowing: boolean }>`
   ${styleless};
 
   background: ${({ theme }) => theme.honeycomb.color.bg.masked};
-  border-radius: ${hcStyle.radiusNormal()};
+  border-radius: ${hcStyle.radiusNormal({ forFontSize: 'reduced' })};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.normal)};
-  height: ${hcStyle.huge()};
-  padding: 0 ${hcStyle.increased()};
+  height: ${hcStyle.huge({ forFontSize: 'reduced' })};
+  padding: 0 ${hcStyle.increased({ forFontSize: 'reduced' })};
+  font-size: ${hcStyle.reduced()};
   cursor: pointer;
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
 
