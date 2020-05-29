@@ -24,6 +24,8 @@ export const WithHelpers = () => {
     >
       <Dropdown.Item>Item 1</Dropdown.Item>
       <Dropdown.Item>Item 2</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item>Item 3</Dropdown.Item>
     </Dropdown>
   );
 };
