@@ -9,10 +9,10 @@ export default {
 };
 
 export const Default = () => (
-  <>
+  <div style={{ fontSize: '5em' }}>
     <AbstractShape value="what is this even" />
     <AbstractShape value="another text" />
     <AbstractShape value="and another one" />
     <AbstractShape value="and one more" />
-  </>
+  </div>
 );
