@@ -10,9 +10,15 @@ import { Square } from './Square';
 export type Props = Testable & {
   value: string;
   initial?: string;
+  className?: string;
 };
 
-export const Component = ({ 'data-testid': testId, value, initial: initialParam }: Props) => {
+export const Component = ({
+  'data-testid': testId,
+  value,
+  initial: initialParam,
+  className,
+}: Props) => {
   const theme = useTheme();
   const buildTestId = useBuildTestId(testId);
   const initial = initialParam ?? value[0];
@@ -20,7 +26,7 @@ export const Component = ({ 'data-testid': testId, value, initial: initialParam 
   const values = useMemo(() => hash.split('').map((it) => Number.parseInt(it, 16)), [hash]);
 
   return (
-    <Container data-testid={buildTestId()}>
+    <Container className={className} data-testid={buildTestId()}>
       <Svg viewBox="0 0 15 15" fill="red">
         <Square values={values} startIndex={0} color={theme.honeycomb.color.primary.normal} />
         <Square values={values} startIndex={4} color={theme.honeycomb.color.success.normal} />
