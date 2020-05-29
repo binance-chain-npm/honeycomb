@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { SHA1 } from 'crypto-js';
+import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
@@ -10,23 +11,23 @@ export type Props = Testable & {
   initial?: string;
 };
 
-type SquareProps = { hash: string; values: number[]; startIndex: number };
+type SquareProps = { color: string; values: number[]; startIndex: number };
 
-const Square = ({ hash, values, startIndex }: SquareProps) => {
+const Square = ({ color, values, startIndex }: SquareProps) => {
   const x = values[startIndex];
   const y = values[startIndex + 1];
   const size = values[startIndex + 2];
-  const angle = values[startIndex + 3];
-  const color = `#${hash.substring(startIndex, startIndex + 6)}`;
+  const angle = useMemo(() => (values[startIndex + 3] / 15) * 360, [values, startIndex]);
 
   return (
-    <g transform={`rotate(${(angle / 16) * 360} ${(x + size) / 2} ${(y + size) / 2})`}>
+    <g transform={`rotate(${angle} ${(x + size) / 2} ${(y + size) / 2})`}>
       <rect x={x} y={y} width={size} height={size} fill={color} />
     </g>
   );
 };
 
 export const Component = ({ 'data-testid': testId, value, initial: initialParam }: Props) => {
+  const theme = useTheme();
   const buildTestId = useBuildTestId(testId);
   const initial = initialParam ?? value[0];
   const hash = useMemo(() => SHA1(value).toString(), [value]);
@@ -34,10 +35,10 @@ export const Component = ({ 'data-testid': testId, value, initial: initialParam 
 
   return (
     <Container data-testid={buildTestId()}>
-      <Svg viewBox="0 0 15 15" fill="red" style={{ background: `#${hash.substring(1, 7)}` }}>
-        <Square hash={hash} values={values} startIndex={0} />
-        <Square hash={hash} values={values} startIndex={4} />
-        <Square hash={hash} values={values} startIndex={8} />
+      <Svg viewBox="0 0 15 15" fill="red">
+        <Square values={values} startIndex={0} color={theme.honeycomb.color.primary.normal} />
+        <Square values={values} startIndex={4} color={theme.honeycomb.color.success.normal} />
+        <Square values={values} startIndex={8} color={theme.honeycomb.color.danger.normal} />
       </Svg>
       <TextContainer>{initial}</TextContainer>
     </Container>

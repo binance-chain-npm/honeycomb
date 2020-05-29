@@ -16,6 +16,7 @@ export const Container = styled.div`
 export const Svg = styled.svg`
   width: 1em;
   height: 1em;
+  background: ${({ theme }) => theme.honeycomb.color.bg.masked};
 `;
 
 export const TextContainer = styled.div`
