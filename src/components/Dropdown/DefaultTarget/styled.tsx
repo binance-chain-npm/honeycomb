@@ -19,8 +19,8 @@ export const Container = styled.div<{ isShowing: boolean }>`
   :focus,
   :hover,
   :active {
-    background: ${({ theme }) => theme.honeycomb.color.primary.active};
+    background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.accent};
     color: ${({ theme }) =>
-      theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.accent)};
   }
 `;

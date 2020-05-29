@@ -4,11 +4,9 @@ import { em } from 'polished';
 export const Styles = css`
   .dropdown-theme {
     &.tippy-tooltip {
-      background: ${({ theme }) => theme.honeycomb.color.bg.normal};
+      background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
       color: ${({ theme }) =>
-        theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.normal)};
-      top: 0 !important;
-      left: 0;
+        theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.normal)};
       min-width: ${em(200)};
       font-size: 1em;
       pointer-events: all;

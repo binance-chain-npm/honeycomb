@@ -11,6 +11,11 @@ export const GoldLight: HoneycombThemeType = {
         normal: '#ffffff',
         masked: '#fafafa',
         disabled: '#f5f5f5',
+
+        tooltip: {
+          normal: '#ffffff',
+          accent: '#f5f5f5',
+        },
       },
 
       border: '#e6e8ea',

@@ -8,7 +8,7 @@ export const Container = styled.button`
   ${styleless};
 
   justify-content: flex-start;
-  background: ${({ theme }) => theme.honeycomb.color.bg.masked};
+  background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
   height: ${hcStyle.huge({ forFontSize: 'reduced' })};
   padding: 0 ${hcStyle.increased({ forFontSize: 'reduced' })};
   font-size: ${hcStyle.reduced()};
@@ -19,8 +19,8 @@ export const Container = styled.button`
   :focus,
   :hover,
   :active {
-    background: ${({ theme }) => theme.honeycomb.color.primary.active};
+    background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.accent};
     color: ${({ theme }) =>
-      theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.accent)};
   }
 `;

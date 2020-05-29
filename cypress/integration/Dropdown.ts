@@ -39,4 +39,18 @@ describe('Dropdown', () => {
         expect(stub.getCall(0)).to.be.calledWith('item1');
       });
   });
+
+  it('renders correctly with Gold Light theme', () => {
+    cy.visitStory({ storyId: 'elements-dropdown--with-helpers', themeName: 'GoldLight' });
+
+    cy.get('[data-testid="MyDropdown.target"]').click();
+    cy.percySnapshot('Dropdown with Gold Light theme');
+  });
+
+  it('renders correctly with Gold Dark theme', () => {
+    cy.visitStory({ storyId: 'elements-dropdown--with-helpers', themeName: 'GoldDark' });
+
+    cy.get('[data-testid="MyDropdown.target"]').click();
+    cy.percySnapshot('Dropdown with Gold Dark theme');
+  });
 });

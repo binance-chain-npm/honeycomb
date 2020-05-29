@@ -15,6 +15,11 @@ export const GoldDark = {
         normal: '#0b0e11',
         masked: '#14151a',
         disabled: '#2b2f36',
+
+        tooltip: {
+          normal: '#2b2f36',
+          accent: '#33373e',
+        },
       },
 
       text: {
