@@ -25,6 +25,11 @@ jobs:
           yarn build
           yarn build-storybook
 
+      - name: UI tests
+        run: yarn percy exec -- cypress run -e CI=true
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/alpha'
         continue-on-error: true
