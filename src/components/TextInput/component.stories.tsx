@@ -15,6 +15,11 @@ export const Text = () => {
   return <TextInput value={value} onChange={(evt) => setValue(evt.target.value)} />;
 };
 
+export const InvalidText = () => {
+  const [value, setValue] = useState('Invalid text…');
+  return <TextInput state="danger" value={value} onChange={(evt) => setValue(evt.target.value)} />;
+};
+
 export const WithLabel = () => (
   <TextInput placeholder="Some placeholder…" label="A label" value="" />
 );

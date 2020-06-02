@@ -78,7 +78,7 @@ export const InputContainer = styled.div<Props>`
       `${theme.honeycomb.duration.normal} ease-in-out`,
     )};
 
-  ${({ isFocused }) => isFocused && focused};
+  ${({ isFocused, state }) => isFocused && state !== 'danger' && focused};
 `;
 
 export const Left = styled.div`
