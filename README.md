@@ -99,3 +99,20 @@ following:
 1. Clone this repo.
 2. `yarn`
 3. `yarn dev`
+
+### Adding new icons
+
+Monochromatic SVG files can be added under [src/components/Icon/assets](src/components/Icon/assets),
+but there are a few things to make sure of.
+
+- The SVG file is monochromatic.
+- You have removed all `fill=""` attributes from the SVG code.
+- The SVG viewport is a square (e.g. `viewBox="0 0 16 16"`) and the icon is centered both
+  horizontally and vertically in it.
+- The SVG file is named with pascal casing (e.g. `CaretDown.svg`).
+- The SVG file does not contain any font loading, styles or non-vector images.
+
+Once the SVG file has been added, it must be loaded and exported in **both**
+[src/components/Icon/components.tsx](src/components/Icon/components.tsx) and
+[src/components/Icon/urls.tsx](src/components/Icon/urls.tsx) with exactly the **same name** as the
+SVG file.
