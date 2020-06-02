@@ -50,4 +50,5 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
 Component.displayName = 'Tooltip';
 Component.defaultProps = {
   trigger: ['mouseenter', 'focus'],
+  className: '',
 } as Props;

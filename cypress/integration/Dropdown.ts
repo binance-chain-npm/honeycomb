@@ -27,19 +27,6 @@ describe('Dropdown', () => {
     cy.get('[data-testid="Dropdown.content"]').should('not.exist');
   });
 
-  it('handles clicking on items', () => {
-    const stub = cy.stub();
-    cy.on('window:alert', stub);
-
-    cy.get('[data-testid="Dropdown.target"]').click();
-
-    cy.get('[data-testid="Dropdown.content.item1"]')
-      .click()
-      .then(() => {
-        expect(stub.getCall(0)).to.be.calledWith('item1');
-      });
-  });
-
   it('renders correctly with Gold Light theme', () => {
     cy.visitStory({ storyId: 'elements-dropdown--with-helpers', themeName: 'GoldLight' });
 
