@@ -9,5 +9,9 @@ export default {
 };
 
 export const Default = () => {
-  return <Tooltip content="heyyyy there">Here!</Tooltip>;
+  return (
+    <Tooltip content="heyyyy there" data-testid="Tooltip">
+      Here!
+    </Tooltip>
+  );
 };
