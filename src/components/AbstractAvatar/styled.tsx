@@ -31,4 +31,5 @@ export const TextContainer = styled.div`
   font-size: 0.75em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
+  line-height: 0;
 `;

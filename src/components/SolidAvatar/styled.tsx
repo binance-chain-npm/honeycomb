@@ -26,4 +26,5 @@ export const TextContainer = styled.div`
   left: 0;
   font-size: 0.75em;
   text-transform: uppercase;
+  line-height: 0;
 `;

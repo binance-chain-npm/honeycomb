@@ -10,21 +10,21 @@ export default {
 
 export const Default = () => (
   <div style={{ fontSize: '5em' }}>
-    <SolidAvatar value="9" />
+    <SolidAvatar value="9" initial="ภ" />
     <SolidAvatar value="4" initial="鲁" />
     <SolidAvatar value="30" initial="A" />
-    <SolidAvatar value="1" />
-    <SolidAvatar value="21" />
-    <SolidAvatar value="38" />
-    <SolidAvatar value="31" />
-    <SolidAvatar value="3" />
-    <SolidAvatar value="26" />
-    <SolidAvatar value="7" />
-    <SolidAvatar value="5" />
-    <SolidAvatar value="0" />
-    <SolidAvatar value="6" />
-    <SolidAvatar value="2" />
-    <SolidAvatar value="50" />
-    <SolidAvatar value="8" />
+    <SolidAvatar value="1" initial="हि" />
+    <SolidAvatar value="21" initial="اَ" />
+    <SolidAvatar value="38" initial="й" />
+    <SolidAvatar value="31" initial="한" />
+    <SolidAvatar value="3" initial="বাং" />
+    <SolidAvatar value="26" initial="か" />
+    <SolidAvatar value="7" initial="ꦗ" />
+    <SolidAvatar value="5" initial="తె" />
+    <SolidAvatar value="0" initial="မြ" />
+    <SolidAvatar value="6" initial="ᮞᮥ" />
+    <SolidAvatar value="2" initial="ᨒᨚ" />
+    <SolidAvatar value="50" initial="བོ" />
+    <SolidAvatar value="8" initial="ᠮ" />
   </div>
 );
