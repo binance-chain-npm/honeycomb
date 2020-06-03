@@ -1,10 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { transitions } from 'polished';
 
 import { styleless } from '../../Styleless';
 import { hcStyle } from '../../../modules/themes';
 
-export const Container = styled.button`
+export const variants = ['normal', 'accent'] as const;
+export type Variant = typeof variants[number];
+
+const accent = css`
+  font-weight: 600;
+`;
+
+export const Container = styled.button<{ variant: Variant }>`
   ${styleless};
 
   justify-content: flex-start;
@@ -14,6 +21,7 @@ export const Container = styled.button`
   width: 100%;
   cursor: pointer;
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
+  ${({ variant }) => variant === 'accent' && accent};
 
   :focus,
   :hover,

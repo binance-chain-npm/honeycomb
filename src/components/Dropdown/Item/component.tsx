@@ -4,21 +4,23 @@ import { TestIdContext } from '../context';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { HtmlTag } from '../../../modules/html-tag';
 
-import { Container } from './styled';
+import { Container, Variant } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
+    variant?: Variant;
     htmlTag?: HtmlTag;
   };
 
-export const Component = ({ htmlTag = 'button', ...otherProps }: Props) => {
+export const Component = ({ htmlTag = 'button', variant = 'normal', ...otherProps }: Props) => {
   const parentTestId = useContext(TestIdContext);
   const buildTestId = useBuildTestId(otherProps['data-testid'] ? parentTestId : undefined);
 
   return (
     <Container
       {...otherProps}
+      variant={variant}
       as={htmlTag as any}
       data-testid={buildTestId(otherProps['data-testid'])}
     >

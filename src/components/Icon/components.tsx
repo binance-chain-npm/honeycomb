@@ -6,3 +6,4 @@ export { ReactComponent as LeftArrow } from './assets/LeftArrow.svg';
 export { ReactComponent as AddFilled } from './assets/AddFilled.svg';
 export { ReactComponent as Add } from './assets/Add.svg';
 export { ReactComponent as Copy } from './assets/Copy.svg';
+export { ReactComponent as PowerOff } from './assets/PowerOff.svg';
