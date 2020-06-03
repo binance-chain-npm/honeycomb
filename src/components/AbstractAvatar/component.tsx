@@ -31,4 +31,4 @@ export const Component = ({ 'data-testid': testId, value, initial, className }: 
   );
 };
 
-Component.displayName = 'AccountAvatar';
+Component.displayName = 'AbstractAvatar';
