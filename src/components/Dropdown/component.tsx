@@ -28,6 +28,7 @@ export const Component = (props: Props) => {
         className={props.className}
         trigger="click"
         theme="dropdown"
+        interactive={true}
         onShow={show}
         onHide={hide}
         content={

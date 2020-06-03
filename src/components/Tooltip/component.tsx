@@ -13,7 +13,15 @@ export type TriggerValue = 'mouseenter' | 'click' | 'manual';
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Pick<
     React.ComponentProps<typeof Tippy>,
-    'arrow' | 'className' | 'theme' | 'onShow' | 'onHide' | 'visible' | 'enabled' | 'hideOnClick'
+    | 'arrow'
+    | 'className'
+    | 'theme'
+    | 'onShow'
+    | 'onHide'
+    | 'visible'
+    | 'enabled'
+    | 'hideOnClick'
+    | 'interactive'
   > &
   Testable & {
     content: React.ReactNode;

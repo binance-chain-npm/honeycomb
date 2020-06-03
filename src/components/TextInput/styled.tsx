@@ -71,14 +71,14 @@ export const InputContainer = styled.div<Props>`
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
   ${({ state }) => state === 'success' && success};
-  ${({ state, isPristine }) => state === 'danger' && !isPristine && danger};
   ${({ theme }) =>
     transitions(
       ['color', 'background', 'border'],
       `${theme.honeycomb.duration.normal} ease-in-out`,
     )};
 
-  ${({ isFocused, state }) => isFocused && state !== 'danger' && focused};
+  ${({ isFocused }) => isFocused && focused};
+  ${({ state, isPristine }) => state === 'danger' && !isPristine && danger};
 `;
 
 export const Left = styled.div`
