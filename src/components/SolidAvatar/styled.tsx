@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ bgColor: string }>`
   position: relative;
   width: 1em;
   height: 1em;
@@ -11,12 +11,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-export const Svg = styled.svg`
-  width: 1em;
-  height: 1em;
-  background: ${({ theme }) => theme.honeycomb.color.bg.masked};
+  background: ${({ bgColor }) => bgColor};
+  color: ${({ theme, bgColor }) => theme.honeycomb.color.readable.normal(bgColor)};
 `;
 
 export const TextContainer = styled.div`
@@ -30,5 +26,5 @@ export const TextContainer = styled.div`
   left: 0;
   font-size: 0.75em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
+  line-height: 0;
 `;

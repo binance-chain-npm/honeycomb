@@ -13,15 +13,9 @@ export type Props = Testable & {
   className?: string;
 };
 
-export const Component = ({
-  'data-testid': testId,
-  value,
-  initial: initialParam,
-  className,
-}: Props) => {
+export const Component = ({ 'data-testid': testId, value, initial, className }: Props) => {
   const theme = useTheme();
   const buildTestId = useBuildTestId(testId);
-  const initial = initialParam ?? value[0];
   const hash = useMemo(() => SHA1(value).toString(), [value]);
   const values = useMemo(() => hash.split('').map((it) => Number.parseInt(it, 16)), [hash]);
 
@@ -32,9 +26,9 @@ export const Component = ({
         <Square values={values} startIndex={4} color={theme.honeycomb.color.success.normal} />
         <Square values={values} startIndex={8} color={theme.honeycomb.color.danger.normal} />
       </Svg>
-      <TextContainer>{initial[0]}</TextContainer>
+      {!!initial && <TextContainer>{initial[0]}</TextContainer>}
     </Container>
   );
 };
 
-Component.displayName = 'AccountAvatar';
+Component.displayName = 'AbstractAvatar';
