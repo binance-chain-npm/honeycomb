@@ -28,3 +28,4 @@ export { MnemonicPhrase } from './components/MnemonicPhrase';
 export { CopyToClipboard } from './components/CopyToClipboard';
 export { QRCode } from './components/QRCode';
 export { AbstractAvatar } from './components/AbstractAvatar';
+export { SolidAvatar } from './components/SolidAvatar';
