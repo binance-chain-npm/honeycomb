@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import Tippy from '@tippy.js/react';
+import Tippy from '@tippyjs/react';
 
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/shift-away.css';
@@ -13,7 +13,15 @@ export type TriggerValue = 'mouseenter' | 'click' | 'manual';
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Pick<
     React.ComponentProps<typeof Tippy>,
-    'arrow' | 'className' | 'theme' | 'onShow' | 'onHide' | 'visible' | 'enabled' | 'hideOnClick'
+    | 'arrow'
+    | 'className'
+    | 'theme'
+    | 'onShow'
+    | 'onHide'
+    | 'visible'
+    | 'enabled'
+    | 'hideOnClick'
+    | 'interactive'
   > &
   Testable & {
     content: React.ReactNode;
@@ -50,4 +58,5 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
 Component.displayName = 'Tooltip';
 Component.defaultProps = {
   trigger: ['mouseenter', 'focus'],
+  className: '',
 } as Props;

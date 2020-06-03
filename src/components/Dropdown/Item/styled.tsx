@@ -11,7 +11,6 @@ export const Container = styled.button`
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
   height: ${hcStyle.huge({ forFontSize: 'reduced' })};
   padding: 0 ${hcStyle.increased({ forFontSize: 'reduced' })};
-  font-size: ${hcStyle.reduced()};
   width: 100%;
   cursor: pointer;
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
