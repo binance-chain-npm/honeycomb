@@ -26,6 +26,13 @@ export const WithHelpers = () => {
       <Dropdown.Item>Item 2</Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item variant="accent">Item 3</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item disabled>Disabled item</Dropdown.Item>
+      <Dropdown.Item variant="accent" disabled>
+        Disabled accent item
+      </Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item isNonInteractive>Non-interactive item</Dropdown.Item>
     </Dropdown>
   );
 };

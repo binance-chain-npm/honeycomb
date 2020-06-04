@@ -9,17 +9,24 @@ import { Container, Variant } from './styled';
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
   Testable & {
+    isNonInteractive?: boolean;
     variant?: Variant;
     htmlTag?: HtmlTag;
   };
 
-export const Component = ({ htmlTag = 'button', variant = 'normal', ...otherProps }: Props) => {
+export const Component = ({
+  htmlTag = 'button',
+  variant = 'normal',
+  isNonInteractive = false,
+  ...otherProps
+}: Props) => {
   const parentTestId = useContext(TestIdContext);
   const buildTestId = useBuildTestId(otherProps['data-testid'] ? parentTestId : undefined);
 
   return (
     <Container
       {...otherProps}
+      isNonInteractive={isNonInteractive}
       variant={variant}
       as={htmlTag as any}
       data-testid={buildTestId(otherProps['data-testid'])}

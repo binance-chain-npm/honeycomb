@@ -11,7 +11,34 @@ const accent = css`
   font-weight: 600;
 `;
 
-export const Container = styled.button<{ variant: Variant }>`
+const disabled = css`
+  cursor: not-allowed;
+  background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
+  color: ${({ theme }) =>
+    theme.honeycomb.color.readable.disabled(theme.honeycomb.color.bg.tooltip.normal)};
+
+  :focus,
+  :hover,
+  :active {
+    background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.disabled(theme.honeycomb.color.bg.tooltip.normal)};
+  }
+`;
+
+const nonInteractive = css`
+  cursor: auto;
+
+  :focus,
+  :hover,
+  :active {
+    background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.normal)};
+  }
+`;
+
+export const Container = styled.button<{ variant: Variant; isNonInteractive: boolean }>`
   ${styleless};
 
   justify-content: flex-start;
@@ -30,4 +57,7 @@ export const Container = styled.button<{ variant: Variant }>`
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.accent)};
   }
+
+  ${({ isNonInteractive }) => isNonInteractive && nonInteractive};
+  ${({ disabled: isDisabled }) => isDisabled && disabled};
 `;
