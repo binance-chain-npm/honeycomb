@@ -64,7 +64,7 @@ export const GoldDark = {
       small: modularScale(-2),
       reduced: modularScale(-1),
       normal: modularScale(0),
-      increased: modularScale(2),
+      increased: modularScale(3),
       large: modularScale(6),
       huge: modularScale(9),
     },
