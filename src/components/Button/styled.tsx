@@ -20,7 +20,17 @@ export const variants = [
 ] as const;
 export type Variant = typeof variants[number];
 
-export const sizes = ['huge', 'large', 'fit', 'circle-huge', 'circle-large'] as const;
+export const sizes = [
+  'huge',
+  'large',
+  'increased',
+  'normal',
+  'fit',
+  'circle-huge',
+  'circle-large',
+  'circle-increased',
+  'circle-normal',
+] as const;
 export type Size = typeof sizes[number];
 
 export interface Props {
@@ -205,6 +215,14 @@ const large = css`
   height: ${hcStyle.large({ forFontSize: 'reduced' })};
 `;
 
+const increased = css`
+  height: ${hcStyle.increased({ forFontSize: 'reduced' })};
+`;
+
+const normal = css`
+  height: ${hcStyle.normal({ forFontSize: 'reduced' })};
+`;
+
 const fit = css`
   height: auto;
   height: fit-content;
@@ -223,6 +241,20 @@ const circleLarge = css`
   border-radius: 50%;
   height: ${hcStyle.large({ forFontSize: 'reduced' })};
   width: ${hcStyle.large({ forFontSize: 'reduced' })};
+  padding: 0;
+`;
+
+const circleIncreased = css`
+  border-radius: 50%;
+  height: ${hcStyle.increased({ forFontSize: 'reduced' })};
+  width: ${hcStyle.increased({ forFontSize: 'reduced' })};
+  padding: 0;
+`;
+
+const circleNormal = css`
+  border-radius: 50%;
+  height: ${hcStyle.normal({ forFontSize: 'reduced' })};
+  width: ${hcStyle.normal({ forFontSize: 'reduced' })};
   padding: 0;
 `;
 
@@ -284,7 +316,11 @@ export const Styled = styled.button<Props>`
   ${({ variant }) => variant === 'styleless' && styleless};
 
   ${({ size }) => size === 'large' && large};
+  ${({ size }) => size === 'increased' && increased};
+  ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'fit' && fit};
   ${({ size }) => size === 'circle-huge' && circleHuge};
   ${({ size }) => size === 'circle-large' && circleLarge};
+  ${({ size }) => size === 'circle-increased' && circleIncreased};
+  ${({ size }) => size === 'circle-normal' && circleNormal};
 `;
