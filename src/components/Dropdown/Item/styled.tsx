@@ -28,6 +28,7 @@ const disabled = css`
 
 const nonInteractive = css`
   cursor: auto;
+  pointer-events: none;
 
   :focus,
   :hover,
