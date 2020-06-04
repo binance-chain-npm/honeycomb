@@ -7,3 +7,4 @@ export { default as AddFilled } from './assets/AddFilled.svg';
 export { default as Add } from './assets/Add.svg';
 export { default as Copy } from './assets/Copy.svg';
 export { default as PowerOff } from './assets/PowerOff.svg';
+export { default as Account } from './assets/Account.svg';
