@@ -9,3 +9,4 @@ export { ReactComponent as Copy } from './assets/Copy.svg';
 export { ReactComponent as PowerOff } from './assets/PowerOff.svg';
 export { ReactComponent as Account } from './assets/Account.svg';
 export { ReactComponent as ArrowTopRight } from './assets/ArrowTopRight.svg';
+export { ReactComponent as Lock } from './assets/Lock.svg';

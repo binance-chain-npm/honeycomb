@@ -9,3 +9,4 @@ export { default as Copy } from './assets/Copy.svg';
 export { default as PowerOff } from './assets/PowerOff.svg';
 export { default as Account } from './assets/Account.svg';
 export { default as ArrowTopRight } from './assets/ArrowTopRight.svg';
+export { default as Lock } from './assets/Lock.svg';
