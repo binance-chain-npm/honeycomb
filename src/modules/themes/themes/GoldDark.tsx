@@ -1,6 +1,4 @@
-import { readableColor, modularScale as modularScaleOriginal, em } from 'polished';
-
-const modularScale = (steps: number) => modularScaleOriginal(steps, '16px', 'majorSecond');
+import { readableColor } from 'polished';
 
 const readable = {
   normal: (bg: string) => readableColor(bg, '#1e2026', '#ffffff'),
@@ -60,18 +58,17 @@ export const GoldDark = {
     },
 
     size: {
-      modularScale,
-      small: modularScale(-2),
-      reduced: modularScale(-1),
-      normal: modularScale(0),
-      increased: modularScale(3),
-      large: modularScale(6),
-      huge: modularScale(9),
+      small: 12,
+      reduced: 14,
+      normal: 16,
+      increased: 22,
+      large: 32,
+      huge: 46,
     },
 
     radius: {
-      reduced: em(2),
-      normal: em(4),
+      reduced: 2,
+      normal: 4,
     },
 
     duration: {

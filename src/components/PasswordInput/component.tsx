@@ -44,7 +44,7 @@ export const Component = ({
   return (
     <Tooltip
       content={tooltipContent}
-      enabled={!!tooltipContent && !isValid}
+      disabled={!tooltipContent || isValid}
       theme="bare"
       trigger="manual"
       visible={isFocused}

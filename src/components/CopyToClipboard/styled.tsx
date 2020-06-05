@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
-import { transitions } from 'polished';
+import { transitions, em } from 'polished';
 
-import { hcStyle } from '../../modules/themes';
 import { styleless } from '../Styleless';
 
 const justCopied = css`
@@ -17,9 +16,9 @@ export const Container = styled.button<{ wasJustCopied: boolean }>`
   align-items: center;
   justify-content: center;
   background: ${({ theme }) => theme.honeycomb.color.bg.masked};
-  border-radius: ${hcStyle.halfOf(hcStyle.large())};
-  height: ${hcStyle.large()};
-  padding: 0 ${hcStyle.small()};
+  border-radius: ${({ theme }) => em(theme.honeycomb.size.large / 2)};
+  height: ${({ theme }) => em(theme.honeycomb.size.large)};
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.small)};
   width: 100%;
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
   ${({ wasJustCopied }) => wasJustCopied && justCopied};
@@ -30,8 +29,8 @@ export const Container = styled.button<{ wasJustCopied: boolean }>`
 `;
 
 export const Text = styled.span`
-  height: ${hcStyle.increased()};
-  font-size: ${hcStyle.small()};
+  height: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -41,12 +40,12 @@ export const Text = styled.span`
 
 export const IconContainer = styled.div`
   position: relative;
-  height: ${hcStyle.normal()};
-  width: ${hcStyle.normal()};
+  height: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  width: ${({ theme }) => em(theme.honeycomb.size.normal)};
 `;
 
 export const IconWrapper = styled.div`
   position: absolute;
-  height: ${hcStyle.normal()};
-  width: ${hcStyle.normal()};
+  height: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  width: ${({ theme }) => em(theme.honeycomb.size.normal)};
 `;

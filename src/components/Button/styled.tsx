@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
-import { transitions } from 'polished';
+import { transitions, em } from 'polished';
 
 import { styleless as stylelessCommon } from '../Styleless';
-import { hcStyle } from '../../modules/themes';
 
 export const variants = [
   'styleless',
@@ -212,15 +211,15 @@ const disabled = css`
 `;
 
 const large = css`
-  height: ${hcStyle.large({ forFontSize: 'reduced' })};
+  height: ${({ theme }) => em(theme.honeycomb.size.large, theme.honeycomb.size.reduced)};
 `;
 
 const increased = css`
-  height: ${hcStyle.increased({ forFontSize: 'reduced' })};
+  height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
 `;
 
 const normal = css`
-  height: ${hcStyle.normal({ forFontSize: 'reduced' })};
+  height: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
 `;
 
 const fit = css`
@@ -232,29 +231,29 @@ const fit = css`
 
 const circleHuge = css`
   border-radius: 50%;
-  height: ${hcStyle.huge({ forFontSize: 'reduced' })};
-  width: ${hcStyle.huge({ forFontSize: 'reduced' })};
+  height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+  width: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
   padding: 0;
 `;
 
 const circleLarge = css`
   border-radius: 50%;
-  height: ${hcStyle.large({ forFontSize: 'reduced' })};
-  width: ${hcStyle.large({ forFontSize: 'reduced' })};
+  height: ${({ theme }) => em(theme.honeycomb.size.large, theme.honeycomb.size.reduced)};
+  width: ${({ theme }) => em(theme.honeycomb.size.large, theme.honeycomb.size.reduced)};
   padding: 0;
 `;
 
 const circleIncreased = css`
   border-radius: 50%;
-  height: ${hcStyle.increased({ forFontSize: 'reduced' })};
-  width: ${hcStyle.increased({ forFontSize: 'reduced' })};
+  height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+  width: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
   padding: 0;
 `;
 
 const circleNormal = css`
   border-radius: 50%;
-  height: ${hcStyle.normal({ forFontSize: 'reduced' })};
-  width: ${hcStyle.normal({ forFontSize: 'reduced' })};
+  height: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
+  width: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
   padding: 0;
 `;
 
@@ -282,17 +281,17 @@ const styleless = css`
 export const Styled = styled.button<Props>`
   ${stylelessCommon};
 
-  border-radius: ${hcStyle.radiusNormal({ forFontSize: 'reduced' })};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   cursor: pointer;
   width: 100%;
-  height: ${hcStyle.huge({ forFontSize: 'reduced' })};
-  padding: 0 ${hcStyle.normal({ forFontSize: 'reduced' })};
+  height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: ${hcStyle.reduced()};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
 
   :focus,

@@ -19,7 +19,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     | 'onShow'
     | 'onHide'
     | 'visible'
-    | 'enabled'
+    | 'disabled'
     | 'hideOnClick'
     | 'interactive'
   > &

@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { em } from 'polished';
 
 import { TextInput } from '../TextInput';
-import { hcStyle } from '../../modules/themes';
 
 export const StyledTextInput = styled(TextInput)`
   ${TextInput.Input} {
-    min-height: ${hcStyle.huge({ forFontSize: 'reduced' })};
+    min-height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
     height: auto;
     text-indent: 0;
-    padding-left: ${hcStyle.increased({ forFontSize: 'reduced' })};
+    padding-left: ${({ theme }) =>
+      em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
   }
 `;
