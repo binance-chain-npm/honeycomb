@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { transitions } from 'polished';
+import { transitions, em } from 'polished';
 
 import { icons } from '../Icon';
-import { hcStyle } from '../../modules/themes';
 
 export const Input = styled.input`
   position: absolute;
@@ -26,11 +25,11 @@ export const Label = styled.label`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: ${hcStyle.increased()};
-    height: ${hcStyle.increased()};
+    width: ${({ theme }) => em(theme.honeycomb.size.increased)};
+    height: ${({ theme }) => em(theme.honeycomb.size.increased)};
     background: transparent;
     border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
-    border-radius: ${hcStyle.radiusReduced({ forFontSize: 'reduced' })};
+    border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
     display: flex;
     cursor: pointer;
     ${({ theme }) => transitions(['background-color', 'border'], theme.honeycomb.duration.normal)};
@@ -43,7 +42,7 @@ export const Label = styled.label`
       border-color: transparent;
       background: ${({ theme }) => theme.honeycomb.color.primary.normal};
       background-image: url(${icons.Tick});
-      background-size: ${hcStyle.halfOf(hcStyle.increased())};
+      background-size: ${({ theme }) => em(theme.honeycomb.size.increased / 2)};
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -52,6 +51,6 @@ export const Label = styled.label`
 
 export const LabelContent = styled.span`
   cursor: pointer;
-  font-size: ${hcStyle.reduced()};
-  margin-left: ${hcStyle.reduced({ forFontSize: 'reduced' })};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
 `;

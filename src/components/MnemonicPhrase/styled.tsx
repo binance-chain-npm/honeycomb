@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-
-import { hcStyle } from '../../modules/themes';
+import { em } from 'polished';
 
 export const Container = styled.ol`
   counter-reset: listCounter;
   display: flex;
   list-style: none;
-  margin: -${hcStyle.reduced()};
+  margin: -${({ theme }) => theme.honeycomb.size.reduced};
   padding: 0;
   align-items: center;
   justify-content: center;
@@ -20,25 +19,26 @@ export const Item = styled.li`
   background: ${({ theme }) => theme.honeycomb.color.bg.masked};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
-  border-radius: ${hcStyle.halfOf(hcStyle.huge())};
+  border-radius: ${({ theme }) => em(theme.honeycomb.size.huge / 2)};
   flex-grow: 1;
   flex-shrink: 0;
   align-items: center;
   justify-content: flex-start;
-  margin: ${hcStyle.reduced()};
-  padding-right: ${hcStyle.increased()};
-  height: ${hcStyle.huge()};
+  margin: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+  padding-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  height: ${({ theme }) => em(theme.honeycomb.size.huge)};
   overflow: hidden;
 
   ::before {
     content: '#' counter(listCounter);
-    font-size: ${hcStyle.reduced()};
-    min-width: ${hcStyle.huge({ forFontSize: 'reduced' })};
-    height: ${hcStyle.huge({ forFontSize: 'reduced' })};
+    font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+    min-width: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+    height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
     background: ${({ theme }) => theme.honeycomb.color.bg.normal};
     display: flex;
-    padding: 0 ${hcStyle.reduced({ forFontSize: 'reduced' })};
-    margin-right: ${hcStyle.increased({ forFontSize: 'reduced' })};
+    padding: 0 ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
+    margin-right: ${({ theme }) =>
+      em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
     align-items: center;
     justify-content: center;
   }

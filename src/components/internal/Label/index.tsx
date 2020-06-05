@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-
-import { hcStyle } from '../../../modules/themes';
+import { em } from 'polished';
 
 export const Label = styled.label`
   display: block;
-  font-size: ${hcStyle.reduced()};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   font-weight: 600;
   text-overflow: ellipsis;
   overflow: hidden;
