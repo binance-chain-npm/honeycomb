@@ -7,7 +7,7 @@ module.exports = {
 
       const SvgComponent = (${props}) => ${jsx}
       const ${componentName} = styled(SvgComponent)\`;
-        width: 1em;
+        width: auto;
         height: 1em;
         fill: currentColor;
       \`
@@ -16,11 +16,6 @@ module.exports = {
     `;
   },
   svgoConfig: {
-    plugins: [
-      { sortAttrs: true },
-      { removeViewBox: false },
-      { removeDimensions: true },
-      { convertColors: { currentColor: true } },
-    ],
+    plugins: [{ sortAttrs: true }, { removeViewBox: false }, { removeDimensions: true }],
   },
 };
