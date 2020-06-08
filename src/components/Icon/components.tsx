@@ -10,3 +10,5 @@ export { ReactComponent as PowerOff } from './assets/PowerOff.svg';
 export { ReactComponent as Account } from './assets/Account.svg';
 export { ReactComponent as ArrowTopRight } from './assets/ArrowTopRight.svg';
 export { ReactComponent as Lock } from './assets/Lock.svg';
+export { ReactComponent as Visa } from './assets/Visa.svg';
+export { ReactComponent as Mastercard } from './assets/Mastercard.svg';
