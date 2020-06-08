@@ -5,7 +5,7 @@ describe('BuyWithMoonPay', () => {
   });
 
   it('renders properly with Gold Dark theme', () => {
-    cy.visitStory({ storyId: 'elements-buywithmoonpay--defaultult', themeName: 'GoldDark' });
+    cy.visitStory({ storyId: 'elements-buywithmoonpay--default', themeName: 'GoldDark' });
     cy.percySnapshot('BuyWithMoonPay with Gold Dark theme');
   });
 });
