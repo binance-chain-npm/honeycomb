@@ -1,10 +1,11 @@
-import React, { useContext, useMemo, useLayoutEffect } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { stringifyUrl } from 'query-string';
 import { useTheme } from 'styled-components';
 
 import { Button } from '../Button';
 
 import { Context } from './context';
+import { StyledMastercard, StyledVisa } from './styled';
 
 export type Props = Omit<
   React.ComponentPropsWithoutRef<typeof Button>,
@@ -19,13 +20,13 @@ export const Component = ({
   address,
   disabled,
   variant = 'secondary',
-  children = 'Buy BNB',
+  children,
   redirectUrl: redirectUrlParam,
   ...otherProps
 }: Props) => {
   const theme = useTheme();
   const { mode, apiKey } = useContext(Context);
-  if (!apiKey) {
+  if (process.env.NODE_ENV !== 'production' && !apiKey) {
     throw new Error('MoonPay API key has not been provided');
   }
 
@@ -52,7 +53,13 @@ export const Component = ({
 
   return (
     <Button {...otherProps} variant={variant} href={url} disabled={!apiKey || disabled}>
-      {children}
+      {children ?? (
+        <>
+          Buy BNB&nbsp;
+          <StyledVisa />
+          <StyledMastercard />
+        </>
+      )}
     </Button>
   );
 };
