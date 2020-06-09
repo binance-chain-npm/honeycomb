@@ -12,7 +12,8 @@ export type Props = Omit<
   'as' | 'htmlTag' | 'href' | 'variant'
 > & {
   variant?: React.ComponentPropsWithoutRef<typeof Button>['variant'];
-  address: string;
+  address?: string;
+  signature?: string;
   redirectUrl?: string;
 };
 
@@ -21,6 +22,7 @@ export const Component = ({
   disabled,
   variant = 'secondary',
   children,
+  signature,
   redirectUrl: redirectUrlParam,
   ...otherProps
 }: Props) => {
@@ -45,10 +47,11 @@ export const Component = ({
           currencyCode: 'bnb',
           colorCode: theme.honeycomb.color.primary.normal,
           walletAddress: address,
+          signature,
           redirectURL: redirectUrl,
         },
       }),
-    [apiKey, address, mode, theme, redirectUrl],
+    [apiKey, address, mode, theme, signature, redirectUrl],
   );
 
   return (
