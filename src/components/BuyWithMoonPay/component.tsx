@@ -1,11 +1,11 @@
-import React, { useContext, useMemo } from 'react';
-import { stringifyUrl } from 'query-string';
-import { useTheme } from 'styled-components';
+import React, { useContext } from 'react';
 
 import { Button } from '../Button';
+import { Loading } from '../Loading';
 
 import { Context } from './context';
 import { StyledMastercard, StyledVisa } from './styled';
+import { useMoonPayUrl } from './useMoonPayUrl';
 
 export type Props = Omit<
   React.ComponentPropsWithoutRef<typeof Button>,
@@ -15,6 +15,7 @@ export type Props = Omit<
   address?: string;
   signature?: string;
   redirectUrl?: string;
+  currencyCode?: string;
 };
 
 export const Component = ({
@@ -23,45 +24,41 @@ export const Component = ({
   variant = 'secondary',
   children,
   signature,
-  redirectUrl: redirectUrlParam,
+  redirectUrl,
+  currencyCode,
   ...otherProps
 }: Props) => {
-  const theme = useTheme();
-  const { mode, apiKey } = useContext(Context);
-  if (process.env.NODE_ENV !== 'production' && !apiKey) {
+  const { mode, apiKey, signatureEndpoint } = useContext(Context);
+  if (!apiKey) {
     throw new Error('MoonPay API key has not been provided');
   }
 
-  const redirectUrl = useMemo(() => {
-    if (redirectUrlParam) return redirectUrlParam;
-    if (typeof location !== 'undefined') return location.href; // eslint-disable-line no-restricted-globals
-    return undefined;
-  }, [redirectUrlParam]);
-
-  const url = useMemo(
-    () =>
-      stringifyUrl({
-        url: mode === 'production' ? 'https://buy.moonpay.io' : 'https://buy-staging.moonpay.io',
-        query: {
-          apiKey,
-          currencyCode: 'bnb',
-          colorCode: theme.honeycomb.color.primary.normal,
-          walletAddress: address,
-          signature,
-          redirectURL: redirectUrl,
-        },
-      }),
-    [apiKey, address, mode, theme, signature, redirectUrl],
-  );
+  const { url, isLoading } = useMoonPayUrl({
+    address,
+    currencyCode,
+    signatureEndpoint,
+    apiKey,
+    mode,
+    redirectUrl,
+  });
 
   return (
-    <Button {...otherProps} variant={variant} href={url} disabled={!apiKey || disabled}>
-      {children ?? (
-        <>
-          Buy BNB&nbsp;
-          <StyledVisa />
-          <StyledMastercard />
-        </>
+    <Button
+      {...otherProps}
+      variant={variant}
+      href={url}
+      disabled={isLoading || !apiKey || disabled}
+    >
+      {isLoading ? (
+        <Loading />
+      ) : (
+        children ?? (
+          <>
+            Buy BNB&nbsp;
+            <StyledVisa />
+            <StyledMastercard />
+          </>
+        )
       )}
     </Button>
   );
