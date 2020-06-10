@@ -1,4 +1,9 @@
-export { HoneycombThemeProvider, HoneycombTheme, HoneycombThemeType } from './modules/themes';
+export {
+  HoneycombThemeProvider,
+  HoneycombTheme,
+  HoneycombThemeType,
+  useSystemTheme,
+} from './modules/themes';
 export {
   GlobalFontFaces,
   GlobalColors,
