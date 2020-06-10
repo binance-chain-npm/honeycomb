@@ -47,14 +47,14 @@ const primary = css`
 `;
 
 const secondary = css`
-  background: transparent;
+  background: ${({ theme }) => theme.honeycomb.color.secondary.normal};
   color: inherit;
 
   :hover,
   :active {
-    border-color: ${({ theme }) => theme.honeycomb.color.primary.active};
-    background: ${({ theme }) => theme.honeycomb.color.primary.masked};
-    color: ${({ theme }) => theme.honeycomb.color.primary.active};
+    background: ${({ theme }) => theme.honeycomb.color.secondary.active};
+    color: ${({ theme }) =>
+      theme.honeycomb.color.readable.normal(theme.honeycomb.color.secondary.active)};
   }
 `;
 
