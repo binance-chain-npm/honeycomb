@@ -33,7 +33,11 @@ export const GoldDark = {
       primary: {
         normal: '#f0b90b',
         active: '#f8d12f',
-        masked: '#3c2e10',
+      },
+
+      secondary: {
+        normal: '#474d57',
+        active: '#f8d12f',
       },
 
       success: {

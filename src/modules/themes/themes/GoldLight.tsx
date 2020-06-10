@@ -25,6 +25,11 @@ export const GoldLight: HoneycombThemeType = {
         masked: '#fffdf0',
       },
 
+      secondary: {
+        ...GoldDark.honeycomb.color.secondary,
+        normal: '#e6e8ea',
+      },
+
       text: {
         normal: GoldDark.honeycomb.color.readable.normal('white'),
         masked: GoldDark.honeycomb.color.readable.masked('white'),
