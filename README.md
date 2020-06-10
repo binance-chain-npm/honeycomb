@@ -17,13 +17,17 @@ import { HoneycombThemeProvider, Button } from '@binance-chain/honeycomb';
 
 export const MyApp = () => {
   return (
-    <HoneycombThemeProvider family="gold" variant="light">
+    <HoneycombThemeProvider family="gold" defaultVariant="light">
       <h1>My cool app</h1>
       <Button variant="primary">Click here!</Button>
     </HoneycombThemeProvider>
   );
 };
 ```
+
+You can use the props `defaultVariant` or `variant`. If you use `variant`, you will force Honeycomb
+to use exactly the choice you want. If use `defaultVariant`, Honeycomb will always try to first
+guess what the user's light/dark settings are.
 
 You may use the optional `localTheme` prop to merge your own theme with the Honeycomb one. Do not
 try to add or overwrite stuff inside the `{ honeycomb }` property, though.
