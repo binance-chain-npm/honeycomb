@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components';
 export type Params = {
   address?: string;
   currencyCode?: string;
+  defaultCurrencyCode?: string;
   redirectUrl?: string;
   mode: 'test' | 'production';
   apiKey: string;
@@ -13,7 +14,8 @@ export type Params = {
 
 export const useMoonPayUrl = ({
   address,
-  currencyCode = 'bnb',
+  currencyCode,
+  defaultCurrencyCode = 'bnb',
   redirectUrl: redirectUrlParam,
   mode,
   apiKey,
@@ -34,12 +36,13 @@ export const useMoonPayUrl = ({
         query: {
           apiKey,
           currencyCode,
+          defaultCurrencyCode,
           colorCode: theme.honeycomb.color.primary.normal,
           walletAddress: address,
           redirectURL: redirectUrl,
         },
       }),
-    [apiKey, currencyCode, address, mode, theme, redirectUrl],
+    [apiKey, currencyCode, defaultCurrencyCode, address, mode, theme, redirectUrl],
   );
 
   const [isLoading, setIsLoading] = useState(!!signatureEndpoint);

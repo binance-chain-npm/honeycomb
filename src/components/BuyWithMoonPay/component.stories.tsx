@@ -20,6 +20,9 @@ export const WithAutomaticSigning = () => (
     apiKey="pk_test_OZksbXGh4UvoO9zxDKS9IpbGVSZke4h"
     signatureEndpoint="https://testnet-wallet.binance.org/api/v1/moonpay/sign"
   >
-    <BuyWithMoonPay currencyCode="btc" address="tbnb1l4awfmyyfsgmam7r2k6uke2v73smmxsgvlf4u5" />
+    <BuyWithMoonPay
+      defaultCurrencyCode="btc"
+      address="tbnb1l4awfmyyfsgmam7r2k6uke2v73smmxsgvlf4u5"
+    />
   </BuyWithMoonPay.Provider>
 );
