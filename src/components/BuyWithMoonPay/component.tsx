@@ -16,7 +16,6 @@ export type Props = Omit<
   signature?: string;
   redirectUrl?: string;
   currencyCode?: string;
-  defaultCurrencyCode?: string;
 };
 
 export const Component = ({
@@ -27,7 +26,6 @@ export const Component = ({
   signature,
   redirectUrl,
   currencyCode,
-  defaultCurrencyCode,
   ...otherProps
 }: Props) => {
   const { mode, apiKey, signatureEndpoint } = useContext(Context);
@@ -42,7 +40,6 @@ export const Component = ({
     apiKey,
     mode,
     redirectUrl,
-    defaultCurrencyCode,
   });
 
   return (
