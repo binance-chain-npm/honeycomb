@@ -1,5 +1,5 @@
-import React, { useMemo, useRef } from 'react';
-import { useDrag, usePinch, useGesture } from 'react-use-gesture';
+import React, { useMemo, useRef, useEffect } from 'react';
+import { useGesture } from 'react-use-gesture';
 
 import { CandleType } from '../types';
 
@@ -42,8 +42,7 @@ export const Component = ({
   const offset = useMemo(() => width - caliber * candles.length, [width, caliber, candles.length]);
   const { scaleWidth, scaleY } = useScaleFunctions({ candles, width, height });
 
-  const domTarget = useRef(null);
-
+  const domTarget = useRef<SVGSVGElement>(null);
   const originalCandleIndexDelta = useRef(candleIndexDelta);
 
   const isTouchScreen = 'ontouchstart' in document.documentElement;
@@ -114,14 +113,13 @@ export const Component = ({
     },
   );
 
+  useEffect(() => {
+    const clean = bind() as any;
+    return () => clean();
+  }, [bind]);
+
   return (
-    <Svg
-      viewBox={`0 0 ${width} ${height}`}
-      width={width}
-      height={height}
-      {...bind()}
-      ref={domTarget}
-    >
+    <Svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} ref={domTarget}>
       {candles.map((it, index) => (
         <Candle
           {...it}
