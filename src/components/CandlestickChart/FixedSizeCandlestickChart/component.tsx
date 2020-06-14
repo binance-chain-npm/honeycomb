@@ -44,6 +44,8 @@ export const Component = ({
 
   const domTarget = useRef(null);
 
+  const originalCandleIndexDelta = useRef(candleIndexDelta);
+
   const isTouchScreen = 'ontouchstart' in document.documentElement;
   const bind = useGesture(
     {
@@ -78,22 +80,18 @@ export const Component = ({
 
         onDataScrolled?.({ candleIndexDelta: newValue });
       },
-      onDrag: ({ event, delta: [mx] }) => {
+      onDragStart: () => {
+        originalCandleIndexDelta.current = candleIndexDelta;
+      },
+      onDrag: ({ event, movement: [mx] }) => {
         event?.preventDefault();
         event?.stopPropagation();
 
-        const sign = Math.sign(mx);
-        const minDelta = 1 * sign;
-        const delta = (() => {
-          if (mx < caliber / 2) return minDelta;
-          if (mx < caliber) return minDelta * 2;
-          return mx;
-        })();
-
         const newValue = (() => {
-          const diff = Math.floor(Math.abs(delta)) * sign;
+          const sign = Math.sign(mx);
+          const diff = Math.floor(Math.abs(mx / caliber)) * sign;
 
-          const result = candleIndexDelta + diff;
+          const result = originalCandleIndexDelta.current + diff;
           if (result < minCandleIndexDelta && diff < 0) return minCandleIndexDelta;
           if (result > maxCandleIndexDelta && diff > 0) return maxCandleIndexDelta;
 
