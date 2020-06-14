@@ -36,8 +36,8 @@ export const Default = () => {
       width={300}
       height={200}
       candles={candles}
-      caliber={31}
-      lastCandleIndex={candles.length - 1 - scroll}
+      caliber={7}
+      candleIndexDelta={scroll}
     />
   );
 };

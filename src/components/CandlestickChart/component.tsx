@@ -10,7 +10,7 @@ export type Props = {
   height: number;
   candles: CandleType[];
   caliber: number;
-  lastCandleIndex: number;
+  candleIndexDelta?: number;
 };
 
 export const Component = ({
@@ -18,7 +18,7 @@ export const Component = ({
   height,
   candles: candlesParam,
   caliber,
-  lastCandleIndex,
+  candleIndexDelta = 0,
 }: Props) => {
   if (process.env.NODE_ENV !== 'production') {
     if (caliber % 2 !== 1) {
@@ -36,9 +36,9 @@ export const Component = ({
 
   const candleCount = useMemo(() => width / caliber, [width, caliber]);
   const firstCandleIndex = useMemo(() => {
-    const value = lastCandleIndex - candleCount + 1;
+    const value = candlesParam.length - candleIndexDelta - candleCount + 1;
     return value >= 0 ? value : 0;
-  }, [lastCandleIndex, candleCount]);
+  }, [candlesParam, candleIndexDelta, candleCount]);
   const candles = useMemo(
     () => candlesParam.slice(firstCandleIndex, firstCandleIndex + candleCount),
     [candlesParam, firstCandleIndex, candleCount],
@@ -66,7 +66,12 @@ export const Component = ({
   );
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
+    <svg
+      viewBox={`0 0 ${width} ${height}`}
+      width={width}
+      height={height}
+      style={{ backgroundColor: 'white' }}
+    >
       {candles.map((it, index) => (
         <Candle
           {...it}
