@@ -22,7 +22,6 @@ export const GoldLight: HoneycombThemeType = {
 
       primary: {
         ...GoldDark.honeycomb.color.primary,
-        masked: '#fffdf0',
       },
 
       secondary: {

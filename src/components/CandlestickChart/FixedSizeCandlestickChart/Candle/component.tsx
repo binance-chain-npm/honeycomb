@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { ScaleLinear } from 'd3-scale';
 import { useTheme } from 'styled-components';
 
-import { CandleType } from '../types';
+import { CandleType } from '../../types';
 import { CANDLE_MARGIN } from '../contants';
 
 export type Props = CandleType & {

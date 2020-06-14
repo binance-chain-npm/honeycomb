@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { scaleLinear } from 'd3-scale';
 
-import { CandleType } from '../types';
+import { CandleType } from '../../types';
 
 export const useScaleFunctions = ({
   candles,

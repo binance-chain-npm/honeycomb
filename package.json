@@ -90,6 +90,7 @@
     "url-loader": "^4.1.0"
   },
   "dependencies": {
+    "@rehooks/component-size": "^1.0.3",
     "@tippyjs/react": "^4.0.2",
     "crypto-js": "^4.0.0",
     "d3-scale": "^3.2.1",

@@ -1,4 +1,5 @@
 import React from 'react';
+import { createGlobalStyle as css } from 'styled-components';
 
 import { Sections } from '../../modules/sections';
 
@@ -20,8 +21,17 @@ const candles: Candle[] = data.map((it) => ({
   close: asFloat(it[4]),
 }));
 
+const NoBodyMargin = css`
+  body {
+    margin: 0;
+  }
+`;
+
 export const Default = () => {
   return (
-    <CandlestickChart width={300} height={200} candles={candles} caliber={7} candleIndexDelta={0} />
+    <>
+      <NoBodyMargin />
+      <CandlestickChart candles={candles} caliber={7} candleIndexDelta={0} />
+    </>
   );
 };

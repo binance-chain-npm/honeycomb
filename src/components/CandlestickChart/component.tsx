@@ -1,55 +1,22 @@
-import React, { useMemo } from 'react';
+import React, { useRef } from 'react';
+import useComponentSize from '@rehooks/component-size';
 
-import { CandleType } from './types';
-import { Candle } from './Candle';
-import { useScaleFunctions } from './useScaleFunctions';
-import { assertCaliberIsValid } from './assertCaliberIsValid';
+import { FixedSizeCandlestickChart } from './FixedSizeCandlestickChart';
 
-export type Props = {
-  width: number;
-  height: number;
-  candles: CandleType[];
-  caliber: number;
-  candleIndexDelta?: number;
-};
+export type Props = Omit<
+  React.ComponentPropsWithoutRef<typeof FixedSizeCandlestickChart>,
+  'width' | 'height'
+>;
 
-export const Component = ({
-  width,
-  height,
-  candles: candlesParam,
-  caliber,
-  candleIndexDelta = 0,
-}: Props) => {
-  assertCaliberIsValid({ caliber });
-
-  const candles = useMemo(() => {
-    const candleCount = Math.ceil(width / caliber) + 1; // An extra candle is always added to avoid blank areas in the chart
-    const firstCandleIndex = (() => {
-      const value = candlesParam.length - candleIndexDelta - candleCount + 1;
-      return value >= 0 ? value : 0;
-    })();
-
-    return candlesParam.slice(firstCandleIndex, firstCandleIndex + candleCount);
-  }, [candlesParam, caliber, candleIndexDelta, width]);
-
-  /** Used to ensure that the chart is "aligned to the right". */
-  const offset = useMemo(() => width - caliber * candles.length, [width, caliber, candles.length]);
-  const { scaleWidth, scaleY } = useScaleFunctions({ candles, width, height });
-
+export const Component = (props: Props) => {
+  const ref = useRef(null);
+  const { width, height } = useComponentSize(ref);
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
-      {candles.map((it, index) => (
-        <Candle
-          {...it}
-          key={index}
-          index={index}
-          caliber={caliber}
-          scaleY={scaleY}
-          scaleWidth={scaleWidth}
-          offset={offset}
-        />
-      ))}
-    </svg>
+    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+      <div ref={ref} style={{ position: 'absolute', width: '100%', height: '100%' }}>
+        <FixedSizeCandlestickChart {...props} width={width} height={height} />
+      </div>
+    </div>
   );
 };
 
