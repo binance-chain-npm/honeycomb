@@ -12,26 +12,19 @@ export const useScaleFunctions = ({
   height: number;
   width: number;
 }) => {
-  const { min, max } = useMemo(() => {
+  return useMemo(() => {
     const values = candles.map((it) => [it.low, it.high]).flat();
-    return { min: Math.min(...values), max: Math.max(...values) };
-  }, [candles]);
+    const min = Math.min(...values);
+    const max = Math.max(...values);
 
-  const scaleY = useMemo(
-    () =>
-      scaleLinear()
-        .domain([min, max])
-        .range([height, 0]),
-    [min, max, height],
-  );
+    const scaleY = scaleLinear()
+      .domain([min, max])
+      .range([height, 0]);
 
-  const scaleWidth = useMemo(
-    () =>
-      scaleLinear()
-        .domain([0, max - min])
-        .range([0, width]),
-    [min, max, width],
-  );
+    const scaleWidth = scaleLinear()
+      .domain([0, max - min])
+      .range([0, width]);
 
-  return useMemo(() => ({ scaleY, scaleWidth }), [scaleY, scaleWidth]);
+    return { scaleY, scaleWidth };
+  }, [candles, height, width]);
 };
