@@ -11,6 +11,8 @@ export type Props = CandleType & {
   index: number;
 };
 
+const MARGIN = 4;
+
 export const Component = ({
   caliber,
   close,
@@ -22,16 +24,21 @@ export const Component = ({
   index,
 }: Props) => {
   const theme = useTheme();
-  const x = caliber * index + 0.5 * caliber;
+  const x = useMemo(() => caliber * index + 0.5 * caliber, [caliber, index]);
+  const color = useMemo(
+    () => (close > open ? theme.honeycomb.color.buy.normal : theme.honeycomb.color.sell.normal),
+    [close, open, theme],
+  );
+
   return (
     <>
-      <line
-        x1={x}
-        x2={x}
-        y1={scaleY(high)}
-        y2={scaleY(low)}
-        stroke={close > open ? theme.honeycomb.color.buy.normal : theme.honeycomb.color.sell.normal}
-        strokeWidth={1}
+      <line x1={x} x2={x} y1={scaleY(high)} y2={scaleY(low)} stroke={color} strokeWidth={1} />
+      <rect
+        x={caliber * index + MARGIN / 2}
+        y={scaleY(Math.max(open, close))}
+        width={caliber - MARGIN}
+        height={scaleWidth(Math.max(open, close) - Math.min(open, close))}
+        fill={color}
       />
     </>
   );
