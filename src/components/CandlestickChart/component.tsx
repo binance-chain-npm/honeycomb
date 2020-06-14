@@ -13,13 +13,21 @@ export const Component = ({ width, height, candles }: Props) => {
     return { min: Math.min(...values), max: Math.max(...values) };
   }, [candles]);
 
-  const scaleY = scaleLinear()
-    .domain([min, max])
-    .range([height, 0]);
+  const scaleY = useMemo(
+    () =>
+      scaleLinear()
+        .domain([min, max])
+        .range([height, 0]),
+    [min, max, height],
+  );
 
-  const scaleWidth = scaleLinear()
-    .domain([0, max - min])
-    .range([0, width]);
+  const scaleWidth = useMemo(
+    () =>
+      scaleLinear()
+        .domain([0, max - min])
+        .range([0, width]),
+    [min, max, width],
+  );
 
   return (
     <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
