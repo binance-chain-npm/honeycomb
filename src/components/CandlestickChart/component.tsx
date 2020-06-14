@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import { scaleLinear } from 'd3-scale';
 
 import { CandleType } from './types';
 import { Candle } from './Candle';
-import { CALIBER_MIN, CALIBER_MAX } from './contants';
+import { useScaleFunctions } from './useScaleFunctions';
+import { assertCaliberIsValid } from './assertCaliberIsValid';
 
 export type Props = {
   width: number;
@@ -20,53 +20,21 @@ export const Component = ({
   caliber,
   candleIndexDelta = 0,
 }: Props) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (caliber % 2 !== 1) {
-      throw new Error(`"caliber" should never be an even number, but got "${caliber}"`);
-    }
+  assertCaliberIsValid({ caliber });
 
-    if (caliber < CALIBER_MIN) {
-      throw new Error(`"caliber" cannot be lower than ${CALIBER_MIN}, but got "${caliber}"`);
-    }
+  const candles = useMemo(() => {
+    const candleCount = Math.ceil(width / caliber) + 1; // An extra candle is always added to avoid blank areas in the chart
+    const firstCandleIndex = (() => {
+      const value = candlesParam.length - candleIndexDelta - candleCount + 1;
+      return value >= 0 ? value : 0;
+    })();
 
-    if (caliber > CALIBER_MAX) {
-      throw new Error(`"caliber" cannot be lower than ${CALIBER_MAX}, but got "${caliber}"`);
-    }
-  }
-
-  const candleCount = useMemo(() => Math.ceil(width / caliber) + 1, [width, caliber]);
-  const firstCandleIndex = useMemo(() => {
-    const value = candlesParam.length - candleIndexDelta - candleCount + 1;
-    return value >= 0 ? value : 0;
-  }, [candlesParam, candleIndexDelta, candleCount]);
-  const candles = useMemo(
-    () => candlesParam.slice(firstCandleIndex, firstCandleIndex + candleCount),
-    [candlesParam, firstCandleIndex, candleCount],
-  );
+    return candlesParam.slice(firstCandleIndex, firstCandleIndex + candleCount);
+  }, [candlesParam, caliber, candleIndexDelta, width]);
 
   /** Used to ensure that the chart is "aligned to the right". */
   const offset = useMemo(() => width - caliber * candles.length, [width, caliber, candles.length]);
-
-  const { min, max } = useMemo(() => {
-    const values = candles.map((it) => [it.low, it.high]).flat();
-    return { min: Math.min(...values), max: Math.max(...values) };
-  }, [candles]);
-
-  const scaleY = useMemo(
-    () =>
-      scaleLinear()
-        .domain([min, max])
-        .range([height, 0]),
-    [min, max, height],
-  );
-
-  const scaleWidth = useMemo(
-    () =>
-      scaleLinear()
-        .domain([0, max - min])
-        .range([0, width]),
-    [min, max, width],
-  );
+  const { scaleWidth, scaleY } = useScaleFunctions({ candles, width, height });
 
   return (
     <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
