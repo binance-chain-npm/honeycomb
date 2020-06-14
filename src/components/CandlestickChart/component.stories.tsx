@@ -34,7 +34,7 @@ const NoBodyMargin = css`
 
 export const Default = () => {
   const [candleIndexDelta, setCandleIndexDelta] = useState(0);
-  const [caliber, setCaliber] = useState(31);
+  const [caliber, setCaliber] = useState(7);
   return (
     <>
       <NoBodyMargin />

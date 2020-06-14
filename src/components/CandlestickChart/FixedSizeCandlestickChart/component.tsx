@@ -93,26 +93,13 @@ export const Component = ({
 
         onDataScrolled?.({ candleIndexDelta: newValue });
       },
-      onPinch: ({ movement: [dx] }) => {
-        const sign = Math.sign(dx);
-        const minDelta = 2 * sign;
-        const rawDeltaAbs = Math.abs(dx / 20);
-        const delta = (() => {
-          if (rawDeltaAbs < caliber) return minDelta;
-          return rawDeltaAbs * sign;
-        })();
+      onPinch: ({ offset: [distance] }) => {
+        if (distance > CALIBER_MAX || distance < CALIBER_MIN) return;
 
-        const newValue = (() => {
-          const result = sign > 0 ? Math.floor(caliber + delta) : Math.ceil(caliber + delta);
+        const rounded = Math.floor(distance);
+        const ensuredOdd = rounded % 2 !== 1 ? rounded - 1 : rounded;
 
-          if (result > CALIBER_MAX) return CALIBER_MAX;
-          if (result < CALIBER_MIN) return CALIBER_MIN;
-
-          if (result % 2 !== 1) return result - 1;
-          return result;
-        })();
-
-        onCaliberChanged?.({ caliber: newValue });
+        onCaliberChanged?.({ caliber: ensuredOdd });
       },
     },
     {
@@ -120,6 +107,10 @@ export const Component = ({
       eventOptions: { passive: false, capture: true },
       drag: { axis: 'x', filterTaps: true },
       wheel: { enabled: !isTouchScreen, lockDirection: true },
+      pinch: {
+        distanceBounds: { min: CALIBER_MIN, max: CALIBER_MAX },
+        initial: [caliber, 0],
+      },
     },
   );
 
