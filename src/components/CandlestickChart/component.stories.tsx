@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { Sections } from '../../modules/sections';
 
@@ -21,23 +21,7 @@ const candles: Candle[] = data.map((it) => ({
 }));
 
 export const Default = () => {
-  const [scroll, setScroll] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(
-      () => setScroll((scroll) => (candles.length > scroll ? scroll + 1 : 0)),
-      50,
-    );
-    return () => clearInterval(id);
-  }, []);
-
   return (
-    <CandlestickChart
-      width={300}
-      height={200}
-      candles={candles}
-      caliber={7}
-      candleIndexDelta={scroll}
-    />
+    <CandlestickChart width={300} height={200} candles={candles} caliber={7} candleIndexDelta={0} />
   );
 };

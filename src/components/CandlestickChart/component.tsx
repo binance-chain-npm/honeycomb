@@ -69,12 +69,7 @@ export const Component = ({
   );
 
   return (
-    <svg
-      viewBox={`0 0 ${width} ${height}`}
-      width={width}
-      height={height}
-      style={{ backgroundColor: 'white' }}
-    >
+    <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height}>
       {candles.map((it, index) => (
         <Candle
           {...it}
