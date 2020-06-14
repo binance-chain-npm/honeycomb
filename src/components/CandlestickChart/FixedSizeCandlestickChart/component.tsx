@@ -50,13 +50,9 @@ export const Component = ({
   const bind = useGesture(
     {
       onWheel: ({
-        event,
         delta: [deltaX, deltaY],
         direction: [directionHorizontal, directionVertical],
       }) => {
-        event?.preventDefault();
-        event?.stopPropagation();
-
         const isHorizontal = Math.abs(directionHorizontal) >= Math.abs(directionVertical);
         const deltaRaw = isHorizontal ? deltaX : deltaY;
 
@@ -83,10 +79,7 @@ export const Component = ({
       onDragStart: () => {
         originalCandleIndexDelta.current = candleIndexDelta;
       },
-      onDrag: ({ event, movement: [mx] }) => {
-        event?.preventDefault();
-        event?.stopPropagation();
-
+      onDrag: ({ movement: [mx] }) => {
         const newValue = (() => {
           const sign = Math.sign(mx);
           const diff = Math.floor(Math.abs(mx / caliber)) * sign;
@@ -100,10 +93,7 @@ export const Component = ({
 
         onDataScrolled?.({ candleIndexDelta: newValue });
       },
-      onPinch: ({ event, movement: [dx] }) => {
-        event?.preventDefault();
-        event?.stopPropagation();
-
+      onPinch: ({ movement: [dx] }) => {
         const sign = Math.sign(dx);
         const minDelta = 2 * sign;
         const rawDeltaAbs = Math.abs(dx / 20);
@@ -127,7 +117,7 @@ export const Component = ({
     },
     {
       domTarget,
-      eventOptions: { passive: false },
+      eventOptions: { passive: false, capture: true },
       drag: { axis: 'x' },
       wheel: { enabled: !isTouchScreen },
     },
