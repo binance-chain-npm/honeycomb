@@ -3,11 +3,47 @@ import { scaleLinear } from 'd3-scale';
 
 import { CandleType } from './types';
 import { Candle } from './Candle';
+import { CALIBER_MIN, CALIBER_MAX } from './contants';
 
-export type Props = { width: number; height: number; candles: CandleType[] };
+export type Props = {
+  width: number;
+  height: number;
+  candles: CandleType[];
+  caliber: number;
+  lastCandleIndex: number;
+};
 
-export const Component = ({ width, height, candles }: Props) => {
-  const caliber = useMemo(() => width / candles.length, [width, candles]);
+export const Component = ({
+  width,
+  height,
+  candles: candlesParam,
+  caliber,
+  lastCandleIndex,
+}: Props) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (caliber % 2 !== 1) {
+      throw new Error(`"caliber" should never be an even number, but got "${caliber}"`);
+    }
+
+    if (caliber < CALIBER_MIN) {
+      throw new Error(`"caliber" cannot be lower than ${CALIBER_MIN}, but got "${caliber}"`);
+    }
+
+    if (caliber > CALIBER_MAX) {
+      throw new Error(`"caliber" cannot be lower than ${CALIBER_MAX}, but got "${caliber}"`);
+    }
+  }
+
+  const candleCount = useMemo(() => width / caliber, [width, caliber]);
+  const firstCandleIndex = useMemo(() => {
+    const value = lastCandleIndex - candleCount + 1;
+    return value >= 0 ? value : 0;
+  }, [lastCandleIndex, candleCount]);
+  const candles = useMemo(
+    () => candlesParam.slice(firstCandleIndex, firstCandleIndex + candleCount),
+    [candlesParam, firstCandleIndex, candleCount],
+  );
+
   const { min, max } = useMemo(() => {
     const values = candles.map((it) => [it.low, it.high]).flat();
     return { min: Math.min(...values), max: Math.max(...values) };
