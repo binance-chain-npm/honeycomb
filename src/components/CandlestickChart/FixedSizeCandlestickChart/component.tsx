@@ -44,8 +44,40 @@ export const Component = ({
 
   const domTarget = useRef(null);
 
+  const isTouchScreen = 'ontouchstart' in document.documentElement;
   const bind = useGesture(
     {
+      onWheel: ({
+        event,
+        delta: [deltaX, deltaY],
+        direction: [directionHorizontal, directionVertical],
+      }) => {
+        event?.preventDefault();
+        event?.stopPropagation();
+
+        const isHorizontal = Math.abs(directionHorizontal) >= Math.abs(directionVertical);
+        const deltaRaw = isHorizontal ? deltaX : deltaY;
+
+        const sign = Math.sign(isHorizontal ? -directionHorizontal : -directionVertical);
+        const minDelta = 1 * sign;
+        const delta = (() => {
+          if (deltaRaw < caliber / 2) return minDelta;
+          if (deltaRaw < caliber) return minDelta * 2;
+          return deltaRaw;
+        })();
+
+        const newValue = (() => {
+          const diff = Math.floor(Math.abs(delta)) * sign;
+
+          const result = candleIndexDelta + diff;
+          if (result < minCandleIndexDelta && diff < 0) return minCandleIndexDelta;
+          if (result > maxCandleIndexDelta && diff > 0) return maxCandleIndexDelta;
+
+          return result;
+        })();
+
+        onDataScrolled?.({ candleIndexDelta: newValue });
+      },
       onDrag: ({ event, delta: [mx] }) => {
         event?.preventDefault();
         event?.stopPropagation();
@@ -95,7 +127,12 @@ export const Component = ({
         onCaliberChanged?.({ caliber: newValue });
       },
     },
-    { domTarget, eventOptions: { passive: false } },
+    {
+      domTarget,
+      eventOptions: { passive: false },
+      drag: { axis: 'x' },
+      wheel: { enabled: !isTouchScreen },
+    },
   );
 
   return (
