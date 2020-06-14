@@ -34,14 +34,16 @@ const NoBodyMargin = css`
 
 export const Default = () => {
   const [candleIndexDelta, setCandleIndexDelta] = useState(0);
+  const [caliber, setCaliber] = useState(31);
   return (
     <>
       <NoBodyMargin />
       <CandlestickChart
         candles={candles}
-        caliber={31}
+        caliber={caliber}
         candleIndexDelta={candleIndexDelta}
         onDataScrolled={({ candleIndexDelta }) => setCandleIndexDelta(candleIndexDelta)}
+        onCaliberChanged={({ caliber }) => setCaliber(caliber)}
       />
     </>
   );

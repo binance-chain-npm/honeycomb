@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { useDrag } from 'react-use-gesture';
+import React, { useMemo, useRef } from 'react';
+import { useDrag, usePinch, useGesture } from 'react-use-gesture';
 
 import { CandleType } from '../types';
 
@@ -8,6 +8,7 @@ import { useScaleFunctions } from './useScaleFunctions';
 import { assertCaliberIsValid } from './assertCaliberIsValid';
 import { Svg } from './styled';
 import { useCandles } from './useCandles';
+import { CALIBER_MAX, CALIBER_MIN } from './contants';
 
 export type Props = {
   width: number;
@@ -16,6 +17,7 @@ export type Props = {
   caliber: number;
   candleIndexDelta?: number;
   onDataScrolled?: (params: { candleIndexDelta: number }) => void;
+  onCaliberChanged?: (params: { caliber: number }) => void;
 };
 
 export const Component = ({
@@ -25,6 +27,7 @@ export const Component = ({
   caliber,
   candleIndexDelta = 0,
   onDataScrolled,
+  onCaliberChanged,
 }: Props) => {
   assertCaliberIsValid({ caliber });
 
@@ -39,27 +42,70 @@ export const Component = ({
   const offset = useMemo(() => width - caliber * candles.length, [width, caliber, candles.length]);
   const { scaleWidth, scaleY } = useScaleFunctions({ candles, width, height });
 
-  const bind = useDrag(
-    ({ delta: [mx] }) => {
-      const newValue = (() => {
-        const rawDiff = mx / (caliber / 5);
-        const sign = Math.sign(rawDiff);
-        const diff = Math.floor(Math.abs(rawDiff)) * sign;
+  const domTarget = useRef(null);
 
-        const result = candleIndexDelta + diff;
-        if (result < minCandleIndexDelta && diff < 0) return minCandleIndexDelta;
-        if (result > maxCandleIndexDelta && diff > 0) return maxCandleIndexDelta;
+  const bind = useGesture(
+    {
+      onDrag: ({ event, delta: [mx] }) => {
+        event?.preventDefault();
+        event?.stopPropagation();
 
-        return result;
-      })();
+        const sign = Math.sign(mx);
+        const minDelta = 1 * sign;
+        const delta = (() => {
+          if (mx < caliber / 2) return minDelta;
+          if (mx < caliber) return minDelta * 2;
+          return mx;
+        })();
 
-      onDataScrolled?.({ candleIndexDelta: newValue });
+        const newValue = (() => {
+          const diff = Math.floor(Math.abs(delta)) * sign;
+
+          const result = candleIndexDelta + diff;
+          if (result < minCandleIndexDelta && diff < 0) return minCandleIndexDelta;
+          if (result > maxCandleIndexDelta && diff > 0) return maxCandleIndexDelta;
+
+          return result;
+        })();
+
+        onDataScrolled?.({ candleIndexDelta: newValue });
+      },
+      onPinch: ({ event, movement: [dx] }) => {
+        event?.preventDefault();
+        event?.stopPropagation();
+
+        const sign = Math.sign(dx);
+        const minDelta = 2 * sign;
+        const rawDeltaAbs = Math.abs(dx / 20);
+        const delta = (() => {
+          if (rawDeltaAbs < caliber) return minDelta;
+          return rawDeltaAbs * sign;
+        })();
+
+        const newValue = (() => {
+          const result = sign > 0 ? Math.floor(caliber + delta) : Math.ceil(caliber + delta);
+
+          if (result > CALIBER_MAX) return CALIBER_MAX;
+          if (result < CALIBER_MIN) return CALIBER_MIN;
+
+          if (result % 2 !== 1) return result - 1;
+          return result;
+        })();
+
+        onCaliberChanged?.({ caliber: newValue });
+      },
     },
-    { axis: 'x' },
+    { domTarget, eventOptions: { passive: false } },
   );
 
   return (
-    <Svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} {...bind()}>
+    <Svg
+      viewBox={`0 0 ${width} ${height}`}
+      width={width}
+      height={height}
+      {...bind()}
+      ref={domTarget}
+    >
       {candles.map((it, index) => (
         <Candle
           {...it}
