@@ -25,7 +25,7 @@ export const Component = ({
   offset,
 }: Props) => {
   const theme = useTheme();
-  const x = useMemo(() => caliber * index + 0.5 * caliber + offset, [caliber, index, offset]);
+  const lineX = useMemo(() => caliber * index + 0.5 * caliber + offset, [caliber, index, offset]);
   const color = useMemo(
     () => (close > open ? theme.honeycomb.color.buy.normal : theme.honeycomb.color.sell.normal),
     [close, open, theme],
@@ -33,7 +33,14 @@ export const Component = ({
 
   return (
     <>
-      <line x1={x} x2={x} y1={scaleY(high)} y2={scaleY(low)} stroke={color} strokeWidth={1} />
+      <line
+        x1={lineX}
+        x2={lineX}
+        y1={scaleY(high)}
+        y2={scaleY(low)}
+        stroke={color}
+        strokeWidth={1}
+      />
       <rect
         x={caliber * index + CANDLE_MARGIN / 2 + offset}
         y={scaleY(Math.max(open, close))}
