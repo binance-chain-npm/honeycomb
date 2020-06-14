@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import useComponentSize from '@rehooks/component-size';
 
 import { FixedSizeCandlestickChart } from './FixedSizeCandlestickChart';
+import { Container, Wrapper } from './styled';
 
 export type Props = Omit<
   React.ComponentPropsWithoutRef<typeof FixedSizeCandlestickChart>,
@@ -9,14 +10,15 @@ export type Props = Omit<
 >;
 
 export const Component = (props: Props) => {
-  const ref = useRef(null);
-  const { width, height } = useComponentSize(ref);
+  const sizeRef = useRef(null);
+  const { width, height } = useComponentSize(sizeRef);
+
   return (
-    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-      <div ref={ref} style={{ position: 'absolute', width: '100%', height: '100%' }}>
+    <Container ref={sizeRef}>
+      <Wrapper>
         <FixedSizeCandlestickChart {...props} width={width} height={height} />
-      </div>
-    </div>
+      </Wrapper>
+    </Container>
   );
 };
 

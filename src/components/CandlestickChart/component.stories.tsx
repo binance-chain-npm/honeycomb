@@ -25,6 +25,11 @@ const NoBodyMargin = css`
   body {
     margin: 0;
   }
+
+  #root {
+    width: 100vw;
+    height: 100vh;
+  }
 `;
 
 export const Default = () => {
