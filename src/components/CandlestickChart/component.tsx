@@ -34,7 +34,7 @@ export const Component = ({
     }
   }
 
-  const candleCount = useMemo(() => width / caliber, [width, caliber]);
+  const candleCount = useMemo(() => Math.ceil(width / caliber) + 1, [width, caliber]);
   const firstCandleIndex = useMemo(() => {
     const value = candlesParam.length - candleIndexDelta - candleCount + 1;
     return value >= 0 ? value : 0;
@@ -43,6 +43,9 @@ export const Component = ({
     () => candlesParam.slice(firstCandleIndex, firstCandleIndex + candleCount),
     [candlesParam, firstCandleIndex, candleCount],
   );
+
+  /** Used to ensure that the chart is "aligned to the right". */
+  const offset = useMemo(() => width - caliber * candles.length, [width, caliber, candles.length]);
 
   const { min, max } = useMemo(() => {
     const values = candles.map((it) => [it.low, it.high]).flat();
@@ -80,6 +83,7 @@ export const Component = ({
           caliber={caliber}
           scaleY={scaleY}
           scaleWidth={scaleWidth}
+          offset={offset}
         />
       ))}
     </svg>
