@@ -30,3 +30,4 @@ export { QRCode } from './components/QRCode';
 export { AbstractAvatar } from './components/AbstractAvatar';
 export { SolidAvatar } from './components/SolidAvatar';
 export { BuyWithMoonPay } from './components/BuyWithMoonPay';
+export { CandlestickChart } from './components/CandlestickChart';
