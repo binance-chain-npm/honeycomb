@@ -118,8 +118,8 @@ export const Component = ({
     {
       domTarget,
       eventOptions: { passive: false, capture: true },
-      drag: { axis: 'x' },
-      wheel: { enabled: !isTouchScreen },
+      drag: { axis: 'x', filterTaps: true },
+      wheel: { enabled: !isTouchScreen, lockDirection: true },
     },
   );
 
