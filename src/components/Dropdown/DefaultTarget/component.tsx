@@ -15,7 +15,7 @@ export const Component = ({
     <Container {...otherProps} as={htmlTag as any} isShowing={isShowing}>
       {otherProps.children}
       &nbsp;
-      <Icon.CaretDown />
+      <Icon.TriangleDown />
     </Container>
   );
 };
