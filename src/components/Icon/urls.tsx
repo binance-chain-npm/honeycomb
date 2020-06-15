@@ -1,5 +1,5 @@
 export { default as Tick } from './assets/Tick.svg';
-export { default as CaretDown } from './assets/CaretDown.svg';
+export { default as TriangleDown } from './assets/TriangleDown.svg';
 export { default as Eye } from './assets/Eye.svg';
 export { default as EyeBlocked } from './assets/EyeBlocked.svg';
 export { default as LeftArrow } from './assets/LeftArrow.svg';
@@ -13,3 +13,9 @@ export { default as Lock } from './assets/Lock.svg';
 export { default as VisaColor } from './assets/VisaColor.svg';
 export { default as MastercardColor } from './assets/MastercardColor.svg';
 export { default as Settings } from './assets/Settings.svg';
+export { default as Binance } from './assets/Binance.svg';
+export { default as Email } from './assets/Email.svg';
+export { default as Link } from './assets/Link.svg';
+export { default as Shield } from './assets/Shield.svg';
+export { default as Globe } from './assets/Globe.svg';
+export { default as CaretRight } from './assets/CaretRight.svg';

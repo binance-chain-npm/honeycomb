@@ -1,5 +1,5 @@
 export { ReactComponent as Tick } from './assets/Tick.svg';
-export { ReactComponent as CaretDown } from './assets/CaretDown.svg';
+export { ReactComponent as TriangleDown } from './assets/TriangleDown.svg';
 export { ReactComponent as Eye } from './assets/Eye.svg';
 export { ReactComponent as EyeBlocked } from './assets/EyeBlocked.svg';
 export { ReactComponent as LeftArrow } from './assets/LeftArrow.svg';
@@ -13,3 +13,9 @@ export { ReactComponent as Lock } from './assets/Lock.svg';
 export { ReactComponent as VisaColor } from './assets/VisaColor.svg';
 export { ReactComponent as MastercardColor } from './assets/MastercardColor.svg';
 export { ReactComponent as Settings } from './assets/Settings.svg';
+export { ReactComponent as Binance } from './assets/Binance.svg';
+export { ReactComponent as Email } from './assets/Email.svg';
+export { ReactComponent as Link } from './assets/Link.svg';
+export { ReactComponent as Shield } from './assets/Shield.svg';
+export { ReactComponent as Globe } from './assets/Globe.svg';
+export { ReactComponent as CaretRight } from './assets/CaretRight.svg';
