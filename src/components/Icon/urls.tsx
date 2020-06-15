@@ -12,3 +12,4 @@ export { default as ArrowTopRight } from './assets/ArrowTopRight.svg';
 export { default as Lock } from './assets/Lock.svg';
 export { default as VisaColor } from './assets/VisaColor.svg';
 export { default as MastercardColor } from './assets/MastercardColor.svg';
+export { default as Settings } from './assets/Settings.svg';

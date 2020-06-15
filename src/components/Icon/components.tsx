@@ -12,3 +12,4 @@ export { ReactComponent as ArrowTopRight } from './assets/ArrowTopRight.svg';
 export { ReactComponent as Lock } from './assets/Lock.svg';
 export { ReactComponent as VisaColor } from './assets/VisaColor.svg';
 export { ReactComponent as MastercardColor } from './assets/MastercardColor.svg';
+export { ReactComponent as Settings } from './assets/Settings.svg';
