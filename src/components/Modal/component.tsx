@@ -8,9 +8,20 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Container, Header, Box, Content } from './styled';
 import { TestIdContext } from './context';
 
-export type Props = Testable & { open?: boolean; onClose?: () => void; children?: React.ReactNode };
+export type Props = Testable & {
+  open?: boolean;
+  onClose?: () => void;
+  children?: React.ReactNode;
+  className?: string;
+};
 
-export const Component = ({ open = false, onClose, children, 'data-testid': testId }: Props) => {
+export const Component = ({
+  open = false,
+  onClose,
+  children,
+  'data-testid': testId,
+  className,
+}: Props) => {
   const buildTestId = useBuildTestId(testId);
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -50,6 +61,7 @@ export const Component = ({ open = false, onClose, children, 'data-testid': test
               key={key}
               style={props}
               data-testid={buildTestId('full-viewport-container')}
+              className={className}
             >
               {boxTransitions.map(
                 ({ item, key, props }) =>
