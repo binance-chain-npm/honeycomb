@@ -55,6 +55,6 @@ export const Body = styled.div`
   flex-direction: column;
   flex: 1;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
   padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;

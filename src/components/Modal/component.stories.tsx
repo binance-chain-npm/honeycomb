@@ -24,3 +24,15 @@ export const Default = () => {
     </>
   );
 };
+
+export const PickOne = () => {
+  const [show, setShow] = useState(false);
+  return (
+    <>
+      <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
+        Show
+      </Button>
+      <Modal.PickOne open={show} onClose={() => setShow(false)} data-testid="MyModal" />
+    </>
+  );
+};
