@@ -10,8 +10,7 @@ import { StyledBody, Content } from './styled';
 export type Props = Testable & {
   open?: boolean;
   onClose?: () => void;
-  itemCount: number;
-  children?: React.ReactElement<{ searchAs: string[] | string }>;
+  children?: React.ReactNode;
 };
 
 export const Component = ({ open, onClose, 'data-testid': testId, children }: Props) => {
