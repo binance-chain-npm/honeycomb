@@ -69,7 +69,6 @@
     "@types/qrcode.react": "^1.0.1",
     "@types/react": "16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@types/react-window": "^1.8.2",
     "@types/styled-components": "^5.1.0",
     "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
@@ -96,8 +95,7 @@
     "nanoid": "^3.1.9",
     "polished": "^3.6.4",
     "qrcode.react": "^1.0.0",
-    "react-spring": "^8.0.27",
-    "react-window": "^1.8.5"
+    "react-spring": "^8.0.27"
   },
   "resolutions": {
     "@types/react": "16.9.35"
