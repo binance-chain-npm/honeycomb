@@ -9,3 +9,5 @@ export const Space = styled.div<Props>`
   ${({ size, theme }) => size !== 'fill' && `flex-basis: ${em(theme.honeycomb.size[size])}`};
   ${({ size }) => size === 'fill' && 'flex: 1'};
 `;
+
+Space.displayName = 'Space';
