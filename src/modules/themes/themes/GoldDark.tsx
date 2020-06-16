@@ -1,4 +1,4 @@
-import { readableColor } from 'polished';
+import { readableColor, transparentize } from 'polished';
 
 const readable = {
   normal: (bg: string) => readableColor(bg, '#1e2026', '#ffffff'),
@@ -6,17 +6,20 @@ const readable = {
   disabled: (bg: string) => readableColor(bg, '#aeb4bc', '#aeb4bc'),
 } as const;
 
+const bgNormal = '#0b0e11';
+
 export const GoldDark = {
   honeycomb: {
     color: {
       bg: {
-        normal: '#0b0e11',
+        normal: bgNormal,
         masked: '#14151a',
         disabled: '#2b2f36',
 
         tooltip: {
           normal: '#2b2f36',
           accent: '#33373e',
+          outer: transparentize(0.5, bgNormal),
         },
       },
 
@@ -77,6 +80,11 @@ export const GoldDark = {
 
     duration: {
       normal: '150ms',
+    },
+
+    shadow: {
+      normal:
+        'rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px',
     },
   },
 };

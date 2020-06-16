@@ -13,6 +13,7 @@ export const GoldLight: HoneycombThemeType = {
         disabled: '#f5f5f5',
 
         tooltip: {
+          ...GoldDark.honeycomb.color.bg.tooltip,
           normal: '#ffffff',
           accent: '#f5f5f5',
         },
@@ -22,7 +23,6 @@ export const GoldLight: HoneycombThemeType = {
 
       primary: {
         ...GoldDark.honeycomb.color.primary,
-        masked: '#fffdf0',
       },
 
       secondary: {

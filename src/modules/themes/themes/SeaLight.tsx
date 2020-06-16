@@ -10,7 +10,6 @@ export const SeaLight: HoneycombThemeType = {
       primary: {
         normal: '#4653c8',
         active: '#4653c8',
-        masked: '#4653c8',
       },
     },
   },
