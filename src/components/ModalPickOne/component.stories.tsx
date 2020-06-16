@@ -3,6 +3,7 @@ import React from 'react';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 
+// @ts-ignore
 import pic from './pic.png';
 
 import { ModalPickOne } from './';
