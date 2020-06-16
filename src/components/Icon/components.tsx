@@ -19,3 +19,4 @@ export { ReactComponent as Link } from './assets/Link.svg';
 export { ReactComponent as Shield } from './assets/Shield.svg';
 export { ReactComponent as Globe } from './assets/Globe.svg';
 export { ReactComponent as CaretRight } from './assets/CaretRight.svg';
+export { ReactComponent as Cross } from './assets/Cross.svg';
