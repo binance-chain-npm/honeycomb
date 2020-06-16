@@ -3,12 +3,14 @@ import { useTransition, animated } from 'react-spring';
 
 import { Button } from '../Button';
 import { Icon } from '../Icon';
+import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Container, Header, Box, Body, Scroll } from './styled';
 
-export type Props = { open?: boolean; onClose?: () => void; children?: React.ReactNode };
+export type Props = Testable & { open?: boolean; onClose?: () => void; children?: React.ReactNode };
 
-export const Component = ({ open = false, onClose, children }: Props) => {
+export const Component = ({ open = false, onClose, children, 'data-testid': testId }: Props) => {
+  const buildTestId = useBuildTestId(testId);
   const boxRef = useRef<HTMLDivElement>(null);
 
   const containerTransitions = useTransition(open, null, {
@@ -42,18 +44,34 @@ export const Component = ({ open = false, onClose, children }: Props) => {
       {containerTransitions.map(
         ({ item, key, props }) =>
           item && (
-            <Container as={animated.div} key={key} style={props}>
+            <Container
+              as={animated.div}
+              key={key}
+              style={props}
+              data-testid={buildTestId('full-viewport-container')}
+            >
               {boxTransitions.map(
                 ({ item, key, props }) =>
                   item && (
-                    <Box as={animated.div} key={key} style={props} ref={boxRef}>
-                      <Header>
-                        <Button variant="styleless" size="fit" onClick={onClose}>
+                    <Box
+                      as={animated.div}
+                      key={key}
+                      style={props}
+                      ref={boxRef}
+                      data-testid={buildTestId('box')}
+                    >
+                      <Header data-testid={buildTestId('header')}>
+                        <Button
+                          variant="styleless"
+                          size="fit"
+                          onClick={onClose}
+                          data-testid={buildTestId('close-btn')}
+                        >
                           <Icon.Cross />
                         </Button>
                       </Header>
-                      <Scroll>
-                        <Body>{children}</Body>
+                      <Scroll data-testid={buildTestId('scroll-container')}>
+                        <Body data-testid={buildTestId('body')}>{children}</Body>
                       </Scroll>
                     </Box>
                   ),
