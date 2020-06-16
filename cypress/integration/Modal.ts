@@ -1,4 +1,14 @@
 describe('Modal', () => {
+  it('opens and closes', () => {
+    cy.visitStory({ storyId: 'elements-modal--default', themeName: 'GoldDark' });
+
+    cy.get('[data-testid="OpenButton"]').trigger('click');
+    cy.get('[data-testid="MyModal.box"]').should('be.visible');
+
+    cy.get('[data-testid="MyModal.close-btn"]').click();
+    cy.get('[data-testid="MyModal.box"]').should('not.be.visible');
+  });
+
   it('renders correctly with Gold Dark theme', () => {
     cy.visitStory({ storyId: 'elements-modal--default', themeName: 'GoldDark' });
 
