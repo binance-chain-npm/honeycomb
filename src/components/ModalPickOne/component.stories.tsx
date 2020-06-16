@@ -9,5 +9,9 @@ export default {
 };
 
 export const Default = () => {
-  return <ModalPickOne open={true} onClose={() => {}} data-testid="MyModal" />;
+  return (
+    <ModalPickOne open={true} onClose={() => {}} data-testid="MyModal" itemCount={50}>
+      <ModalPickOne.Item searchAs="hey">lololol</ModalPickOne.Item>
+    </ModalPickOne>
+  );
 };
