@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Header, Box } from './styled';
+import { Container, Header, Box, Content } from './styled';
 import { TestIdContext } from './context';
 
 export type Props = Testable & { open?: boolean; onClose?: () => void; children?: React.ReactNode };
@@ -71,7 +71,7 @@ export const Component = ({ open = false, onClose, children, 'data-testid': test
                           <Icon.Cross />
                         </Button>
                       </Header>
-                      {children}
+                      <Content data-testid={buildTestId('content')}>{children}</Content>
                     </Box>
                   ),
               )}

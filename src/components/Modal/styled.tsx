@@ -40,3 +40,13 @@ export const Header = styled.div`
     ${({ theme }) => em(theme.honeycomb.size.increased)};
   border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
 `;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+`;

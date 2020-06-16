@@ -19,7 +19,9 @@ export const Default = () => {
         Show
       </Button>
       <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal">
-        {items}
+        <Modal.Scroll>
+          <Modal.Body>{items}</Modal.Body>
+        </Modal.Scroll>
       </Modal>
     </>
   );
@@ -28,17 +30,23 @@ export const Default = () => {
 export const NoScroll = () => {
   return (
     <Modal open={true} onClose={() => {}}>
-      <Modal.Body disableScroll>{items}</Modal.Body>
+      <Modal.Body>{items}</Modal.Body>
     </Modal>
   );
 };
 
-export const NoPadding = () => {
+export const NoBody = () => {
   return (
     <Modal open={true} onClose={() => {}}>
-      <Modal.Body disableScroll withoutPadding={true}>
-        {items}
-      </Modal.Body>
+      <Modal.Scroll>{items}</Modal.Scroll>
+    </Modal>
+  );
+};
+
+export const Bare = () => {
+  return (
+    <Modal open={true} onClose={() => {}}>
+      {items}
     </Modal>
   );
 };
