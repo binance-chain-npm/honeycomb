@@ -21,10 +21,10 @@ export const Box = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
   box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
 
   @media (min-width: ${em(768)}) {
+    border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
     width: 50vw;
     height: 50vh;
   }
@@ -38,6 +38,7 @@ export const Header = styled.div`
   align-items: center;
   padding: ${({ theme }) => em(theme.honeycomb.size.normal)}
     ${({ theme }) => em(theme.honeycomb.size.increased)};
+  border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
 `;
 
 export const Scroll = styled.div`
