@@ -1,6 +1,6 @@
 import { Component } from './component';
-import { PickOne } from './PickOne';
+import { Body } from './Body';
 
-export const Modal = Component as typeof Component & { PickOne: typeof PickOne };
+export const Modal = Component as typeof Component & { Body: typeof Body };
 
-Modal.PickOne = PickOne;
+Modal.Body = Body;

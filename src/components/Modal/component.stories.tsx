@@ -9,6 +9,8 @@ export default {
   title: `${Sections.Elements}|Modal`,
 };
 
+const items = new Array(200).fill(null).map((_, index) => <div key={index}>{index + 1}</div>);
+
 export const Default = () => {
   const [show, setShow] = useState(false);
   return (
@@ -17,22 +19,26 @@ export const Default = () => {
         Show
       </Button>
       <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal">
-        {new Array(200).fill(null).map((_, index) => (
-          <div key={index}>{index + 1}</div>
-        ))}
+        {items}
       </Modal>
     </>
   );
 };
 
-export const PickOne = () => {
-  const [show, setShow] = useState(false);
+export const NoScroll = () => {
   return (
-    <>
-      <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
-        Show
-      </Button>
-      <Modal.PickOne open={show} onClose={() => setShow(false)} data-testid="MyModal" />
-    </>
+    <Modal open={true} onClose={() => {}}>
+      <Modal.Body disableScroll>{items}</Modal.Body>
+    </Modal>
+  );
+};
+
+export const NoPadding = () => {
+  return (
+    <Modal open={true} onClose={() => {}}>
+      <Modal.Body disableScroll withoutPadding={true}>
+        {items}
+      </Modal.Body>
+    </Modal>
   );
 };

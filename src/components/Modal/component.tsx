@@ -5,7 +5,8 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Header, Box, Body, Scroll } from './styled';
+import { Container, Header, Box } from './styled';
+import { TestIdContext } from './context';
 
 export type Props = Testable & { open?: boolean; onClose?: () => void; children?: React.ReactNode };
 
@@ -40,7 +41,7 @@ export const Component = ({ open = false, onClose, children, 'data-testid': test
   }, [open, onClose]);
 
   return (
-    <>
+    <TestIdContext.Provider value={buildTestId()}>
       {containerTransitions.map(
         ({ item, key, props }) =>
           item && (
@@ -70,16 +71,14 @@ export const Component = ({ open = false, onClose, children, 'data-testid': test
                           <Icon.Cross />
                         </Button>
                       </Header>
-                      <Scroll data-testid={buildTestId('scroll-container')}>
-                        <Body data-testid={buildTestId('body')}>{children}</Body>
-                      </Scroll>
+                      {children}
                     </Box>
                   ),
               )}
             </Container>
           ),
       )}
-    </>
+    </TestIdContext.Provider>
   );
 };
 

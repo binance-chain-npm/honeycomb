@@ -40,21 +40,3 @@ export const Header = styled.div`
     ${({ theme }) => em(theme.honeycomb.size.increased)};
   border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
 `;
-
-export const Scroll = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  scroll-behavior: smooth;
-  overflow: hidden;
-  overflow-y: auto;
-`;
-
-export const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: flex-start;
-  align-items: stretch;
-  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
-`;
