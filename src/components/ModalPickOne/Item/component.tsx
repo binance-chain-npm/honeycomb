@@ -15,8 +15,10 @@ export type Props = Testable & {
 };
 
 export const Component = ({ 'data-testid': testId, children, isSelected, onClick }: Props) => {
-  const buildTestId = useBuildTestId(testId);
-  const { onClose } = useContext(ModalPickOneContext);
+  const { onClose, testId: parentTestId } = useContext(ModalPickOneContext);
+  const buildTestIdParent = useBuildTestId(parentTestId);
+  const buildTestId = useBuildTestId(buildTestIdParent(testId ? `item.${testId}` : undefined));
+
   const click = useCallback<NonNullable<Props['onClick']>>(
     (evt) => {
       try {

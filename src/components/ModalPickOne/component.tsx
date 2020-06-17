@@ -15,6 +15,7 @@ export type Props = Testable & {
 };
 
 export const Component = ({ open, onClose, 'data-testid': testId, children }: Props) => {
+  const context = useMemo(() => ({ onClose, testId }), [onClose, testId]);
   const buildTestId = useBuildTestId(testId);
   const [search, setSearch] = useState('');
   const updateSearch = useCallback(
@@ -46,7 +47,7 @@ export const Component = ({ open, onClose, 'data-testid': testId, children }: Pr
   );
 
   return (
-    <ModalPickOneContext.Provider value={{ onClose }}>
+    <ModalPickOneContext.Provider value={context}>
       <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
         <Header>
           <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
