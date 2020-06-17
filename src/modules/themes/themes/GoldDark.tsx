@@ -70,7 +70,7 @@ export const GoldDark = {
       normal: 16,
       increased: 24,
       large: 32,
-      huge: 46,
+      huge: 40,
     },
 
     radius: {
