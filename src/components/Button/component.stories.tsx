@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 
-import { variants, sizes } from './styled';
+import { variants, sizes, shapes } from './styled';
 
 import { Button } from './';
 
@@ -15,8 +15,9 @@ export default {
 const getText = ({
   size,
   variant,
-}: Pick<React.ComponentProps<typeof Button>, 'size' | 'variant'>) => {
-  if (size && /^circle-/i.test(size)) return <Icon.Tick />;
+  shape,
+}: Pick<React.ComponentProps<typeof Button>, 'size' | 'variant' | 'shape'>) => {
+  if (shape === 'square') return <Icon.Tick />;
   return (
     <>
       A {size} {variant} button
@@ -27,18 +28,21 @@ const getText = ({
 export const Default = () => (
   <>
     {sizes.map((size) =>
-      variants.map((variant) => (
-        <div style={{ marginBottom: '1em' }}>
-          <Button
-            onClick={action('clicked')}
-            key={`${size}-${variant}`}
-            variant={variant}
-            size={size}
-          >
-            {getText({ size, variant })}
-          </Button>
-        </div>
-      )),
+      variants.map((variant) =>
+        shapes.map((shape) => (
+          <div style={{ marginBottom: '1em' }}>
+            <Button
+              onClick={action('clicked')}
+              key={`${size}-${variant}`}
+              variant={variant}
+              size={size}
+              shape={shape}
+            >
+              {getText({ size, variant, shape })}
+            </Button>
+          </div>
+        )),
+      ),
     )}
   </>
 );
@@ -46,19 +50,22 @@ export const Default = () => (
 export const Disabled = () => (
   <>
     {sizes.map((size) =>
-      variants.map((variant) => (
-        <div style={{ marginBottom: '1em' }}>
-          <Button
-            onClick={action('clicked')}
-            key={`${size}-${variant}`}
-            variant={variant}
-            size={size}
-            disabled
-          >
-            {getText({ size, variant })}
-          </Button>
-        </div>
-      )),
+      variants.map((variant) =>
+        shapes.map((shape) => (
+          <div style={{ marginBottom: '1em' }}>
+            <Button
+              onClick={action('clicked')}
+              key={`${size}-${variant}`}
+              variant={variant}
+              size={size}
+              shape={shape}
+              disabled
+            >
+              {getText({ size, variant, shape })}
+            </Button>
+          </div>
+        )),
+      ),
     )}
   </>
 );
@@ -66,19 +73,22 @@ export const Disabled = () => (
 export const AsAnchor = () => (
   <>
     {sizes.map((size) =>
-      variants.map((variant) => (
-        <div style={{ marginBottom: '1em' }}>
-          <Button
-            href="https://binance.org"
-            onClick={action('clicked')}
-            key={`${size}-${variant}`}
-            variant={variant}
-            size={size}
-          >
-            {getText({ size, variant })}
-          </Button>
-        </div>
-      )),
+      variants.map((variant) =>
+        shapes.map((shape) => (
+          <div style={{ marginBottom: '1em' }}>
+            <Button
+              href="https://binance.org"
+              onClick={action('clicked')}
+              key={`${size}-${variant}`}
+              variant={variant}
+              size={size}
+              shape={shape}
+            >
+              {getText({ size, variant, shape })}
+            </Button>
+          </div>
+        )),
+      ),
     )}
   </>
 );

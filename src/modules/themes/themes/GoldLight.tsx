@@ -27,7 +27,7 @@ export const GoldLight: HoneycombThemeType = {
 
       secondary: {
         ...GoldDark.honeycomb.color.secondary,
-        normal: '#e6e8ea',
+        normal: '#f5f5f5',
       },
 
       text: {
