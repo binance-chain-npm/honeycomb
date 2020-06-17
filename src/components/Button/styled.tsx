@@ -131,6 +131,11 @@ export const Styled = styled.button<Props>`
     box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary.normal};
   }
 
+  :hover,
+  :active {
+    text-decoration: none;
+  }
+
   :disabled {
     opacity: 0.3;
     pointer-events: none;
