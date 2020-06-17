@@ -41,20 +41,12 @@ export const Header = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
 `;
 
-export const Scroll = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  scroll-behavior: smooth;
-  overflow: hidden;
-  overflow-y: auto;
-`;
-
-export const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  width: 100%;
   justify-content: flex-start;
-  align-items: flex-start;
-  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  align-items: stretch;
+  overflow: hidden;
 `;

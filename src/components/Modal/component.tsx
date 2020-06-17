@@ -5,11 +5,23 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Header, Box, Body, Scroll } from './styled';
+import { Container, Header, Box, Content } from './styled';
+import { TestIdContext } from './context';
 
-export type Props = Testable & { open?: boolean; onClose?: () => void; children?: React.ReactNode };
+export type Props = Testable & {
+  open?: boolean;
+  onClose?: () => void;
+  children?: React.ReactNode;
+  className?: string;
+};
 
-export const Component = ({ open = false, onClose, children, 'data-testid': testId }: Props) => {
+export const Component = ({
+  open = false,
+  onClose,
+  children,
+  'data-testid': testId,
+  className,
+}: Props) => {
   const buildTestId = useBuildTestId(testId);
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +52,7 @@ export const Component = ({ open = false, onClose, children, 'data-testid': test
   }, [open, onClose]);
 
   return (
-    <>
+    <TestIdContext.Provider value={buildTestId()}>
       {containerTransitions.map(
         ({ item, key, props }) =>
           item && (
@@ -49,6 +61,7 @@ export const Component = ({ open = false, onClose, children, 'data-testid': test
               key={key}
               style={props}
               data-testid={buildTestId('full-viewport-container')}
+              className={className}
             >
               {boxTransitions.map(
                 ({ item, key, props }) =>
@@ -63,6 +76,7 @@ export const Component = ({ open = false, onClose, children, 'data-testid': test
                       <Header data-testid={buildTestId('header')}>
                         <Button
                           variant="transparent"
+                          size="increased"
                           shape="square"
                           onClick={onClose}
                           data-testid={buildTestId('close-btn')}
@@ -70,16 +84,14 @@ export const Component = ({ open = false, onClose, children, 'data-testid': test
                           <Icon.Cross />
                         </Button>
                       </Header>
-                      <Scroll data-testid={buildTestId('scroll-container')}>
-                        <Body data-testid={buildTestId('body')}>{children}</Body>
-                      </Scroll>
+                      <Content data-testid={buildTestId('content')}>{children}</Content>
                     </Box>
                   ),
               )}
             </Container>
           ),
       )}
-    </>
+    </TestIdContext.Provider>
   );
 };
 

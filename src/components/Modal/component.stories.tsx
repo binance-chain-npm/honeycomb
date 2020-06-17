@@ -9,6 +9,8 @@ export default {
   title: `${Sections.Elements}|Modal`,
 };
 
+const items = new Array(200).fill(null).map((_, index) => <div key={index}>{index + 1}</div>);
+
 export const Default = () => {
   const [show, setShow] = useState(false);
   return (
@@ -17,10 +19,34 @@ export const Default = () => {
         Show
       </Button>
       <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal">
-        {new Array(200).fill(null).map((_, index) => (
-          <div key={index}>{index + 1}</div>
-        ))}
+        <Modal.Scroll>
+          <Modal.Body>{items}</Modal.Body>
+        </Modal.Scroll>
       </Modal>
     </>
+  );
+};
+
+export const NoScroll = () => {
+  return (
+    <Modal open={true} onClose={() => {}}>
+      <Modal.Body>{items}</Modal.Body>
+    </Modal>
+  );
+};
+
+export const NoBody = () => {
+  return (
+    <Modal open={true} onClose={() => {}}>
+      <Modal.Scroll>{items}</Modal.Scroll>
+    </Modal>
+  );
+};
+
+export const Bare = () => {
+  return (
+    <Modal open={true} onClose={() => {}}>
+      {items}
+    </Modal>
   );
 };
