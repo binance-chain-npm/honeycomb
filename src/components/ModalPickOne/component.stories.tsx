@@ -25,18 +25,29 @@ const data: Array<{ label: string; icon: typeof Icon.Add }> = [
     label: 'EyeBlocked',
     icon: Icon.EyeBlocked,
   },
+  {
+    label: 'Globe',
+    icon: Icon.Globe,
+  },
 ];
 
 export const Default = () => {
   return (
     <ModalPickOne open={true} onClose={() => {}} data-testid="MyModal">
-      {data.map((it) => (
-        <ModalPickOne.Item searchAs={it.label}>
+      {data.map((it, index) => (
+        <ModalPickOne.Item
+          searchAs={it.label}
+          isSelected={index === 0}
+          onClick={() => console.log(`Clicked ${index}`)}
+        >
           <it.icon />
           &nbsp;<span>{it.label}</span>
         </ModalPickOne.Item>
       ))}
-      <ModalPickOne.Item searchAs={['my photo', 'A crazy item']}>
+      <ModalPickOne.Item
+        searchAs={['my photo', 'A crazy item']}
+        onClick={() => console.log('Clicked photo')}
+      >
         <img src={pic} height="100" alt="" />
       </ModalPickOne.Item>
     </ModalPickOne>

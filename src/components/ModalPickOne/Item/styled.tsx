@@ -18,3 +18,5 @@ export const Container = styled.button`
     background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.accent};
   }
 `;
+
+export const Content = styled.div``;

@@ -6,6 +6,7 @@ import { TextInput } from '../TextInput';
 import { Space } from '../Space';
 
 import { Content, Header } from './styled';
+import { ModalPickOneContext } from './context';
 
 export type Props = Testable & {
   open?: boolean;
@@ -45,16 +46,18 @@ export const Component = ({ open, onClose, 'data-testid': testId, children }: Pr
   );
 
   return (
-    <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
-      <Header>
-        <TextInput value={search} onChange={updateSearch} />
-      </Header>
-      <Modal.Scroll>
-        <Space size="increased" />
-        <Content>{filteredResults}</Content>
-        <Space size="increased" />
-      </Modal.Scroll>
-    </Modal>
+    <ModalPickOneContext.Provider value={{ onClose }}>
+      <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
+        <Header>
+          <TextInput value={search} onChange={updateSearch} />
+        </Header>
+        <Modal.Scroll>
+          <Space size="increased" />
+          <Content>{filteredResults}</Content>
+          <Space size="increased" />
+        </Modal.Scroll>
+      </Modal>
+    </ModalPickOneContext.Provider>
   );
 };
 
