@@ -17,7 +17,7 @@ export type Variant = typeof variants[number];
 export const sizes = ['huge', 'increased'] as const;
 export type Size = typeof sizes[number];
 
-export const shapes = ['fill', 'square'] as const;
+export const shapes = ['fill', 'fit', 'square'] as const;
 export type Shape = typeof shapes[number];
 
 export interface Props {
@@ -101,6 +101,11 @@ const fill = css`
   width: 100%;
 `;
 
+const fit = css`
+  width: auto;
+  width: fit-content;
+`;
+
 const square = css<Props>`
   width: ${({ theme, size }) => em(theme.honeycomb.size[size], theme.honeycomb.size.reduced)};
   padding: 0;
@@ -142,5 +147,6 @@ export const Styled = styled.button<Props>`
   ${({ size }) => size === 'increased' && increased};
 
   ${({ shape }) => shape === 'fill' && fill};
+  ${({ shape }) => shape === 'fit' && fit};
   ${({ shape }) => shape === 'square' && square};
 `;

@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Tooltip } from '../Tooltip';
-import { Button } from '../Button';
+import { Styleless } from '../Styleless';
 
 import { Styles } from './styled';
 import { ShowingContext, TestIdContext } from './context';
@@ -39,9 +39,9 @@ export const Component = (props: Props) => {
         data-testid={props['data-testid']}
         arrow={false}
       >
-        <Button htmlTag="div" variant="styleless" size="fit">
+        <Styleless htmlTag="div">
           <ShowingContext.Provider value={isShowing}>{props.target}</ShowingContext.Provider>
-        </Button>
+        </Styleless>
       </Tooltip>
     </>
   );

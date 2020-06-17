@@ -6,6 +6,7 @@ import { styleless } from '../../Styleless';
 export const Container = styled.div<{ isShowing: boolean }>`
   ${styleless};
 
+  width: 100%;
   background: ${({ theme }) => theme.honeycomb.color.bg.masked};
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.normal)};
