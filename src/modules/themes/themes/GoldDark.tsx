@@ -39,7 +39,7 @@ export const GoldDark = {
       },
 
       secondary: {
-        normal: '#474d57',
+        normal: '#2b2f36',
         active: '#f8d12f',
       },
 
@@ -50,7 +50,7 @@ export const GoldDark = {
 
       danger: {
         normal: '#d9304e',
-        active: '#f84960',
+        active: '#fc6e75',
       },
 
       buy: {
@@ -59,7 +59,7 @@ export const GoldDark = {
       },
 
       sell: {
-        normal: '#f84960',
+        normal: '#d9304e',
         active: '#fc6e75',
       },
     },
@@ -68,9 +68,9 @@ export const GoldDark = {
       small: 12,
       reduced: 14,
       normal: 16,
-      increased: 22,
+      increased: 24,
       large: 32,
-      huge: 46,
+      huge: 40,
     },
 
     radius: {
