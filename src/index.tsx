@@ -32,3 +32,4 @@ export { SolidAvatar } from './components/SolidAvatar';
 export { BuyWithMoonPay } from './components/BuyWithMoonPay';
 export { Space } from './components/Space';
 export { Modal } from './components/Modal';
+export { ModalPickOne } from './components/ModalPickOne';
