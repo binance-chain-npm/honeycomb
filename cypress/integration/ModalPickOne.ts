@@ -32,12 +32,18 @@ describe('ModalPickOne', () => {
 
   it('renders correctly with Gold Dark theme', () => {
     cy.visitStory({ storyId: 'elements-modalpickone--default', themeName: 'GoldDark' });
+    cy.clock();
+    cy.get('[data-testid="MyModal.item.0.tick"]').should('be.visible');
+    cy.tick(10000);
     cy.percySnapshot('ModalPickOne with Gold Dark theme');
   });
 
   it('renders correctly with Gold Light theme', () => {
     cy.viewport(800, 600);
     cy.visitStory({ storyId: 'elements-modalpickone--default', themeName: 'GoldLight' });
+    cy.clock();
+    cy.get('[data-testid="MyModal.item.0.tick"]').should('be.visible');
+    cy.tick(10000);
     cy.percySnapshot('ModalPickOne with Gold Light theme', { widths: [800] });
   });
 });
