@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { HtmlTag } from '../../modules/html-tag';
 
-import { Styled, Variant, Size } from './styled';
+import { Styled, Variant, Size, Shape } from './styled';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
@@ -11,6 +11,7 @@ export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
     htmlTag?: HtmlTag;
     variant: Variant;
     size?: Size;
+    shape?: Shape;
   };
 
 export const Component = ({
@@ -23,6 +24,7 @@ export const Component = ({
   'data-testid': testId,
   variant,
   size = 'huge',
+  shape = 'fill',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -42,6 +44,7 @@ export const Component = ({
       disabled={disabled}
       variant={variant}
       size={size}
+      shape={shape}
     >
       {children}
     </Styled>
