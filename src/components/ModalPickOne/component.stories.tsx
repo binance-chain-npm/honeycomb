@@ -39,6 +39,7 @@ export const Default = () => {
           searchAs={it.label}
           isSelected={index === 0}
           onClick={() => console.log(`Clicked ${index}`)}
+          data-testid={`MyModal.item.${index}`}
         >
           <it.icon />
           &nbsp;<span>{it.label}</span>
@@ -47,6 +48,7 @@ export const Default = () => {
       <ModalPickOne.Item
         searchAs={['my photo', 'A crazy item']}
         onClick={() => console.log('Clicked photo')}
+        data-testid="MyModal.item.photo"
       >
         <img src={pic} height="100" alt="" />
       </ModalPickOne.Item>

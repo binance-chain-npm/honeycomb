@@ -49,7 +49,7 @@ export const Component = ({ open, onClose, 'data-testid': testId, children }: Pr
     <ModalPickOneContext.Provider value={{ onClose }}>
       <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
         <Header>
-          <TextInput value={search} onChange={updateSearch} />
+          <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
         </Header>
         <Modal.Scroll>
           <Space size="increased" />

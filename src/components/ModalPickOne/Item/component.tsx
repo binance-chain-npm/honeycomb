@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 
-import { Testable } from '../../../modules/test-ids';
+import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Icon } from '../../Icon';
 import { Space } from '../../Space';
 import { ModalPickOneContext } from '../context';
@@ -15,6 +15,7 @@ export type Props = Testable & {
 };
 
 export const Component = ({ 'data-testid': testId, children, isSelected, onClick }: Props) => {
+  const buildTestId = useBuildTestId(testId);
   const { onClose } = useContext(ModalPickOneContext);
   const click = useCallback<NonNullable<Props['onClick']>>(
     (evt) => {
@@ -30,10 +31,10 @@ export const Component = ({ 'data-testid': testId, children, isSelected, onClick
   );
 
   return (
-    <Container data-testid={testId} onClick={click}>
+    <Container data-testid={buildTestId()} onClick={click}>
       <Content>{children}</Content>
       <Space size="fill" />
-      {isSelected && <Icon.Tick />}
+      {isSelected && <Icon.Tick data-testid={buildTestId('tick')} />}
     </Container>
   );
 };
