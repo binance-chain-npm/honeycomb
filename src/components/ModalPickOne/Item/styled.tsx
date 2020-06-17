@@ -19,4 +19,9 @@ export const Container = styled.button`
   }
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`;
