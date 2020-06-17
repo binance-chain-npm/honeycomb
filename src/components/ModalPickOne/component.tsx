@@ -5,7 +5,7 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { TextInput } from '../TextInput';
 import { Space } from '../Space';
 
-import { StyledBody, Content } from './styled';
+import { Content, Header } from './styled';
 
 export type Props = Testable & {
   open?: boolean;
@@ -46,16 +46,14 @@ export const Component = ({ open, onClose, 'data-testid': testId, children }: Pr
 
   return (
     <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
-      <StyledBody>
+      <Header>
         <TextInput value={search} onChange={updateSearch} />
-        <Modal.Scroll>
-          <Content>
-            <Space size="increased" />
-            {filteredResults}
-            <Space size="increased" />
-          </Content>
-        </Modal.Scroll>
-      </StyledBody>
+      </Header>
+      <Modal.Scroll>
+        <Space size="increased" />
+        <Content>{filteredResults}</Content>
+        <Space size="increased" />
+      </Modal.Scroll>
     </Modal>
   );
 };

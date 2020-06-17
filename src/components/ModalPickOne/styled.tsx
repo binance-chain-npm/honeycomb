@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { em } from 'polished';
 
-import { Modal } from '../Modal';
-
-export const StyledBody = styled(Modal.Body)`
+export const Header = styled.div`
+  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
   padding-bottom: 0;
 `;
 
