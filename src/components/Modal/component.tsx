@@ -76,6 +76,7 @@ export const Component = ({
                       <Header data-testid={buildTestId('header')}>
                         <Button
                           variant="transparent"
+                          size="increased"
                           shape="square"
                           onClick={onClose}
                           data-testid={buildTestId('close-btn')}
