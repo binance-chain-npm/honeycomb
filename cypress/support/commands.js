@@ -4,7 +4,7 @@ import { encode } from 'querystring';
 /* global Cypress, cy */
 
 Cypress.Commands.add('visitStory', (params, options) => {
-  const query = encode({ id: params.storyId, theme: params.themeName });
+  const query = encode({ id: params.storyId, themeId: params.themeName });
   if (!!Cypress.env('CI')) {
     return cy.visit(`./storybook-static/iframe.html?${query}`, options);
   }
