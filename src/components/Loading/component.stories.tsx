@@ -6,7 +6,7 @@ import { Button } from '../Button';
 import { Loading } from './';
 
 export default {
-  title: `${Sections.Elements}|Loading`,
+  title: `${Sections.Elements}/Loading`,
 };
 
 export const Default = () => <Loading />;

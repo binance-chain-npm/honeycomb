@@ -6,7 +6,7 @@ import { Sections } from '../../modules/sections';
 import { Space } from './';
 
 export default {
-  title: `${Sections.Elements}|Space`,
+  title: `${Sections.Elements}/Space`,
 };
 
 const Global = css`

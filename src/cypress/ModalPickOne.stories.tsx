@@ -8,7 +8,7 @@ import { Icon } from '../components/Icon';
 import { Button } from '../components/Button';
 
 export default {
-  title: `${Sections.Tests}|ModalPickOne`,
+  title: `${Sections.Tests}/ModalPickOne`,
 };
 
 const data: Array<{ label: string; icon: typeof Icon.Add }> = [

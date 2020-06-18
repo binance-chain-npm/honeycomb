@@ -9,7 +9,7 @@ import pic from './pic.png';
 import { ModalPickOne } from './';
 
 export default {
-  title: `${Sections.Elements}|ModalPickOne`,
+  title: `${Sections.Elements}/ModalPickOne`,
 };
 
 const data: Array<{ label: string; icon: typeof Icon.Add }> = [

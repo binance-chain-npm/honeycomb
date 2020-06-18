@@ -5,7 +5,7 @@ import { Sections } from '../../modules/sections';
 import { SolidAvatar } from '.';
 
 export default {
-  title: `${Sections.Elements}|SolidAvatar`,
+  title: `${Sections.Elements}/SolidAvatar`,
 };
 
 export const Default = () => (

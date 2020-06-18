@@ -5,7 +5,7 @@ import { Sections } from '../../modules/sections';
 import { CopyToClipboard } from './';
 
 export default {
-  title: `${Sections.Elements}|CopyToClipboard`,
+  title: `${Sections.Elements}/CopyToClipboard`,
 };
 
 export const Default = () => (

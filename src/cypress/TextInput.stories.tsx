@@ -4,7 +4,7 @@ import { TextInput } from '../../src/components/TextInput';
 import { Sections } from '../../src/modules/sections';
 
 export default {
-  title: `${Sections.Tests}|TextInput`,
+  title: `${Sections.Tests}/TextInput`,
 };
 
 export const Default = () => {

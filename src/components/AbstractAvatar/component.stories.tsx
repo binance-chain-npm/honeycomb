@@ -5,7 +5,7 @@ import { Sections } from '../../modules/sections';
 import { AbstractAvatar } from '.';
 
 export default {
-  title: `${Sections.Elements}|AbstractAvatar`,
+  title: `${Sections.Elements}/AbstractAvatar`,
 };
 
 export const Default = () => (

@@ -9,7 +9,7 @@ import { variants, sizes, shapes } from './styled';
 import { Button } from './';
 
 export default {
-  title: `${Sections.Elements}|Button`,
+  title: `${Sections.Elements}/Button`,
 };
 
 const getText = ({

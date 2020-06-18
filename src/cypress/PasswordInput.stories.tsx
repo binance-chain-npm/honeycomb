@@ -4,7 +4,7 @@ import { PasswordInput, usePasswordInputValidation } from '../../src/components/
 import { Sections } from '../../src/modules/sections';
 
 export default {
-  title: `${Sections.Tests}|PasswordInput`,
+  title: `${Sections.Tests}/PasswordInput`,
 };
 
 export const Default = () => {

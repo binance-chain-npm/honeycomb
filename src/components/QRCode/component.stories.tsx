@@ -5,7 +5,7 @@ import { Sections } from '../../modules/sections';
 import { QRCode } from './';
 
 export default {
-  title: `${Sections.Elements}|QRCode`,
+  title: `${Sections.Elements}/QRCode`,
 };
 
 export const Default = () => (

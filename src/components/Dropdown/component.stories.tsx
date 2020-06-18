@@ -5,7 +5,7 @@ import { Sections } from '../../modules/sections';
 import { Dropdown } from './';
 
 export default {
-  title: `${Sections.Elements}|Dropdown`,
+  title: `${Sections.Elements}/Dropdown`,
 };
 
 export const Bare = () => {
