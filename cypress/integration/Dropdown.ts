@@ -1,6 +1,6 @@
 describe('Dropdown', () => {
   it('renders correctly', () => {
-    cy.visitStory({ storyId: 'tests-dropdown--default' });
+    cy.visitStory({ storyId: 'tests-dropdown--default', themeId: 'GoldDark' });
 
     cy.get('[data-testid="Dropdown.content"]').should('not.exist');
     cy.get('[data-testid="Dropdown.target"]').click();
@@ -41,14 +41,14 @@ describe('Dropdown', () => {
   });
 
   it('renders correctly with Gold Light theme', () => {
-    cy.visitStory({ storyId: 'elements-dropdown--with-helpers', themeName: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-dropdown--with-helpers', themeId: 'GoldLight' });
 
     cy.get('[data-testid="MyDropdown.target"]').click();
     cy.percySnapshot('Dropdown with Gold Light theme');
   });
 
   it('renders correctly with Gold Dark theme', () => {
-    cy.visitStory({ storyId: 'elements-dropdown--with-helpers', themeName: 'GoldDark' });
+    cy.visitStory({ storyId: 'elements-dropdown--with-helpers', themeId: 'GoldDark' });
 
     cy.get('[data-testid="MyDropdown.target"]').click();
     cy.percySnapshot('Dropdown with Gold Dark theme');

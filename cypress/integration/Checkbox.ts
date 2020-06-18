@@ -1,6 +1,6 @@
 describe('Checkbox', () => {
   it('works when clicking on label', () => {
-    cy.visitStory({ storyId: 'tests-checkbox--default' });
+    cy.visitStory({ storyId: 'tests-checkbox--default', themeId: 'GoldDark' });
 
     cy.get('[data-testid="Checkbox.native-input"]').should('not.be.checked');
 

@@ -1,6 +1,6 @@
 describe('ModalPickOne', () => {
   it('opens and closes', () => {
-    cy.visitStory({ storyId: 'tests-modalpickone--default', themeName: 'GoldLight' });
+    cy.visitStory({ storyId: 'tests-modalpickone--default', themeId: 'GoldLight' });
 
     cy.get('[data-testid="OpenButton"]').click();
 
@@ -31,7 +31,7 @@ describe('ModalPickOne', () => {
   });
 
   it('renders correctly with Gold Dark theme', () => {
-    cy.visitStory({ storyId: 'elements-modalpickone--default', themeName: 'GoldDark' });
+    cy.visitStory({ storyId: 'elements-modalpickone--default', themeId: 'GoldDark' });
     cy.clock();
     cy.get('[data-testid="MyModal.item.0.tick"]').should('be.visible');
     cy.tick(10000);
@@ -40,7 +40,7 @@ describe('ModalPickOne', () => {
 
   it('renders correctly with Gold Light theme', () => {
     cy.viewport(800, 600);
-    cy.visitStory({ storyId: 'elements-modalpickone--default', themeName: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-modalpickone--default', themeId: 'GoldLight' });
     cy.clock();
     cy.get('[data-testid="MyModal.item.0.tick"]').should('be.visible');
     cy.tick(10000);

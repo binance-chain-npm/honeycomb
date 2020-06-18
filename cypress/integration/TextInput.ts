@@ -1,6 +1,6 @@
 describe('TextInput', () => {
   it('exposes value when typing', () => {
-    cy.visitStory({ storyId: 'tests-textinput--default' });
+    cy.visitStory({ storyId: 'tests-textinput--default', themeId: 'GoldDark' });
 
     cy.get('[data-testid="TextInput.left"]').should('not.exist');
     cy.get('[data-testid="TextInput.right"]').should('not.exist');
@@ -14,7 +14,7 @@ describe('TextInput', () => {
   });
 
   it('renders left and right components if props provided', () => {
-    cy.visitStory({ storyId: 'tests-textinput--left-right' });
+    cy.visitStory({ storyId: 'tests-textinput--left-right', themeId: 'GoldDark' });
 
     cy.get('[data-testid="TextInput.left"]')
       .should('be.visible')

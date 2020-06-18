@@ -1,6 +1,6 @@
 describe('CopyToClipboard', () => {
   it('renders properly in light theme', () => {
-    cy.visitStory({ storyId: 'elements-copytoclipboard--default', themeName: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-copytoclipboard--default', themeId: 'GoldLight' });
     cy.clock();
 
     cy.get('[data-testid="copy-to-clipboard.copy-icon"]').should('be.visible');
@@ -13,7 +13,7 @@ describe('CopyToClipboard', () => {
   });
 
   it('renders properly in dark theme', () => {
-    cy.visitStory({ storyId: 'elements-copytoclipboard--default', themeName: 'GoldDark' });
+    cy.visitStory({ storyId: 'elements-copytoclipboard--default', themeId: 'GoldDark' });
     cy.clock();
 
     cy.get('[data-testid="copy-to-clipboard.copy-icon"]').should('be.visible');

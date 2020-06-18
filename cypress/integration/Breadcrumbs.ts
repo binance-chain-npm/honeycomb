@@ -1,6 +1,6 @@
 describe('Breadcrumbs', () => {
   it('works when clicking on label', () => {
-    cy.visitStory({ storyId: 'tests-breadcrumbs--default' });
+    cy.visitStory({ storyId: 'tests-breadcrumbs--default', themeId: 'GoldDark' });
 
     cy.get('[data-testid="breadcrumb.0"]').should('have.text', 'Page A');
     cy.get('[data-testid="breadcrumb.1"]').should('have.text', 'A.1');
