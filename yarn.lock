@@ -13855,10 +13855,10 @@ store2@^2.7.1:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.11.2.tgz#a298e5e97b21b3ce7419b732540bc7c79cb007db"
   integrity sha512-TQMKs+C6n9idtzLpxluikmDCYiDJrTbbIGn9LFxMg0BVTu+8JZKSlXTWYRpOFKlfKD5HlDWLVpJJyNGZ2e9l1A==
 
-storybook-styled-components-theme-selector@^1.0.0-alpha.1:
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/storybook-styled-components-theme-selector/-/storybook-styled-components-theme-selector-1.0.0-alpha.1.tgz#642177582c75be15f37513b9bf45c38e9dbda38f"
-  integrity sha512-6GcgKqxBZQDk373YYRVCMpsb4MOnfB+9d8CGcEDjqa84HwUUGXSz2VcrV4nFO/1z9Rxual/i9w3Flmb5OfcHtQ==
+storybook-styled-components-theme-selector@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/storybook-styled-components-theme-selector/-/storybook-styled-components-theme-selector-1.0.0.tgz#857131327c505a38c99a9b403ea7b0de1ee65dcc"
+  integrity sha512-zCmOkFn1aUuei+q/yi8Kkw9y76ERRUK28xL9FmZIiQEv7PEwKzeKN9Rt0BETlmrhftToTScC8B0nnvVYlpkMtQ==
   dependencies:
     "@storybook/components" "^5.3.19"
     query-string "^6.13.1"
