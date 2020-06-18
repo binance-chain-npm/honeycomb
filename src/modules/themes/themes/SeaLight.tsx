@@ -5,6 +5,10 @@ export const SeaLight: HoneycombThemeType = {
   ...GoldLight,
   honeycomb: {
     ...GoldLight.honeycomb,
+
+    id: 'SeaLight',
+    name: 'Sea Light',
+
     color: {
       ...GoldLight.honeycomb.color,
       primary: {

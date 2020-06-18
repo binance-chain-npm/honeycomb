@@ -10,6 +10,9 @@ const bgNormal = '#0b0e11';
 
 export const GoldDark = {
   honeycomb: {
+    id: 'GoldDark',
+    name: 'Gold Dark',
+
     color: {
       bg: {
         normal: bgNormal,
