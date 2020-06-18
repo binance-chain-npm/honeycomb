@@ -12,6 +12,12 @@ export const useSystemTheme = (
 
     setVariant(media.matches ? 'dark' : 'light');
 
+    if (!media.addEventListener) {
+      // Some browser (e.g. Safari) do not support `media.addEventListener`.
+      const id = setInterval(() => setVariant(media.matches ? 'dark' : 'light'), 10000);
+      return () => clearInterval(id);
+    }
+
     const listener = ({ matches }: MediaQueryListEventMap['change']) =>
       setVariant(matches ? 'dark' : 'light');
     media.addEventListener('change', listener);
