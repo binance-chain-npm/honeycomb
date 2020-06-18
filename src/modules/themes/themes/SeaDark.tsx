@@ -8,7 +8,7 @@ export const SeaDark: HoneycombThemeType = {
     ...SeaLight.honeycomb,
 
     id: 'SeaDark',
-    name: 'Sea Dark',
+    name: 'Sea (Dark)',
 
     color: {
       ...SeaLight.honeycomb.color,

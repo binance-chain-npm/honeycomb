@@ -7,7 +7,7 @@ export const GoldLight: HoneycombThemeType = {
     ...GoldDark.honeycomb,
 
     id: 'GoldLight',
-    name: 'Gold Light',
+    name: 'Gold (Light)',
 
     color: {
       ...GoldDark.honeycomb.color,
