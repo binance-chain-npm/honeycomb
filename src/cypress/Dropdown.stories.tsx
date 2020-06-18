@@ -4,7 +4,7 @@ import { Dropdown } from '../../src/components/Dropdown';
 import { Sections } from '../../src/modules/sections';
 
 export default {
-  title: `${Sections.Tests}|Dropdown`,
+  title: `${Sections.Tests}/Dropdown`,
 };
 
 export const Default = () => {

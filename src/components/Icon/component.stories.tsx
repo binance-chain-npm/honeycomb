@@ -5,7 +5,7 @@ import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 
 export default {
-  title: `${Sections.Elements}|Icon`,
+  title: `${Sections.Elements}/Icon`,
 };
 
 const Container = styled.div`

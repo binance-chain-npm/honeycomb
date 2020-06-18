@@ -6,7 +6,7 @@ import { Sections } from '../../modules/sections';
 import { Styleless } from './';
 
 export default {
-  title: `${Sections.Elements}|Styleless`,
+  title: `${Sections.Elements}/Styleless`,
 };
 
 export const paragraph = () => (

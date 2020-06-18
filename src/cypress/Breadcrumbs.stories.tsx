@@ -4,7 +4,7 @@ import { Sections } from '../modules/sections';
 import { BreadcrumbProvider, useAddBreadcrumbEffect, useBreadcrumbs } from '../modules/breadcrumbs';
 
 export default {
-  title: `${Sections.Tests}|Breadcrumbs`,
+  title: `${Sections.Tests}/Breadcrumbs`,
 };
 
 const PageA = () => {

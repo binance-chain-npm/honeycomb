@@ -5,7 +5,7 @@ import { Sections } from '../../modules/sections';
 import { Tooltip } from './';
 
 export default {
-  title: `${Sections.Elements}|Tooltip`,
+  title: `${Sections.Elements}/Tooltip`,
 };
 
 export const Default = () => {

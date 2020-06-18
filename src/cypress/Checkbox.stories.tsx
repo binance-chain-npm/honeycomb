@@ -4,7 +4,7 @@ import { Checkbox } from '../components/Checkbox';
 import { Sections } from '../modules/sections';
 
 export default {
-  title: `${Sections.Tests}|Checkbox`,
+  title: `${Sections.Tests}/Checkbox`,
 };
 
 export const Default = () => {

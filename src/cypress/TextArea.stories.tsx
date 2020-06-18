@@ -4,7 +4,7 @@ import { TextArea } from '../../src/components/TextArea';
 import { Sections } from '../../src/modules/sections';
 
 export default {
-  title: `${Sections.Tests}|TextArea`,
+  title: `${Sections.Tests}/TextArea`,
 };
 
 export const Default = () => {

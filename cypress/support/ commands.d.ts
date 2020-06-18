@@ -1,7 +1,7 @@
 declare namespace Cypress {
   interface VisitStoryParams {
     storyId: string;
-    themeName?: string;
+    themeName?: 'GoldDark' | 'GoldLight' | 'SeaDark' | 'SeaLight';
   }
 
   interface Chainable<Subject> {

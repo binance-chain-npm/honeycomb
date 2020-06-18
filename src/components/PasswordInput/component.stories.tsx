@@ -5,7 +5,7 @@ import { Sections } from '../../modules/sections';
 import { PasswordInput, usePasswordInputValidation } from './';
 
 export default {
-  title: `${Sections.Inputs}|PasswordInput`,
+  title: `${Sections.Inputs}/PasswordInput`,
 };
 
 export const Text = () => {

@@ -6,7 +6,7 @@ import { Button } from '../Button';
 import { Modal } from './';
 
 export default {
-  title: `${Sections.Elements}|Modal`,
+  title: `${Sections.Elements}/Modal`,
 };
 
 const items = new Array(200).fill(null).map((_, index) => <div key={index}>{index + 1}</div>);

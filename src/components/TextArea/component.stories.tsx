@@ -7,7 +7,7 @@ import { Button } from '../Button';
 import { TextArea } from './';
 
 export default {
-  title: `${Sections.Inputs}|TextArea`,
+  title: `${Sections.Inputs}/TextArea`,
 };
 
 export const Text = () => {

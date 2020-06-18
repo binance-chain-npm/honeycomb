@@ -5,7 +5,7 @@ import { Sections } from '../../modules/sections';
 import { BuyWithMoonPay } from './';
 
 export default {
-  title: `${Sections.Elements}|BuyWithMoonPay`,
+  title: `${Sections.Elements}/BuyWithMoonPay`,
 };
 
 export const Default = () => (

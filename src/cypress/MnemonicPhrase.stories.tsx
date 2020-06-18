@@ -4,7 +4,7 @@ import { MnemonicPhrase } from '../../src/components/MnemonicPhrase';
 import { Sections } from '../../src/modules/sections';
 
 export default {
-  title: `${Sections.Tests}|MnemonicPhrase`,
+  title: `${Sections.Tests}/MnemonicPhrase`,
 };
 
 export const Default = () => (
