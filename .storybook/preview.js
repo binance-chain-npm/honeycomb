@@ -1,5 +1,5 @@
 import React from 'react';
-import { addDecorator } from '@storybook/react';
+import { addDecorator, addParameters } from '@storybook/react';
 import { withThemesProvider } from 'storybook-styled-components-theme-selector';
 
 import { HoneycombTheme } from '../src/modules/themes';
@@ -15,3 +15,5 @@ addDecorator(
     })),
   }),
 );
+
+addParameters({ docs: { page: null } });
