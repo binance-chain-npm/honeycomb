@@ -9,6 +9,7 @@ import { variants, sizes, shapes } from './styled';
 import { Button } from './';
 
 export default {
+  component: Button,
   title: `${Sections.Elements}/Button`,
 };
 
