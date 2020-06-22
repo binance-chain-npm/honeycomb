@@ -29,7 +29,7 @@ export { CopyToClipboard } from './components/CopyToClipboard';
 export { QRCode } from './components/QRCode';
 export { AbstractAvatar } from './components/AbstractAvatar';
 export { SolidAvatar } from './components/SolidAvatar';
-export { BuyWithMoonPay } from './components/BuyWithMoonPay';
+export { BuyWithMoonPay, useMoonPayUrl } from './components/BuyWithMoonPay';
 export { Space } from './components/Space';
 export { Modal } from './components/Modal';
 export { ModalPickOne } from './components/ModalPickOne';
