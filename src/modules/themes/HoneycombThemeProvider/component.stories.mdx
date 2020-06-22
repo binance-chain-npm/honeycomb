@@ -1,0 +1,103 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+
+import { Sections } from '../../sections';
+import { Example } from './Example';
+import { HoneycombThemeProvider } from './';
+
+<Meta title={`${Sections.Elements}/HoneycombThemeProvider`} />
+
+# HoneycombThemeProvider
+
+The `HoneycombThemeProvider` component lets you easily pick one of the many themes this library
+supports and change it anywhere in your component tree following the rules of our design system.
+
+All the props this component accepts are optional and will generally default to picking our Gold
+Light theme. Read on for a more detailed explanation.
+
+## Family
+
+The `family` prop can be `gold` or `sea`, and defaults to `gold`.
+
+## Variant and default variant
+
+The `variant` prop can be `light`, `dark` or `accent`. If this prop is provided, Honeycomb will use
+it. Otherwise, it will use `defaultVariant`, which can be `light` or `dark`, and defaults to
+`light`.
+
+`defaultVariant` tells Honeycomb to figure out what are the user's OS theme settings and adjust to
+them if possible, defaulting to `defaultVariant`'s value if checking those settings is not possible.
+
+<Preview>
+  <Story name="Responsive to OS dark mode settings">
+    <HoneycombThemeProvider family="gold" defaultVariant="light">
+      <Example text="Responsive to OS dark mode settings" />
+    </HoneycombThemeProvider>
+  </Story>
+</Preview>
+
+## Accent themes
+
+Accent themes are treated in a special way. If you se your `variant` to `accent` inside a context
+with a light theme, the result will not be surprising.
+
+<Preview>
+  <Story name="Accent inside light theme">
+    <HoneycombThemeProvider family="gold" variant="light">
+      <Example text="Light theme">
+        <HoneycombThemeProvider variant="accent">
+          <Example text="Accent theme inside light theme" />
+        </HoneycombThemeProvider>
+      </Example>
+    </HoneycombThemeProvider>
+  </Story>
+</Preview>
+
+However, if you use `accent` inside a context with a dark theme, the dark theme will be used anyway
+and your change will be ignored.
+
+<Preview>
+  <Story name="Accent inside dark theme">
+    <HoneycombThemeProvider family="gold" variant="dark">
+      <Example text="Dark theme">
+        <HoneycombThemeProvider variant="accent">
+          <Example text="Accent theme inside dark theme" />
+        </HoneycombThemeProvider>
+      </Example>
+    </HoneycombThemeProvider>
+  </Story>
+</Preview>
+
+In the `sea` family, however, `accent` always defaults to whatever the variant is in upper contexts,
+or `light` if none can be found.
+
+## Nesting
+
+`HoneycombThemeProvider` is aware of whether it has been previously used in your component tree, and
+will keep the values used by its ascendants unless you explicitly change them.
+
+<Preview>
+  <Story name="Nesting">
+    <HoneycombThemeProvider family="gold" defaultVariant="dark">
+      <Example text="Responsive to OS theme (Gold)">
+        <HoneycombThemeProvider family="sea">
+          <Example text="Sea family inside Gold family" />
+        </HoneycombThemeProvider>
+      </Example>
+    </HoneycombThemeProvider>
+  </Story>
+</Preview>
+
+Honeycomb's priorities are always your props first. This makes it possible to make it go back to
+checking the system's dark mode settings after setting a forced theme in an upper context.
+
+<Preview>
+  <Story name="Nesting defaultVariant">
+    <HoneycombThemeProvider family="gold" variant="dark">
+      <Example text="Always dark">
+        <HoneycombThemeProvider family="sea" defaultVariant="dark">
+          <Example text="Responsive to OS theme" />
+        </HoneycombThemeProvider>
+      </Example>
+    </HoneycombThemeProvider>
+  </Story>
+</Preview>

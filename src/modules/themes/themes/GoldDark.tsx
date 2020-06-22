@@ -10,7 +10,7 @@ const bgNormal = '#0b0e11';
 
 export const GoldDark = {
   honeycomb: {
-    id: 'GoldDark' as 'GoldDark' | 'GoldLight' | 'SeaDark' | 'SeaLight',
+    id: 'GoldDark' as 'GoldDark' | 'GoldLight' | 'GoldAccent' | 'SeaDark' | 'SeaLight',
     name: 'Gold (Dark)',
 
     color: {

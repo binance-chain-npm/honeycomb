@@ -1,52 +1,34 @@
 import React, { useMemo } from 'react';
 import { ThemeProvider as Provider, DefaultTheme } from 'styled-components';
 
-import { GoldDark } from '../themes/GoldDark';
-import { GoldLight } from '../themes/GoldLight';
-import { SeaDark } from '../themes/SeaDark';
-import { SeaLight } from '../themes/SeaLight';
-import { useSystemTheme } from '../useSystemTheme';
+import { useHoneycombTheme } from './hooks';
+
+export type Variant = 'light' | 'dark' | 'accent';
 
 export type Props = {
   children?: React.ReactNode;
-  family: 'gold' | 'sea';
-  variant?: 'light' | 'dark';
-  defaultVariant?: 'light' | 'dark';
+  family?: 'gold' | 'sea';
+  variant?: Variant;
+  defaultVariant?: 'dark' | 'light';
   localTheme?: Omit<DefaultTheme, 'honeycomb'>;
-};
-
-const getHoneycombTheme = ({
-  family,
-  variant,
-}: Pick<Props, 'family'> & { variant: 'light' | 'dark' }) => {
-  if (family === 'sea') {
-    if (variant === 'dark') return SeaDark;
-    if (variant === 'light') return SeaLight;
-  }
-
-  if (family === 'gold') {
-    if (variant === 'dark') return GoldDark;
-    if (variant === 'light') return GoldLight;
-  }
-
-  throw new Error(`No Honeycomb theme found with family="${family}" and variant="${variant}"`);
 };
 
 export const HoneycombThemeProvider = ({
   children,
   family,
   variant,
-  defaultVariant = 'light',
+  defaultVariant,
   localTheme,
 }: Props) => {
-  const systemVariant = useSystemTheme({ defaultTheme: defaultVariant });
+  const honeycombTheme = useHoneycombTheme({
+    family,
+    variant,
+    defaultVariant,
+  });
+
   const theme = useMemo(() => {
-    const honeycombTheme = getHoneycombTheme({
-      family,
-      variant: variant ?? systemVariant,
-    });
     return { ...localTheme, ...honeycombTheme };
-  }, [family, variant, localTheme, systemVariant]);
+  }, [localTheme, honeycombTheme]);
 
   return <Provider theme={theme}>{children}</Provider>;
 };
