@@ -124,6 +124,7 @@ export const Styled = styled.button<Props>`
   justify-content: center;
   font-weight: 600;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+  flex-shrink: 0;
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
 
   :focus,
