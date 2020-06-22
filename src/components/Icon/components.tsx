@@ -20,3 +20,4 @@ export { ReactComponent as Shield } from './assets/Shield.svg';
 export { ReactComponent as Globe } from './assets/Globe.svg';
 export { ReactComponent as CaretRight } from './assets/CaretRight.svg';
 export { ReactComponent as Cross } from './assets/Cross.svg';
+export { ReactComponent as Edit } from './assets/Edit.svg';
