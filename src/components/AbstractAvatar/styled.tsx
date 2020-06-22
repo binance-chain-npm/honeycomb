@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { em } from 'polished';
 
 export const Container = styled.div`
   position: relative;
@@ -6,7 +7,7 @@ export const Container = styled.div`
   height: 1em;
   pointer-events: none;
   user-select: none;
-  border-radius: 50%;
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
   overflow: hidden;
   display: flex;
   align-items: center;

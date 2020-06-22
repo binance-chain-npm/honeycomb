@@ -1,12 +1,12 @@
 import { readableColor, transparentize } from 'polished';
 
 const readable = {
-  normal: (bg: string) => readableColor(bg, '#1e2026', '#ffffff'),
+  normal: (bg: string) => readableColor(bg, '#1e2026', '#e6e8ea'),
   masked: (bg: string) => readableColor(bg, '#76808f', '#5e6673'),
   disabled: (bg: string) => readableColor(bg, '#aeb4bc', '#aeb4bc'),
 } as const;
 
-const bgNormal = '#0b0e11';
+const bgNormal = '#1e2026';
 
 export const GoldDark = {
   honeycomb: {
@@ -17,7 +17,6 @@ export const GoldDark = {
       bg: {
         normal: bgNormal,
         masked: '#14151a',
-        disabled: '#2b2f36',
 
         tooltip: {
           normal: '#2b2f36',
@@ -77,8 +76,9 @@ export const GoldDark = {
     },
 
     radius: {
-      reduced: 2,
-      normal: 4,
+      reduced: 4,
+      normal: 8,
+      increased: 16,
     },
 
     duration: {
@@ -86,8 +86,7 @@ export const GoldDark = {
     },
 
     shadow: {
-      normal:
-        'rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px',
+      normal: '0px 2px 16px rgba(11, 14, 17, 0.6)',
     },
   },
 };

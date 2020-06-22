@@ -1,23 +1,23 @@
-import { GoldDark } from './GoldDark';
+import { GoldLight } from './GoldLight';
 import { HoneycombThemeType } from './HoneycombThemeType';
 
 export const GoldAccent: HoneycombThemeType = {
-  ...GoldDark,
+  ...GoldLight,
   honeycomb: {
-    ...GoldDark.honeycomb,
+    ...GoldLight.honeycomb,
 
     id: 'GoldAccent',
     name: 'Gold (Accent)',
 
     color: {
-      ...GoldDark.honeycomb.color,
+      ...GoldLight.honeycomb.color,
       bg: {
-        normal: GoldDark.honeycomb.color.primary.normal,
-        masked: '#fafafa',
-        disabled: '#f5f5f5',
+        ...GoldLight.honeycomb.color.bg,
+        normal: GoldLight.honeycomb.color.primary.normal,
+        masked: GoldLight.honeycomb.color.primary.normal,
 
         tooltip: {
-          ...GoldDark.honeycomb.color.bg.tooltip,
+          ...GoldLight.honeycomb.color.bg.tooltip,
           normal: '#ffffff',
           accent: '#f5f5f5',
         },
@@ -26,19 +26,13 @@ export const GoldAccent: HoneycombThemeType = {
       border: '#e6e8ea',
 
       primary: {
-        ...GoldDark.honeycomb.color.primary,
-        normal: '#fff',
-      },
-
-      secondary: {
-        ...GoldDark.honeycomb.color.secondary,
+        ...GoldLight.honeycomb.color.primary,
         normal: '#f5f5f5',
       },
 
-      text: {
-        normal: GoldDark.honeycomb.color.readable.normal('white'),
-        masked: GoldDark.honeycomb.color.readable.masked('white'),
-        disabled: GoldDark.honeycomb.color.readable.disabled('white'),
+      secondary: {
+        ...GoldLight.honeycomb.color.secondary,
+        normal: GoldLight.honeycomb.color.primary.normal,
       },
     },
   },

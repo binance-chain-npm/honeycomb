@@ -5,7 +5,7 @@ import { Button } from '../../../components/Button';
 
 const ExampleContainer = styled.div`
   padding: 1em;
-  background: ${({ theme }) => theme.honeycomb.color.bg.normal};
+  background: ${({ theme }) => theme.honeycomb.color.bg.masked};
 `;
 
 export const Example = ({ text, children }: { text: string; children?: React.ReactNode }) => (

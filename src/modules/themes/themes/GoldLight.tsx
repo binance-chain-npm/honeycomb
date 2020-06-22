@@ -13,8 +13,7 @@ export const GoldLight: HoneycombThemeType = {
       ...GoldDark.honeycomb.color,
       bg: {
         normal: '#ffffff',
-        masked: '#fafafa',
-        disabled: '#f5f5f5',
+        masked: '#f5f5f5',
 
         tooltip: {
           ...GoldDark.honeycomb.color.bg.tooltip,
@@ -39,6 +38,10 @@ export const GoldLight: HoneycombThemeType = {
         masked: GoldDark.honeycomb.color.readable.masked('white'),
         disabled: GoldDark.honeycomb.color.readable.disabled('white'),
       },
+    },
+
+    shadow: {
+      normal: '0px 2px 16px rgba(11, 14, 17, 0.04)',
     },
   },
 };
