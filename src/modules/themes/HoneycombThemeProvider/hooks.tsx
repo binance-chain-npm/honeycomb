@@ -76,5 +76,13 @@ export const useHoneycombTheme = ({
     }
 
     throw new Error(`No Honeycomb theme found with family="${family}" and variant="${variant}"`);
-  }, [parentTheme, familyParam, parentFamily, parentVariant, variantParam, systemVariant]);
+  }, [
+    parentTheme,
+    familyParam,
+    parentFamily,
+    parentVariant,
+    variantParam,
+    systemVariant,
+    defaultVariant,
+  ]);
 };
