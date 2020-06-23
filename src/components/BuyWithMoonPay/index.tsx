@@ -1,10 +1,9 @@
+import { MoonPayContextProvider } from '../../modules/moonpay';
+
 import { Component } from './component';
-import { Provider } from './context';
 
 export const BuyWithMoonPay = Component as typeof Component & {
-  Provider: typeof Provider;
+  Provider: typeof MoonPayContextProvider;
 };
 
-export { useMoonPayUrl } from './useMoonPayUrl';
-
-BuyWithMoonPay.Provider = Provider;
+BuyWithMoonPay.Provider = MoonPayContextProvider;
