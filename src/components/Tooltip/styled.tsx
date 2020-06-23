@@ -1,7 +1,13 @@
 import { createGlobalStyle as css } from 'styled-components';
 import { em } from 'polished';
 
+import tippy from '../../../node_modules/tippy.js/dist/tippy.css';
+import tippyAnimations from '../../../node_modules/tippy.js/animations/shift-away.css';
+
 export const Styles = css`
+  ${tippy};
+  ${tippyAnimations};
+
   .tippy-box {
     background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
     color: ${({ theme }) =>
