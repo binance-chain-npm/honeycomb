@@ -2,10 +2,9 @@ import React, { useContext } from 'react';
 
 import { Button } from '../Button';
 import { Loading } from '../Loading';
+import { useMoonPayUrl, MoonPayContext } from '../../modules/moonpay';
 
-import { Context } from './context';
 import { StyledMastercard, StyledVisa } from './styled';
-import { useMoonPayUrl } from './useMoonPayUrl';
 
 export type Props = Omit<
   React.ComponentPropsWithoutRef<typeof Button>,
@@ -28,17 +27,10 @@ export const Component = ({
   currencyCode,
   ...otherProps
 }: Props) => {
-  const { mode, apiKey, signatureEndpoint } = useContext(Context);
-  if (!apiKey) {
-    throw new Error('MoonPay API key has not been provided');
-  }
-
+  const { apiKey } = useContext(MoonPayContext);
   const { url, isLoading } = useMoonPayUrl({
     address,
     currencyCode,
-    signatureEndpoint,
-    apiKey,
-    mode,
     redirectUrl,
   });
 
