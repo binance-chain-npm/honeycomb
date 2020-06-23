@@ -81,6 +81,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "rimraf": "^3.0.2",
+    "rollup-plugin-string": "^3.0.0",
     "rollup-plugin-visualizer": "^4.0.4",
     "semantic-release": "^17.0.8",
     "storybook-styled-components-theme-selector": "^1.0.0",

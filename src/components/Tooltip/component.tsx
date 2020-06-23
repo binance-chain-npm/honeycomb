@@ -1,9 +1,6 @@
 import React, { useMemo } from 'react';
 import Tippy from '@tippyjs/react';
 
-import 'tippy.js/dist/tippy.css';
-import 'tippy.js/animations/shift-away.css';
-
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
 import { Styles } from './styled';
