@@ -20,8 +20,8 @@ export const Input = styled.input`
   background: transparent;
   color: inherit;
   height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
-  text-indent: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
-  padding-right: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+  text-indent: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
   ${({ theme }) => transitions(['color'], `${theme.honeycomb.duration.normal} ease-in-out`)};
@@ -94,4 +94,11 @@ export const Right = styled.div`
   align-items: stretch;
   justify-content: stretch;
   padding-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
+`;
+
+export const Description = styled.span`
+  display: block;
+  color: ${({ theme }) => theme.honeycomb.color.text.masked};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
+  margin-top: ${({ theme }) => em(4, theme.honeycomb.size.small)};
 `;

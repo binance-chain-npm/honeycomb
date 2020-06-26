@@ -8,7 +8,8 @@ export const StyledTextInput = styled(TextInput)`
     min-height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
     height: auto;
     text-indent: 0;
-    padding-left: ${({ theme }) =>
-      em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+    padding: 0;
+    padding: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)}
+      ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
   }
 `;
