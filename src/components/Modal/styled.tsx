@@ -11,6 +11,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.outer};
+  z-index: ${({ theme }) => theme.honeycomb.zIndexes.modals};
 `;
 
 export const Box = styled.div`

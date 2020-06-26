@@ -88,5 +88,10 @@ export const GoldDark = {
     shadow: {
       normal: '0px 2px 16px rgba(11, 14, 17, 0.6)',
     },
+
+    zIndexes: {
+      normal: 0,
+      modals: 500,
+    },
   },
 };
