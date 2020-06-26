@@ -2,10 +2,9 @@ import React, { useMemo, useCallback, useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import { Label } from '../internal/Label';
-import { Description } from '../internal/Description';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Container, Input, Left, Right, InputContainer, State } from './styled';
+import { Container, Input, Left, Right, InputContainer, State, Description } from './styled';
 
 export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> &
   Testable & {
