@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
@@ -20,9 +20,6 @@ export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
 
 export const Component = ({
   children,
-  onMouseEnter,
-  onMouseLeave,
-  href,
   disabled,
   htmlTag,
   left,
@@ -36,26 +33,14 @@ export const Component = ({
   const buildTestId = useBuildTestId(testId);
   const theme = useTheme();
 
-  const asProp = useMemo(() => {
-    if (!!htmlTag) return htmlTag;
-    if (!!href) return 'a';
-    return 'button';
-  }, [htmlTag, href]);
-
   return (
-    <Styled
-      {...otherProps}
-      as={asProp as any}
-      href={disabled ? undefined : href}
-      data-testid={buildTestId()}
-      disabled={disabled}
-    >
-      {left && <LeftContainer>{left}</LeftContainer>}
-      <Content>{children}</Content>
-      {right && <RightContainer>{right}</RightContainer>}
+    <Styled {...otherProps} as={htmlTag as any} data-testid={buildTestId()} disabled={disabled}>
+      {left && <LeftContainer data-testid={buildTestId('left')}>{left}</LeftContainer>}
+      <Content data-testid={buildTestId('content')}>{children}</Content>
+      {right && <RightContainer data-testid={buildTestId('right')}>{right}</RightContainer>}
       {rightValue && (
         <RightContainer>
-          <Value>{rightValue}</Value>
+          <Value data-testid={buildTestId('value')}>{rightValue}</Value>
         </RightContainer>
       )}
       {isSelected && (
@@ -63,12 +48,16 @@ export const Component = ({
           <Icon.Tick
             fontSize={theme.honeycomb.size.reduced}
             color={theme.honeycomb.color.primary.normal}
+            data-testid={buildTestId('tick')}
           />
         </RightContainer>
       )}
       {showCaretRight && (
         <RightContainer>
-          <Icon.CaretRight fontSize={theme.honeycomb.size.small} />
+          <Icon.CaretRight
+            fontSize={theme.honeycomb.size.small}
+            data-testid={buildTestId('caret-right')}
+          />
         </RightContainer>
       )}
     </Styled>
