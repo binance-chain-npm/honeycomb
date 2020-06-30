@@ -4,23 +4,8 @@ export type Params = Parameters<typeof buildDefaultMoonPayUrl>[0] & {
   signatureEndpoint?: string;
 };
 
-export const buildMoonPayUrl = async ({
-  redirectUrl,
-  mode,
-  apiKey,
-  currencyCode,
-  colorCode,
-  signatureEndpoint,
-  address,
-}: Params) => {
-  const defaultUrl = buildDefaultMoonPayUrl({
-    address,
-    colorCode,
-    currencyCode,
-    apiKey,
-    mode,
-    redirectUrl,
-  });
+export const buildMoonPayUrl = async ({ signatureEndpoint, ...otherParams }: Params) => {
+  const defaultUrl = buildDefaultMoonPayUrl(otherParams);
   if (!signatureEndpoint) return defaultUrl;
 
   try {

@@ -7,11 +7,17 @@ import { Context } from '../context';
 
 export type Params = {
   address?: string;
+  defaultCurrencyCode?: string;
   currencyCode?: string;
   redirectUrl?: string;
 };
 
-export const useMoonPayUrl = ({ address, currencyCode = 'bnb', redirectUrl }: Params) => {
+export const useMoonPayUrl = ({
+  address,
+  currencyCode,
+  redirectUrl,
+  defaultCurrencyCode,
+}: Params) => {
   const { mode, apiKey, signatureEndpoint } = useContext(Context);
   if (!apiKey) {
     throw new Error('MoonPay API key has not been provided');
@@ -21,12 +27,13 @@ export const useMoonPayUrl = ({ address, currencyCode = 'bnb', redirectUrl }: Pa
   const colorCode = theme.honeycomb.color.primary.normal;
 
   const defaultUrl = buildDefaultMoonPayUrl({
-    redirectUrl,
     mode,
     apiKey,
-    currencyCode,
     colorCode,
     address,
+    currencyCode,
+    redirectUrl,
+    defaultCurrencyCode,
   });
 
   const [url, setUrl] = useState(defaultUrl);
@@ -40,13 +47,14 @@ export const useMoonPayUrl = ({ address, currencyCode = 'bnb', redirectUrl }: Pa
         setIsLoading(true);
 
         const result = await buildMoonPayUrl({
-          redirectUrl,
           mode,
           apiKey,
-          currencyCode,
           colorCode,
-          address,
           signatureEndpoint,
+          address,
+          currencyCode,
+          redirectUrl,
+          defaultCurrencyCode,
         });
 
         setUrl(result);
@@ -54,7 +62,16 @@ export const useMoonPayUrl = ({ address, currencyCode = 'bnb', redirectUrl }: Pa
         setIsLoading(false);
       }
     })();
-  }, [address, apiKey, currencyCode, mode, redirectUrl, signatureEndpoint, colorCode]);
+  }, [
+    address,
+    currencyCode,
+    redirectUrl,
+    defaultCurrencyCode,
+    apiKey,
+    mode,
+    signatureEndpoint,
+    colorCode,
+  ]);
 
   return useMemo(() => ({ url, isLoading }), [url, isLoading]);
 };
