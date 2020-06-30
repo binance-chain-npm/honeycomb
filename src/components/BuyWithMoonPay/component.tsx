@@ -14,6 +14,7 @@ export type Props = Omit<
   address?: string;
   signature?: string;
   redirectUrl?: string;
+  defaultCurrencyCode?: string;
   currencyCode?: string;
 };
 
@@ -24,12 +25,14 @@ export const Component = ({
   children,
   signature,
   redirectUrl,
+  defaultCurrencyCode,
   currencyCode,
   ...otherProps
 }: Props) => {
   const { apiKey } = useContext(MoonPayContext);
   const { url, isLoading } = useMoonPayUrl({
     address,
+    defaultCurrencyCode,
     currencyCode,
     redirectUrl,
   });
@@ -46,7 +49,7 @@ export const Component = ({
       ) : (
         children ?? (
           <>
-            Buy BNB&nbsp;
+            Buy crypto&nbsp;
             <StyledVisa />
             <StyledMastercard />
           </>
