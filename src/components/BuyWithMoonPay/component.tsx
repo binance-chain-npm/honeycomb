@@ -47,13 +47,11 @@ export const Component = ({
       {isLoading ? (
         <Loading />
       ) : (
-        children ?? (
-          <>
-            Buy crypto&nbsp;
-            <StyledVisa />
-            <StyledMastercard />
-          </>
-        )
+        <>
+          {children ?? 'Buy crypto'}&nbsp;
+          <StyledVisa />
+          <StyledMastercard />
+        </>
       )}
     </Button>
   );
