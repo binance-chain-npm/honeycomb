@@ -83,6 +83,7 @@ const sell = danger;
 
 const increased = css`
   height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
 `;
 
 const transparent = css`
