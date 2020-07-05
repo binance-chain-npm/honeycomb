@@ -34,7 +34,7 @@ export const Box = styled.div`
 export const Header = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
   flex-shrink: 0;
   align-items: center;
   padding: ${({ theme }) => em(theme.honeycomb.size.normal)}

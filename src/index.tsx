@@ -24,6 +24,7 @@ export { Checkbox } from './components/Checkbox';
 export { Icon } from './components/Icon';
 export { Tooltip } from './components/Tooltip';
 export { Dropdown } from './components/Dropdown';
+export { Dialog } from './components/Dialog';
 export { Loading } from './components/Loading';
 export { MnemonicPhrase } from './components/MnemonicPhrase';
 export { CopyToClipboard } from './components/CopyToClipboard';

@@ -21,3 +21,6 @@ export { ReactComponent as Globe } from './assets/Globe.svg';
 export { ReactComponent as CaretRight } from './assets/CaretRight.svg';
 export { ReactComponent as Cross } from './assets/Cross.svg';
 export { ReactComponent as Edit } from './assets/Edit.svg';
+export { ReactComponent as DialogSuccess } from './assets/dialogSuccess.svg';
+export { ReactComponent as DialogWarning } from './assets/dialogWarning.svg';
+export { ReactComponent as DialogDanger } from './assets/dialogDanger.svg';

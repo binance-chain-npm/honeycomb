@@ -21,3 +21,6 @@ export { default as Globe } from './assets/Globe.svg';
 export { default as CaretRight } from './assets/CaretRight.svg';
 export { default as Cross } from './assets/Cross.svg';
 export { default as Edit } from './assets/Edit.svg';
+export { default as DialogSuccess } from './assets/dialogSuccess.svg';
+export { default as DialogWarning } from './assets/dialogWarning.svg';
+export { default as DialogDanger } from './assets/dialogDanger.svg';
