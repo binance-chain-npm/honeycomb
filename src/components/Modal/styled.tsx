@@ -27,7 +27,8 @@ export const Box = styled.div`
   @media (min-width: ${em(768)}) {
     border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
     width: 50vw;
-    height: 50vh;
+    height: auto;
+    max-height: 50vh;
   }
 `;
 
@@ -39,7 +40,7 @@ export const Header = styled.div`
   align-items: center;
   padding: ${({ theme }) => em(theme.honeycomb.size.normal)}
     ${({ theme }) => em(theme.honeycomb.size.increased)};
-  border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+  // border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
 `;
 
 export const Content = styled.div`
