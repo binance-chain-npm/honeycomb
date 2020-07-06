@@ -50,6 +50,7 @@ export const Content = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  height: 100%;
 `;
 
 export const Value = styled.span`

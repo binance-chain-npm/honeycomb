@@ -1,20 +1,14 @@
 import React, { useCallback, useContext } from 'react';
 
-import { Testable, useBuildTestId } from '../../../modules/test-ids';
-import { Icon } from '../../Icon';
-import { Space } from '../../Space';
+import { useBuildTestId } from '../../../modules/test-ids';
+import { ListItem } from '../../ListItem';
 import { ModalPickOneContext } from '../context';
 
-import { Container, Content } from './styled';
-
-export type Props = Testable & {
+export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & {
   searchAs: string | string[];
-  children?: React.ReactNode;
-  isSelected?: boolean;
-  onClick?: React.AllHTMLAttributes<HTMLButtonElement>['onClick'];
 };
 
-export const Component = ({ 'data-testid': testId, children, isSelected, onClick }: Props) => {
+export const Component = ({ 'data-testid': testId, children, onClick, ...otherProps }: Props) => {
   const { onClose, testId: parentTestId } = useContext(ModalPickOneContext);
   const buildTestIdParent = useBuildTestId(parentTestId);
   const buildTestId = useBuildTestId(buildTestIdParent(testId ? `item.${testId}` : undefined));
@@ -33,11 +27,9 @@ export const Component = ({ 'data-testid': testId, children, isSelected, onClick
   );
 
   return (
-    <Container data-testid={buildTestId()} onClick={click}>
-      <Content>{children}</Content>
-      <Space size="fill" />
-      {isSelected && <Icon.Tick data-testid={buildTestId('tick')} />}
-    </Container>
+    <ListItem {...otherProps} onClick={click} data-testid={buildTestId()}>
+      {children}
+    </ListItem>
   );
 };
 
