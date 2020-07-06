@@ -7,8 +7,7 @@ import { Icon } from '../Icon';
 
 import { Styled, Content, Value, RightContainer, LeftContainer } from './styled';
 
-export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement> &
+export type Props = React.AllHTMLAttributes<HTMLElement> &
   Testable & {
     htmlTag?: HtmlTag;
     left?: React.ReactNode;
