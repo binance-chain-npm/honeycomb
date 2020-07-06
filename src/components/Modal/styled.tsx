@@ -15,8 +15,8 @@ export const Container = styled.div`
 `;
 
 export const Box = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: calc(100vw - ${({ theme }) => em(theme.honeycomb.radius.normal * 6)});
+  height: calc(100vh - ${({ theme }) => em(theme.honeycomb.radius.normal * 6)});
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
   display: flex;
   flex-direction: column;
@@ -25,6 +25,9 @@ export const Box = styled.div`
   box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
 
   @media (min-width: ${em(768)}) {
+    width: calc(100vw - ${({ theme }) => em(theme.honeycomb.radius.normal * 3)});
+    height: calc(100vh - ${({ theme }) => em(theme.honeycomb.radius.normal * 3)});
+    margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
     border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
     width: 50vw;
     height: auto;
@@ -39,8 +42,7 @@ export const Header = styled.div`
   flex-shrink: 0;
   align-items: center;
   padding: ${({ theme }) => em(theme.honeycomb.size.normal)}
-    ${({ theme }) => em(theme.honeycomb.size.increased)};
-  // border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+    ${({ theme }) => em(theme.honeycomb.size.increased)} 0;
 `;
 
 export const Content = styled.div`

@@ -8,5 +8,6 @@ export const Body = styled.div`
   flex-shrink: 0;
   justify-content: flex-start;
   align-items: stretch;
-  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.increased)}
+    ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;

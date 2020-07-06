@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 
-import { ModalDialog } from '.';
+import { ModalState } from '.';
 
 export default {
-  title: `${Sections.Elements}/ModalDialog`,
+  title: `${Sections.Elements}/ModalState`,
 };
 
 export const Default = () => {
@@ -16,18 +16,18 @@ export const Default = () => {
       <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
         Show
       </Button>
-      <ModalDialog
+      <ModalState
         open={show}
         onClose={() => setShow(false)}
-        variant="success"
-        title="Success"
-        content="Results feedback description. It can correctly"
-        data-testid="MyModalDialog"
+        variant="warning"
+        title="Warning"
+        content="Results feedback description. It can correctly guide users to understand the feedback results and select the next operation."
+        data-testid="MyModal"
       >
         <Button variant="primary" onClick={() => setShow(false)}>
           I understand
         </Button>
-      </ModalDialog>
+      </ModalState>
     </>
   );
 };

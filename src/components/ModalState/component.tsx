@@ -3,26 +3,21 @@ import React from 'react';
 import { Modal } from '../Modal';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import {
-  DialogSuccess,
-  DialogDanger,
-  DialogWarning,
-  DialogSvg,
-  DialogTitle,
-  DialogContent,
-  DialogChildren,
-} from './styled';
+import { ModalStateTitle, ModalStateContent, ModalStateChildren, Variant } from './styled';
+
+import { ModalState } from '.';
 
 export type Props = Testable & {
-  variant: string;
-  title: string;
-  content: string;
+  variant: Variant;
+  title: string | React.ReactNode;
+  content: string | React.ReactNode;
   icon?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
   open?: boolean;
   onClose?: () => void;
 };
+
 export const Component = ({
   variant,
   open = false,
@@ -35,24 +30,18 @@ export const Component = ({
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
-  const icons: any = {
-    success: <DialogSuccess />,
-    warning: <DialogDanger />,
-    alert: <DialogWarning />,
-  };
-
   return (
     <>
       <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
         <Modal.Body>
-          <DialogSvg>{icon ? icon : icons[variant]}</DialogSvg>
-          <DialogTitle>{title}</DialogTitle>
-          <DialogContent>{content}</DialogContent>
-          <DialogChildren>{children}</DialogChildren>
+          <ModalState.Icon variant={variant} icon={icon} />
+          <ModalStateTitle>{title}</ModalStateTitle>
+          <ModalStateContent>{content}</ModalStateContent>
+          {children && <ModalStateChildren>{children}</ModalStateChildren>}
         </Modal.Body>
       </Modal>
     </>
   );
 };
 
-Component.displayName = 'ModalDialog';
+Component.displayName = 'ModalState';

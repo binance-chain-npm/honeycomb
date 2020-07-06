@@ -4,6 +4,7 @@ const readable = {
   normal: (bg: string) => readableColor(bg, '#1e2026', '#e6e8ea'),
   masked: (bg: string) => readableColor(bg, '#76808f', '#5e6673'),
   disabled: (bg: string) => readableColor(bg, '#aeb4bc', '#aeb4bc'),
+  grey: (bg: string) => readableColor(bg, '#474d57', '#474d57'),
 } as const;
 
 const bgNormal = '#1e2026';
@@ -29,6 +30,7 @@ export const GoldDark = {
         normal: readable.normal('black'),
         masked: readable.masked('black'),
         disabled: readable.disabled('black'),
+        grey: readable.disabled('black'),
       },
 
       readable,
