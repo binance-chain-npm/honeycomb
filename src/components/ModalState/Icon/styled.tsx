@@ -10,8 +10,14 @@ export const DialogIcon = styled.div`
   align-self: center;
 `;
 
-export const DialogSuccess = styled(Icon.DialogSuccess)``;
+export const Success = styled(Icon.Success)`
+  fill: ${({ theme }) => theme.honeycomb.color.fill.success};
+`;
 
-export const DialogWarning = styled(Icon.DialogWarning)``;
+export const Warning = styled(Icon.Warning)`
+  fill: ${({ theme }) => theme.honeycomb.color.fill.warning};
+`;
 
-export const DialogDanger = styled(Icon.DialogDanger)``;
+export const Danger = styled(Icon.Danger)`
+  fill: ${({ theme }) => theme.honeycomb.color.fill.danger};
+`;

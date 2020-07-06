@@ -3,44 +3,24 @@ import React from 'react';
 import { Modal } from '../Modal';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { ModalStateTitle, ModalStateContent, ModalStateChildren, Variant } from './styled';
-
-import { ModalState } from '.';
+import { TestIdContext } from './context';
 
 export type Props = Testable & {
-  variant: Variant;
-  title: string | React.ReactNode;
-  content: string | React.ReactNode;
-  icon?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
   open?: boolean;
   onClose?: () => void;
 };
 
-export const Component = ({
-  variant,
-  open = false,
-  title,
-  content,
-  icon,
-  children,
-  onClose,
-  'data-testid': testId,
-}: Props) => {
+export const Component = ({ open, children, onClose, 'data-testid': testId }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
   return (
-    <>
+    <TestIdContext.Provider value={buildTestId()}>
       <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
-        <Modal.Body>
-          <ModalState.Icon variant={variant} icon={icon} />
-          <ModalStateTitle>{title}</ModalStateTitle>
-          <ModalStateContent>{content}</ModalStateContent>
-          {children && <ModalStateChildren>{children}</ModalStateChildren>}
-        </Modal.Body>
+        <Modal.Body>{children}</Modal.Body>
       </Modal>
-    </>
+    </TestIdContext.Provider>
   );
 };
 
