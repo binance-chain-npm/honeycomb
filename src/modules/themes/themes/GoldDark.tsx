@@ -2,8 +2,9 @@ import { readableColor, transparentize } from 'polished';
 
 const readable = {
   normal: (bg: string) => readableColor(bg, '#1e2026', '#e6e8ea'),
-  masked: (bg: string) => readableColor(bg, '#76808f', '#5e6673'),
+  masked: (bg: string) => readableColor(bg, '#76808f', '#474d57'),
   disabled: (bg: string) => readableColor(bg, '#aeb4bc', '#aeb4bc'),
+  placeholder: (bg: string) => readableColor(bg, '#aeb4bc', '#5e6673'),
 } as const;
 
 const bgNormal = '#1e2026';
@@ -29,6 +30,7 @@ export const GoldDark = {
         normal: readable.normal('black'),
         masked: readable.masked('black'),
         disabled: readable.disabled('black'),
+        placeholder: readable.disabled('black'),
       },
 
       readable,
@@ -63,6 +65,12 @@ export const GoldDark = {
       sell: {
         normal: '#d9304e',
         active: '#fc6e75',
+      },
+
+      fill: {
+        success: '#02C076',
+        warning: '#F0B90B',
+        danger: '#F84960',
       },
     },
 
