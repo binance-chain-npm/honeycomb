@@ -41,7 +41,7 @@ export const Default = () => {
         </ModalPickOne.Item>
       ))}
       <ModalPickOne.Item searchAs={['my photo', 'A crazy item']} data-testid="photo">
-        <img src={pic} height="100" alt="" />
+        <img src={pic} alt="" style={{ maxHeight: '100%' }} />
       </ModalPickOne.Item>
     </ModalPickOne>
   );
