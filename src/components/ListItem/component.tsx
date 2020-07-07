@@ -7,7 +7,7 @@ import { Icon } from '../Icon';
 
 import { Styled, Content, Value, RightContainer, LeftContainer } from './styled';
 
-export type Props = React.AllHTMLAttributes<HTMLElement> &
+export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
   Testable & {
     htmlTag?: HtmlTag;
     left?: React.ReactNode;

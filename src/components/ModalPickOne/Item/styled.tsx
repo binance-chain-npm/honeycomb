@@ -1,27 +1,10 @@
 import styled from 'styled-components';
-import { em, transitions } from 'polished';
+import { em } from 'polished';
 
-import { styleless } from '../../Styleless';
+import { ListItem } from '../../ListItem';
 
-export const Container = styled.button`
-  ${styleless};
-
-  border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
-  justify-content: flex-start;
-  padding: ${({ theme }) => em(theme.honeycomb.size.normal)}
-    ${({ theme }) => em(theme.honeycomb.size.increased)};
-  cursor: pointer;
-  ${({ theme }) => transitions(['background'], theme.honeycomb.duration.normal)};
-
-  :hover,
-  :active {
-    background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.accent};
-  }
-`;
-
-export const Content = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
+export const StyledListItem = styled(ListItem)`
+  margin: 0 ${({ theme }) => em(-theme.honeycomb.size.normal)};
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.huge)};
+  width: auto;
 `;

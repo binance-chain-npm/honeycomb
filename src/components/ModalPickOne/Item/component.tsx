@@ -1,14 +1,22 @@
 import React, { useCallback, useContext } from 'react';
 
 import { useBuildTestId } from '../../../modules/test-ids';
-import { ListItem } from '../../ListItem';
 import { ModalPickOneContext } from '../context';
+import { ListItem } from '../../ListItem';
+
+import { StyledListItem } from './styled';
 
 export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & {
   searchAs: string | string[];
 };
 
-export const Component = ({ 'data-testid': testId, children, onClick, ...otherProps }: Props) => {
+export const Component = ({
+  'data-testid': testId,
+  children,
+  onClick,
+  htmlTag,
+  ...otherProps
+}: Props) => {
   const { onClose, testId: parentTestId } = useContext(ModalPickOneContext);
   const buildTestIdParent = useBuildTestId(parentTestId);
   const buildTestId = useBuildTestId(buildTestIdParent(testId ? `item.${testId}` : undefined));
@@ -27,9 +35,9 @@ export const Component = ({ 'data-testid': testId, children, onClick, ...otherPr
   );
 
   return (
-    <ListItem {...otherProps} onClick={click} data-testid={buildTestId()}>
+    <StyledListItem {...otherProps} onClick={click} data-testid={buildTestId()}>
       {children}
-    </ListItem>
+    </StyledListItem>
   );
 };
 
