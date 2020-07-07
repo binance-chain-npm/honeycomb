@@ -12,13 +12,14 @@ const fillViewportStyle = css`
 
 export interface Props {
   fillViewport?: boolean;
+  color?: string;
 }
 
 export const Spinner = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.honeycomb.color.primary.normal};
+  color: ${({ color }) => color};
   ${({ fillViewport }) => fillViewport && fillViewportStyle};
 `;
 
