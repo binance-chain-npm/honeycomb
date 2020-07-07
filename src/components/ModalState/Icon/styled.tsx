@@ -3,9 +3,11 @@ import { em } from 'polished';
 
 import { Icon } from '../../Icon';
 
-export const DialogIcon = styled.div`
+export const Svg = styled.svg`
   font-size: ${em(64)};
   align-self: center;
+  width: 1em;
+  height: 1em;
 `;
 
 export const Success = styled(Icon.Success)`

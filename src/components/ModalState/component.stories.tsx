@@ -19,7 +19,7 @@ export interface Scenario {
 
 const scenario: Scenario = {
   variant: 'warning',
-  title: 'warning',
+  title: 'Warning',
   description:
     'Results feedback description. It can correctly guide users to understand the feedback results and select the next operation.',
 };

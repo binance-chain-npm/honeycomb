@@ -3,7 +3,7 @@ import React from 'react';
 import { Testable } from '../../../modules/test-ids';
 import { Variant } from '../styled';
 
-import { Success, Warning, Danger, DialogIcon } from './styled';
+import { Success, Warning, Danger, Svg } from './styled';
 
 export type Props = Testable & {
   variant: Variant;
@@ -19,7 +19,7 @@ const icons: IconType = {
 };
 
 export const Component = ({ variant, children }: Props) => {
-  return <DialogIcon>{children ? children : icons[variant]}</DialogIcon>;
+  return <Svg>{children ? children : icons[variant]}</Svg>;
 };
 
 Component.displayName = 'ModalState.Icon';

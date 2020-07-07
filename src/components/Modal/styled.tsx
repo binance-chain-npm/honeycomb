@@ -18,6 +18,7 @@ export const Box = styled.div`
   width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.huge)});
   height: calc(100vh - ${({ theme }) => em(theme.honeycomb.size.huge)});
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -26,7 +27,6 @@ export const Box = styled.div`
 
   @media (min-width: ${em(768)}) {
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
-    border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
     width: 50vw;
     height: auto;
     max-height: 50vh;
@@ -40,7 +40,7 @@ export const Header = styled.div`
   flex-shrink: 0;
   align-items: center;
   padding: ${({ theme }) => em(theme.honeycomb.size.normal)}
-    ${({ theme }) => em(theme.honeycomb.size.increased)} 0;
+    ${({ theme }) => em(theme.honeycomb.size.normal)} 0;
 `;
 
 export const Content = styled.div`
