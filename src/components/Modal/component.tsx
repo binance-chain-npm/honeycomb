@@ -5,13 +5,14 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Header, Box, Content } from './styled';
+import { Container, Header, Box, Content, Title } from './styled';
 import { TestIdContext } from './context';
 
 export type Props = Testable & {
   open?: boolean;
   onClose?: () => void;
   children?: React.ReactNode;
+  title?: string;
   className?: string;
 };
 
@@ -19,6 +20,7 @@ export const Component = ({
   open = false,
   onClose,
   children,
+  title,
   'data-testid': testId,
   className,
 }: Props) => {
@@ -73,7 +75,8 @@ export const Component = ({
                       ref={boxRef}
                       data-testid={buildTestId('box')}
                     >
-                      <Header data-testid={buildTestId('header')}>
+                      <Header data-testid={buildTestId('header')} title={title}>
+                        <Title>{title}</Title>
                         <Button
                           variant="transparent"
                           size="increased"

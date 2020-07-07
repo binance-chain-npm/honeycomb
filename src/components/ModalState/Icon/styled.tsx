@@ -3,11 +3,10 @@ import { em } from 'polished';
 
 import { Icon } from '../../Icon';
 
-export const Svg = styled.svg`
+export const SvgContainer = styled.div`
   font-size: ${em(64)};
   align-self: center;
-  width: 1em;
-  height: 1em;
+  display: flex;
 `;
 
 export const Success = styled(Icon.Success)`

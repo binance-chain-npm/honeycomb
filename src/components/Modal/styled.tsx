@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { em } from 'polished';
 
+export interface Props {
+  title?: React.ReactNode;
+}
+
 export const Container = styled.div`
   position: fixed;
   width: 100vw;
@@ -33,14 +37,26 @@ export const Box = styled.div`
   }
 `;
 
-export const Header = styled.div`
+export const Header = styled.div<Props>`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   flex-shrink: 0;
   align-items: center;
   padding: ${({ theme }) => em(theme.honeycomb.size.normal)}
-    ${({ theme }) => em(theme.honeycomb.size.normal)} 0;
+    ${({ theme }) => em(theme.honeycomb.size.normal)}
+    ${({ title, theme }) => (title ? em(theme.honeycomb.size.normal) : 0)};
+  border-bottom: ${({ title, theme }) =>
+    title ? `1px solid ${theme.honeycomb.color.border}` : 'none'};
+`;
+
+export const Title = styled.div`
+  justify-content: center;
+  flex-shrink: 0;
+  align-items: center;
+  margin-right: -${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+  flex: 1;
+  text-align: center;
 `;
 
 export const Content = styled.div`
@@ -51,4 +67,5 @@ export const Content = styled.div`
   justify-content: flex-start;
   align-items: stretch;
   overflow: hidden;
+  margin-bottom: ${({ theme }) => em(theme.honeycomb.size.large)};
 `;

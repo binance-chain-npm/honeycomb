@@ -10,7 +10,7 @@ export default {
 };
 
 const items = new Array(200).fill(null).map((_, index) => <div key={index}>{index + 1}</div>);
-
+const title = 'List Token';
 export const Default = () => {
   const [show, setShow] = useState(false);
   return (
@@ -18,7 +18,7 @@ export const Default = () => {
       <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
         Show
       </Button>
-      <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal">
+      <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal" title={title}>
         <Modal.Scroll>
           <Modal.Body>{items}</Modal.Body>
         </Modal.Scroll>

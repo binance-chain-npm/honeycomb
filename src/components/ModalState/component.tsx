@@ -3,23 +3,40 @@ import React from 'react';
 import { Modal } from '../Modal';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { TestIdContext } from './context';
+import { Variant, Name, Description } from './styled';
+
+import { ModalState } from '.';
 
 export type Props = Testable & {
+  variant: Variant;
+  description?: React.ReactNode;
+  icon?: React.ReactNode;
+  name?: React.ReactNode;
   children?: React.ReactNode;
   open?: boolean;
   onClose?: () => void;
 };
 
-export const Component = ({ open, children, onClose, 'data-testid': testId }: Props) => {
+export const Component = ({
+  variant,
+  open,
+  name,
+  description,
+  children,
+  onClose,
+  'data-testid': testId,
+}: Props) => {
   const buildTestId = useBuildTestId(testId);
 
   return (
-    <TestIdContext.Provider value={buildTestId()}>
-      <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
-        <Modal.Body>{children}</Modal.Body>
-      </Modal>
-    </TestIdContext.Provider>
+    <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
+      <Modal.Body>
+        <ModalState.Icon variant={variant} />
+        <Name>{name}</Name>
+        <Description>{description}</Description>
+        {children}
+      </Modal.Body>
+    </Modal>
   );
 };
 
