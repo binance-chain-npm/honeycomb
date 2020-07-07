@@ -10,43 +10,28 @@ export default {
 };
 
 const items = new Array(200).fill(null).map((_, index) => <div key={index}>{index + 1}</div>);
-const title = 'List Token';
-export const Default = () => {
+export const Behaviour = () => {
   const [show, setShow] = useState(false);
   return (
     <>
       <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
         Show
       </Button>
-      <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal" title={title}>
-        <Modal.Scroll>
-          <Modal.Body>{items}</Modal.Body>
-        </Modal.Scroll>
+      <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal" title="A title">
+        {items}
       </Modal>
     </>
   );
 };
 
-export const NoScroll = () => {
-  return (
-    <Modal open={true} onClose={() => {}}>
-      <Modal.Body>{items}</Modal.Body>
-    </Modal>
-  );
-};
+export const WithTitle = () => (
+  <Modal open={true} data-testid="MyModal" title="A title">
+    {items}
+  </Modal>
+);
 
-export const NoBody = () => {
-  return (
-    <Modal open={true} onClose={() => {}}>
-      <Modal.Scroll>{items}</Modal.Scroll>
-    </Modal>
-  );
-};
-
-export const Bare = () => {
-  return (
-    <Modal open={true} onClose={() => {}}>
-      {items}
-    </Modal>
-  );
-};
+export const WithoutTitle = () => (
+  <Modal open={true} data-testid="MyModal">
+    {items}
+  </Modal>
+);

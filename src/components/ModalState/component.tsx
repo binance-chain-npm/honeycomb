@@ -1,42 +1,34 @@
 import React from 'react';
 
 import { Modal } from '../Modal';
-import { Testable, useBuildTestId } from '../../modules/test-ids';
+import { useBuildTestId } from '../../modules/test-ids';
 
-import { Variant, Name, Description } from './styled';
+import { Variant, Title, Description, StyledModal } from './styled';
+import { Icon } from './Icon';
 
-import { ModalState } from '.';
-
-export type Props = Testable & {
+export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
   variant: Variant;
   description?: React.ReactNode;
   icon?: React.ReactNode;
-  name?: React.ReactNode;
-  children?: React.ReactNode;
-  open?: boolean;
-  onClose?: () => void;
 };
 
 export const Component = ({
   variant,
-  open,
-  name,
+  title,
   description,
   children,
-  onClose,
   'data-testid': testId,
+  ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
   return (
-    <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
-      <Modal.Body>
-        <ModalState.Icon variant={variant} />
-        <Name>{name}</Name>
-        <Description>{description}</Description>
-        {children}
-      </Modal.Body>
-    </Modal>
+    <StyledModal {...otherProps} data-testid={buildTestId()}>
+      <Icon variant={variant} />
+      <Title>{title}</Title>
+      <Description>{description}</Description>
+      {children}
+    </StyledModal>
   );
 };
 

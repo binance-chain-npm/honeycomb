@@ -8,13 +8,9 @@ import { Space } from '../Space';
 import { Content, Header } from './styled';
 import { ModalPickOneContext } from './context';
 
-export type Props = Testable & {
-  open?: boolean;
-  onClose?: () => void;
-  children?: React.ReactNode;
-};
+export type Props = React.ComponentPropsWithoutRef<typeof Modal>;
 
-export const Component = ({ open, onClose, 'data-testid': testId, children }: Props) => {
+export const Component = ({ onClose, 'data-testid': testId, children, ...otherProps }: Props) => {
   const context = useMemo(() => ({ onClose, testId }), [onClose, testId]);
   const buildTestId = useBuildTestId(testId);
   const [search, setSearch] = useState('');
@@ -48,15 +44,13 @@ export const Component = ({ open, onClose, 'data-testid': testId, children }: Pr
 
   return (
     <ModalPickOneContext.Provider value={context}>
-      <Modal open={open} onClose={onClose} data-testid={buildTestId()}>
+      <Modal {...otherProps} onClose={onClose} data-testid={buildTestId()}>
         <Header>
           <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
         </Header>
-        <Modal.Scroll>
-          <Space size="increased" />
-          <Content>{filteredResults}</Content>
-          <Space size="increased" />
-        </Modal.Scroll>
+        <Space size="increased" />
+        <Content>{filteredResults}</Content>
+        <Space size="increased" />
       </Modal>
     </ModalPickOneContext.Provider>
   );

@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 export interface Props {
-  title?: React.ReactNode;
+  hasHeader: boolean;
 }
 
 export const Container = styled.div`
@@ -32,9 +32,16 @@ export const Box = styled.div`
   @media (min-width: ${em(768)}) {
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
     width: 50vw;
-    height: auto;
     max-height: 50vh;
   }
+`;
+
+const floating = css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-bottom: none;
+  z-index: ${({ theme }) => theme.honeycomb.zIndexes.modals + 2};
 `;
 
 export const Header = styled.div<Props>`
@@ -43,11 +50,9 @@ export const Header = styled.div<Props>`
   justify-content: flex-end;
   flex-shrink: 0;
   align-items: center;
-  padding: ${({ theme }) => em(theme.honeycomb.size.normal)}
-    ${({ theme }) => em(theme.honeycomb.size.normal)}
-    ${({ title, theme }) => (title ? em(theme.honeycomb.size.normal) : 0)};
-  border-bottom: ${({ title, theme }) =>
-    title ? `1px solid ${theme.honeycomb.color.border}` : 'none'};
+  padding: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+  ${({ hasHeader }) => !hasHeader && floating};
 `;
 
 export const Title = styled.div`
@@ -59,13 +64,26 @@ export const Title = styled.div`
   text-align: center;
 `;
 
-export const Content = styled.div`
+export const Scroll = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  overflow-y: auto;
+  position: relative;
+`;
+
+export const Content = styled.div`
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
   width: 100%;
   justify-content: flex-start;
   align-items: stretch;
-  overflow: hidden;
-  margin-bottom: ${({ theme }) => em(theme.honeycomb.size.large)};
+  padding: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  min-height: 100%;
 `;
