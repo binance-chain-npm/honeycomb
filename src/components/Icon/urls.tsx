@@ -21,3 +21,5 @@ export { default as Globe } from './assets/Globe.svg';
 export { default as CaretRight } from './assets/CaretRight.svg';
 export { default as Cross } from './assets/Cross.svg';
 export { default as Edit } from './assets/Edit.svg';
+export { default as CircledCross } from './assets/CircledCross.svg';
+export { default as CircledTick } from './assets/CircledTick.svg';
