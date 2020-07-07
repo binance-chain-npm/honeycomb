@@ -33,7 +33,7 @@ const data: Array<{ label: string; icon: typeof Icon.Add }> = [
 
 export const Default = () => {
   return (
-    <ModalPickOne open={true} data-testid="MyModal">
+    <ModalPickOne open={true} data-testid="MyModal" title="A title">
       {data.map((it, index) => (
         <ModalPickOne.Item searchAs={it.label} isSelected={index === 0} data-testid={`${index}`}>
           <it.icon />

@@ -1,8 +1,7 @@
 import { Component } from './component';
-import { Body } from './Body';
-import { Scroll } from './Scroll';
+import { Content, Box } from './styled';
 
-export const Modal = Component as typeof Component & { Body: typeof Body; Scroll: typeof Scroll };
+export const Modal = Component as typeof Component & { Content: typeof Content; Box: typeof Box };
 
-Modal.Body = Body;
-Modal.Scroll = Scroll;
+Modal.Content = Content;
+Modal.Box = Box;

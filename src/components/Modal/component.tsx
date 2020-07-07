@@ -5,13 +5,13 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Header, Box, Content } from './styled';
-import { TestIdContext } from './context';
+import { Container, Header, Box, Title, Scroll, Content } from './styled';
 
 export type Props = Testable & {
   open?: boolean;
   onClose?: () => void;
   children?: React.ReactNode;
+  title?: string;
   className?: string;
 };
 
@@ -19,6 +19,7 @@ export const Component = ({
   open = false,
   onClose,
   children,
+  title,
   'data-testid': testId,
   className,
 }: Props) => {
@@ -52,7 +53,7 @@ export const Component = ({
   }, [open, onClose]);
 
   return (
-    <TestIdContext.Provider value={buildTestId()}>
+    <>
       {containerTransitions.map(
         ({ item, key, props }) =>
           item && (
@@ -73,9 +74,10 @@ export const Component = ({
                       ref={boxRef}
                       data-testid={buildTestId('box')}
                     >
-                      <Header data-testid={buildTestId('header')}>
+                      <Header data-testid={buildTestId('header')} hasHeader={!!title}>
+                        <Title>{title}</Title>
                         <Button
-                          variant="transparent"
+                          variant="secondary"
                           size="increased"
                           shape="square"
                           onClick={onClose}
@@ -84,14 +86,16 @@ export const Component = ({
                           <Icon.Cross />
                         </Button>
                       </Header>
-                      <Content data-testid={buildTestId('content')}>{children}</Content>
+                      <Scroll data-testid={buildTestId('scroll-container')}>
+                        <Content data-testid={buildTestId('content')}>{children}</Content>
+                      </Scroll>
                     </Box>
                   ),
               )}
             </Container>
           ),
       )}
-    </TestIdContext.Provider>
+    </>
   );
 };
 

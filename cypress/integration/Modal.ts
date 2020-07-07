@@ -1,6 +1,6 @@
 describe('Modal', () => {
   it('opens and closes', () => {
-    cy.visitStory({ storyId: 'elements-modal--default', themeId: 'GoldDark' });
+    cy.visitStory({ storyId: 'elements-modal--behaviour', themeId: 'GoldDark' });
 
     cy.get('[data-testid="OpenButton"]').trigger('click');
     cy.get('[data-testid="MyModal.box"]').should('be.visible');
@@ -10,7 +10,7 @@ describe('Modal', () => {
   });
 
   it('renders correctly with Gold Dark theme', () => {
-    cy.visitStory({ storyId: 'elements-modal--default', themeId: 'GoldDark' });
+    cy.visitStory({ storyId: 'elements-modal--behaviour', themeId: 'GoldDark' });
 
     cy.clock();
     cy.get('[data-testid="OpenButton"]').trigger('click');
@@ -21,7 +21,7 @@ describe('Modal', () => {
 
   it('renders correctly with Gold Light theme', () => {
     cy.viewport(800, 600);
-    cy.visitStory({ storyId: 'elements-modal--default', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-modal--behaviour', themeId: 'GoldLight' });
 
     cy.clock();
     cy.get('[data-testid="OpenButton"]').trigger('click');
