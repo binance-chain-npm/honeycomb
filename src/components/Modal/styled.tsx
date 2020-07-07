@@ -15,8 +15,8 @@ export const Container = styled.div`
 `;
 
 export const Box = styled.div`
-  width: calc(100vw - ${({ theme }) => em(theme.honeycomb.radius.normal * 6)});
-  height: calc(100vh - ${({ theme }) => em(theme.honeycomb.radius.normal * 6)});
+  width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.huge)});
+  height: calc(100vh - ${({ theme }) => em(theme.honeycomb.size.huge)});
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
   display: flex;
   flex-direction: column;
@@ -25,8 +25,6 @@ export const Box = styled.div`
   box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
 
   @media (min-width: ${em(768)}) {
-    width: calc(100vw - ${({ theme }) => em(theme.honeycomb.radius.normal * 3)});
-    height: calc(100vh - ${({ theme }) => em(theme.honeycomb.radius.normal * 3)});
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
     border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
     width: 50vw;

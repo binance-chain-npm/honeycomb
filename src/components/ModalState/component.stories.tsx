@@ -13,14 +13,14 @@ export default {
 
 export interface Scenario {
   variant: Variant;
-  title: React.ReactNode;
-  content: React.ReactNode;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
 }
 
 const scenario: Scenario = {
   variant: 'warning',
   title: 'warning',
-  content:
+  description:
     'Results feedback description. It can correctly guide users to understand the feedback results and select the next operation.',
 };
 
@@ -34,7 +34,7 @@ export const Default = () => {
       <ModalState open={show} onClose={() => setShow(false)} data-testid="MyModal">
         <ModalState.Icon variant={scenario.variant}></ModalState.Icon>
         <ModalState.Title>{scenario.title}</ModalState.Title>
-        <ModalState.Content>{scenario.content}</ModalState.Content>
+        <ModalState.Description>{scenario.description}</ModalState.Description>
       </ModalState>
     </>
   );

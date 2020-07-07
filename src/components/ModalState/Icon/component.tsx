@@ -10,7 +10,9 @@ export type Props = Testable & {
   children?: React.ReactNode;
 };
 
-const icons: any = {
+type IconType = { [key in Variant]: React.ReactNode };
+
+const icons: IconType = {
   success: <Success />,
   warning: <Warning />,
   danger: <Danger />,

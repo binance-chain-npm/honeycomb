@@ -2,14 +2,14 @@ import React from 'react';
 
 import { Testable } from '../../../modules/test-ids';
 
-import { Content } from './styled';
+import { Description } from './styled';
 
 export type Props = Testable & {
   children?: React.ReactNode;
 };
 
 export const Component = ({ children }: Props) => {
-  return <Content>{children}</Content>;
+  return <Description>{children}</Description>;
 };
 
-Component.displayName = 'ModalState.Content';
+Component.displayName = 'ModalState.Description';

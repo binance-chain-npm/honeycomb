@@ -4,9 +4,7 @@ import { em } from 'polished';
 import { Icon } from '../../Icon';
 
 export const DialogIcon = styled.div`
-  font-size: ${({ theme }) => em(theme.honeycomb.size.normal * 4)};
-  width: ${({ theme }) => em(theme.honeycomb.size.normal)};
-  height: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  font-size: ${em(64)};
   align-self: center;
 `;
 

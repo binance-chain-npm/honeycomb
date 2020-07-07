@@ -7,7 +7,6 @@ import { TestIdContext } from './context';
 
 export type Props = Testable & {
   children?: React.ReactNode;
-  className?: string;
   open?: boolean;
   onClose?: () => void;
 };
