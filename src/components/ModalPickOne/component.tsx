@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 
 import { Modal } from '../Modal';
-import { Testable, useBuildTestId } from '../../modules/test-ids';
+import { useBuildTestId } from '../../modules/test-ids';
 import { TextInput } from '../TextInput';
 import { Space } from '../Space';
 
