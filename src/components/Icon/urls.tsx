@@ -3,6 +3,7 @@ export { default as TriangleDown } from './assets/TriangleDown.svg';
 export { default as Eye } from './assets/Eye.svg';
 export { default as EyeBlocked } from './assets/EyeBlocked.svg';
 export { default as LeftArrow } from './assets/LeftArrow.svg';
+export { default as RightArrow } from './assets/RightArrow.svg';
 export { default as AddFilled } from './assets/AddFilled.svg';
 export { default as Add } from './assets/Add.svg';
 export { default as Copy } from './assets/Copy.svg';
