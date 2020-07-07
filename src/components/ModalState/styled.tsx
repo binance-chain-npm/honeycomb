@@ -7,6 +7,12 @@ export const variants = ['success', 'warning', 'danger'] as const;
 export type Variant = typeof variants[number];
 
 export const StyledModal = styled(Modal)`
+  ${Modal.Box} {
+    @media (min-width: ${em(768)}) {
+      width: ${em(300)};
+    }
+  }
+
   ${Modal.Content} {
     align-items: center;
     justify-content: center;
