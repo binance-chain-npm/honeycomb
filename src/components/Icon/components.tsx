@@ -22,6 +22,8 @@ export { ReactComponent as Globe } from './assets/Globe.svg';
 export { ReactComponent as CaretRight } from './assets/CaretRight.svg';
 export { ReactComponent as Cross } from './assets/Cross.svg';
 export { ReactComponent as Edit } from './assets/Edit.svg';
+export { ReactComponent as CircledCross } from './assets/CircledCross.svg';
+export { ReactComponent as CircledTick } from './assets/CircledTick.svg';
 export { ReactComponent as Success } from './assets/Success.svg';
 export { ReactComponent as Warning } from './assets/Warning.svg';
 export { ReactComponent as Danger } from './assets/Danger.svg';
