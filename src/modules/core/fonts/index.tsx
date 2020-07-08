@@ -1,6 +1,5 @@
-import { fontFaces as ibmFontFaces, fontName as ibmFontName } from './ibm';
-import { fontFaces as dinFontFaces, fontName as dinFontName } from './din';
+import { fontFaces as plexFontFaces, fontName as plexFontName } from './plex';
 
-export const fontNames = [dinFontName, ibmFontName];
+export const fontNames = [plexFontName];
 
-export const fontFaces = [dinFontFaces, ibmFontFaces];
+export const fontFaces = [plexFontFaces];
