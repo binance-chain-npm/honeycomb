@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { useTransition, animated } from 'react-spring';
+import ReactDOM from 'react-dom';
 
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Container, Header, Box, Title, Scroll, Content } from './styled';
+
+const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
 export type Props = Testable & {
   open?: boolean;
@@ -25,6 +28,9 @@ export const Component = ({
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
   const boxRef = useRef<HTMLDivElement>(null);
+  const modalContainer = useRef(document.querySelector(`#${MODAL_CONTAINER_ID}`));
+
+  console.log('waaat render', modalContainer);
 
   const containerTransitions = useTransition(open, null, {
     from: { opacity: 0 },
@@ -37,6 +43,25 @@ export const Component = ({
     enter: { opacity: 1, transform: 'scale(1)' },
     leave: { opacity: 0, transform: 'scale(0.5)' },
   });
+
+  useEffect(() => {
+    if (!!modalContainer.current || typeof document === 'undefined') return;
+
+    const queryResult = document.querySelector(`#${MODAL_CONTAINER_ID}`);
+    if (!!queryResult) {
+      console.log('waaat use existing', queryResult);
+      modalContainer.current = queryResult;
+      return;
+    }
+
+    console.log('waaat add element');
+
+    const div = document.createElement('div');
+    div.setAttribute('id', MODAL_CONTAINER_ID);
+
+    document.querySelector('body')?.appendChild(div);
+    modalContainer.current = div;
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -52,50 +77,51 @@ export const Component = ({
     return () => window.removeEventListener('click', listener);
   }, [open, onClose]);
 
-  return (
-    <>
-      {containerTransitions.map(
-        ({ item, key, props }) =>
-          item && (
-            <Container
-              as={animated.div}
-              key={key}
-              style={props}
-              data-testid={buildTestId('full-viewport-container')}
-              className={className}
-            >
-              {boxTransitions.map(
-                ({ item, key, props }) =>
-                  item && (
-                    <Box
-                      as={animated.div}
-                      key={key}
-                      style={props}
-                      ref={boxRef}
-                      data-testid={buildTestId('box')}
-                    >
-                      <Header data-testid={buildTestId('header')} hasHeader={!!title}>
-                        <Title>{title}</Title>
-                        <Button
-                          variant="secondary"
-                          size="increased"
-                          shape="square"
-                          onClick={onClose}
-                          data-testid={buildTestId('close-btn')}
-                        >
-                          <Icon.Cross />
-                        </Button>
-                      </Header>
-                      <Scroll data-testid={buildTestId('scroll-container')}>
-                        <Content data-testid={buildTestId('content')}>{children}</Content>
-                      </Scroll>
-                    </Box>
-                  ),
-              )}
-            </Container>
-          ),
-      )}
-    </>
+  if (!modalContainer.current) return <>{null}</>;
+
+  return ReactDOM.createPortal(
+    containerTransitions.map(
+      ({ item, key, props }) =>
+        item && (
+          <Container
+            as={animated.div}
+            key={key}
+            style={props}
+            data-testid={buildTestId('full-viewport-container')}
+            className={className}
+          >
+            {boxTransitions.map(
+              ({ item, key, props }) =>
+                item && (
+                  <Box
+                    as={animated.div}
+                    key={key}
+                    style={props}
+                    ref={boxRef}
+                    data-testid={buildTestId('box')}
+                  >
+                    <Header data-testid={buildTestId('header')} hasHeader={!!title}>
+                      <Title>{title}</Title>
+                      <Button
+                        variant="secondary"
+                        size="increased"
+                        shape="square"
+                        onClick={onClose}
+                        data-testid={buildTestId('close-btn')}
+                      >
+                        <Icon.Cross />
+                      </Button>
+                    </Header>
+                    <Scroll data-testid={buildTestId('scroll-container')}>
+                      <Content data-testid={buildTestId('content')}>{children}</Content>
+                    </Scroll>
+                  </Box>
+                ),
+            )}
+          </Container>
+        ),
+    ),
+    modalContainer.current,
   );
 };
 
