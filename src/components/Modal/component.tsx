@@ -30,8 +30,6 @@ export const Component = ({
   const boxRef = useRef<HTMLDivElement>(null);
   const modalContainer = useRef(document.querySelector(`#${MODAL_CONTAINER_ID}`));
 
-  console.log('waaat render', modalContainer);
-
   const containerTransitions = useTransition(open, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -49,12 +47,9 @@ export const Component = ({
 
     const queryResult = document.querySelector(`#${MODAL_CONTAINER_ID}`);
     if (!!queryResult) {
-      console.log('waaat use existing', queryResult);
       modalContainer.current = queryResult;
       return;
     }
-
-    console.log('waaat add element');
 
     const div = document.createElement('div');
     div.setAttribute('id', MODAL_CONTAINER_ID);
