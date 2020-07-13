@@ -1,11 +1,26 @@
 import React, { useEffect, useRef } from 'react';
 import { useTransition, animated } from 'react-spring';
+import ReactDOM from 'react-dom';
 
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Container, Header, Box, Title, Scroll, Content } from './styled';
+
+const MODAL_CONTAINER_ID = 'honeycomb-modal';
+
+(() => {
+  const queryResult = document.querySelector(`#${MODAL_CONTAINER_ID}`);
+  if (queryResult) return;
+
+  const div = document.createElement('div');
+  div.setAttribute('id', MODAL_CONTAINER_ID);
+
+  document.querySelector('body')?.appendChild(div);
+})();
+
+const MODAL_CONTAINER = document.querySelector(`#${MODAL_CONTAINER_ID}`)!;
 
 export type Props = Testable & {
   open?: boolean;
@@ -54,46 +69,49 @@ export const Component = ({
 
   return (
     <>
-      {containerTransitions.map(
-        ({ item, key, props }) =>
-          item && (
-            <Container
-              as={animated.div}
-              key={key}
-              style={props}
-              data-testid={buildTestId('full-viewport-container')}
-              className={className}
-            >
-              {boxTransitions.map(
-                ({ item, key, props }) =>
-                  item && (
-                    <Box
-                      as={animated.div}
-                      key={key}
-                      style={props}
-                      ref={boxRef}
-                      data-testid={buildTestId('box')}
-                    >
-                      <Header data-testid={buildTestId('header')} hasHeader={!!title}>
-                        <Title>{title}</Title>
-                        <Button
-                          variant="secondary"
-                          size="increased"
-                          shape="square"
-                          onClick={onClose}
-                          data-testid={buildTestId('close-btn')}
-                        >
-                          <Icon.Cross />
-                        </Button>
-                      </Header>
-                      <Scroll data-testid={buildTestId('scroll-container')}>
-                        <Content data-testid={buildTestId('content')}>{children}</Content>
-                      </Scroll>
-                    </Box>
-                  ),
-              )}
-            </Container>
-          ),
+      {ReactDOM.createPortal(
+        containerTransitions.map(
+          ({ item, key, props }) =>
+            item && (
+              <Container
+                as={animated.div}
+                key={key}
+                style={props}
+                data-testid={buildTestId('full-viewport-container')}
+                className={className}
+              >
+                {boxTransitions.map(
+                  ({ item, key, props }) =>
+                    item && (
+                      <Box
+                        as={animated.div}
+                        key={key}
+                        style={props}
+                        ref={boxRef}
+                        data-testid={buildTestId('box')}
+                      >
+                        <Header data-testid={buildTestId('header')} hasHeader={!!title}>
+                          <Title>{title}</Title>
+                          <Button
+                            variant="secondary"
+                            size="increased"
+                            shape="square"
+                            onClick={onClose}
+                            data-testid={buildTestId('close-btn')}
+                          >
+                            <Icon.Cross />
+                          </Button>
+                        </Header>
+                        <Scroll data-testid={buildTestId('scroll-container')}>
+                          <Content data-testid={buildTestId('content')}>{children}</Content>
+                        </Scroll>
+                      </Box>
+                    ),
+                )}
+              </Container>
+            ),
+        ),
+        MODAL_CONTAINER,
       )}
     </>
   );
