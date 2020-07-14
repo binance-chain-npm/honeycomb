@@ -33,6 +33,7 @@ export const Box = styled.div`
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
     width: 50vw;
     max-height: 50vh;
+    max-width: ${em(500)};
   }
 `;
 
