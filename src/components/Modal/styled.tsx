@@ -71,7 +71,7 @@ export const Scroll = styled.div`
   flex: 1;
   scroll-behavior: smooth;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
 `;
 
