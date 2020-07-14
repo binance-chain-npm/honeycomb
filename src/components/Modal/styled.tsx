@@ -31,8 +31,9 @@ export const Box = styled.div`
 
   @media (min-width: ${em(768)}) {
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
+    height: auto;
     width: 50vw;
-    max-height: 50vh;
+    max-height: 75vh;
     max-width: ${em(500)};
   }
 `;
@@ -66,18 +67,13 @@ export const Title = styled.div`
 `;
 
 export const Scroll = styled.div`
-  display: flex;
-  flex-direction: column;
   flex: 1;
   scroll-behavior: smooth;
   overflow: hidden;
   overflow-y: auto;
-  position: relative;
 `;
 
 export const Content = styled.div`
-  position: absolute;
-  top: 0;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
