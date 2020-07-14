@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
+export const positions = ['center', 'bottom'] as const;
+export type Position = typeof positions[number];
+
 export interface Props {
   hasHeader: boolean;
 }
@@ -18,19 +21,40 @@ export const Container = styled.div`
   z-index: ${({ theme }) => theme.honeycomb.zIndexes.modals};
 `;
 
-export const Box = styled.div`
-  width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.huge)});
-  height: calc(100vh - ${({ theme }) => em(theme.honeycomb.size.huge)});
-  background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
+const center = css`
+  width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.increased * 2)});
+  max-height: calc(100vh - ${({ theme }) => em(theme.honeycomb.size.increased * 2)});
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
+
+  @media (min-width: ${em(768)}) {
+    margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
+  }
+`;
+
+const bottom = css`
+  width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.increased * 2)});
+  max-height: calc(100vh - ${({ theme }) => em(theme.honeycomb.size.increased)});
+  border-top-left-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
+  border-top-right-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
+  align-self: flex-end;
+
+  @media (min-width: ${em(768)}) {
+    margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
+    margin-bottom: 0;
+  }
+`;
+
+export const Box = styled.div<{ position: Position }>`
+  background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
   box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
+  ${({ position }) => position === 'center' && center};
+  ${({ position }) => position === 'bottom' && bottom};
 
   @media (min-width: ${em(768)}) {
-    margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
     height: auto;
     width: 50vw;
     max-height: 75vh;

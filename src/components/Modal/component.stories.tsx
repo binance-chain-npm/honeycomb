@@ -30,8 +30,20 @@ export const WithTitle = () => (
   </Modal>
 );
 
-export const WithTitleButSmall = () => (
+export const WithTitleAtBottom = () => (
+  <Modal open={true} data-testid="MyModal" title="A title" position="bottom">
+    {items}
+  </Modal>
+);
+
+export const SmallWithTitle = () => (
   <Modal open={true} data-testid="MyModal" title="A title">
+    Just a line
+  </Modal>
+);
+
+export const SmallWithTitleAtBottom = () => (
+  <Modal open={true} data-testid="MyModal" title="A title" position="bottom">
     Just a line
   </Modal>
 );

@@ -6,7 +6,7 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Header, Box, Title, Scroll, Content } from './styled';
+import { Container, Header, Box, Title, Scroll, Content, Position } from './styled';
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
@@ -28,6 +28,7 @@ export type Props = Testable & {
   children?: React.ReactNode;
   title?: string;
   className?: string;
+  position?: Position;
 };
 
 export const Component = ({
@@ -37,6 +38,7 @@ export const Component = ({
   title,
   'data-testid': testId,
   className,
+  position = 'center',
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -48,9 +50,9 @@ export const Component = ({
   });
 
   const boxTransitions = useTransition(open, null, {
-    from: { opacity: 0, transform: 'scale(0.5)' },
-    enter: { opacity: 1, transform: 'scale(1)' },
-    leave: { opacity: 0, transform: 'scale(0.5)' },
+    from: { opacity: 0, transform: position === 'center' ? 'scale(0.5)' : 'translateY(100vh)' },
+    enter: { opacity: 1, transform: position === 'center' ? 'scale(1)' : 'translateY(0)' },
+    leave: { opacity: 0, transform: position === 'center' ? 'scale(0.5)' : 'translateY(100vh)' },
   });
 
   useEffect(() => {
@@ -89,6 +91,7 @@ export const Component = ({
                         style={props}
                         ref={boxRef}
                         data-testid={buildTestId('box')}
+                        position={position}
                       >
                         <Header data-testid={buildTestId('header')} hasHeader={!!title}>
                           <Title>{title}</Title>
