@@ -4,6 +4,8 @@ import { em } from 'polished';
 export const positions = ['center', 'bottom'] as const;
 export type Position = typeof positions[number];
 
+const bigScreen = `min-width: ${em(768)}`;
+
 export interface Props {
   hasHeader: boolean;
 }
@@ -26,7 +28,7 @@ const center = css`
   max-height: calc(100vh - ${({ theme }) => em(theme.honeycomb.size.increased * 2)});
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
 
-  @media (min-width: ${em(768)}) {
+  @media (${bigScreen}) {
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
   }
 `;
@@ -38,7 +40,7 @@ const bottom = css`
   border-top-right-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
   align-self: flex-end;
 
-  @media (min-width: ${em(768)}) {
+  @media (${bigScreen}) {
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
     margin-bottom: 0;
   }
@@ -54,7 +56,7 @@ export const Box = styled.div<{ position: Position }>`
   ${({ position }) => position === 'center' && center};
   ${({ position }) => position === 'bottom' && bottom};
 
-  @media (min-width: ${em(768)}) {
+  @media (${bigScreen}) {
     height: auto;
     width: 50vw;
     max-height: 75vh;
@@ -88,6 +90,13 @@ export const Title = styled.div`
   margin-right: -${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
   flex: 1;
   text-align: center;
+  font-weight: 600;
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+
+  @media (${bigScreen}) {
+    font-size: ${({ theme }) => em(theme.honeycomb.size.normal)};
+    margin-right: -${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.normal)};
+  }
 `;
 
 export const Scroll = styled.div`
