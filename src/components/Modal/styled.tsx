@@ -107,4 +107,5 @@ export const Content = styled.div`
   align-items: stretch;
   padding: ${({ theme }) => em(theme.honeycomb.size.normal)};
   min-height: 100%;
+  box-sizing: border-box;
 `;
