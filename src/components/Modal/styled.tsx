@@ -38,13 +38,14 @@ const center = css`
 `;
 
 const bottom = css`
-  width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.increased * 2)});
+  width: 100vw;
   max-height: calc(100vh - ${({ theme }) => em(theme.honeycomb.size.increased)});
   border-top-left-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
   border-top-right-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
   align-self: flex-end;
 
   @media (${bigScreen}) {
+    width: 100%;
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
     margin-bottom: 0;
   }
