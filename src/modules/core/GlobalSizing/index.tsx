@@ -1,8 +1,10 @@
 import { createGlobalStyle as css } from 'styled-components';
 
+import { boxSizing } from '../../box-sizing';
+
 export const GlobalSizing = css`
   :root {
-    box-sizing: border-box;
+    ${boxSizing};
   }
 
   *,

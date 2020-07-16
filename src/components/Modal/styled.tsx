@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
+import { boxSizing } from '../../modules/box-sizing';
+
 export const positions = ['center', 'bottom'] as const;
 export type Position = typeof positions[number];
 
@@ -11,6 +13,8 @@ export interface Props {
 }
 
 export const Container = styled.div`
+  ${boxSizing};
+
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -116,5 +120,4 @@ export const Content = styled.div`
   align-items: stretch;
   padding: ${({ theme }) => em(theme.honeycomb.size.normal)};
   min-height: 100%;
-  box-sizing: border-box;
 `;

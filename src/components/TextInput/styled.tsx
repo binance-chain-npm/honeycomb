@@ -1,9 +1,13 @@
 import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
+import { boxSizing } from '../../modules/box-sizing';
+
 export type State = 'success' | 'danger';
 
 export const Container = styled.div`
+  ${boxSizing};
+
   display: flex;
   flex-direction: column;
   width: 100%;

@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { em } from 'polished';
 
+import { boxSizing } from '../../modules/box-sizing';
+
 export const Container = styled.ol`
+  ${boxSizing};
+
   counter-reset: listCounter;
   display: flex;
   list-style: none;

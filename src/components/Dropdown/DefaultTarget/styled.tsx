@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { styleless } from '../../Styleless';
+import { boxSizing } from '../../../modules/box-sizing';
 
 export const Container = styled.div<{ isShowing: boolean }>`
   ${styleless};
+  ${boxSizing};
 
   width: 100%;
   background: ${({ theme }) => theme.honeycomb.color.bg.masked};

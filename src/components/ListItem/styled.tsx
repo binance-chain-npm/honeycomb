@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { styleless } from '../Styleless';
+import { boxSizing } from '../../modules/box-sizing';
 
 const disabled = css`
   opacity: 0.3;
@@ -10,6 +11,7 @@ const disabled = css`
 
 export const Styled = styled.button`
   ${styleless};
+  ${boxSizing};
 
   cursor: pointer;
   height: ${em(60)};

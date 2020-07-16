@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { styleless } from '../../Styleless';
+import { boxSizing } from '../../../modules/box-sizing';
 
 export const variants = ['normal', 'accent'] as const;
 export type Variant = typeof variants[number];
@@ -40,6 +41,7 @@ const nonInteractive = css`
 
 export const Container = styled.button<{ variant: Variant; isNonInteractive: boolean }>`
   ${styleless};
+  ${boxSizing};
 
   justify-content: flex-start;
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};

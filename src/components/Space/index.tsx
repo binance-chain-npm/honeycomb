@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { HoneycombThemeType } from '../../modules/themes';
+import { boxSizing } from '../../modules/box-sizing';
 
 export type Props = { size: keyof HoneycombThemeType['honeycomb']['size'] | 'fill' };
 
@@ -15,6 +16,7 @@ const fill = css`
 `;
 
 export const Space = styled.div<Props>`
+  ${boxSizing};
   ${({ size }) => size === 'fill' && fill};
   ${({ size }) => size !== 'fill' && sizeCss};
 `;

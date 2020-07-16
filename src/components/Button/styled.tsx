@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { styleless as stylelessCommon } from '../Styleless';
+import { boxSizing } from '../../modules/box-sizing';
 
 export const variants = [
   'transparent',
@@ -114,6 +115,7 @@ const square = css<Props>`
 
 export const Styled = styled.button<Props>`
   ${stylelessCommon};
+  ${boxSizing};
 
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   cursor: pointer;
