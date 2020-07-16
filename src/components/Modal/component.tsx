@@ -11,6 +11,9 @@ import { Container, Header, Box, Title, Scroll, Content, Position } from './styl
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
 (() => {
+  if (typeof document === 'undefined') {
+    return;
+  }
   const queryResult = document.querySelector(`#${MODAL_CONTAINER_ID}`);
   if (queryResult) return;
 
@@ -19,8 +22,8 @@ const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
   document.querySelector('body')?.appendChild(div);
 })();
-
-const MODAL_CONTAINER = document.querySelector(`#${MODAL_CONTAINER_ID}`)!;
+const MODAL_CONTAINER =
+  typeof document !== 'undefined' ? document.querySelector(`#${MODAL_CONTAINER_ID}`) : null;
 
 export type Props = Testable & {
   open?: boolean;
