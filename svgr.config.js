@@ -7,6 +7,7 @@ module.exports = {
 
       const SvgComponent = (${props}) => ${jsx}
       const ${componentName} = styled(SvgComponent)\`;
+        box-sizing: border-box;
         width: auto;
         height: 1em;
         fill: currentColor;

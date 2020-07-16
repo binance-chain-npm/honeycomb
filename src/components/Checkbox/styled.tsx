@@ -2,8 +2,11 @@ import styled from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { icons } from '../Icon';
+import { boxSizing } from '../../modules/box-sizing';
 
 export const Input = styled.input`
+  ${boxSizing};
+
   position: absolute;
   width: 0;
   height: 0;
@@ -16,6 +19,8 @@ export const Input = styled.input`
 `;
 
 export const Label = styled.label`
+  ${boxSizing};
+
   display: flex;
   flex-direction: row;
   align-items: center;

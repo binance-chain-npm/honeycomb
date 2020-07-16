@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { styleless } from '../Styleless';
+import { boxSizing } from '../../modules/box-sizing';
 
 const justCopied = css`
   background: ${({ theme }) => theme.honeycomb.color.success.normal};
@@ -11,6 +12,7 @@ const justCopied = css`
 
 export const Container = styled.button<{ wasJustCopied: boolean }>`
   ${styleless};
+  ${boxSizing};
 
   display: flex;
   align-items: center;

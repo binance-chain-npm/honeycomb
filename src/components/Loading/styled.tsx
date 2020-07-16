@@ -1,6 +1,8 @@
 import styled, { css, keyframes } from 'styled-components';
 import { transparentize, em } from 'polished';
 
+import { boxSizing } from '../../modules/box-sizing';
+
 const fillViewportStyle = css`
   position: fixed;
   top: 0;
@@ -16,6 +18,8 @@ export interface Props {
 }
 
 export const Spinner = styled.div<Props>`
+  ${boxSizing};
+
   display: flex;
   align-items: center;
   justify-content: center;

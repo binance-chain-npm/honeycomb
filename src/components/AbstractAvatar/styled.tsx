@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { em } from 'polished';
 
+import { boxSizing } from '../../modules/box-sizing';
+
 export const Container = styled.div`
+  ${boxSizing};
+
   position: relative;
   width: 1em;
   height: 1em;

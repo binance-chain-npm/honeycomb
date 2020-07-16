@@ -1,7 +1,11 @@
 import styled, { css } from 'styled-components';
 
+import { boxSizing } from '../../modules/box-sizing';
+
 /** The CSS styles of the `<Styleless />` component. */
 export const styleless = css`
+  ${boxSizing};
+
   display: flex;
   align-items: center;
   justify-content: center;

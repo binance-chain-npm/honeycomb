@@ -3,12 +3,15 @@ import { em } from 'polished';
 
 import tippy from '../../../node_modules/tippy.js/dist/tippy.css';
 import tippyAnimations from '../../../node_modules/tippy.js/animations/shift-away.css';
+import { boxSizing } from '../../modules/box-sizing';
 
 export const Styles = css`
   ${tippy};
   ${tippyAnimations};
 
   .tippy-box {
+    ${boxSizing};
+
     background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.normal)};

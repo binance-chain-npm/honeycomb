@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import QRCode from 'qrcode.react';
 
+import { boxSizing } from '../../modules/box-sizing';
+
 import { ReactComponent as QRBg } from './qrBg.svg';
 
 export const Container = styled.div`
+  ${boxSizing};
+
   position: relative;
   width: 1em;
   height: 1em;
