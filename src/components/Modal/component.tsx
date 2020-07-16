@@ -14,6 +14,7 @@ const MODAL_CONTAINER_ID = 'honeycomb-modal';
   if (typeof document === 'undefined') {
     return;
   }
+
   const queryResult = document.querySelector(`#${MODAL_CONTAINER_ID}`);
   if (queryResult) return;
 
@@ -22,6 +23,7 @@ const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
   document.querySelector('body')?.appendChild(div);
 })();
+
 const MODAL_CONTAINER =
   typeof document !== 'undefined' ? document.querySelector(`#${MODAL_CONTAINER_ID}`) : null;
 
@@ -71,6 +73,10 @@ export const Component = ({
     window.addEventListener('click', listener);
     return () => window.removeEventListener('click', listener);
   }, [open, onClose]);
+
+  if (!MODAL_CONTAINER) {
+    return <>{null}</>;
+  }
 
   return (
     <>
