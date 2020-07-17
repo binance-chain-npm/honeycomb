@@ -65,7 +65,7 @@ export const Box = styled.div<{ position: Position }>`
     height: auto;
     width: 50vw;
     max-height: 75vh;
-    max-width: ${em(500)};
+    max-width: 500px;
   }
 `;
 
