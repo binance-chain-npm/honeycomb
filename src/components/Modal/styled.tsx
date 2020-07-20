@@ -119,6 +119,6 @@ export const Content = styled.div`
   width: 100%;
   justify-content: flex-start;
   align-items: stretch;
-  padding: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
   min-height: 100%;
 `;
