@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTable, TableOptions } from 'react-table';
 
-import { Container, Scroll, Table } from './styled';
+import { Container, Scroll, Table, Thead, TheadTr, Th } from './styled';
 
 export type Props<Data extends object> = {
   data: TableOptions<Data>['data'];
@@ -18,15 +18,15 @@ export const Component = <Data extends object>({ data, columns }: Props<Data>) =
     <Container>
       <Scroll>
         <Table {...getTableProps()}>
-          <thead>
+          <Thead>
             {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
+              <TheadTr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                  <Th {...column.getHeaderProps()}>{column.render('Header')}</Th>
                 ))}
-              </tr>
+              </TheadTr>
             ))}
-          </thead>
+          </Thead>
 
           <tbody {...getTableBodyProps()}>
             {rows.map((row) => {

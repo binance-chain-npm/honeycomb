@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
+import { boxSizing } from '../../modules/box-sizing';
+
 export const VARIANTS = ['default', 'bare'] as const;
 export type Variant = typeof VARIANTS[number];
 
@@ -40,6 +42,8 @@ const variantBare = css`
 `;
 
 export const Container = styled.div<{ position: Position; variant: Variant }>`
+  ${boxSizing};
+
   background: ${({ theme }) => theme.honeycomb.color.bg.normal};
   box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
   overflow: hidden;
