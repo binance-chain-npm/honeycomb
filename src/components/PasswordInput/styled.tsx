@@ -3,13 +3,12 @@ import { em } from 'polished';
 
 export const List = styled.ul`
   margin: 0;
-  padding: 0;
-  list-style-position: inside;
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.small)};
+  list-style-type: none;
 `;
 
-export const TooltipContent = styled.div`
-  padding: ${({ theme }) => em(theme.honeycomb.size.reduced)}
-    ${({ theme }) => em(theme.honeycomb.size.increased)};
+export const Item = styled.li`
+  margin-top: ${({ theme }) => em(theme.honeycomb.size.small)};
+  display: flex;
+  align-items: center;
 `;
-
-export const Item = styled.li``;

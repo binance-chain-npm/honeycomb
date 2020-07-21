@@ -2,14 +2,13 @@ import React, { useState, useCallback } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { TextInput } from '../TextInput';
-import { Tooltip } from '../Tooltip';
 import { Icon } from '../Icon';
 import { Styleless } from '../Styleless';
 
 export type Props = Omit<React.ComponentProps<typeof TextInput>, 'type' | 'left' | 'right'> &
   Testable & {
     isValid: boolean;
-    tooltipContent: React.ReactNode;
+    validationMessage: React.ReactNode;
   };
 
 export const Component = ({
@@ -17,17 +16,15 @@ export const Component = ({
   onFocus,
   onBlur,
   isValid,
-  tooltipContent,
+  validationMessage,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
-  const [isFocused, setIsFocused] = useState(false);
   const [shouldDisplay, setShouldDisplay] = useState(false);
 
   const focus = useCallback<NonNullable<Props['onFocus']>>(
     (evt) => {
-      setIsFocused(true);
       onFocus?.(evt);
     },
     [onFocus],
@@ -35,41 +32,32 @@ export const Component = ({
 
   const blur = useCallback<NonNullable<Props['onBlur']>>(
     (evt) => {
-      setIsFocused(false);
       onBlur?.(evt);
     },
     [onBlur],
   );
 
   return (
-    <Tooltip
-      content={tooltipContent}
-      disabled={!tooltipContent || isValid}
-      theme="bare"
-      trigger="manual"
-      visible={isFocused}
-      hideOnClick={false}
-    >
-      <TextInput
-        {...otherProps}
-        data-testid={testId}
-        onFocus={focus}
-        onBlur={blur}
-        value={value}
-        type={shouldDisplay ? 'text' : 'password'}
-        state={isValid ? undefined : 'danger'}
-        right={
-          <Styleless
-            data-testid={buildTestId('toggle-show')}
-            as="button"
-            onClick={() => setShouldDisplay(!shouldDisplay)}
-            style={{ fontSize: 24 }}
-          >
-            {shouldDisplay ? <Icon.EyeBlocked /> : <Icon.Eye />}
-          </Styleless>
-        }
-      />
-    </Tooltip>
+    <TextInput
+      {...otherProps}
+      data-testid={testId}
+      onFocus={focus}
+      onBlur={blur}
+      value={value}
+      type={shouldDisplay ? 'text' : 'password'}
+      state={isValid ? undefined : 'danger'}
+      right={
+        <Styleless
+          data-testid={buildTestId('toggle-show')}
+          as="button"
+          onClick={() => setShouldDisplay(!shouldDisplay)}
+          style={{ fontSize: 24 }}
+        >
+          {shouldDisplay ? <Icon.EyeBlocked /> : <Icon.Eye />}
+        </Styleless>
+      }
+      description={validationMessage}
+    />
   );
 };
 
