@@ -17,14 +17,7 @@ describe('PasswordInput', () => {
     cy.percySnapshot('PasswordInput with invalid value in non-pristine state');
   });
 
-  it('shows password recommedations when focused', () => {
-    cy.get('[data-testid="PasswordInput.error-length"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-upper-case"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-digit"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-symbol"]').should('not.exist');
-
-    cy.get('[data-testid="PasswordInput.native-input"]').click();
-
+  it('password recommedations are shown by default', () => {
     cy.get('[data-testid="PasswordInput.error-length"]').should('be.visible');
     cy.get('[data-testid="PasswordInput.error-upper-case"]').should('be.visible');
     cy.get('[data-testid="PasswordInput.error-digit"]').should('be.visible');

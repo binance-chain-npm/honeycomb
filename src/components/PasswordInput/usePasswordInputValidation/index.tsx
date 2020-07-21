@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
+import { Icon } from '../../Icon';
 import { TextInput } from '../../TextInput';
-import { List, Item, TooltipContent } from '../styled';
+import { List, Item } from '../styled';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 
 export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
@@ -56,27 +57,34 @@ export const usePasswordInputValidation = ({
     mustHaveUpperCase,
   ]);
 
-  const tooltipContent = (
-    <TooltipContent>
-      Your password must have:
-      <List>
-        {!isLongEnough && (
-          <Item data-testid={buildTestId('error-length')}>8 or more characters.</Item>
-        )}
-        {mustHaveUpperCase && !hasUpperCase && (
-          <Item data-testid={buildTestId('error-upper-case')}>
-            At least one upper case character.
-          </Item>
-        )}
-        {mustHaveDigit && !hasDigit && (
-          <Item data-testid={buildTestId('error-digit')}>At least one digit.</Item>
-        )}
-        {mustHaveSymbol && !hasSymbol && (
-          <Item data-testid={buildTestId('error-symbol')}>At least one symbol.</Item>
-        )}
-      </List>
-    </TooltipContent>
+  const validationMessage = (
+    <List>
+      {!isLongEnough && (
+        <Item data-testid={buildTestId('error-length')}>
+          <Icon.CircledTick data-testid={buildTestId('circled-tick-error-length')} />
+          &nbsp;8 or more characters.
+        </Item>
+      )}
+      {mustHaveUpperCase && !hasUpperCase && (
+        <Item data-testid={buildTestId('error-upper-case')}>
+          <Icon.CircledTick data-testid={buildTestId('circled-tick-error-upper-case')} />
+          &nbsp;At least one upper case character.
+        </Item>
+      )}
+      {mustHaveDigit && !hasDigit && (
+        <Item data-testid={buildTestId('error-digit')}>
+          <Icon.CircledTick data-testid={buildTestId('circled-tick-error-digit')} />
+          &nbsp;At least one digit.
+        </Item>
+      )}
+      {mustHaveSymbol && !hasSymbol && (
+        <Item data-testid={buildTestId('error-symbol')}>
+          <Icon.CircledTick data-testid={buildTestId('circled-tick-error-symbol')} />
+          &nbsp;At least one symbol.
+        </Item>
+      )}
+    </List>
   );
 
-  return { isValid, tooltipContent };
+  return { isValid, validationMessage };
 };
