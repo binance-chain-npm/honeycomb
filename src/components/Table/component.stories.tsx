@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 
 import { Sections } from '../../modules/sections';
 import { Card } from '../Card';
+import { AbstractAvatar } from '../AbstractAvatar';
+import { Space } from '../Space';
 
 import { Table } from './';
 
@@ -13,8 +15,20 @@ export const Default = () => {
   const data = useMemo(
     () => [
       {
-        col1: 'Hello',
-        col2: 'World',
+        col1: (
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+            <AbstractAvatar value="hello" />
+            <Space size="small" />
+            Hello
+          </div>
+        ),
+        col2: (
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+            <AbstractAvatar value="World" />
+            <Space size="small" />
+            World
+          </div>
+        ),
       } as const,
       {
         col1: 'react-table',

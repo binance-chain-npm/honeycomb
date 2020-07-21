@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTable, TableOptions } from 'react-table';
 
-import { Container, Scroll, Table, Thead, TheadTr, Th } from './styled';
+import { Container, Scroll, Table, Thead, TheadTr, Th, Tbody, TbodyTr, Td } from './styled';
 
 export type Props<Data extends object> = {
   data: TableOptions<Data>['data'];
@@ -28,18 +28,18 @@ export const Component = <Data extends object>({ data, columns }: Props<Data>) =
             ))}
           </Thead>
 
-          <tbody {...getTableBodyProps()}>
+          <Tbody {...getTableBodyProps()}>
             {rows.map((row) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
+                <TbodyTr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
-                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                    return <Td {...cell.getCellProps()}>{cell.render('Cell')}</Td>;
                   })}
-                </tr>
+                </TbodyTr>
               );
             })}
-          </tbody>
+          </Tbody>
         </Table>
       </Scroll>
     </Container>
