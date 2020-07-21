@@ -36,12 +36,10 @@ describe('Modal', () => {
     cy.viewport(800, 600);
     cy.clock();
 
-    cy.visitStory({ storyId: 'elements-modal--with-title', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-modal--without-title', themeId: 'GoldLight' });
     cy.tick(10000);
-    cy.percySnapshot('Modal with title with Gold Light theme', { widths: [800] });
-
-    cy.visitStory({ storyId: 'elements-modal--with-title-at-bottom', themeId: 'GoldDark' });
-    cy.tick(10000);
-    cy.percySnapshot('Modal with title at bottom with Gold Dark theme', { widths: [800] });
+    cy.percySnapshot('Modal without title with Gold Light theme on a big screen', {
+      widths: [800],
+    });
   });
 });
