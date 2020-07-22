@@ -125,5 +125,8 @@ export const Content = styled.div`
 `;
 
 export const LoadingState = styled.div`
-  margin-right: ${({ theme }) => em(theme.honeycomb.size.small)};
+  margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  @media (${bigScreen}) {
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.normal)};
+  }
 `;
