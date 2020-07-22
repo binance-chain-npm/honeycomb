@@ -35,6 +35,7 @@ export const GoldLight: HoneycombThemeType = {
 
       text: {
         normal: GoldDark.honeycomb.color.readable.normal('white'),
+        primary: GoldDark.honeycomb.color.readable.primary('white'),
         masked: GoldDark.honeycomb.color.readable.masked('white'),
         disabled: GoldDark.honeycomb.color.readable.disabled('white'),
         placeholder: GoldDark.honeycomb.color.readable.placeholder('white'),
