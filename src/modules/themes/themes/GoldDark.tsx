@@ -77,12 +77,15 @@ export const GoldDark = {
     },
 
     size: {
+      micro: 4,
+      tiny: 8,
       small: 12,
       reduced: 14,
       normal: 16,
       increased: 24,
       large: 32,
       huge: 40,
+      giant: 80,
     },
 
     radius: {

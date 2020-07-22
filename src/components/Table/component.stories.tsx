@@ -13,32 +13,26 @@ export default {
 
 export const Default = () => {
   const data = useMemo(
-    () => [
-      {
-        col1: (
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            <AbstractAvatar value="hello" />
-            <Space size="small" />
-            Hello
-          </div>
-        ),
-        col2: (
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-            <AbstractAvatar value="World" />
-            <Space size="small" />
-            World
-          </div>
-        ),
-      } as const,
-      {
-        col1: 'react-table',
-        col2: 'rocks',
-      } as const,
-      {
-        col1: 'whatever',
-        col2: 'you want',
-      } as const,
-    ],
+    () =>
+      new Array(200).fill(null).map(
+        (_, index) =>
+          ({
+            col1: (
+              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <AbstractAvatar value="hello" />
+                <Space size="small" />
+                {index + 1} Hello
+              </div>
+            ),
+            col2: (
+              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                <AbstractAvatar value="World" />
+                <Space size="small" />
+                World
+              </div>
+            ),
+          } as const),
+      ),
     [],
   );
 
@@ -58,7 +52,7 @@ export const Default = () => {
 
   return (
     <Card variant="bare">
-      <Table data={data} columns={columns} />
+      <Table data={data} columns={columns} hasPagination />
     </Card>
   );
 };
