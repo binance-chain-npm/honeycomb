@@ -4,9 +4,10 @@ import ReactDOM from 'react-dom';
 
 import { Button } from '../Button';
 import { Icon } from '../Icon';
+import { Loading } from '../Loading';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Header, Box, Title, Scroll, Content, Position } from './styled';
+import { Container, Header, Box, Title, Scroll, Content, Position, LoadingState } from './styled';
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
@@ -31,8 +32,9 @@ export type Props = Testable & {
   open?: boolean;
   onClose?: () => void;
   children?: React.ReactNode;
-  title?: string;
+  title?: React.ReactNode;
   className?: string;
+  isLoading?: boolean;
   position?: Position;
 };
 
@@ -41,6 +43,7 @@ export const Component = ({
   onClose,
   children,
   title,
+  isLoading,
   'data-testid': testId,
   className,
   position = 'center',
@@ -103,7 +106,14 @@ export const Component = ({
                         position={position}
                       >
                         <Header data-testid={buildTestId('header')} hasHeader={!!title}>
-                          <Title>{title}</Title>
+                          <Title>
+                            {!!title && isLoading && (
+                              <LoadingState>
+                                <Loading />
+                              </LoadingState>
+                            )}
+                            {title}
+                          </Title>
                           <Button
                             variant="secondary"
                             size="increased"
