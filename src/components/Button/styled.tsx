@@ -28,6 +28,16 @@ export interface Props {
   disabled?: boolean;
 }
 
+export const Shadow = styled.div`
+  font-size: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
+`;
+
 const primary = css`
   background: ${({ theme }) => theme.honeycomb.color.primary.normal};
   color: ${({ theme }) =>
@@ -38,6 +48,10 @@ const primary = css`
     background: ${({ theme }) => theme.honeycomb.color.primary.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
+  }
+
+  ${Shadow} {
+    color: ${({ theme }) => theme.honeycomb.color.primary.active};
   }
 `;
 
@@ -50,6 +64,10 @@ const secondary = css`
     background: ${({ theme }) => theme.honeycomb.color.secondary.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.secondary.active)};
+  }
+
+  ${Shadow} {
+    color: ${({ theme }) => theme.honeycomb.color.secondary.active};
   }
 `;
 
@@ -64,6 +82,10 @@ const success = css`
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.success.active)};
   }
+
+  ${Shadow} {
+    color: ${({ theme }) => theme.honeycomb.color.success.active};
+  }
 `;
 
 const danger = css`
@@ -76,6 +98,10 @@ const danger = css`
     background: ${({ theme }) => theme.honeycomb.color.danger.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.danger.active)};
+  }
+
+  ${Shadow} {
+    color: ${({ theme }) => theme.honeycomb.color.danger.active};
   }
 `;
 
@@ -96,6 +122,10 @@ const transparent = css`
     background: ${({ theme }) => theme.honeycomb.color.secondary.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.secondary.active)};
+  }
+
+  ${Shadow} {
+    color: ${({ theme }) => theme.honeycomb.color.secondary.active};
   }
 `;
 
@@ -128,6 +158,7 @@ export const Styled = styled.button<Props>`
   font-weight: 600;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   flex-shrink: 0;
+  position: relative;
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
 
   :focus,
