@@ -89,6 +89,7 @@ export const Header = styled.div<Props>`
 `;
 
 export const Title = styled.div`
+  display: flex;
   justify-content: center;
   flex-shrink: 0;
   align-items: center;
@@ -121,4 +122,11 @@ export const Content = styled.div`
   align-items: stretch;
   padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
   min-height: 100%;
+`;
+
+export const LoadingState = styled.div`
+  margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  @media (${bigScreen}) {
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.normal)};
+  }
 `;
