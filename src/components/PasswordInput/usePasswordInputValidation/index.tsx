@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import { Icon } from '../../Icon';
+import { Label } from '../styled';
 import { TextInput } from '../../TextInput';
 import { ValidationMessage } from '../../internal/ValidationMessage';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
@@ -60,53 +61,53 @@ export const usePasswordInputValidation = ({
   const validationMessages: ValidationMessage[] = [
     {
       label: (
-        <span data-testid={buildTestId('error-length')}>
+        <Label data-testid={buildTestId('error-length')}>
           {!isLongEnough ? (
             <Icon.CircledCross data-testid={buildTestId('error-length-ic-cross')} />
           ) : (
             <Icon.CircledTick data-testid={buildTestId('error-length-ic-tick')} />
           )}
           &nbsp;8 or more characters.
-        </span>
+        </Label>
       ),
       state: !isLongEnough ? 'danger' : 'success',
     },
     {
       label: (
-        <span data-testid={buildTestId('error-upper-case')}>
+        <Label data-testid={buildTestId('error-upper-case')}>
           {mustHaveUpperCase && !hasUpperCase ? (
             <Icon.CircledCross data-testid={buildTestId('error-upper-case-ic-cross')} />
           ) : (
             <Icon.CircledTick data-testid={buildTestId('error-upper-case-ic-tick')} />
           )}
           &nbsp;At least one upper case character.
-        </span>
+        </Label>
       ),
       state: mustHaveUpperCase && !hasUpperCase ? 'danger' : 'success',
     },
     {
       label: (
-        <span data-testid={buildTestId('error-digit')}>
+        <Label data-testid={buildTestId('error-digit')}>
           {mustHaveDigit && !hasDigit ? (
             <Icon.CircledCross data-testid={buildTestId('error-digit-ic-cross')} />
           ) : (
             <Icon.CircledTick data-testid={buildTestId('error-digit-ic-tick')} />
           )}
           &nbsp;At least one digit.
-        </span>
+        </Label>
       ),
       state: mustHaveDigit && !hasDigit ? 'danger' : 'success',
     },
     {
       label: (
-        <span data-testid={buildTestId('error-symbol')}>
+        <Label data-testid={buildTestId('error-symbol')}>
           {mustHaveSymbol && !hasSymbol ? (
             <Icon.CircledCross data-testid={buildTestId('error-symbol-ic-cross')} />
           ) : (
             <Icon.CircledTick data-testid={buildTestId('error-symbol-ic-tick')} />
           )}
           &nbsp;At least one symbol.
-        </span>
+        </Label>
       ),
       state: mustHaveSymbol && !hasSymbol ? 'danger' : 'success',
     },
