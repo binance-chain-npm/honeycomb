@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import { useSpring, animated } from 'react-spring';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
@@ -6,8 +6,7 @@ import { HtmlTag } from '../../modules/html-tag';
 
 import { Styled, Variant, Size, Shape, Shadow } from './styled';
 
-export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement> &
+export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
   Testable & {
     htmlTag?: HtmlTag;
     variant: Variant;
@@ -19,6 +18,7 @@ export const Component = ({
   children,
   onMouseEnter,
   onMouseLeave,
+  onClick,
   href,
   disabled,
   htmlTag,
@@ -38,6 +38,14 @@ export const Component = ({
 
   const [touching, setTouching] = useState(false);
 
+  const click = useCallback<NonNullable<Props['onClick']>>(
+    (evt) => {
+      setTouching((value) => !value);
+      onClick?.(evt);
+    },
+    [onClick],
+  );
+
   const { x } = useSpring({
     from: { x: 0 },
     x: touching ? 1 : 0,
@@ -53,7 +61,7 @@ export const Component = ({
       variant={variant}
       size={size}
       shape={shape}
-      onClick={() => setTouching((value) => !value)}
+      onClick={click}
     >
       {children}
       <Shadow
