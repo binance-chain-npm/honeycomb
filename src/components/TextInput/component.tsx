@@ -90,7 +90,7 @@ export const Component = ({
       {!!description && (
         <Description data-testid={buildTestId('description')}>{description}</Description>
       )}
-      {!!validationMessages && (
+      {!!validationMessages && validationMessages.length > 0 && (
         <ValidationMessageContainer data-testid={buildTestId('validation-messages')}>
           {validationMessages.map(({ label, state }, index) => (
             <ValidationMessageItem as="li" key={index} state={state} isPristine={isPristine}>
