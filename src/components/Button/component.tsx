@@ -29,6 +29,7 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
+  const [animationState, setAnimationState] = useState(false);
 
   const asProp = useMemo(() => {
     if (!!htmlTag) return htmlTag;
@@ -36,11 +37,9 @@ export const Component = ({
     return 'button';
   }, [htmlTag, href]);
 
-  const [touching, setTouching] = useState(false);
-
   const click = useCallback<NonNullable<Props['onClick']>>(
     (evt) => {
-      setTouching((value) => !value);
+      setAnimationState((value) => !value);
       onClick?.(evt);
     },
     [onClick],
@@ -48,7 +47,7 @@ export const Component = ({
 
   const { x } = useSpring({
     from: { x: 0 },
-    x: touching ? 1 : 0,
+    x: animationState ? 1 : 0,
   });
 
   return (
