@@ -17,55 +17,57 @@ describe('PasswordInput', () => {
     cy.percySnapshot('PasswordInput with invalid value in non-pristine state');
   });
 
-  it('password recommedations are shown by default', () => {
+  it('password recommendations are shown by default', () => {
     cy.get('[data-testid="PasswordInput.error-length"]').should('be.visible');
     cy.get('[data-testid="PasswordInput.error-upper-case"]').should('be.visible');
     cy.get('[data-testid="PasswordInput.error-digit"]').should('be.visible');
     cy.get('[data-testid="PasswordInput.error-symbol"]').should('be.visible');
   });
 
-  it('removes password recommendations as they are met', () => {
+  it('password recommendation states change as they are met', () => {
     cy.get('[data-testid="PasswordInput.native-input"]').type('thisissometext');
 
-    cy.get('[data-testid="PasswordInput.error-length"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-upper-case"]').should('be.visible');
-    cy.get('[data-testid="PasswordInput.error-digit"]').should('be.visible');
-    cy.get('[data-testid="PasswordInput.error-symbol"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-length-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-upper-case-ic-cross"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-digit-ic-cross"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-symbol-ic-cross"]').should('be.visible');
 
     cy.get('[data-testid="PasswordInput.native-input"]').type('^');
 
-    cy.get('[data-testid="PasswordInput.error-length"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-upper-case"]').should('be.visible');
-    cy.get('[data-testid="PasswordInput.error-digit"]').should('be.visible');
-    cy.get('[data-testid="PasswordInput.error-symbol"]').should('not.exist');
+    cy.get('[data-testid="PasswordInput.error-length-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-upper-case-ic-cross"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-digit-ic-cross"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-symbol-ic-tick"]').should('be.visible');
 
     cy.get('[data-testid="PasswordInput.native-input"]').type('9');
 
-    cy.get('[data-testid="PasswordInput.error-length"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-upper-case"]').should('be.visible');
-    cy.get('[data-testid="PasswordInput.error-digit"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-symbol"]').should('not.exist');
+    cy.get('[data-testid="PasswordInput.error-length-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-upper-case-ic-cross"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-digit-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-symbol-ic-tick"]').should('be.visible');
 
     cy.get('[data-testid="PasswordInput.native-input"]').type('A');
 
-    cy.get('[data-testid="PasswordInput.error-length"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-upper-case"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-digit"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-symbol"]').should('not.exist');
+    cy.get('[data-testid="PasswordInput.error-length-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-upper-case-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-digit-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-symbol-ic-tick"]').should('be.visible');
+
+    cy.percySnapshot('PasswordInput with valid value in non-pristine state');
 
     cy.get('[data-testid="PasswordInput.native-input"]').type('{backspace}');
 
-    cy.get('[data-testid="PasswordInput.error-length"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-upper-case"]').should('be.visible');
-    cy.get('[data-testid="PasswordInput.error-digit"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-symbol"]').should('not.exist');
+    cy.get('[data-testid="PasswordInput.error-length-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-upper-case-ic-cross"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-digit-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-symbol-ic-tick"]').should('be.visible');
 
     cy.get('[data-testid="PasswordInput.native-input"]').type('{backspace}');
 
-    cy.get('[data-testid="PasswordInput.error-length"]').should('not.exist');
-    cy.get('[data-testid="PasswordInput.error-upper-case"]').should('be.visible');
-    cy.get('[data-testid="PasswordInput.error-digit"]').should('be.visible');
-    cy.get('[data-testid="PasswordInput.error-symbol"]').should('not.exist');
+    cy.get('[data-testid="PasswordInput.error-length-ic-tick"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-upper-case-ic-cross"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-digit-ic-cross"]').should('be.visible');
+    cy.get('[data-testid="PasswordInput.error-symbol-ic-tick"]').should('be.visible');
   });
 
   it('shows password content if toggle pressed', () => {

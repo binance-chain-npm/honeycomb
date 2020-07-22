@@ -2,6 +2,11 @@ import React, { useMemo, useCallback, useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import { Label } from '../internal/Label';
+import {
+  ValidationMessage,
+  ValidationMessageContainer,
+  ValidationMessageItem,
+} from '../internal/ValidationMessage';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
 import { Container, Input, Left, Right, InputContainer, State, Description } from './styled';
@@ -10,6 +15,7 @@ export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultVa
   Testable & {
     label?: React.ReactNode;
     description?: React.ReactNode;
+    validationMessages?: ValidationMessage[];
     state?: State;
     value: NonNullable<React.InputHTMLAttributes<HTMLInputElement>['value']>;
     left?: React.ReactNode;
@@ -21,6 +27,7 @@ export const Component = ({
   className,
   label,
   description,
+  validationMessages,
   'data-testid': testId,
   onFocus,
   onBlur,
@@ -82,6 +89,15 @@ export const Component = ({
       </InputContainer>
       {!!description && (
         <Description data-testid={buildTestId('description')}>{description}</Description>
+      )}
+      {!!validationMessages && (
+        <ValidationMessageContainer data-testid={buildTestId('validation-messages')}>
+          {validationMessages.map(({ label, state }, index) => (
+            <ValidationMessageItem as="li" key={index} state={state} isPristine={isPristine}>
+              {label}
+            </ValidationMessageItem>
+          ))}
+        </ValidationMessageContainer>
       )}
     </Container>
   );

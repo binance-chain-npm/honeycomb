@@ -3,12 +3,13 @@ import React, { useState, useCallback } from 'react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { TextInput } from '../TextInput';
 import { Icon } from '../Icon';
+import { ValidationMessage } from '../internal/ValidationMessage';
 import { Styleless } from '../Styleless';
 
 export type Props = Omit<React.ComponentProps<typeof TextInput>, 'type' | 'left' | 'right'> &
   Testable & {
     isValid: boolean;
-    validationMessage: React.ReactNode;
+    validationMessages?: ValidationMessage[];
   };
 
 export const Component = ({
@@ -16,7 +17,7 @@ export const Component = ({
   onFocus,
   onBlur,
   isValid,
-  validationMessage,
+  validationMessages,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -56,7 +57,7 @@ export const Component = ({
           {shouldDisplay ? <Icon.EyeBlocked /> : <Icon.Eye />}
         </Styleless>
       }
-      description={validationMessage}
+      validationMessages={validationMessages}
     />
   );
 };
