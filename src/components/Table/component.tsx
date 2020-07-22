@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useTable, TableOptions, usePagination } from 'react-table';
 
 import { Button } from '../Button';
@@ -22,16 +22,20 @@ export type Props<Data extends object> = {
   data: TableOptions<Data>['data'];
   columns: TableOptions<Data>['columns'];
   initialPageIndex?: number;
+  pageSize?: number;
   pageCount?: number;
   hasPagination?: boolean;
+  onPageIndexChange?: (params: { pageIndex: number }) => void;
 };
 
 export const Component = <Data extends object>({
   data,
   columns,
   initialPageIndex = 0,
+  pageSize = 10,
   pageCount: pageCountParam,
   hasPagination = false,
+  onPageIndexChange,
 }: Props<Data>) => {
   const {
     getTableProps,
@@ -48,12 +52,12 @@ export const Component = <Data extends object>({
     nextPage,
     previousPage,
     setPageSize,
-    state: { pageIndex, pageSize },
+    state: { pageIndex },
   } = useTable(
     {
       columns,
       data,
-      initialState: { pageIndex: initialPageIndex },
+      initialState: { pageIndex: initialPageIndex, pageSize },
       manualPagination: typeof pageCountParam === 'number',
       pageCount: pageCountParam,
     },
@@ -72,6 +76,15 @@ export const Component = <Data extends object>({
       }),
     [pageOptions, pageCount, pageIndex],
   );
+
+  useEffect(() => {
+    onPageIndexChange?.({ pageIndex });
+  }, [pageIndex, onPageIndexChange]);
+
+  useEffect(() => {
+    if (!pageSize) return;
+    setPageSize(pageSize);
+  }, [pageSize, setPageSize]);
 
   return (
     <Container>
@@ -118,7 +131,7 @@ export const Component = <Data extends object>({
                 <Button
                   variant={page === pageIndex ? 'primary' : 'secondary'}
                   onClick={() => gotoPage(page)}
-                  shape="square"
+                  shape="fit"
                   size="increased"
                 >
                   {page + 1}
