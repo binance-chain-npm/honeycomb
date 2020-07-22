@@ -56,3 +56,30 @@ export const TbodyTr = styled.tr`
     border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
   }
 `;
+
+export const Pagination = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+`;
+
+export const PaginationWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  max-width: ${em(296)};
+
+  > *:not(:last-child) {
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.micro)};
+  }
+`;
+
+export const PaginationEllipsis = styled.span`
+  > *:not(:last-child) {
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.micro)};
+  }
+`;
