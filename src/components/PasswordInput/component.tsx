@@ -3,13 +3,11 @@ import React, { useState, useCallback } from 'react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { TextInput } from '../TextInput';
 import { Icon } from '../Icon';
-import { ValidationMessage } from '../internal/ValidationMessage';
 import { Styleless } from '../Styleless';
 
 export type Props = Omit<React.ComponentProps<typeof TextInput>, 'type' | 'left' | 'right'> &
   Testable & {
     isValid: boolean;
-    validationMessages?: ValidationMessage[];
   };
 
 export const Component = ({
