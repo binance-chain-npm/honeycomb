@@ -16,6 +16,7 @@ export const Text = () => {
       {...validationProps}
       value={value}
       onChange={(evt) => setValue(evt.target.value)}
+      description="Some description about the password."
     />
   );
 };
