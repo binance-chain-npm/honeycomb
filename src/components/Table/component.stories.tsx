@@ -44,13 +44,13 @@ const columns = [
 
 export const NoPagination = () => (
   <Card variant="bare">
-    <Table data={data} columns={columns} />
+    <Table data={data} columns={columns} data-testid="MyTable" />
   </Card>
 );
 
 export const AutomaticPagination = () => (
   <Card variant="bare">
-    <Table data={data} columns={columns} hasPagination />
+    <Table data={data} columns={columns} hasPagination data-testid="MyTable" />
   </Card>
 );
 
@@ -67,6 +67,7 @@ export const ControlledPagination = () => {
         pageCount={Math.ceil(data.length / pageSize)}
         initialPageIndex={pageIndex}
         onPageIndexChange={({ pageIndex }) => setPageIndex(pageIndex)}
+        data-testid="MyTable"
       />
     </Card>
   );
