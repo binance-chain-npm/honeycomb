@@ -10,13 +10,13 @@ export const SvgContainer = styled.div`
 `;
 
 export const Success = styled(Icon.Success)`
-  fill: ${({ theme }) => theme.honeycomb.color.fill.success};
+  fill: ${({ theme }) => theme.honeycomb.color.success.normal};
 `;
 
 export const Warning = styled(Icon.Warning)`
-  fill: ${({ theme }) => theme.honeycomb.color.fill.warning};
+  fill: ${({ theme }) => theme.honeycomb.color.warning.normal};
 `;
 
 export const Danger = styled(Icon.Danger)`
-  fill: ${({ theme }) => theme.honeycomb.color.fill.danger};
+  fill: ${({ theme }) => theme.honeycomb.color.danger.normal};
 `;

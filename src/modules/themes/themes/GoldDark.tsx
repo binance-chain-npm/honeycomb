@@ -59,6 +59,11 @@ export const GoldDark = {
         active: '#fc6e75',
       },
 
+      warning: {
+        normal: '#f0b90b',
+        active: '#f8d12f',
+      },
+
       buy: {
         normal: '#02c076',
         active: '#2ed191',
@@ -67,12 +72,6 @@ export const GoldDark = {
       sell: {
         normal: '#d9304e',
         active: '#fc6e75',
-      },
-
-      fill: {
-        success: '#02C076',
-        warning: '#F0B90B',
-        danger: '#F84960',
       },
     },
 
