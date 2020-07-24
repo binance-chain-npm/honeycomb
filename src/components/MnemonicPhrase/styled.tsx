@@ -3,6 +3,8 @@ import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
 
+const FONT_SIZE = 10;
+
 export const Container = styled.div`
   ${boxSizing};
 
@@ -17,15 +19,15 @@ export const Item = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
-  margin: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+  margin: ${({ theme }) => em(theme.honeycomb.size.small)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
   font-weight: 600;
 
   ::before {
     content: '#' counter(listCounter, decimal-leading-zero);
-    min-width: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
-    margin-right: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+    min-width: ${({ theme }) => em(theme.honeycomb.size.normal, FONT_SIZE)};
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.small, FONT_SIZE)};
     color: ${({ theme }) => theme.honeycomb.color.text.masked};
-    font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
+    font-size: ${({ theme }) => em(FONT_SIZE, theme.honeycomb.size.small)};
   }
 `;
