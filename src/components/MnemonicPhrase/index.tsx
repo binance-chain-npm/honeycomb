@@ -11,9 +11,9 @@ export const MnemonicPhrase = ({ value }: Props) => {
   }, [value]);
 
   return (
-    <Container as="ol">
+    <Container as="div">
       {realValue.map((word, index) => (
-        <Item as="li" key={index}>
+        <Item as="div" key={index}>
           {word}
         </Item>
       ))}
