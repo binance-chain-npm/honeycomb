@@ -16,6 +16,7 @@ export { useBuildTestId, Testable } from './modules/test-ids';
 export { useMoonPayUrl, buildMoonPayUrl } from './modules/moonpay';
 
 export { Button } from './components/Button';
+export { Badge } from './components/Badge';
 export { TextInput } from './components/TextInput';
 export { TextArea } from './components/TextArea';
 export { PasswordInput, usePasswordInputValidation } from './components/PasswordInput';
