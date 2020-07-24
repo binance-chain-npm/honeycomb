@@ -36,6 +36,7 @@ const sell = css`
 
 export const Badge = styled.div<{ variant: Variant }>`
   display: inline-block;
+  text-align: center;
   border-radius: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.small)};
   padding: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.small)}
     ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.small)};
