@@ -9,7 +9,7 @@ export const Container = styled.ol`
   counter-reset: listCounter;
   display: flex;
   list-style: none;
-  margin: -${({ theme }) => theme.honeycomb.size.reduced};
+  margin: -${({ theme }) => em(theme.honeycomb.size.reduced)};
   padding: 0;
   align-items: center;
   justify-content: center;
