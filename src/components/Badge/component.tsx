@@ -2,25 +2,18 @@ import React from 'react';
 
 import { Testable } from '../../modules/test-ids';
 
-import { Badge, Variant, Transparent } from './styled';
+import { Badge, Variant } from './styled';
 
 export type Props = Testable & {
-  variant?: Variant;
-  transparent?: Transparent;
+  variant: Variant;
   children?: React.ReactNode;
   className?: string;
 };
 
-export const Component = ({
-  variant = 'success',
-  'data-testid': testId,
-  className,
-  children,
-  transparent = 'success',
-}: Props) => (
-  <Badge className={className} data-testid={testId} variant={variant} transparent={transparent}>
+export const Component = ({ variant, 'data-testid': testId, className, children }: Props) => (
+  <Badge className={className} data-testid={testId} variant={variant}>
     {children}
   </Badge>
 );
 
-Component.displayName = 'Card';
+Component.displayName = 'Badge';

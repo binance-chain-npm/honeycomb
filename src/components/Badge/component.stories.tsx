@@ -9,37 +9,37 @@ export default {
 };
 
 export const PrimaryBadge = () => (
-  <Badge variant="primary" transparent="primary" data-testid="MyBadge">
+  <Badge variant="primary" data-testid="MyBadge">
     Inactive
   </Badge>
 );
 
 export const SuccessBadge = () => (
-  <Badge variant="success" transparent="success" data-testid="MyBadge">
+  <Badge variant="success" data-testid="MyBadge">
     Active
   </Badge>
 );
 
 export const WarningBadge = () => (
-  <Badge variant="warning" transparent="success" data-testid="MyBadge">
+  <Badge variant="warning" data-testid="MyBadge">
     Inactive
   </Badge>
 );
 
 export const DangerBadge = () => (
-  <Badge variant="danger" transparent="success" data-testid="MyBadge">
+  <Badge variant="danger" data-testid="MyBadge">
     Injail
   </Badge>
 );
 
 export const BuyBadge = () => (
-  <Badge variant="success" transparent="success" data-testid="MyBadge">
+  <Badge variant="buy" data-testid="MyBadge">
     Buy
   </Badge>
 );
 
 export const SellBadge = () => (
-  <Badge variant="danger" transparent="danger" data-testid="MyBadge">
+  <Badge variant="sell" data-testid="MyBadge">
     Sell
   </Badge>
 );
