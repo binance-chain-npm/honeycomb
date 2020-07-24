@@ -29,5 +29,6 @@ export const Item = styled.div`
     margin-right: ${({ theme }) => em(theme.honeycomb.size.small, FONT_SIZE)};
     color: ${({ theme }) => theme.honeycomb.color.text.masked};
     font-size: ${({ theme }) => em(FONT_SIZE, theme.honeycomb.size.small)};
+    vertical-align: top;
   }
 `;
