@@ -3,7 +3,7 @@ import { readableColor, transparentize } from 'polished';
 const readable = {
   normal: (bg: string) => readableColor(bg, '#1e2026', '#e6e8ea'),
   primary: (bg: string) => readableColor(bg, '#d0980b', '#d0980b'),
-  masked: (bg: string) => readableColor(bg, '#76808f', '#474d57'),
+  masked: (bg: string) => readableColor(bg, '#76808f', '#76808f'),
   disabled: (bg: string) => readableColor(bg, '#aeb4bc', '#aeb4bc'),
   placeholder: (bg: string) => readableColor(bg, '#aeb4bc', '#5e6673'),
 } as const;
