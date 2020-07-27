@@ -27,6 +27,7 @@ export const WithHelpers = () => {
       <Dropdown.Divider />
       <Dropdown.Item variant="accent">Item 3</Dropdown.Item>
       <Dropdown.Divider />
+      <Dropdown.Item isSelected>Selected item</Dropdown.Item>
       <Dropdown.Item disabled>Disabled item</Dropdown.Item>
       <Dropdown.Item variant="accent" disabled>
         Disabled accent item
