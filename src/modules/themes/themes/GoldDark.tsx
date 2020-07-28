@@ -21,9 +21,13 @@ export const GoldDark = {
         masked: '#14151a',
 
         tooltip: {
-          normal: '#2b2f36',
+          normal: '#1e2026',
           accent: '#33373e',
-          outer: transparentize(0.5, bgNormal),
+          outer: transparentize(0.2, '#0b0e11'),
+        },
+
+        input: {
+          normal: '#2b2f36',
         },
       },
 
