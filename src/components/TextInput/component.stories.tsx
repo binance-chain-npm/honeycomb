@@ -35,7 +35,7 @@ export const LeftAndRightAppendixes = () => (
     label="Amount"
     placeholder="Some placeholder…"
     value=""
-    left={<div style={{ display: 'flex', alignItems: 'center' }}>€</div>}
+    left={<div>€</div>}
     right={
       <Button variant="primary" size="increased" shape="fit">
         MAX
