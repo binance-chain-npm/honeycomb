@@ -1,6 +1,7 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import { nanoid } from 'nanoid';
 
+import { InputContainer, Input, Left, Right, State } from '../internal/Input';
 import { Label } from '../internal/Label';
 import {
   ValidationMessage,
@@ -9,7 +10,7 @@ import {
 } from '../internal/ValidationMessage';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Container, Input, Left, Right, InputContainer, State, Description } from './styled';
+import { Container, Description } from './styled';
 
 export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> &
   Testable & {
