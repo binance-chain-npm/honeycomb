@@ -1,3 +1,5 @@
+import { transparentize } from 'polished';
+
 import { GoldDark } from './GoldDark';
 import { HoneycombThemeType } from './HoneycombThemeType';
 
@@ -16,9 +18,13 @@ export const GoldLight: HoneycombThemeType = {
         masked: '#f5f5f5',
 
         tooltip: {
-          ...GoldDark.honeycomb.color.bg.tooltip,
           normal: '#ffffff',
           accent: '#f5f5f5',
+          outer: transparentize(0.5, '#0b0e11'),
+        },
+
+        input: {
+          normal: '#f5f5f5',
         },
       },
 
