@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import { nanoid } from 'nanoid';
 
-import { InputContainer, Input, Left, Right, State } from '../internal/Input';
+import { Left, Right } from '../internal/Input';
 import { Label } from '../internal/Label';
 import {
   ValidationMessage,
@@ -10,7 +10,7 @@ import {
 } from '../internal/ValidationMessage';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Container, Description } from './styled';
+import { Container, Description, Input, StyledInputContainer, State } from './styled';
 
 export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> &
   Testable & {
@@ -75,7 +75,7 @@ export const Component = ({
           {label}
         </Label>
       )}
-      <InputContainer isFocused={isFocused} state={state} isPristine={isPristine}>
+      <StyledInputContainer isFocused={isFocused} state={state} isPristine={isPristine}>
         {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
         <Input
           {...otherProps}
@@ -87,7 +87,7 @@ export const Component = ({
           as={htmlTag}
         />
         {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
-      </InputContainer>
+      </StyledInputContainer>
       {!!description && (
         <Description data-testid={buildTestId('description')}>{description}</Description>
       )}

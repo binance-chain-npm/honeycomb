@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
-export type State = 'success' | 'danger';
-
-export const Input = styled.input`
+export const baseInputStyle = css`
   flex: 1;
   display: flex;
   margin: 0;
@@ -25,37 +23,7 @@ export const Input = styled.input`
   }
 `;
 
-const success = css`
-  border-color: ${({ theme }) => theme.honeycomb.color.success.normal};
-
-  :focus {
-    border-color: ${({ theme }) => theme.honeycomb.color.success.active};
-  }
-`;
-
-const danger = css`
-  border-color: ${({ theme }) => theme.honeycomb.color.danger.normal};
-
-  :focus {
-    border-color: ${({ theme }) => theme.honeycomb.color.danger.active};
-  }
-`;
-
-const focused = css`
-  border-color: ${({ theme }) => theme.honeycomb.color.primary.normal};
-
-  :focus {
-    border-color: ${({ theme }) => theme.honeycomb.color.primary.active};
-  }
-`;
-
-export type Props = {
-  state?: State;
-  isFocused?: boolean;
-  isPristine?: boolean;
-};
-
-export const InputContainer = styled.div<Props>`
+export const InputContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -64,15 +32,6 @@ export const InputContainer = styled.div<Props>`
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
-  ${({ state }) => state === 'success' && success};
-  ${({ theme }) =>
-    transitions(
-      ['color', 'background', 'border'],
-      `${theme.honeycomb.duration.normal} ease-in-out`,
-    )};
-
-  ${({ isFocused }) => isFocused && focused};
-  ${({ state, isPristine }) => state === 'danger' && !isPristine && danger};
 `;
 
 export const Left = styled.div`
