@@ -68,7 +68,7 @@ export type Props = {
 export const InputContainer = styled.div<Props>`
   display: flex;
   flex-direction: row;
-  background: ${({ theme }) => theme.honeycomb.color.bg.masked};
+  background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
   border: 1px solid transparent;
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
