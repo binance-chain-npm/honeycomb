@@ -17,6 +17,7 @@ import {
   Pagination,
   PaginationWrapper,
   PaginationEllipsis,
+  PageNumberButton,
 } from './styled';
 
 export type Props<Data extends object> = Testable & {
@@ -141,7 +142,7 @@ export const Component = <Data extends object>({
             </Button>
             {filteredPageOptions.map((page, index) => (
               <>
-                <Button
+                <PageNumberButton
                   variant={page === pageIndex ? 'primary' : 'secondary'}
                   onClick={() => gotoPage(page)}
                   shape="fit"
@@ -149,7 +150,7 @@ export const Component = <Data extends object>({
                   data-testid={buildTestId(`pagination.go-to-${page}-btn`)}
                 >
                   {page + 1}
-                </Button>
+                </PageNumberButton>
                 {typeof filteredPageOptions[index + 1] === 'number' &&
                   filteredPageOptions[index + 1] !== page + 1 && (
                     <PaginationEllipsis data-testid={buildTestId(`pagination.${page}.ellipsis`)}>
