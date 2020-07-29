@@ -14,7 +14,7 @@ export const Component = ({ onClose, 'data-testid': testId, children, ...otherPr
   return (
     <PickOneContext.Provider value={context}>
       <Modal {...otherProps} onClose={onClose} data-testid={buildTestId()}>
-        <PickOne>{children}</PickOne>
+        <PickOne data-testid={buildTestId()}>{children}</PickOne>
       </Modal>
     </PickOneContext.Provider>
   );
