@@ -39,3 +39,4 @@ export { ModalPickOne } from './components/ModalPickOne';
 export { ListItem } from './components/ListItem';
 export { Card } from './components/Card';
 export { Table } from './components/Table';
+export { InputPickOne } from './components/InputPickOne';

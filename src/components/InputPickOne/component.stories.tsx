@@ -32,7 +32,7 @@ export const Default = () => {
   const [selected, setSelected] = useState<React.ReactNode>('Pick an option...');
 
   return (
-    <InputPickOne selected={selected}>
+    <InputPickOne selected={selected} data-testid="InputPickOne">
       {data.map((it, index) => (
         <InputPickOne.Item
           onClick={() =>

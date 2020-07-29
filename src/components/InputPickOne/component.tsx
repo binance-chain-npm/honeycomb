@@ -31,7 +31,7 @@ export const Component = ({ children, onClick, title, selected, 'data-testid': t
 
   return (
     <>
-      <InputPickOne onClick={click} ref={inputRef}>
+      <InputPickOne onClick={click} ref={inputRef} data-testid={buildTestId('input')}>
         <StyledInputContainer>{selected}</StyledInputContainer>
       </InputPickOne>
 
@@ -45,19 +45,19 @@ export const Component = ({ children, onClick, title, selected, 'data-testid': t
           {children}
         </ModalPickOne>
       ) : (
-        <div>
+        <>
           <Styles />
           <Tooltip
             trigger="manual"
             theme="dropdown"
             interactive={true}
             arrow={false}
-            content={<PickOne>{children}</PickOne>}
+            content={<PickOne data-testid={buildTestId()}>{children}</PickOne>}
             visible={open}
             reference={inputRef}
             data-testid={buildTestId('tooltip')}
           />
-        </div>
+        </>
       )}
     </>
   );
