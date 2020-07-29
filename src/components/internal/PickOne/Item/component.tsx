@@ -1,8 +1,8 @@
 import React, { useCallback, useContext } from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
-import { ModalPickOneContext } from '../../../ModalPickOne/context';
 import { ListItem } from '../../../ListItem';
+import { PickOneContext } from '../context';
 
 import { StyledListItem } from './styled';
 
@@ -17,7 +17,7 @@ export const Component = ({
   htmlTag,
   ...otherProps
 }: Props) => {
-  const { onClose, testId: parentTestId } = useContext(ModalPickOneContext);
+  const { onClose, testId: parentTestId } = useContext(PickOneContext);
   const buildTestIdParent = useBuildTestId(parentTestId);
   const buildTestId = useBuildTestId(buildTestIdParent(testId ? `item.${testId}` : undefined));
 
