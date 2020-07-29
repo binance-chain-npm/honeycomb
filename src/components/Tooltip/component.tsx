@@ -19,6 +19,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     | 'disabled'
     | 'hideOnClick'
     | 'interactive'
+    | 'reference'
   > &
   Testable & {
     content: React.ReactNode;
