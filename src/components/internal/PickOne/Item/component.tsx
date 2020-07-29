@@ -1,8 +1,8 @@
 import React, { useCallback, useContext } from 'react';
 
-import { useBuildTestId } from '../../../modules/test-ids';
-import { ModalPickOneContext } from '../context';
-import { ListItem } from '../../ListItem';
+import { useBuildTestId } from '../../../../modules/test-ids';
+import { ModalPickOneContext } from '../../../ModalPickOne/context';
+import { ListItem } from '../../../ListItem';
 
 import { StyledListItem } from './styled';
 
@@ -41,4 +41,4 @@ export const Component = ({
   );
 };
 
-Component.displayName = 'ModalPickOne.Item';
+Component.displayName = 'PickOne.Item';
