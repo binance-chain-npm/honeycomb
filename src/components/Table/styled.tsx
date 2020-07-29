@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
+import { Button } from '../Button';
 
 const ROW_HEIGHT = 56;
 
@@ -82,4 +83,9 @@ export const PaginationEllipsis = styled.span`
   > *:not(:last-child) {
     margin-right: ${({ theme }) => em(theme.honeycomb.size.micro)};
   }
+`;
+
+export const PageNumberButton = styled(Button)`
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.reduced)};
+  min-width: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
 `;
