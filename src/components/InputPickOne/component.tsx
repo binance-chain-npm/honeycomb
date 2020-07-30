@@ -29,6 +29,11 @@ export const Component = ({ children, onClick, title, selected, 'data-testid': t
     [onClick],
   );
 
+  const clickContent = useCallback(() => {
+    if (!open) return;
+    setOpen((value) => !value);
+  }, [open]);
+
   return (
     <>
       <InputPickOne onClick={click} ref={inputRef} data-testid={buildTestId('input')}>
@@ -53,6 +58,7 @@ export const Component = ({ children, onClick, title, selected, 'data-testid': t
             interactive={true}
             arrow={false}
             content={<PickOne data-testid={buildTestId()}>{children}</PickOne>}
+            onClickContent={clickContent}
             visible={open}
             reference={inputRef}
             data-testid={buildTestId('tooltip')}
