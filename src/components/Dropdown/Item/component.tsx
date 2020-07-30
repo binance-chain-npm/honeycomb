@@ -5,6 +5,7 @@ import { TestIdContext } from '../context';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { HtmlTag } from '../../../modules/html-tag';
 import { Icon } from '../../Icon';
+import { Space } from '../../Space';
 
 import { Container, Variant } from './styled';
 
@@ -38,6 +39,7 @@ export const Component = ({
       data-testid={buildTestId(otherProps['data-testid'])}
     >
       {otherProps.children}
+      <Space size="fill" />
       {isSelected && <Icon.Tick color={theme.honeycomb.color.primary.normal} />}
     </Container>
   );

@@ -43,7 +43,6 @@ export const Container = styled.button<{ variant: Variant; isNonInteractive: boo
   ${styleless};
   ${boxSizing};
 
-  justify-content: space-between;
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
   height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
