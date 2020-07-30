@@ -14,6 +14,8 @@ export const StyledInputContainer = styled(InputContainer)`
   ${baseInputStyle};
 
   cursor: pointer;
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.increased)};
+  text-indent: 0;
 `;
 
 export const Styles = css`

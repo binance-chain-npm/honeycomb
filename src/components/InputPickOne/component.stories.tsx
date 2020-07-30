@@ -39,7 +39,7 @@ export const Default = () => {
             setSelected(
               <>
                 <it.icon />
-                &nbsp;<span>{it.label}</span>
+                <span style={{ marginLeft: '1em' }}>{it.label}</span>
               </>,
             )
           }
@@ -47,7 +47,7 @@ export const Default = () => {
           data-testid={`${index}`}
         >
           <it.icon />
-          &nbsp;<span>{it.label}</span>
+          <span style={{ marginLeft: '1em' }}>{it.label}</span>
         </InputPickOne.Item>
       ))}
     </InputPickOne>
