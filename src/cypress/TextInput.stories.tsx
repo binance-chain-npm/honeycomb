@@ -33,8 +33,8 @@ export const LeftRight = () => {
       id="input"
       data-testid="TextInput"
       value=""
-      left={<div id="left-content" />}
-      right={<div id="right-content" />}
+      left={<div id="left-content">left</div>}
+      right={<div id="right-content">right</div>}
     />
   );
 };
