@@ -6,7 +6,7 @@ import { Variant } from '../styled';
 import { Success, Warning, Danger, SvgContainer } from './styled';
 
 export type Props = Testable & {
-  variant: Variant;
+  variant?: Variant;
   children?: React.ReactNode;
 };
 
@@ -19,7 +19,11 @@ const icons: IconType = {
 };
 
 export const Component = ({ variant, children }: Props) => {
-  return <SvgContainer variant={variant}>{children ?? icons[variant]}</SvgContainer>;
+  if (!variant && !children) {
+    throw new Error('Icons must have either a "variant" or "children" prop, or both');
+  }
+
+  return <SvgContainer variant={variant}>{children ?? icons[variant!]}</SvgContainer>;
 };
 
 Component.displayName = 'ModalState.Icon';

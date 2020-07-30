@@ -7,7 +7,7 @@ import { Variant, Title, Description, StyledModal } from './styled';
 import { Icon } from './Icon';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
-  variant: Variant;
+  variant?: Variant;
   description?: React.ReactNode;
   icon?: React.ReactNode;
 };
