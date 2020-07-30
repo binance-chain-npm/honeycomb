@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Sections } from '../../modules/sections';
+import { Icon } from '../Icon';
 
 import { Variant } from './styled';
 
@@ -28,4 +29,15 @@ export const Default = () => (
   >
     {scenario.children}
   </ModalState>
+);
+
+export const WithCustomIcon = () => (
+  <ModalState
+    open={true}
+    data-testid="MyModal"
+    variant="success"
+    title={scenario.name}
+    description={scenario.description}
+    icon={<Icon.Tick />}
+  />
 );
