@@ -14,6 +14,7 @@ export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
 
 export const Component = ({
   variant,
+  icon,
   title,
   description,
   children,
@@ -24,7 +25,7 @@ export const Component = ({
 
   return (
     <StyledModal {...otherProps} data-testid={buildTestId()}>
-      <Icon variant={variant} />
+      <Icon variant={variant}>{icon}</Icon>
       <Title>{title}</Title>
       <Description>{description}</Description>
       {children}

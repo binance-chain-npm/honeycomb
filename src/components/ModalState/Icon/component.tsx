@@ -19,7 +19,7 @@ const icons: IconType = {
 };
 
 export const Component = ({ variant, children }: Props) => {
-  return <SvgContainer>{children ?? icons[variant]}</SvgContainer>;
+  return <SvgContainer variant={variant}>{children ?? icons[variant]}</SvgContainer>;
 };
 
 Component.displayName = 'ModalState.Icon';
