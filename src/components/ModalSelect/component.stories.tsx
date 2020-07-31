@@ -6,10 +6,10 @@ import { Icon } from '../Icon';
 // @ts-ignore
 import pic from './pic.png';
 
-import { ModalPickOne } from './';
+import { ModalSelect } from '.';
 
 export default {
-  title: `${Sections.Elements}/ModalPickOne`,
+  title: `${Sections.Elements}/ModalSelect`,
 };
 
 const data: Array<{ label: string; icon: typeof Icon.Add }> = [
@@ -33,16 +33,16 @@ const data: Array<{ label: string; icon: typeof Icon.Add }> = [
 
 export const Default = () => {
   return (
-    <ModalPickOne open={true} data-testid="MyModal" title="A title">
+    <ModalSelect open={true} data-testid="MyModal" title="A title">
       {data.map((it, index) => (
-        <ModalPickOne.Item searchAs={it.label} isSelected={index === 0} data-testid={`${index}`}>
+        <ModalSelect.Item searchAs={it.label} isSelected={index === 0} data-testid={`${index}`}>
           <it.icon />
           &nbsp;<span>{it.label}</span>
-        </ModalPickOne.Item>
+        </ModalSelect.Item>
       ))}
-      <ModalPickOne.Item searchAs={['my photo', 'A crazy item']} data-testid="photo">
+      <ModalSelect.Item searchAs={['my photo', 'A crazy item']} data-testid="photo">
         <img src={pic} alt="" style={{ maxHeight: '100%' }} />
-      </ModalPickOne.Item>
-    </ModalPickOne>
+      </ModalSelect.Item>
+    </ModalSelect>
   );
 };

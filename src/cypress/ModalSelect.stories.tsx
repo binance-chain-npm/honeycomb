@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
 // @ts-ignore
-import pic from '../components/ModalPickOne/pic.png';
-import { ModalPickOne } from '../components/ModalPickOne';
+import pic from '../components/Select/ModalSelect/pic.png';
+import { ModalSelect } from '../components/Select/ModalSelect';
 import { Sections } from '../modules/sections';
 import { Icon } from '../components/Icon';
 import { Button } from '../components/Button';
 
 export default {
-  title: `${Sections.Tests}/ModalPickOne`,
+  title: `${Sections.Tests}/ModalSelect`,
 };
 
 const data: Array<{ label: string; icon: typeof Icon.Add }> = [
@@ -39,9 +39,9 @@ export const Default = () => {
       <Button variant="primary" onClick={() => setOpen(true)} data-testid="OpenButton">
         Show
       </Button>
-      <ModalPickOne open={open} onClose={() => setOpen(false)} data-testid="MyModal">
+      <ModalSelect open={open} onClose={() => setOpen(false)} data-testid="MyModal">
         {data.map((it, index) => (
-          <ModalPickOne.Item
+          <ModalSelect.Item
             searchAs={it.label}
             isSelected={selected === it.label}
             onClick={() => setSelected(it.label)}
@@ -49,17 +49,17 @@ export const Default = () => {
           >
             <it.icon />
             &nbsp;<span>{it.label}</span>
-          </ModalPickOne.Item>
+          </ModalSelect.Item>
         ))}
-        <ModalPickOne.Item
+        <ModalSelect.Item
           searchAs={['my photo', 'A crazy item']}
           isSelected={selected === 'photo'}
           onClick={() => setSelected('photo')}
           data-testid="photo"
         >
           <img src={pic} height="100" alt="" />
-        </ModalPickOne.Item>
-      </ModalPickOne>
+        </ModalSelect.Item>
+      </ModalSelect>
     </>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 
 import { useBuildTestId } from '../../modules/test-ids';
-import { PickOne } from '../internal/PickOne';
-import { PickOneContext } from '../internal/PickOne/context';
+import { Select } from '../internal/Select';
+import { SelectContext } from '../internal/Select/context';
 import { Modal } from '../Modal';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal>;
@@ -12,12 +12,12 @@ export const Component = ({ onClose, 'data-testid': testId, children, ...otherPr
   const buildTestId = useBuildTestId(testId);
 
   return (
-    <PickOneContext.Provider value={context}>
+    <SelectContext.Provider value={context}>
       <Modal {...otherProps} onClose={onClose} data-testid={buildTestId()}>
-        <PickOne data-testid={buildTestId()}>{children}</PickOne>
+        <Select data-testid={buildTestId()}>{children}</Select>
       </Modal>
-    </PickOneContext.Provider>
+    </SelectContext.Provider>
   );
 };
 
-Component.displayName = 'ModalPickOne';
+Component.displayName = 'ModalSelect';

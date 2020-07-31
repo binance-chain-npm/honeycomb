@@ -1,12 +1,12 @@
 import React, { useCallback, useState, useRef } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { PickOne } from '../internal/PickOne';
+import { Select } from '../internal/Select';
 import { useWindowWidth, widths } from '../internal/useWindowWidth';
-import { ModalPickOne } from '../ModalPickOne';
+import { ModalSelect } from '../ModalSelect';
 import { Tooltip } from '../Tooltip';
 
-import { InputPickOne, StyledInputContainer, Styles } from './styled';
+import { InputSelect, StyledInputContainer, Styles } from './styled';
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children' | 'onClick'> &
   Testable & {
@@ -36,19 +36,19 @@ export const Component = ({ children, onClick, title, selected, 'data-testid': t
 
   return (
     <>
-      <InputPickOne onClick={click} ref={inputRef} data-testid={buildTestId('input')}>
+      <InputSelect onClick={click} ref={inputRef} data-testid={buildTestId('input')}>
         <StyledInputContainer>{selected}</StyledInputContainer>
-      </InputPickOne>
+      </InputSelect>
 
       {width < widths.sm ? (
-        <ModalPickOne
+        <ModalSelect
           open={open}
           onClose={() => setOpen(false)}
           title={title}
           data-testid={buildTestId('modal')}
         >
           {children}
-        </ModalPickOne>
+        </ModalSelect>
       ) : (
         <>
           <Styles />
@@ -57,7 +57,7 @@ export const Component = ({ children, onClick, title, selected, 'data-testid': t
             theme="dropdown"
             interactive={true}
             arrow={false}
-            content={<PickOne data-testid={buildTestId()}>{children}</PickOne>}
+            content={<Select data-testid={buildTestId()}>{children}</Select>}
             onClickContent={clickContent}
             visible={open}
             reference={inputRef}
@@ -69,4 +69,4 @@ export const Component = ({ children, onClick, title, selected, 'data-testid': t
   );
 };
 
-Component.displayName = 'InputPickOne';
+Component.displayName = 'InputSelect';

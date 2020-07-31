@@ -53,4 +53,4 @@ export const Component = ({ 'data-testid': testId, children }: Props) => {
   );
 };
 
-Component.displayName = 'PickOne';
+Component.displayName = 'Select';

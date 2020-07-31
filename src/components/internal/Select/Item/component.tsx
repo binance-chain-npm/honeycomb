@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
 import { ListItem } from '../../../ListItem';
-import { PickOneContext } from '../context';
+import { SelectContext } from '../context';
 
 import { StyledListItem } from './styled';
 
@@ -17,7 +17,7 @@ export const Component = ({
   htmlTag,
   ...otherProps
 }: Props) => {
-  const { onClose, testId: parentTestId } = useContext(PickOneContext);
+  const { onClose, testId: parentTestId } = useContext(SelectContext);
   const buildTestIdParent = useBuildTestId(parentTestId);
   const buildTestId = useBuildTestId(buildTestIdParent(testId ? `item.${testId}` : undefined));
 
@@ -41,4 +41,4 @@ export const Component = ({
   );
 };
 
-Component.displayName = 'PickOne.Item';
+Component.displayName = 'Select.Item';

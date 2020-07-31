@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 
-import { InputPickOne } from './';
+import { InputSelect } from '.';
 
 export default {
-  title: `${Sections.Elements}/InputPickOne`,
+  title: `${Sections.Elements}/InputSelect`,
 };
 
 const data: Array<{ label: string; icon: typeof Icon.Add }> = [
@@ -32,9 +32,9 @@ export const Default = () => {
   const [selected, setSelected] = useState<React.ReactNode>('Pick an option...');
 
   return (
-    <InputPickOne selected={selected} data-testid="InputPickOne">
+    <InputSelect selected={selected} data-testid="InputSelect">
       {data.map((it, index) => (
-        <InputPickOne.Item
+        <InputSelect.Item
           onClick={() =>
             setSelected(
               <>
@@ -48,8 +48,8 @@ export const Default = () => {
         >
           <it.icon />
           <span style={{ marginLeft: '1em' }}>{it.label}</span>
-        </InputPickOne.Item>
+        </InputSelect.Item>
       ))}
-    </InputPickOne>
+    </InputSelect>
   );
 };
