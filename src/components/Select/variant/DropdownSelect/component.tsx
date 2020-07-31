@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
 import { useWindowWidth, widths } from '../../../internal/useWindowWidth';
-import { Select } from '../..';
+import { Select } from '../../../Select';
 import { Tooltip } from '../../../Tooltip';
 import { ModalSelect } from '../ModalSelect';
 

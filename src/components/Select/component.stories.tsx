@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 
 // @ts-ignore
-import pic from './variant/ModalSelect/pic.png';
+import pic from './pic.png';
 
 import { Select } from '.';
 
