@@ -7,13 +7,11 @@ import { Variant, Title, Description, StyledModal } from './styled';
 import { Icon } from './Icon';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
-  variant?: Variant;
   description?: React.ReactNode;
-  icon?: React.ReactNode;
+  icon?: Variant | React.ReactElement;
 };
 
 export const Component = ({
-  variant,
   icon,
   title,
   description,
@@ -25,7 +23,7 @@ export const Component = ({
 
   return (
     <StyledModal {...otherProps} data-testid={buildTestId()}>
-      <Icon variant={variant}>{icon}</Icon>
+      {icon && <Icon icon={icon} />}
       <Title>{title}</Title>
       <Description>{description}</Description>
       {children}
