@@ -3,12 +3,12 @@ import React from 'react';
 import { Modal } from '../Modal';
 import { useBuildTestId } from '../../modules/test-ids';
 
-import { Variant, Title, Description, StyledModal } from './styled';
+import { Title, Description, StyledModal } from './styled';
 import { Icon } from './Icon';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
   description?: React.ReactNode;
-  icon?: Variant | React.ReactElement;
+  icon?: React.ReactNode;
 };
 
 export const Component = ({
