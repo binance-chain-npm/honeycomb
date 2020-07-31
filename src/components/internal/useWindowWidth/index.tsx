@@ -8,7 +8,7 @@ export const widths = {
   xl: 1920,
 } as const;
 
-const getWidth = () => window.innerWidth;
+const getWidth = () => (typeof window === 'undefined' ? 0 : window.innerWidth);
 
 export const useWindowWidth = () => {
   let [width, setWidth] = useState(getWidth());
