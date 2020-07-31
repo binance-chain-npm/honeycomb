@@ -1,16 +1,31 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Space } from '../Space';
 import { TextInput } from '../TextInput';
 
-import { Content, Header } from './styled';
+import { InputSelect } from './variant/InputSelect';
+import { ModalSelect } from './variant/ModalSelect';
+import { Search, Options } from './styled';
 
-export type Props = Testable & {
-  children?: React.ReactNode;
-};
+export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
+  Testable & {
+    variant?: React.ReactNode;
+    title?: React.ReactNode;
+    selected?: React.ReactNode;
+    open: boolean;
+    toggleOpen?: () => void;
+  };
 
-export const Component = ({ 'data-testid': testId, children }: Props) => {
+export const variants = ['dropdown', 'modal'] as const;
+export type Variant = typeof variants[number];
+
+export const Component = ({
+  'data-testid': testId,
+  variant = 'dropdown',
+  children,
+  ...otherProps
+}: Props) => {
   const buildTestId = useBuildTestId(testId);
   const [search, setSearch] = useState('');
   const updateSearch = useCallback(
@@ -41,16 +56,31 @@ export const Component = ({ 'data-testid': testId, children }: Props) => {
     [children, lowerCaseSearch],
   );
 
-  return (
+  const content = (
     <>
-      <Header>
+      <Search>
         <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
-      </Header>
+      </Search>
       <Space size="increased" />
-      <Content>{filteredResults}</Content>
+      <Options>{filteredResults}</Options>
       <Space size="increased" />
     </>
   );
+
+  switch (variant) {
+    case 'modal':
+      return (
+        <ModalSelect {...otherProps} data-testid={buildTestId()} onClose={otherProps.toggleOpen}>
+          {content}
+        </ModalSelect>
+      );
+    default:
+      return (
+        <InputSelect {...otherProps} data-testid={buildTestId()}>
+          {content}
+        </InputSelect>
+      );
+  }
 };
 
 Component.displayName = 'Select';

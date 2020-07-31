@@ -4,7 +4,7 @@ import { useBuildTestId } from '../../../modules/test-ids';
 import { ListItem } from '../../ListItem';
 import { SelectContext } from '../context';
 
-import { StyledListItem } from './styled';
+import { Option } from './styled';
 
 export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & {
   searchAs: string | string[];
@@ -35,10 +35,10 @@ export const Component = ({
   );
 
   return (
-    <StyledListItem {...otherProps} onClick={click} data-testid={buildTestId()}>
+    <Option {...otherProps} onClick={click} data-testid={buildTestId()}>
       {children}
-    </StyledListItem>
+    </Option>
   );
 };
 
-Component.displayName = 'Select.Item';
+Component.displayName = 'Select.Option';

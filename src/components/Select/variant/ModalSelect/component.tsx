@@ -1,9 +1,8 @@
 import React, { useMemo } from 'react';
 
-import { useBuildTestId } from '../../../modules/test-ids';
-import { Modal } from '../../Modal';
-import { Select } from '..';
-import { SelectContext } from '../context';
+import { useBuildTestId } from '../../../../modules/test-ids';
+import { Modal } from '../../../Modal';
+import { SelectContext } from '../../context';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal>;
 
@@ -14,7 +13,7 @@ export const Component = ({ onClose, 'data-testid': testId, children, ...otherPr
   return (
     <SelectContext.Provider value={context}>
       <Modal {...otherProps} onClose={onClose} data-testid={buildTestId()}>
-        <Select data-testid={buildTestId()}>{children}</Select>
+        {children}
       </Modal>
     </SelectContext.Provider>
   );
