@@ -3,9 +3,6 @@ import { em } from 'polished';
 
 import { Modal } from '../Modal';
 
-export const variants = ['success', 'warning', 'danger'] as const;
-export type Variant = typeof variants[number];
-
 export const StyledModal = styled(Modal)`
   ${Modal.Box} {
     @media (min-width: ${em(768)}) {
