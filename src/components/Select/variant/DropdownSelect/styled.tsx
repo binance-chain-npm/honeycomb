@@ -4,7 +4,7 @@ import { em } from 'polished';
 import { InputContainer, baseInputStyle } from '../../../internal/Input';
 import { boxSizing } from '../../../../modules/box-sizing';
 
-export const InputSelect = styled.div`
+export const DropdownSelect = styled.div`
   ${boxSizing};
 
   width: 100%;

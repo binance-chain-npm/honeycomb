@@ -2,11 +2,11 @@ import React, { useRef } from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
 import { useWindowWidth, widths } from '../../../internal/useWindowWidth';
-import { Select } from '../../../Select';
+import { Select } from '../..';
 import { Tooltip } from '../../../Tooltip';
 import { ModalSelect } from '../ModalSelect';
 
-import { InputSelect, StyledInputContainer, Styles } from './styled';
+import { DropdownSelect, StyledInputContainer, Styles } from './styled';
 
 export type Props = Omit<React.ComponentProps<typeof Select>, 'variant'>;
 
@@ -18,13 +18,13 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
 
   return (
     <>
-      <InputSelect
+      <DropdownSelect
         ref={inputRef}
         onClick={() => otherProps.toggleOpen?.()}
         data-testid={buildTestId('input')}
       >
         <StyledInputContainer>{otherProps.selected}</StyledInputContainer>
-      </InputSelect>
+      </DropdownSelect>
 
       {width < widths.sm ? (
         <ModalSelect
@@ -47,7 +47,7 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
             onClickContent={() => otherProps.toggleOpen?.()}
             visible={otherProps.open}
             reference={inputRef}
-            data-testid={buildTestId('tooltip')}
+            data-testid={buildTestId('dropdown')}
           />
         </>
       )}
@@ -55,4 +55,4 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
   );
 };
 
-Component.displayName = 'InputSelect';
+Component.displayName = 'DropdownSelect';

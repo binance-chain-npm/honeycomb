@@ -4,7 +4,7 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Space } from '../Space';
 import { TextInput } from '../TextInput';
 
-import { InputSelect } from './variant/InputSelect';
+import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
 import { Search, Options } from './styled';
 
@@ -76,9 +76,9 @@ export const Component = ({
       );
     default:
       return (
-        <InputSelect {...otherProps} data-testid={buildTestId()}>
+        <DropdownSelect {...otherProps} data-testid={buildTestId()}>
           {content}
-        </InputSelect>
+        </DropdownSelect>
       );
   }
 };
