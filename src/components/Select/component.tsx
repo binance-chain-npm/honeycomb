@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react';
 
-import { Testable, useBuildTestId } from '../../../modules/test-ids';
-import { Space } from '../../Space';
-import { TextInput } from '../../TextInput';
+import { Testable, useBuildTestId } from '../../modules/test-ids';
+import { Space } from '../Space';
+import { TextInput } from '../TextInput';
 
 import { Content, Header } from './styled';
 

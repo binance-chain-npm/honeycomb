@@ -1,8 +1,8 @@
 import styled, { createGlobalStyle as css } from 'styled-components';
 import { em } from 'polished';
 
-import { InputContainer, baseInputStyle } from '../internal/Input';
-import { boxSizing } from '../../modules/box-sizing';
+import { InputContainer, baseInputStyle } from '../../internal/Input';
+import { boxSizing } from '../../../modules/box-sizing';
 
 export const InputSelect = styled.div`
   ${boxSizing};

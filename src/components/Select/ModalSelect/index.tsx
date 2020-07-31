@@ -1,4 +1,4 @@
-import { Item } from '../internal/Select/Item';
+import { Item } from '../Item';
 
 import { Component } from './component';
 

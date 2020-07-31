@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 
-import { useBuildTestId } from '../../../../modules/test-ids';
-import { ListItem } from '../../../ListItem';
+import { useBuildTestId } from '../../../modules/test-ids';
+import { ListItem } from '../../ListItem';
 import { SelectContext } from '../context';
 
 import { StyledListItem } from './styled';

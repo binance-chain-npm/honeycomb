@@ -1,10 +1,10 @@
 import React, { useCallback, useState, useRef } from 'react';
 
-import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { Select } from '../internal/Select';
-import { useWindowWidth, widths } from '../internal/useWindowWidth';
+import { Testable, useBuildTestId } from '../../../modules/test-ids';
+import { useWindowWidth, widths } from '../../internal/useWindowWidth';
 import { ModalSelect } from '../ModalSelect';
-import { Tooltip } from '../Tooltip';
+import { Select } from '..';
+import { Tooltip } from '../../Tooltip';
 
 import { InputSelect, StyledInputContainer, Styles } from './styled';
 

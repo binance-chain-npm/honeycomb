@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 
-import { useBuildTestId } from '../../modules/test-ids';
-import { Select } from '../internal/Select';
-import { SelectContext } from '../internal/Select/context';
-import { Modal } from '../Modal';
+import { useBuildTestId } from '../../../modules/test-ids';
+import { Modal } from '../../Modal';
+import { Select } from '..';
+import { SelectContext } from '../context';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal>;
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { Sections } from '../../modules/sections';
-import { Icon } from '../Icon';
+import { Sections } from '../../../modules/sections';
+import { Icon } from '../../Icon';
 
 import { InputSelect } from '.';
 
