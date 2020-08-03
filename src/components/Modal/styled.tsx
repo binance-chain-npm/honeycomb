@@ -105,25 +105,6 @@ export const Title = styled.div`
   }
 `;
 
-export const Scroll = styled.div`
-  flex: 1;
-  scroll-behavior: smooth;
-  overflow: hidden;
-  overflow-y: auto;
-`;
-
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 0;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: stretch;
-  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
-  min-height: 100%;
-`;
-
 export const LoadingState = styled.div`
   margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
   @media (${bigScreen}) {

@@ -7,7 +7,7 @@ import { Icon } from '../Icon';
 import { Loading } from '../Loading';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Header, Box, Title, Scroll, Content, Position, LoadingState } from './styled';
+import { Container, Header, Box, Title, Position, LoadingState } from './styled';
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
@@ -124,9 +124,7 @@ export const Component = ({
                             <Icon.Cross />
                           </Button>
                         </Header>
-                        <Scroll data-testid={buildTestId('scroll-container')}>
-                          <Content data-testid={buildTestId('content')}>{children}</Content>
-                        </Scroll>
+                        {children}
                       </Box>
                     ),
                 )}
