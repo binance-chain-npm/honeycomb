@@ -23,7 +23,7 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
         onClick={() => otherProps.toggleOpen?.()}
         data-testid={buildTestId('input')}
       >
-        <StyledInputContainer>{otherProps.selected}</StyledInputContainer>
+        <StyledInputContainer>{otherProps.renderSelected?.()}</StyledInputContainer>
       </DropdownSelect>
 
       {width < widths.sm ? (

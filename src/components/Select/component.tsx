@@ -12,9 +12,10 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Testable & {
     variant?: React.ReactNode;
     title?: React.ReactNode;
-    selected?: React.ReactNode;
     open: boolean;
     toggleOpen?: () => void;
+    // Dropdown.
+    renderSelected?: () => React.ReactNode;
   };
 
 export const variants = ['dropdown', 'modal'] as const;

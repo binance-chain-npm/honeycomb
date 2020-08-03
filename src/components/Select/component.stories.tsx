@@ -13,7 +13,9 @@ export default {
   title: `${Sections.Elements}/Select`,
 };
 
-const data: Array<{ label: string; icon: typeof Icon.Add }> = [
+type Option = { label: string; icon: typeof Icon.Add };
+
+const data: Array<Option> = [
   {
     label: 'Add',
     icon: Icon.Add,
@@ -32,32 +34,45 @@ const data: Array<{ label: string; icon: typeof Icon.Add }> = [
   },
 ];
 
+const renderOption = (option: Option) => (
+  <>
+    <option.icon />
+    <span style={{ marginLeft: '1em' }}>{option.label}</span>
+  </>
+);
+
 export const Dropdown = () => {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<React.ReactNode>('Pick an option...');
+  const [selected, setSelected] = useState<Option>();
+
+  const renderSelected = () => {
+    if (!selected) return 'Select an option...';
+
+    return (
+      <>
+        <span style={{ marginRight: '1em' }}>You have selected:</span>
+        {renderOption(selected)}
+      </>
+    );
+  };
 
   return (
     <Select
-      selected={selected}
       data-testid="select.dropdown"
       open={open}
       toggleOpen={() => setOpen((value) => !value)}
+      renderSelected={renderSelected}
     >
       {data.map((it, index) => (
         <Select.Option
-          onClick={() =>
-            setSelected(
-              <>
-                <it.icon />
-                <span style={{ marginLeft: '1em' }}>{it.label}</span>
-              </>,
-            )
-          }
+          onClick={() => {
+            setSelected(it);
+          }}
           searchAs={it.label}
+          isSelected={selected?.label === it.label}
           data-testid={`${index}`}
         >
-          <it.icon />
-          <span style={{ marginLeft: '1em' }}>{it.label}</span>
+          {renderOption(it)}
         </Select.Option>
       ))}
     </Select>
@@ -87,8 +102,7 @@ export const Modal = () => {
             onClick={() => setSelected(it.label)}
             data-testid={`${index}`}
           >
-            <it.icon />
-            &nbsp;<span>{it.label}</span>
+            {renderOption(it)}
           </Select.Option>
         ))}
         <Select.Option
