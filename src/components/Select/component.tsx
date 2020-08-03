@@ -13,9 +13,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     variant?: React.ReactNode;
     title?: React.ReactNode;
     open: boolean;
-    toggleOpen?: () => void;
-    // Dropdown.
-    renderSelected?: () => React.ReactNode;
+    onClose?: () => void;
   };
 
 export const variants = ['dropdown', 'modal'] as const;
@@ -71,7 +69,7 @@ export const Component = ({
   switch (variant) {
     case 'modal':
       return (
-        <ModalSelect {...otherProps} data-testid={buildTestId()} onClose={otherProps.toggleOpen}>
+        <ModalSelect {...otherProps} data-testid={buildTestId()}>
           {content}
         </ModalSelect>
       );

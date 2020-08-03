@@ -23,8 +23,15 @@ export const Component = ({
   return (
     <SelectContext.Provider value={context}>
       <Modal {...otherProps} onClose={onClose} data-testid={buildTestId()}>
-        <Modal.Header title={title} isLoading={isLoading} onClose={onClose} />
-        <Modal.Content padding="none">{children}</Modal.Content>
+        <Modal.Header
+          data-testid={buildTestId()}
+          title={title}
+          isLoading={isLoading}
+          onClose={onClose}
+        />
+        <Modal.Content data-testid={buildTestId()} padding="none">
+          {children}
+        </Modal.Content>
       </Modal>
     </SelectContext.Provider>
   );

@@ -57,25 +57,24 @@ export const Dropdown = () => {
   };
 
   return (
-    <Select
-      data-testid="select.dropdown"
-      open={open}
-      toggleOpen={() => setOpen((value) => !value)}
-      renderSelected={renderSelected}
-    >
-      {data.map((it, index) => (
-        <Select.Option
-          onClick={() => {
-            setSelected(it);
-          }}
-          searchAs={it.label}
-          isSelected={selected?.label === it.label}
-          data-testid={`${index}`}
-        >
-          {renderOption(it)}
-        </Select.Option>
-      ))}
-    </Select>
+    <>
+      <Button variant="transparent" onClick={() => setOpen((value) => !value)} data-testid="select">
+        {renderSelected()}
+      </Button>
+      <Select data-testid="select.dropdown" open={open} onClose={() => setOpen(false)}>
+        {data.map((it, index) => (
+          <Select.Option
+            key={index}
+            onClick={() => setSelected(it)}
+            searchAs={it.label}
+            isSelected={selected?.label === it.label}
+            data-testid={`${index}`}
+          >
+            {renderOption(it)}
+          </Select.Option>
+        ))}
+      </Select>
+    </>
   );
 };
 
@@ -93,10 +92,11 @@ export const Modal = () => {
         data-testid="select.modal"
         title="A Title"
         open={open}
-        toggleOpen={() => setOpen(false)}
+        onClose={() => setOpen(false)}
       >
         {data.map((it, index) => (
           <Select.Option
+            key={index}
             searchAs={it.label}
             isSelected={selected === it.label}
             onClick={() => setSelected(it.label)}

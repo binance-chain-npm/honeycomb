@@ -1,42 +1,35 @@
-import React, { useRef } from 'react';
+import React, { useMemo } from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
 import { useWindowWidth, widths } from '../../../internal/useWindowWidth';
 import { Select } from '../../../Select';
 import { Tooltip } from '../../../Tooltip';
+import { SelectContext } from '../../context';
 import { ModalSelect } from '../ModalSelect';
 
-import { DropdownSelect, StyledInputContainer, Styles } from './styled';
+import { Styles } from './styled';
 
 export type Props = Omit<React.ComponentProps<typeof Select>, 'variant'>;
 
-export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
+export const Component = ({ 'data-testid': testId, onClose, ...otherProps }: Props) => {
+  const context = useMemo(() => ({ onClose, testId }), [onClose, testId]);
   const buildTestId = useBuildTestId(testId);
 
   const width = useWindowWidth();
-  const inputRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
-      <DropdownSelect
-        ref={inputRef}
-        onClick={() => otherProps.toggleOpen?.()}
-        data-testid={buildTestId('input')}
-      >
-        <StyledInputContainer>{otherProps.renderSelected?.()}</StyledInputContainer>
-      </DropdownSelect>
-
       {width < widths.sm ? (
         <ModalSelect
           open={otherProps.open}
-          onClose={() => otherProps.toggleOpen?.()}
+          onClose={() => onClose?.()}
           title={otherProps.title}
           data-testid={buildTestId('modal')}
         >
           {otherProps.children}
         </ModalSelect>
       ) : (
-        <>
+        <SelectContext.Provider value={context}>
           <Styles />
           <Tooltip
             trigger="manual"
@@ -44,12 +37,11 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
             interactive={true}
             arrow={false}
             content={otherProps.children}
-            onClickContent={() => otherProps.toggleOpen?.()}
+            onClickContent={() => onClose?.()}
             visible={otherProps.open}
-            reference={inputRef}
             data-testid={buildTestId('dropdown')}
           />
-        </>
+        </SelectContext.Provider>
       )}
     </>
   );

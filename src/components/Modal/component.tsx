@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Container, Box, Position } from './styled';
+import { TestIdContext } from './context';
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
@@ -61,6 +62,7 @@ export const Component = ({
 
     const listener = (evt: MouseEvent) => {
       const boxElement = boxRef.current;
+
       if (!boxElement) return;
       if (boxElement.contains(evt.target as Node)) return;
       onClose?.();
@@ -98,7 +100,9 @@ export const Component = ({
                         data-testid={buildTestId('box')}
                         position={position}
                       >
-                        {children}
+                        <TestIdContext.Provider value={buildTestId('content')}>
+                          {children}
+                        </TestIdContext.Provider>
                       </Box>
                     ),
                 )}
