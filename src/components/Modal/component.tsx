@@ -100,7 +100,7 @@ export const Component = ({
                         data-testid={buildTestId('box')}
                         position={position}
                       >
-                        <TestIdContext.Provider value={buildTestId('content')}>
+                        <TestIdContext.Provider value={buildTestId()}>
                           {children}
                         </TestIdContext.Provider>
                       </Box>
