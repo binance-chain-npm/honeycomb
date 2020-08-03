@@ -18,7 +18,7 @@ export const Behaviour = () => {
         Show
       </Button>
       <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal" title="A title">
-        {items}
+        <Modal.Content>{items}</Modal.Content>
       </Modal>
     </>
   );
@@ -26,36 +26,36 @@ export const Behaviour = () => {
 
 export const WithTitle = () => (
   <Modal open={true} data-testid="MyModal" title="A title">
-    {items}
+    <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
 
 export const TitleComponetWithLoading = () => (
   <Modal open={true} data-testid="MyModal" title={<div>A title</div>} isLoading={true}>
-    {items}
+    <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
 
 export const WithTitleAtBottom = () => (
   <Modal open={true} data-testid="MyModal" title="A title" position="bottom">
-    {items}
+    <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
 
 export const SmallWithTitle = () => (
   <Modal open={true} data-testid="MyModal" title="A title">
-    Just a line
+    <Modal.Content>Just a line</Modal.Content>
   </Modal>
 );
 
 export const SmallWithTitleAtBottom = () => (
   <Modal open={true} data-testid="MyModal" title="A title" position="bottom">
-    Just a line
+    <Modal.Content>Just a line</Modal.Content>
   </Modal>
 );
 
 export const WithoutTitle = () => (
   <Modal open={true} data-testid="MyModal">
-    {items}
+    <Modal.Content>{items}</Modal.Content>
   </Modal>
 );

@@ -9,11 +9,11 @@ export const StyledModal = styled(Modal)`
       width: ${em(300)};
     }
   }
+`;
 
-  ${Modal.Content} {
-    align-items: center;
-    justify-content: center;
-  }
+export const StyledModalContent = styled(Modal.Content)`
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Title = styled.div`

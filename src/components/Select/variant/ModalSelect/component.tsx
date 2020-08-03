@@ -13,7 +13,7 @@ export const Component = ({ onClose, 'data-testid': testId, children, ...otherPr
   return (
     <SelectContext.Provider value={context}>
       <Modal {...otherProps} onClose={onClose} data-testid={buildTestId()}>
-        {children}
+        <Modal.Content>{children}</Modal.Content>
       </Modal>
     </SelectContext.Provider>
   );
