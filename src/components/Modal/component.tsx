@@ -2,12 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { useTransition, animated } from 'react-spring';
 import ReactDOM from 'react-dom';
 
-import { Button } from '../Button';
-import { Icon } from '../Icon';
-import { Loading } from '../Loading';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Header, Box, Title, Position, LoadingState } from './styled';
+import { Container, Box, Position } from './styled';
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
@@ -32,9 +29,7 @@ export type Props = Testable & {
   open?: boolean;
   onClose?: () => void;
   children?: React.ReactNode;
-  title?: React.ReactNode;
   className?: string;
-  isLoading?: boolean;
   position?: Position;
 };
 
@@ -42,8 +37,6 @@ export const Component = ({
   open = false,
   onClose,
   children,
-  title,
-  isLoading,
   'data-testid': testId,
   className,
   position = 'center',
@@ -105,25 +98,6 @@ export const Component = ({
                         data-testid={buildTestId('box')}
                         position={position}
                       >
-                        <Header data-testid={buildTestId('header')} hasHeader={!!title}>
-                          <Title>
-                            {!!title && isLoading && (
-                              <LoadingState>
-                                <Loading />
-                              </LoadingState>
-                            )}
-                            {title}
-                          </Title>
-                          <Button
-                            variant="secondary"
-                            size="increased"
-                            shape="square"
-                            onClick={onClose}
-                            data-testid={buildTestId('close-btn')}
-                          >
-                            <Icon.Cross />
-                          </Button>
-                        </Header>
                         {children}
                       </Box>
                     ),

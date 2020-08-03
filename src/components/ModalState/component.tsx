@@ -7,6 +7,7 @@ import { Title, Description, StyledModal, StyledModalContent } from './styled';
 import { Icon } from './Icon';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
+  title?: React.ReactNode;
   description?: React.ReactNode;
   icon?: React.ReactNode;
 };
