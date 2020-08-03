@@ -3,8 +3,6 @@ import React from 'react';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 
-import { Variant } from './styled';
-
 import { ModalState } from '.';
 
 export default {
@@ -12,18 +10,40 @@ export default {
 };
 
 const scenario = {
-  variant: 'warning' as Variant,
   name: 'Warning',
-  description:
-    'Results feedback description. It can correctly guide users to understand the feedback results and select the next operation.',
+  description: 'Some description to guide users to understand this warning.',
   children: null as React.ReactNode,
 };
 
-export const Default = () => (
+export const Success = () => (
   <ModalState
     open={true}
     data-testid="MyModal"
-    variant={scenario.variant}
+    icon={<ModalState.Icon.Success />}
+    title={scenario.name}
+    description={scenario.description}
+  >
+    {scenario.children}
+  </ModalState>
+);
+
+export const Warning = () => (
+  <ModalState
+    open={true}
+    data-testid="MyModal"
+    icon={<ModalState.Icon.Warning />}
+    title={scenario.name}
+    description={scenario.description}
+  >
+    {scenario.children}
+  </ModalState>
+);
+
+export const Danger = () => (
+  <ModalState
+    open={true}
+    data-testid="MyModal"
+    icon={<ModalState.Icon.Danger />}
     title={scenario.name}
     description={scenario.description}
   >
@@ -35,7 +55,6 @@ export const WithCustomIcon = () => (
   <ModalState
     open={true}
     data-testid="MyModal"
-    variant="success"
     title={scenario.name}
     description={scenario.description}
     icon={<Icon.Tick />}

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import Tippy from '@tippyjs/react';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
@@ -19,11 +19,13 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     | 'disabled'
     | 'hideOnClick'
     | 'interactive'
+    | 'reference'
   > &
   Testable & {
     content: React.ReactNode;
     trigger: TriggerValue | TriggerValue[];
     target: React.ReactNode;
+    onClickContent?: () => void;
   };
 
 export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
@@ -32,6 +34,22 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
     if (!Array.isArray(otherProps.trigger)) return otherProps.trigger;
     return otherProps.trigger.join(' ');
   }, [otherProps.trigger]);
+  const tooltipContentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!otherProps.onClickContent) return;
+
+    const listener = (evt: MouseEvent) => {
+      const tooltipContent = tooltipContentRef.current;
+      if (!tooltipContent) return;
+      if (!tooltipContent.contains(evt.target as Node)) return;
+
+      otherProps.onClickContent?.();
+    };
+
+    window.addEventListener('click', listener);
+    return () => window.removeEventListener('click', listener);
+  }, [otherProps.onClickContent]);
 
   return (
     <>
@@ -44,7 +62,11 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
         arrow={otherProps.arrow}
         animation="shift-away"
         placement="bottom-start"
-        content={<div data-testid={buildTestId('content')}>{otherProps.content}</div>}
+        content={
+          <div data-testid={buildTestId('content')} ref={tooltipContentRef}>
+            {otherProps.content}
+          </div>
+        }
       >
         <div data-testid={buildTestId('target')}>{otherProps.children}</div>
       </Tippy>
