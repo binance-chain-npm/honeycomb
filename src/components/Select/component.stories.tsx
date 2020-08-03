@@ -61,7 +61,13 @@ export const Dropdown = () => {
       <Button variant="transparent" onClick={() => setOpen((value) => !value)} data-testid="select">
         {renderSelected()}
       </Button>
-      <Select data-testid="select.dropdown" open={open} onClose={() => setOpen(false)}>
+      <Select
+        data-testid="select.dropdown"
+        title="A Title"
+        optionsTitle="Options"
+        open={open}
+        onClose={() => setOpen(false)}
+      >
         {data.map((it, index) => (
           <Select.Option
             key={index}

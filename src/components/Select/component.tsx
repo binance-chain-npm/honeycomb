@@ -7,12 +7,13 @@ import { TextInput } from '../TextInput';
 
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
-import { Container, OptionsContainer, Search, Options } from './styled';
+import { Container, OptionsContainer, Search, Options, OptionsTitle } from './styled';
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Testable & {
     variant?: React.ReactNode;
     title?: React.ReactNode;
+    optionsTitle?: React.ReactNode;
     open: boolean;
     onClose?: () => void;
   };
@@ -24,6 +25,7 @@ export const Component = ({
   'data-testid': testId,
   variant = 'dropdown',
   children,
+  optionsTitle,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -63,7 +65,9 @@ export const Component = ({
           <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
         </Search>
       </Card>
-      <Space size="increased" />
+      <Space size="normal" />
+      {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
+      <Space size="normal" />
       <OptionsContainer position="bottom">
         <Options>{filteredResults}</Options>
       </OptionsContainer>

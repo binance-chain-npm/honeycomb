@@ -14,6 +14,11 @@ export const Search = styled.div`
   padding: ${({ theme }) => em(theme.honeycomb.radius.increased)};
 `;
 
+export const OptionsTitle = styled.div`
+  color: ${({ theme }) => theme.honeycomb.color.text.masked};
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.large)};
+`;
+
 export const Options = styled.div`
   display: flex;
   flex-direction: column;
