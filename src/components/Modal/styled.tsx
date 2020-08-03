@@ -26,7 +26,7 @@ export const Container = styled.div`
 const center = css`
   width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.increased * 2)});
   max-height: calc(100vh - ${({ theme }) => em(theme.honeycomb.size.increased * 2)});
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
 
   @media (${bigScreen}) {
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
