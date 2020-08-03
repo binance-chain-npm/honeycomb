@@ -24,6 +24,7 @@ export const Component = ({
 
   return (
     <StyledModal {...otherProps} data-testid={buildTestId()}>
+      <Modal.Header {...otherProps}></Modal.Header>
       <StyledModalContent>
         {icon && <Icon icon={icon} />}
         <Title>{title}</Title>

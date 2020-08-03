@@ -11,6 +11,7 @@ const floating = css`
   position: absolute;
   top: 0;
   right: 0;
+  border-bottom: none;
   z-index: ${({ theme }) => theme.honeycomb.zIndexes.modals + 2};
 `;
 
