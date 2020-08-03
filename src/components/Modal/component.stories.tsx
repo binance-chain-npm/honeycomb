@@ -18,8 +18,8 @@ export const Behaviour = () => {
         Show
       </Button>
       <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal">
-        <Modal.Header data-testid="header" onClose={() => setShow(false)} title="A title" />
-        <Modal.Content data-testid="content">{items}</Modal.Content>
+        <Modal.Header onClose={() => setShow(false)} title="A title" />
+        <Modal.Content>{items}</Modal.Content>
       </Modal>
     </>
   );

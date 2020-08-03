@@ -23,7 +23,9 @@ export const Component = ({
   'data-testid': testId,
 }: Props) => {
   const parentTestId = useContext(TestIdContext);
-  const buildTestId = useBuildTestId(testId ? `${parentTestId}.header` : undefined);
+  const buildTestId = useBuildTestId(
+    testId ?? (parentTestId ? `${parentTestId}.header` : undefined),
+  );
 
   return (
     <Header hasHeader={!!title} className={className}>
