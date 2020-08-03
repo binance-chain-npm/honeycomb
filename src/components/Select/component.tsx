@@ -1,12 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
+import { Card } from '../Card';
 import { Space } from '../Space';
 import { TextInput } from '../TextInput';
 
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
-import { Search, Options } from './styled';
+import { Container, OptionsContainer, Search, Options } from './styled';
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Testable & {
@@ -56,14 +57,17 @@ export const Component = ({
   );
 
   const content = (
-    <>
-      <Search>
-        <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
-      </Search>
+    <Container>
+      <Card>
+        <Search>
+          <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
+        </Search>
+      </Card>
       <Space size="increased" />
-      <Options>{filteredResults}</Options>
-      <Space size="increased" />
-    </>
+      <OptionsContainer position="bottom">
+        <Options>{filteredResults}</Options>
+      </OptionsContainer>
+    </Container>
   );
 
   switch (variant) {

@@ -8,6 +8,6 @@ export const Option = styled(ListItem)`
   ${boxSizing};
 
   margin: 0 ${({ theme }) => em(-theme.honeycomb.size.normal)};
-  padding: 0 ${({ theme }) => em(theme.honeycomb.size.huge)};
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.normal)};
   width: auto;
 `;

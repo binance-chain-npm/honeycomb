@@ -9,18 +9,24 @@ import { TestIdContext } from '../context';
 
 import { Header, Title, LoadingState } from './styled';
 
-export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'onClose'> &
+export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'onClose' | 'className'> &
   Testable & {
     title?: React.ReactNode;
     isLoading?: boolean;
   };
 
-export const Component = ({ 'data-testid': testId, title, isLoading, onClose }: Props) => {
+export const Component = ({
+  title,
+  isLoading,
+  className,
+  onClose,
+  'data-testid': testId,
+}: Props) => {
   const parentTestId = useContext(TestIdContext);
   const buildTestId = useBuildTestId(testId ? parentTestId : undefined);
 
   return (
-    <Header hasHeader={!!title}>
+    <Header hasHeader={!!title} className={className}>
       <Title>
         {!!title && isLoading && (
           <LoadingState>

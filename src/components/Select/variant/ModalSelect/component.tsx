@@ -4,6 +4,8 @@ import { useBuildTestId } from '../../../../modules/test-ids';
 import { Modal } from '../../../Modal';
 import { SelectContext } from '../../context';
 
+import { StyledHeader } from './styled';
+
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
   title?: React.ReactNode;
   isLoading?: boolean;
@@ -23,7 +25,7 @@ export const Component = ({
   return (
     <SelectContext.Provider value={context}>
       <Modal {...otherProps} onClose={onClose} data-testid={buildTestId()}>
-        <Modal.Header
+        <StyledHeader
           data-testid={buildTestId()}
           title={title}
           isLoading={isLoading}
