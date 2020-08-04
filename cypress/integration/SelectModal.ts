@@ -1,8 +1,11 @@
 describe('Select variant="modal"', () => {
   it('opens and closes', () => {
+    cy.clock();
     cy.visitStory({ storyId: 'elements-select--modal', themeId: 'GoldLight' });
+    cy.tick(10000);
 
     cy.get('[data-testid="open-btn"]').click();
+    cy.tick(10000);
 
     cy.get('[data-testid="select.modal.item.0"]').should('be.visible');
     cy.get('[data-testid="select.modal.item.1"]').should('be.visible');
@@ -23,9 +26,13 @@ describe('Select variant="modal"', () => {
     cy.get('[data-testid="select.modal.item.photo.tick"]').should('not.exist');
 
     cy.get('[data-testid="select.modal.item.photo"]').click();
+    cy.tick(10000);
 
     cy.get('[data-testid="select.modal.box"]').should('not.exist');
+
     cy.get('[data-testid="open-btn"]').click();
+    cy.tick(10000);
+
     cy.get('[data-testid="select.modal.box"]').should('be.visible');
     cy.get('[data-testid="select.modal.item.photo.tick"]').should('be.visible');
 
