@@ -13,13 +13,21 @@ export default {
 
 export const Default = () => (
   <>
-    {sizes.map((size) => (
+    {sizes.map((size, index) => (
       <div key={size} style={{ marginBottom: '1em' }}>
         <h3>{size}</h3>
-        <SegmentedControl options={['BNB', 'BTC', 'USDT']} size={size} onChange={console.log} />
+        <SegmentedControl size={size} selectedIndex={index} onChange={console.log}>
+          <i>BTC</i>
+          <span>BNB</span>
+          <i>USDT</i>
+        </SegmentedControl>
       </div>
     ))}
     <h3>disabled</h3>
-    <SegmentedControl options={['BNB', 'BTC', 'USDT']} onChange={alert} disabled />
+    <SegmentedControl onChange={alert} selectedIndex={2} disabled>
+      <span>BTC</span>
+      <span>BNB</span>
+      <span>USDT</span>
+    </SegmentedControl>
   </>
 );

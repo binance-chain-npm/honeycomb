@@ -6,24 +6,22 @@ import { Container, Element, Size } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
   Testable & {
-    options: string[];
+    children: React.ReactNode[];
+    selectedIndex?: number;
     size?: Size;
   };
 
 export const Component = ({
   children,
-  onMouseEnter,
-  onMouseLeave,
-  onClick,
   onChange,
-  options,
   disabled,
+  selectedIndex = 0,
   'data-testid': testId,
   size = 'huge',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState(children[selectedIndex]);
 
   const handleClickForOption = useCallback(
     (option) => () => {
@@ -38,8 +36,8 @@ export const Component = ({
 
   return (
     <Container data-testid={buildTestId()} disabled={disabled} size={size} {...otherProps}>
-      {options.map((option) => (
-        <Element active={selected === option} key={option} onClick={handleClickForOption(option)}>
+      {children.map((option, index) => (
+        <Element active={selected === option} key={index} onClick={handleClickForOption(option)}>
           {option}
         </Element>
       ))}
