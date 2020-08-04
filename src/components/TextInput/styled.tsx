@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
-import { InputContainer } from '../internal/Input';
 
 export type State = 'success' | 'danger';
 
@@ -51,7 +50,16 @@ export type Props = {
   isPristine?: boolean;
 };
 
-export const StyledInputContainer = styled(InputContainer)<Props>`
+export const InputContainer = styled.div<Props>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
+  border: 1px solid transparent;
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
+  color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
+  overflow: hidden;
+
   ${({ state }) => state === 'success' && success};
   ${({ theme }) =>
     transitions(
@@ -84,4 +92,20 @@ export const Input = styled.input`
   ::placeholder {
     color: ${({ theme }) => theme.honeycomb.color.text.masked};
   }
+`;
+
+export const Left = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  padding-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
+`;
+
+export const Right = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  padding-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;
