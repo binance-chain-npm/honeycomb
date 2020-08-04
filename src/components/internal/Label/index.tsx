@@ -11,5 +11,5 @@ export const Label = styled.label`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  margin-bottom: ${({ theme }) => em(4, theme.honeycomb.size.small)};
+  margin-bottom: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.small)};
 `;

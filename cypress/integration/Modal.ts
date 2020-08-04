@@ -5,7 +5,7 @@ describe('Modal', () => {
     cy.get('[data-testid="OpenButton"]').trigger('click');
     cy.get('[data-testid="MyModal.box"]').should('be.visible');
 
-    cy.get('[data-testid="MyModal.close-btn"]').click();
+    cy.get('[data-testid="MyModal.header.close-btn"]').click();
     cy.get('[data-testid="MyModal.box"]').should('not.be.visible');
   });
 

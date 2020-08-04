@@ -1,7 +1,14 @@
 import { Component } from './component';
-import { Content, Box } from './styled';
+import { Box } from './styled';
+import { Header } from './Header';
+import { Content } from './Content';
 
-export const Modal = Component as typeof Component & { Content: typeof Content; Box: typeof Box };
+export const Modal = Component as typeof Component & {
+  Box: typeof Box;
+  Header: typeof Header;
+  Content: typeof Content;
+};
 
-Modal.Content = Content;
 Modal.Box = Box;
+Modal.Header = Header;
+Modal.Content = Content;
