@@ -14,6 +14,7 @@ export {
 export { useBreadcrumbs, useAddBreadcrumbEffect, BreadcrumbProvider } from './modules/breadcrumbs';
 export { useBuildTestId, Testable } from './modules/test-ids';
 export { useMoonPayUrl, buildMoonPayUrl } from './modules/moonpay';
+export { formatCryptoAsset, formatFiatAsset } from './modules/intl';
 
 export { Button } from './components/Button';
 export { Badge } from './components/Badge';

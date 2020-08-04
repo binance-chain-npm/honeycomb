@@ -1,4 +1,4 @@
-import { NON_BREAKING_SPACE } from '../constants';
+import { getCryptoAssetFormatter } from '../getCryptoAssetFormatter';
 
 export const formatCryptoAsset = ({
   locale,
@@ -9,25 +9,5 @@ export const formatCryptoAsset = ({
   amount: number;
   displaySymbol: string;
 }) => {
-  return `${Intl.NumberFormat(locale, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 20,
-  }).format(amount)}${NON_BREAKING_SPACE}${displaySymbol}`;
-};
-
-export const formatFiatAsset = ({
-  locale,
-  amount,
-  currency,
-}: {
-  locale: string;
-  amount: number;
-  currency: string;
-}) => {
-  return Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 20,
-  }).format(amount);
+  return getCryptoAssetFormatter({ locale, displaySymbol }).format(amount);
 };

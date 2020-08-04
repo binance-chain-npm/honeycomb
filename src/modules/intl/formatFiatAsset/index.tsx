@@ -1,3 +1,5 @@
+import { getFiatAssetFormatter } from '../getFiatAssetFormatter';
+
 export const formatFiatAsset = ({
   locale,
   amount,
@@ -7,11 +9,5 @@ export const formatFiatAsset = ({
   amount: number;
   currency: string;
 }) => {
-  return new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-    currencyDisplay: 'narrowSymbol',
-  }).format(amount);
+  return getFiatAssetFormatter({ locale, currency }).format(amount);
 };
