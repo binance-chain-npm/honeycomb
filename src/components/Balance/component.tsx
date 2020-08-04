@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback } from 'react';
+import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { getCryptoAssetFormatter, getFiatAssetFormatter } from '../../modules/intl';
