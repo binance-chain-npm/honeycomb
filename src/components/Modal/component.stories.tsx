@@ -62,6 +62,7 @@ export const SmallWithTitleAtBottom = () => (
 
 export const WithoutTitle = () => (
   <Modal open={true} data-testid="MyModal">
+    <Modal.Header />
     <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
