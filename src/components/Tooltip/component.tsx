@@ -37,19 +37,20 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
   const tooltipContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!otherProps.onClickContent) return;
+    if (!otherProps.onClickContent || !otherProps.visible) return;
 
     const listener = (evt: MouseEvent) => {
       const tooltipContent = tooltipContentRef.current;
+
       if (!tooltipContent) return;
-      if (!tooltipContent.contains(evt.target as Node)) return;
+      if (tooltipContent.contains(evt.target as Node)) return;
 
       otherProps.onClickContent?.();
     };
 
     window.addEventListener('click', listener);
     return () => window.removeEventListener('click', listener);
-  }, [otherProps.onClickContent]);
+  }, [otherProps.onClickContent, otherProps.visible]);
 
   return (
     <>

@@ -1,10 +1,10 @@
 import React, { useCallback, useContext } from 'react';
 
-import { useBuildTestId } from '../../../../modules/test-ids';
-import { ListItem } from '../../../ListItem';
-import { PickOneContext } from '../context';
+import { useBuildTestId } from '../../../modules/test-ids';
+import { ListItem } from '../../ListItem';
+import { SelectContext } from '../context';
 
-import { StyledListItem } from './styled';
+import { Option } from './styled';
 
 export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & {
   searchAs: string | string[];
@@ -17,7 +17,7 @@ export const Component = ({
   htmlTag,
   ...otherProps
 }: Props) => {
-  const { onClose, testId: parentTestId } = useContext(PickOneContext);
+  const { onClose, testId: parentTestId } = useContext(SelectContext);
   const buildTestIdParent = useBuildTestId(parentTestId);
   const buildTestId = useBuildTestId(buildTestIdParent(testId ? `item.${testId}` : undefined));
 
@@ -35,10 +35,10 @@ export const Component = ({
   );
 
   return (
-    <StyledListItem {...otherProps} onClick={click} data-testid={buildTestId()}>
+    <Option {...otherProps} onClick={click} data-testid={buildTestId()}>
       {children}
-    </StyledListItem>
+    </Option>
   );
 };
 
-Component.displayName = 'PickOne.Item';
+Component.displayName = 'Select.Option';
