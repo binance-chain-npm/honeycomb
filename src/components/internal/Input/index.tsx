@@ -5,7 +5,7 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: ${({ theme }) => theme.honeycomb.color.bg.masked};
+  background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
   border: 1px solid transparent;
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
