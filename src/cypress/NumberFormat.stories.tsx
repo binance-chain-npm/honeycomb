@@ -16,6 +16,12 @@ export const fiat = () => {
       <div data-testid="es">
         {formatFiatAsset({ amount: 12345.67, locale: 'es-ES', currency: 'EUR' })}
       </div>
+      <div data-testid="es-usd">
+        {formatFiatAsset({ amount: 12345.67, locale: 'es-ES', currency: 'USD' })}
+      </div>
+      <div data-testid="es-cny">
+        {formatFiatAsset({ amount: 12345.67, locale: 'es-ES', currency: 'CNY' })}
+      </div>
       <div data-testid="en-integer">
         {formatFiatAsset({ amount: 12345, locale: 'en-US', currency: 'USD' })}
       </div>

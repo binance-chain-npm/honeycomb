@@ -6,6 +6,8 @@ describe('Formatting numbers', () => {
 
     cy.get('[data-testid="en"]').should('have.text', '$12,345.67');
     cy.get('[data-testid="es"]').should('have.text', `12.345,67${NON_BREAKING_SPACE}€`);
+    cy.get('[data-testid="es-usd"]').should('have.text', `12.345,67${NON_BREAKING_SPACE}$`);
+    cy.get('[data-testid="es-cny"]').should('have.text', `12.345,67${NON_BREAKING_SPACE}¥`);
     cy.get('[data-testid="en-integer"]').should('have.text', '$12,345.00');
     cy.get('[data-testid="en-too-many-digist"]').should('have.text', '$12,345.68');
     cy.get('[data-testid="en-zero"]').should('have.text', '$0.00');
