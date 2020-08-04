@@ -40,3 +40,4 @@ export { Select } from './components/Select';
 export { ListItem } from './components/ListItem';
 export { Card } from './components/Card';
 export { Table } from './components/Table';
+export { Balance } from './components/Balance';
