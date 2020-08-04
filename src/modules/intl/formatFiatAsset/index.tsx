@@ -7,10 +7,10 @@ export const formatFiatAsset = ({
   amount: number;
   currency: string;
 }) => {
-  return Intl.NumberFormat(locale, {
+  return new Intl.NumberFormat(locale, {
     style: 'currency',
     currency,
     minimumFractionDigits: 2,
-    maximumFractionDigits: 20,
+    maximumFractionDigits: 2,
   }).format(amount);
 };
