@@ -72,7 +72,7 @@ export const Component = ({
     return () => window.removeEventListener('click', listener);
   }, [open, onClose]);
 
-  if (!MODAL_CONTAINER) {
+  if (!MODAL_CONTAINER || !open) {
     return <>{null}</>;
   }
 
