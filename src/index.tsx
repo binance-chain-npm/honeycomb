@@ -14,6 +14,7 @@ export {
 export { useBreadcrumbs, useAddBreadcrumbEffect, BreadcrumbProvider } from './modules/breadcrumbs';
 export { useBuildTestId, Testable } from './modules/test-ids';
 export { useMoonPayUrl, buildMoonPayUrl } from './modules/moonpay';
+export { formatCryptoAsset, formatFiatAsset } from './modules/intl';
 
 export { Button } from './components/Button';
 export { Badge } from './components/Badge';
@@ -40,3 +41,4 @@ export { ListItem } from './components/ListItem';
 export { Card } from './components/Card';
 export { SegmentedControl } from './components/SegmentedControl';
 export { Table } from './components/Table';
+export { Balance } from './components/Balance';
