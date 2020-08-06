@@ -7,4 +7,5 @@ export const Svg = styled.svg`
   width: 1em;
   height: 1em;
   user-select: none;
+  display: block;
 `;
