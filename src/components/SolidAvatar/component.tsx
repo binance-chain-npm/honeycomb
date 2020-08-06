@@ -3,7 +3,7 @@ import { SHA1 } from 'crypto-js';
 import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { fontNames } from '../../modules/core/fonts';
+import { fontFamily } from '../../modules/core';
 
 import { Svg } from './styled';
 
@@ -45,9 +45,7 @@ export const Component = ({ 'data-testid': testId, value, initial, className }: 
     () => ({
       fontStyle: 'normal',
       fontSize: '14px',
-      fontFamily: `${fontNames.join(',')}, -apple-system, '.SFNSText-Regular', 'San Francisco',
-  BlinkMacSystemFont, '.PingFang-SC-Regular', 'Microsoft YaHei', 'Segoe UI', 'Helvetica Neue',
-  Helvetica, Arial, sans-serif`,
+      fontFamily,
     }),
     [],
   );
