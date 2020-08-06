@@ -32,6 +32,12 @@ const COLORS = [
   '#1d53ab',
 ];
 
+const style = {
+  fontStyle: 'normal',
+  fontSize: '14px',
+  fontFamily,
+};
+
 export const Component = ({ 'data-testid': testId, value, initial, className }: Props) => {
   const buildTestId = useBuildTestId(testId);
   const theme = useTheme();
@@ -40,15 +46,6 @@ export const Component = ({ 'data-testid': testId, value, initial, className }: 
     const index = Number.parseInt(hash.split('')[0], 16) % COLORS.length;
     return COLORS[index];
   }, [hash]);
-
-  const style = useMemo(
-    () => ({
-      fontStyle: 'normal',
-      fontSize: '14px',
-      fontFamily,
-    }),
-    [],
-  );
 
   return (
     <Svg
