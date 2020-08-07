@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
 import { SHA1 } from 'crypto-js';
+import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
+import { fontFamily } from '../../modules/core';
 
-import { TextContainer, Container } from './styled';
+import { Svg } from './styled';
 
 export type Props = Testable & {
   value: string;
@@ -30,8 +32,15 @@ const COLORS = [
   '#1d53ab',
 ];
 
+const style = {
+  fontStyle: 'normal',
+  fontSize: '14px',
+  fontFamily,
+};
+
 export const Component = ({ 'data-testid': testId, value, initial, className }: Props) => {
   const buildTestId = useBuildTestId(testId);
+  const theme = useTheme();
   const hash = useMemo(() => SHA1(value).toString(), [value]);
   const bgColor = useMemo(() => {
     const index = Number.parseInt(hash.split('')[0], 16) % COLORS.length;
@@ -39,9 +48,27 @@ export const Component = ({ 'data-testid': testId, value, initial, className }: 
   }, [hash]);
 
   return (
-    <Container className={className} data-testid={buildTestId()} bgColor={bgColor}>
-      {!!initial && <TextContainer>{initial[0]}</TextContainer>}
-    </Container>
+    <Svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      data-testid={buildTestId()}
+    >
+      <rect width="24" height="24" rx="8" fill={bgColor} />
+      {!!initial && (
+        <text
+          x="50%"
+          y="50%"
+          dominant-baseline="central"
+          text-anchor="middle"
+          fill={theme.honeycomb.color.readable.normal(bgColor)}
+          style={style}
+        >
+          {initial[0]}
+        </text>
+      )}
+    </Svg>
   );
 };
 
