@@ -99,7 +99,7 @@ export const Left = styled.div`
   flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
-  padding-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  padding-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
 `;
 
 export const Right = styled.div`
@@ -107,5 +107,5 @@ export const Right = styled.div`
   flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
-  padding-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
 `;
