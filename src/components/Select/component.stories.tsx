@@ -25,12 +25,44 @@ const data: Array<Option> = [
     icon: Icon.ArrowTopRight,
   },
   {
+    label: 'Copy',
+    icon: Icon.Copy,
+  },
+  {
     label: 'EyeBlocked',
     icon: Icon.EyeBlocked,
   },
   {
     label: 'Globe',
     icon: Icon.Globe,
+  },
+  {
+    label: 'Link',
+    icon: Icon.Link,
+  },
+  {
+    label: 'Lock',
+    icon: Icon.Lock,
+  },
+  {
+    label: 'PowerOff',
+    icon: Icon.PowerOff,
+  },
+  {
+    label: 'Settings',
+    icon: Icon.Settings,
+  },
+  {
+    label: 'Shield',
+    icon: Icon.Shield,
+  },
+  {
+    label: 'Tick',
+    icon: Icon.Tick,
+  },
+  {
+    label: 'Warning',
+    icon: Icon.Warning,
   },
 ];
 
@@ -100,6 +132,14 @@ export const Modal = () => {
         open={open}
         onClose={() => setOpen(false)}
       >
+        <Select.Option
+          searchAs={['my photo', 'A crazy item']}
+          isSelected={selected === 'photo'}
+          onClick={() => setSelected('photo')}
+          data-testid="photo"
+        >
+          <img src={pic} alt="" style={{ maxHeight: '100%' }} />
+        </Select.Option>
         {data.map((it, index) => (
           <Select.Option
             key={index}
@@ -111,14 +151,6 @@ export const Modal = () => {
             {renderOption(it)}
           </Select.Option>
         ))}
-        <Select.Option
-          searchAs={['my photo', 'A crazy item']}
-          isSelected={selected === 'photo'}
-          onClick={() => setSelected('photo')}
-          data-testid="photo"
-        >
-          <img src={pic} alt="" style={{ maxHeight: '100%' }} />
-        </Select.Option>
       </Select>
     </>
   );
