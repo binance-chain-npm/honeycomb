@@ -17,7 +17,7 @@ export const Behaviour = () => {
       <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
         Show
       </Button>
-      <Modal open={show} onClose={() => setShow(false)} data-testid="MyModal">
+      <Modal open={show} data-testid="MyModal">
         <Modal.Header onClose={() => setShow(false)} title="A title" />
         <Modal.Content>{items}</Modal.Content>
       </Modal>
@@ -66,3 +66,28 @@ export const WithoutTitle = () => (
     <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
+
+export const WithInnerModal = () => {
+  const [show, setShow] = useState(false);
+  const [showInner, setShowInner] = useState(false);
+
+  return (
+    <>
+      <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
+        Show Outer Modal
+      </Button>
+      <Modal open={show} data-testid="MyModal">
+        <Modal.Header onClose={() => setShow(false)} title="Outer Modal" />
+        <Modal.Content>
+          <Button variant="primary" onClick={() => setShowInner(true)} data-testid="OpenButton">
+            Show Inner Modal
+          </Button>
+          <Modal open={showInner} data-testid="MyModalInner">
+            <Modal.Header onClose={() => setShowInner(false)} title="Inner Modal" />
+            <Modal.Content>{items}</Modal.Content>
+          </Modal>
+        </Modal.Content>
+      </Modal>
+    </>
+  );
+};

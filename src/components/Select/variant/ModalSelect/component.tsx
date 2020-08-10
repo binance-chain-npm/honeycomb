@@ -9,6 +9,7 @@ import { StyledHeader } from './styled';
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
   title?: React.ReactNode;
   isLoading?: boolean;
+  onClose?: () => void;
 };
 
 export const Component = ({
@@ -24,7 +25,7 @@ export const Component = ({
 
   return (
     <SelectContext.Provider value={context}>
-      <Modal {...otherProps} onClose={onClose} data-testid={buildTestId()}>
+      <Modal {...otherProps} data-testid={buildTestId()}>
         <StyledHeader title={title} isLoading={isLoading} onClose={onClose} />
         <Modal.Content padding="none">{children}</Modal.Content>
       </Modal>
