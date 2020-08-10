@@ -25,12 +25,28 @@ const data: Array<Option> = [
     icon: Icon.ArrowTopRight,
   },
   {
+    label: 'Copy',
+    icon: Icon.Copy,
+  },
+  {
     label: 'EyeBlocked',
     icon: Icon.EyeBlocked,
   },
   {
     label: 'Globe',
     icon: Icon.Globe,
+  },
+  {
+    label: 'Lock',
+    icon: Icon.Lock,
+  },
+  {
+    label: 'Shield',
+    icon: Icon.Shield,
+  },
+  {
+    label: 'Warning',
+    icon: Icon.Warning,
   },
 ];
 
