@@ -37,12 +37,28 @@ const data: Array<Option> = [
     icon: Icon.Globe,
   },
   {
+    label: 'Link',
+    icon: Icon.Link,
+  },
+  {
     label: 'Lock',
     icon: Icon.Lock,
   },
   {
+    label: 'PowerOff',
+    icon: Icon.PowerOff,
+  },
+  {
+    label: 'Settings',
+    icon: Icon.Settings,
+  },
+  {
     label: 'Shield',
     icon: Icon.Shield,
+  },
+  {
+    label: 'Tick',
+    icon: Icon.Tick,
   },
   {
     label: 'Warning',
