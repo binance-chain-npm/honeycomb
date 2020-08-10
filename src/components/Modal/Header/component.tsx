@@ -9,10 +9,11 @@ import { TestIdContext } from '../context';
 
 import { Header, Title, LoadingState } from './styled';
 
-export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'onClose' | 'className'> &
+export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'className'> &
   Testable & {
     title?: React.ReactNode;
     isLoading?: boolean;
+    onClose?: () => void;
   };
 
 export const Component = ({

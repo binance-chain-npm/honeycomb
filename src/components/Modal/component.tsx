@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useTransition, animated } from 'react-spring';
 import ReactDOM from 'react-dom';
 
@@ -28,7 +28,6 @@ const MODAL_CONTAINER =
 
 export type Props = Testable & {
   open?: boolean;
-  onClose?: () => void;
   children?: React.ReactNode;
   className?: string;
   position?: Position;
@@ -36,7 +35,6 @@ export type Props = Testable & {
 
 export const Component = ({
   open = false,
-  onClose,
   children,
   'data-testid': testId,
   className,
@@ -56,21 +54,6 @@ export const Component = ({
     enter: { opacity: 1, transform: position === 'center' ? 'scale(1)' : 'translateY(0)' },
     leave: { opacity: 0, transform: position === 'center' ? 'scale(0.5)' : 'translateY(100vh)' },
   });
-
-  useEffect(() => {
-    if (!open) return;
-
-    const listener = (evt: MouseEvent) => {
-      const boxElement = boxRef.current;
-
-      if (!boxElement) return;
-      if (boxElement.contains(evt.target as Node)) return;
-      onClose?.();
-    };
-
-    window.addEventListener('click', listener);
-    return () => window.removeEventListener('click', listener);
-  }, [open, onClose]);
 
   if (!MODAL_CONTAINER || !open) {
     return <>{null}</>;
