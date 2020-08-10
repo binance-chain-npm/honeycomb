@@ -132,6 +132,14 @@ export const Modal = () => {
         open={open}
         onClose={() => setOpen(false)}
       >
+        <Select.Option
+          searchAs={['my photo', 'A crazy item']}
+          isSelected={selected === 'photo'}
+          onClick={() => setSelected('photo')}
+          data-testid="photo"
+        >
+          <img src={pic} alt="" style={{ maxHeight: '100%' }} />
+        </Select.Option>
         {data.map((it, index) => (
           <Select.Option
             key={index}
@@ -143,14 +151,6 @@ export const Modal = () => {
             {renderOption(it)}
           </Select.Option>
         ))}
-        <Select.Option
-          searchAs={['my photo', 'A crazy item']}
-          isSelected={selected === 'photo'}
-          onClick={() => setSelected('photo')}
-          data-testid="photo"
-        >
-          <img src={pic} alt="" style={{ maxHeight: '100%' }} />
-        </Select.Option>
       </Select>
     </>
   );
