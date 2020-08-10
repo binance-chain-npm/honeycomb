@@ -1,4 +1,18 @@
 describe('ModalState', () => {
+  it('opens and closes', () => {
+    cy.clock();
+
+    cy.visitStory({ storyId: 'elements-modalstate--behaviour', themeId: 'GoldLight' });
+    cy.tick(10000);
+    cy.get('[data-testid="open-btn"]').click();
+    cy.tick(10000);
+
+    cy.get('[data-testid="modal-state.content"]').should('be.visible');
+    cy.get('[data-testid="modal-state.header.close-btn"]').click();
+    cy.get('[data-testid="modal-state.content"]').should('not.be.visible');
+
+  });
+
   it('renders correctly', () => {
     cy.clock();
 

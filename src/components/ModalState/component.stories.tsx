@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Sections } from '../../modules/sections';
+import { Button } from '../Button';
 import { Icon } from '../Icon';
 
 import { ModalState } from '.';
@@ -18,7 +19,7 @@ const scenario = {
 export const Success = () => (
   <ModalState
     open={true}
-    data-testid="MyModal"
+    data-testid="modal-state"
     icon={<ModalState.Icon.Success />}
     title={scenario.name}
     description={scenario.description}
@@ -30,7 +31,7 @@ export const Success = () => (
 export const Warning = () => (
   <ModalState
     open={true}
-    data-testid="MyModal"
+    data-testid="modal-state"
     icon={<ModalState.Icon.Warning />}
     title={scenario.name}
     description={scenario.description}
@@ -42,7 +43,7 @@ export const Warning = () => (
 export const Danger = () => (
   <ModalState
     open={true}
-    data-testid="MyModal"
+    data-testid="modal-state"
     icon={<ModalState.Icon.Danger />}
     title={scenario.name}
     description={scenario.description}
@@ -54,9 +55,29 @@ export const Danger = () => (
 export const WithCustomIcon = () => (
   <ModalState
     open={true}
-    data-testid="MyModal"
+    data-testid="modal-state"
     title={scenario.name}
     description={scenario.description}
     icon={<Icon.Tick />}
   />
 );
+
+export const Behaviour = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button variant="primary" onClick={() => setOpen(true)} data-testid="open-btn">
+        Show
+      </Button>
+      <ModalState
+        open={open}
+        onClose={() => setOpen(false)}
+        data-testid="modal-state"
+        title={scenario.name}
+        description={scenario.description}
+        icon={<Icon.Tick />}
+      />
+    </>
+  );
+};
