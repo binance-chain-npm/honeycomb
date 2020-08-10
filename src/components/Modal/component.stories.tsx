@@ -67,22 +67,22 @@ export const WithoutTitle = () => (
   </Modal>
 );
 
-export const WithInnerModal = () => {
+export const WithNestedModal = () => {
   const [show, setShow] = useState(false);
   const [showInner, setShowInner] = useState(false);
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
+      <Button variant="primary" onClick={() => setShow(true)} data-testid="open-btn-outer">
         Show Outer Modal
       </Button>
-      <Modal open={show} data-testid="MyModal">
+      <Modal open={show} data-testid="modal-outer">
         <Modal.Header onClose={() => setShow(false)} title="Outer Modal" />
         <Modal.Content>
-          <Button variant="primary" onClick={() => setShowInner(true)} data-testid="OpenButton">
+          <Button variant="primary" onClick={() => setShowInner(true)} data-testid="open-btn-inner">
             Show Inner Modal
           </Button>
-          <Modal open={showInner} data-testid="MyModalInner">
+          <Modal open={showInner} data-testid="modal-inner">
             <Modal.Header onClose={() => setShowInner(false)} title="Inner Modal" />
             <Modal.Content>{items}</Modal.Content>
           </Modal>
