@@ -10,6 +10,7 @@ export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
   title?: React.ReactNode;
   description?: React.ReactNode;
   icon?: React.ReactNode;
+  onClose?: () => void;
 };
 
 export const Component = ({
@@ -17,6 +18,7 @@ export const Component = ({
   title,
   description,
   children,
+  onClose,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -24,7 +26,7 @@ export const Component = ({
 
   return (
     <StyledModal {...otherProps} data-testid={buildTestId()}>
-      <Modal.Header {...otherProps}></Modal.Header>
+      <Modal.Header {...otherProps} onClose={onClose}></Modal.Header>
       <StyledModalContent>
         {icon && <Icon icon={icon} />}
         <Title>{title}</Title>
