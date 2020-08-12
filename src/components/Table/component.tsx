@@ -11,7 +11,6 @@ import {
   Thead,
   TheadTr,
   Th,
-  Tbody,
   TbodyTr,
   Td,
   Pagination,
@@ -106,7 +105,7 @@ export const Component = <Data extends object>({
             ))}
           </Thead>
 
-          <Tbody {...getTableBodyProps()}>
+          <tbody {...getTableBodyProps()}>
             {(hasPagination ? page : rows).map((row) => {
               prepareRow(row);
               return (
@@ -124,7 +123,7 @@ export const Component = <Data extends object>({
                 </TbodyTr>
               );
             })}
-          </Tbody>
+          </tbody>
         </Table>
       </Scroll>
       {hasPagination && (
