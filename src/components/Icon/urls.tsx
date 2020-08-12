@@ -15,6 +15,7 @@ export { default as VisaColor } from './assets/VisaColor.svg';
 export { default as MastercardColor } from './assets/MastercardColor.svg';
 export { default as Settings } from './assets/Settings.svg';
 export { default as Binance } from './assets/Binance.svg';
+export { default as BinanceChain } from './assets/BinanceChain.svg';
 export { default as Email } from './assets/Email.svg';
 export { default as Link } from './assets/Link.svg';
 export { default as Shield } from './assets/Shield.svg';

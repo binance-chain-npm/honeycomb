@@ -15,6 +15,7 @@ export { ReactComponent as VisaColor } from './assets/VisaColor.svg';
 export { ReactComponent as MastercardColor } from './assets/MastercardColor.svg';
 export { ReactComponent as Settings } from './assets/Settings.svg';
 export { ReactComponent as Binance } from './assets/Binance.svg';
+export { ReactComponent as BinanceChain } from './assets/BinanceChain.svg';
 export { ReactComponent as Email } from './assets/Email.svg';
 export { ReactComponent as Link } from './assets/Link.svg';
 export { ReactComponent as Shield } from './assets/Shield.svg';
