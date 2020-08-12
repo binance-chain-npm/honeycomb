@@ -40,8 +40,6 @@ export const Th = styled.th`
   font-weight: 400;
 `;
 
-export const Tbody = styled.tbody``;
-
 export const Td = styled.td`
   text-align: left;
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
