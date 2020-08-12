@@ -42,7 +42,7 @@ export const Th = styled.th`
 
 export const Tbody = styled.tbody``;
 
-export const Td = styled.th`
+export const Td = styled.td`
   text-align: left;
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
