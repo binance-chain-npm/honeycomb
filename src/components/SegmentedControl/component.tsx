@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Element, Size } from './styled';
+import { Container, Element, Size, Scroll } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size' | 'onChange'> &
   Testable & {
@@ -32,22 +32,25 @@ export const Component = ({
   );
 
   return (
-    <Container data-testid={buildTestId()} disabled={disabled} size={size} {...otherProps}>
-      {children.map((option, index) => {
-        const isSelected = children[selectedIndex] === option;
-        return (
-          <Element
-            active={isSelected}
-            key={index}
-            onClick={handleClickForOption({ selectedIndex: index })}
-            data-testid={buildTestId(`${index}`)}
-            data-testisselected={isSelected}
-          >
-            {option}
-          </Element>
-        );
-      })}
-    </Container>
+    <Scroll>
+      <Container data-testid={buildTestId()} disabled={disabled} size={size} {...otherProps}>
+        {children.map((option, index) => {
+          const isSelected = children[selectedIndex] === option;
+          return (
+            <Element
+              active={isSelected}
+              key={index}
+              onClick={handleClickForOption({ selectedIndex: index })}
+              data-testid={buildTestId(`${index}`)}
+              data-testisselected={isSelected}
+              size={size}
+            >
+              {option}
+            </Element>
+          );
+        })}
+      </Container>
+    </Scroll>
   );
 };
 
