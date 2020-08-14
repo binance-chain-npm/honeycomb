@@ -32,3 +32,6 @@ export { ReactComponent as CircledWarning } from './assets/CircledWarning.svg';
 export { ReactComponent as Success } from './assets/Success.svg';
 export { ReactComponent as Warning } from './assets/Warning.svg';
 export { ReactComponent as Danger } from './assets/Danger.svg';
+export { ReactComponent as Page403 } from './assets/Page403.svg';
+export { ReactComponent as Page404 } from './assets/Page404.svg';
+export { ReactComponent as Page500 } from './assets/Page500.svg';

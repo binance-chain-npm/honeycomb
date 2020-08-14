@@ -32,3 +32,6 @@ export { default as CircledWarning } from './assets/CircledWarning.svg';
 export { default as Success } from './assets/Success.svg';
 export { default as Warning } from './assets/Warning.svg';
 export { default as Danger } from './assets/Danger.svg';
+export { default as Page403 } from './assets/Page403.svg';
+export { default as Page404 } from './assets/Page404.svg';
+export { default as Page500 } from './assets/Page500.svg';
