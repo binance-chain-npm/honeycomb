@@ -13,16 +13,21 @@ export interface ContainerProps {
 }
 
 export interface ElementProps {
+  size: Size;
   active: boolean;
 }
 
-const borderRadius = css`
+const elementHugeRadius = css`
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
 `;
 
-const increased = css`
-  height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+const elementIncreasedRadius = css`
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
+`;
+
+const containerIncreased = css`
+  height: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
 `;
 
 const disabled = css`
@@ -31,18 +36,25 @@ const disabled = css`
 `;
 
 const activeElement = css`
+  cursor: auto;
   background: ${({ theme }) => theme.honeycomb.color.primary.normal};
+  color: ${({ theme }) =>
+    theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.normal)};
 `;
 
 export const Element = styled.li<ElementProps>`
-  ${borderRadius};
-  list-style: none;
-  display: grid;
-  place-items: center;
-  z-index: 10;
   cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
+  font-weight: 600;
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+  ${elementHugeRadius};
+  ${({ size }) => size === 'increased' && elementIncreasedRadius};
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
   ${({ active }) => active && activeElement}
 `;
@@ -50,20 +62,22 @@ export const Element = styled.li<ElementProps>`
 export const Container = styled.ul<ContainerProps>`
   ${stylelessCommon};
   ${boxSizing};
-  ${borderRadius};
-
-  display: grid;
-
-  width: auto;
-  width: fit-content;
-
-  height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
-  font-weight: 600;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+  height: ${({ theme }) => em(theme.honeycomb.size.huge)};
   position: relative;
   background: ${({ theme }) => theme.honeycomb.color.secondary.normal};
-  grid-template-columns: repeat(3, 1fr);
-  overflow: hidden;
-  ${({ size }) => size === 'increased' && increased};
+  color: ${({ theme }) =>
+    theme.honeycomb.color.readable.normal(theme.honeycomb.color.secondary.normal)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
+  ${({ size }) => size === 'increased' && containerIncreased};
   ${({ disabled: isDisabled }) => isDisabled && disabled};
+`;
+
+export const Scroll = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  overflow-x: auto;
+  scroll-behavior: smooth;
 `;
