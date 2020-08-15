@@ -21,6 +21,12 @@ export const Styles = css`
     font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
     overflow: hidden;
 
+    &[data-theme='bare'] {
+      .tippy-content {
+        padding: 0;
+      }
+    }
+
     &[data-theme='tooltip'] {
       .tippy-content {
         padding: ${({ theme }) => em(theme.honeycomb.size.small / 2, theme.honeycomb.size.reduced)}

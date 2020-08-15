@@ -20,6 +20,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     | 'hideOnClick'
     | 'interactive'
     | 'reference'
+    | 'placement'
   > &
   Testable & {
     content: React.ReactNode;
@@ -59,10 +60,10 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
         {...otherProps}
         className={otherProps.className}
         trigger={trigger}
-        theme={otherProps.theme || 'tooltip'}
+        theme={otherProps.theme ?? 'tooltip'}
         arrow={otherProps.arrow}
         animation="shift-away"
-        placement="bottom-start"
+        placement={otherProps.placement ?? 'bottom-start'}
         content={
           <div data-testid={buildTestId('content')} ref={tooltipContentRef}>
             {otherProps.content}
