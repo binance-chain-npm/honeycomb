@@ -3,7 +3,7 @@ import Tippy from '@tippyjs/react';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Styles } from './styled';
+import { Styles, ContentContainer } from './styled';
 
 export type TriggerValue = 'mouseenter' | 'click' | 'manual';
 
@@ -12,7 +12,6 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     React.ComponentProps<typeof Tippy>,
     | 'arrow'
     | 'className'
-    | 'theme'
     | 'onShow'
     | 'onHide'
     | 'visible'
@@ -60,14 +59,14 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
         {...otherProps}
         className={otherProps.className}
         trigger={trigger}
-        theme={otherProps.theme ?? 'tooltip'}
+        theme="bc-honeycomb-bare"
         arrow={otherProps.arrow}
         animation="shift-away"
         placement={otherProps.placement ?? 'bottom-start'}
         content={
-          <div data-testid={buildTestId('content')} ref={tooltipContentRef}>
+          <ContentContainer data-testid={buildTestId('content')} ref={tooltipContentRef}>
             {otherProps.content}
-          </div>
+          </ContentContainer>
         }
       >
         <div data-testid={buildTestId('target')}>{otherProps.children}</div>

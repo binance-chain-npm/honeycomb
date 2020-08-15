@@ -7,7 +7,7 @@ import { Tooltip } from '../../../Tooltip';
 import { SelectContext } from '../../context';
 import { ModalSelect } from '../ModalSelect';
 
-import { Styles } from './styled';
+import { StyledContent } from './styled';
 
 export type Props = Omit<React.ComponentProps<typeof Select>, 'variant'>;
 
@@ -30,13 +30,11 @@ export const Component = ({ 'data-testid': testId, onClose, ...otherProps }: Pro
         </ModalSelect>
       ) : (
         <SelectContext.Provider value={context}>
-          <Styles />
           <Tooltip
             trigger="manual"
-            theme="dropdown"
             interactive={true}
             arrow={false}
-            content={otherProps.children}
+            content={<StyledContent>{otherProps.children}</StyledContent>}
             onClickContent={() => onClose?.()}
             visible={otherProps.open}
             data-testid={buildTestId('dropdown')}
