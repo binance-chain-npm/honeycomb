@@ -7,7 +7,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.accent};
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
 `;
 
 export const Search = styled.div`

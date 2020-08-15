@@ -27,7 +27,6 @@ export const Component = (props: Props) => {
       <Tooltip
         className={props.className}
         trigger="click"
-        theme="dropdown"
         interactive={true}
         onShow={show}
         onHide={hide}
