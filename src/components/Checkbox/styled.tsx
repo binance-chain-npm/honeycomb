@@ -32,8 +32,8 @@ export const Label = styled.label`
     justify-content: center;
     width: ${({ theme }) => em(theme.honeycomb.size.increased)};
     height: ${({ theme }) => em(theme.honeycomb.size.increased)};
-    background: transparent;
-    border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
+    background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
+    border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
     border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
     display: flex;
     cursor: pointer;
