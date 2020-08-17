@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
 
 export const Container = styled.div`
   ${boxSizing};
@@ -21,7 +22,6 @@ export const Container = styled.div`
 export const Svg = styled.svg`
   width: 1em;
   height: 1em;
-  background: ${({ theme }) => theme.honeycomb.color.bg.masked};
 `;
 
 export const TextContainer = styled.div`
@@ -35,6 +35,6 @@ export const TextContainer = styled.div`
   left: 0;
   font-size: 0.75em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
+  color: ${GoldLight.honeycomb.color.text.normal};
   line-height: 0;
 `;
