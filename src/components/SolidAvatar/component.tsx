@@ -41,8 +41,8 @@ export const Component = ({ 'data-testid': testId, value, initial, className }: 
         <text
           x="50%"
           y="50%"
-          dominant-baseline="central"
-          text-anchor="middle"
+          dominantBaseline="central"
+          textAnchor="middle"
           fill={GoldLight.honeycomb.color.text.normal}
           style={style}
         >
