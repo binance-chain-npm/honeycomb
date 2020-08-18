@@ -140,7 +140,7 @@ export const Component = <Data extends object>({
               {'<'}
             </Button>
             {filteredPageOptions.map((page, index) => (
-              <>
+              <React.Fragment key={page}>
                 <PageNumberButton
                   variant={page === pageIndex ? 'primary' : 'secondary'}
                   onClick={() => gotoPage(page)}
@@ -156,7 +156,7 @@ export const Component = <Data extends object>({
                       …
                     </PaginationEllipsis>
                   )}
-              </>
+              </React.Fragment>
             ))}
             <Button
               variant="secondary"
