@@ -72,3 +72,9 @@ export const ControlledPagination = () => {
     </Card>
   );
 };
+
+export const Interactive = () => (
+  <Card variant="bare">
+    <Table data={data} columns={columns} interactive />
+  </Card>
+);
