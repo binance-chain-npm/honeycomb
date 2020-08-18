@@ -3,6 +3,7 @@ import { transitions, em } from 'polished';
 
 import { styleless } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
+import { hoverEffect } from '../../modules/hover-effect';
 
 const disabled = css`
   opacity: 0.3;
@@ -12,6 +13,7 @@ const disabled = css`
 export const Styled = styled.button`
   ${styleless};
   ${boxSizing};
+  ${hoverEffect};
 
   cursor: pointer;
   height: ${em(60)};
@@ -33,7 +35,6 @@ export const Styled = styled.button`
   :hover,
   :active {
     text-decoration: none;
-    background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.accent};
   }
 
   :disabled {
