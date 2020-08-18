@@ -3,6 +3,7 @@ import { transitions, em } from 'polished';
 
 import { styleless } from '../../Styleless';
 import { boxSizing } from '../../../modules/box-sizing';
+import { hoverEffect } from '../../../modules/hover-effect';
 
 export const variants = ['normal', 'accent'] as const;
 export type Variant = typeof variants[number];
@@ -51,13 +52,7 @@ export const Container = styled.button<{ variant: Variant; isNonInteractive: boo
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
   ${({ variant }) => variant === 'accent' && accent};
 
-  :focus,
-  :hover,
-  :active {
-    background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.accent};
-    color: ${({ theme }) =>
-      theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.accent)};
-  }
+  ${hoverEffect}
 
   ${({ isNonInteractive }) => isNonInteractive && nonInteractive};
   ${({ disabled: isDisabled }) => isDisabled && disabled};
