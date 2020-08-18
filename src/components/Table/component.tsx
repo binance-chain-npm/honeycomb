@@ -26,6 +26,7 @@ export type Props<Data extends object> = Testable & {
   pageSize?: number;
   pageCount?: number;
   hasPagination?: boolean;
+  interactive?: boolean;
   onPageIndexChange?: (params: { pageIndex: number }) => void;
 };
 
@@ -36,6 +37,7 @@ export const Component = <Data extends object>({
   pageSize = 10,
   pageCount: pageCountParam,
   hasPagination = false,
+  interactive = false,
   onPageIndexChange,
   'data-testid': testId,
 }: Props<Data>) => {
@@ -109,7 +111,7 @@ export const Component = <Data extends object>({
             {(hasPagination ? page : rows).map((row) => {
               prepareRow(row);
               return (
-                <TbodyTr {...row.getRowProps()}>
+                <TbodyTr {...row.getRowProps()} interactive={interactive}>
                   {row.cells.map((cell) => {
                     return (
                       <Td

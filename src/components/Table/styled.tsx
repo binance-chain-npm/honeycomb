@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
+import { hoverEffect } from '../../modules/hover-effect';
 import { Button } from '../Button';
 
 const ROW_HEIGHT = 56;
@@ -48,12 +49,14 @@ export const Td = styled.td`
   font-weight: 400;
 `;
 
-export const TbodyTr = styled.tr`
+export const TbodyTr = styled.tr<{ interactive: boolean }>`
   height: ${em(ROW_HEIGHT)};
 
   :not(:last-child) > ${Td} {
     border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
   }
+
+  ${({ interactive }) => interactive && hoverEffect};
 `;
 
 export const Pagination = styled.div`
