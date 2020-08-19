@@ -30,7 +30,7 @@ export const Component = ({
   'data-testid': testId,
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
-  const [showQRCode, setShowQRCode] = useState(true);
+  const [showQRCode, setShowQRCode] = useState(false);
 
   const width = useWindowWidth();
 
