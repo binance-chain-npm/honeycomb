@@ -1,14 +1,25 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
 
+import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Text, IconContainer, IconWrapper } from './styled';
+import { Container, IconContainer, IconWrapper } from './styled';
 
-export type Props = Testable & { className?: string; value: string };
+export type Props = Pick<React.ComponentProps<typeof Button>, 'size' | 'shape'> &
+  Testable & {
+    className?: string;
+    value: string;
+  };
 
-export const Component = ({ value, 'data-testid': testId, className }: Props) => {
+export const Component = ({
+  className,
+  value,
+  size,
+  shape = 'square',
+  'data-testid': testId,
+}: Props) => {
   const buildTestId = useBuildTestId(testId);
   const [wasJustCopied, setWasJustCopied] = useState(false);
 
@@ -32,12 +43,15 @@ export const Component = ({ value, 'data-testid': testId, className }: Props) =>
   return (
     <Container
       className={className}
+      variant="transparent"
+      size={size}
+      shape={shape}
       wasJustCopied={wasJustCopied}
       disabled={wasJustCopied}
       onClick={copy}
       data-testid={buildTestId()}
+      animated={false}
     >
-      <Text data-testid={buildTestId('text')}>{value}</Text>
       <IconContainer>
         {transitions.map(({ item, key, props }) =>
           item ? (

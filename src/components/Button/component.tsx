@@ -12,6 +12,7 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
     variant: Variant;
     size?: Size;
     shape?: Shape;
+    animated?: boolean;
   };
 
 export const Component = ({
@@ -26,6 +27,7 @@ export const Component = ({
   variant,
   size = 'huge',
   shape = 'fill',
+  animated: isAnimated = true,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -63,18 +65,20 @@ export const Component = ({
       onClick={click}
     >
       {children}
-      <Shadow
-        as={animated.div}
-        style={{
-          opacity: x.interpolate({ range: [0, 0.5, 1], output: [0, 0.3, 0] }),
-          boxShadow: x
-            .interpolate({
-              range: [0, 0.3, 0.4, 0.5, 0.4, 0.7, 1],
-              output: [0, 10, 8, 12, 8, 10, 0],
-            })
-            .interpolate((x) => `0 0 0 ${x}px currentColor`),
-        }}
-      />
+      {isAnimated && (
+        <Shadow
+          as={animated.div}
+          style={{
+            opacity: x.interpolate({ range: [0, 0.5, 1], output: [0, 0.3, 0] }),
+            boxShadow: x
+              .interpolate({
+                range: [0, 0.3, 0.4, 0.5, 0.4, 0.7, 1],
+                output: [0, 10, 8, 12, 8, 10, 0],
+              })
+              .interpolate((x) => `0 0 0 ${x}px currentColor`),
+          }}
+        />
+      )}
     </Styled>
   );
 };

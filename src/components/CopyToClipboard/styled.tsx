@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
-import { transitions, em } from 'polished';
+import { transitions } from 'polished';
 
-import { styleless } from '../Styleless';
-import { boxSizing } from '../../modules/box-sizing';
+import { Button } from '../Button';
 
 const justCopied = css`
   background: ${({ theme }) => theme.honeycomb.color.success.normal};
@@ -10,44 +9,36 @@ const justCopied = css`
     theme.honeycomb.color.readable.normal(theme.honeycomb.color.success.normal)};
 `;
 
-export const Container = styled.button<{ wasJustCopied: boolean }>`
-  ${styleless};
-  ${boxSizing};
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const Container = styled(Button)<{ wasJustCopied: boolean }>`
   background: ${({ theme }) => theme.honeycomb.color.bg.masked};
-  border-radius: ${({ theme }) => em(theme.honeycomb.size.large / 2)};
-  height: ${({ theme }) => em(theme.honeycomb.size.large)};
-  padding: 0 ${({ theme }) => em(theme.honeycomb.size.small)};
-  width: 100%;
-  ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
-  ${({ wasJustCopied }) => wasJustCopied && justCopied};
+
+  :focus,
+  :hover,
+  :active {
+    background: ${({ theme }) => theme.honeycomb.color.bg.masked};
+    color: ${({ theme }) => theme.honeycomb.color.text.normal};
+  }
 
   :not(:disabled) {
     cursor: pointer;
   }
-`;
 
-export const Text = styled.span`
-  height: ${({ theme }) => em(theme.honeycomb.size.increased)};
-  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-right: 1em;
+  :disabled {
+    opacity: 1;
+  }
+
+  ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
+  ${({ wasJustCopied }) => wasJustCopied && justCopied};
 `;
 
 export const IconContainer = styled.div`
   position: relative;
-  height: ${({ theme }) => em(theme.honeycomb.size.normal)};
-  width: ${({ theme }) => em(theme.honeycomb.size.normal)};
 `;
 
 export const IconWrapper = styled.div`
   position: absolute;
-  height: ${({ theme }) => em(theme.honeycomb.size.normal)};
-  width: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
 `;
