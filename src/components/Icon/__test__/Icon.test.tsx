@@ -1,5 +1,3 @@
-import path from 'path';
-
 import { Icon, icons } from '..';
 
 it('exports all icons as URLs and components', () => {
