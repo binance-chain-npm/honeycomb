@@ -8,4 +8,6 @@ export default {
   title: `${Sections.Elements}/CryptoAddress`,
 };
 
-export const Default = () => <CryptoAddress value="bnb000000000000000000000000000000000000000" />;
+export const Default = () => (
+  <CryptoAddress value="bnb000000000000000000000000000000000000000" data-testid="crypto-address" />
+);

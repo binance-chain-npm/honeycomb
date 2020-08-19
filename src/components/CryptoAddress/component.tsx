@@ -47,6 +47,7 @@ export const Component = ({
       variant="secondary"
       shape="square"
       onClick={() => setShowQRCode((value) => !value)}
+      data-testid={buildTestId('btn-scan-qr-code')}
     >
       <Icon.QRCode />
     </ScanQrCodeButton>
@@ -60,7 +61,7 @@ export const Component = ({
           {width < widths.sm ? (
             <>
               {scanQrCodeButton}
-              <StyledModal open={showQRCode}>
+              <StyledModal open={showQRCode} data-testid={buildTestId('modal')}>
                 <Modal.Header onClose={() => setShowQRCode(false)} title="QR Code" />
                 {qRCode}
               </StyledModal>
@@ -72,6 +73,7 @@ export const Component = ({
               visible={showQRCode}
               interactive={true}
               content={qRCode}
+              data-testid={buildTestId('tooltip')}
             >
               {scanQrCodeButton}
             </Tooltip>
