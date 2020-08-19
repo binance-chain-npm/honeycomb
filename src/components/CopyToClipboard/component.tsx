@@ -2,22 +2,24 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
 
 import { Button } from '../Button';
+import { Variant } from '../Button/styled';
 import { Icon } from '../Icon';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Container, IconContainer, IconWrapper } from './styled';
 
-export type Props = Pick<React.ComponentProps<typeof Button>, 'size' | 'variant' | 'shape'> &
+export type Props = Pick<React.ComponentProps<typeof Button>, 'size' | 'shape'> &
   Testable & {
     className?: string;
     value: string;
+    variant?: Variant;
   };
 
 export const Component = ({
   className,
   value,
   size,
-  variant,
+  variant = "secondary",
   shape = 'square',
   'data-testid': testId,
 }: Props) => {
