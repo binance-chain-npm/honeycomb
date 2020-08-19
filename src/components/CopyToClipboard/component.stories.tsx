@@ -9,5 +9,5 @@ export default {
 };
 
 export const Default = () => (
-  <CopyToClipboard value="a value here" data-testid="copy-to-clipboard" />
+  <CopyToClipboard value="a value here" variant="transparent" data-testid="copy-to-clipboard" />
 );

@@ -7,7 +7,7 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Container, IconContainer, IconWrapper } from './styled';
 
-export type Props = Pick<React.ComponentProps<typeof Button>, 'size' | 'shape'> &
+export type Props = Pick<React.ComponentProps<typeof Button>, 'size' | 'variant' | 'shape'> &
   Testable & {
     className?: string;
     value: string;
@@ -17,6 +17,7 @@ export const Component = ({
   className,
   value,
   size,
+  variant,
   shape = 'square',
   'data-testid': testId,
 }: Props) => {
@@ -43,14 +44,12 @@ export const Component = ({
   return (
     <Container
       className={className}
-      variant="transparent"
+      variant={variant}
       size={size}
       shape={shape}
-      wasJustCopied={wasJustCopied}
       disabled={wasJustCopied}
       onClick={copy}
       data-testid={buildTestId()}
-      animated={false}
     >
       <IconContainer>
         {transitions.map(({ item, key, props }) =>
