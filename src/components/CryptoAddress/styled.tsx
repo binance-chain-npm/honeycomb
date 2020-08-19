@@ -4,15 +4,17 @@ import { em } from 'polished';
 import { boxSizing } from '../../modules/box-sizing';
 import { Button } from '../Button';
 import { CopyToClipboard } from '../CopyToClipboard';
+import { Modal } from '../Modal';
+import { QRCode } from '../QRCode';
 import { TextInput } from '../TextInput';
 
 export const Container = styled.div`
   ${boxSizing};
 
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-
   display: flex;
   align-items: center;
+
+  font-size: ${({ theme }) => em(theme.honeycomb.size.normal)};
 
   > *:not(:last-child) {
     margin-right: ${({ theme }) => em(theme.honeycomb.size.tiny)};
@@ -43,10 +45,19 @@ export const CryptoAddress = styled(TextInput)`
   }
 `;
 
-export const StyledButton = styled(Button)`
+export const ScanQrCodeButton = styled(Button)`
   ${actionButton}
 `;
 
-export const StyledCopyToClipboard = styled(CopyToClipboard)`
+export const CopyToClipboardButton = styled(CopyToClipboard)`
   ${actionButton}
+`;
+
+export const StyledModal = styled(Modal)`
+  min-width: 0;
+  width: auto;
+`;
+
+export const StyledQRCode = styled(QRCode)`
+  font-size: ${em(180)};
 `;

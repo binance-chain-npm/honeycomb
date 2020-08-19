@@ -9,9 +9,15 @@ import { Scroll, Content, Padding } from './styled';
 export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'children'> &
   Testable & {
     padding?: Padding;
+    className?: string;
   };
 
-export const Component = ({ 'data-testid': testId, padding = 'normal', children }: Props) => {
+export const Component = ({
+  className,
+  padding = 'normal',
+  children,
+  'data-testid': testId,
+}: Props) => {
   const parentTestId = useContext(TestIdContext);
   const buildTestId = useBuildTestId(
     testId ?? (parentTestId ? `${parentTestId}.content` : undefined),
@@ -19,7 +25,7 @@ export const Component = ({ 'data-testid': testId, padding = 'normal', children 
 
   return (
     <Scroll>
-      <Content data-testid={buildTestId()} padding={padding}>
+      <Content className={className} padding={padding} data-testid={buildTestId()}>
         {children}
       </Content>
     </Scroll>
