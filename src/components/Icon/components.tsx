@@ -27,6 +27,7 @@ export { ReactComponent as Page403 } from './assets/Page403.svg';
 export { ReactComponent as Page404 } from './assets/Page404.svg';
 export { ReactComponent as Page500 } from './assets/Page500.svg';
 export { ReactComponent as PowerOff } from './assets/PowerOff.svg';
+export { ReactComponent as QRCode } from './assets/QRCode.svg';
 export { ReactComponent as RightArrow } from './assets/RightArrow.svg';
 export { ReactComponent as Settings } from './assets/Settings.svg';
 export { ReactComponent as Shield } from './assets/Shield.svg';
