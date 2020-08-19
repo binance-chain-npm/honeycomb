@@ -81,7 +81,7 @@ export const Input = styled.input`
   text-decoration: none;
   background: transparent;
   color: inherit;
-  height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+  height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
   line-height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
   text-indent: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
   padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};

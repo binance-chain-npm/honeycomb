@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Sections } from '../../modules/sections';
+import { Card } from '../Card';
 
 import { CryptoAddress } from './';
 
@@ -9,5 +10,10 @@ export default {
 };
 
 export const Default = () => (
-  <CryptoAddress value="bnb000000000000000000000000000000000000000" data-testid="crypto-address" />
+  <Card>
+    <CryptoAddress
+      value="bnb000000000000000000000000000000000000000"
+      data-testid="crypto-address"
+    />
+  </Card>
 );

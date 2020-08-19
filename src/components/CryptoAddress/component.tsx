@@ -4,16 +4,11 @@ import { Icon } from '../Icon';
 import { useWindowWidth, widths } from '../internal/useWindowWidth';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Modal } from '../Modal';
+import { Button } from '../Button';
 import { Tooltip } from '../Tooltip';
+import { CopyToClipboard } from '../CopyToClipboard';
 
-import {
-  Container,
-  CryptoAddress,
-  ScanQrCodeButton,
-  CopyToClipboardButton,
-  StyledModal,
-  StyledQRCode,
-} from './styled';
+import { Container, CryptoAddress, StyledModal, StyledQRCode } from './styled';
 
 export type Props = Testable & {
   value: string;
@@ -43,19 +38,20 @@ export const Component = ({
   }, [value]);
 
   const scanQrCodeButton = (
-    <ScanQrCodeButton
+    <Button
       variant="secondary"
       shape="square"
+      size="increased"
       onClick={() => setShowQRCode((value) => !value)}
       data-testid={buildTestId('btn-scan-qr-code')}
     >
       <Icon.QRCode />
-    </ScanQrCodeButton>
+    </Button>
   );
 
   return (
     <Container className={className} data-testid={buildTestId()}>
-      <CryptoAddress readOnly value={value} />
+      <CryptoAddress>{value}</CryptoAddress>
       {canScanQrCode && (
         <>
           {width < widths.sm ? (
@@ -80,7 +76,9 @@ export const Component = ({
           )}
         </>
       )}
-      {canCopyToClipboard && <CopyToClipboardButton value={value} />}
+      {canCopyToClipboard && (
+        <CopyToClipboard value={value} variant="secondary" shape="square" size="increased" />
+      )}
     </Container>
   );
 };
