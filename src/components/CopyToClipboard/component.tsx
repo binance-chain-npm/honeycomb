@@ -19,7 +19,7 @@ export const Component = ({
   className,
   value,
   size,
-  variant = "secondary",
+  variant = 'secondary',
   shape = 'square',
   'data-testid': testId,
 }: Props) => {
