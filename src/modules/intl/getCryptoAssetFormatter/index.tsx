@@ -13,7 +13,7 @@ export const getCryptoAssetFormatter = ({
   });
 
   const format: typeof formatter.format = (number) =>
-    `${formatter.format(number)}${NON_BREAKING_SPACE}${displaySymbol}`;
+    `${formatter.format(number)}${displaySymbol ? NON_BREAKING_SPACE : ''}${displaySymbol}`;
 
   const formatToParts: typeof formatter.formatToParts = (number) => [
     ...formatter.formatToParts(number),
