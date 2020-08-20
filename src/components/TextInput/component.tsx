@@ -21,6 +21,7 @@ export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultVa
     left?: React.ReactNode;
     right?: React.ReactNode;
     htmlTag?: 'input' | 'textarea';
+    readOnly?: boolean;
   };
 
 export const Component = ({
@@ -36,6 +37,7 @@ export const Component = ({
   left,
   right,
   htmlTag = 'input',
+  readOnly = false,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -80,9 +82,10 @@ export const Component = ({
           {...otherProps}
           data-testid={buildTestId('native-input')}
           id={id}
-          onFocus={focus}
-          onBlur={blur}
-          onChange={change}
+          onFocus={readOnly ? undefined : focus}
+          onBlur={readOnly ? undefined : blur}
+          onChange={readOnly ? undefined : change}
+          readOnly={readOnly}
           as={htmlTag}
         />
         {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
@@ -107,5 +110,6 @@ Component.displayName = 'TextInput';
 
 Component.Label = Label;
 Component.Input = Input;
+Component.InputContainer = InputContainer;
 Component.Left = Left;
 Component.Right = Right;

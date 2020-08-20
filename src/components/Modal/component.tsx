@@ -70,7 +70,6 @@ export const Component = ({
                 key={key}
                 style={props}
                 data-testid={buildTestId('full-viewport-container')}
-                className={className}
               >
                 {boxTransitions.map(
                   ({ item, key, props }) =>
@@ -82,6 +81,7 @@ export const Component = ({
                         ref={boxRef}
                         data-testid={buildTestId('box')}
                         position={position}
+                        className={className}
                       >
                         <TestIdContext.Provider value={buildTestId()}>
                           {children}
