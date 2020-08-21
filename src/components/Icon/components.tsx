@@ -36,3 +36,4 @@ export { ReactComponent as Tick } from './assets/Tick.svg';
 export { ReactComponent as TriangleDown } from './assets/TriangleDown.svg';
 export { ReactComponent as VisaColor } from './assets/VisaColor.svg';
 export { ReactComponent as Warning } from './assets/Warning.svg';
+export { ReactComponent as Wallet } from './assets/Wallet.svg';
