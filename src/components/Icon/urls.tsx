@@ -36,3 +36,4 @@ export { default as Tick } from './assets/Tick.svg';
 export { default as TriangleDown } from './assets/TriangleDown.svg';
 export { default as VisaColor } from './assets/VisaColor.svg';
 export { default as Warning } from './assets/Warning.svg';
+export { default as Wallet } from './assets/Wallet.svg';
