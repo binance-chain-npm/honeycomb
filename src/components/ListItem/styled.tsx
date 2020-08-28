@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { transitions, em } from 'polished';
+import { em, transitions } from 'polished';
 
+import { hoverEffect } from '../HoverEffect';
 import { styleless } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
-import { hoverEffect } from '../../modules/hover-effect';
 
 const disabled = css`
   opacity: 0.3;
