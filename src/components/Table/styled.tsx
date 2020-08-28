@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
-import { hoverEffect } from '../../modules/hover-effect';
 import { Button } from '../Button';
+import { hoverEffect } from '../HoverEffect';
 
 const ROW_HEIGHT = 56;
 

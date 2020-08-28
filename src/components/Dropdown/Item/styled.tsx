@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
+import { hoverEffect } from '../../HoverEffect';
 import { styleless } from '../../Styleless';
 import { boxSizing } from '../../../modules/box-sizing';
-import { hoverEffect } from '../../../modules/hover-effect';
 
 export const variants = ['normal', 'accent'] as const;
 export type Variant = typeof variants[number];
@@ -52,7 +52,7 @@ export const Container = styled.button<{ variant: Variant; isNonInteractive: boo
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
   ${({ variant }) => variant === 'accent' && accent};
 
-  ${hoverEffect}
+  ${hoverEffect};
 
   ${({ isNonInteractive }) => isNonInteractive && nonInteractive};
   ${({ disabled: isDisabled }) => isDisabled && disabled};
