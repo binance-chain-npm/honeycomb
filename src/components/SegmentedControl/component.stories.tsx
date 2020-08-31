@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
 import { Sections } from '../../modules/sections';
+import { sizes } from '../Button/styled';
 import { Space } from '../Space';
-
-import { sizes } from './styled';
 
 import { SegmentedControl } from './';
 
@@ -33,6 +32,7 @@ export const Default = () => {
           </SegmentedControl>
         </div>
       ))}
+
       <h3>disabled</h3>
       <SegmentedControl onChange={alert} selectedIndex={0} disabled>
         <span>BTC</span>
@@ -51,6 +51,12 @@ export const Default = () => {
         <span>SWINGBY</span>
         <span>USDS</span>
         <span>TUSD</span>
+      </SegmentedControl>
+
+      <h3>fit</h3>
+      <SegmentedControl onChange={alert} selectedIndex={0} shape="fit">
+        <span>BTC</span>
+        <span>BNB</span>
       </SegmentedControl>
     </div>
   );
