@@ -6,24 +6,18 @@ import { Space } from '../Space';
 import { TextInput } from '../TextInput';
 
 import { DropdownSelect } from './variant/DropdownSelect';
-import { ModalSelect } from './variant/ModalSelect';
 import { Container, OptionsContainer, Search, Options, OptionsTitle } from './styled';
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Testable & {
-    variant?: React.ReactNode;
     title?: React.ReactNode;
     optionsTitle?: React.ReactNode;
     open: boolean;
     onClose?: () => void;
   };
 
-export const variants = ['dropdown', 'modal'] as const;
-export type Variant = typeof variants[number];
-
 export const Component = ({
   'data-testid': testId,
-  variant = 'dropdown',
   children,
   optionsTitle,
   ...otherProps
@@ -58,36 +52,23 @@ export const Component = ({
     [children, lowerCaseSearch],
   );
 
-  const content = (
-    <Container>
-      <Card>
-        <Search>
-          <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
-        </Search>
-      </Card>
-      <Space size="normal" />
-      {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
-      <Space size="normal" />
-      <OptionsContainer position="bottom">
-        <Options>{filteredResults}</Options>
-      </OptionsContainer>
-    </Container>
+  return (
+    <DropdownSelect {...otherProps} data-testid={buildTestId()}>
+      <Container>
+        <Card>
+          <Search>
+            <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
+          </Search>
+        </Card>
+        <Space size="normal" />
+        {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
+        <Space size="normal" />
+        <OptionsContainer position="bottom">
+          <Options>{filteredResults}</Options>
+        </OptionsContainer>
+      </Container>
+    </DropdownSelect>
   );
-
-  switch (variant) {
-    case 'modal':
-      return (
-        <ModalSelect {...otherProps} data-testid={buildTestId()}>
-          {content}
-        </ModalSelect>
-      );
-    default:
-      return (
-        <DropdownSelect {...otherProps} data-testid={buildTestId()}>
-          {content}
-        </DropdownSelect>
-      );
-  }
 };
 
 Component.displayName = 'Select';
