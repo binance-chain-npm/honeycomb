@@ -1,14 +1,16 @@
 import React, { useCallback } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
+import { Size } from '../Button';
 
-import { Container, Element, Size, Scroll } from './styled';
+import { Container, Element, Scroll, Shape } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size' | 'onChange'> &
   Testable & {
     children: React.ReactNodeArray;
     selectedIndex?: number;
     size?: Size;
+    shape?: Shape;
     onChange?: (params: { selectedIndex: number }) => void;
   };
 
@@ -19,6 +21,7 @@ export const Component = ({
   selectedIndex = 0,
   'data-testid': testId,
   size = 'huge',
+  shape = 'fill',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -33,7 +36,13 @@ export const Component = ({
 
   return (
     <Scroll>
-      <Container data-testid={buildTestId()} disabled={disabled} size={size} {...otherProps}>
+      <Container
+        data-testid={buildTestId()}
+        disabled={disabled}
+        size={size}
+        shape={shape}
+        {...otherProps}
+      >
         {children.map((option, index) => {
           const isSelected = children[selectedIndex] === option;
           return (
