@@ -73,7 +73,7 @@ const renderOption = (option: Option) => (
   </>
 );
 
-export const Dropdown = () => {
+export const Default = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Option>();
 
@@ -94,7 +94,7 @@ export const Dropdown = () => {
         {renderSelected()}
       </Button>
       <Select
-        data-testid="select.dropdown"
+        data-testid="select"
         title="A Title"
         optionsTitle="Options"
         open={open}
@@ -116,7 +116,7 @@ export const Dropdown = () => {
   );
 };
 
-export const Modal = () => {
+export const Behaviour = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState('Add');
 
@@ -125,13 +125,7 @@ export const Modal = () => {
       <Button variant="primary" onClick={() => setOpen(true)} data-testid="open-btn">
         Show
       </Button>
-      <Select
-        variant="modal"
-        data-testid="select.modal"
-        title="A Title"
-        open={open}
-        onClose={() => setOpen(false)}
-      >
+      <Select data-testid="select" title="A Title" open={open} onClose={() => setOpen(false)}>
         <Select.Option
           searchAs={['my photo', 'A crazy item']}
           isSelected={selected === 'photo'}
