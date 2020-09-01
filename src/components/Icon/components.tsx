@@ -45,3 +45,4 @@ export { ReactComponent as Write } from './assets/Write.svg';
 export { ReactComponent as Docs } from './assets/Docs.svg';
 export { ReactComponent as Remix } from './assets/Remix.svg';
 export { ReactComponent as TestnetFaucet } from './assets/TestnetFaucet.svg';
+export { ReactComponent as HamburgerMenu } from './assets/HamburgerMenu.svg';
