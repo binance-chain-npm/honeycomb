@@ -1,2 +1,5 @@
+import { Size as SizeType, Shape as ShapeType } from './styled';
+
 export { Component as Button } from './component';
-export { Size, Shape } from './styled';
+export type Size = SizeType;
+export type Shape = ShapeType;
