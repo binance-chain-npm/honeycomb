@@ -42,3 +42,6 @@ export { default as Wallet } from './assets/Wallet.svg';
 export { default as WalletConnect } from './assets/WalletConnect.svg';
 export { default as Warning } from './assets/Warning.svg';
 export { default as Write } from './assets/Write.svg';
+export { default as Docs } from './assets/Docs.svg';
+export { default as Remix } from './assets/Remix.svg';
+export { default as TestnetFaucet } from './assets/TestnetFaucet.svg';

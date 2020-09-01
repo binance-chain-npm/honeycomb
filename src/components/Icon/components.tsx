@@ -42,3 +42,6 @@ export { ReactComponent as Wallet } from './assets/Wallet.svg';
 export { ReactComponent as WalletConnect } from './assets/WalletConnect.svg';
 export { ReactComponent as Warning } from './assets/Warning.svg';
 export { ReactComponent as Write } from './assets/Write.svg';
+export { ReactComponent as Docs } from './assets/Docs.svg';
+export { ReactComponent as Remix } from './assets/Remix.svg';
+export { ReactComponent as TestnetFaucet } from './assets/TestnetFaucet.svg';
