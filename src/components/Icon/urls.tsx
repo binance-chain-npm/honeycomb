@@ -46,3 +46,4 @@ export { default as Docs } from './assets/Docs.svg';
 export { default as Remix } from './assets/Remix.svg';
 export { default as TestnetFaucet } from './assets/TestnetFaucet.svg';
 export { default as HamburgerMenu } from './assets/HamburgerMenu.svg';
+export { default as Earth } from './assets/Earth.svg';
