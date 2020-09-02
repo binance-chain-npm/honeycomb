@@ -4,7 +4,7 @@ import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { ListItemBaseProps } from '../../ListItem';
 import { TestIdContext } from '../context';
 
-import { Container, Variant } from './styled';
+import { StyledListItem, Variant } from './styled';
 
 export type Props = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'as'> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
@@ -18,14 +18,14 @@ export const Component = ({ variant = 'normal', children, ...otherProps }: Props
   const buildTestId = useBuildTestId(otherProps['data-testid'] ? parentTestId : undefined);
 
   return (
-    <Container
+    <StyledListItem
       {...otherProps}
       showBorder={false}
       variant={variant}
       data-testid={buildTestId(otherProps['data-testid'])}
     >
       {children}
-    </Container>
+    </StyledListItem>
   );
 };
 
