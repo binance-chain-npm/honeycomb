@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
-import { useWindowWidth, widths } from '../../../internal/useWindowWidth';
+import { useWindowSize, sizes } from '../../../internal/useWindowSize';
 import { Select } from '../../../Select';
 import { Tooltip } from '../../../Tooltip';
 import { SelectContext } from '../../context';
@@ -15,11 +15,11 @@ export const Component = ({ 'data-testid': testId, onClose, ...otherProps }: Pro
   const context = useMemo(() => ({ onClose, testId }), [onClose, testId]);
   const buildTestId = useBuildTestId(testId);
 
-  const width = useWindowWidth();
+  const { width, height } = useWindowSize();
 
   return (
     <>
-      {width < widths.sm ? (
+      {width < sizes.sm || height < sizes.sm ? (
         <ModalSelect
           open={otherProps.open}
           onClose={() => onClose?.()}
