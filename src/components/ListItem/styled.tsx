@@ -44,28 +44,27 @@ export const Styled = styled.button`
   ${({ disabled: isDisabled }) => isDisabled && disabled};
 `;
 
-export const Content = styled.div`
-  flex: 1;
+export const ContentContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex: 1 1 auto;
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   height: 100%;
 `;
 
-export const Value = styled.span`
-  margin-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  color: ${({ theme }) => theme.honeycomb.color.text.masked};
+export const Content = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: left;
 `;
 
-export const LeftContainer = styled.div`
+export const Left = styled.div`
   margin-right: ${({ theme }) => em(theme.honeycomb.size.small)};
 `;
 
-export const RightContainer = styled.div`
+export const Right = styled.div`
   margin-left: ${({ theme }) => em(theme.honeycomb.size.small)};
 `;
