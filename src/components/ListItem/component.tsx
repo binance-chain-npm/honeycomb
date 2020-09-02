@@ -10,23 +10,25 @@ import { Styled, ContentContainer, Content, Left, Right } from './styled';
 export type ListItemBaseProps = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> & {
   htmlTag?: HtmlTag;
   isSelected?: boolean;
+  showHoverEffect?: boolean;
+  showBorder?: boolean;
+  showCaretRight?: boolean;
+  left?: React.ReactNode;
+  right?: React.ReactNode;
 };
 
-export type Props = ListItemBaseProps &
-  Testable & {
-    left?: React.ReactNode;
-    right?: React.ReactNode;
-    showCaretRight?: boolean;
-  };
+export type Props = ListItemBaseProps & Testable;
 
 export const Component = ({
+  htmlTag,
+  isSelected = false,
+  showHoverEffect = true,
+  showBorder = true,
+  showCaretRight = false,
   children,
   disabled,
-  htmlTag,
   left,
   right,
-  showCaretRight = false,
-  isSelected = false,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -34,7 +36,14 @@ export const Component = ({
   const theme = useTheme();
 
   return (
-    <Styled {...otherProps} as={htmlTag as any} data-testid={buildTestId()} disabled={disabled}>
+    <Styled
+      {...otherProps}
+      as={htmlTag as any}
+      data-testid={buildTestId()}
+      disabled={disabled}
+      showHoverEffect={showHoverEffect}
+      showBorder={showBorder}
+    >
       {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
       <ContentContainer data-testid={buildTestId('content')}>
         <Content>{children}</Content>

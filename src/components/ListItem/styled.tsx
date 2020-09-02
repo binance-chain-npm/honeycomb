@@ -10,12 +10,10 @@ const disabled = css`
   pointer-events: none;
 `;
 
-export const Styled = styled.button`
+export const Styled = styled.button<{ showHoverEffect: boolean; showBorder: boolean }>`
   ${styleless};
   ${boxSizing};
-  ${hoverEffect};
 
-  cursor: pointer;
   height: ${em(60)};
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.normal)};
   display: flex;
@@ -23,7 +21,6 @@ export const Styled = styled.button`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
   width: 100%;
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
 
@@ -42,6 +39,17 @@ export const Styled = styled.button`
   }
 
   ${({ disabled: isDisabled }) => isDisabled && disabled};
+  ${({ showHoverEffect }) =>
+    showHoverEffect &&
+    css`
+      cursor: pointer;
+      ${hoverEffect};
+    `};
+  ${({ showBorder }) =>
+    showBorder &&
+    css`
+      border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+    `};
 `;
 
 export const ContentContainer = styled.div`
