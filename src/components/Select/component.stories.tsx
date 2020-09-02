@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
+import { ListItem } from '../ListItem';
 
 // @ts-ignore
 import pic from './pic.png';
@@ -66,13 +68,6 @@ const data: Array<Option> = [
   },
 ];
 
-const renderOption = (option: Option) => (
-  <>
-    <option.icon />
-    <span style={{ marginLeft: '1em' }}>{option.label}</span>
-  </>
-);
-
 export const Default = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Option>();
@@ -83,7 +78,7 @@ export const Default = () => {
     return (
       <>
         <span style={{ marginRight: '1em' }}>You have selected:</span>
-        {renderOption(selected)}
+        {selected.label}
       </>
     );
   };
@@ -107,14 +102,21 @@ export const Default = () => {
             searchAs={it.label}
             isSelected={selected?.label === it.label}
             data-testid={`${index}`}
+            left={<it.icon />}
           >
-            {renderOption(it)}
+            {it.label}
           </Select.Option>
         ))}
       </Select>
     </>
   );
 };
+
+const StyledSelectOption = styled(Select.Option)`
+  ${ListItem.Content} {
+    height: 100%;
+  }
+`;
 
 export const Behaviour = () => {
   const [open, setOpen] = useState(false);
@@ -126,14 +128,15 @@ export const Behaviour = () => {
         Show
       </Button>
       <Select data-testid="select" title="A Title" open={open} onClose={() => setOpen(false)}>
-        <Select.Option
+        <StyledSelectOption
           searchAs={['my photo', 'A crazy item']}
           isSelected={selected === 'photo'}
           onClick={() => setSelected('photo')}
           data-testid="photo"
+          htmlTag="div"
         >
-          <img src={pic} alt="" style={{ maxHeight: '100%' }} />
-        </Select.Option>
+          <img src={pic} height="100%" />
+        </StyledSelectOption>
         {data.map((it, index) => (
           <Select.Option
             key={index}
@@ -141,8 +144,9 @@ export const Behaviour = () => {
             isSelected={selected === it.label}
             onClick={() => setSelected(it.label)}
             data-testid={`${index}`}
+            left={<it.icon />}
           >
-            {renderOption(it)}
+            {it.label}
           </Select.Option>
         ))}
       </Select>

@@ -25,6 +25,5 @@ export const Options = styled.div`
 
 export const OptionsContainer = styled(Card)`
   margin: 0 ${({ theme }) => em(theme.honeycomb.radius.increased)};
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
 `;

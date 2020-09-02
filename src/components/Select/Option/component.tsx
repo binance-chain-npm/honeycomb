@@ -4,17 +4,14 @@ import { useBuildTestId } from '../../../modules/test-ids';
 import { ListItem } from '../../ListItem';
 import { SelectContext } from '../context';
 
-import { Option } from './styled';
-
 export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & {
   searchAs: string | string[];
 };
 
 export const Component = ({
-  'data-testid': testId,
   children,
   onClick,
-  htmlTag,
+  'data-testid': testId,
   ...otherProps
 }: Props) => {
   const { onClose, testId: parentTestId } = useContext(SelectContext);
@@ -35,9 +32,9 @@ export const Component = ({
   );
 
   return (
-    <Option {...otherProps} onClick={click} data-testid={buildTestId()}>
+    <ListItem {...otherProps} onClick={click} data-testid={buildTestId()}>
       {children}
-    </Option>
+    </ListItem>
   );
 };
 
