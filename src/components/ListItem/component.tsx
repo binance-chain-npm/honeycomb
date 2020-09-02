@@ -7,22 +7,25 @@ import { Icon } from '../Icon';
 
 import { Styled, ContentContainer, Content, Left, Right } from './styled';
 
-export type ListItemBaseProps = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> & {
-  htmlTag?: HtmlTag;
+export type ListItemBaseProps = {
   isSelected?: boolean;
-  showHoverEffect?: boolean;
+  isInteractive?: boolean;
   showBorder?: boolean;
   showCaretRight?: boolean;
   left?: React.ReactNode;
   right?: React.ReactNode;
 };
 
-export type Props = ListItemBaseProps & Testable;
+export type Props = ListItemBaseProps &
+  Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
+  Testable & {
+    htmlTag?: HtmlTag;
+  };
 
 export const Component = ({
   htmlTag,
   isSelected = false,
-  showHoverEffect = true,
+  isInteractive = true,
   showBorder = true,
   showCaretRight = false,
   children,
@@ -39,10 +42,10 @@ export const Component = ({
     <Styled
       {...otherProps}
       as={htmlTag as any}
-      data-testid={buildTestId()}
       disabled={disabled}
-      showHoverEffect={showHoverEffect}
+      isInteractive={isInteractive}
       showBorder={showBorder}
+      data-testid={buildTestId()}
     >
       {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
       <ContentContainer data-testid={buildTestId('content')}>

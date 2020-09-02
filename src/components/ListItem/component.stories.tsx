@@ -59,8 +59,8 @@ export const Default = () => (
     >
       0x77f2f5db2f2195b5461a0a7504b3acbac7ff9bad
     </ListItem>
-    <ListItem showHoverEffect={false} htmlTag="div">
-      No hover effect
+    <ListItem isInteractive={false} htmlTag="div">
+      Non-interactive
     </ListItem>
     <ListItem showBorder={false}>No border</ListItem>
   </>

@@ -33,7 +33,7 @@ export const WithHelpers = () => {
         Disabled accent item
       </Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item isNonInteractive>Non-interactive item</Dropdown.Item>
+      <Dropdown.Item isInteractive={false}>Non-interactive item</Dropdown.Item>
     </Dropdown>
   );
 };
