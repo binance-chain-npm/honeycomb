@@ -135,7 +135,7 @@ export const Behaviour = () => {
           data-testid="photo"
           htmlTag="div"
         >
-          <img src={pic} height="100%" />
+          <img src={pic} alt="" height="100%" />
         </StyledSelectOption>
         {data.map((it, index) => (
           <Select.Option
