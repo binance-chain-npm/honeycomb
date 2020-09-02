@@ -30,7 +30,7 @@ export const ContentContainer = styled.div`
   color: ${({ theme }) =>
     theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.normal)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
   box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
   overflow: hidden;
 `;
