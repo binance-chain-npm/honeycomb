@@ -20,7 +20,7 @@ export const Container = styled.div`
 
 export const CryptoAddress = styled.span`
   background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
-  border-radius: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.reduced)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
   height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
   line-height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)};
