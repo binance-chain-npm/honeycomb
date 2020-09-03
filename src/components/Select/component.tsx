@@ -70,7 +70,7 @@ export const Component = ({
 
         return false;
       }),
-    [children, filterableChildren, lowerCaseSearch],
+    [filterableChildren, lowerCaseSearch],
   );
 
   const isFilterable = useMemo(() => filterableChildren.length > 0, [filterableChildren]);
