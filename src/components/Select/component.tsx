@@ -32,11 +32,31 @@ export const Component = ({
 
   const lowerCaseSearch = useMemo(() => search.toLowerCase(), [search]);
 
+  const filterableChildren = useMemo(() => {
+    let hasError = false;
+
+    const res = React.Children.toArray(children).flatMap((it) => {
+      if (React.isValidElement<{ searchAs: string[] | string }>(it)) {
+        if (it.props.searchAs && it.props.searchAs.length > 0) {
+          return [it];
+        }
+
+        hasError = true;
+      }
+
+      return [];
+    });
+
+    if (process.env.NODE_ENV !== 'production' && hasError) {
+      console.error('Select has filterable children with an invalid "searchAs" prop');
+    }
+
+    return res;
+  }, [children]);
+
   const filteredResults = useMemo(
     () =>
-      React.Children.toArray(children).filter((it) => {
-        if (!React.isValidElement<{ searchAs: string[] | string }>(it)) return false;
-
+      filterableChildren.filter((it) => {
         const { searchAs } = it.props;
         if (!searchAs) return false;
 
@@ -50,22 +70,30 @@ export const Component = ({
 
         return false;
       }),
-    [children, lowerCaseSearch],
+    [filterableChildren, lowerCaseSearch],
   );
+
+  const isFilterable = useMemo(() => filterableChildren.length > 0, [filterableChildren]);
 
   return (
     <DropdownSelect {...otherProps} data-testid={buildTestId()}>
       <Container>
-        <Card position="top">
-          <Search>
-            <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
-          </Search>
-        </Card>
+        {isFilterable && (
+          <Card position="top">
+            <Search>
+              <TextInput
+                value={search}
+                onChange={updateSearch}
+                data-testid={buildTestId('input')}
+              />
+            </Search>
+          </Card>
+        )}
         <Space size="normal" />
         {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
         <Space size="normal" />
         <OptionsContainer position="bottom">
-          <Options>{filteredResults}</Options>
+          <Options>{isFilterable ? filteredResults : children}</Options>
         </OptionsContainer>
       </Container>
     </DropdownSelect>

@@ -7,18 +7,14 @@ import { Icon } from '../Icon';
 
 import { Styled, ContentContainer, Content, Left, Right } from './styled';
 
-export type ListItemBaseProps = {
-  isSelected?: boolean;
-  isInteractive?: boolean;
-  showBorder?: boolean;
-  showCaretRight?: boolean;
-  left?: React.ReactNode;
-  right?: React.ReactNode;
-};
-
-export type Props = ListItemBaseProps &
-  Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
+export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
   Testable & {
+    isSelected?: boolean;
+    isInteractive?: boolean;
+    showBorder?: boolean;
+    showCaretRight?: boolean;
+    left?: React.ReactNode;
+    right?: React.ReactNode;
     htmlTag?: HtmlTag;
   };
 
