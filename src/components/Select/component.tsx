@@ -13,13 +13,14 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     title?: React.ReactNode;
     optionsTitle?: React.ReactNode;
     open: boolean;
+    target: React.ReactNode;
     onClose?: () => void;
   };
 
 export const Component = ({
-  'data-testid': testId,
   children,
   optionsTitle,
+  'data-testid': testId,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
 import { useWindowSize, sizes } from '../../../internal/useWindowSize';
@@ -11,14 +11,16 @@ import { StyledContent } from './styled';
 
 export type Props = Omit<React.ComponentProps<typeof Select>, 'variant'>;
 
-export const Component = ({ 'data-testid': testId, onClose, ...otherProps }: Props) => {
+export const Component = ({ target, onClose, 'data-testid': testId, ...otherProps }: Props) => {
   const context = useMemo(() => ({ onClose, testId }), [onClose, testId]);
   const buildTestId = useBuildTestId(testId);
+  const targetRef = useRef<HTMLDivElement>(null);
 
   const { width, height } = useWindowSize();
 
   return (
     <>
+      <div ref={targetRef}>{target}</div>
       {width < sizes.sm || height < sizes.sm ? (
         <ModalSelect
           open={otherProps.open}
@@ -35,8 +37,8 @@ export const Component = ({ 'data-testid': testId, onClose, ...otherProps }: Pro
             interactive={true}
             arrow={false}
             content={<StyledContent>{otherProps.children}</StyledContent>}
-            onClickContent={() => onClose?.()}
             visible={otherProps.open}
+            reference={targetRef}
             data-testid={buildTestId('dropdown')}
           />
         </SelectContext.Provider>
