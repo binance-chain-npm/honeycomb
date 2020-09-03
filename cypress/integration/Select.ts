@@ -71,4 +71,20 @@ describe('Select', () => {
 
     cy.percySnapshot('Select while open with option selected');
   });
+
+  it('search input not rendered when children are not filterable', () => {
+    cy.clock();
+    cy.visitStory({ storyId: 'elements-select--non-filterable', themeId: 'GoldLight' });
+    cy.tick(10000);
+
+    cy.get('[data-testid="select"]').click();
+    cy.tick(10000);
+
+    cy.get('[data-testid="select.input.native-input"]').should('not.exist');
+
+    cy.get('[data-testid="div"]').should('be.visible');
+    new Array(5).fill(null).forEach((_, index) => {
+      cy.get(`[data-testid="select.modal.item.${index}"]`).should('be.visible');
+    });
+  });
 });

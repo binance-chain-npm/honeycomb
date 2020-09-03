@@ -154,3 +154,31 @@ export const Behaviour = () => {
     </>
   );
 };
+
+export const NonFilterable = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Select
+        data-testid="select"
+        title="A Title"
+        optionsTitle="Options"
+        open={open}
+        onClose={() => setOpen(false)}
+        target={
+          <Select.DefaultTarget onClick={() => setOpen((value) => !value)} data-testid="select">
+            Select an option...
+          </Select.DefaultTarget>
+        }
+      >
+        <div data-testid="div">Some non-filterable element</div>
+        {new Array(5).fill(null).map((_, index) => (
+          <Select.Option key={index} searchAs="" data-testid={`${index}`}>
+            {index}
+          </Select.Option>
+        ))}
+      </Select>
+    </>
+  );
+};
