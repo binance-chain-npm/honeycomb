@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const widths = {
+export const sizes = {
   xs: 0,
   sm: 600,
   md: 960,
@@ -9,16 +9,21 @@ export const widths = {
 } as const;
 
 const getWidth = () => (typeof window === 'undefined' ? 0 : window.innerWidth);
+const getHeight = () => (typeof window === 'undefined' ? 0 : window.innerHeight);
 
-export const useWindowWidth = () => {
+export const useWindowSize = () => {
   let [width, setWidth] = useState(getWidth());
+  let [height, setHeight] = useState(getHeight());
 
   useEffect(() => {
     let timeoutId: number | undefined = undefined;
 
     const resizeListener = () => {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => setWidth(getWidth()), 150);
+      timeoutId = setTimeout(() => {
+        setWidth(getWidth());
+        setHeight(getHeight());
+      }, 150);
     };
 
     window.addEventListener('resize', resizeListener);
@@ -26,5 +31,5 @@ export const useWindowWidth = () => {
     return () => window.removeEventListener('resize', resizeListener);
   }, []);
 
-  return width;
+  return { width, height };
 };

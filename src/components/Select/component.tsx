@@ -55,7 +55,7 @@ export const Component = ({
   return (
     <DropdownSelect {...otherProps} data-testid={buildTestId()}>
       <Container>
-        <Card>
+        <Card position="top">
           <Search>
             <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
           </Search>

@@ -1,7 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+import { em } from 'polished';
 
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
+import { SolidAvatar } from '../SolidAvatar';
 
 import { ListItem } from './';
 
@@ -10,14 +13,21 @@ export default {
   title: `${Sections.Elements}/ListItem`,
 };
 
+const StyledListItem = styled(ListItem)`
+  ${ListItem.Right} {
+    font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+    color: ${({ theme }) => theme.honeycomb.color.text.masked};
+  }
+`;
+
 export const Default = () => (
   <>
-    <ListItem rightValue="a value" showCaretRight>
+    <StyledListItem right="a value" showCaretRight>
       With caret pointing right
-    </ListItem>
-    <ListItem rightValue="a value" showCaretRight disabled>
+    </StyledListItem>
+    <StyledListItem right="a value" showCaretRight disabled>
       Disabled
-    </ListItem>
+    </StyledListItem>
     <ListItem isSelected>Selected</ListItem>
     <ListItem
       left={
@@ -35,5 +45,23 @@ export const Default = () => (
         Custom
       </Button>
     </ListItem>
+    <ListItem
+      left={
+        <div style={{ fontSize: '2em' }}>
+          <SolidAvatar value="a" initial="a" />
+        </div>
+      }
+      right={
+        <Button variant="secondary" size="increased" shape="fit">
+          Right
+        </Button>
+      }
+    >
+      0x77f2f5db2f2195b5461a0a7504b3acbac7ff9bad
+    </ListItem>
+    <ListItem isInteractive={false} htmlTag="div">
+      Non-interactive
+    </ListItem>
+    <ListItem showBorder={false}>No border</ListItem>
   </>
 );
