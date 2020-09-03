@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Sections } from '../../modules/sections';
-import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { ListItem } from '../ListItem';
 
@@ -72,28 +71,23 @@ export const Default = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Option>();
 
-  const renderSelected = () => {
-    if (!selected) return 'Select an option...';
-
-    return (
-      <>
-        <span style={{ marginRight: '1em' }}>You have selected:</span>
-        {selected.label}
-      </>
-    );
-  };
-
   return (
     <>
-      <Button variant="transparent" onClick={() => setOpen((value) => !value)} data-testid="select">
-        {renderSelected()}
-      </Button>
       <Select
         data-testid="select"
         title="A Title"
         optionsTitle="Options"
         open={open}
         onClose={() => setOpen(false)}
+        target={
+          <Select.DefaultTarget
+            onClick={() => setOpen((value) => !value)}
+            left={selected ? <selected.icon /> : undefined}
+            data-testid="select"
+          >
+            {selected ? selected.label : 'Select an option...'}
+          </Select.DefaultTarget>
+        }
       >
         {data.map((it, index) => (
           <Select.Option
@@ -124,10 +118,17 @@ export const Behaviour = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setOpen(true)} data-testid="open-btn">
-        Show
-      </Button>
-      <Select data-testid="select" title="A Title" open={open} onClose={() => setOpen(false)}>
+      <Select
+        data-testid="select"
+        title="A Title"
+        open={open}
+        onClose={() => setOpen(false)}
+        target={
+          <Select.DefaultTarget onClick={() => setOpen((value) => !value)} data-testid="select">
+            {selected ? selected : 'Select an option...'}
+          </Select.DefaultTarget>
+        }
+      >
         <StyledSelectOption
           searchAs={['my photo', 'A crazy item']}
           isSelected={selected === 'photo'}

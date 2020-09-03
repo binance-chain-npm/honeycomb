@@ -24,11 +24,6 @@ export const Styled = styled.button<{ isInteractive: boolean; showBorder: boolea
   width: 100%;
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
 
-  :focus,
-  :focus-within {
-    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary.normal};
-  }
-
   :hover,
   :active {
     text-decoration: none;
@@ -70,9 +65,11 @@ export const Content = styled.div`
 `;
 
 export const Left = styled.div`
+  display: flex;
   margin-right: ${({ theme }) => em(theme.honeycomb.size.small)};
 `;
 
 export const Right = styled.div`
+  display: flex;
   margin-left: ${({ theme }) => em(theme.honeycomb.size.small)};
 `;

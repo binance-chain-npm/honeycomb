@@ -37,7 +37,7 @@ describe('Select', () => {
     cy.visitStory({ storyId: 'elements-select--behaviour', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="open-btn"]').click();
+    cy.get('[data-testid="select"]').click();
     cy.tick(10000);
 
     cy.get('[data-testid="select.modal.item.0"]').should('be.visible');
@@ -63,7 +63,7 @@ describe('Select', () => {
 
     cy.get('[data-testid="select.modal.box"]').should('not.exist');
 
-    cy.get('[data-testid="open-btn"]').click();
+    cy.get('[data-testid="select"]').click();
     cy.tick(10000);
 
     cy.get('[data-testid="select.modal.box"]').should('be.visible');
