@@ -19,7 +19,7 @@ export const Component = ({
 
   return (
     <DefaultTarget onClick={onClick} data-testid={buildTestId()}>
-      <StyledListItem {...otherProps} showBorder={false} isInteractive={false} showCaretRight>
+      <StyledListItem showCaretRight showBorder={false} isInteractive={false} {...otherProps}>
         {children}
       </StyledListItem>
     </DefaultTarget>
