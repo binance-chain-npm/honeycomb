@@ -1,36 +1,28 @@
 import React from 'react';
 
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
+import { DefaultTarget } from '../../internal/DefaultTarget';
 import { ListItem } from '../../ListItem';
-import { Button } from '../../Button';
 
-import { StyledButton, StyledListItem } from './styled';
+import { StyledListItem } from './styled';
 
-export type Props = Pick<React.ComponentPropsWithoutRef<typeof Button>, 'shape'> &
-  React.ComponentPropsWithoutRef<typeof ListItem> &
-  Testable;
+export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & Testable;
 
 export const Component = ({
   children,
   shape,
-  'data-testid': testId,
   onClick,
+  'data-testid': testId,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
   return (
-    <StyledButton variant="secondary" shape={shape} onClick={onClick}>
-      <StyledListItem
-        {...otherProps}
-        showBorder={false}
-        isInteractive={false}
-        showCaretRight
-        data-testid={buildTestId()}
-      >
+    <DefaultTarget onClick={onClick} data-testid={buildTestId()}>
+      <StyledListItem {...otherProps} showBorder={false} isInteractive={false} showCaretRight>
         {children}
       </StyledListItem>
-    </StyledButton>
+    </DefaultTarget>
   );
 };
 
