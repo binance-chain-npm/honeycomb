@@ -6,10 +6,16 @@ import { Space } from '../Space';
 import { TextInput } from '../TextInput';
 
 import { DropdownSelect } from './variant/DropdownSelect';
+import { ModalSelect } from './variant/ModalSelect';
+import { ResponsiveSelect } from './variant/ResponsiveSelect';
 import { Container, OptionsContainer, Search, Options, OptionsTitle } from './styled';
+
+export const variants = ['responsive', 'dropdown', 'modal'] as const;
+export type Variant = typeof variants[number];
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Testable & {
+    variant?: Variant;
     title?: React.ReactNode;
     optionsTitle?: React.ReactNode;
     open: boolean;
@@ -18,6 +24,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   };
 
 export const Component = ({
+  variant = 'responsive',
   children,
   optionsTitle,
   'data-testid': testId,
@@ -75,29 +82,44 @@ export const Component = ({
 
   const isFilterable = useMemo(() => filterableChildren.length > 0, [filterableChildren]);
 
-  return (
-    <DropdownSelect {...otherProps} data-testid={buildTestId()}>
-      <Container>
-        {isFilterable && (
-          <Card position="top">
-            <Search>
-              <TextInput
-                value={search}
-                onChange={updateSearch}
-                data-testid={buildTestId('input')}
-              />
-            </Search>
-          </Card>
-        )}
-        <Space size="normal" />
-        {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
-        <Space size="normal" />
-        <OptionsContainer position="bottom">
-          <Options>{isFilterable ? filteredResults : children}</Options>
-        </OptionsContainer>
-      </Container>
-    </DropdownSelect>
+  const content = (
+    <Container>
+      {isFilterable && (
+        <Card position="top">
+          <Search>
+            <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
+          </Search>
+        </Card>
+      )}
+      <Space size="normal" />
+      {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
+      <Space size="normal" />
+      <OptionsContainer position="bottom">
+        <Options>{isFilterable ? filteredResults : children}</Options>
+      </OptionsContainer>
+    </Container>
   );
+
+  switch (variant) {
+    case 'dropdown':
+      return (
+        <DropdownSelect {...otherProps} data-testid={buildTestId()}>
+          {content}
+        </DropdownSelect>
+      );
+    case 'modal':
+      return (
+        <ModalSelect {...otherProps} data-testid={buildTestId()}>
+          {content}
+        </ModalSelect>
+      );
+    default:
+      return (
+        <ResponsiveSelect {...otherProps} data-testid={buildTestId()}>
+          {content}
+        </ResponsiveSelect>
+      );
+  }
 };
 
 Component.displayName = 'Select';
