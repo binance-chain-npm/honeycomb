@@ -10,10 +10,6 @@ describe('Select variant="responsive', () => {
     cy.get('[data-testid="select.modal.content"]').should('be.visible');
     cy.get('[data-testid="select.dropdown.content"]').should('not.exist');
 
-    cy.get('[data-testid="select.modal.item.0"]').should('be.visible');
-    cy.get('[data-testid="select.modal.item.1"]').should('be.visible');
-    cy.get('[data-testid="select.modal.item.2"]').should('be.visible');
-
     cy.percySnapshot('Select while open on a small device');
   });
 
