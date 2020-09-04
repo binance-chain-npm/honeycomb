@@ -67,7 +67,7 @@ const data: Array<Option> = [
   },
 ];
 
-export const Default = () => {
+export const Responsive = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Option>();
 
@@ -106,13 +106,53 @@ export const Default = () => {
   );
 };
 
+export const Dropdown = () => {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState<Option>();
+
+  return (
+    <>
+      <Select
+        data-testid="select"
+        variant="dropdown"
+        title="A Title"
+        optionsTitle="Options"
+        open={open}
+        onClose={() => setOpen(false)}
+        target={
+          <Select.DefaultTarget
+            onClick={() => setOpen((value) => !value)}
+            left={selected ? <selected.icon /> : undefined}
+            data-testid="select"
+          >
+            {selected ? selected.label : 'Select an option...'}
+          </Select.DefaultTarget>
+        }
+      >
+        {data.map((it, index) => (
+          <Select.Option
+            key={index}
+            onClick={() => setSelected(it)}
+            searchAs={it.label}
+            isSelected={selected?.label === it.label}
+            data-testid={`${index}`}
+            left={<it.icon />}
+          >
+            {it.label}
+          </Select.Option>
+        ))}
+      </Select>
+    </>
+  );
+};
+
 const StyledSelectOption = styled(Select.Option)`
   ${ListItem.Content} {
     height: 100%;
   }
 `;
 
-export const Behaviour = () => {
+export const Modal = () => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState('Add');
 
@@ -120,6 +160,7 @@ export const Behaviour = () => {
     <>
       <Select
         data-testid="select"
+        variant="modal"
         title="A Title"
         open={open}
         onClose={() => setOpen(false)}
