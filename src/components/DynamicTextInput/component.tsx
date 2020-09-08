@@ -10,7 +10,7 @@ export type Props = Testable & {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Component = ({ value, onChange, 'data-testid': testId, ...otherProps }: Props) => {
+export const Component = ({ className, value, onChange, 'data-testid': testId }: Props) => {
   const [scale, setScale] = useState(1);
 
   const spanRef = useRef<HTMLSpanElement>(null);
@@ -42,8 +42,8 @@ export const Component = ({ value, onChange, 'data-testid': testId, ...otherProp
   );
 
   return (
-    <Container>
-      <Input {...otherProps} data-testid={testId} value={value} onChange={change} scale={scale} />
+    <Container className={className}>
+      <Input data-testid={testId} value={value} onChange={change} scale={scale} />
       <Text ref={spanRef} scale={scale}>
         {value}
       </Text>
