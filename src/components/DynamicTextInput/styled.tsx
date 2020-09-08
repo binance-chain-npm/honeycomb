@@ -1,27 +1,34 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { styleless } from '../Styleless';
+import { boxSizing } from '../../modules/box-sizing';
 
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  min-height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
-  padding: 0 ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+export const Container = styled.div<{ scale: number }>`
+  ${boxSizing};
 
-  background: green;
+  overflow: hidden;
 `;
 
-export const Input = styled.input<{ length: number }>`
-  ${styleless};
+const baseStyles = css`
+  font-size: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+`;
 
-  width: ${({ length }) => `${length}ch`};
-  font-size: ${({ theme, length }) =>
-    `max(min(${100 / length}vw, ${em(
-      theme.honeycomb.size.huge,
-      theme.honeycomb.size.reduced,
-    )}), ${em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)})`};
-  background: pink;
+export const Text = styled.span`
+  ${baseStyles};
+
+  display: inline-block;
+  white-space: nowrap;
+  transform-origin: 0 50% 0;
+  // height: 0;
+  // overflow: hidden;
+`;
+
+export const Input = styled.input<{ scale: number }>`
+  ${styleless};
+  ${baseStyles};
+
+  width: 100%;
+  font-size: ${({ theme, scale }) =>
+    `calc(${em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)} * ${scale})`};
 `;
