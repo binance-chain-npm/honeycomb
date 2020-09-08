@@ -9,12 +9,13 @@ export default {
 };
 
 export const Text = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('Some really really really long text');
   return (
-    <DynamicTextInput
-      value={value}
-      onChange={(evt) => setValue(evt.target.value)}
-      description="The font size in this input shrinks as the input grows."
-    />
+    <div>
+      <DynamicTextInput
+        value={value}
+        onChange={(evt) => setValue(evt.target.value)}
+      />
+    </div>
   );
 };
