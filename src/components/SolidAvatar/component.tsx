@@ -14,7 +14,7 @@ export type Props = Testable & {
   className?: string;
 };
 
-const style = {
+const style: React.CSSProperties = {
   fontStyle: 'normal',
   fontSize: '14px',
   fontFamily,
