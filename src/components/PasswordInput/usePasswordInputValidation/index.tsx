@@ -4,7 +4,6 @@ import { Icon } from '../../Icon';
 import { TextInput } from '../../TextInput';
 import { ValidationMessage } from '../../internal/ValidationMessage';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
-
 import { Label } from '../styled';
 
 export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
