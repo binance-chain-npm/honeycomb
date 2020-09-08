@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 
 import { Testable } from '../../modules/test-ids';
 
@@ -30,39 +30,23 @@ export const Component = ({ value, onChange, 'data-testid': testId, ...otherProp
     }
   }, [value]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fixWidth();
   }, [fixWidth]);
 
   const change = useCallback<NonNullable<Props['onChange']>>(
     (evt) => {
       onChange?.(evt);
-      fixWidth();
     },
-    [fixWidth, onChange],
+    [onChange],
   );
 
-  let scaleStyle;
-  if (scale === 1) {
-    scaleStyle = undefined;
-  } else {
-    const transform = `scale(${scale})`;
-    scaleStyle = {
-      transform: transform,
-      msTransform: transform,
-      WebkitTransform: transform,
-      OTransform: transform,
-      MozTransform: transform,
-    };
-  }
-  console.log(scale);
-
   return (
-    <Container scale={scale}>
-      <Text style={{ ...scaleStyle }} ref={spanRef}>
+    <Container>
+      <Input {...otherProps} data-testid={testId} value={value} onChange={change} scale={scale} />
+      <Text ref={spanRef} scale={scale}>
         {value}
       </Text>
-      <Input {...otherProps} data-testid={testId} value={value} onChange={change} scale={scale} />
     </Container>
   );
 };

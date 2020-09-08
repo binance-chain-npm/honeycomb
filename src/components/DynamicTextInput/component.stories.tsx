@@ -8,14 +8,7 @@ export default {
   title: `${Sections.Inputs}/DynamicTextInput`,
 };
 
-export const Text = () => {
+export const Default = () => {
   const [value, setValue] = useState('Some really really really long text');
-  return (
-    <div>
-      <DynamicTextInput
-        value={value}
-        onChange={(evt) => setValue(evt.target.value)}
-      />
-    </div>
-  );
+  return <DynamicTextInput value={value} onChange={(evt) => setValue(evt.target.value)} />;
 };
