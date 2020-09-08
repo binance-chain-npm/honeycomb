@@ -5,9 +5,11 @@ import { TextInput } from '../../TextInput';
 import { ValidationMessage } from '../../internal/ValidationMessage';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 
+import { Label } from '../styled';
+
 export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
   Testable & {
-    minLenght?: number;
+    minLength?: number;
     mustHaveUpperCase?: boolean;
     mustHaveSymbol?: boolean;
     mustHaveDigit?: boolean;
@@ -15,7 +17,7 @@ export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
 
 export const usePasswordInputValidation = ({
   value,
-  minLenght = 8,
+  minLength = 8,
   mustHaveDigit = true,
   mustHaveSymbol = true,
   mustHaveUpperCase = true,
@@ -36,11 +38,11 @@ export const usePasswordInputValidation = ({
       return;
     }
 
-    setIsLongEnough(value.length >= minLenght);
+    setIsLongEnough(value.length >= minLength);
     setHasUpperCase(/[A-Z]/.test(value));
     setHasSymbol(/[^a-z0-9]/i.test(value));
     setHasDigit(/[0-9]/.test(value));
-  }, [value, minLenght]);
+  }, [value, minLength]);
 
   const isValid = useMemo(() => {
     if (mustHaveDigit && !hasDigit) return false;
@@ -60,53 +62,53 @@ export const usePasswordInputValidation = ({
   const validationMessages: ValidationMessage[] = [
     {
       label: (
-        <TextInput.Label data-testid={buildTestId('error-length')}>
+        <Label data-testid={buildTestId('error-length')}>
           {!isLongEnough ? (
             <Icon.CircledCross data-testid={buildTestId('error-length-ic-cross')} />
           ) : (
             <Icon.CircledTick data-testid={buildTestId('error-length-ic-tick')} />
           )}
           &nbsp;8 or more characters.
-        </TextInput.Label>
+        </Label>
       ),
       state: !isLongEnough ? 'danger' : 'success',
     },
     {
       label: (
-        <TextInput.Label data-testid={buildTestId('error-upper-case')}>
+        <Label data-testid={buildTestId('error-upper-case')}>
           {mustHaveUpperCase && !hasUpperCase ? (
             <Icon.CircledCross data-testid={buildTestId('error-upper-case-ic-cross')} />
           ) : (
             <Icon.CircledTick data-testid={buildTestId('error-upper-case-ic-tick')} />
           )}
           &nbsp;At least one upper case character.
-        </TextInput.Label>
+        </Label>
       ),
       state: mustHaveUpperCase && !hasUpperCase ? 'danger' : 'success',
     },
     {
       label: (
-        <TextInput.Label data-testid={buildTestId('error-digit')}>
+        <Label data-testid={buildTestId('error-digit')}>
           {mustHaveDigit && !hasDigit ? (
             <Icon.CircledCross data-testid={buildTestId('error-digit-ic-cross')} />
           ) : (
             <Icon.CircledTick data-testid={buildTestId('error-digit-ic-tick')} />
           )}
           &nbsp;At least one digit.
-        </TextInput.Label>
+        </Label>
       ),
       state: mustHaveDigit && !hasDigit ? 'danger' : 'success',
     },
     {
       label: (
-        <TextInput.Label data-testid={buildTestId('error-symbol')}>
+        <Label data-testid={buildTestId('error-symbol')}>
           {mustHaveSymbol && !hasSymbol ? (
             <Icon.CircledCross data-testid={buildTestId('error-symbol-ic-cross')} />
           ) : (
             <Icon.CircledTick data-testid={buildTestId('error-symbol-ic-tick')} />
           )}
           &nbsp;At least one symbol.
-        </TextInput.Label>
+        </Label>
       ),
       state: mustHaveSymbol && !hasSymbol ? 'danger' : 'success',
     },
