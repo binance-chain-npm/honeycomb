@@ -9,6 +9,13 @@ export default {
 };
 
 export const Default = () => {
-  const [value, setValue] = useState('Some really really really long text');
-  return <DynamicTextInput value={value} onChange={(evt) => setValue(evt.target.value)} />;
+  const [value, setValue] = useState('Some text...');
+
+  return (
+    <DynamicTextInput
+      value={value}
+      onChange={(evt) => setValue(evt.target.value)}
+      data-testid="input"
+    />
+  );
 };
