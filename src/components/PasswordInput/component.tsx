@@ -61,6 +61,3 @@ export const Component = ({
 };
 
 Component.displayName = 'PasswordInput';
-
-Component.Label = TextInput.Label;
-Component.Input = TextInput.Input;

@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import { Icon } from '../../Icon';
-import { Label } from '../styled';
 import { TextInput } from '../../TextInput';
 import { ValidationMessage } from '../../internal/ValidationMessage';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
+import { Label } from '../styled';
 
 export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
   Testable & {
-    minLenght?: number;
+    minLength?: number;
     mustHaveUpperCase?: boolean;
     mustHaveSymbol?: boolean;
     mustHaveDigit?: boolean;
@@ -16,7 +16,7 @@ export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
 
 export const usePasswordInputValidation = ({
   value,
-  minLenght = 8,
+  minLength = 8,
   mustHaveDigit = true,
   mustHaveSymbol = true,
   mustHaveUpperCase = true,
@@ -37,11 +37,11 @@ export const usePasswordInputValidation = ({
       return;
     }
 
-    setIsLongEnough(value.length >= minLenght);
+    setIsLongEnough(value.length >= minLength);
     setHasUpperCase(/[A-Z]/.test(value));
     setHasSymbol(/[^a-z0-9]/i.test(value));
     setHasDigit(/[0-9]/.test(value));
-  }, [value, minLenght]);
+  }, [value, minLength]);
 
   const isValid = useMemo(() => {
     if (mustHaveDigit && !hasDigit) return false;
