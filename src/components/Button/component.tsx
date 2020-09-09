@@ -26,6 +26,7 @@ export const Component = ({
   variant,
   size = 'huge',
   shape = 'fill',
+  type = 'button',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -60,6 +61,7 @@ export const Component = ({
       variant={variant}
       size={size}
       shape={shape}
+      type={type}
       onClick={click}
     >
       {children}
