@@ -49,7 +49,7 @@ const CustomTextInput = styled(TextInput)`
     color: #f8bbd0;
   }
 
-  ${TextInput.Input} {
+  ${TextInput.InputContainer} {
     background: #e8f5e9;
     color: #64b5f6;
 
