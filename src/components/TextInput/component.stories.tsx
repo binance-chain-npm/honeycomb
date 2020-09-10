@@ -85,7 +85,7 @@ export const Dynamic = () => {
             value={value}
             size={size}
             onChange={(evt) => setValue(evt.target.value)}
-            data-testid="input"
+            data-testid={`input-${size}`}
             dynamic
           />
         </div>

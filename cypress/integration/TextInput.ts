@@ -30,8 +30,8 @@ describe('TextInput', () => {
   it('<TextInput dynamic /> renders correctly', () => {
     cy.visitStory({ storyId: 'inputs-textinput--dynamic', themeId: 'GoldLight' });
 
-    cy.get('[data-testid="input.native-input"]').clear();
-    cy.get('[data-testid="input.native-input"]').type('Some really really really long text...');
+    cy.get('[data-testid="input-giant.native-input"]').clear();
+    cy.get('[data-testid="input-giant.native-input"]').type('Some really really really really really really long text...');
 
     cy.percySnapshot('<TextInput dynamic />', { widths: [375, 800] });
   });
