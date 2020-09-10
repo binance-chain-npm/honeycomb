@@ -1,47 +1,31 @@
 import React, { useContext } from 'react';
-import { useTheme } from 'styled-components';
 
-import { TestIdContext } from '../context';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
-import { HtmlTag } from '../../../modules/html-tag';
-import { Icon } from '../../Icon';
-import { Space } from '../../Space';
+import { ListItem } from '../../ListItem';
+import { TestIdContext } from '../context';
 
-import { Container, Variant } from './styled';
+import { StyledListItem, Variant } from './styled';
 
-export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> &
+export type Props = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'as'> &
   React.AnchorHTMLAttributes<HTMLAnchorElement> &
+  Omit<React.ComponentPropsWithoutRef<typeof ListItem>, 'showBorder'> &
   Testable & {
-    isSelected?: boolean;
-    isNonInteractive?: boolean;
     variant?: Variant;
-    htmlTag?: HtmlTag;
   };
 
-export const Component = ({
-  htmlTag = 'button',
-  variant = 'normal',
-  isNonInteractive = false,
-  isSelected = false,
-  ...otherProps
-}: Props) => {
-  const theme = useTheme();
+export const Component = ({ variant = 'normal', children, ...otherProps }: Props) => {
   const parentTestId = useContext(TestIdContext);
   const buildTestId = useBuildTestId(otherProps['data-testid'] ? parentTestId : undefined);
 
   return (
-    <Container
+    <StyledListItem
       {...otherProps}
-      isSelected={isSelected}
-      isNonInteractive={isNonInteractive}
+      showBorder={false}
       variant={variant}
-      as={htmlTag as any}
       data-testid={buildTestId(otherProps['data-testid'])}
     >
-      {otherProps.children}
-      <Space size="fill" />
-      {isSelected && <Icon.Tick color={theme.honeycomb.color.primary.normal} />}
-    </Container>
+      {children}
+    </StyledListItem>
   );
 };
 

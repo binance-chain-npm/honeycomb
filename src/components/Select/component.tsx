@@ -7,25 +7,27 @@ import { TextInput } from '../TextInput';
 
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
+import { ResponsiveSelect } from './variant/ResponsiveSelect';
 import { Container, OptionsContainer, Search, Options, OptionsTitle } from './styled';
+
+export const variants = ['responsive', 'dropdown', 'modal'] as const;
+export type Variant = typeof variants[number];
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Testable & {
-    variant?: React.ReactNode;
+    variant?: Variant;
     title?: React.ReactNode;
     optionsTitle?: React.ReactNode;
     open: boolean;
+    target: React.ReactNode;
     onClose?: () => void;
   };
 
-export const variants = ['dropdown', 'modal'] as const;
-export type Variant = typeof variants[number];
-
 export const Component = ({
-  'data-testid': testId,
-  variant = 'dropdown',
+  variant = 'responsive',
   children,
   optionsTitle,
+  'data-testid': testId,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -37,11 +39,31 @@ export const Component = ({
 
   const lowerCaseSearch = useMemo(() => search.toLowerCase(), [search]);
 
+  const filterableChildren = useMemo(() => {
+    let hasError = false;
+
+    const res = React.Children.toArray(children).flatMap((it) => {
+      if (React.isValidElement<{ searchAs: string[] | string }>(it)) {
+        if (it.props.searchAs && it.props.searchAs.length > 0) {
+          return [it];
+        }
+
+        hasError = true;
+      }
+
+      return [];
+    });
+
+    if (process.env.NODE_ENV !== 'production' && hasError) {
+      console.error('Select has filterable children with an invalid "searchAs" prop');
+    }
+
+    return res;
+  }, [children]);
+
   const filteredResults = useMemo(
     () =>
-      React.Children.toArray(children).filter((it) => {
-        if (!React.isValidElement<{ searchAs: string[] | string }>(it)) return false;
-
+      filterableChildren.filter((it) => {
         const { searchAs } = it.props;
         if (!searchAs) return false;
 
@@ -55,26 +77,36 @@ export const Component = ({
 
         return false;
       }),
-    [children, lowerCaseSearch],
+    [filterableChildren, lowerCaseSearch],
   );
+
+  const isFilterable = useMemo(() => filterableChildren.length > 0, [filterableChildren]);
 
   const content = (
     <Container>
-      <Card>
-        <Search>
-          <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
-        </Search>
-      </Card>
+      {isFilterable && (
+        <Card position="top">
+          <Search>
+            <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
+          </Search>
+        </Card>
+      )}
       <Space size="normal" />
       {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
       <Space size="normal" />
       <OptionsContainer position="bottom">
-        <Options>{filteredResults}</Options>
+        <Options>{isFilterable ? filteredResults : children}</Options>
       </OptionsContainer>
     </Container>
   );
 
   switch (variant) {
+    case 'dropdown':
+      return (
+        <DropdownSelect {...otherProps} data-testid={buildTestId()}>
+          {content}
+        </DropdownSelect>
+      );
     case 'modal':
       return (
         <ModalSelect {...otherProps} data-testid={buildTestId()}>
@@ -83,9 +115,9 @@ export const Component = ({
       );
     default:
       return (
-        <DropdownSelect {...otherProps} data-testid={buildTestId()}>
+        <ResponsiveSelect {...otherProps} data-testid={buildTestId()}>
           {content}
-        </DropdownSelect>
+        </ResponsiveSelect>
       );
   }
 };

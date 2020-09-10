@@ -23,7 +23,7 @@ export const WithHelpers = () => {
       data-testid="MyDropdown"
     >
       <Dropdown.Item>Item 1</Dropdown.Item>
-      <Dropdown.Item>Item 2</Dropdown.Item>
+      <Dropdown.Item htmlTag="a">Item 2</Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item variant="accent">Item 3</Dropdown.Item>
       <Dropdown.Divider />
@@ -33,7 +33,7 @@ export const WithHelpers = () => {
         Disabled accent item
       </Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item isNonInteractive>Non-interactive item</Dropdown.Item>
+      <Dropdown.Item isInteractive={false}>Non-interactive item</Dropdown.Item>
     </Dropdown>
   );
 };

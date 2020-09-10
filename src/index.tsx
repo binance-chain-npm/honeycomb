@@ -43,4 +43,5 @@ export { SegmentedControl } from './components/SegmentedControl';
 export { Table } from './components/Table';
 export { Balance } from './components/Balance';
 export { CryptoAddress } from './components/CryptoAddress';
-export { HoverEffect } from './components/HoverEffect';
+export { HoverEffect, hoverEffect } from './components/HoverEffect';
+export { DynamicTextInput } from './components/DynamicTextInput';
