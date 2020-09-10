@@ -145,6 +145,7 @@ export const Component = ({
         isPristine={isPristine}
         dynamic={dynamic}
         size={size}
+        scale={scale}
       >
         {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
         {dynamic ? (

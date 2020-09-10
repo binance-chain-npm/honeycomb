@@ -2,7 +2,7 @@ import styled, { css, DefaultTheme } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
-import { Size, increased, huge, giant } from '../internal/Size';
+import { Size, increased, huge } from '../internal/Size';
 
 export type State = 'success' | 'danger';
 
@@ -51,6 +51,7 @@ type InputContainerProps = {
   isPristine?: boolean;
   dynamic: boolean;
   size: Size;
+  scale: number;
 };
 
 export const InputContainer = styled.div<InputContainerProps>`
@@ -68,7 +69,21 @@ export const InputContainer = styled.div<InputContainerProps>`
 
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
-  ${({ size }) => size === 'giant' && giant};
+  ${({ size }) =>
+    size === 'giant' &&
+    css`
+      border-radius: ${({ theme }) =>
+        em(theme.honeycomb.radius.increased, theme.honeycomb.size.reduced)};
+    `};
+  ${({ size, scale }) =>
+    size === 'giant' &&
+    (scale === 1
+      ? css`
+          height: ${({ theme }) => em(theme.honeycomb.size.giant, theme.honeycomb.size.reduced)};
+        `
+      : css`
+          min-height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+        `)};
 
   ${({ state }) => state === 'success' && success};
   ${({ theme }) =>
