@@ -62,3 +62,16 @@ const CustomTextInput = styled(TextInput)`
 export const CustomStyles = () => (
   <CustomTextInput placeholder="Some placeholder…" label="A label" value="" />
 );
+
+export const Dynamic = () => {
+  const [value, setValue] = useState('Some text...');
+
+  return (
+    <TextInput
+      value={value}
+      onChange={(evt) => setValue(evt.target.value)}
+      data-testid="input"
+      dynamic
+    />
+  );
+};

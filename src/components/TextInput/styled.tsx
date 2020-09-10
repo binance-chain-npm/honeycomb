@@ -54,11 +54,14 @@ export const InputContainer = styled.div<Props>`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
   border: 1px solid transparent;
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
+  padding-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
 
   ${({ state }) => state === 'success' && success};
   ${({ theme }) =>
@@ -71,7 +74,11 @@ export const InputContainer = styled.div<Props>`
   ${({ state, isPristine }) => state === 'danger' && !isPristine && danger};
 `;
 
-export const Input = styled.input`
+const baseTextStyles = css`
+  font-size: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+`;
+
+export const Input = styled.input<{ dynamic: boolean; scale: number }>`
   flex: 1;
   display: flex;
   margin: 0;
@@ -83,11 +90,16 @@ export const Input = styled.input`
   color: inherit;
   height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
   line-height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
-  text-indent: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
-  padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
   ${({ theme }) => transitions(['color'], `${theme.honeycomb.duration.normal} ease-in-out`)};
+  ${({ dynamic, scale }) =>
+    dynamic &&
+    css`
+      width: 100%;
+      font-size: ${({ theme }) =>
+        `calc(${em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)} * ${scale})`};
+    `};
 
   ::placeholder {
     color: ${({ theme }) => theme.honeycomb.color.text.masked};
@@ -99,7 +111,7 @@ export const Left = styled.div`
   flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
-  padding-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
 `;
 
 export const Right = styled.div`
@@ -107,5 +119,24 @@ export const Right = styled.div`
   flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
-  padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+`;
+
+export const DynamicTextContainer = styled.div`
+  ${boxSizing};
+
+  overflow: hidden;
+  width: 100%;
+`;
+
+export const DynamicText = styled.span<{ scale: number }>`
+  ${baseTextStyles};
+
+  position: absolute;
+  display: inline-block;
+  white-space: nowrap;
+  transform-origin: 0 50%;
+  transform: ${({ scale }) => `scale(${scale})`};
+  height: 0;
+  overflow: hidden;
 `;

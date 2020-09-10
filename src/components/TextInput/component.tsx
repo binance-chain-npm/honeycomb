@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import { Label } from '../internal/Label';
@@ -9,7 +9,17 @@ import {
 } from '../internal/ValidationMessage';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Container, Description, Input, InputContainer, State, Left, Right } from './styled';
+import {
+  Container,
+  Description,
+  Input,
+  InputContainer,
+  State,
+  Left,
+  Right,
+  DynamicTextContainer,
+  DynamicText,
+} from './styled';
 
 export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> &
   Testable & {
@@ -22,10 +32,12 @@ export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultVa
     right?: React.ReactNode;
     htmlTag?: 'input' | 'textarea';
     readOnly?: boolean;
+    dynamic?: boolean;
   };
 
 export const Component = ({
   className,
+  value,
   label,
   description,
   validationMessages,
@@ -38,12 +50,40 @@ export const Component = ({
   right,
   htmlTag = 'input',
   readOnly = false,
+  dynamic = false,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
   const id = useMemo(() => otherProps.id || `id-${nanoid()}`, [otherProps.id]);
   const [isFocused, setFocused] = useState(false);
-  const [isPristine, setIsPristine] = useState(!otherProps.value);
+  const [isPristine, setIsPristine] = useState(!value);
+  const [scale, setScale] = useState(1);
+
+  const spanRef = useRef<HTMLSpanElement>(null);
+
+  const fixWidth = useCallback(() => {
+    if (!value) return;
+
+    if (Array.isArray(value) || !(value as string).length) return;
+
+    const maxWidth = spanRef.current!.parentElement!.offsetWidth;
+    const currentWidth = spanRef.current!.offsetWidth;
+
+    if (currentWidth > 0) {
+      if (currentWidth > maxWidth) {
+        console.log(maxWidth / currentWidth);
+        setScale(maxWidth / currentWidth);
+      } else {
+        setScale(1);
+      }
+    }
+  }, [value]);
+
+  useLayoutEffect(() => {
+    if (!dynamic) return;
+
+    fixWidth();
+  }, [dynamic, fixWidth]);
 
   const focus = useCallback<NonNullable<Props['onFocus']>>(
     (evt) => {
@@ -69,6 +109,22 @@ export const Component = ({
     [onChange],
   );
 
+  const input = (
+    <Input
+      {...otherProps}
+      data-testid={buildTestId('native-input')}
+      id={id}
+      value={value}
+      onFocus={readOnly ? undefined : focus}
+      onBlur={readOnly ? undefined : blur}
+      onChange={readOnly ? undefined : change}
+      readOnly={readOnly}
+      dynamic={dynamic}
+      scale={scale}
+      as={htmlTag}
+    />
+  );
+
   return (
     <Container className={className} data-testid={testId}>
       {!!label && (
@@ -78,16 +134,16 @@ export const Component = ({
       )}
       <InputContainer isFocused={isFocused} state={state} isPristine={isPristine}>
         {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
-        <Input
-          {...otherProps}
-          data-testid={buildTestId('native-input')}
-          id={id}
-          onFocus={readOnly ? undefined : focus}
-          onBlur={readOnly ? undefined : blur}
-          onChange={readOnly ? undefined : change}
-          readOnly={readOnly}
-          as={htmlTag}
-        />
+        {dynamic ? (
+          <DynamicTextContainer>
+            {input}
+            <DynamicText ref={spanRef} scale={scale}>
+              {value}
+            </DynamicText>
+          </DynamicTextContainer>
+        ) : (
+          <>{input}</>
+        )}
         {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
       </InputContainer>
       {!!description && (
