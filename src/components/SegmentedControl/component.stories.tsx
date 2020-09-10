@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Sections } from '../../modules/sections';
-import { sizes } from '../Button/styled';
+import { sizes } from '../internal/Size';
 import { Space } from '../Space';
 
 import { SegmentedControl } from './';

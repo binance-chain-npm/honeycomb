@@ -3,8 +3,10 @@ import { action } from '@storybook/addon-actions';
 
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
+import { shapes } from '../internal/Shape';
+import { sizes } from '../internal/Size';
 
-import { variants, sizes, shapes } from './styled';
+import { variants } from './styled';
 
 import { Button } from './';
 
@@ -18,11 +20,7 @@ const getText = ({
   shape,
 }: Pick<React.ComponentProps<typeof Button>, 'variant' | 'shape'>) => {
   if (shape === 'square') return <Icon.Tick />;
-  return (
-    <>
-      A {variant} button
-    </>
-  );
+  return <>A {variant} button</>;
 };
 
 export const Default = () => (
@@ -30,12 +28,7 @@ export const Default = () => (
     {variants.map((variant) =>
       shapes.map((shape) => (
         <div style={{ marginBottom: '1em' }}>
-          <Button
-            onClick={action('clicked')}
-            key={`${variant}`}
-            variant={variant}
-            shape={shape}
-          >
+          <Button onClick={action('clicked')} key={`${variant}`} variant={variant} shape={shape}>
             {getText({ variant, shape })}
           </Button>
         </div>
@@ -48,17 +41,11 @@ export const Sizes = () => (
   <>
     {sizes.map((size) => (
       <div style={{ marginBottom: '1em' }}>
-        <Button
-          onClick={action('clicked')}
-          key={`${size}`}
-          variant="primary"
-          size={size}
-        >
+        <Button onClick={action('clicked')} key={`${size}`} variant="primary" size={size}>
           A {size} button
         </Button>
       </div>
-    ),
-    )}
+    ))}
   </>
 );
 

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { Size } from '../Button';
+import { Size } from '../internal/Size';
 
 import { Container, Element, Scroll, Shape } from './styled';
 

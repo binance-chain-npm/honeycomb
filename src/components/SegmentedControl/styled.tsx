@@ -2,10 +2,11 @@ import styled, { css } from 'styled-components';
 import { em, transitions } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
-import { Size, Shape as ButtonShape } from '../Button';
+import { Shape as ComponentShape } from '../internal/Shape';
+import { Size } from '../internal/Size';
 import { styleless } from '../Styleless';
 
-export type Shape = Omit<ButtonShape, 'square'>;
+export type Shape = Omit<ComponentShape, 'square'>;
 
 export interface ContainerProps {
   size: Size;

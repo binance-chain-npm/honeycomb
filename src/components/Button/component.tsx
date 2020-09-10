@@ -3,8 +3,10 @@ import { useSpring, animated } from 'react-spring';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { HtmlTag } from '../../modules/html-tag';
+import { Shape } from '../internal/Shape';
+import { Size } from '../internal/Size';
 
-import { Styled, Variant, Size, Shape, Shadow } from './styled';
+import { Styled, Variant, Shadow } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
   Testable & {

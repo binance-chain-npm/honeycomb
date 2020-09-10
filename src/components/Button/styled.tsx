@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
+import { Shape, fill, fit, square } from '../internal/Shape';
+import { Size, increased, huge, giant } from '../internal/Size';
 import { styleless as stylelessCommon } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
 
@@ -14,12 +16,6 @@ export const variants = [
   'sell',
 ] as const;
 export type Variant = typeof variants[number];
-
-export const sizes = ['giant', 'huge', 'increased'] as const;
-export type Size = typeof sizes[number];
-
-export const shapes = ['fill', 'fit', 'square'] as const;
-export type Shape = typeof shapes[number];
 
 export interface Props {
   variant: Variant;
@@ -124,20 +120,6 @@ const transparent = css`
   }
 `;
 
-const fill = css`
-  width: 100%;
-`;
-
-const fit = css`
-  width: auto;
-  width: fit-content;
-`;
-
-const square = css<Props>`
-  width: ${({ theme, size }) => em(theme.honeycomb.size[size], theme.honeycomb.size.reduced)};
-  padding: 0;
-`;
-
 export const Styled = styled.button<Props>`
   ${stylelessCommon};
   ${boxSizing};
@@ -177,18 +159,9 @@ export const Styled = styled.button<Props>`
   ${({ variant }) => variant === 'primary' && primary};
   ${({ variant }) => variant === 'transparent' && transparent};
 
-  ${({ size }) => size === 'giant' && css`
-    height: ${({ theme }) => em(theme.honeycomb.size.giant, theme.honeycomb.size.reduced)};
-    border-radius: ${({ theme }) => em(theme.honeycomb.radius.increased, theme.honeycomb.size.reduced)};
-  `};
-  ${({ size }) => size === 'huge' && css`
-    height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
-    border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
-  `};
-  ${({ size }) => size === 'increased' && css`
-    height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
-    border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
-  `};
+  ${({ size }) => size === 'increased' && increased};
+  ${({ size }) => size === 'huge' && huge};
+  ${({ size }) => size === 'giant' && giant};
 
   ${({ shape }) => shape === 'fill' && fill};
   ${({ shape }) => shape === 'fit' && fit};
