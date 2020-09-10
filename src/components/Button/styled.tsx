@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
+import { Shape, fill, fit, square } from '../internal/Shape';
+import { Size, increased, huge, giant } from '../internal/Size';
 import { styleless as stylelessCommon } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
 
@@ -14,12 +16,6 @@ export const variants = [
   'sell',
 ] as const;
 export type Variant = typeof variants[number];
-
-export const sizes = ['huge', 'increased'] as const;
-export type Size = typeof sizes[number];
-
-export const shapes = ['fill', 'fit', 'square'] as const;
-export type Shape = typeof shapes[number];
 
 export interface Props {
   variant: Variant;
@@ -108,11 +104,6 @@ const danger = css`
 const buy = success;
 const sell = danger;
 
-const increased = css`
-  height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
-`;
-
 const transparent = css`
   background: transparent;
   color: inherit;
@@ -129,28 +120,13 @@ const transparent = css`
   }
 `;
 
-const fill = css`
-  width: 100%;
-`;
-
-const fit = css`
-  width: auto;
-  width: fit-content;
-`;
-
-const square = css<Props>`
-  width: ${({ theme, size }) => em(theme.honeycomb.size[size], theme.honeycomb.size.reduced)};
-  padding: 0;
-`;
-
 export const Styled = styled.button<Props>`
   ${stylelessCommon};
   ${boxSizing};
 
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   cursor: pointer;
-  height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -185,6 +161,8 @@ export const Styled = styled.button<Props>`
   ${({ variant }) => variant === 'transparent' && transparent};
 
   ${({ size }) => size === 'increased' && increased};
+  ${({ size }) => size === 'huge' && huge};
+  ${({ size }) => size === 'giant' && giant};
 
   ${({ shape }) => shape === 'fill' && fill};
   ${({ shape }) => shape === 'fit' && fit};

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Sections } from '../../modules/sections';
+import { sizes } from '../internal/Size';
 import { Button } from '../Button';
 
 import { TextInput } from './';
@@ -49,7 +50,7 @@ const CustomTextInput = styled(TextInput)`
     color: #f8bbd0;
   }
 
-  ${TextInput.Input} {
+  ${TextInput.InputContainer} {
     background: #e8f5e9;
     color: #64b5f6;
 
@@ -59,6 +60,36 @@ const CustomTextInput = styled(TextInput)`
   }
 `;
 
+export const Sizes = () => (
+  <>
+    {sizes.map((size) => (
+      <div style={{ marginBottom: '1em' }}>
+        <TextInput key={`${size}`} size={size} value={`A ${size} text input`} />
+      </div>
+    ))}
+  </>
+);
+
 export const CustomStyles = () => (
   <CustomTextInput placeholder="Some placeholder…" label="A label" value="" />
 );
+
+export const Dynamic = () => {
+  const [value, setValue] = useState('Some text...');
+
+  return (
+    <>
+      {sizes.map((size) => (
+        <div style={{ marginBottom: '1em' }}>
+          <TextInput
+            value={value}
+            size={size}
+            onChange={(evt) => setValue(evt.target.value)}
+            data-testid={`input-${size}`}
+            dynamic
+          />
+        </div>
+      ))}
+    </>
+  );
+};

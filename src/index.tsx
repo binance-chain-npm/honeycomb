@@ -44,4 +44,3 @@ export { Table } from './components/Table';
 export { Balance } from './components/Balance';
 export { CryptoAddress } from './components/CryptoAddress';
 export { HoverEffect, hoverEffect } from './components/HoverEffect';
-export { DynamicTextInput } from './components/DynamicTextInput';
