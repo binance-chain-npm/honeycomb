@@ -78,11 +78,18 @@ export const Dynamic = () => {
   const [value, setValue] = useState('Some text...');
 
   return (
-    <TextInput
-      value={value}
-      onChange={(evt) => setValue(evt.target.value)}
-      data-testid="input"
-      dynamic
-    />
+    <>
+      {sizes.map((size) => (
+        <div style={{ marginBottom: '1em' }}>
+          <TextInput
+            value={value}
+            size={size}
+            onChange={(evt) => setValue(evt.target.value)}
+            data-testid="input"
+            dynamic
+          />
+        </div>
+      ))}
+    </>
   );
 };

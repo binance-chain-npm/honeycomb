@@ -139,12 +139,18 @@ export const Component = ({
           {label}
         </Label>
       )}
-      <InputContainer isFocused={isFocused} state={state} isPristine={isPristine} size={size}>
+      <InputContainer
+        isFocused={isFocused}
+        state={state}
+        isPristine={isPristine}
+        dynamic={dynamic}
+        size={size}
+      >
         {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
         {dynamic ? (
           <DynamicTextContainer>
             {input}
-            <DynamicText ref={spanRef} scale={scale}>
+            <DynamicText ref={spanRef} size={size} scale={scale}>
               {value}
             </DynamicText>
           </DynamicTextContainer>

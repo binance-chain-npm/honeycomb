@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
@@ -49,6 +49,7 @@ type InputContainerProps = {
   state?: State;
   isFocused?: boolean;
   isPristine?: boolean;
+  dynamic: boolean;
   size: Size;
 };
 
@@ -63,6 +64,11 @@ export const InputContainer = styled.div<InputContainerProps>`
   overflow: hidden;
   padding-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
   padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+
+  ${({ size }) => size === 'increased' && increased};
+  ${({ size }) => size === 'huge' && huge};
+  ${({ size }) => size === 'giant' && giant};
 
   ${({ state }) => state === 'success' && success};
   ${({ theme }) =>
@@ -73,22 +79,24 @@ export const InputContainer = styled.div<InputContainerProps>`
 
   ${({ isFocused }) => isFocused && focused};
   ${({ state, isPristine }) => state === 'danger' && !isPristine && danger};
-
-  ${({ size }) => size === 'increased' && increased};
-  ${({ size }) => size === 'huge' && huge};
-  ${({ size }) => size === 'giant' && giant};
-  height: auto;
 `;
+
+const getDynamicFontSize = (theme: DefaultTheme, size: Size) => {
+  switch (size) {
+    case 'increased':
+      return theme.honeycomb.size.reduced;
+    case 'huge':
+      return theme.honeycomb.size.reduced;
+    case 'giant':
+      return theme.honeycomb.size.huge;
+  }
+};
 
 type InputProps = {
   dynamic: boolean;
   size: Size;
   scale: number;
 };
-
-const baseTextStyles = css`
-  font-size: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
-`;
 
 export const Input = styled.div<InputProps>`
   flex: 1;
@@ -100,44 +108,44 @@ export const Input = styled.div<InputProps>`
   text-decoration: none;
   background: transparent;
   color: inherit;
-  height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
-  line-height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
 
   ::placeholder {
     color: ${({ theme }) => theme.honeycomb.color.text.masked};
   }
 
+  ${({ dynamic, size }) =>
+    (size === 'increased' &&
+      css`
+        height: ${({ theme }) =>
+          em(theme.honeycomb.size.increased - 2, theme.honeycomb.size.reduced)};
+      `) ||
+    (size === 'huge' &&
+      css`
+        height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
+      `) ||
+    (size === 'giant' &&
+      (dynamic
+        ? css`
+            height: ${({ theme }) =>
+              em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+          `
+        : css`
+            height: ${({ theme }) =>
+              em(theme.honeycomb.size.giant - 2, theme.honeycomb.size.reduced)};
+          `))};
+
   ${({ theme }) => transitions(['color'], `${theme.honeycomb.duration.normal} ease-in-out`)};
-  ${({ dynamic, scale }) =>
+
+  ${({ dynamic, size, scale }) =>
     dynamic &&
     css`
       width: 100%;
       font-size: ${({ theme }) =>
-        `calc(${em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)} * ${scale})`};
-    `};
-
-  ${({ size }) =>
-    size === 'increased' &&
-    css`
-      height: ${({ theme }) =>
-        em(theme.honeycomb.size.increased - 2, theme.honeycomb.size.reduced)};
-      border-radius: ${({ theme }) =>
-        em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
-    `};
-  ${({ size }) =>
-    size === 'huge' &&
-    css`
-      height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
-      border-radius: ${({ theme }) =>
-        em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
-    `};
-  ${({ size }) =>
-    size === 'giant' &&
-    css`
-      height: ${({ theme }) => em(theme.honeycomb.size.giant - 2, theme.honeycomb.size.reduced)};
-      border-radius: ${({ theme }) =>
-        em(theme.honeycomb.radius.increased, theme.honeycomb.size.reduced)};
+        `max(calc(${em(
+          getDynamicFontSize(theme, size),
+          theme.honeycomb.size.reduced,
+        )} * ${scale}), ${em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)})`};
     `};
 `;
 
@@ -158,15 +166,12 @@ export const Right = styled.div`
 `;
 
 export const DynamicTextContainer = styled.div`
-  ${boxSizing};
-
-  overflow: hidden;
   width: 100%;
 `;
 
-export const DynamicText = styled.span<{ scale: number }>`
-  ${baseTextStyles};
-
+export const DynamicText = styled.span<{ scale: number; size: Size }>`
+  font-size: ${({ theme, size }) =>
+    em(getDynamicFontSize(theme, size), theme.honeycomb.size.reduced)};
   position: absolute;
   display: inline-block;
   white-space: nowrap;
