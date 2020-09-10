@@ -126,6 +126,7 @@ export const Styled = styled.button<Props>`
 
   cursor: pointer;
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   display: flex;
   flex-direction: row;
   align-items: center;

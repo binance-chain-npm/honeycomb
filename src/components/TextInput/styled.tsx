@@ -65,16 +65,11 @@ export const InputContainer = styled.div<InputContainerProps>`
   overflow: hidden;
   padding-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
   padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
-  ${({ size }) =>
-    size === 'giant' &&
-    css`
-      border-radius: ${({ theme }) =>
-        em(theme.honeycomb.radius.increased, theme.honeycomb.size.reduced)};
-    `};
   ${({ size, scale }) =>
     size === 'giant' &&
     (scale === 1
