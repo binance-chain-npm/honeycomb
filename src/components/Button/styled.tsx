@@ -15,7 +15,7 @@ export const variants = [
 ] as const;
 export type Variant = typeof variants[number];
 
-export const sizes = ['huge', 'increased'] as const;
+export const sizes = ['giant', 'huge', 'increased'] as const;
 export type Size = typeof sizes[number];
 
 export const shapes = ['fill', 'fit', 'square'] as const;
@@ -108,11 +108,6 @@ const danger = css`
 const buy = success;
 const sell = danger;
 
-const increased = css`
-  height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
-`;
-
 const transparent = css`
   background: transparent;
   color: inherit;
@@ -147,9 +142,7 @@ export const Styled = styled.button<Props>`
   ${stylelessCommon};
   ${boxSizing};
 
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   cursor: pointer;
-  height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
   display: flex;
   flex-direction: row;
@@ -184,7 +177,18 @@ export const Styled = styled.button<Props>`
   ${({ variant }) => variant === 'primary' && primary};
   ${({ variant }) => variant === 'transparent' && transparent};
 
-  ${({ size }) => size === 'increased' && increased};
+  ${({ size }) => size === 'giant' && css`
+    height: ${({ theme }) => em(theme.honeycomb.size.giant, theme.honeycomb.size.reduced)};
+    border-radius: ${({ theme }) => em(theme.honeycomb.radius.increased, theme.honeycomb.size.reduced)};
+  `};
+  ${({ size }) => size === 'huge' && css`
+    height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+    border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
+  `};
+  ${({ size }) => size === 'increased' && css`
+    height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+    border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
+  `};
 
   ${({ shape }) => shape === 'fill' && fill};
   ${({ shape }) => shape === 'fit' && fit};

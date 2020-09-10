@@ -14,82 +14,90 @@ export default {
 };
 
 const getText = ({
-  size,
   variant,
   shape,
-}: Pick<React.ComponentProps<typeof Button>, 'size' | 'variant' | 'shape'>) => {
+}: Pick<React.ComponentProps<typeof Button>, 'variant' | 'shape'>) => {
   if (shape === 'square') return <Icon.Tick />;
   return (
     <>
-      A {size} {variant} button
+      A {variant} button
     </>
   );
 };
 
 export const Default = () => (
   <>
-    {sizes.map((size) =>
-      variants.map((variant) =>
-        shapes.map((shape) => (
-          <div style={{ marginBottom: '1em' }}>
-            <Button
-              onClick={action('clicked')}
-              key={`${size}-${variant}`}
-              variant={variant}
-              size={size}
-              shape={shape}
-            >
-              {getText({ size, variant, shape })}
-            </Button>
-          </div>
-        )),
-      ),
+    {variants.map((variant) =>
+      shapes.map((shape) => (
+        <div style={{ marginBottom: '1em' }}>
+          <Button
+            onClick={action('clicked')}
+            key={`${variant}`}
+            variant={variant}
+            shape={shape}
+          >
+            {getText({ variant, shape })}
+          </Button>
+        </div>
+      )),
+    )}
+  </>
+);
+
+export const Sizes = () => (
+  <>
+    {sizes.map((size) => (
+      <div style={{ marginBottom: '1em' }}>
+        <Button
+          onClick={action('clicked')}
+          key={`${size}`}
+          variant="primary"
+          size={size}
+        >
+          A {size} button
+        </Button>
+      </div>
+    ),
     )}
   </>
 );
 
 export const Disabled = () => (
   <>
-    {sizes.map((size) =>
-      variants.map((variant) =>
-        shapes.map((shape) => (
-          <div style={{ marginBottom: '1em' }}>
-            <Button
-              onClick={action('clicked')}
-              key={`${size}-${variant}`}
-              variant={variant}
-              size={size}
-              shape={shape}
-              disabled
-            >
-              {getText({ size, variant, shape })}
-            </Button>
-          </div>
-        )),
-      ),
+    {variants.map((variant) =>
+      shapes.map((shape) => (
+        <div style={{ marginBottom: '1em' }}>
+          <Button
+            onClick={action('clicked')}
+            key={`${variant}`}
+            variant={variant}
+            shape={shape}
+            disabled
+          >
+            {getText({ variant, shape })}
+          </Button>
+        </div>
+      )),
     )}
   </>
 );
 
 export const AsAnchor = () => (
   <>
-    {sizes.map((size) =>
-      variants.map((variant) =>
-        shapes.map((shape) => (
-          <div style={{ marginBottom: '1em' }}>
-            <Button
-              href="https://binance.org"
-              onClick={action('clicked')}
-              key={`${size}-${variant}`}
-              variant={variant}
-              size={size}
-              shape={shape}
-            >
-              {getText({ size, variant, shape })}
-            </Button>
-          </div>
-        )),
-      ),
+    {variants.map((variant) =>
+      shapes.map((shape) => (
+        <div style={{ marginBottom: '1em' }}>
+          <Button
+            href="https://binance.org"
+            onClick={action('clicked')}
+            key={`${variant}`}
+            variant={variant}
+            shape={shape}
+          >
+            {getText({ variant, shape })}
+          </Button>
+        </div>
+      )),
     )}
   </>
 );
