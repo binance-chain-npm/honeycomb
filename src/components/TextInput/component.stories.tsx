@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Sections } from '../../modules/sections';
+import { sizes } from '../internal/Size';
 import { Button } from '../Button';
 
 import { TextInput } from './';
@@ -58,6 +59,16 @@ const CustomTextInput = styled(TextInput)`
     }
   }
 `;
+
+export const Sizes = () => (
+  <>
+    {sizes.map((size) => (
+      <div style={{ marginBottom: '1em' }}>
+        <TextInput key={`${size}`} size={size} value={`A ${size} text input`} />
+      </div>
+    ))}
+  </>
+);
 
 export const CustomStyles = () => (
   <CustomTextInput placeholder="Some placeholder…" label="A label" value="" />

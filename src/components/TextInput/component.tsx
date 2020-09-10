@@ -7,6 +7,7 @@ import {
   ValidationMessageContainer,
   ValidationMessageItem,
 } from '../internal/ValidationMessage';
+import { Size } from '../internal/Size';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
 import {
@@ -21,7 +22,10 @@ import {
   DynamicText,
 } from './styled';
 
-export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'value'> &
+export type Props = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'defaultValue' | 'value' | 'size'
+> &
   Testable & {
     label?: React.ReactNode;
     description?: React.ReactNode;
@@ -32,6 +36,7 @@ export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultVa
     right?: React.ReactNode;
     htmlTag?: 'input' | 'textarea';
     readOnly?: boolean;
+    size?: Size;
     dynamic?: boolean;
   };
 
@@ -50,6 +55,7 @@ export const Component = ({
   right,
   htmlTag = 'input',
   readOnly = false,
+  size = 'huge',
   dynamic = false,
   ...otherProps
 }: Props) => {
@@ -121,7 +127,8 @@ export const Component = ({
       readOnly={readOnly}
       dynamic={dynamic}
       scale={scale}
-      as={htmlTag}
+      size={size}
+      as={htmlTag as any}
     />
   );
 
@@ -132,7 +139,7 @@ export const Component = ({
           {label}
         </Label>
       )}
-      <InputContainer isFocused={isFocused} state={state} isPristine={isPristine}>
+      <InputContainer isFocused={isFocused} state={state} isPristine={isPristine} size={size}>
         {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
         {dynamic ? (
           <DynamicTextContainer>
