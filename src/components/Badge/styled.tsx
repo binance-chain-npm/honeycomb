@@ -1,7 +1,15 @@
 import styled, { css } from 'styled-components';
 import { em, transparentize } from 'polished';
 
-export const VARIANTS = ['success', 'warning', 'danger', 'primary', 'buy', 'sell'] as const;
+export const VARIANTS = [
+  'success',
+  'warning',
+  'danger',
+  'primary',
+  'buy',
+  'sell',
+  'cancel',
+] as const;
 export type Variant = typeof VARIANTS[number];
 
 const success = css`
@@ -34,6 +42,11 @@ const sell = css`
   color: ${({ theme }) => theme.honeycomb.color.danger.normal};
 `;
 
+const cancel = css`
+  background: ${({ theme }) => transparentize(0.9, theme.honeycomb.color.text.normal)};
+  color: ${({ theme }) => theme.honeycomb.color.text.normal};
+`;
+
 export const Badge = styled.div<{ variant: Variant }>`
   display: inline-block;
   text-align: center;
@@ -48,4 +61,5 @@ export const Badge = styled.div<{ variant: Variant }>`
   ${({ variant }) => variant === 'primary' && primary};
   ${({ variant }) => variant === 'buy' && buy}
   ${({ variant }) => variant === 'sell' && sell};
+  ${({ variant }) => variant === 'cancel' && cancel};
 `;
