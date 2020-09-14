@@ -70,6 +70,7 @@ export const usePasswordInputValidation = ({
         </Label>
       ),
       state: !isLongEnough ? 'danger' : 'success',
+      alwaysShow: true,
     },
     {
       label: (
@@ -83,6 +84,7 @@ export const usePasswordInputValidation = ({
         </Label>
       ),
       state: mustHaveUpperCase && !hasUpperCase ? 'danger' : 'success',
+      alwaysShow: true,
     },
     {
       label: (
@@ -96,6 +98,7 @@ export const usePasswordInputValidation = ({
         </Label>
       ),
       state: mustHaveDigit && !hasDigit ? 'danger' : 'success',
+      alwaysShow: true,
     },
     {
       label: (
@@ -109,6 +112,7 @@ export const usePasswordInputValidation = ({
         </Label>
       ),
       state: mustHaveSymbol && !hasSymbol ? 'danger' : 'success',
+      alwaysShow: true,
     },
   ];
 

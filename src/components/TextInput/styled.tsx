@@ -4,7 +4,7 @@ import { transitions, em } from 'polished';
 import { boxSizing } from '../../modules/box-sizing';
 import { Size, increased, huge } from '../internal/Size';
 
-export type ValidationMessage = { label: React.ReactNode; state?: State };
+export type ValidationMessage = { label: React.ReactNode; state?: State; alwaysShow?: boolean };
 
 export type State = 'success' | 'danger';
 

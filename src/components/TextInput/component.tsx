@@ -43,7 +43,6 @@ export const Component = ({
   value,
   label,
   description,
-  validationMessages,
   'data-testid': testId,
   onFocus,
   onBlur,
@@ -113,6 +112,12 @@ export const Component = ({
     [onChange],
   );
 
+  const validationMessages = useMemo(() => {
+    if (!isPristine) return otherProps.validationMessages;
+
+    return otherProps.validationMessages?.filter((it) => it.alwaysShow);
+  }, [otherProps.validationMessages]);
+
   const input = (
     <Input
       {...otherProps}
@@ -161,7 +166,7 @@ export const Component = ({
       {!!description && (
         <Description data-testid={buildTestId('description')}>{description}</Description>
       )}
-      {!!validationMessages && validationMessages.length > 0 && !isPristine && (
+      {!!validationMessages && validationMessages.length > 0 && (
         <ValidationMessageContainer data-testid={buildTestId('validation-messages')}>
           {validationMessages.map(({ label, state }, index) => (
             <ValidationMessageItem as="li" key={index} state={state} isPristine={isPristine}>
