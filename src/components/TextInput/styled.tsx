@@ -4,6 +4,8 @@ import { transitions, em } from 'polished';
 import { boxSizing } from '../../modules/box-sizing';
 import { Size, increased, huge } from '../internal/Size';
 
+export type ValidationMessage = { label: React.ReactNode; state?: State };
+
 export type State = 'success' | 'danger';
 
 export const Container = styled.div`
@@ -189,4 +191,36 @@ export const DynamicText = styled.span<{ scale: number; size: Size }>`
   transform: ${({ scale }) => `scale(${scale})`};
   height: 0;
   overflow: hidden;
+`;
+
+export type Props = {
+  state?: State;
+  isFocused?: boolean;
+  isPristine?: boolean;
+};
+
+export const ValidationMessageContainer = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+`;
+
+export const ValidationMessageItem = styled.li<Props>`
+  margin-top: ${({ theme }) => em(4, theme.honeycomb.size.small)};
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.honeycomb.color.text.masked};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
+  ${({ state }) =>
+    state === 'success' &&
+    css`
+      color: ${({ theme }) => theme.honeycomb.color.success.normal};
+    `};
+  ${({ state, isPristine }) =>
+    state === 'danger' &&
+    !isPristine &&
+    css`
+      color: ${({ theme }) => theme.honeycomb.color.danger.normal};
+    `};
+  ${({ theme }) => transitions(['color'], `${theme.honeycomb.duration.normal} ease-in-out`)};
 `;

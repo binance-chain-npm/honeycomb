@@ -2,11 +2,6 @@ import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from '
 import { nanoid } from 'nanoid';
 
 import { Label } from '../internal/Label';
-import {
-  ValidationMessage,
-  ValidationMessageContainer,
-  ValidationMessageItem,
-} from '../internal/ValidationMessage';
 import { Size } from '../internal/Size';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
@@ -20,6 +15,9 @@ import {
   Right,
   DynamicTextContainer,
   DynamicText,
+  ValidationMessage,
+  ValidationMessageContainer,
+  ValidationMessageItem,
 } from './styled';
 
 export type Props = Omit<

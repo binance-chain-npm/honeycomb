@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import { Icon } from '../../Icon';
-import { TextInput } from '../../TextInput';
-import { ValidationMessage } from '../../internal/ValidationMessage';
+import { TextInput, ValidationMessage } from '../../TextInput';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { Label } from '../styled';
 
