@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import { Icon } from '../../Icon';
-import { TextInput } from '../../TextInput';
-import { ValidationMessage } from '../../internal/ValidationMessage';
+import { TextInput, ValidationMessage } from '../../TextInput';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { Label } from '../styled';
 
@@ -71,6 +70,7 @@ export const usePasswordInputValidation = ({
         </Label>
       ),
       state: !isLongEnough ? 'danger' : 'success',
+      alwaysShow: true,
     },
     {
       label: (
@@ -84,6 +84,7 @@ export const usePasswordInputValidation = ({
         </Label>
       ),
       state: mustHaveUpperCase && !hasUpperCase ? 'danger' : 'success',
+      alwaysShow: true,
     },
     {
       label: (
@@ -97,6 +98,7 @@ export const usePasswordInputValidation = ({
         </Label>
       ),
       state: mustHaveDigit && !hasDigit ? 'danger' : 'success',
+      alwaysShow: true,
     },
     {
       label: (
@@ -110,6 +112,7 @@ export const usePasswordInputValidation = ({
         </Label>
       ),
       state: mustHaveSymbol && !hasSymbol ? 'danger' : 'success',
+      alwaysShow: true,
     },
   ];
 

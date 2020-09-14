@@ -2,11 +2,6 @@ import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from '
 import { nanoid } from 'nanoid';
 
 import { Label } from '../internal/Label';
-import {
-  ValidationMessage,
-  ValidationMessageContainer,
-  ValidationMessageItem,
-} from '../internal/ValidationMessage';
 import { Size } from '../internal/Size';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
@@ -20,6 +15,9 @@ import {
   Right,
   DynamicTextContainer,
   DynamicText,
+  ValidationMessage,
+  ValidationMessageContainer,
+  ValidationMessageItem,
 } from './styled';
 
 export type Props = Omit<
@@ -45,7 +43,6 @@ export const Component = ({
   value,
   label,
   description,
-  validationMessages,
   'data-testid': testId,
   onFocus,
   onBlur,
@@ -114,6 +111,12 @@ export const Component = ({
     },
     [onChange],
   );
+
+  const validationMessages = useMemo(() => {
+    if (!isPristine) return otherProps.validationMessages;
+
+    return otherProps.validationMessages?.filter((it) => it.alwaysShow);
+  }, [otherProps.validationMessages]);
 
   const input = (
     <Input
