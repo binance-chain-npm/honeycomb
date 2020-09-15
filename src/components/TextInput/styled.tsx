@@ -131,19 +131,27 @@ export const Input = styled.div<InputProps>`
       css`
         height: ${({ theme }) =>
           em(theme.honeycomb.size.increased - 2, theme.honeycomb.size.reduced)};
+        line-height: ${({ theme }) =>
+          em(theme.honeycomb.size.increased - 2, theme.honeycomb.size.reduced)};
       `) ||
     (size === 'huge' &&
       css`
         height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
+        line-height: ${({ theme }) =>
+          em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
       `) ||
     (size === 'giant' &&
       (dynamic
         ? css`
             height: ${({ theme }) =>
               em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+            line-height: ${({ theme }) =>
+              em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
           `
         : css`
             height: ${({ theme }) =>
+              em(theme.honeycomb.size.giant - 2, theme.honeycomb.size.reduced)};
+            line-height: ${({ theme }) =>
               em(theme.honeycomb.size.giant - 2, theme.honeycomb.size.reduced)};
           `))};
 
