@@ -116,7 +116,7 @@ export const Component = ({
     if (!isPristine) return otherProps.validationMessages;
 
     return otherProps.validationMessages?.filter((it) => it.alwaysShow);
-  }, [otherProps.validationMessages]);
+  }, [isPristine, otherProps.validationMessages]);
 
   const input = (
     <Input
