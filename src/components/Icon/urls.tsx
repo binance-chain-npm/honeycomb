@@ -49,3 +49,4 @@ export { default as Wallet } from './assets/Wallet.svg';
 export { default as WalletConnect } from './assets/WalletConnect.svg';
 export { default as Warning } from './assets/Warning.svg';
 export { default as Write } from './assets/Write.svg';
+export { default as ComingSoon } from './assets/ComingSoon.svg';
