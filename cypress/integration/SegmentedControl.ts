@@ -1,5 +1,5 @@
 describe('SegmentedControl', () => {
-  it('<SegmentedControl variant="button" /> renders correctly', () => {
+  it('<SegmentedControl variant="buttons" /> renders correctly', () => {
     cy.visitStory({ storyId: 'elements-control--segmented-control', themeId: 'GoldLight' });
 
     cy.get('[data-testid="buttons-control.huge"]').should('be.visible');
@@ -18,7 +18,7 @@ describe('SegmentedControl', () => {
       'data-testisselected',
       'false',
     );
-    cy.percySnapshot('<SegmentedControl variant="button" />');
+    cy.percySnapshot('<SegmentedControl variant="buttons" />');
 
     cy.get('[data-testid="buttons-control.huge.1"]').click();
     cy.get('[data-testid="buttons-control.huge.0"]').should(
