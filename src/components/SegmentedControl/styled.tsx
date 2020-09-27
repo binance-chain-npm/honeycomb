@@ -6,7 +6,7 @@ import { Shape as ComponentShape } from '../internal/Shape';
 import { Size, increased, huge, giant } from '../internal/Size';
 import { styleless } from '../Styleless';
 
-export const variants = ['segmented', 'tab'] as const;
+export const variants = ['buttons', 'tab'] as const;
 export type Variant = typeof variants[number];
 
 export type Shape = Omit<ComponentShape, 'square'>;
@@ -28,7 +28,7 @@ const activeElement = css<{ variant: Variant }>`
   cursor: auto;
 
   ${({ variant }) =>
-    (variant === 'segmented' &&
+    (variant === 'buttons' &&
       css`
         background: ${({ theme }) => theme.honeycomb.color.primary.normal};
         color: ${({ theme }) =>
@@ -54,7 +54,7 @@ export const Element = styled.li<ElementProps>`
   font-weight: 600;
 
   ${({ variant }) =>
-    variant === 'segmented' &&
+    variant === 'buttons' &&
     css`
       border-radius: ${({ theme }) =>
         em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
@@ -90,7 +90,7 @@ export const Container = styled.ul<ContainerProps>`
     `};
 
   ${({ variant }) =>
-    (variant === 'segmented' &&
+    (variant === 'buttons' &&
       css`
         background: ${({ theme }) => theme.honeycomb.color.secondary.normal};
         color: ${({ theme }) =>

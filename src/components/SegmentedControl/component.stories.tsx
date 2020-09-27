@@ -7,11 +7,11 @@ import { Space } from '../Space';
 
 import { Variant } from './styled';
 
-import { Control } from '.';
+import { SegmentedControl } from '.';
 
 export default {
-  component: Control,
-  title: `${Sections.Elements}/Control`,
+  component: SegmentedControl,
+  title: `${Sections.Elements}/SegmentedControl`,
 };
 
 const render = (
@@ -23,7 +23,7 @@ const render = (
     {sizes.map((size, index) => (
       <div key={size} style={{ marginBottom: '1em' }}>
         <h3>{size}</h3>
-        <Control
+        <SegmentedControl
           size={size}
           variant={variant}
           selectedIndex={selected[index]}
@@ -35,17 +35,17 @@ const render = (
           <>BTC</>
           <span>BNB</span>
           <i>USDT</i>
-        </Control>
+        </SegmentedControl>
       </div>
     ))}
 
     <h3>disabled</h3>
-    <Control variant={variant} selectedIndex={0} disabled>
+    <SegmentedControl variant={variant} selectedIndex={0} disabled>
       <span>BTC</span>
       <span>BNB</span>
-    </Control>
+    </SegmentedControl>
     <Space size="normal" />
-    <Control variant={variant} selectedIndex={0} disabled>
+    <SegmentedControl variant={variant} selectedIndex={0} disabled>
       <span>BTC</span>
       <span>BNB</span>
       <span>USDT</span>
@@ -57,24 +57,24 @@ const render = (
       <span>SWINGBY</span>
       <span>USDS</span>
       <span>TUSD</span>
-    </Control>
+    </SegmentedControl>
 
     <h3>fit</h3>
-    <Control variant={variant} selectedIndex={0} shape="fit">
+    <SegmentedControl variant={variant} selectedIndex={0} shape="fit">
       <span>BTC</span>
       <span>BNB</span>
-    </Control>
+    </SegmentedControl>
   </div>
 );
 
-export const SegmentedControl = () => {
+export const Segmented = () => {
   const [selected, setSelected] = useState<Record<number, number>>({});
 
-  return render('segmented', selected, setSelected);
+  return render('buttons', selected, setSelected);
 };
 
-const BorderedTabControl = styled(Control)`
-  ${Control.Container} {
+const BorderedTabControl = styled(SegmentedControl)`
+  ${SegmentedControl.Container} {
     border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
   }
 `;
