@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Size } from '../internal/Size';
 
-import { Container, Element, Scroll, Shape } from './styled';
+import { Container, Element, Scroll, Shape, Variant } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size' | 'onChange'> &
   Testable & {
@@ -11,17 +11,20 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size' | '
     selectedIndex?: number;
     size?: Size;
     shape?: Shape;
+    variant: Variant;
     onChange?: (params: { selectedIndex: number }) => void;
   };
 
 export const Component = ({
   children,
+  className,
   onChange,
   disabled,
   selectedIndex = 0,
   'data-testid': testId,
   size = 'huge',
   shape = 'fill',
+  variant,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -35,12 +38,13 @@ export const Component = ({
   );
 
   return (
-    <Scroll>
+    <Scroll className={className}>
       <Container
         data-testid={buildTestId()}
         disabled={disabled}
         size={size}
         shape={shape}
+        variant={variant}
         {...otherProps}
       >
         {children.map((option, index) => {
@@ -53,6 +57,7 @@ export const Component = ({
               data-testid={buildTestId(`${index}`)}
               data-testisselected={isSelected}
               size={size}
+              variant={variant}
             >
               {option}
             </Element>
@@ -63,4 +68,7 @@ export const Component = ({
   );
 };
 
-Component.displayName = 'SegmentedControl';
+Component.displayName = 'Control';
+
+Component.Container = Container;
+Component.Control = Element;

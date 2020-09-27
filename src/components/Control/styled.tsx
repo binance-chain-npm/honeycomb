@@ -6,24 +6,39 @@ import { Shape as ComponentShape } from '../internal/Shape';
 import { Size, increased, huge, giant } from '../internal/Size';
 import { styleless } from '../Styleless';
 
+export const variants = ['segmented', 'tab'] as const;
+export type Variant = typeof variants[number];
+
 export type Shape = Omit<ComponentShape, 'square'>;
 
 export interface ContainerProps {
   size: Size;
   shape: Shape;
   disabled?: boolean;
+  variant: Variant;
 }
 
 export interface ElementProps {
   size: Size;
   active: boolean;
+  variant: Variant;
 }
 
-const activeElement = css`
+const activeElement = css<{ variant: Variant }>`
   cursor: auto;
-  background: ${({ theme }) => theme.honeycomb.color.primary.normal};
-  color: ${({ theme }) =>
-    theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.normal)};
+
+  ${({ variant }) =>
+    (variant === 'segmented' &&
+      css`
+        background: ${({ theme }) => theme.honeycomb.color.primary.normal};
+        color: ${({ theme }) =>
+          theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.normal)};
+      `) ||
+    (variant === 'tab' &&
+      css`
+        border-bottom: 2px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
+        color: ${({ theme }) => theme.honeycomb.color.primary.normal};
+      `)};
 `;
 
 export const Element = styled.li<ElementProps>`
@@ -38,7 +53,12 @@ export const Element = styled.li<ElementProps>`
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
   font-weight: 600;
 
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
+  ${({ variant }) =>
+    variant === 'segmented' &&
+    css`
+      border-radius: ${({ theme }) =>
+        em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
+    `};
 
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
   ${({ active }) => active && activeElement}
@@ -51,11 +71,7 @@ export const Container = styled.ul<ContainerProps>`
   display: flex;
   width: 100%;
   position: relative;
-  background: ${({ theme }) => theme.honeycomb.color.secondary.normal};
-  color: ${({ theme }) =>
-    theme.honeycomb.color.readable.normal(theme.honeycomb.color.secondary.normal)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
 
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
@@ -65,12 +81,26 @@ export const Container = styled.ul<ContainerProps>`
     css`
       width: auto;
     `};
+
   ${({ disabled }) =>
     disabled &&
     css`
       opacity: 0.3;
       pointer-events: none;
     `};
+
+  ${({ variant }) =>
+    (variant === 'segmented' &&
+      css`
+        background: ${({ theme }) => theme.honeycomb.color.secondary.normal};
+        color: ${({ theme }) =>
+          theme.honeycomb.color.readable.normal(theme.honeycomb.color.secondary.normal)};
+        border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
+      `) ||
+    (variant === 'tab' &&
+      css`
+        border-bottom: 2px solid transparent;
+      `)};
 `;
 
 export const Scroll = styled.div`
