@@ -9,6 +9,8 @@ export const headerItem = css`
   align-items: center;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   cursor: pointer;
+  white-space: nowrap;
+  background: transparent;
 
   :focus,
   :hover,
