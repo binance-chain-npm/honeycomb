@@ -29,7 +29,7 @@ const render = (
           onChange={({ selectedIndex }) =>
             setSelected((state) => ({ ...state, [index]: selectedIndex }))
           }
-          data-testid={`${variant}-control.${size}`}
+          data-testid={`segmented-control.${size}`}
         >
           <>BTC</>
           <span>BNB</span>
