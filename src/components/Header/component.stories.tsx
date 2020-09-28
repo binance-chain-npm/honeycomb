@@ -1,8 +1,10 @@
 import React from 'react';
 
 import { Sections } from '../../modules/sections';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Card } from '../Card';
 import { Icon } from '../Icon';
+import { Space } from '../Space';
 
 import { Header } from '.';
 
@@ -20,14 +22,26 @@ const dropdown = (
   </Header.Dropdown>
 );
 
+const style: React.CSSProperties = {
+  color: GoldLight.honeycomb.color.primary.normal,
+  display: 'flex',
+  alignItems: 'center',
+};
+
 export const Default = () => (
   <Card variant="bare">
     <Header
       logo={
-        <>
-          <Icon.BinanceChain />
-          &nbsp;Binance Chain
-        </>
+        <div style={{ display: 'flex' }}>
+          <Icon.BinanceChain
+            style={{ fontSize: '2.5em' }}
+            color={GoldLight.honeycomb.color.primary.normal}
+          />
+          <Space size="tiny" />
+          <div style={{ ...style, fontWeight: 600 }}>BINANCE</div>
+          <Space size="micro" />
+          <div style={style}>CHAIN</div>
+        </div>
       }
       left={
         <>
