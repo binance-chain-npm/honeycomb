@@ -68,7 +68,7 @@ export const Component = ({
   );
 };
 
-Component.displayName = 'Control';
+Component.displayName = 'SegmentedControl';
 
 Component.Container = Container;
 Component.Control = Element;

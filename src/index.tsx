@@ -39,7 +39,7 @@ export { Modal } from './components/Modal';
 export { Select } from './components/Select';
 export { ListItem } from './components/ListItem';
 export { Card } from './components/Card';
-export { Control } from './components/Control';
+export { SegmentedControl } from './components/SegmentedControl';
 export { Table } from './components/Table';
 export { Balance } from './components/Balance';
 export { CryptoAddress } from './components/CryptoAddress';
