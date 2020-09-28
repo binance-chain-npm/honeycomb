@@ -54,11 +54,15 @@ export const Element = styled.li<ElementProps>`
   font-weight: 600;
 
   ${({ variant }) =>
-    variant === 'segmented' &&
-    css`
-      border-radius: ${({ theme }) =>
-        em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
-    `};
+    (variant === 'segmented' &&
+      css`
+        border-radius: ${({ theme }) =>
+          em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
+      `) ||
+    (variant === 'tab' &&
+      css`
+        border-bottom: 2px solid transparent;
+      `)};
 
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
   ${({ active }) => active && activeElement}
@@ -99,7 +103,7 @@ export const Container = styled.ul<ContainerProps>`
       `) ||
     (variant === 'tab' &&
       css`
-        border-bottom: 2px solid transparent;
+        border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
       `)};
 `;
 

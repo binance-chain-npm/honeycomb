@@ -11,7 +11,7 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size' | '
     selectedIndex?: number;
     size?: Size;
     shape?: Shape;
-    variant: Variant;
+    variant?: Variant;
     onChange?: (params: { selectedIndex: number }) => void;
   };
 
@@ -24,7 +24,7 @@ export const Component = ({
   'data-testid': testId,
   size = 'huge',
   shape = 'fill',
-  variant,
+  variant = 'segmented',
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
@@ -68,7 +68,7 @@ export const Component = ({
   );
 };
 
-Component.displayName = 'Control';
+Component.displayName = 'SegmentedControl';
 
 Component.Container = Container;
 Component.Control = Element;

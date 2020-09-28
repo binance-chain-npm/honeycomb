@@ -1,6 +1,6 @@
-describe('Control', () => {
-  it('<Control variant="segmented" /> renders correctly', () => {
-    cy.visitStory({ storyId: 'elements-control--segmented-control', themeId: 'GoldLight' });
+describe('SegmentedControl', () => {
+  it('<SegmentedControl variant="segmented" /> renders correctly', () => {
+    cy.visitStory({ storyId: 'elements-segmentedcontrol--default', themeId: 'GoldLight' });
 
     cy.get('[data-testid="segmented-control.huge"]').should('be.visible');
     cy.get('[data-testid="segmented-control.huge.0"]').should(
@@ -18,7 +18,7 @@ describe('Control', () => {
       'data-testisselected',
       'false',
     );
-    cy.percySnapshot('<Control variant="segmented" />');
+    cy.percySnapshot('<SegmentedControl variant="segmented" />');
 
     cy.get('[data-testid="segmented-control.huge.1"]').click();
     cy.get('[data-testid="segmented-control.huge.0"]').should(
@@ -38,9 +38,9 @@ describe('Control', () => {
     );
   });
 
-  it('<Control variant="tab" /> renders correctly', () => {
-    cy.visitStory({ storyId: 'elements-control--tab-control', themeId: 'GoldLight' });
+  it('<SegmentedControl variant="tab" /> renders correctly', () => {
+    cy.visitStory({ storyId: 'elements-segmentedcontrol--tabs', themeId: 'GoldLight' });
 
-    cy.percySnapshot('<Control variant="tab" />');
+    cy.percySnapshot('<SegmentedControl variant="tab" />');
   });
 });
