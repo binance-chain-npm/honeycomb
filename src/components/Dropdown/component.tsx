@@ -14,30 +14,30 @@ export type Props = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'child
     target: React.ReactNode;
   };
 
-export const Component = (props: Props) => {
+export const Component = ({ className, children, target, ...otherProps }: Props) => {
   const [isShowing, setShowing] = useState(false);
-  const buildTestId = useBuildTestId(props['data-testid']);
+  const buildTestId = useBuildTestId(otherProps['data-testid']);
 
   const show = useCallback(() => setShowing(true), [setShowing]);
   const hide = useCallback(() => setShowing(false), [setShowing]);
 
   return (
     <Tooltip
-      className={props.className}
+      className={className}
       trigger="click"
       interactive={true}
       onShow={show}
       onHide={hide}
       content={
         <TestIdContext.Provider value={buildTestId('content')}>
-          <TooltipContent>{props.children}</TooltipContent>
+          <TooltipContent>{children}</TooltipContent>
         </TestIdContext.Provider>
       }
-      data-testid={props['data-testid']}
+      data-testid={otherProps['data-testid']}
       arrow={false}
     >
       <Styleless htmlTag="div">
-        <ShowingContext.Provider value={isShowing}>{props.target}</ShowingContext.Provider>
+        <ShowingContext.Provider value={isShowing}>{target}</ShowingContext.Provider>
       </Styleless>
     </Tooltip>
   );
