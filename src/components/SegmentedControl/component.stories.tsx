@@ -14,9 +14,9 @@ export default {
 };
 
 const render = (
-  variant: Variant,
   selected: Record<number, number>,
   setSelected: React.Dispatch<React.SetStateAction<Record<number, number>>>,
+  variant?: Variant,
 ) => (
   <div style={{ display: 'flex', flexDirection: 'column' }}>
     {sizes.map((size, index) => (
@@ -69,11 +69,11 @@ const render = (
 export const Default = () => {
   const [selected, setSelected] = useState<Record<number, number>>({});
 
-  return render('segmented', selected, setSelected);
+  return render(selected, setSelected);
 };
 
 export const Tabs = () => {
   const [selected, setSelected] = useState<Record<number, number>>({});
 
-  return render('tab', selected, setSelected);
+  return render(selected, setSelected, 'tab');
 };
