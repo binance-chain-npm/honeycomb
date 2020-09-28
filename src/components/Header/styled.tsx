@@ -53,7 +53,7 @@ export const Right = styled.div`
   display: flex;
   align-items: center;
 
-  > *:not(:last-child) {
-    margin-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  > *:not(:first-child) {
+    margin-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
   }
 `;

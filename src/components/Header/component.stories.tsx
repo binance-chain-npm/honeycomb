@@ -10,6 +10,15 @@ export default {
   title: `${Sections.Elements}/Header`,
 };
 
+const dropdown = (
+  <Header.Dropdown target="Dropdown Item">
+    <Header.Dropdown.Item>Item 1</Header.Dropdown.Item>
+    <Header.Dropdown.Item htmlTag="a">Item 2</Header.Dropdown.Item>
+    <Header.Dropdown.Divider />
+    <Header.Dropdown.Item variant="accent">Item 3</Header.Dropdown.Item>
+  </Header.Dropdown>
+);
+
 export const Default = () => (
   <Header
     logo={
@@ -21,23 +30,13 @@ export const Default = () => (
     left={
       <>
         <Header.Item>Left Item</Header.Item>
-        <Header.Dropdown target="Dropdown Item">
-          <Header.Dropdown.Item>Item 1</Header.Dropdown.Item>
-          <Header.Dropdown.Item htmlTag="a">Item 2</Header.Dropdown.Item>
-          <Header.Dropdown.Divider />
-          <Header.Dropdown.Item variant="accent">Item 3</Header.Dropdown.Item>
-        </Header.Dropdown>
+        {dropdown}
       </>
     }
     right={
       <>
         <Header.Item>Right Item</Header.Item>
-        <Header.Dropdown target="Dropdown Item">
-          <Header.Dropdown.Item>Item 1</Header.Dropdown.Item>
-          <Header.Dropdown.Item htmlTag="a">Item 2</Header.Dropdown.Item>
-          <Header.Dropdown.Divider />
-          <Header.Dropdown.Item variant="accent">Item 3</Header.Dropdown.Item>
-        </Header.Dropdown>
+        {dropdown}
       </>
     }
   />
