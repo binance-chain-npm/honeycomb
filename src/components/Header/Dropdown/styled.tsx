@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+import { Dropdown } from '../../Dropdown';
+import { styleless } from '../../Styleless';
 import { headerItem } from '../styled';
 
-export const Target = styled.div`
+export const StyledDefaultTarget = styled(Dropdown.DefaultTarget)`
+  ${styleless};
   ${headerItem};
 
   display: flex;

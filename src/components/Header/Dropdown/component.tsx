@@ -2,11 +2,9 @@ import React, { useContext } from 'react';
 
 import { useBuildTestId } from '../../../modules/test-ids';
 import { Dropdown } from '../../Dropdown';
-import { Icon } from '../../Icon';
-import { Space } from '../../Space';
 import { TestIdContext } from '../context';
 
-import { Target } from './styled';
+import { StyledDefaultTarget } from './styled';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Dropdown>;
 
@@ -17,13 +15,7 @@ export const Component = ({ target, children, ...otherProps }: Props) => {
   return (
     <Dropdown
       {...otherProps}
-      target={
-        <Target>
-          {target}
-          <Space size="micro" />
-          <Icon.TriangleDown />
-        </Target>
-      }
+      target={<StyledDefaultTarget>{target}</StyledDefaultTarget>}
       data-testid={buildTestId(otherProps['data-testid'])}
     >
       {children}

@@ -44,6 +44,7 @@ export { ReactComponent as Success } from './assets/Success.svg';
 export { ReactComponent as TestnetFaucet } from './assets/TestnetFaucet.svg';
 export { ReactComponent as Tick } from './assets/Tick.svg';
 export { ReactComponent as TriangleDown } from './assets/TriangleDown.svg';
+export { ReactComponent as TriangleUp } from './assets/TriangleUp.svg';
 export { ReactComponent as VisaColor } from './assets/VisaColor.svg';
 export { ReactComponent as Wallet } from './assets/Wallet.svg';
 export { ReactComponent as WalletConnect } from './assets/WalletConnect.svg';
