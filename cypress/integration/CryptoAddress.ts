@@ -29,5 +29,22 @@ describe('CryptoAddress', () => {
 
     cy.percySnapshot('CryptoAddress while open on a large device', { widths: [800] });
   });
-});
 
+  it('displays formatted text correctly', () => {
+    cy.visitStory({ storyId: 'elements-cryptoaddress--format', themeId: 'GoldLight' });
+
+    cy.get('[data-testid="crypto-address.btn-copy"]').click();
+
+    cy.window()
+    .its("navigator")
+    .then((navigator) => {
+      cy.stub(navigator.clipboard, "writeText").callsFake((value) => {
+        expect(value).to.equal('bnb000000000000000000000000000000000000000');
+      })
+    });
+
+    cy.get('[data-testid="crypto-address.address"]').should('have.text', '0xb38784***e967Ece49');
+
+    cy.percySnapshot('CryptoAddress displaying different text than the clipboard value');
+  });
+});

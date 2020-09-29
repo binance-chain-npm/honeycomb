@@ -12,6 +12,7 @@ import { Container, CryptoAddress, StyledModal, StyledQRCode } from './styled';
 
 export type Props = Testable & {
   value: string;
+  text?: string;
   className?: string;
   canCopyToClipboard?: boolean;
   canScanQrCode?: boolean;
@@ -19,6 +20,7 @@ export type Props = Testable & {
 
 export const Component = ({
   value,
+  text,
   className,
   canCopyToClipboard = true,
   canScanQrCode = true,
@@ -51,7 +53,7 @@ export const Component = ({
 
   return (
     <Container className={className} data-testid={buildTestId()}>
-      <CryptoAddress>{value}</CryptoAddress>
+      <CryptoAddress data-testid={buildTestId('address')}>{text || value}</CryptoAddress>
       {canScanQrCode && (
         <>
           {width < sizes.sm || height < sizes.sm ? (
@@ -77,7 +79,13 @@ export const Component = ({
         </>
       )}
       {canCopyToClipboard && (
-        <CopyToClipboard value={value} variant="secondary" shape="square" size="increased" />
+        <CopyToClipboard
+          value={value}
+          variant="secondary"
+          shape="square"
+          size="increased"
+          data-testid={buildTestId('btn-copy')}
+        />
       )}
     </Container>
   );
