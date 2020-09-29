@@ -17,3 +17,13 @@ export const Default = () => (
     />
   </Card>
 );
+
+export const format = () => (
+  <Card>
+    <CryptoAddress
+      value="bnb000000000000000000000000000000000000000"
+      text="0xb38784***e967Ece49"
+      data-testid="crypto-address"
+    />
+  </Card>
+);
