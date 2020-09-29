@@ -53,7 +53,7 @@ export const Component = ({
 
   return (
     <Container className={className} data-testid={buildTestId()}>
-      <CryptoAddress>{text || value}</CryptoAddress>
+      <CryptoAddress data-testid={buildTestId('address')}>{text || value}</CryptoAddress>
       {canScanQrCode && (
         <>
           {width < sizes.sm || height < sizes.sm ? (
@@ -79,7 +79,13 @@ export const Component = ({
         </>
       )}
       {canCopyToClipboard && (
-        <CopyToClipboard value={value} variant="secondary" shape="square" size="increased" />
+        <CopyToClipboard
+          value={value}
+          variant="secondary"
+          shape="square"
+          size="increased"
+          data-testid={buildTestId('btn-copy')}
+        />
       )}
     </Container>
   );
