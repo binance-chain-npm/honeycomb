@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
+import { ListItem } from '../ListItem';
 
 import { Drawer } from '.';
-import { ListItem } from '../ListItem';
 
 export default {
   title: `${Sections.Elements}/Drawer`,
