@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 
 export const sizes = {
   xs: 0,
-  sm: 600,
-  md: 960,
+  sm: 375,
+  md: 768,
   lg: 1280,
   xl: 1920,
 } as const;

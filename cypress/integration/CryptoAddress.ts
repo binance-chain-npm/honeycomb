@@ -16,7 +16,7 @@ describe('CryptoAddress', () => {
   });
 
   it('displays dropdown on large devices', () => {
-    cy.viewport(800, 600);
+    cy.viewport(768, 768);
     cy.clock();
     cy.visitStory({ storyId: 'elements-cryptoaddress--default', themeId: 'GoldLight' });
     cy.tick(10000);

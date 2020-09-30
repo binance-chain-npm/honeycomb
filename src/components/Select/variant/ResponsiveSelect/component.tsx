@@ -15,7 +15,7 @@ export const Component = ({ onClose, 'data-testid': testId, ...otherProps }: Pro
 
   return (
     <>
-      {width < sizes.sm || height < sizes.sm ? (
+      {width < sizes.md || height < sizes.md ? (
         <ModalSelect
           target={otherProps.target}
           open={otherProps.open}
