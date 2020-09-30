@@ -2,7 +2,9 @@ import React from 'react';
 
 import { Sections } from '../../modules/sections';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
+import { Button } from '../Button';
 import { Card } from '../Card';
+import { Dropdown } from '../Dropdown';
 import { Icon } from '../Icon';
 import { Space } from '../Space';
 
@@ -13,14 +15,20 @@ export default {
   title: `${Sections.Elements}/Header`,
 };
 
-const dropdown = (
-  <Header.Dropdown target="Dropdown Item">
-    <Header.Dropdown.Item>Item 1</Header.Dropdown.Item>
-    <Header.Dropdown.Item>Item 2</Header.Dropdown.Item>
-    <Header.Dropdown.Divider />
-    <Header.Dropdown.Item>Item 3</Header.Dropdown.Item>
-  </Header.Dropdown>
-);
+const dropdown = [
+  {
+    target: <Dropdown.Item>Item 1</Dropdown.Item>,
+  },
+  {
+    target: <Dropdown.Item disabled>Item 2</Dropdown.Item>,
+  },
+  {
+    target: <Dropdown.Divider />,
+  },
+  {
+    target: <Dropdown.Item>Item 3</Dropdown.Item>,
+  },
+];
 
 const style: React.CSSProperties = {
   color: GoldLight.honeycomb.color.primary.normal,
@@ -43,18 +51,35 @@ export const Default = () => (
           <div style={style}>CHAIN</div>
         </div>
       }
-      left={
-        <>
-          <Header.Item>Left Item</Header.Item>
-          {dropdown}
-        </>
-      }
-      right={
-        <>
-          <Header.Item>Right Item</Header.Item>
-          {dropdown}
-        </>
-      }
+      left={[
+        {
+          target: 'Left Item',
+          htmlTag: 'a',
+          href: '#',
+        },
+        {
+          target: 'Dropdown Item',
+          children: dropdown,
+        },
+      ]}
+      right={[
+        {
+          target: 'Right Item',
+          htmlTag: 'button',
+        },
+        {
+          target: (
+            <Button variant="primary" shape="fit">
+              Button
+            </Button>
+          ),
+          htmlTag: 'button',
+        },
+        {
+          target: 'Dropdown Item',
+          children: dropdown,
+        },
+      ]}
     />
   </Card>
 );

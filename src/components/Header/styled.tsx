@@ -1,16 +1,18 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
+import { ListItem } from '../ListItem';
 import { styleless } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
+import { Dropdown } from '../Dropdown';
 
 export const headerItem = css`
   display: flex;
   align-items: center;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   cursor: pointer;
   white-space: nowrap;
   background: transparent;
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
   :focus,
   :hover,
@@ -58,4 +60,14 @@ export const Right = styled.div`
   > *:not(:first-child) {
     margin-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
   }
+`;
+
+export const StyledListItem = styled(ListItem)`
+  ${headerItem};
+  width: auto;
+  padding: 0;
+`;
+
+export const StyledDefaultTarget = styled(Dropdown.DefaultTarget)`
+  ${headerItem};
 `;
