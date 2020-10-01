@@ -56,7 +56,7 @@ export const Component = ({
   });
 
   if (!MODAL_CONTAINER || !open) {
-    return <>{null}</>;
+    return null;
   }
 
   return (

@@ -44,7 +44,7 @@ export const Component = ({
   }, [open, onClose]);
 
   if (!open) {
-    return <>{null}</>;
+    return null;
   }
 
   return (
