@@ -108,6 +108,7 @@ export const GoldDark = {
     zIndexes: {
       normal: 0,
       modals: 500,
+      drawers: 490,
     },
   },
 };

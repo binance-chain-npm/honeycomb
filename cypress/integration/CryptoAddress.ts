@@ -31,9 +31,12 @@ describe('CryptoAddress', () => {
   });
 
   it('displays formatted text correctly', () => {
+    cy.clock();
     cy.visitStory({ storyId: 'elements-cryptoaddress--format', themeId: 'GoldLight' });
+    cy.tick(10000);
 
     cy.get('[data-testid="crypto-address.btn-copy"]').click();
+    cy.tick(10000);
 
     cy.window()
     .its("navigator")
