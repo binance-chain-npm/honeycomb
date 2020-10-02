@@ -9,13 +9,14 @@ import { ListItem } from '../ListItem';
 
 import { renderHeaderItems } from './renderHeaderItems';
 import { renderPanels } from './renderPanels';
-import { Styled, LeftContainer, Logo, Left, Right, Item } from './styled';
+import { Styled, LeftContainer, Logo, Left, Right, NonCollapsible, Item } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
     logo?: React.ReactNode;
     left?: HeaderItem[];
     right?: HeaderItem[];
+    nonCollapsible?: HeaderItem[];
   };
 
 export type HeaderItem = Omit<
@@ -29,7 +30,14 @@ export type HeaderItem = Omit<
 
 export type Panels = React.ComponentPropsWithoutRef<typeof Accordion>['panels'];
 
-export const Component = ({ logo, left, right, 'data-testid': testId, ...otherProps }: Props) => {
+export const Component = ({
+  logo,
+  left,
+  right,
+  nonCollapsible,
+  'data-testid': testId,
+  ...otherProps
+}: Props) => {
   const buildTestId = useBuildTestId(testId);
   const [open, setOpen] = useState(false);
   const [activePanel, setActivePanel] = useState(-1);
@@ -44,13 +52,13 @@ export const Component = ({ logo, left, right, 'data-testid': testId, ...otherPr
     setActivePanel((prev) => (prev === index ? -1 : index));
   }, []);
 
-  const isMd = useMemo(() => width < sizes.lg || height < sizes.lg, [width, height]);
-  const isSm = useMemo(() => width < sizes.md || height < sizes.md, [width, height]);
+  const isMd = useMemo(() => width < sizes.lg || height < sizes.md, [width, height]);
+  const isSm = useMemo(() => width < sizes.md || height < sizes.sm, [width, height]);
 
   const renderDrawer = useMemo(
     () => (items: HeaderItem[]) => (
       <>
-        <Item showBorder={false} onClick={toggleDrawer}>
+        <Item showBorder={false} onClick={toggleDrawer} isMenu>
           <Icon.HamburgerMenu />
         </Item>
         <Drawer open={open} onClose={toggleDrawer}>
@@ -90,6 +98,16 @@ export const Component = ({ logo, left, right, 'data-testid': testId, ...otherPr
     return <Left data-testid={buildTestId('left')}>{renderHeaderItems(left)}</Left>;
   }, [left, isSm, buildTestId]);
 
+  const nonCollapsibleElement = useMemo(() => {
+    if (!nonCollapsible || nonCollapsible.length === 0) return null;
+
+    return (
+      <NonCollapsible data-testid={buildTestId('non-collapsible')}>
+        {renderHeaderItems(nonCollapsible)}
+      </NonCollapsible>
+    );
+  }, [nonCollapsible, buildTestId]);
+
   return (
     <Styled {...otherProps} data-testid={buildTestId()}>
       <LeftContainer>
@@ -97,6 +115,7 @@ export const Component = ({ logo, left, right, 'data-testid': testId, ...otherPr
         {leftElement}
       </LeftContainer>
       {rightElement}
+      {nonCollapsibleElement}
     </Styled>
   );
 };

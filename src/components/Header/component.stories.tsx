@@ -6,6 +6,7 @@ import { Badge } from '../Badge';
 import { Button } from '../Button';
 import { Card } from '../Card';
 import { Icon } from '../Icon';
+import { DefaultTarget } from '../internal/DefaultTarget';
 import { Space } from '../Space';
 
 import { Header } from '.';
@@ -84,6 +85,12 @@ export const Default = () => (
         {
           target: 'Dropdown Item',
           children: dropdown,
+        },
+      ]}
+      nonCollapsible={[
+        {
+          target: <DefaultTarget style={{ padding: '0 1em' }}>Non-Collapsible Item</DefaultTarget>,
+          isStyled: true,
         },
       ]}
     />

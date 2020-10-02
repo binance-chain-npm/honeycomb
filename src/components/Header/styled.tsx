@@ -61,9 +61,22 @@ export const Right = styled.div`
   }
 `;
 
-export const Item = styled(ListItem)`
+export const NonCollapsible = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
+`;
+
+export const Item = styled(ListItem)<{ isMenu?: boolean }>`
   ${headerItem};
 
   width: auto;
   padding: 0;
+
+  ${({ isMenu }) =>
+    isMenu &&
+    css`
+      margin-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
+      order: 100;
+    `};
 `;
