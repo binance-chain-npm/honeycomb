@@ -17,7 +17,11 @@ export default {
 
 const dropdown = [
   {
-    target: 'Item 1',
+    target: (
+      <>
+        Item 1&nbsp;<Badge variant="primary">Badge</Badge>
+      </>
+    ),
   },
   {
     target: 'Item 2',
@@ -50,7 +54,7 @@ export const Default = () => (
       }
       left={[
         {
-          target: <>Left Item&nbsp;<Badge variant="primary">Badge</Badge></>,
+          target: 'Item',
           htmlTag: 'a',
           href: '#',
         },
@@ -61,8 +65,12 @@ export const Default = () => (
       ]}
       right={[
         {
-          target: 'Right Item',
-          htmlTag: 'button',
+          target: (
+            <>
+              <span style={{ marginRight: '0.5em' }}>Multiple Items</span>
+              <Icon.Link />
+            </>
+          ),
         },
         {
           target: (

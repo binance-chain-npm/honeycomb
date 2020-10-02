@@ -44,39 +44,57 @@ export const Component = ({ logo, left, right, 'data-testid': testId, ...otherPr
     setActivePanel((prev) => (prev === index ? -1 : index));
   }, []);
 
-  const isMd = useMemo(() => width < sizes.md || height < sizes.md, [width, height]);
+  const isMd = useMemo(() => width < sizes.lg || height < sizes.lg, [width, height]);
+  const isSm = useMemo(() => width < sizes.md || height < sizes.md, [width, height]);
+
+  const renderDrawer = useMemo(
+    () => (items: HeaderItem[]) => (
+      <>
+        <Item showBorder={false} onClick={toggleDrawer}>
+          <Icon.HamburgerMenu />
+        </Item>
+        <Drawer open={open} onClose={toggleDrawer}>
+          <Accordion
+            panels={renderPanels(items, activePanel)}
+            activePanel={activePanel}
+            onChange={changePanel}
+            data-testid={buildTestId('accordion')}
+          />
+        </Drawer>
+      </>
+    ),
+    [open, activePanel, toggleDrawer, changePanel, buildTestId],
+  );
 
   const rightElement = useMemo(() => {
-    if (!right || right.length === 0) return null;
+    let rightHeaderItems: HeaderItem[] = [];
+    if (right && right.length > 0) rightHeaderItems = right;
 
-    if (isMd) {
-      return (
-        <>
-          <Item showBorder={false} onClick={toggleDrawer}>
-            <Icon.HamburgerMenu />
-          </Item>
-          <Drawer open={open} onClose={toggleDrawer}>
-            <Accordion
-              panels={renderPanels(right, activePanel)}
-              activePanel={activePanel}
-              onChange={changePanel}
-              data-testid={'accordion'}
-            />
-          </Drawer>
-        </>
-      );
+    let leftHeaderItems: HeaderItem[] = [];
+    if (left && left.length > 0) leftHeaderItems = left;
+
+    if (isSm) {
+      return <>{renderDrawer([...leftHeaderItems, ...rightHeaderItems])}</>;
     }
 
-    return <Right data-testid={buildTestId('right')}>{renderHeaderItems(right)}</Right>;
-  }, [right, activePanel, open, isMd, toggleDrawer, buildTestId, changePanel]);
+    if (isMd) {
+      return <>{renderDrawer(rightHeaderItems)}</>;
+    }
+
+    return <Right data-testid={buildTestId('right')}>{renderHeaderItems(rightHeaderItems)}</Right>;
+  }, [left, right, isSm, isMd, renderDrawer, buildTestId]);
+
+  const leftElement = useMemo(() => {
+    if (!left || left.length === 0 || isSm) return null;
+
+    return <Left data-testid={buildTestId('left')}>{renderHeaderItems(left)}</Left>;
+  }, [left, isSm, buildTestId]);
 
   return (
     <Styled {...otherProps} data-testid={buildTestId()}>
       <LeftContainer>
         {logo && <Logo data-testid={buildTestId('logo')}>{logo}</Logo>}
-        {left && left.length > 0 && (
-          <Left data-testid={buildTestId('left')}>{renderHeaderItems(left)}</Left>
-        )}
+        {leftElement}
       </LeftContainer>
       {rightElement}
     </Styled>

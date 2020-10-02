@@ -19,12 +19,17 @@ export const PanelContainer = styled(ListItem)`
   ${panel};
 `;
 
-export const PanelItem = styled.div`
+export const PanelItem = styled.div<{ hasChildren: boolean }>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   font-weight: 600;
+
+  ${({ hasChildren }) =>
+    hasChildren &&
+    css`
+      justify-content: space-between;
+    `};
 `;
 
 export const PanelDropdownContainer = styled(ListItem)`

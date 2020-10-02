@@ -14,7 +14,7 @@ export const Container = styled.div`
 `;
 
 export const Box = styled.div`
-  width: ${em(250)};
+  min-width: ${em(250)};
   height: 100%;
   background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
   box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};

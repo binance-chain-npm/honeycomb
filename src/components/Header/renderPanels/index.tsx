@@ -17,16 +17,21 @@ export const renderPanels = (items: HeaderItem[], activePanel: number): Panels =
     const { children, target, isStyled, ...otherItemProps } = it;
 
     const targetKey = `panel-${indexPanel}`;
+    const hasChildren = !!children && children.length > 0;
 
     return {
       target: isStyled ? (
         <PanelElementItem key={targetKey}>{target}</PanelElementItem>
       ) : (
         <PanelContainer showBorder={false} key={targetKey} {...otherItemProps}>
-          <PanelItem>
+          <PanelItem hasChildren={hasChildren}>
             {target}
-            <Space size="micro" />
-            {children && (activePanel === indexPanel ? <Icon.TriangleUp /> : <Icon.TriangleDown />)}
+            {hasChildren && (
+              <>
+                <Space size="micro" />
+                {activePanel === indexPanel ? <Icon.TriangleUp /> : <Icon.TriangleDown />}
+              </>
+            )}
           </PanelItem>
         </PanelContainer>
       ),
