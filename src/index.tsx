@@ -45,4 +45,5 @@ export { Balance } from './components/Balance';
 export { CryptoAddress } from './components/CryptoAddress';
 export { HoverEffect, hoverEffect } from './components/HoverEffect';
 export { Drawer } from './components/Drawer';
+export { Accordion } from './components/Accordion';
 export { Header } from './components/Header';
