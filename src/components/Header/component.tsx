@@ -22,8 +22,9 @@ export type HeaderItem = Omit<
   React.ComponentPropsWithoutRef<typeof ListItem>,
   'showCaretRight' | 'children' | 'target'
 > & {
-  target: React.ReactElement | string;
+  target: React.ReactNode;
   children?: HeaderItem[];
+  isStyled?: boolean;
 };
 
 export type Panels = React.ComponentPropsWithoutRef<typeof Accordion>['panels'];

@@ -8,7 +8,8 @@ import { Sections } from '../../modules/sections';
 
 ### Header Item Props
 
-| Name        | Type                  | Description                                                                                   |
-|-------------|-----------------------|-----------------------------------------------------------------------------------------------|
-| `target`    | `node` \| `string`    | If `node`, no styles will be applied. If `string`, the default header styles will be applied. |
-| `children?` | `node` \| `undefined` | If `node`, a dropdown will be rendered.                                                       |
+| Name        | Type                     | Description                                           |
+|-------------|--------------------------|-------------------------------------------------------|
+| `target`    | `node`                   | The element inside the header item.                   |
+| `children?` | `node` \| `undefined`    | If `node`, a dropdown will be rendered.               |
+| `isStyled?` | `boolean` \| `undefined` | If `true`, no styling will be applied to the element. |

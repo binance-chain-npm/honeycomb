@@ -8,15 +8,14 @@ import { StyledDropdown, StyledDefaultTarget } from './styled';
 
 export const renderHeaderItems = (items: HeaderItem[], isDropdownItem = false) => {
   return items.map((it, index) => {
-    const { children, target, ...otherItemProps } = it;
-    const isElement = typeof target !== 'string';
+    const { children, target, isStyled, ...otherItemProps } = it;
 
     if (!children) {
       if (isDropdownItem) {
         return <Dropdown.Item key={index}>{target}</Dropdown.Item>;
       }
 
-      if (isElement) {
+      if (isStyled) {
         return <React.Fragment key={index}>{target}</React.Fragment>;
       }
 

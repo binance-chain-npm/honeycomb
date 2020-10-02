@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Sections } from '../../modules/sections';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
+import { Badge } from '../Badge';
 import { Button } from '../Button';
 import { Card } from '../Card';
 import { Icon } from '../Icon';
@@ -49,7 +50,7 @@ export const Default = () => (
       }
       left={[
         {
-          target: 'Left Item',
+          target: <>Left Item&nbsp;<Badge variant="primary">Badge</Badge></>,
           htmlTag: 'a',
           href: '#',
         },
@@ -70,6 +71,7 @@ export const Default = () => (
             </Button>
           ),
           htmlTag: 'button',
+          isStyled: true,
         },
         {
           target: 'Dropdown Item',

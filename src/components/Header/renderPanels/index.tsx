@@ -14,13 +14,12 @@ import {
 
 export const renderPanels = (items: HeaderItem[], activePanel: number): Panels => {
   return items.map((it, indexPanel) => {
-    const { children, target, ...otherItemProps } = it;
-    const isElement = typeof target !== 'string';
+    const { children, target, isStyled, ...otherItemProps } = it;
 
     const targetKey = `panel-${indexPanel}`;
 
     return {
-      target: isElement ? (
+      target: isStyled ? (
         <PanelElementItem key={targetKey}>{target}</PanelElementItem>
       ) : (
         <PanelContainer showBorder={false} key={targetKey} {...otherItemProps}>
