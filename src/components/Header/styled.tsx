@@ -64,6 +64,7 @@ export const Right = styled.div`
 
 export const StyledListItem = styled(ListItem)`
   ${headerItem};
+
   width: auto;
   padding: 0;
 `;

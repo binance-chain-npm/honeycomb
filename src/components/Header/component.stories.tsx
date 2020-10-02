@@ -4,7 +4,6 @@ import { Sections } from '../../modules/sections';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Button } from '../Button';
 import { Card } from '../Card';
-import { Dropdown } from '../Dropdown';
 import { Icon } from '../Icon';
 import { Space } from '../Space';
 
@@ -17,16 +16,13 @@ export default {
 
 const dropdown = [
   {
-    target: <Dropdown.Item>Item 1</Dropdown.Item>,
+    target: 'Item 1',
   },
   {
-    target: <Dropdown.Item disabled>Item 2</Dropdown.Item>,
+    target: 'Item 2',
   },
   {
-    target: <Dropdown.Divider />,
-  },
-  {
-    target: <Dropdown.Item>Item 3</Dropdown.Item>,
+    target: 'Item 3',
   },
 ];
 
@@ -40,7 +36,7 @@ export const Default = () => (
   <Card variant="bare">
     <Header
       logo={
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', letterSpacing: '0.1em' }}>
           <Icon.BinanceChain
             style={{ fontSize: '2.5em' }}
             color={GoldLight.honeycomb.color.primary.normal}
