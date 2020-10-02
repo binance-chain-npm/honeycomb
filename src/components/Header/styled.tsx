@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
-import { ListItem } from '../ListItem';
 import { styleless } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
-import { Dropdown } from '../Dropdown';
+import { ListItem } from '../ListItem';
 
 export const headerItem = css`
   display: flex;
@@ -62,13 +61,9 @@ export const Right = styled.div`
   }
 `;
 
-export const StyledListItem = styled(ListItem)`
+export const Item = styled(ListItem)`
   ${headerItem};
 
   width: auto;
   padding: 0;
-`;
-
-export const StyledDefaultTarget = styled(Dropdown.DefaultTarget)`
-  ${headerItem};
 `;

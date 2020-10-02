@@ -9,7 +9,7 @@ import { ListItem } from '../ListItem';
 
 import { renderHeaderItems } from './renderHeaderItems';
 import { renderPanels } from './renderPanels';
-import { Styled, StyledListItem, LeftContainer, Logo, Left, Right } from './styled';
+import { Styled, LeftContainer, Logo, Left, Right, Item } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
@@ -51,9 +51,9 @@ export const Component = ({ logo, left, right, 'data-testid': testId, ...otherPr
     if (isMd) {
       return (
         <>
-          <StyledListItem showBorder={false} onClick={toggleDrawer}>
+          <Item showBorder={false} onClick={toggleDrawer}>
             <Icon.HamburgerMenu />
-          </StyledListItem>
+          </Item>
           <Drawer open={open} onClose={toggleDrawer}>
             <Accordion
               panels={renderPanels(right, activePanel)}

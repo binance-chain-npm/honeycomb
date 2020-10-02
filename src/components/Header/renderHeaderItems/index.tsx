@@ -2,7 +2,9 @@ import React from 'react';
 
 import { Dropdown } from '../../Dropdown';
 import { HeaderItem } from '../component';
-import { StyledDefaultTarget, StyledListItem } from '../styled';
+import { Item } from '../styled';
+
+import { StyledDropdown, StyledDefaultTarget } from './styled';
 
 export const renderHeaderItems = (items: HeaderItem[], isDropdownItem = false) => {
   return items.map((it, index) => {
@@ -19,16 +21,16 @@ export const renderHeaderItems = (items: HeaderItem[], isDropdownItem = false) =
       }
 
       return (
-        <StyledListItem key={index} {...otherItemProps} showBorder={!!otherItemProps.showBorder}>
+        <Item key={index} {...otherItemProps} showBorder={!!otherItemProps.showBorder}>
           {target}
-        </StyledListItem>
+        </Item>
       );
     }
 
     return (
-      <Dropdown key={index} target={<StyledDefaultTarget>{target}</StyledDefaultTarget>}>
+      <StyledDropdown key={index} target={<StyledDefaultTarget>{target}</StyledDefaultTarget>}>
         {renderHeaderItems(children, true)}
-      </Dropdown>
+      </StyledDropdown>
     );
   });
 };
