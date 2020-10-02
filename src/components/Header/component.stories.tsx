@@ -38,21 +38,97 @@ const style: React.CSSProperties = {
   alignItems: 'center',
 };
 
+const logo = (
+  <div style={{ display: 'flex', letterSpacing: '0.1em' }}>
+    <Icon.BinanceChain
+      style={{ fontSize: '2.5em' }}
+      color={GoldLight.honeycomb.color.primary.normal}
+    />
+    <Space size="tiny" />
+    <div style={{ ...style, fontWeight: 600 }}>BINANCE</div>
+    <Space size="micro" />
+    <div style={style}>CHAIN</div>
+  </div>
+);
+
 export const Default = () => (
   <Card variant="bare">
     <Header
-      logo={
-        <div style={{ display: 'flex', letterSpacing: '0.1em' }}>
-          <Icon.BinanceChain
-            style={{ fontSize: '2.5em' }}
-            color={GoldLight.honeycomb.color.primary.normal}
-          />
-          <Space size="tiny" />
-          <div style={{ ...style, fontWeight: 600 }}>BINANCE</div>
-          <Space size="micro" />
-          <div style={style}>CHAIN</div>
-        </div>
-      }
+      logo={logo}
+      left={[
+        {
+          target: 'Left Item 1',
+        },
+        {
+          target: 'Left Item 2',
+        },
+        {
+          target: 'Left Item 3',
+        },
+      ]}
+      right={[
+        {
+          target: 'Right Item 1',
+        },
+        {
+          target: 'Right Item 2',
+        },
+        {
+          target: 'Right Item 2',
+        },
+      ]}
+    />
+  </Card>
+);
+
+export const WithDropdownItems = () => (
+  <Card variant="bare">
+    <Header
+      logo={logo}
+      left={[
+        {
+          target: 'Left Dropdown Item',
+          children: dropdown,
+        },
+      ]}
+      right={[
+        {
+          target: 'Right Dropdown Item',
+          children: dropdown,
+        },
+      ]}
+    />
+  </Card>
+);
+
+export const WithNonCollapsibleItems = () => (
+  <Card variant="bare">
+    <Header
+      logo={logo}
+      left={[
+        {
+          target: 'Left Item',
+        },
+      ]}
+      right={[
+        {
+          target: 'Right Item',
+        },
+      ]}
+      nonCollapsible={[
+        {
+          target: <DefaultTarget style={{ padding: '0 1em' }}>Non-Collapsible Item</DefaultTarget>,
+          isStyled: true,
+        },
+      ]}
+    />
+  </Card>
+);
+
+export const WithComplexItems = () => (
+  <Card variant="bare">
+    <Header
+      logo={logo}
       left={[
         {
           target: 'Item',
