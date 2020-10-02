@@ -56,7 +56,7 @@ export const Component = ({ logo, left, right, 'data-testid': testId, ...otherPr
           </StyledListItem>
           <Drawer open={open} onClose={toggleDrawer}>
             <Accordion
-              panels={renderPanels(right)}
+              panels={renderPanels(right, activePanel)}
               activePanel={activePanel}
               onChange={changePanel}
               data-testid={'accordion'}

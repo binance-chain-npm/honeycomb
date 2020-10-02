@@ -20,6 +20,9 @@ export const PanelContainer = styled(ListItem)`
 `;
 
 export const PanelItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   font-weight: 600;
 `;

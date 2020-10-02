@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Icon } from '../../Icon';
+import { Space } from '../../Space';
 import { HeaderItem, Panels } from '../component';
 
 import {
@@ -10,7 +12,7 @@ import {
   PanelDropdownItem,
 } from './styled';
 
-export const renderPanels = (items: HeaderItem[]): Panels => {
+export const renderPanels = (items: HeaderItem[], activePanel: number): Panels => {
   return items.map((it, indexPanel) => {
     const { children, target, ...otherItemProps } = it;
     const isElement = typeof target !== 'string';
@@ -22,12 +24,16 @@ export const renderPanels = (items: HeaderItem[]): Panels => {
         <PanelElementItem key={targetKey}>{target}</PanelElementItem>
       ) : (
         <PanelContainer showBorder={false} key={targetKey} {...otherItemProps}>
-          <PanelItem>{target}</PanelItem>
+          <PanelItem>
+            {target}
+            <Space size="micro" />
+            {children && (activePanel === indexPanel ? <Icon.TriangleUp /> : <Icon.TriangleDown />)}
+          </PanelItem>
         </PanelContainer>
       ),
       children: (
         <>
-          {it.children?.map((child, indexPanelChild) => (
+          {children?.map((child, indexPanelChild) => (
             <PanelDropdownContainer
               showBorder={false}
               key={`panel-${indexPanel}-${indexPanelChild}`}
