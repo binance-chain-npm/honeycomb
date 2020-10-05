@@ -9,6 +9,7 @@ export { default as ArrowUp } from './assets/ArrowUp.svg';
 export { default as Binance } from './assets/Binance.svg';
 export { default as BinanceChain } from './assets/BinanceChain.svg';
 export { default as BinanceChainLogo } from './assets/BinanceChainLogo.svg';
+export { default as BinanceChainLogoSmall } from './assets/BinanceChainLogoSmall.svg';
 export { default as CaretDown } from './assets/CaretDown.svg';
 export { default as CaretLeft } from './assets/CaretLeft.svg';
 export { default as CaretRight } from './assets/CaretRight.svg';

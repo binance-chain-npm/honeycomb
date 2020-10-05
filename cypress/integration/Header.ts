@@ -6,6 +6,10 @@ describe('Header', () => {
     cy.tick(10000);
 
     cy.get('[data-testid="header.logo"]').should('be.visible');
+    cy.get('[data-testid="logo.logo"]').should('be.visible');
+    cy.get('[data-testid="logo.badge"]').should('be.visible');
+    cy.get('[data-testid="header.logo"]').should('be.visible');
+
     cy.get('[data-testid="header.left"]').should('be.visible');
     cy.get('[data-testid="header.right"]').should('be.visible');
     cy.get('[data-testid="header.non-collapsible"]').should('be.visible');
@@ -22,6 +26,9 @@ describe('Header', () => {
     cy.tick(10000);
 
     cy.get('[data-testid="header.logo"]').should('be.visible');
+    cy.get('[data-testid="logo.logo"]').should('be.visible');
+    cy.get('[data-testid="logo.badge"]').should('be.visible');
+
     cy.get('[data-testid="header.left"]').should('be.visible');
     cy.get('[data-testid="header.right"]').should('not.exist');
     cy.get('[data-testid="header.non-collapsible"]').should('be.visible');
@@ -50,6 +57,10 @@ describe('Header', () => {
     cy.tick(10000);
 
     cy.get('[data-testid="header.logo"]').should('be.visible');
+    cy.get('[data-testid="logo.logo"]').should('not.exist');
+    cy.get('[data-testid="logo.logo-small"]').should('be.visible');
+    cy.get('[data-testid="logo.badge"]').should('be.visible');
+
     cy.get('[data-testid="header.left"]').should('not.exist');
     cy.get('[data-testid="header.right"]').should('not.exist');
     cy.get('[data-testid="header.non-collapsible"]').should('be.visible');

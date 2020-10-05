@@ -110,7 +110,7 @@ export const WithNonCollapsibleItems = () => (
 export const WithComplexItems = () => (
   <Card variant="bare">
     <Header
-      logo={<Header.Logo text="Project" />}
+      logo={<Header.Logo text="Project" data-testid="logo" />}
       left={[
         {
           target: 'Item',
