@@ -33,6 +33,6 @@ describe('TextInput', () => {
     cy.get('[data-testid="input-giant.native-input"]').clear();
     cy.get('[data-testid="input-giant.native-input"]').type('Some really really really really really really long text...');
 
-    cy.percySnapshot('<TextInput dynamic />', { widths: [375, 800] });
+    cy.percySnapshot('<TextInput dynamic />', { widths: [375, 768] });
   });
 });
