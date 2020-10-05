@@ -18,4 +18,5 @@ export const StyledDefaultTarget = styled(Dropdown.DefaultTarget)`
 export const Label = styled(Dropdown.Item)`
   color: ${({ theme }) => theme.honeycomb.color.text.masked};
   font-size: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.small)};
 `;
