@@ -4,12 +4,11 @@ import { Testable } from '../../modules/test-ids';
 
 import { Container, Position, Variant } from './styled';
 
-export type Props = Testable & {
-  children?: React.ReactNode;
-  className?: string;
-  position?: Position;
-  variant?: Variant;
-};
+export type Props = React.AllHTMLAttributes<HTMLElement> &
+  Testable & {
+    position?: Position;
+    variant?: Variant;
+  };
 
 export const Component = ({
   children,

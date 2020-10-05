@@ -56,7 +56,7 @@ export const Component = ({
       <CryptoAddress data-testid={buildTestId('address')}>{text || value}</CryptoAddress>
       {canScanQrCode && (
         <>
-          {width < sizes.sm || height < sizes.sm ? (
+          {width < sizes.md || height < sizes.md ? (
             <>
               {scanQrCodeButton}
               <StyledModal open={showQRCode} data-testid={buildTestId('modal')}>

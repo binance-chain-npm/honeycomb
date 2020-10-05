@@ -16,7 +16,7 @@ describe('CryptoAddress', () => {
   });
 
   it('displays dropdown on large devices', () => {
-    cy.viewport(800, 600);
+    cy.viewport(768, 768);
     cy.clock();
     cy.visitStory({ storyId: 'elements-cryptoaddress--default', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -27,7 +27,7 @@ describe('CryptoAddress', () => {
     cy.get('[data-testid="crypto-address.modal.content"]').should('not.exist');
     cy.get('[data-testid="crypto-address.tooltip.content"]').should('be.visible');
 
-    cy.percySnapshot('CryptoAddress while open on a large device', { widths: [800] });
+    cy.percySnapshot('CryptoAddress while open on a large device', { widths: [768] });
   });
 
   it('displays formatted text correctly', () => {

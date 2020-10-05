@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { ShowingContext } from '../context';
 import { Icon } from '../../Icon';
 import { DefaultTarget } from '../../internal/DefaultTarget';
+import { Space } from '../../Space';
 import { Styleless } from '../../Styleless';
 
 export const Component = ({
@@ -10,11 +11,12 @@ export const Component = ({
   ...otherProps
 }: Partial<React.ComponentPropsWithoutRef<typeof Styleless>> & { children: React.ReactNode }) => {
   const isShowing = useContext(ShowingContext);
+
   return (
     <DefaultTarget {...otherProps} as={htmlTag as any} isShowing={isShowing}>
       {otherProps.children}
-      &nbsp;
-      <Icon.TriangleDown />
+      <Space size="micro" />
+      {isShowing ? <Icon.TriangleUp /> : <Icon.TriangleDown />}
     </DefaultTarget>
   );
 };

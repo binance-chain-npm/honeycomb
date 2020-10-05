@@ -14,7 +14,7 @@ describe('Select', () => {
   });
 
   it('displays dropdown on large devices', () => {
-    cy.viewport(800, 600);
+    cy.viewport(768, 768);
     cy.clock();
     cy.visitStory({ storyId: 'elements-select--responsive', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -72,7 +72,6 @@ describe('Select', () => {
   });
 
   it('<Select variant="modal" /> renders correctly', () => {
-    cy.viewport(800, 600);
     cy.clock();
     cy.visitStory({ storyId: 'elements-select--modal', themeId: 'GoldLight' });
     cy.tick(10000);
