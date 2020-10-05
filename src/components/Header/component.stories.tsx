@@ -33,6 +33,13 @@ const dropdown = [
   },
 ];
 
+const nonCollapsible = [
+  {
+    target: <DefaultTarget style={{ padding: '0 1em' }}>Non-Collapsible Item</DefaultTarget>,
+    isStyled: true,
+  },
+];
+
 export const Default = () => (
   <Card variant="bare">
     <Header
@@ -56,7 +63,7 @@ export const Default = () => (
           target: 'Right Item 2',
         },
         {
-          target: 'Right Item 2',
+          target: 'Right Item 3',
         },
       ]}
     />
@@ -97,12 +104,7 @@ export const WithNonCollapsibleItems = () => (
           target: 'Right Item',
         },
       ]}
-      nonCollapsible={[
-        {
-          target: <DefaultTarget style={{ padding: '0 1em' }}>Non-Collapsible Item</DefaultTarget>,
-          isStyled: true,
-        },
-      ]}
+      nonCollapsible={nonCollapsible}
     />
   </Card>
 );
@@ -145,12 +147,7 @@ export const WithComplexItems = () => (
           children: dropdown,
         },
       ]}
-      nonCollapsible={[
-        {
-          target: <DefaultTarget style={{ padding: '0 1em' }}>Non-Collapsible Item</DefaultTarget>,
-          isStyled: true,
-        },
-      ]}
+      nonCollapsible={nonCollapsible}
       data-testid="header"
     />
   </Card>
