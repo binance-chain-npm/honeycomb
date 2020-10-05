@@ -20,11 +20,17 @@ export const Component = ({ text, 'data-testid': testId }: Props) => {
 
   return (
     <Styled data-testid={buildTestId()}>
-      {isSm ? <LogoSmall data-testid={buildTestId('logo-small')} /> : <Logo data-testid={buildTestId('logo')} />}
+      {isSm ? (
+        <LogoSmall data-testid={buildTestId('logo-small')} />
+      ) : (
+        <Logo data-testid={buildTestId('logo')} />
+      )}
       {text && (
         <>
           <Space size="tiny" />
-          <Badge variant="primary" data-testid={buildTestId('badge')}>{text}</Badge>
+          <Badge variant="primary" data-testid={buildTestId('badge')}>
+            {text}
+          </Badge>
         </>
       )}
     </Styled>
