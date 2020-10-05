@@ -23,9 +23,12 @@ const dropdown = [
         Item 1&nbsp;<Badge variant="primary">Badge</Badge>
       </>
     ),
+    label: 'Item Group 1',
+    showBorder: true,
   },
   {
     target: 'Item 2',
+    label: 'Item Group 2',
   },
   {
     target: 'Item 3',

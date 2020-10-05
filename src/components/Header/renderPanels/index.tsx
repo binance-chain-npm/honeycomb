@@ -13,10 +13,10 @@ import {
 } from './styled';
 
 export const renderPanels = (items: HeaderItem[], activePanel: number): Panels => {
-  return items.map((it, indexPanel) => {
+  return items.map((it, index) => {
     const { children, target, isStyled, ...otherItemProps } = it;
 
-    const targetKey = `panel-${indexPanel}`;
+    const targetKey = `panel-${index}`;
     const hasChildren = !!children && children.length > 0;
 
     return {
@@ -29,7 +29,7 @@ export const renderPanels = (items: HeaderItem[], activePanel: number): Panels =
             {hasChildren && (
               <>
                 <Space size="micro" />
-                {activePanel === indexPanel ? <Icon.TriangleUp /> : <Icon.TriangleDown />}
+                {activePanel === index ? <Icon.TriangleUp /> : <Icon.TriangleDown />}
               </>
             )}
           </PanelItem>
@@ -37,10 +37,10 @@ export const renderPanels = (items: HeaderItem[], activePanel: number): Panels =
       ),
       children: (
         <>
-          {children?.map((child, indexPanelChild) => (
+          {children?.map((child, indexChild) => (
             <PanelDropdownContainer
               showBorder={false}
-              key={`panel-${indexPanel}-${indexPanelChild}`}
+              key={`panel-${index}-${indexChild}`}
               {...otherItemProps}
             >
               <PanelDropdownItem>{child.target}</PanelDropdownItem>
