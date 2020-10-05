@@ -58,10 +58,10 @@ export const Component = ({
   const renderDrawer = useMemo(
     () => (items: HeaderItem[]) => (
       <>
-        <Item showBorder={false} onClick={toggleDrawer} isMenu>
+        <Item showBorder={false} onClick={toggleDrawer} isMenu data-testid={buildTestId('menu')}>
           <Icon.HamburgerMenu />
         </Item>
-        <Drawer open={open} onClose={toggleDrawer}>
+        <Drawer open={open} onClose={toggleDrawer} data-testid={buildTestId('drawer')}>
           <Accordion
             panels={renderPanels(items, activePanel)}
             activePanel={activePanel}

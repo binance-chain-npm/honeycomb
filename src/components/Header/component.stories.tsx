@@ -169,6 +169,7 @@ export const WithComplexItems = () => (
           isStyled: true,
         },
       ]}
+      data-testid="header"
     />
   </Card>
 );
