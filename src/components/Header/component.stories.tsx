@@ -1,13 +1,11 @@
 import React from 'react';
 
 import { Sections } from '../../modules/sections';
-import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
 import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { DefaultTarget } from '../internal/DefaultTarget';
-import { Space } from '../Space';
 
 import { Header } from '.';
 
@@ -35,29 +33,10 @@ const dropdown = [
   },
 ];
 
-const style: React.CSSProperties = {
-  color: GoldLight.honeycomb.color.primary.normal,
-  display: 'flex',
-  alignItems: 'center',
-};
-
-const logo = (
-  <div style={{ display: 'flex', letterSpacing: '0.1em' }}>
-    <Icon.BinanceChain
-      style={{ fontSize: '2.5em' }}
-      color={GoldLight.honeycomb.color.primary.normal}
-    />
-    <Space size="tiny" />
-    <div style={{ ...style, fontWeight: 600 }}>BINANCE</div>
-    <Space size="micro" />
-    <div style={style}>CHAIN</div>
-  </div>
-);
-
 export const Default = () => (
   <Card variant="bare">
     <Header
-      logo={logo}
+      logo={<Header.Logo />}
       left={[
         {
           target: 'Left Item 1',
@@ -87,7 +66,7 @@ export const Default = () => (
 export const WithDropdownItems = () => (
   <Card variant="bare">
     <Header
-      logo={logo}
+      logo={<Header.Logo />}
       left={[
         {
           target: 'Left Dropdown Item',
@@ -107,7 +86,7 @@ export const WithDropdownItems = () => (
 export const WithNonCollapsibleItems = () => (
   <Card variant="bare">
     <Header
-      logo={logo}
+      logo={<Header.Logo />}
       left={[
         {
           target: 'Left Item',
@@ -131,7 +110,7 @@ export const WithNonCollapsibleItems = () => (
 export const WithComplexItems = () => (
   <Card variant="bare">
     <Header
-      logo={logo}
+      logo={<Header.Logo text="Project" />}
       left={[
         {
           target: 'Item',
