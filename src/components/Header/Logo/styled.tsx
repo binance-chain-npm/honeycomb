@@ -6,7 +6,6 @@ import { Icon } from '../../Icon';
 export const Styled = styled.div`
   display: flex;
   align-items: center;
-  font-weight: 600;
 `;
 
 const logo = css`
