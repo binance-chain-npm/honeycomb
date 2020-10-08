@@ -2,17 +2,14 @@ import React, { useCallback, useMemo, useState } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Accordion } from '../Accordion';
-import { Drawer } from '../Drawer';
-import { Icon } from '../Icon';
 import { sizes, useWindowSize } from '../internal/useWindowSize';
 import { ListItem } from '../ListItem';
 
-import { renderPanels } from './renderPanels';
+import { HeaderDrawer } from './HeaderDrawer';
 import {
   Styled,
   LeftContainer,
   Logo,
-  Item,
   LeftHeaderItems,
   RightHeaderItems,
   NonCollapsibleHeaderItems,
@@ -66,25 +63,6 @@ export const Component = ({
   const isMd = useMemo(() => width < sizes.lg || height < sizes.md, [width, height]);
   const isSm = useMemo(() => width < sizes.md || height < sizes.sm, [width, height]);
 
-  const renderDrawer = useMemo(
-    () => (items: HeaderItem[]) => (
-      <>
-        <Item showBorder={false} onClick={toggleDrawer} isMenu data-testid={buildTestId('menu')}>
-          <Icon.HamburgerMenu />
-        </Item>
-        <Drawer open={open} onClose={toggleDrawer} data-testid={buildTestId('drawer')}>
-          <Accordion
-            panels={renderPanels(items, activePanel)}
-            activePanel={activePanel}
-            onChange={changePanel}
-            data-testid={buildTestId('accordion')}
-          />
-        </Drawer>
-      </>
-    ),
-    [open, activePanel, toggleDrawer, changePanel, buildTestId],
-  );
-
   const rightHeaderItems = useMemo(() => {
     let rightElements: HeaderItem[] = [];
     if (right && right.length > 0) rightElements = right;
@@ -93,15 +71,33 @@ export const Component = ({
     if (left && left.length > 0) leftElements = left;
 
     if (isSm) {
-      return <>{renderDrawer([...leftElements, ...rightElements])}</>;
+      return (
+        <HeaderDrawer
+          items={[...leftElements, ...rightElements]}
+          open={open}
+          activePanel={activePanel}
+          onChange={changePanel}
+          onClose={toggleDrawer}
+          data-testid={buildTestId()}
+        />
+      );
     }
 
     if (isMd) {
-      return <>{renderDrawer(rightElements)}</>;
+      return (
+        <HeaderDrawer
+          items={rightElements}
+          open={open}
+          activePanel={activePanel}
+          onChange={changePanel}
+          onClose={toggleDrawer}
+          data-testid={buildTestId()}
+        />
+      );
     }
 
     return <RightHeaderItems items={rightElements} data-testid={buildTestId('right')} />;
-  }, [left, right, isSm, isMd, renderDrawer, buildTestId]);
+  }, [left, right, isSm, isMd, open, activePanel, changePanel, toggleDrawer, buildTestId]);
 
   const leftHeaderItems = useMemo(() => {
     if (!left || left.length === 0 || isSm) return null;
