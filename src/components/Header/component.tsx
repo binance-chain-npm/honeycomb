@@ -2,14 +2,18 @@ import React, { useCallback, useMemo, useState } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Accordion } from '../Accordion';
-import { Drawer } from '../Drawer';
-import { Icon } from '../Icon';
 import { sizes, useWindowSize } from '../internal/useWindowSize';
 import { ListItem } from '../ListItem';
 
-import { renderHeaderItems } from './renderHeaderItems';
-import { renderPanels } from './renderPanels';
-import { Styled, LeftContainer, Logo, Left, Right, NonCollapsible, Item } from './styled';
+import { HeaderDrawer } from './HeaderDrawer';
+import {
+  Styled,
+  LeftContainer,
+  Logo,
+  LeftHeaderItems,
+  RightHeaderItems,
+  NonCollapsibleHeaderItems,
+} from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
@@ -59,56 +63,56 @@ export const Component = ({
   const isMd = useMemo(() => width < sizes.lg || height < sizes.md, [width, height]);
   const isSm = useMemo(() => width < sizes.md || height < sizes.sm, [width, height]);
 
-  const renderDrawer = useMemo(
-    () => (items: HeaderItem[]) => (
-      <>
-        <Item showBorder={false} onClick={toggleDrawer} isMenu data-testid={buildTestId('menu')}>
-          <Icon.HamburgerMenu />
-        </Item>
-        <Drawer open={open} onClose={toggleDrawer} data-testid={buildTestId('drawer')}>
-          <Accordion
-            panels={renderPanels(items, activePanel)}
-            activePanel={activePanel}
-            onChange={changePanel}
-            data-testid={buildTestId('accordion')}
-          />
-        </Drawer>
-      </>
-    ),
-    [open, activePanel, toggleDrawer, changePanel, buildTestId],
-  );
+  const rightHeaderItems = useMemo(() => {
+    let rightElements: HeaderItem[] = [];
+    if (right && right.length > 0) rightElements = right;
 
-  const rightElement = useMemo(() => {
-    let rightHeaderItems: HeaderItem[] = [];
-    if (right && right.length > 0) rightHeaderItems = right;
-
-    let leftHeaderItems: HeaderItem[] = [];
-    if (left && left.length > 0) leftHeaderItems = left;
+    let leftElements: HeaderItem[] = [];
+    if (left && left.length > 0) leftElements = left;
 
     if (isSm) {
-      return <>{renderDrawer([...leftHeaderItems, ...rightHeaderItems])}</>;
+      return (
+        <HeaderDrawer
+          items={[...leftElements, ...rightElements]}
+          open={open}
+          activePanel={activePanel}
+          onChange={changePanel}
+          onClose={toggleDrawer}
+          data-testid={buildTestId()}
+        />
+      );
     }
 
     if (isMd) {
-      return <>{renderDrawer(rightHeaderItems)}</>;
+      return (
+        <HeaderDrawer
+          items={rightElements}
+          open={open}
+          activePanel={activePanel}
+          onChange={changePanel}
+          onClose={toggleDrawer}
+          data-testid={buildTestId()}
+        />
+      );
     }
 
-    return <Right data-testid={buildTestId('right')}>{renderHeaderItems(rightHeaderItems)}</Right>;
-  }, [left, right, isSm, isMd, renderDrawer, buildTestId]);
+    return <RightHeaderItems items={rightElements} data-testid={buildTestId('right')} />;
+  }, [left, right, isSm, isMd, open, activePanel, changePanel, toggleDrawer, buildTestId]);
 
-  const leftElement = useMemo(() => {
+  const leftHeaderItems = useMemo(() => {
     if (!left || left.length === 0 || isSm) return null;
 
-    return <Left data-testid={buildTestId('left')}>{renderHeaderItems(left)}</Left>;
+    return <LeftHeaderItems items={left} data-testid={buildTestId('left')} />;
   }, [left, isSm, buildTestId]);
 
-  const nonCollapsibleElement = useMemo(() => {
+  const nonCollapsibleHeaderItems = useMemo(() => {
     if (!nonCollapsible || nonCollapsible.length === 0) return null;
 
     return (
-      <NonCollapsible data-testid={buildTestId('non-collapsible')}>
-        {renderHeaderItems(nonCollapsible)}
-      </NonCollapsible>
+      <NonCollapsibleHeaderItems
+        items={nonCollapsible}
+        data-testid={buildTestId('non-collapsible')}
+      />
     );
   }, [nonCollapsible, buildTestId]);
 
@@ -116,15 +120,12 @@ export const Component = ({
     <Styled {...otherProps} data-testid={buildTestId()}>
       <LeftContainer>
         {logo && <Logo data-testid={buildTestId('logo')}>{logo}</Logo>}
-        {leftElement}
+        {leftHeaderItems}
       </LeftContainer>
-      {rightElement}
-      {nonCollapsibleElement}
+      {rightHeaderItems}
+      {nonCollapsibleHeaderItems}
     </Styled>
   );
 };
 
 Component.displayName = 'Header';
-
-Component.Left = Left;
-Component.Right = Right;

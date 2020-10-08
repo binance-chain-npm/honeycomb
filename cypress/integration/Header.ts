@@ -16,6 +16,11 @@ describe('Header', () => {
     cy.get('[data-testid="header.menu"]').should('not.exist');
     cy.get('[data-testid="header.drawer.container"]').should('not.exist');
 
+    cy.get('[data-testid="header.left.dropdown.target"]').click();
+    cy.tick(10000);
+
+    cy.get('[data-testid="header.left.dropdown.content"]').should('be.visible');
+
     cy.percySnapshot('Header while open on a large device', { widths: [1280] });
   });
 
