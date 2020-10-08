@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { HtmlTag } from '../../../modules/html-tag';
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Dropdown } from '../../Dropdown';
 import { HeaderItem } from '../component';
@@ -11,14 +10,13 @@ import { Styled, StyledDropdown, Label } from './styled';
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
     items: HeaderItem[];
-    htmlTag?: HtmlTag;
   };
 
-export const HeaderItems = ({ items, htmlTag, 'data-testid': testId, ...otherProps }: Props) => {
+export const HeaderItems = ({ items, 'data-testid': testId, ...otherProps }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
   return (
-    <Styled {...otherProps} as={htmlTag as any} data-testid={buildTestId()}>
+    <Styled {...otherProps} data-testid={buildTestId()}>
       {items.map((it, index) => {
         const { children, target, isStyled, ...otherItemProps } = it;
 
