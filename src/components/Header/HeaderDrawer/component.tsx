@@ -40,6 +40,10 @@ export const Component = ({
     [onChange],
   );
 
+  const closePanel = useCallback(() => {
+    onClose?.();
+  }, [onClose]);
+
   const panels: Panels = useMemo(() => {
     return items.map((it, index) => {
       const { children, target, isStyled, ...otherItemProps } = it;
@@ -49,10 +53,12 @@ export const Component = ({
 
       return {
         target: isStyled ? (
-          <PanelElementItem key={targetKey}>{target}</PanelElementItem>
+          <PanelElementItem key={targetKey} onClick={closePanel}>
+            {target}
+          </PanelElementItem>
         ) : (
           <PanelContainer showBorder={false} key={targetKey} {...otherItemProps}>
-            <PanelItem hasChildren={hasChildren}>
+            <PanelItem hasChildren={hasChildren} onClick={hasChildren ? undefined : closePanel}>
               {target}
               {hasChildren && (
                 <>
@@ -82,7 +88,7 @@ export const Component = ({
         ),
       };
     });
-  }, [items, activePanel, stopPropagation]);
+  }, [items, activePanel, stopPropagation, closePanel]);
 
   return (
     <>
