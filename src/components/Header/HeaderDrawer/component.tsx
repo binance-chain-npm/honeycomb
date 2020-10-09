@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Accordion } from '../../Accordion';
@@ -32,6 +32,14 @@ export const Component = ({
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
+  const stopPropagation = useCallback(
+    (evt: React.MouseEvent, index: number) => {
+      evt.stopPropagation();
+      onChange(index);
+    },
+    [onChange],
+  );
+
   const panels: Panels = useMemo(() => {
     return items.map((it, index) => {
       const { children, target, isStyled, ...otherItemProps } = it;
@@ -49,7 +57,11 @@ export const Component = ({
               {hasChildren && (
                 <>
                   <Space size="micro" />
-                  {activePanel === index ? <Icon.TriangleUp /> : <Icon.TriangleDown />}
+                  {activePanel === index ? (
+                    <Icon.TriangleUp onClick={(evt) => stopPropagation(evt, index)} />
+                  ) : (
+                    <Icon.TriangleDown onClick={(evt) => stopPropagation(evt, index)} />
+                  )}
                 </>
               )}
             </PanelItem>
@@ -70,7 +82,7 @@ export const Component = ({
         ),
       };
     });
-  }, [items, activePanel]);
+  }, [items, activePanel, stopPropagation]);
 
   return (
     <>
