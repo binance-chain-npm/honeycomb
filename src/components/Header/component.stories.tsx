@@ -3,7 +3,6 @@ import React from 'react';
 import { Sections } from '../../modules/sections';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
-import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { DefaultTarget } from '../internal/DefaultTarget';
 
