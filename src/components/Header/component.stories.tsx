@@ -1,4 +1,5 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 
 import { Sections } from '../../modules/sections';
 import { Badge } from '../Badge';
@@ -108,8 +109,8 @@ export const WithComplexItems = () => (
     left={[
       {
         target: 'Item',
-        htmlTag: 'a',
-        href: '#',
+        htmlTag: 'span',
+        onClick: () => action('clicked')(),
       },
       {
         target: 'Dropdown Item',
@@ -127,7 +128,7 @@ export const WithComplexItems = () => (
       },
       {
         target: (
-          <Button variant="primary" shape="fit">
+          <Button variant="primary" shape="fit" onClick={() => action('clicked')()}>
             Button
           </Button>
         ),

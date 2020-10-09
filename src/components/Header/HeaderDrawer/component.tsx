@@ -40,13 +40,21 @@ export const Component = ({
     [onChange],
   );
 
-  const closePanel = useCallback(() => {
-    onClose?.();
-  }, [onClose]);
+  const clickPanelItem = useCallback(
+    (
+      evt: React.MouseEvent,
+      hasChildren?: boolean,
+      onClick?: (event: React.MouseEvent<any, MouseEvent>) => void,
+    ) => {
+      onClick?.(evt);
+      if (!hasChildren) onClose?.();
+    },
+    [onClose],
+  );
 
   const panels: Panels = useMemo(() => {
     return items.map((it, index) => {
-      const { children, target, isStyled, ...otherItemProps } = it;
+      const { children, target, isStyled, onClick, ...otherItemProps } = it;
 
       const targetKey = `panel-${index}`;
       const hasChildren = !!children && children.length > 0;
@@ -54,11 +62,16 @@ export const Component = ({
       return {
         target: isStyled ? (
           <PanelElementItem key={targetKey}>
-            <div onClick={closePanel}>{target}</div>
+            <div onClick={(evt) => clickPanelItem(evt)}>{target}</div>
           </PanelElementItem>
         ) : (
-          <PanelContainer showBorder={false} key={targetKey} {...otherItemProps}>
-            <PanelItem hasChildren={hasChildren} onClick={hasChildren ? undefined : closePanel}>
+          <PanelContainer
+            showBorder={false}
+            key={targetKey}
+            onClick={(evt) => clickPanelItem(evt, hasChildren, onClick)}
+            {...otherItemProps}
+          >
+            <PanelItem hasChildren={hasChildren}>
               {target}
               {hasChildren && (
                 <>
@@ -88,7 +101,7 @@ export const Component = ({
         ),
       };
     });
-  }, [items, activePanel, stopPropagation, closePanel]);
+  }, [items, activePanel, stopPropagation, clickPanelItem]);
 
   return (
     <>
