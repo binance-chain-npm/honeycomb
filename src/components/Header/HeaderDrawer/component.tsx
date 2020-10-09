@@ -53,8 +53,8 @@ export const Component = ({
 
       return {
         target: isStyled ? (
-          <PanelElementItem key={targetKey} onClick={closePanel}>
-            {target}
+          <PanelElementItem key={targetKey}>
+            <div onClick={closePanel}>{target}</div>
           </PanelElementItem>
         ) : (
           <PanelContainer showBorder={false} key={targetKey} {...otherItemProps}>

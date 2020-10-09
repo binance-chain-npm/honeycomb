@@ -10,7 +10,7 @@ const panel = css`
 export const PanelElementItem = styled.div`
   padding: ${({ theme }) => em(theme.honeycomb.size.normal)};
 
-  > button {
+  > div > * {
     width: 100%;
   }
 `;
