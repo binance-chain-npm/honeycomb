@@ -23,6 +23,7 @@ const dropdown = [
     ),
     label: 'Item Group 1',
     showBorder: true,
+    onClick: () => action('clicked')(),
   },
   {
     target: 'Item 2',
@@ -30,6 +31,10 @@ const dropdown = [
   },
   {
     target: 'Item 3',
+  },
+  {
+    target: 'Disabled Item',
+    disabled: true,
   },
 ];
 

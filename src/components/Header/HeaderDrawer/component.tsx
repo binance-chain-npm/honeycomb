@@ -88,15 +88,20 @@ export const Component = ({
         ),
         children: (
           <>
-            {children?.map((child, indexChild) => (
-              <PanelDropdownContainer
-                showBorder={false}
-                key={`panel-${index}-${indexChild}`}
-                {...otherItemProps}
-              >
-                <PanelDropdownItem>{child.target}</PanelDropdownItem>
-              </PanelDropdownContainer>
-            ))}
+            {children?.map((child, indexChild) => {
+              const { target, onClick, ...otherItemProps } = child;
+
+              return (
+                <PanelDropdownContainer
+                  key={`panel-${index}-${indexChild}`}
+                  onClick={(evt) => clickPanelItem(evt, false, onClick)}
+                  {...otherItemProps}
+                  showBorder={false}
+                >
+                  <PanelDropdownItem>{target}</PanelDropdownItem>
+                </PanelDropdownContainer>
+              );
+            })}
           </>
         ),
       };
