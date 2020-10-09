@@ -17,6 +17,7 @@ export const Styled = styled.div`
   height: ${em(64)};
   padding-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
   padding-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
 `;
 
 export const LeftContainer = styled.div`

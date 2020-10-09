@@ -41,114 +41,106 @@ const nonCollapsible = [
 ];
 
 export const Default = () => (
-  <Card variant="bare">
-    <Header
-      logo={<Header.Logo />}
-      left={[
-        {
-          target: 'Left Item 1',
-        },
-        {
-          target: 'Left Item 2',
-        },
-        {
-          target: 'Left Item 3',
-        },
-      ]}
-      right={[
-        {
-          target: 'Right Item 1',
-        },
-        {
-          target: 'Right Item 2',
-        },
-        {
-          target: 'Right Item 3',
-        },
-      ]}
-    />
-  </Card>
+  <Header
+    logo={<Header.Logo />}
+    left={[
+      {
+        target: 'Left Item 1',
+      },
+      {
+        target: 'Left Item 2',
+      },
+      {
+        target: 'Left Item 3',
+      },
+    ]}
+    right={[
+      {
+        target: 'Right Item 1',
+      },
+      {
+        target: 'Right Item 2',
+      },
+      {
+        target: 'Right Item 3',
+      },
+    ]}
+  />
 );
 
 export const WithDropdownItems = () => (
-  <Card variant="bare">
-    <Header
-      logo={<Header.Logo />}
-      left={[
-        {
-          target: 'Left Dropdown Item',
-          children: dropdown,
-        },
-      ]}
-      right={[
-        {
-          target: 'Right Dropdown Item',
-          children: dropdown,
-        },
-      ]}
-    />
-  </Card>
+  <Header
+    logo={<Header.Logo />}
+    left={[
+      {
+        target: 'Left Dropdown Item',
+        children: dropdown,
+      },
+    ]}
+    right={[
+      {
+        target: 'Right Dropdown Item',
+        children: dropdown,
+      },
+    ]}
+  />
 );
 
 export const WithNonCollapsibleItems = () => (
-  <Card variant="bare">
-    <Header
-      logo={<Header.Logo />}
-      left={[
-        {
-          target: 'Left Item',
-        },
-      ]}
-      right={[
-        {
-          target: 'Right Item',
-        },
-      ]}
-      nonCollapsible={nonCollapsible}
-    />
-  </Card>
+  <Header
+    logo={<Header.Logo />}
+    left={[
+      {
+        target: 'Left Item',
+      },
+    ]}
+    right={[
+      {
+        target: 'Right Item',
+      },
+    ]}
+    nonCollapsible={nonCollapsible}
+  />
 );
 
 export const WithComplexItems = () => (
-  <Card variant="bare">
-    <Header
-      logo={<Header.Logo text="Project" data-testid="logo" />}
-      left={[
-        {
-          target: 'Item',
-          htmlTag: 'a',
-          href: '#',
-        },
-        {
-          target: 'Dropdown Item',
-          children: dropdown,
-        },
-      ]}
-      right={[
-        {
-          target: (
-            <>
-              <span style={{ marginRight: '0.5em' }}>Multiple Items</span>
-              <Icon.Link />
-            </>
-          ),
-        },
-        {
-          target: (
-            <Button variant="primary" shape="fit">
-              Button
-            </Button>
-          ),
-          htmlTag: 'button',
-          isStyled: true,
-        },
-        {
-          target: 'Dropdown Item',
-          children: dropdown,
-        },
-      ]}
-      nonCollapsible={nonCollapsible}
-      data-testid="header"
-    />
-  </Card>
+  <Header
+    logo={<Header.Logo text="Project" data-testid="logo" />}
+    left={[
+      {
+        target: 'Item',
+        htmlTag: 'a',
+        href: '#',
+      },
+      {
+        target: 'Dropdown Item',
+        children: dropdown,
+      },
+    ]}
+    right={[
+      {
+        target: (
+          <>
+            <span style={{ marginRight: '0.5em' }}>Multiple Items</span>
+            <Icon.Link />
+          </>
+        ),
+      },
+      {
+        target: (
+          <Button variant="primary" shape="fit">
+            Button
+          </Button>
+        ),
+        htmlTag: 'button',
+        isStyled: true,
+      },
+      {
+        target: 'Dropdown Item',
+        children: dropdown,
+      },
+    ]}
+    nonCollapsible={nonCollapsible}
+    data-testid="header"
+  />
 );
