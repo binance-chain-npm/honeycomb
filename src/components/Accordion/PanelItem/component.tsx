@@ -44,7 +44,7 @@ export const Component = ({
       <div onClick={() => onChange(index)} data-testid={buildTestId('target')}>
         {target}
       </div>
-      {boxTransitions.map(
+      {children && boxTransitions.map(
         ({ item, key, props }) =>
           item && (
             <animated.div
