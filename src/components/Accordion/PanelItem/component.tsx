@@ -44,19 +44,20 @@ export const Component = ({
       <div onClick={() => onChange(index)} data-testid={buildTestId('target')}>
         {target}
       </div>
-      {boxTransitions.map(
-        ({ item, key, props }) =>
-          item && (
-            <animated.div
-              key={key}
-              style={props}
-              data-testid={buildTestId('children')}
-              {...otherProps}
-            >
-              {children}
-            </animated.div>
-          ),
-      )}
+      {children &&
+        boxTransitions.map(
+          ({ item, key, props }) =>
+            item && (
+              <animated.div
+                key={key}
+                style={props}
+                data-testid={buildTestId('children')}
+                {...otherProps}
+              >
+                {children}
+              </animated.div>
+            ),
+        )}
     </Styled>
   );
 };

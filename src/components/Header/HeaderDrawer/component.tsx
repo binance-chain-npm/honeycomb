@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Accordion } from '../../Accordion';
@@ -32,24 +32,55 @@ export const Component = ({
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
+  const stopPropagation = useCallback(
+    (evt: React.MouseEvent, index: number) => {
+      evt.stopPropagation();
+      onChange(index);
+    },
+    [onChange],
+  );
+
+  const clickPanelItem = useCallback(
+    (
+      evt: React.MouseEvent,
+      hasChildren?: boolean,
+      onClick?: (event: React.MouseEvent<any, MouseEvent>) => void,
+    ) => {
+      onClick?.(evt);
+      if (!hasChildren) onClose?.();
+    },
+    [onClose],
+  );
+
   const panels: Panels = useMemo(() => {
     return items.map((it, index) => {
-      const { children, target, isStyled, ...otherItemProps } = it;
+      const { children, target, isStyled, onClick, ...otherItemProps } = it;
 
       const targetKey = `panel-${index}`;
       const hasChildren = !!children && children.length > 0;
 
       return {
         target: isStyled ? (
-          <PanelElementItem key={targetKey}>{target}</PanelElementItem>
+          <PanelElementItem key={targetKey}>
+            <div onClick={(evt) => clickPanelItem(evt)}>{target}</div>
+          </PanelElementItem>
         ) : (
-          <PanelContainer showBorder={false} key={targetKey} {...otherItemProps}>
+          <PanelContainer
+            showBorder={false}
+            key={targetKey}
+            onClick={(evt) => clickPanelItem(evt, hasChildren, onClick)}
+            {...otherItemProps}
+          >
             <PanelItem hasChildren={hasChildren}>
               {target}
               {hasChildren && (
                 <>
                   <Space size="micro" />
-                  {activePanel === index ? <Icon.TriangleUp /> : <Icon.TriangleDown />}
+                  {activePanel === index ? (
+                    <Icon.TriangleUp onClick={(evt) => stopPropagation(evt, index)} />
+                  ) : (
+                    <Icon.TriangleDown onClick={(evt) => stopPropagation(evt, index)} />
+                  )}
                 </>
               )}
             </PanelItem>
@@ -57,20 +88,25 @@ export const Component = ({
         ),
         children: (
           <>
-            {children?.map((child, indexChild) => (
-              <PanelDropdownContainer
-                showBorder={false}
-                key={`panel-${index}-${indexChild}`}
-                {...otherItemProps}
-              >
-                <PanelDropdownItem>{child.target}</PanelDropdownItem>
-              </PanelDropdownContainer>
-            ))}
+            {children?.map((child, indexChild) => {
+              const { target, onClick, ...otherItemProps } = child;
+
+              return (
+                <PanelDropdownContainer
+                  key={`panel-${index}-${indexChild}`}
+                  onClick={(evt) => clickPanelItem(evt, false, onClick)}
+                  {...otherItemProps}
+                  showBorder={false}
+                >
+                  <PanelDropdownItem>{target}</PanelDropdownItem>
+                </PanelDropdownContainer>
+              );
+            })}
           </>
         ),
       };
     });
-  }, [items, activePanel]);
+  }, [items, activePanel, stopPropagation, clickPanelItem]);
 
   return (
     <>

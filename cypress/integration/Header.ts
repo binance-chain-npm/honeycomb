@@ -87,4 +87,61 @@ describe('Header', () => {
 
     cy.percySnapshot('Header while open on a small device');
   });
+
+  it('dropdown in header behaves correctly', () => {
+    cy.viewport(1280, 768);
+    cy.clock();
+    cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
+    cy.tick(10000);
+
+    cy.get('[data-testid="header.left.dropdown.target"]').click();
+    cy.tick(10000);
+    
+    cy.get('[data-testid="header.left.dropdown.content"]')
+      .children()
+      .children()
+      .then((children) => {
+        expect(children.length).to.equal(7);
+      });
+  });
+
+  it('dropdown in drawer behaves correctly', () => {
+    cy.clock();
+    cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
+    cy.tick(10000);
+
+    cy.get('[data-testid="header.menu"]').click();
+    cy.tick(10000);
+
+    cy.get('[data-testid="header.accordion.1.target"]').click();
+    cy.tick(10000);
+    
+    cy.get('[data-testid="header.accordion.1.children"]')
+      .children()
+      .then((children) => {
+        expect(children.length).to.equal(4);
+      });
+  });
+
+  it('clicking items in the drawer behaves correctly', () => {
+    cy.clock();
+
+    cy.get('[data-testid="header.accordion.0.target"]').click();
+    cy.tick(10000);
+    cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+
+    cy.get('[data-testid="header.menu"]').click();
+    cy.tick(10000);
+
+    cy.get('[data-testid="header.accordion.1.target"]').click();
+    cy.tick(10000);
+    
+    cy.get('[data-testid="header.accordion.1.children"]')
+      .children()
+      .then((children) => {
+        children[0].click();
+        cy.tick(10000);
+        cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+      });
+  });
 });

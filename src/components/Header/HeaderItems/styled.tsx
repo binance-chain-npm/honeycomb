@@ -11,7 +11,7 @@ export const Styled = styled.div`
 
 export const StyledDropdown = styled(Dropdown)`
   ${Tooltip.ContentContainer} {
-    border-radius: 0;
+    border-radius: ${({ theme }) => em(theme.honeycomb.size.micro)};
   }
 `;
 
