@@ -88,3 +88,21 @@ export const AsAnchor = () => (
     )}
   </>
 );
+
+export const WithIcon = () => (
+  <>
+    {variants.map((variant) => (
+      <div style={{ marginBottom: '1em' }}>
+        <Button
+          href="https://binance.org"
+          onClick={action('clicked')}
+          key={`${variant}`}
+          variant={variant}
+          icon={<Icon.BinanceChain />}
+        >
+          A button
+        </Button>
+      </div>
+    ))}
+  </>
+);
