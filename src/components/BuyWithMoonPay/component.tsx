@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import { Button } from '../Button';
 import { Loading } from '../Loading';
+import { Space } from '../Space';
 import { useMoonPayUrl, MoonPayContext } from '../../modules/moonpay';
 
 import { StyledMastercard, StyledVisa } from './styled';
@@ -48,9 +49,11 @@ export const Component = ({
         <Loading />
       ) : (
         <>
-          {children ?? 'Buy crypto'}&nbsp;
           <StyledVisa />
+          <Space size="micro" />
           <StyledMastercard />
+          <Space size="micro" />
+          {children ?? 'Buy crypto'}
         </>
       )}
     </Button>
