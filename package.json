@@ -31,14 +31,6 @@
       "pre-commit": "yarn lint"
     }
   },
-  "prettier": {
-    "arrowParens": "always",
-    "printWidth": 100,
-    "proseWrap": "always",
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
   "jest": {
     "globals": {
       "ts-jest": {
@@ -53,6 +45,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
+    "@binance-chain/prettier-config": "^1.0.1",
     "@percy/cypress": "^2.3.0",
     "@rollup/plugin-image": "^2.0.5",
     "@rollup/plugin-url": "^5.0.1",
