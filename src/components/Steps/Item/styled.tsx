@@ -1,5 +1,5 @@
 import styled, { css, DefaultTheme, keyframes } from 'styled-components';
-import { em, rgba } from 'polished';
+import { em, transparentize } from 'polished';
 
 export const Styled = styled.div<{ isActive: boolean; isCompleted: boolean }>`
   font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
@@ -25,17 +25,17 @@ export const Styled = styled.div<{ isActive: boolean; isCompleted: boolean }>`
 const pulse = (theme: DefaultTheme) => keyframes`
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 ${rgba(theme.honeycomb.color.primary.normal, 0.7)};
+    box-shadow: 0 0 0 0 ${transparentize(0.2, theme.honeycomb.color.primary.normal)};
   }
 
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 8px ${rgba(theme.honeycomb.color.primary.normal, 0)};
+    box-shadow: 0 0 0 8px transparent;
   }
 
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 ${rgba(theme.honeycomb.color.primary.normal, 0)};
+    box-shadow: 0 0 0 0 transparent;
   }
 `;
 
