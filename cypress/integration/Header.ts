@@ -14,7 +14,7 @@ describe('Header', () => {
     cy.get('[data-testid="header.right"]').should('be.visible');
     cy.get('[data-testid="header.non-collapsible"]').should('be.visible');
     cy.get('[data-testid="header.menu"]').should('not.exist');
-    cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
 
     cy.get('[data-testid="header.left.dropdown.target"]').click();
     cy.tick(10000);
@@ -38,7 +38,7 @@ describe('Header', () => {
     cy.get('[data-testid="header.right"]').should('not.exist');
     cy.get('[data-testid="header.non-collapsible"]').should('be.visible');
     cy.get('[data-testid="header.menu"]').should('be.visible');
-    cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
 
     cy.get('[data-testid="header.menu"]').click();
     cy.tick(10000);
@@ -70,7 +70,7 @@ describe('Header', () => {
     cy.get('[data-testid="header.right"]').should('not.exist');
     cy.get('[data-testid="header.non-collapsible"]').should('be.visible');
     cy.get('[data-testid="header.menu"]').should('be.visible');
-    cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
 
     cy.get('[data-testid="header.menu"]').click();
     cy.tick(10000);
@@ -128,20 +128,14 @@ describe('Header', () => {
 
     cy.get('[data-testid="header.accordion.0.target"]').click();
     cy.tick(10000);
-    cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
 
     cy.get('[data-testid="header.menu"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="header.accordion.1.target"]').click();
+    cy.get('[data-testid="header.accordion.0.target"]').click();
     cy.tick(10000);
-    
-    cy.get('[data-testid="header.accordion.1.children"]')
-      .children()
-      .then((children) => {
-        children[0].click();
-        cy.tick(10000);
-        cy.get('[data-testid="header.drawer.container"]').should('not.exist');
-      });
+
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
   });
 });
