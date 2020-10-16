@@ -4,16 +4,18 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Connector } from './Connector';
 import { Item } from './Item';
-import { Styled } from './styled';
+import { Orientation, Styled } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
     activeStep: number;
     children: React.ReactNode;
+    orientation: Orientation;
   };
 
 export const Component = ({
   activeStep,
+  orientation,
   onChange,
   'data-testid': testId,
   ...otherProps
@@ -37,7 +39,11 @@ export const Component = ({
             data-testid={buildTestId(itemKey)}
           />,
           index !== children.length - 1 ? (
-            <Connector key={connectorKey} data-testid={buildTestId(connectorKey)} />
+            <Connector
+              orientation={orientation}
+              key={connectorKey}
+              data-testid={buildTestId(connectorKey)}
+            />
           ) : (
             undefined
           ),
@@ -48,10 +54,10 @@ export const Component = ({
     });
 
     return res;
-  }, [activeStep, otherProps.children, buildTestId]);
+  }, [activeStep, orientation, otherProps.children, buildTestId]);
 
   return (
-    <Styled {...otherProps} data-testid={buildTestId()}>
+    <Styled {...otherProps} orientation={orientation} data-testid={buildTestId()}>
       {steps}
     </Styled>
   );
