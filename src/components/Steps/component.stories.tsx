@@ -35,7 +35,7 @@ export const Horizontal = () => {
 
 export const Vertical = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', height: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 20px)' }}>
       {new Array(5).fill(null).map((_, index) => {
         const key = `steps-${index}`;
 
