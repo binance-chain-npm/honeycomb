@@ -25,15 +25,19 @@ export const Component = ({
 
     const res = children.flatMap((it, index) => {
       if (React.isValidElement<{ isActive?: boolean; isCompleted?: boolean }>(it)) {
+        const itemKey = `item-${index}`;
+        const connectorKey = `connector-${index}`;
+
         return [
           <Item
+            key={itemKey}
             {...it.props}
             isActive={index === activeStep}
             isCompleted={index < activeStep}
-            data-testid={buildTestId(`item-${index}`)}
+            data-testid={buildTestId(itemKey)}
           />,
           index !== children.length - 1 ? (
-            <Connector data-testid={buildTestId(`connector-${index}`)} />
+            <Connector key={connectorKey} data-testid={buildTestId(connectorKey)} />
           ) : (
             undefined
           ),
