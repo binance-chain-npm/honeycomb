@@ -51,3 +51,17 @@ export const Vertical = () => {
     </div>
   );
 };
+
+export const WithCustomConnectorSize = () => {
+  const size = 50;
+
+  return (
+    <Steps orientation="horizontal" activeStep={1} data-testid={'steps'}>
+      <Steps.Item size={size * 1}>1</Steps.Item>
+      <Steps.Item size={size * 2}>2</Steps.Item>
+      <Steps.Item size={size * 3}>3</Steps.Item>
+      <Steps.Item size={size * 4}>4</Steps.Item>
+      <Steps.Item>5</Steps.Item>
+    </Steps>
+  );
+};

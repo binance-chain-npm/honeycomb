@@ -26,7 +26,7 @@ export const Component = ({
     const children = React.Children.toArray(otherProps.children);
 
     const res = children.flatMap((it, index) => {
-      if (React.isValidElement<{ isActive?: boolean; isCompleted?: boolean }>(it)) {
+      if (React.isValidElement<{ isActive?: boolean; isCompleted?: boolean; size?: number }>(it)) {
         const itemKey = `item-${index}`;
         const connectorKey = `connector-${index}`;
 
@@ -42,6 +42,7 @@ export const Component = ({
             <Connector
               orientation={orientation}
               key={connectorKey}
+              size={it.props.size}
               data-testid={buildTestId(connectorKey)}
             />
           ) : (

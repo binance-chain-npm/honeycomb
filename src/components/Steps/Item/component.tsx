@@ -11,6 +11,7 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
   Testable & {
     isActive?: boolean;
     isCompleted?: boolean;
+    size?: number;
   };
 
 export const Component = ({
