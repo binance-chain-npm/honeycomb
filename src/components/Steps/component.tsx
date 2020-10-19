@@ -57,7 +57,7 @@ export const Component = ({
     });
 
     return res;
-  }, [activeStep, orientation, otherProps.children, buildTestId]);
+  }, [activeStep, orientation, otherProps.children, theme.honeycomb.size.normal, buildTestId]);
 
   return (
     <Styled {...otherProps} orientation={orientation} data-testid={buildTestId()}>
