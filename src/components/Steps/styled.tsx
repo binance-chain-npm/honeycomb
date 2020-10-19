@@ -17,6 +17,6 @@ export const Styled = styled.div<{ orientation: Orientation }>`
     orientation === 'vertical' &&
     css`
       flex-direction: column;
-      height: 100$;
+      height: 100%;
     `};
 `;
