@@ -14,7 +14,7 @@ describe('Header', () => {
     cy.get('[data-testid="header.right"]').should('be.visible');
     cy.get('[data-testid="header.non-collapsible"]').should('be.visible');
     cy.get('[data-testid="header.menu"]').should('not.exist');
-    cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
 
     cy.get('[data-testid="header.left.dropdown.target"]').click();
     cy.tick(10000);
@@ -38,7 +38,7 @@ describe('Header', () => {
     cy.get('[data-testid="header.right"]').should('not.exist');
     cy.get('[data-testid="header.non-collapsible"]').should('be.visible');
     cy.get('[data-testid="header.menu"]').should('be.visible');
-    cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
 
     cy.get('[data-testid="header.menu"]').click();
     cy.tick(10000);
@@ -70,7 +70,7 @@ describe('Header', () => {
     cy.get('[data-testid="header.right"]').should('not.exist');
     cy.get('[data-testid="header.non-collapsible"]').should('be.visible');
     cy.get('[data-testid="header.menu"]').should('be.visible');
-    cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
 
     cy.get('[data-testid="header.menu"]').click();
     cy.tick(10000);
@@ -90,12 +90,9 @@ describe('Header', () => {
 
   it('dropdown in header behaves correctly', () => {
     cy.viewport(1280, 768);
-    cy.clock();
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
-    cy.tick(10000);
 
     cy.get('[data-testid="header.left.dropdown.target"]').click();
-    cy.tick(10000);
     
     cy.get('[data-testid="header.left.dropdown.content"]')
       .children()
@@ -106,15 +103,10 @@ describe('Header', () => {
   });
 
   it('dropdown in drawer behaves correctly', () => {
-    cy.clock();
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
-    cy.tick(10000);
 
     cy.get('[data-testid="header.menu"]').click();
-    cy.tick(10000);
-
     cy.get('[data-testid="header.accordion.1.target"]').click();
-    cy.tick(10000);
     
     cy.get('[data-testid="header.accordion.1.children"]')
       .children()
@@ -124,24 +116,13 @@ describe('Header', () => {
   });
 
   it('clicking items in the drawer behaves correctly', () => {
-    cy.clock();
-
     cy.get('[data-testid="header.accordion.0.target"]').click();
-    cy.tick(10000);
-    cy.get('[data-testid="header.drawer.container"]').should('not.exist');
+
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
 
     cy.get('[data-testid="header.menu"]').click();
-    cy.tick(10000);
+    cy.get('[data-testid="header.accordion.0.target"]').click();
 
-    cy.get('[data-testid="header.accordion.1.target"]').click();
-    cy.tick(10000);
-    
-    cy.get('[data-testid="header.accordion.1.children"]')
-      .children()
-      .then((children) => {
-        children[0].click();
-        cy.tick(10000);
-        cy.get('[data-testid="header.drawer.container"]').should('not.exist');
-      });
+    cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
   });
 });

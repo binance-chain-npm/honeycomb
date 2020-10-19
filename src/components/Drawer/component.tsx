@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { animated, useTransition } from 'react-spring';
+import { animated, useSpring } from 'react-spring';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
@@ -21,10 +21,9 @@ export const Component = ({
   const buildTestId = useBuildTestId(testId);
   const boxRef = useRef<HTMLDivElement>(null);
 
-  const boxTransitions = useTransition(open, null, {
-    from: { opacity: 0, transform: 'translateX(100vw)' },
-    enter: { opacity: 1, transform: 'translateX(0)' },
-    leave: { opacity: 0, transform: 'translateX(100vw)' },
+  const style = useSpring({
+    opacity: open ? 1 : 0,
+    transform: open ? `translateX(0)` : `translateX(100%)`,
   });
 
   useEffect(() => {
@@ -43,29 +42,11 @@ export const Component = ({
     return () => window.removeEventListener('click', listener);
   }, [open, onClose]);
 
-  if (!open) {
-    return null;
-  }
-
   return (
-    <Container data-testid={buildTestId('container')}>
-      <div>
-        {boxTransitions.map(
-          ({ item, key, props }) =>
-            item && (
-              <Box
-                as={animated.div}
-                key={key}
-                style={props}
-                ref={boxRef}
-                data-testid={buildTestId('content')}
-                {...otherProps}
-              >
-                {children}
-              </Box>
-            ),
-        )}
-      </div>
+    <Container as={animated.div} style={style} data-testid={buildTestId('container')}>
+      <Box ref={boxRef} data-testid={buildTestId('content')} {...otherProps}>
+        {children}
+      </Box>
     </Container>
   );
 };
