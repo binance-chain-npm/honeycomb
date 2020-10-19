@@ -94,7 +94,7 @@ export const Responsive = () => {
             key={index}
             onClick={() => setSelected(it)}
             searchAs={it.label}
-            isSelected={selected?.label === it.label}
+            selected={selected?.label === it.label}
             data-testid={`${index}`}
             left={<it.icon />}
           >
@@ -134,7 +134,7 @@ export const Dropdown = () => {
             key={index}
             onClick={() => setSelected(it)}
             searchAs={it.label}
-            isSelected={selected?.label === it.label}
+            selected={selected?.label === it.label}
             data-testid={`${index}`}
             left={<it.icon />}
           >
@@ -172,7 +172,7 @@ export const Modal = () => {
       >
         <StyledSelectOption
           searchAs={['my photo', 'A crazy item']}
-          isSelected={selected === 'photo'}
+          selected={selected === 'photo'}
           onClick={() => setSelected('photo')}
           data-testid="photo"
           htmlTag="div"
@@ -183,7 +183,7 @@ export const Modal = () => {
           <Select.Option
             key={index}
             searchAs={it.label}
-            isSelected={selected === it.label}
+            selected={selected === it.label}
             onClick={() => setSelected(it.label)}
             data-testid={`${index}`}
             left={<it.icon />}

@@ -29,7 +29,7 @@ export type HeaderItem = Omit<
 > & {
   target: React.ReactNode;
   children?: HeaderChildItem[];
-  isStyled?: boolean;
+  styled?: boolean;
 };
 
 export type HeaderChildItem = Omit<HeaderItem, 'children' | 'type'> & {
