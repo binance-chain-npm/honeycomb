@@ -9,13 +9,13 @@ import { StyledHeader } from './styled';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> &
   Omit<React.ComponentProps<typeof Select>, 'variant'> & {
-    isLoading?: boolean;
+    loading?: boolean;
   };
 
 export const Component = ({
   title,
   children,
-  isLoading,
+  loading,
   target,
   onClose,
   'data-testid': testId,
@@ -29,7 +29,7 @@ export const Component = ({
       {target}
       <SelectContext.Provider value={context}>
         <Modal {...otherProps} data-testid={buildTestId()}>
-          <StyledHeader title={title} isLoading={isLoading} onClose={onClose} />
+          <StyledHeader title={title} loading={loading} onClose={onClose} />
           <Modal.Content padding="none">{children}</Modal.Content>
         </Modal>
       </SelectContext.Provider>

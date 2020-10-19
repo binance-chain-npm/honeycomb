@@ -28,7 +28,7 @@ export const Default = () => (
     <StyledListItem right="a value" showCaretRight disabled>
       Disabled
     </StyledListItem>
-    <ListItem isSelected>Selected</ListItem>
+    <ListItem selected>Selected</ListItem>
     <ListItem
       left={
         <Button variant="secondary" size="increased" shape="fit">
@@ -59,7 +59,7 @@ export const Default = () => (
     >
       0x77f2f5db2f2195b5461a0a7504b3acbac7ff9bad
     </ListItem>
-    <ListItem isInteractive={false} htmlTag="div">
+    <ListItem interactive={false} htmlTag="div">
       Non-interactive
     </ListItem>
     <ListItem showBorder={false}>No border</ListItem>
