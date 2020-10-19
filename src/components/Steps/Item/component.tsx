@@ -9,14 +9,14 @@ import { Styled, Pulse } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
   Testable & {
-    isActive?: boolean;
-    isCompleted?: boolean;
+    active?: boolean;
+    completed?: boolean;
     size?: number;
   };
 
 export const Component = ({
-  isActive,
-  isCompleted,
+  active,
+  completed,
   children,
   'data-testid': testId,
   ...otherProps
@@ -26,18 +26,13 @@ export const Component = ({
   const theme = useTheme();
 
   return (
-    <Styled
-      {...otherProps}
-      isActive={!!isActive}
-      isCompleted={!!isCompleted}
-      data-testid={buildTestId()}
-    >
-      {isCompleted ? (
+    <Styled {...otherProps} active={!!active} completed={!!completed} data-testid={buildTestId()}>
+      {completed ? (
         <Icon.Tick fontSize={em(theme.honeycomb.size.tiny, theme.honeycomb.size.small)} />
       ) : (
         <>{children}</>
       )}
-      {isActive && <Pulse />}
+      {active && <Pulse />}
     </Styled>
   );
 };

@@ -3,9 +3,9 @@ import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Connector } from './Connector';
-import { Item } from './Item';
 import { Orientation, Styled } from './styled';
+
+import { Steps } from '.';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
@@ -28,20 +28,20 @@ export const Component = ({
     const children = React.Children.toArray(otherProps.children);
 
     const res = children.flatMap((it, index) => {
-      if (React.isValidElement<{ isActive?: boolean; isCompleted?: boolean; size?: number }>(it)) {
+      if (React.isValidElement<React.ComponentPropsWithoutRef<typeof Steps.Item>>(it)) {
         const itemKey = `item-${index}`;
         const connectorKey = `connector-${index}`;
 
         return [
-          <Item
+          <Steps.Item
             key={itemKey}
             {...it.props}
-            isActive={index === activeStep}
-            isCompleted={index < activeStep}
+            active={index === activeStep}
+            completed={index < activeStep}
             data-testid={buildTestId(itemKey)}
           />,
           index !== children.length - 1 ? (
-            <Connector
+            <Steps.Connector
               orientation={orientation}
               key={connectorKey}
               size={it.props.size ? it.props.size - theme.honeycomb.size.normal : undefined}
@@ -53,7 +53,7 @@ export const Component = ({
         ];
       }
 
-      return [];
+      return [it];
     });
 
     return res;
