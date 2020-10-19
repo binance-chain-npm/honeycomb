@@ -42,6 +42,12 @@ const columns = [
   } as const,
 ];
 
+export const NoHeader = () => (
+  <Card variant="bare">
+    <Table data={data} columns={columns} hasHeader={false} data-testid="MyTable" />
+  </Card>
+);
+
 export const NoPagination = () => (
   <Card variant="bare">
     <Table data={data} columns={columns} data-testid="MyTable" />
