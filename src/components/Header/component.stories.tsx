@@ -41,7 +41,7 @@ const dropdown = [
 const nonCollapsible = [
   {
     target: <DefaultTarget style={{ padding: '0 1em' }}>Non-Collapsible Item</DefaultTarget>,
-    isStyled: true,
+    styled: true,
   },
 ];
 
@@ -138,7 +138,7 @@ export const WithComplexItems = () => (
           </Button>
         ),
         htmlTag: 'button',
-        isStyled: true,
+        styled: true,
       },
       {
         target: 'Dropdown Item',

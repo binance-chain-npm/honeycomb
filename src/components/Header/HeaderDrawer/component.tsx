@@ -54,13 +54,13 @@ export const Component = ({
 
   const panels: Panels = useMemo(() => {
     return items.map((it, index) => {
-      const { children, target, isStyled, onClick, ...otherItemProps } = it;
+      const { children, target, styled, onClick, ...otherItemProps } = it;
 
       const targetKey = `panel-${index}`;
       const hasChildren = !!children && children.length > 0;
 
       return {
-        target: isStyled ? (
+        target: styled ? (
           <PanelElementItem key={targetKey}>
             <div onClick={(evt) => clickPanelItem(evt)}>{target}</div>
           </PanelElementItem>

@@ -48,14 +48,14 @@ export const Component = ({
         {...otherProps}
       >
         {children.map((option, index) => {
-          const isSelected = children[selectedIndex] === option;
+          const selected = children[selectedIndex] === option;
           return (
             <Element
-              active={isSelected}
+              active={selected}
               key={index}
               onClick={handleClickForOption({ selectedIndex: index })}
               data-testid={buildTestId(`${index}`)}
-              data-testisselected={isSelected}
+              data-testisselected={selected}
               size={size}
               variant={variant}
             >

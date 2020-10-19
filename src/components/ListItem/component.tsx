@@ -9,8 +9,8 @@ import { Styled, ContentContainer, Content, Left, Right } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
   Testable & {
-    isSelected?: boolean;
-    isInteractive?: boolean;
+    selected?: boolean;
+    interactive?: boolean;
     showBorder?: boolean;
     showCaretRight?: boolean;
     left?: React.ReactNode;
@@ -20,8 +20,8 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
 
 export const Component = ({
   htmlTag,
-  isSelected = false,
-  isInteractive = true,
+  selected = false,
+  interactive = true,
   showBorder = true,
   showCaretRight = false,
   children,
@@ -39,7 +39,7 @@ export const Component = ({
       {...otherProps}
       as={htmlTag as any}
       disabled={disabled}
-      isInteractive={isInteractive}
+      interactive={interactive}
       showBorder={showBorder}
       data-testid={buildTestId()}
     >
@@ -48,7 +48,7 @@ export const Component = ({
         <Content>{children}</Content>
       </ContentContainer>
       {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
-      {isSelected && (
+      {selected && (
         <Right>
           <Icon.Tick
             fontSize={theme.honeycomb.size.reduced}

@@ -26,6 +26,7 @@ export type Props<Data extends object> = Testable & {
   pageSize?: number;
   pageCount?: number;
   hasPagination?: boolean;
+  hasHeader?: boolean;
   interactive?: boolean;
   onPageIndexChange?: (params: { pageIndex: number }) => void;
 };
@@ -37,6 +38,7 @@ export const Component = <Data extends object>({
   pageSize = 10,
   pageCount: pageCountParam,
   hasPagination = false,
+  hasHeader = true,
   interactive = false,
   onPageIndexChange,
   'data-testid': testId,
@@ -95,17 +97,22 @@ export const Component = <Data extends object>({
     <Container data-testid={buildTestId()}>
       <Scroll>
         <Table {...getTableProps()}>
-          <Thead>
-            {headerGroups.map((headerGroup) => (
-              <TheadTr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <Th {...column.getHeaderProps()} data-testid={buildTestId(`col.${column.id}.th`)}>
-                    {column.render('Header')}
-                  </Th>
-                ))}
-              </TheadTr>
-            ))}
-          </Thead>
+          {hasHeader && (
+            <Thead>
+              {headerGroups.map((headerGroup) => (
+                <TheadTr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <Th
+                      {...column.getHeaderProps()}
+                      data-testid={buildTestId(`col.${column.id}.th`)}
+                    >
+                      {column.render('Header')}
+                    </Th>
+                  ))}
+                </TheadTr>
+              ))}
+            </Thead>
+          )}
 
           <tbody {...getTableBodyProps()}>
             {(hasPagination ? page : rows).map((row) => {

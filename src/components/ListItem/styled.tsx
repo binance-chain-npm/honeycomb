@@ -10,7 +10,7 @@ const disabled = css`
   pointer-events: none;
 `;
 
-export const Styled = styled.button<{ isInteractive: boolean; showBorder: boolean }>`
+export const Styled = styled.button<{ interactive: boolean; showBorder: boolean }>`
   ${styleless};
   ${boxSizing};
 
@@ -34,8 +34,8 @@ export const Styled = styled.button<{ isInteractive: boolean; showBorder: boolea
   }
 
   ${({ disabled: isDisabled }) => isDisabled && disabled};
-  ${({ isInteractive }) =>
-    isInteractive &&
+  ${({ interactive }) =>
+    interactive &&
     css`
       cursor: pointer;
       ${hoverEffect};
