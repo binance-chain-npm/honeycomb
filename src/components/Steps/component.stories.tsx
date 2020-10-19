@@ -22,7 +22,7 @@ export const Horizontal = () => {
 
         return (
           <React.Fragment key={key}>
-            <Steps orientation="horizontal" activeStep={index - 1} data-testid={'steps'}>
+            <Steps orientation="horizontal" activeStep={index - 1} data-testid={key}>
               {renderItems(key)}
             </Steps>
             <Space size="normal" />
@@ -41,7 +41,7 @@ export const Vertical = () => {
 
         return (
           <React.Fragment key={key}>
-            <Steps orientation="vertical" activeStep={index - 1} data-testid={'steps'}>
+            <Steps orientation="vertical" activeStep={index - 1} data-testid={key}>
               {renderItems(key)}
             </Steps>
             <Space size="normal" />
