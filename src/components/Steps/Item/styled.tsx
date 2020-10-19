@@ -5,7 +5,6 @@ export const Styled = styled.div<{ isActive: boolean; isCompleted: boolean }>`
   font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
   width: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.small)};
   height: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.small)};
-  padding: ${({ theme }) => em(1, theme.honeycomb.size.small)};
   border-radius: 50%;
   display: flex;
   flex-shrink: 0;
@@ -31,7 +30,7 @@ const pulse = (theme: DefaultTheme) => keyframes`
 
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 8px transparent;
+    box-shadow: 0 0 0 ${em(theme.honeycomb.size.tiny, theme.honeycomb.size.small)} transparent;
   }
 
   100% {
