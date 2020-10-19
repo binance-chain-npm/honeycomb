@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
@@ -21,6 +22,7 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
+  const theme = useTheme();
 
   const steps = useMemo(() => {
     const children = React.Children.toArray(otherProps.children);
@@ -42,7 +44,7 @@ export const Component = ({
             <Connector
               orientation={orientation}
               key={connectorKey}
-              size={it.props.size}
+              size={it.props.size ? it.props.size - theme.honeycomb.size.normal : undefined}
               data-testid={buildTestId(connectorKey)}
             />
           ) : (
