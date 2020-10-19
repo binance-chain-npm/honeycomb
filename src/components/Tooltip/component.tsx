@@ -20,6 +20,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     | 'interactive'
     | 'reference'
     | 'placement'
+    | 'onClickOutside'
   > &
   Testable & {
     content: React.ReactNode;
