@@ -1,5 +1,5 @@
 import styled, { css, DefaultTheme, keyframes } from 'styled-components';
-import { em, transparentize } from 'polished';
+import { em, transitions, transparentize } from 'polished';
 
 export const Styled = styled.div<{ isActive: boolean; isCompleted: boolean }>`
   font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
@@ -14,6 +14,7 @@ export const Styled = styled.div<{ isActive: boolean; isCompleted: boolean }>`
   background: ${({ theme }) => theme.honeycomb.color.border};
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
   position: relative;
+  ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
 
   ${({ isActive, isCompleted }) =>
     (isActive || isCompleted) &&
