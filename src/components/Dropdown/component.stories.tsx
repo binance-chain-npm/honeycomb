@@ -27,13 +27,13 @@ export const WithHelpers = () => {
       <Dropdown.Divider />
       <Dropdown.Item variant="accent">Item 3</Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item isSelected>Selected item</Dropdown.Item>
+      <Dropdown.Item selected>Selected item</Dropdown.Item>
       <Dropdown.Item disabled>Disabled item</Dropdown.Item>
       <Dropdown.Item variant="accent" disabled>
         Disabled accent item
       </Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item isInteractive={false}>Non-interactive item</Dropdown.Item>
+      <Dropdown.Item interactive={false}>Non-interactive item</Dropdown.Item>
     </Dropdown>
   );
 };

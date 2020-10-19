@@ -32,9 +32,9 @@ export const WithTitle = () => (
   </Modal>
 );
 
-export const TitleComponetWithLoading = () => (
+export const TitleComponentWithLoading = () => (
   <Modal open={true} data-testid="MyModal">
-    <Modal.Header isLoading={true} title={<div>A title</div>} />
+    <Modal.Header loading={true} title={<div>A title</div>} />
     <Modal.Content>{items}</Modal.Content>
   </Modal>
 );

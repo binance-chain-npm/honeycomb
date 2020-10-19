@@ -18,7 +18,7 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
   return (
     <Styled {...otherProps} data-testid={buildTestId()}>
       {items.map((it, index) => {
-        const { children, target, isStyled, ...otherItemProps } = it;
+        const { children, target, styled, ...otherItemProps } = it;
 
         if (children) {
           return (
@@ -33,7 +33,7 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
 
                 if (label) {
                   component.push(
-                    <Label key={`${index}-label-${indexChild}`} isInteractive={false}>
+                    <Label key={`${index}-label-${indexChild}`} interactive={false}>
                       {label}
                     </Label>,
                   );
@@ -55,7 +55,7 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
           );
         }
 
-        if (isStyled) {
+        if (styled) {
           return <React.Fragment key={index}>{target}</React.Fragment>;
         }
 
