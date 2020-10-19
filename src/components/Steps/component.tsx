@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react';
-import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
+import { Context } from './context';
+import { Context as ItemContext } from './Item/context';
 import { Orientation, Styled } from './styled';
-
-import { Steps } from '.';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
@@ -22,46 +21,29 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
-  const theme = useTheme();
+  const context = useMemo(() => ({ orientation }), [orientation]);
 
   const steps = useMemo(() => {
     const children = React.Children.toArray(otherProps.children);
 
-    const res = children.flatMap((it, index) => {
-      if (React.isValidElement<React.ComponentPropsWithoutRef<typeof Steps.Item>>(it)) {
-        const itemKey = `item-${index}`;
-        const connectorKey = `connector-${index}`;
-
-        return [
-          <Steps.Item
-            key={itemKey}
-            {...it.props}
-            active={index === activeStep}
-            completed={index < activeStep}
-            data-testid={buildTestId(itemKey)}
-          />,
-          index !== children.length - 1 ? (
-            <Steps.Connector
-              orientation={orientation}
-              key={connectorKey}
-              size={it.props.size ? it.props.size - theme.honeycomb.size.normal : undefined}
-              data-testid={buildTestId(connectorKey)}
-            />
-          ) : (
-            undefined
-          ),
-        ];
-      }
-
-      return [it];
+    return children.map((it, index) => {
+      return (
+        <ItemContext.Provider
+          key={index}
+          value={{
+            active: index === activeStep,
+            completed: index < activeStep,
+          }}
+        >
+          {it}
+        </ItemContext.Provider>
+      );
     });
-
-    return res;
-  }, [activeStep, orientation, otherProps.children, theme.honeycomb.size.normal, buildTestId]);
+  }, [activeStep, otherProps.children]);
 
   return (
     <Styled {...otherProps} orientation={orientation} data-testid={buildTestId()}>
-      {steps}
+      <Context.Provider value={context}>{steps}</Context.Provider>
     </Styled>
   );
 };
