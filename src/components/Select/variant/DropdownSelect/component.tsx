@@ -19,7 +19,6 @@ export const Component = ({ target, onClose, 'data-testid': testId, ...otherProp
       <div ref={targetRef}>{target}</div>
       <SelectContext.Provider value={context}>
         <Tooltip
-          trigger="manual"
           interactive={true}
           arrow={false}
           content={<StyledContent>{otherProps.children}</StyledContent>}

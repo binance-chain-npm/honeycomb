@@ -23,14 +23,14 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   > &
   Testable & {
     content: React.ReactNode;
-    trigger: TriggerValue | TriggerValue[];
-    target: React.ReactNode;
+    trigger?: TriggerValue | TriggerValue[];
   };
 
-export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
+export const Component = ({ className = '', 'data-testid': testId, ...otherProps }: Props) => {
   const buildTestId = useBuildTestId(testId);
+
   const trigger = useMemo(() => {
-    if (!Array.isArray(otherProps.trigger)) return otherProps.trigger;
+    if (!otherProps.trigger || !Array.isArray(otherProps.trigger)) return otherProps.trigger;
     return otherProps.trigger.join(' ');
   }, [otherProps.trigger]);
 
@@ -39,7 +39,7 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
       <Styles />
       <Tippy
         {...otherProps}
-        className={otherProps.className}
+        className={className}
         trigger={trigger}
         theme="bc-honeycomb-bare"
         arrow={otherProps.arrow}
@@ -58,7 +58,3 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
 };
 
 Component.displayName = 'Tooltip';
-Component.defaultProps = {
-  trigger: ['mouseenter', 'focus'],
-  className: '',
-} as Props;
