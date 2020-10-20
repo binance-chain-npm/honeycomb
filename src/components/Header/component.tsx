@@ -118,7 +118,7 @@ export const Component = ({
   return (
     <Styled {...otherProps} data-testid={buildTestId()}>
       <LeftContainer>
-        {logo && <Logo data-testid={buildTestId('logo')}>{logo}</Logo>}
+        {logo && <Logo>{logo}</Logo>}
         {leftHeaderItems}
       </LeftContainer>
       {rightHeaderItems}

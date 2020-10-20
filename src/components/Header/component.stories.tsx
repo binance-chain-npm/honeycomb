@@ -110,7 +110,7 @@ export const WithNonCollapsibleItems = () => (
 
 export const WithComplexItems = () => (
   <Header
-    logo={<Header.Logo text="Project" data-testid="logo" />}
+    logo={<Header.Logo text="Project" data-testid="header.logo" />}
     left={[
       {
         element: 'Item',
