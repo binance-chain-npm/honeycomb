@@ -38,6 +38,8 @@ describe('Dropdown', () => {
       .then(() => {
         expect(stub.getCall(0)).to.be.calledWith('item1');
       });
+
+    cy.get('[data-testid="Dropdown.content"]').should('not.exist');
   });
 
   it('renders correctly with Gold Light theme', () => {
