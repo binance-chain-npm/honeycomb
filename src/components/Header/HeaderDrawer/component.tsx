@@ -54,25 +54,25 @@ export const Component = ({
 
   const panels: Panels = useMemo(() => {
     return items.map((it, index) => {
-      const { children, target, styled, onClick, ...otherItemProps } = it;
+      const { children, element, styled, onClick, ...otherItemProps } = it;
 
-      const targetKey = `panel-${index}`;
+      const elementKey = `panel-${index}`;
       const hasChildren = !!children && children.length > 0;
 
       return {
-        target: styled ? (
-          <PanelElementItem key={targetKey}>
-            <div onClick={(evt) => clickPanelItem(evt)}>{target}</div>
+        element: styled ? (
+          <PanelElementItem key={elementKey}>
+            <div onClick={(evt) => clickPanelItem(evt)}>{element}</div>
           </PanelElementItem>
         ) : (
           <PanelContainer
             showBorder={false}
-            key={targetKey}
+            key={elementKey}
             onClick={(evt) => clickPanelItem(evt, hasChildren, onClick)}
             {...otherItemProps}
           >
             <PanelItem hasChildren={hasChildren}>
-              {target}
+              {element}
               {hasChildren && (
                 <>
                   <Space size="micro" />
@@ -89,7 +89,7 @@ export const Component = ({
         children: (
           <>
             {children?.map((child, indexChild) => {
-              const { target, onClick, ...otherItemProps } = child;
+              const { element, onClick, ...otherItemProps } = child;
 
               return (
                 <PanelDropdownContainer
@@ -98,7 +98,7 @@ export const Component = ({
                   {...otherItemProps}
                   showBorder={false}
                 >
-                  <PanelDropdownItem>{target}</PanelDropdownItem>
+                  <PanelDropdownItem>{element}</PanelDropdownItem>
                 </PanelDropdownContainer>
               );
             })}

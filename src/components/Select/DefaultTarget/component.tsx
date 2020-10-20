@@ -10,7 +10,6 @@ export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & Testable;
 
 export const Component = ({
   children,
-  shape,
   onClick,
   'data-testid': testId,
   ...otherProps

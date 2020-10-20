@@ -16,7 +16,7 @@ export default {
 
 const dropdown = [
   {
-    target: (
+    element: (
       <>
         Item 1&nbsp;<Badge variant="primary">Badge</Badge>
       </>
@@ -26,21 +26,21 @@ const dropdown = [
     onClick: () => action('clicked')(),
   },
   {
-    target: 'Item 2',
+    element: 'Item 2',
     label: 'Item Group 2',
   },
   {
-    target: 'Item 3',
+    element: 'Item 3',
   },
   {
-    target: 'Disabled Item',
+    element: 'Disabled Item',
     disabled: true,
   },
 ];
 
 const nonCollapsible = [
   {
-    target: <DefaultTarget style={{ padding: '0 1em' }}>Non-Collapsible Item</DefaultTarget>,
+    element: <DefaultTarget style={{ padding: '0 1em' }}>Non-Collapsible Item</DefaultTarget>,
     styled: true,
   },
 ];
@@ -50,24 +50,24 @@ export const Default = () => (
     logo={<Header.Logo />}
     left={[
       {
-        target: 'Left Item 1',
+        element: 'Left Item 1',
       },
       {
-        target: 'Left Item 2',
+        element: 'Left Item 2',
       },
       {
-        target: 'Left Item 3',
+        element: 'Left Item 3',
       },
     ]}
     right={[
       {
-        target: 'Right Item 1',
+        element: 'Right Item 1',
       },
       {
-        target: 'Right Item 2',
+        element: 'Right Item 2',
       },
       {
-        target: 'Right Item 3',
+        element: 'Right Item 3',
       },
     ]}
   />
@@ -78,13 +78,13 @@ export const WithDropdownItems = () => (
     logo={<Header.Logo />}
     left={[
       {
-        target: 'Left Dropdown Item',
+        element: 'Left Dropdown Item',
         children: dropdown,
       },
     ]}
     right={[
       {
-        target: 'Right Dropdown Item',
+        element: 'Right Dropdown Item',
         children: dropdown,
       },
     ]}
@@ -96,12 +96,12 @@ export const WithNonCollapsibleItems = () => (
     logo={<Header.Logo />}
     left={[
       {
-        target: 'Left Item',
+        element: 'Left Item',
       },
     ]}
     right={[
       {
-        target: 'Right Item',
+        element: 'Right Item',
       },
     ]}
     nonCollapsible={nonCollapsible}
@@ -113,26 +113,27 @@ export const WithComplexItems = () => (
     logo={<Header.Logo text="Project" data-testid="logo" />}
     left={[
       {
-        target: 'Item',
-        htmlTag: 'span',
-        onClick: () => action('clicked')(),
+        element: 'Item',
       },
       {
-        target: 'Dropdown Item',
+        element: 'Dropdown Item',
         children: dropdown,
       },
     ]}
     right={[
       {
-        target: (
+        element: (
           <>
             <span style={{ marginRight: '0.5em' }}>Multiple Items</span>
             <Icon.Link />
           </>
         ),
+        htmlTag: 'a',
+        href: '#',
+        target: '_blank',
       },
       {
-        target: (
+        element: (
           <Button variant="primary" shape="fit" onClick={() => action('clicked')()}>
             Button
           </Button>
@@ -141,7 +142,7 @@ export const WithComplexItems = () => (
         styled: true,
       },
       {
-        target: 'Dropdown Item',
+        element: 'Dropdown Item',
         children: dropdown,
       },
     ]}

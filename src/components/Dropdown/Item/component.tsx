@@ -6,9 +6,7 @@ import { Context, ContentContext } from '../context';
 
 import { StyledListItem, Variant } from './styled';
 
-export type Props = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'as' | 'onClick'> &
-  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'onClick'> &
-  Omit<React.ComponentPropsWithoutRef<typeof ListItem>, 'showBorder'> &
+export type Props = Omit<React.ComponentPropsWithoutRef<typeof ListItem>, 'showBorder'> &
   Testable & {
     variant?: Variant;
   };

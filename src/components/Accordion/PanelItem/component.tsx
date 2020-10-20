@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { animated, useTransition } from 'react-spring';
 
 import { HtmlTag } from '../../../modules/html-tag';
@@ -7,12 +7,12 @@ import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Styled } from './styled';
 
 export type Panel = {
-  target: React.ReactNode;
+  element: React.ReactNode;
   children?: React.ReactNode;
   htmlTag?: HtmlTag;
 };
 
-export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'target'> &
+export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
   Panel &
   Testable & {
     index: number;
@@ -21,12 +21,13 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'target'> 
   };
 
 export const Component = ({
-  target,
+  element,
   children,
   activePanel,
   index,
   htmlTag,
   onChange,
+  onClick,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -39,26 +40,39 @@ export const Component = ({
     leave: { opacity: 0, maxHeight: '0px' },
   });
 
+  const click = useCallback(
+    (evt: React.MouseEvent<HTMLElement, MouseEvent>, index: number) => {
+      try {
+        onChange(index);
+      } catch (e) {
+        throw e;
+      } finally {
+        onClick?.(evt);
+      }
+    },
+    [onChange, onClick],
+  );
+
   return (
-    <Styled {...otherProps} as={htmlTag as any} data-testid={buildTestId()}>
-      <div onClick={() => onChange(index)} data-testid={buildTestId('target')}>
-        {target}
-      </div>
+    <>
+      <Styled
+        {...otherProps}
+        onClick={(evt: React.MouseEvent<HTMLElement, MouseEvent>) => click(evt, index)}
+        as={htmlTag as any}
+        data-testid={buildTestId()}
+      >
+        {element}
+      </Styled>
       {children &&
         boxTransitions.map(
           ({ item, key, props }) =>
             item && (
-              <animated.div
-                key={key}
-                style={props}
-                data-testid={buildTestId('children')}
-                {...otherProps}
-              >
+              <animated.div key={key} style={props} data-testid={buildTestId('children')}>
                 {children}
               </animated.div>
             ),
         )}
-    </Styled>
+    </>
   );
 };
 
