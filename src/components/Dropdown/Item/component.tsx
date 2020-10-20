@@ -20,7 +20,6 @@ export const Component = ({ variant = 'normal', children, onClick, ...otherProps
 
   const click = useCallback<NonNullable<Props['onClick']>>(
     (evt) => {
-      console.log('click');
       try {
         onClick?.(evt);
       } catch (e) {
