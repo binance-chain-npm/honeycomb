@@ -1,4 +1,8 @@
 import React from 'react';
 
-export const ShowingContext = React.createContext<boolean>(false);
-export const TestIdContext = React.createContext<string | undefined>(undefined);
+export const Context = React.createContext<{ isShowing: boolean; onClose?: () => void }>({
+  isShowing: false,
+});
+export const ContentContext = React.createContext<{ testId: string | undefined }>({
+  testId: undefined,
+});

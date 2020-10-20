@@ -66,7 +66,6 @@ export const Component = ({
             </>
           ) : (
             <Tooltip
-              trigger="manual"
               placement="bottom"
               visible={showQRCode}
               interactive={true}

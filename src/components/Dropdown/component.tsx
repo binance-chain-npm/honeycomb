@@ -4,8 +4,8 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Tooltip } from '../Tooltip';
 import { Styleless } from '../Styleless';
 
+import { Context, ContentContext } from './context';
 import { TooltipContent } from './styled';
-import { ShowingContext, TestIdContext } from './context';
 
 export type TriggerValue = 'mouseenter' | 'focus' | 'click';
 
@@ -14,32 +14,34 @@ export type Props = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'child
     target: React.ReactNode;
   };
 
-export const Component = ({ className, children, target, ...otherProps }: Props) => {
-  const [isShowing, setShowing] = useState(false);
+export const Component = ({ children, className, target, ...otherProps }: Props) => {
+  const [isShowing, setIsShowing] = useState(false);
   const buildTestId = useBuildTestId(otherProps['data-testid']);
 
-  const show = useCallback(() => setShowing(true), [setShowing]);
-  const hide = useCallback(() => setShowing(false), [setShowing]);
+  const toggle = useCallback(() => {
+    setIsShowing((value) => !value);
+  }, []);
 
   return (
-    <Tooltip
-      className={className}
-      trigger="click"
-      interactive={true}
-      onShow={show}
-      onHide={hide}
-      content={
-        <TestIdContext.Provider value={buildTestId('content')}>
-          <TooltipContent>{children}</TooltipContent>
-        </TestIdContext.Provider>
-      }
-      data-testid={otherProps['data-testid']}
-      arrow={false}
-    >
-      <Styleless htmlTag="div">
-        <ShowingContext.Provider value={isShowing}>{target}</ShowingContext.Provider>
-      </Styleless>
-    </Tooltip>
+    <Context.Provider value={{ isShowing, onClose: toggle }}>
+      <Tooltip
+        className={className}
+        interactive={true}
+        visible={isShowing}
+        content={
+          <ContentContext.Provider value={{ testId: buildTestId('content') }}>
+            <TooltipContent>{children}</TooltipContent>
+          </ContentContext.Provider>
+        }
+        data-testid={otherProps['data-testid']}
+        arrow={false}
+        onClickOutside={toggle}
+      >
+        <Styleless htmlTag="div" onClick={toggle}>
+          {target}
+        </Styleless>
+      </Tooltip>
+    </Context.Provider>
   );
 };
 
