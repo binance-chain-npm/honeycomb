@@ -46,6 +46,5 @@ export const Pulse = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 50%;
-
   animation: ${({ theme }) => pulse(theme)} 2s infinite;
 `;
