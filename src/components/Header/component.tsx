@@ -15,24 +15,23 @@ import {
   NonCollapsibleHeaderItems,
 } from './styled';
 
-export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
-  Testable & {
-    logo?: React.ReactNode;
-    left?: HeaderItem[];
-    right?: HeaderItem[];
-    nonCollapsible?: HeaderItem[];
-  };
+export type Props = Testable & {
+  logo?: React.ReactNode;
+  left?: HeaderItem[];
+  right?: HeaderItem[];
+  nonCollapsible?: HeaderItem[];
+};
 
 export type HeaderItem = Omit<
   React.ComponentPropsWithoutRef<typeof ListItem>,
-  'showCaretRight' | 'children' | 'target'
+  'showCaretRight' | 'children'
 > & {
-  target: React.ReactNode;
+  element: React.ReactNode;
   children?: HeaderChildItem[];
   styled?: boolean;
 };
 
-export type HeaderChildItem = Omit<HeaderItem, 'children' | 'type'> & {
+export type HeaderChildItem = Omit<HeaderItem, 'children'> & {
   label?: React.ReactNode;
 };
 
@@ -119,7 +118,7 @@ export const Component = ({
   return (
     <Styled {...otherProps} data-testid={buildTestId()}>
       <LeftContainer>
-        {logo && <Logo data-testid={buildTestId('logo')}>{logo}</Logo>}
+        {logo && <Logo>{logo}</Logo>}
         {leftHeaderItems}
       </LeftContainer>
       {rightHeaderItems}

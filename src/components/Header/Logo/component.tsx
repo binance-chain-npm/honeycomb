@@ -21,7 +21,7 @@ export const Component = ({ text, 'data-testid': testId }: Props) => {
   return (
     <Styled data-testid={buildTestId()}>
       {isSm ? (
-        <LogoSmall data-testid={buildTestId('logo-small')} />
+        <LogoSmall data-testid={buildTestId('logo-sm')} />
       ) : (
         <Logo data-testid={buildTestId('logo')} />
       )}

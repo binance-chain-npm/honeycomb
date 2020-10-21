@@ -74,7 +74,6 @@ export const Component = ({
 
     if (currentWidth > 0) {
       if (currentWidth > maxWidth) {
-        console.log(maxWidth / currentWidth);
         setScale(maxWidth / currentWidth);
       } else {
         setScale(1);

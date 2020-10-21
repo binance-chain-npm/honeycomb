@@ -5,10 +5,8 @@ describe('Header', () => {
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="header.logo"]').should('be.visible');
-    cy.get('[data-testid="logo.logo"]').should('be.visible');
-    cy.get('[data-testid="logo.badge"]').should('be.visible');
-    cy.get('[data-testid="header.logo"]').should('be.visible');
+    cy.get('[data-testid="header.logo.logo"]').should('be.visible');
+    cy.get('[data-testid="header.logo.badge"]').should('be.visible');
 
     cy.get('[data-testid="header.left"]').should('be.visible');
     cy.get('[data-testid="header.right"]').should('be.visible');
@@ -30,9 +28,8 @@ describe('Header', () => {
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="header.logo"]').should('be.visible');
-    cy.get('[data-testid="logo.logo"]').should('be.visible');
-    cy.get('[data-testid="logo.badge"]').should('be.visible');
+    cy.get('[data-testid="header.logo.logo"]').should('be.visible');
+    cy.get('[data-testid="header.logo.badge"]').should('be.visible');
 
     cy.get('[data-testid="header.left"]').should('be.visible');
     cy.get('[data-testid="header.right"]').should('not.exist');
@@ -61,10 +58,9 @@ describe('Header', () => {
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="header.logo"]').should('be.visible');
-    cy.get('[data-testid="logo.logo"]').should('not.exist');
-    cy.get('[data-testid="logo.logo-small"]').should('be.visible');
-    cy.get('[data-testid="logo.badge"]').should('be.visible');
+    cy.get('[data-testid="header.logo.logo"]').should('not.exist');
+    cy.get('[data-testid="header.logo.logo-sm"]').should('be.visible');
+    cy.get('[data-testid="header.logo.badge"]').should('be.visible');
 
     cy.get('[data-testid="header.left"]').should('not.exist');
     cy.get('[data-testid="header.right"]').should('not.exist');
@@ -106,7 +102,7 @@ describe('Header', () => {
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
 
     cy.get('[data-testid="header.menu"]').click();
-    cy.get('[data-testid="header.accordion.1.target"]').click();
+    cy.get('[data-testid="header.accordion.1"]').click();
     
     cy.get('[data-testid="header.accordion.1.children"]')
       .children()
@@ -116,12 +112,12 @@ describe('Header', () => {
   });
 
   it('clicking items in the drawer behaves correctly', () => {
-    cy.get('[data-testid="header.accordion.0.target"]').click();
+    cy.get('[data-testid="header.accordion.0"]').click();
 
     cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
 
     cy.get('[data-testid="header.menu"]').click();
-    cy.get('[data-testid="header.accordion.0.target"]').click();
+    cy.get('[data-testid="header.accordion.0"]').click();
 
     cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
   });
