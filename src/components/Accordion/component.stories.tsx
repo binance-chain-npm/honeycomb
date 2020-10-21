@@ -19,7 +19,7 @@ export const Behaviour = () => {
 
   const panels: Panels = new Array(5).fill(null).map((_, index) => {
     return {
-      target: (
+      element: (
         <div style={{ height: '3em', display: 'flex', alignItems: 'center' }}>
           Accordion {index}
         </div>

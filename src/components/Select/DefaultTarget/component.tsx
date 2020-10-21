@@ -8,13 +8,7 @@ import { StyledListItem } from './styled';
 
 export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & Testable;
 
-export const Component = ({
-  children,
-  shape,
-  onClick,
-  'data-testid': testId,
-  ...otherProps
-}: Props) => {
+export const Component = ({ children, onClick, 'data-testid': testId, ...otherProps }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
   return (

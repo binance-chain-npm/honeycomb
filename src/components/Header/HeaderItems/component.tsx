@@ -18,18 +18,18 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
   return (
     <Styled {...otherProps} data-testid={buildTestId()}>
       {items.map((it, index) => {
-        const { children, target, styled, ...otherItemProps } = it;
+        const { children, element, styled, ...otherItemProps } = it;
 
         if (children) {
           return (
             <StyledDropdown
               data-testid={buildTestId('dropdown')}
               key={index}
-              target={<DropdownItem>{target}</DropdownItem>}
+              target={<DropdownItem>{element}</DropdownItem>}
             >
               {children.map((child, indexChild) => {
                 const component: React.ReactElement[] = [];
-                const { label, showBorder, target: childTarget, ...otherChildProps } = child;
+                const { label, showBorder, element: childTarget, ...otherChildProps } = child;
 
                 if (label) {
                   component.push(
@@ -56,12 +56,12 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
         }
 
         if (styled) {
-          return <React.Fragment key={index}>{target}</React.Fragment>;
+          return <React.Fragment key={index}>{element}</React.Fragment>;
         }
 
         return (
           <Item key={index} {...otherItemProps} showBorder={!!otherItemProps.showBorder}>
-            {target}
+            {element}
           </Item>
         );
       })}
