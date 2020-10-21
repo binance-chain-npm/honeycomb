@@ -59,6 +59,7 @@ export const VariousTargets = () => {
           arrow={true}
           radius="micro"
           variant="accent"
+          visible
         >
           {target}
         </Tooltip>
