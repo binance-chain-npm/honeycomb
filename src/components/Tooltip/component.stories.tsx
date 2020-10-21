@@ -16,7 +16,7 @@ export const Default = () => {
   return (
     <Tooltip
       content={<Tooltip.Content>Some tooltip content...</Tooltip.Content>}
-      data-testid="Tooltip"
+      data-testid="tooltip"
     >
       Tooltip
     </Tooltip>
@@ -29,7 +29,6 @@ export const MixedThemes = () => {
       <HoneycombThemeProvider variant="light">
         <Tooltip
           content={<Tooltip.Content>Light theme.</Tooltip.Content>}
-          data-testid="Tooltip1"
           visible
         >
           Tooltip
@@ -39,7 +38,6 @@ export const MixedThemes = () => {
       <HoneycombThemeProvider variant="dark">
         <Tooltip
           content={<Tooltip.Content>Dark theme.</Tooltip.Content>}
-          data-testid="Tooltip2"
           visible
         >
           Tooltip
@@ -49,7 +47,7 @@ export const MixedThemes = () => {
   );
 };
 
-export const VariousTargets = () => {
+export const DefaultTarget = () => {
   const tooltip = (target: React.ReactNode) => {
     return (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
