@@ -25,6 +25,7 @@ export const Component = ({ target, onClose, 'data-testid': testId, ...otherProp
           arrow={false}
           content={<StyledContent>{otherProps.children}</StyledContent>}
           visible={otherProps.open}
+          trigger={null}
           reference={targetRef}
           onClickOutside={onClose}
           data-testid={buildTestId()}

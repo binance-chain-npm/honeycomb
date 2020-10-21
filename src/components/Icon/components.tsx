@@ -31,6 +31,7 @@ export { ReactComponent as Faucet } from './assets/TestnetFaucet.svg';
 export { ReactComponent as Globe } from './assets/Globe.svg';
 export { ReactComponent as HamburgerMenu } from './assets/HamburgerMenu.svg';
 export { ReactComponent as HardwareWallet } from './assets/HardwareWallet.svg';
+export { ReactComponent as InfoCircle } from './assets/InfoCircle.svg';
 export { ReactComponent as Link } from './assets/Link.svg';
 export { ReactComponent as Lock } from './assets/Lock.svg';
 export { ReactComponent as MastercardColor } from './assets/MastercardColor.svg';

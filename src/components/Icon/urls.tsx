@@ -31,6 +31,7 @@ export { default as Faucet } from './assets/TestnetFaucet.svg';
 export { default as Globe } from './assets/Globe.svg';
 export { default as HamburgerMenu } from './assets/HamburgerMenu.svg';
 export { default as HardwareWallet } from './assets/HardwareWallet.svg';
+export { default as InfoCircle } from './assets/InfoCircle.svg';
 export { default as Link } from './assets/Link.svg';
 export { default as Lock } from './assets/Lock.svg';
 export { default as MastercardColor } from './assets/MastercardColor.svg';

@@ -5,7 +5,7 @@ import { Dropdown } from '../../Dropdown';
 import { HeaderItem } from '../component';
 import { Item, DropdownItem } from '../styled';
 
-import { Styled, StyledDropdown, Label } from './styled';
+import { Styled, Label } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
@@ -22,10 +22,11 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
 
         if (children) {
           return (
-            <StyledDropdown
+            <Dropdown
               data-testid={buildTestId('dropdown')}
               key={index}
               target={<DropdownItem>{element}</DropdownItem>}
+              radius="micro"
             >
               {children.map((child, indexChild) => {
                 const component: React.ReactElement[] = [];
@@ -51,7 +52,7 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
 
                 return component;
               })}
-            </StyledDropdown>
+            </Dropdown>
           );
         }
 
