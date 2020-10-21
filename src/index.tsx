@@ -47,3 +47,4 @@ export { HoverEffect, hoverEffect } from './components/HoverEffect';
 export { Drawer } from './components/Drawer';
 export { Accordion } from './components/Accordion';
 export { Header } from './components/Header';
+export { Steps } from './components/Steps';
