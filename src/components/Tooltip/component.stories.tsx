@@ -27,19 +27,13 @@ export const MixedThemes = () => {
   return (
     <>
       <HoneycombThemeProvider variant="light">
-        <Tooltip
-          content={<Tooltip.Content>Light theme.</Tooltip.Content>}
-          visible
-        >
+        <Tooltip content={<Tooltip.Content>Light theme.</Tooltip.Content>} visible>
           Tooltip
         </Tooltip>
       </HoneycombThemeProvider>
       <div style={{ height: '50px' }} />
       <HoneycombThemeProvider variant="dark">
-        <Tooltip
-          content={<Tooltip.Content>Dark theme.</Tooltip.Content>}
-          visible
-        >
+        <Tooltip content={<Tooltip.Content>Dark theme.</Tooltip.Content>} visible>
           Tooltip
         </Tooltip>
       </HoneycombThemeProvider>
@@ -72,17 +66,13 @@ export const DefaultTarget = () => {
           <Icon.ArrowTopRight />
         </Button>,
       )}
-
       <Space size="giant" />
-
       {tooltip(
         <Tooltip.DefaultTarget>
           <Icon.InfoCircle />
         </Tooltip.DefaultTarget>,
       )}
-
       <Space size="giant" />
-
       {tooltip(<Tooltip.DefaultTarget>Tooltip</Tooltip.DefaultTarget>)}
     </div>
   );
