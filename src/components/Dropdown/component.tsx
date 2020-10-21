@@ -10,6 +10,7 @@ import { TooltipContent } from './styled';
 export type TriggerValue = 'mouseenter' | 'focus' | 'click';
 
 export type Props = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'children'> &
+  Pick<React.ComponentPropsWithoutRef<typeof Tooltip>, 'radius'> &
   Testable & {
     target: React.ReactNode;
   };
@@ -25,9 +26,11 @@ export const Component = ({ children, className, target, ...otherProps }: Props)
   return (
     <Context.Provider value={{ isShowing, onClose: toggle }}>
       <Tooltip
+        {...otherProps}
         className={className}
         interactive={true}
         visible={isShowing}
+        trigger={null}
         content={
           <ContentContext.Provider value={{ testId: buildTestId('content') }}>
             <TooltipContent>{children}</TooltipContent>
