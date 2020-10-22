@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const SelectContext = React.createContext<{ onClose?: () => void; testId?: string }>({});
+export const Context = React.createContext<{ onClose?: () => void; testId?: string }>({});

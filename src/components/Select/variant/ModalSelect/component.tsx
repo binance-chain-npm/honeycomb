@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { useBuildTestId } from '../../../../modules/test-ids';
 import { Modal } from '../../../Modal';
 import { Select } from '../../../Select';
-import { SelectContext } from '../../context';
+import { Context } from '../../context';
 
 import { StyledHeader } from './styled';
 
@@ -27,12 +27,12 @@ export const Component = ({
   return (
     <>
       {target}
-      <SelectContext.Provider value={context}>
+      <Context.Provider value={context}>
         <Modal {...otherProps} data-testid={buildTestId()}>
           <StyledHeader title={title} loading={loading} onClose={onClose} />
           <Modal.Content padding="none">{children}</Modal.Content>
         </Modal>
-      </SelectContext.Provider>
+      </Context.Provider>
     </>
   );
 };

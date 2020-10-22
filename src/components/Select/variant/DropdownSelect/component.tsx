@@ -3,7 +3,7 @@ import React, { useMemo, useRef } from 'react';
 import { useBuildTestId } from '../../../../modules/test-ids';
 import { Select } from '../../../Select';
 import { Tooltip } from '../../../Tooltip';
-import { SelectContext } from '../../context';
+import { Context } from '../../context';
 
 import { StyledContent } from './styled';
 
@@ -19,7 +19,7 @@ export const Component = ({ target, onClose, 'data-testid': testId, ...otherProp
   return (
     <>
       <div ref={targetRef}>{target}</div>
-      <SelectContext.Provider value={context}>
+      <Context.Provider value={context}>
         <Tooltip
           interactive={true}
           arrow={false}
@@ -30,7 +30,7 @@ export const Component = ({ target, onClose, 'data-testid': testId, ...otherProp
           onClickOutside={onClose}
           data-testid={buildTestId()}
         />
-      </SelectContext.Provider>
+      </Context.Provider>
     </>
   );
 };
