@@ -88,7 +88,11 @@ export const Component = ({
         {isFilterable && (
           <Card position="top">
             <Search>
-              <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
+              <TextInput
+                value={search}
+                onChange={updateSearch}
+                data-testid={buildTestId('input')}
+              />
             </Search>
           </Card>
         )}
