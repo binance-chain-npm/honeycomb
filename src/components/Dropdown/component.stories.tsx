@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Sections } from '../../modules/sections';
 
@@ -9,18 +9,14 @@ export default {
 };
 
 export const Bare = () => {
-  return (
-    <Dropdown target="Click here!" data-testid="MyDropdown">
-      Some content
-    </Dropdown>
-  );
+  return <Dropdown target="Click here!">Some content</Dropdown>;
 };
 
 export const WithHelpers = () => {
   return (
     <Dropdown
       target={<Dropdown.DefaultTarget>Click here!</Dropdown.DefaultTarget>}
-      data-testid="MyDropdown"
+      data-testid="dropdown"
     >
       <Dropdown.Item>Item 1</Dropdown.Item>
       <Dropdown.Item htmlTag="a">Item 2</Dropdown.Item>
@@ -34,6 +30,33 @@ export const WithHelpers = () => {
       </Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item interactive={false}>Non-interactive item</Dropdown.Item>
+    </Dropdown>
+  );
+};
+
+export const Selectable = () => {
+  const [selected, setSelected] = useState<{ index: number; value: React.ReactNode }>({
+    index: -1,
+    value: 'Click here!',
+  });
+
+  return (
+    <Dropdown target={<Dropdown.DefaultTarget>{selected.value}</Dropdown.DefaultTarget>}>
+      {new Array(5).fill(null).map((_, index) => (
+        <Dropdown.Item
+          key={index}
+          data-testid={`${index}`}
+          onClick={() =>
+            setSelected({
+              index,
+              value: `Option ${index + 1}`,
+            })
+          }
+          selected={selected.index === index}
+        >
+          Option {index + 1}
+        </Dropdown.Item>
+      ))}
     </Dropdown>
   );
 };
