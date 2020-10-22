@@ -51,6 +51,7 @@ export { ReactComponent as TriangleUp } from './assets/TriangleUp.svg';
 export { ReactComponent as VisaColor } from './assets/VisaColor.svg';
 export { ReactComponent as Wallet } from './assets/Wallet.svg';
 export { ReactComponent as WalletConnect } from './assets/WalletConnect.svg';
+export { ReactComponent as WalletDirect } from './assets/WalletDirect.svg';
 export { ReactComponent as Warning } from './assets/Warning.svg';
 export { ReactComponent as Write } from './assets/Write.svg';
 export { ReactComponent as ComingSoon } from './assets/ComingSoon.svg';
