@@ -2,14 +2,14 @@ import React, { useCallback, useContext } from 'react';
 
 import { useBuildTestId } from '../../../modules/test-ids';
 import { ListItem } from '../../ListItem';
-import { SelectContext } from '../context';
+import { Context } from '../context';
 
 export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & {
-  searchAs: string | string[];
+  searchAs?: string | string[];
 };
 
 export const Component = ({ children, onClick, 'data-testid': testId, ...otherProps }: Props) => {
-  const { onClose, testId: parentTestId } = useContext(SelectContext);
+  const { onClose, testId: parentTestId } = useContext(Context);
   const buildTestIdParent = useBuildTestId(parentTestId);
   const buildTestId = useBuildTestId(buildTestIdParent(testId ? `item.${testId}` : undefined));
 

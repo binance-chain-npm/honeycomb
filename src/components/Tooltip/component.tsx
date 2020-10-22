@@ -54,6 +54,7 @@ export const Component = ({
         arrow={otherProps.arrow}
         animation="shift-away"
         placement={otherProps.placement ?? 'bottom-start'}
+        appendTo={document.body}
         content={
           <ContentContainer radius={radius} variant={variant} data-testid={buildTestId('content')}>
             {otherProps.content}

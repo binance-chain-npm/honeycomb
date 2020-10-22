@@ -15,9 +15,15 @@ export type Props = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'child
     target: React.ReactNode;
   };
 
-export const Component = ({ children, className, target, ...otherProps }: Props) => {
+export const Component = ({
+  children,
+  className,
+  target,
+  'data-testid': testId,
+  ...otherProps
+}: Props) => {
   const [isShowing, setIsShowing] = useState(false);
-  const buildTestId = useBuildTestId(otherProps['data-testid']);
+  const buildTestId = useBuildTestId(testId);
 
   const toggle = useCallback(() => {
     setIsShowing((value) => !value);
@@ -36,7 +42,7 @@ export const Component = ({ children, className, target, ...otherProps }: Props)
             <TooltipContent>{children}</TooltipContent>
           </ContentContext.Provider>
         }
-        data-testid={otherProps['data-testid']}
+        data-testid={buildTestId()}
         arrow={false}
         onClickOutside={toggle}
       >

@@ -43,7 +43,7 @@ export const Component = ({
     let hasError = false;
 
     const res = React.Children.toArray(children).flatMap((it) => {
-      if (React.isValidElement<{ searchAs: string[] | string }>(it)) {
+      if (React.isValidElement<{ searchAs?: string[] | string }>(it)) {
         if (it.props.searchAs && it.props.searchAs.length > 0) {
           return [it];
         }
@@ -82,23 +82,29 @@ export const Component = ({
 
   const isFilterable = useMemo(() => filterableChildren.length > 0, [filterableChildren]);
 
-  const content = (
-    <Container>
-      {isFilterable && (
-        <Card position="top">
-          <Search>
-            <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
-          </Search>
-        </Card>
-      )}
-      <Space size="normal" />
-      {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
-      <Space size="normal" />
-      <OptionsContainer position="bottom">
-        <Options>{isFilterable ? filteredResults : children}</Options>
-      </OptionsContainer>
-    </Container>
-  );
+  const content = useMemo(() => {
+    return (
+      <Container>
+        {isFilterable && (
+          <Card position="top">
+            <Search>
+              <TextInput
+                value={search}
+                onChange={updateSearch}
+                data-testid={buildTestId('input')}
+              />
+            </Search>
+          </Card>
+        )}
+        <Space size="normal" />
+        {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
+        <Space size="normal" />
+        <OptionsContainer position="bottom">
+          <Options>{isFilterable ? filteredResults : children}</Options>
+        </OptionsContainer>
+      </Container>
+    );
+  }, [isFilterable, filteredResults, children, optionsTitle, search, updateSearch, buildTestId]);
 
   switch (variant) {
     case 'dropdown':

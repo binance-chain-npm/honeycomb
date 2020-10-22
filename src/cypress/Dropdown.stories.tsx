@@ -11,7 +11,7 @@ export const Default = () => {
   return (
     <Dropdown
       target={<Dropdown.DefaultTarget>Click here!</Dropdown.DefaultTarget>}
-      data-testid="Dropdown"
+      data-testid="dropdown"
     >
       <Dropdown.Item data-testid="item1" onClick={() => alert('item1')}>
         Item 1
