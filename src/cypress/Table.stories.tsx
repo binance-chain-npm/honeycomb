@@ -44,7 +44,6 @@ export const Default = () => {
   );
 
   const [data, setData] = React.useState(fullData);
-  const [pageCount, setPageCount] = useState(fullData.length);
 
   const columns = [
     {
@@ -86,7 +85,6 @@ export const Default = () => {
       const start = PAGE_SIZE * pageIndex;
       const end = start + PAGE_SIZE;
       setData(fullData.slice(start, end));
-      setPageCount(Math.ceil(fullData.length / PAGE_SIZE));
     },
     [fullData],
   );
@@ -98,7 +96,7 @@ export const Default = () => {
         columns={columns}
         hasPagination
         pageSize={PAGE_SIZE}
-        pageCount={pageCount}
+        pageCount={Math.ceil(fullData.length / PAGE_SIZE)}
         initialPageIndex={6}
         onPageIndexChange={updateData}
         data-testid={'table'}
