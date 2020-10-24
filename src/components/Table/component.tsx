@@ -72,7 +72,7 @@ export const Component = <Data extends object>({
       data,
       initialState: { pageIndex: initialPageIndex },
       manualPagination: isControlled,
-      pageCount: otherProps.pageCount,
+      pageCount: isControlled ? otherProps.pageCount : Math.ceil(data.length / pageSize),
     },
     usePagination,
   );
