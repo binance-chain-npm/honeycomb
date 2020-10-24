@@ -64,7 +64,7 @@
     "@types/qrcode.react": "^1.0.1",
     "@types/react": "16.9.41",
     "@types/react-dom": "^16.9.8",
-    "@types/react-table": "^7.0.19",
+    "@types/react-table": "^7.0.24",
     "@types/styled-components": "^5.1.1",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
@@ -97,7 +97,7 @@
     "query-string": "^6.13.1",
     "rc-table": "^7.8.4",
     "react-spring": "^8.0.27",
-    "react-table": "^7.3.2"
+    "react-table": "^7.6.0"
   },
   "resolutions": {
     "@types/react": "16.9.35"
