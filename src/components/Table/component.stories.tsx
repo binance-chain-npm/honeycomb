@@ -44,19 +44,19 @@ const columns = [
 
 export const NoHeader = () => (
   <Card variant="bare">
-    <Table data={data} columns={columns} hasHeader={false} data-testid="MyTable" />
+    <Table data={data} columns={columns} hasHeader={false} />
   </Card>
 );
 
 export const NoPagination = () => (
   <Card variant="bare">
-    <Table data={data} columns={columns} data-testid="MyTable" />
+    <Table data={data} columns={columns} />
   </Card>
 );
 
 export const AutomaticPagination = () => (
   <Card variant="bare">
-    <Table data={data} columns={columns} hasPagination data-testid="MyTable" />
+    <Table data={data} columns={columns} hasPagination />
   </Card>
 );
 
@@ -73,7 +73,7 @@ export const ControlledPagination = () => {
         pageCount={Math.ceil(data.length / pageSize)}
         initialPageIndex={pageIndex}
         onPageIndexChange={({ pageIndex }) => setPageIndex(pageIndex)}
-        data-testid="MyTable"
+        data-testid="table"
       />
     </Card>
   );

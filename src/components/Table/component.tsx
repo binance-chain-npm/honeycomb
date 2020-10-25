@@ -36,14 +36,20 @@ export const Component = <Data extends object>({
   columns,
   initialPageIndex = 0,
   pageSize = 10,
-  pageCount: pageCountParam,
   hasPagination = false,
   hasHeader = true,
   interactive = false,
   onPageIndexChange,
   'data-testid': testId,
+  ...otherProps
 }: Props<Data>) => {
   const buildTestId = useBuildTestId(testId);
+  const buildTestIdPagination = useBuildTestId(buildTestId('pagination'));
+
+  const isControlled = useMemo(() => typeof otherProps.pageCount === 'number', [
+    otherProps.pageCount,
+  ]);
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -64,9 +70,9 @@ export const Component = <Data extends object>({
     {
       columns,
       data,
-      initialState: { pageIndex: initialPageIndex, pageSize },
-      manualPagination: typeof pageCountParam === 'number',
-      pageCount: pageCountParam,
+      initialState: { pageIndex: initialPageIndex },
+      manualPagination: isControlled,
+      pageCount: isControlled ? otherProps.pageCount : Math.ceil(data.length / pageSize),
     },
     usePagination,
   );
@@ -85,8 +91,13 @@ export const Component = <Data extends object>({
   );
 
   useEffect(() => {
+    if (isControlled && pageIndex !== 0 && pageIndex >= pageCount) {
+      gotoPage(0);
+      return;
+    }
+
     onPageIndexChange?.({ pageIndex });
-  }, [pageIndex, onPageIndexChange]);
+  }, [isControlled, pageCount, pageIndex, onPageIndexChange, gotoPage]);
 
   useEffect(() => {
     if (!pageSize) return;
@@ -102,10 +113,7 @@ export const Component = <Data extends object>({
               {headerGroups.map((headerGroup) => (
                 <TheadTr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => (
-                    <Th
-                      {...column.getHeaderProps()}
-                      data-testid={buildTestId(`col.${column.id}.th`)}
-                    >
+                    <Th {...column.getHeaderProps()} data-testid={buildTestId(`${column.id}.th`)}>
                       {column.render('Header')}
                     </Th>
                   ))}
@@ -123,7 +131,7 @@ export const Component = <Data extends object>({
                     return (
                       <Td
                         {...cell.getCellProps()}
-                        data-testid={buildTestId(`row.${cell.row.index}.col.${cell.column.id}.td`)}
+                        data-testid={buildTestId(`row${cell.row.index}.${cell.column.id}.td`)}
                       >
                         {cell.render('Cell')}
                       </Td>
@@ -136,15 +144,15 @@ export const Component = <Data extends object>({
         </Table>
       </Scroll>
       {hasPagination && (
-        <Pagination data-testid={buildTestId('pagination')}>
+        <Pagination data-testid={buildTestIdPagination()}>
           <PaginationWrapper>
             <Button
               variant="secondary"
-              onClick={() => previousPage()}
+              onClick={previousPage}
               disabled={!canPreviousPage}
               shape="square"
               size="increased"
-              data-testid={buildTestId('pagination.previous-btn')}
+              data-testid={buildTestIdPagination('previous-btn')}
             >
               {'<'}
             </Button>
@@ -155,13 +163,13 @@ export const Component = <Data extends object>({
                   onClick={() => gotoPage(page)}
                   shape="fit"
                   size="increased"
-                  data-testid={buildTestId(`pagination.go-to-${page}-btn`)}
+                  data-testid={buildTestIdPagination(`go-to-${page}-btn`)}
                 >
                   {page + 1}
                 </PageNumberButton>
                 {typeof filteredPageOptions[index + 1] === 'number' &&
                   filteredPageOptions[index + 1] !== page + 1 && (
-                    <PaginationEllipsis data-testid={buildTestId(`pagination.${page}.ellipsis`)}>
+                    <PaginationEllipsis data-testid={buildTestIdPagination(`${page}.ellipsis`)}>
                       …
                     </PaginationEllipsis>
                   )}
@@ -169,11 +177,11 @@ export const Component = <Data extends object>({
             ))}
             <Button
               variant="secondary"
-              onClick={() => nextPage()}
+              onClick={nextPage}
               disabled={!canNextPage}
               shape="square"
               size="increased"
-              data-testid={buildTestId('pagination.next-btn')}
+              data-testid={buildTestIdPagination('next-btn')}
             >
               {'>'}
             </Button>
