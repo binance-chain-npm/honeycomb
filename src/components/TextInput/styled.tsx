@@ -65,9 +65,6 @@ export const InputContainer = styled.div<InputContainerProps>`
   border: 1px solid transparent;
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
-  padding-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
-  padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
   ${({ size }) => size === 'increased' && increased};
