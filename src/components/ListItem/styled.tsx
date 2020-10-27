@@ -74,7 +74,7 @@ export const Right = styled.div`
   margin-left: ${({ theme }) => em(theme.honeycomb.size.small)};
 `;
 
-export const End = styled.div`
+export const Fixed = styled.div`
   display: flex;
   margin-left: ${({ theme }) => em(theme.honeycomb.size.small)};
 `;
