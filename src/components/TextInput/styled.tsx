@@ -2,7 +2,7 @@ import styled, { css, DefaultTheme } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
-import { Size, increased, huge } from '../internal/Size';
+import { Size, increased, huge, giant } from '../internal/Size';
 
 export type ValidationMessage = { label: React.ReactNode; state?: State; alwaysShow?: boolean };
 
@@ -65,22 +65,18 @@ export const InputContainer = styled.div<InputContainerProps>`
   border: 1px solid transparent;
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
-  padding-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
-  padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
+  ${({ size }) => size === 'giant' && giant};
   ${({ size, scale }) =>
     size === 'giant' &&
-    (scale === 1
-      ? css`
-          height: ${({ theme }) => em(theme.honeycomb.size.giant, theme.honeycomb.size.reduced)};
-        `
-      : css`
-          min-height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
-        `)};
+    scale !== 1 &&
+    css`
+      height: auto;
+      min-height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+    `};
 
   ${({ state }) => state === 'success' && success};
   ${({ theme }) =>
