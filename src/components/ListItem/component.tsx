@@ -51,7 +51,7 @@ export const Component = ({
       {selected && (
         <End>
           <Icon.Tick
-            fontSize={theme.honeycomb.size.reduced}
+            fontSize={theme.honeycomb.size.small}
             color={theme.honeycomb.color.primary.normal}
             data-testid={buildTestId('tick')}
           />
@@ -61,7 +61,6 @@ export const Component = ({
         <End>
           <Icon.CaretRight
             fontSize={theme.honeycomb.size.small}
-            color={theme.honeycomb.color.text.masked}
             data-testid={buildTestId('caret-right')}
           />
         </End>
@@ -76,3 +75,4 @@ Component.ContentContainer = ContentContainer;
 Component.Content = Content;
 Component.Left = Left;
 Component.Right = Right;
+Component.End = End;
