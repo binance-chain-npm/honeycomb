@@ -5,7 +5,7 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { HtmlTag } from '../../modules/html-tag';
 import { Icon } from '../Icon';
 
-import { Styled, ContentContainer, Content, Left, Right } from './styled';
+import { Styled, ContentContainer, Content, Left, Right, End } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
   Testable & {
@@ -49,21 +49,22 @@ export const Component = ({
       </ContentContainer>
       {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
       {selected && (
-        <Right>
+        <End>
           <Icon.Tick
             fontSize={theme.honeycomb.size.reduced}
             color={theme.honeycomb.color.primary.normal}
             data-testid={buildTestId('tick')}
           />
-        </Right>
+        </End>
       )}
       {showCaretRight && (
-        <Right>
+        <End>
           <Icon.CaretRight
             fontSize={theme.honeycomb.size.small}
+            color={theme.honeycomb.color.text.masked}
             data-testid={buildTestId('caret-right')}
           />
-        </Right>
+        </End>
       )}
     </Styled>
   );
