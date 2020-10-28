@@ -47,7 +47,7 @@ describe('Header', () => {
     cy.get('[data-testid="header.accordion"]')
       .children()
       .then((children) => {
-        expect(children.length).to.equal(3);
+        expect(children.length).to.equal(4);
       });
 
     cy.percySnapshot('Header while open on a medium device', { widths: [768] });
@@ -78,7 +78,7 @@ describe('Header', () => {
     cy.get('[data-testid="header.accordion"]')
       .children()
       .then((children) => {
-        expect(children.length).to.equal(5);
+        expect(children.length).to.equal(6);
       });
 
     cy.percySnapshot('Header while open on a small device');
@@ -120,5 +120,55 @@ describe('Header', () => {
     cy.get('[data-testid="header.accordion.0"]').click();
 
     cy.get('[data-testid="header.drawer.container"]').should('not.be.visible');
+  });
+
+  it('non-collapsible items behave correctly', () => {
+    cy.viewport(1280, 768);
+    cy.visitStory({ storyId: 'elements-header--with-non-collapsible-items', themeId: 'GoldLight' });
+
+    cy.get('[data-testid="header.non-collapsible"]')
+      .children()
+      .then((children) => {
+        expect(children[0]).to.have.attr('data-testid', 'non-collapsible');
+        expect(children[1]).to.have.attr('data-testid', 'non-collapsible.md');
+        expect(children[2]).to.have.attr('data-testid', 'non-collapsible.sm');
+      });
+    cy.get('[data-testid="header.menu"]').should('not.exist');
+
+    cy.viewport(768, 768);
+    cy.reload();
+
+    cy.get('[data-testid="header.non-collapsible"]')
+      .children()
+      .then((children) => {
+        expect(children[0]).to.have.attr('data-testid', 'non-collapsible');
+        expect(children[1]).to.have.attr('data-testid', 'non-collapsible.sm');
+      });
+    cy.get('[data-testid="header.menu"]').click();
+    cy.get('[data-testid="header.accordion.1"]')
+      .children()
+      .then((children) => {
+        expect(children[0]).to.have.attr('data-testid', 'non-collapsible.md');
+      });
+
+    cy.viewport(375, 768);
+    cy.reload();
+
+    cy.get('[data-testid="header.non-collapsible"]')
+      .children()
+      .then((children) => {
+        expect(children[0]).to.have.attr('data-testid', 'non-collapsible');
+      });
+    cy.get('[data-testid="header.menu"]').click();
+    cy.get('[data-testid="header.accordion.2"]')
+      .children()
+      .then((children) => {
+        expect(children[0]).to.have.attr('data-testid', 'non-collapsible.md');
+      });
+    cy.get('[data-testid="header.accordion.3"]')
+      .children()
+      .then((children) => {
+        expect(children[0]).to.have.attr('data-testid', 'non-collapsible.sm');
+      });
   });
 });
