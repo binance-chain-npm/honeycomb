@@ -54,7 +54,7 @@ export const Interactive = () => (
   </Card>
 );
 
-export const WithPagination = () => {
+export const ControlledWithPagination = () => {
   const [pageIndex, setPageIndex] = useState(5);
   const pageSize = 3;
 
