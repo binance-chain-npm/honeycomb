@@ -48,21 +48,16 @@ export const NoHeader = () => (
   </Card>
 );
 
-export const NoPagination = () => (
+export const Interactive = () => (
   <Card variant="bare">
-    <Table data={data} columns={columns} />
+    <Table data={data} columns={columns} interactive />
   </Card>
 );
 
-export const AutomaticPagination = () => (
-  <Card variant="bare">
-    <Table data={data} columns={columns} hasPagination />
-  </Card>
-);
-
-export const ControlledPagination = () => {
+export const ControlledWithPagination = () => {
   const [pageIndex, setPageIndex] = useState(5);
   const pageSize = 3;
+
   return (
     <Card variant="bare">
       <Table
@@ -71,16 +66,10 @@ export const ControlledPagination = () => {
         hasPagination
         pageSize={pageSize}
         pageCount={Math.ceil(data.length / pageSize)}
-        initialPageIndex={pageIndex}
+        pageIndex={pageIndex}
         onPageIndexChange={({ pageIndex }) => setPageIndex(pageIndex)}
         data-testid="table"
       />
     </Card>
   );
 };
-
-export const Interactive = () => (
-  <Card variant="bare">
-    <Table data={data} columns={columns} interactive />
-  </Card>
-);
