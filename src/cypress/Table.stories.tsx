@@ -10,7 +10,7 @@ export default {
 };
 
 export const Default = () => {
-  const PAGE_SIZE = 10;
+  const pageSize = 10;
 
   const options = [
     {
@@ -24,6 +24,7 @@ export const Default = () => {
   ];
 
   const [selected, setSelected] = useState<{ index: number; value: React.ReactNode }>(options[0]);
+  const [pageIndex, setPageIndex] = React.useState(6);
 
   const fullData = useMemo(
     () =>
@@ -43,7 +44,7 @@ export const Default = () => {
     [selected.index],
   );
 
-  const [data, setData] = React.useState(fullData);
+  const [data, setData] = React.useState(fullData.slice(0, pageSize));
 
   const columns = [
     {
@@ -59,6 +60,7 @@ export const Default = () => {
           <Dropdown.Item
             onClick={() => {
               setSelected(options[0]);
+              updateData({ pageIndex: 0 });
             }}
             selected={selected.index === 0}
             data-testid="option-0"
@@ -68,6 +70,7 @@ export const Default = () => {
           <Dropdown.Item
             onClick={() => {
               setSelected(options[1]);
+              updateData({ pageIndex: 0 });
             }}
             selected={selected.index === 1}
             data-testid="option-1"
@@ -82,8 +85,9 @@ export const Default = () => {
 
   const updateData = useCallback(
     ({ pageIndex }) => {
-      const start = PAGE_SIZE * pageIndex;
-      const end = start + PAGE_SIZE;
+      const start = pageSize * pageIndex;
+      const end = start + pageSize;
+      setPageIndex(pageIndex);
       setData(fullData.slice(start, end));
     },
     [fullData],
@@ -95,9 +99,9 @@ export const Default = () => {
         data={data}
         columns={columns}
         hasPagination
-        pageSize={PAGE_SIZE}
-        pageCount={Math.ceil(fullData.length / PAGE_SIZE)}
-        initialPageIndex={6}
+        pageIndex={pageIndex}
+        pageSize={pageSize}
+        pageCount={Math.ceil(fullData.length / pageSize)}
         onPageIndexChange={updateData}
         data-testid={'table'}
       />

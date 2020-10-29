@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useCallback, useEffect } from 'react';
 import { useTable, TableOptions, usePagination } from 'react-table';
 
 import { Button } from '../Button';
@@ -22,7 +22,7 @@ import {
 export type Props<Data extends object> = Testable & {
   data: TableOptions<Data>['data'];
   columns: TableOptions<Data>['columns'];
-  initialPageIndex?: number;
+  pageIndex?: number;
   pageSize?: number;
   pageCount?: number;
   hasPagination?: boolean;
@@ -34,7 +34,7 @@ export type Props<Data extends object> = Testable & {
 export const Component = <Data extends object>({
   data,
   columns,
-  initialPageIndex = 0,
+  pageIndex = 0,
   pageSize = 10,
   hasPagination = false,
   hasHeader = true,
@@ -57,22 +57,24 @@ export const Component = <Data extends object>({
     prepareRow,
     page,
     rows,
-    canPreviousPage,
-    canNextPage,
     pageOptions,
     pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
-    setPageSize,
-    state: { pageIndex },
   } = useTable(
     {
       columns,
       data,
-      initialState: { pageIndex: initialPageIndex, pageSize },
+      initialState: { pageIndex, pageSize },
       manualPagination: isControlled,
-      pageCount: isControlled ? otherProps.pageCount : Math.ceil(data.length / pageSize),
+      pageCount: otherProps.pageCount,
+      useControlledState: (state) => {
+        return React.useMemo(
+          () => ({
+            ...state,
+            pageIndex,
+          }),
+          [state],
+        );
+      },
     },
     usePagination,
   );
@@ -90,19 +92,18 @@ export const Component = <Data extends object>({
     [pageOptions, pageCount, pageIndex],
   );
 
+  const navigate = useCallback(
+    (page: number) => {
+      onPageIndexChange?.({ pageIndex: page });
+    },
+    [onPageIndexChange],
+  );
+
   useEffect(() => {
     if (isControlled && pageIndex !== 0 && pageIndex >= pageCount) {
-      gotoPage(0);
-      return;
+      navigate(0);
     }
-
-    onPageIndexChange?.({ pageIndex });
-  }, [isControlled, pageCount, pageIndex, onPageIndexChange, gotoPage]);
-
-  useEffect(() => {
-    if (!pageSize) return;
-    setPageSize(pageSize);
-  }, [pageSize, setPageSize]);
+  }, [isControlled, pageCount, pageIndex, navigate]);
 
   return (
     <Container data-testid={buildTestId()}>
@@ -123,7 +124,7 @@ export const Component = <Data extends object>({
           )}
 
           <tbody {...getTableBodyProps()}>
-            {(hasPagination ? page : rows).map((row) => {
+            {(isControlled ? page : rows).map((row) => {
               prepareRow(row);
               return (
                 <TbodyTr {...row.getRowProps()} interactive={interactive}>
@@ -148,8 +149,8 @@ export const Component = <Data extends object>({
           <PaginationWrapper>
             <Button
               variant="secondary"
-              onClick={previousPage}
-              disabled={!canPreviousPage}
+              onClick={() => navigate(pageIndex - 1)}
+              disabled={pageIndex === 0}
               shape="square"
               size="increased"
               data-testid={buildTestIdPagination('previous-btn')}
@@ -160,7 +161,7 @@ export const Component = <Data extends object>({
               <React.Fragment key={page}>
                 <PageNumberButton
                   variant={page === pageIndex ? 'primary' : 'secondary'}
-                  onClick={() => gotoPage(page)}
+                  onClick={() => navigate(page)}
                   shape="fit"
                   size="increased"
                   data-testid={buildTestIdPagination(`go-to-${page}-btn`)}
@@ -177,8 +178,8 @@ export const Component = <Data extends object>({
             ))}
             <Button
               variant="secondary"
-              onClick={nextPage}
-              disabled={!canNextPage}
+              onClick={() => navigate(pageIndex + 1)}
+              disabled={pageIndex + 1 === pageCount}
               shape="square"
               size="increased"
               data-testid={buildTestIdPagination('next-btn')}

@@ -1,6 +1,6 @@
 describe('Table', () => {
   it('renders properly with Gold Light theme', () => {
-    cy.visitStory({ storyId: 'elements-table--controlled-pagination', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-table--controlled-with-pagination', themeId: 'GoldLight' });
     cy.clock();
 
     cy.get('[data-testid="table.row0.col1.td"]').should('contain.text', '16 Hello');
@@ -33,7 +33,7 @@ describe('Table', () => {
   });
 
   it('renders properly with Gold Dark theme', () => {
-    cy.visitStory({ storyId: 'elements-table--controlled-pagination', themeId: 'GoldDark' });
+    cy.visitStory({ storyId: 'elements-table--controlled-with-pagination', themeId: 'GoldDark' });
     cy.percySnapshot('Table with Gold Dark theme');
   });
 
