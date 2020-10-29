@@ -102,7 +102,7 @@ export const Default = () => {
         pageIndex={pageIndex}
         pageSize={pageSize}
         pageCount={Math.ceil(fullData.length / pageSize)}
-        setPageIndex={updateData}
+        onPageIndexChange={updateData}
         data-testid={'table'}
       />
     </Card>

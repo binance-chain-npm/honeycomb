@@ -28,7 +28,7 @@ export type Props<Data extends object> = Testable & {
   hasPagination?: boolean;
   hasHeader?: boolean;
   interactive?: boolean;
-  setPageIndex?: (params: { pageIndex: number }) => void;
+  onPageIndexChange?: (params: { pageIndex: number }) => void;
 };
 
 export const Component = <Data extends object>({
@@ -39,7 +39,7 @@ export const Component = <Data extends object>({
   hasPagination = false,
   hasHeader = true,
   interactive = false,
-  setPageIndex,
+  onPageIndexChange,
   'data-testid': testId,
   ...otherProps
 }: Props<Data>) => {
@@ -94,9 +94,9 @@ export const Component = <Data extends object>({
 
   const navigate = useCallback(
     (page: number) => {
-      setPageIndex?.({ pageIndex: page });
+      onPageIndexChange?.({ pageIndex: page });
     },
-    [setPageIndex],
+    [onPageIndexChange],
   );
 
   useEffect(() => {

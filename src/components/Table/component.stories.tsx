@@ -67,7 +67,7 @@ export const ControlledWithPagination = () => {
         pageSize={pageSize}
         pageCount={Math.ceil(data.length / pageSize)}
         pageIndex={pageIndex}
-        setPageIndex={({ pageIndex }) => setPageIndex(pageIndex)}
+        onPageIndexChange={({ pageIndex }) => setPageIndex(pageIndex)}
         data-testid="table"
       />
     </Card>
