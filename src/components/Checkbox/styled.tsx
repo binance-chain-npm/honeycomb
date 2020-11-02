@@ -24,6 +24,7 @@ export const label = css`
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 
   ::before {
     content: '';
@@ -34,8 +35,6 @@ export const label = css`
     height: ${({ theme }) => em(theme.honeycomb.size.normal)};
     background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
     border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
-    display: flex;
-    cursor: pointer;
     ${({ theme }) => transitions(['background-color', 'border'], theme.honeycomb.duration.normal)};
   }
 `;

@@ -14,6 +14,7 @@ export const Component = (props: Props) => {
   const { className, label, 'data-testid': testId, ...otherProps } = props;
   const buildTestId = useBuildTestId(testId);
   const id = useMemo(() => props.id || `id-${nanoid()}`, [props.id]);
+
   return (
     <>
       <Input {...otherProps} id={id} type="checkbox" data-testid={buildTestId('native-input')} />
