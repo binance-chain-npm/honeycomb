@@ -23,7 +23,7 @@ export const Grouped = () => {
   const [checkedB, setCheckedB] = useState(-1);
 
   return (
-    <Card style={{ justifyContent: 'flex-start' }}>
+    <Card style={{ display: 'flex' }}>
       <Styleless
         htmlTag="fieldset"
         id="groupA"
