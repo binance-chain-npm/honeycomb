@@ -30,8 +30,8 @@ export const Label = styled.label`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: ${({ theme }) => em(theme.honeycomb.size.increased)};
-    height: ${({ theme }) => em(theme.honeycomb.size.increased)};
+    width: ${({ theme }) => em(theme.honeycomb.size.normal)};
+    height: ${({ theme }) => em(theme.honeycomb.size.normal)};
     background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
     border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
     border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
@@ -47,7 +47,7 @@ export const Label = styled.label`
       border-color: transparent;
       background: ${({ theme }) => theme.honeycomb.color.primary.normal};
       background-image: url(${icons.Tick});
-      background-size: ${({ theme }) => em(theme.honeycomb.size.increased / 2)};
+      background-size: ${({ theme }) => em(theme.honeycomb.size.tiny)};
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -57,5 +57,5 @@ export const Label = styled.label`
 export const LabelContent = styled.span`
   cursor: pointer;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  margin-left: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)};
 `;
