@@ -5,7 +5,7 @@ import { useBuildTestId, Testable } from '../../modules/test-ids';
 
 import { Label, Input, LabelContent } from './styled';
 
-export type Props = React.InputHTMLAttributes<HTMLInputElement> &
+export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> &
   Testable & {
     label?: string;
   };
