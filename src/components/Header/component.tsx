@@ -19,7 +19,7 @@ export type Props = Testable & {
   logo?: React.ReactNode;
   left?: HeaderItem[];
   right?: HeaderItem[];
-  nonCollapsible?: HeaderItem[];
+  nonCollapsible?: NonCollapsibleHeaderItem[];
 };
 
 export type HeaderItem = Omit<
@@ -29,6 +29,10 @@ export type HeaderItem = Omit<
   element: React.ReactNode;
   children?: HeaderChildItem[];
   styled?: boolean;
+};
+
+export type NonCollapsibleHeaderItem = HeaderItem & {
+  collapseOn?: 'sm' | 'md';
 };
 
 export type HeaderChildItem = Omit<HeaderItem, 'children'> & {
@@ -69,10 +73,19 @@ export const Component = ({
     let leftElements: HeaderItem[] = [];
     if (left && left.length > 0) leftElements = left;
 
+    let nonCollapsibleElements: NonCollapsibleHeaderItem[] = [];
+    if (nonCollapsible) {
+      const collapsible = nonCollapsible.filter((it) => !!it.collapseOn);
+
+      if (collapsible.length > 0) {
+        nonCollapsibleElements = collapsible;
+      }
+    }
+
     if (isSm) {
       return (
         <HeaderDrawer
-          items={[...leftElements, ...rightElements]}
+          items={[...leftElements, ...rightElements, ...nonCollapsibleElements]}
           open={open}
           activePanel={activePanel}
           onChange={changePanel}
@@ -85,7 +98,10 @@ export const Component = ({
     if (isMd) {
       return (
         <HeaderDrawer
-          items={rightElements}
+          items={[
+            ...rightElements,
+            ...nonCollapsibleElements.filter((it) => it.collapseOn === 'md'),
+          ]}
           open={open}
           activePanel={activePanel}
           onChange={changePanel}
@@ -96,7 +112,18 @@ export const Component = ({
     }
 
     return <RightHeaderItems items={rightElements} data-testid={buildTestId('right')} />;
-  }, [left, right, isSm, isMd, open, activePanel, changePanel, toggleDrawer, buildTestId]);
+  }, [
+    left,
+    right,
+    nonCollapsible,
+    isSm,
+    isMd,
+    open,
+    activePanel,
+    changePanel,
+    toggleDrawer,
+    buildTestId,
+  ]);
 
   const leftHeaderItems = useMemo(() => {
     if (!left || left.length === 0 || isSm) return null;
@@ -107,13 +134,16 @@ export const Component = ({
   const nonCollapsibleHeaderItems = useMemo(() => {
     if (!nonCollapsible || nonCollapsible.length === 0) return null;
 
-    return (
-      <NonCollapsibleHeaderItems
-        items={nonCollapsible}
-        data-testid={buildTestId('non-collapsible')}
-      />
-    );
-  }, [nonCollapsible, buildTestId]);
+    let items = nonCollapsible;
+    if (isSm && !isMd) {
+      items = nonCollapsible.filter((it) => !it.collapseOn);
+    }
+    if (isMd) {
+      items = nonCollapsible.filter((it) => !it.collapseOn || it.collapseOn === 'sm');
+    }
+
+    return <NonCollapsibleHeaderItems items={items} data-testid={buildTestId('non-collapsible')} />;
+  }, [nonCollapsible, isSm, isMd, buildTestId]);
 
   return (
     <Styled {...otherProps} data-testid={buildTestId()}>
