@@ -5,6 +5,7 @@ import { Shape, fill, fit, square } from '../internal/Shape';
 import { Size, increased, huge, giant } from '../internal/Size';
 import { styleless as stylelessCommon } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
+import { Space } from '../Space';
 
 export const variants = [
   'transparent',
@@ -165,4 +166,9 @@ export const Styled = styled.button<Props>`
   ${({ shape }) => shape === 'fill' && fill};
   ${({ shape }) => shape === 'fit' && fit};
   ${({ shape }) => shape === 'square' && square};
+`;
+
+export const IconSpace = styled(Space)`
+  flex-basis: ${({ size, theme }) =>
+    size !== 'fill' && em(theme.honeycomb.size[size], theme.honeycomb.size.reduced)};
 `;
