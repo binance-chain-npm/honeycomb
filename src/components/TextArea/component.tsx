@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Label } from '../internal/Label';
 import { TextInput } from '../TextInput';
 
 import { StyledTextInput } from './styled';
@@ -13,7 +12,7 @@ export const Component = (props: Props) => {
 
 Component.displayName = 'TextArea';
 
-Component.Label = Label;
+Component.Label = TextInput.Label;
 Component.Input = TextInput.Input;
 Component.Left = TextInput.Left;
 Component.Right = TextInput.Right;

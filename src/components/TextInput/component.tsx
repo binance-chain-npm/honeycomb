@@ -1,7 +1,6 @@
 import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { nanoid } from 'nanoid';
 
-import { Label } from '../internal/Label';
 import { Size } from '../internal/Size';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
@@ -10,6 +9,7 @@ import {
   Description,
   Input,
   InputContainer,
+  Label,
   State,
   Left,
   Right,

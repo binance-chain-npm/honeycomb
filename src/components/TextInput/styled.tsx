@@ -181,6 +181,17 @@ export const Right = styled.div`
   margin-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
 `;
 
+export const Label = styled.label`
+  ${boxSizing};
+
+  display: block;
+  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.small)};
+`;
+
 export const DynamicTextContainer = styled.div`
   width: 100%;
 `;
