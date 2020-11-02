@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { icons } from '../Icon';
@@ -18,7 +18,7 @@ export const Input = styled.input`
   opacity: 0;
 `;
 
-export const Label = styled.label`
+export const label = css`
   ${boxSizing};
 
   display: flex;
@@ -34,10 +34,17 @@ export const Label = styled.label`
     height: ${({ theme }) => em(theme.honeycomb.size.normal)};
     background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
     border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
-    border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
     display: flex;
     cursor: pointer;
     ${({ theme }) => transitions(['background-color', 'border'], theme.honeycomb.duration.normal)};
+  }
+`;
+
+export const Label = styled.label`
+  ${label};
+
+  ::before {
+    border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
   }
 
   ${Input}:checked ~ & {
