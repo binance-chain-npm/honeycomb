@@ -5,7 +5,7 @@ import { Testable } from '../../modules/test-ids';
 
 import { Container, Position, Variant } from './styled';
 
-export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
+export type Props = Pick<React.AllHTMLAttributes<HTMLElement>, 'className' | 'children'> &
   Testable & {
     htmlTag?: HtmlTag;
     position?: Position;
@@ -14,14 +14,14 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
 
 export const Component = ({
   children,
+  className,
   htmlTag,
   'data-testid': testId,
   position = 'center',
   variant = 'default',
-  ...otherProps
 }: Props) => (
   <Container
-    {...otherProps}
+    className={className}
     as={htmlTag as any}
     position={position}
     variant={variant}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
+import styled from 'styled-components';
 
 import { Sections } from '../../modules/sections';
 import { Card } from '../Card';
@@ -18,12 +19,16 @@ export const Default = () => (
   </Card>
 );
 
+const StyledCard = styled(Card)`
+  display: flex;
+`;
+
 export const Grouped = () => {
   const [checkedA, setCheckedA] = useState(1);
   const [checkedB, setCheckedB] = useState(-1);
 
   return (
-    <Card style={{ display: 'flex' }}>
+    <StyledCard>
       <Styleless
         htmlTag="fieldset"
         id="groupA"
@@ -63,6 +68,6 @@ export const Grouped = () => {
           </>
         ))}
       </Styleless>
-    </Card>
+    </StyledCard>
   );
 };
