@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { icons } from '../Icon';
@@ -18,26 +18,32 @@ export const Input = styled.input`
   opacity: 0;
 `;
 
-export const Label = styled.label`
+export const label = css`
   ${boxSizing};
 
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 
   ::before {
     content: '';
     display: flex;
     align-items: center;
     justify-content: center;
-    width: ${({ theme }) => em(theme.honeycomb.size.increased)};
-    height: ${({ theme }) => em(theme.honeycomb.size.increased)};
+    width: ${({ theme }) => em(theme.honeycomb.size.normal)};
+    height: ${({ theme }) => em(theme.honeycomb.size.normal)};
     background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
     border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
-    border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
-    display: flex;
-    cursor: pointer;
     ${({ theme }) => transitions(['background-color', 'border'], theme.honeycomb.duration.normal)};
+  }
+`;
+
+export const Label = styled.label`
+  ${label};
+
+  ::before {
+    border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
   }
 
   ${Input}:checked ~ & {
@@ -47,7 +53,7 @@ export const Label = styled.label`
       border-color: transparent;
       background: ${({ theme }) => theme.honeycomb.color.primary.normal};
       background-image: url(${icons.Tick});
-      background-size: ${({ theme }) => em(theme.honeycomb.size.increased / 2)};
+      background-size: ${({ theme }) => em(theme.honeycomb.size.tiny)};
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -57,5 +63,5 @@ export const Label = styled.label`
 export const LabelContent = styled.span`
   cursor: pointer;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  margin-left: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)};
 `;

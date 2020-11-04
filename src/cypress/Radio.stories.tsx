@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 
-import { Checkbox } from '../components/Checkbox';
+import { Radio } from '../components/Radio';
 import { Sections } from '../modules/sections';
 
 export default {
-  title: `${Sections.Tests}/Checkbox`,
+  title: `${Sections.Tests}/Radio`,
 };
 
 export const Default = () => {
   const [checked, setChecked] = useState(false);
   return (
-    <Checkbox
+    <Radio
       id="input"
       onChange={(evt) => setChecked(evt.target.checked)}
       checked={checked}
       label="A value"
-      data-testid="checkbox"
+      data-testid="radio"
     />
   );
 };
