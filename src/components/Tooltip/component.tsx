@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Styles, Content, Target, Radius, Size, Variant } from './styled';
+import { Styles, Content, Target, Radius, Shape, Size, Variant } from './styled';
 
 export type TriggerValue = 'mouseenter' | 'click' | 'manual';
 
@@ -28,6 +28,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children' | 'style'> &
     trigger: TriggerValue | TriggerValue[] | null;
     padding?: Size;
     radius?: Radius;
+    shape?: Shape;
     variant?: Variant;
   };
 
@@ -36,6 +37,7 @@ export const Component = ({
   children,
   padding = 'small',
   radius = 'reduced',
+  shape = 'fill',
   variant = 'normal',
   'data-testid': testId,
   ...otherProps
@@ -61,7 +63,6 @@ export const Component = ({
         placement={otherProps.placement ?? 'bottom-start'}
         content={
           <Content
-            className={className}
             padding={padding}
             radius={radius}
             variant={variant}
@@ -71,7 +72,7 @@ export const Component = ({
           </Content>
         }
       >
-        <Target className={className} data-testid={buildTestId('target')}>
+        <Target className={className} shape={shape} data-testid={buildTestId('target')}>
           {children}
         </Target>
       </Tippy>

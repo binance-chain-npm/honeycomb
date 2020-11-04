@@ -16,6 +16,9 @@ export type Radius = typeof radii[number];
 export const variants = ['normal', 'accent'] as const;
 export type Variant = typeof variants[number];
 
+export const shapes = ['fill', 'fit'] as const;
+export type Shape = typeof shapes[number];
+
 export const Styles = createGlobalStyle<{ variant: Variant }>`
   ${tippy};
   ${tippyAnimations};
@@ -61,8 +64,12 @@ export const Styles = createGlobalStyle<{ variant: Variant }>`
   }
 `;
 
-export const Target = styled.div`
-  display: inline-block;
+export const Target = styled.div<{ shape?: Shape }>`
+  ${({ shape }) =>
+    shape === 'fit' &&
+    css`
+      display: inline-block;
+    `};
 `;
 
 export const Content = styled.div<{ padding: Size; radius: Radius; variant: Variant }>`
