@@ -43,8 +43,8 @@ export const Component = ({
           </ContentContext.Provider>
         }
         data-testid={buildTestId()}
-        arrow={false}
         onClickOutside={toggle}
+        padding="none"
       >
         <Styleless htmlTag="div" onClick={toggle}>
           {target}
