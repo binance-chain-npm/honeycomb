@@ -57,3 +57,5 @@ export { default as Warning } from './assets/Warning.svg';
 export { default as Write } from './assets/Write.svg';
 export { default as ComingSoon } from './assets/ComingSoon.svg';
 export { default as EmptyData } from './assets/EmptyData.svg';
+export { default as Plug } from './assets/Plug.svg';
+export { default as Delete } from './assets/Delete.svg';

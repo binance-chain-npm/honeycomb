@@ -57,3 +57,5 @@ export { ReactComponent as Warning } from './assets/Warning.svg';
 export { ReactComponent as Write } from './assets/Write.svg';
 export { ReactComponent as ComingSoon } from './assets/ComingSoon.svg';
 export { ReactComponent as EmptyData } from './assets/EmptyData.svg';
+export { ReactComponent as Plug } from './assets/Plug.svg';
+export { ReactComponent as Delete } from './assets/Delete.svg';
