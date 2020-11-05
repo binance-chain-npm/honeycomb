@@ -1,5 +1,6 @@
 import React from 'react';
 import { addDecorator, addParameters } from '@storybook/react';
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withThemesProvider } from 'storybook-styled-components-theme-selector';
 
 import { HoneycombTheme } from '../src/modules/themes';
@@ -16,4 +17,9 @@ addDecorator(
   }),
 );
 
-addParameters({ docs: { page: null } });
+addParameters({
+  docs: { page: null },
+  viewport: {
+    viewports: MINIMAL_VIEWPORTS,
+  },
+});
