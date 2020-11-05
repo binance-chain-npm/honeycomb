@@ -8,7 +8,13 @@ import { Space } from '../Space';
 import { Table } from './';
 
 export default {
+  component: Table,
   title: `${Sections.Elements}/Table`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 const data = new Array(200).fill(null).map(

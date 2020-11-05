@@ -6,7 +6,13 @@ import { Sections } from '../../modules/sections';
 import { Space } from './';
 
 export default {
+  component: Space,
   title: `${Sections.Elements}/Space`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 const Global = css`

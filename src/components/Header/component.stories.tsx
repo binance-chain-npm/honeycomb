@@ -7,10 +7,16 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { sizes, useWindowSize } from '../internal/useWindowSize';
 
-import { Header } from '.';
+import { Header } from './';
 
 export default {
+  component: Header,
   title: `${Sections.Elements}/Header`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 const dropdown = [

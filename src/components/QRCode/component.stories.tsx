@@ -5,7 +5,13 @@ import { Sections } from '../../modules/sections';
 import { QRCode } from './';
 
 export default {
+  component: QRCode,
   title: `${Sections.Elements}/QRCode`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Default = () => (

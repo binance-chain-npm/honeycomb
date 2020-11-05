@@ -5,7 +5,13 @@ import { Sections } from '../../modules/sections';
 import { Balance } from './';
 
 export default {
+  component: Balance,
   title: `${Sections.Elements}/Balance`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Default = () => (

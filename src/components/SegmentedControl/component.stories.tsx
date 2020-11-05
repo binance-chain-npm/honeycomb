@@ -6,10 +6,16 @@ import { Space } from '../Space';
 
 import { Variant } from './styled';
 
-import { SegmentedControl } from '.';
+import { SegmentedControl } from './';
 
 export default {
+  component: SegmentedControl,
   title: `${Sections.Elements}/SegmentedControl`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 const render = (

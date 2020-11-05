@@ -5,7 +5,13 @@ import { Sections } from '../../modules/sections';
 import { PasswordInput, usePasswordInputValidation } from './';
 
 export default {
+  component: PasswordInput,
   title: `${Sections.Inputs}/PasswordInput`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Text = () => {

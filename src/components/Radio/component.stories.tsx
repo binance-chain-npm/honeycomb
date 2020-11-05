@@ -7,10 +7,16 @@ import { Card } from '../Card';
 import { Space } from '../Space';
 import { Styleless } from '../Styleless';
 
-import { Radio } from '.';
+import { Radio } from './';
 
 export default {
+  component: Radio,
   title: `${Sections.Inputs}/Radio`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Default = () => (

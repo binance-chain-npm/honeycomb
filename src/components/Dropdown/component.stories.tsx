@@ -5,7 +5,13 @@ import { Sections } from '../../modules/sections';
 import { Dropdown } from './';
 
 export default {
+  component: Dropdown,
   title: `${Sections.Elements}/Dropdown`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Bare = () => {

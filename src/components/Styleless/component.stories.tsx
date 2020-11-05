@@ -6,7 +6,13 @@ import { Sections } from '../../modules/sections';
 import { Styleless } from './';
 
 export default {
+  component: Styleless,
   title: `${Sections.Elements}/Styleless`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const paragraph = () => (

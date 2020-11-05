@@ -3,10 +3,16 @@ import { action } from '@storybook/addon-actions';
 
 import { Sections } from '../../modules/sections';
 
-import { HoverEffect } from '.';
+import { HoverEffect } from './';
 
 export default {
+  component: HoverEffect,
   title: `${Sections.Elements}/HoverEffect`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const paragraph = () => (

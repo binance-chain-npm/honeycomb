@@ -4,10 +4,16 @@ import { Sections } from '../../modules/sections';
 import { Space } from '../Space';
 import { Badge } from '../Badge';
 
-import { Steps } from '.';
+import { Steps } from './';
 
 export default {
+  component: Steps,
   title: `${Sections.Elements}/Steps`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 const renderItems = (key: string) => {

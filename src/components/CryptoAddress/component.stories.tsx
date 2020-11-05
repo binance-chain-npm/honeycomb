@@ -6,7 +6,13 @@ import { Card } from '../Card';
 import { CryptoAddress } from './';
 
 export default {
+  component: CryptoAddress,
   title: `${Sections.Elements}/CryptoAddress`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Default = () => (

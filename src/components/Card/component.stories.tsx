@@ -9,7 +9,13 @@ import { POSITIONS } from './styled';
 import { Card } from './';
 
 export default {
+  component: Card,
   title: `${Sections.Elements}/Card`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Default = () => (

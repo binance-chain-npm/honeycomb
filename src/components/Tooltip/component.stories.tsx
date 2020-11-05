@@ -7,7 +7,13 @@ import { HoneycombThemeProvider } from '../../modules/themes';
 import { Tooltip } from './';
 
 export default {
+  component: Tooltip,
   title: `${Sections.Elements}/Tooltip`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Default: Story = (args) => (
@@ -15,7 +21,11 @@ export const Default: Story = (args) => (
     <Tooltip.DefaultTarget>Tooltip</Tooltip.DefaultTarget>
   </Tooltip>
 );
-Default.parameters = { component: Tooltip };
+Default.parameters = {
+  controls: {
+    disabled: false,
+  },
+};
 Default.argTypes = {
   'data-testid': { table: { disable: true } },
   content: { table: { disable: true } },

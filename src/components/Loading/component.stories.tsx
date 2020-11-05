@@ -6,7 +6,13 @@ import { Button } from '../Button';
 import { Loading } from './';
 
 export default {
+  component: Loading,
   title: `${Sections.Elements}/Loading`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Default = () => <Loading />;

@@ -4,10 +4,16 @@ import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 import { ListItem } from '../ListItem';
 
-import { Drawer } from '.';
+import { Drawer } from './';
 
 export default {
+  component: Drawer,
   title: `${Sections.Elements}/Drawer`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Behaviour = () => {

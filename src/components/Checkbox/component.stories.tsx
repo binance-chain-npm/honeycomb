@@ -7,7 +7,13 @@ import { Card } from '../Card';
 import { Checkbox } from './';
 
 export default {
+  component: Checkbox,
   title: `${Sections.Inputs}/Checkbox`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Default = () => (

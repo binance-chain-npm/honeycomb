@@ -8,7 +8,13 @@ import { Button } from '../Button';
 import { TextInput } from './';
 
 export default {
+  component: TextInput,
   title: `${Sections.Inputs}/TextInput`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Text = () => {

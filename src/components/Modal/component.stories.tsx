@@ -7,7 +7,13 @@ import { Button } from '../Button';
 import { Modal } from './';
 
 export default {
+  component: Modal,
   title: `${Sections.Elements}/Modal`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 const items = new Array(200).fill(null).map((_, index) => <div key={index}>{index + 1}</div>);
@@ -18,7 +24,11 @@ export const Default: Story = (args) => (
     <Modal.Content>Some modal content...</Modal.Content>
   </Modal>
 );
-Default.parameters = { component: Modal };
+Default.parameters = {
+  controls: {
+    disabled: false,
+  },
+};
 Default.argTypes = {
   'data-testid': { table: { disable: true } },
   className: { table: { disable: true } },

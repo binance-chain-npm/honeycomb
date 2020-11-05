@@ -7,7 +7,13 @@ import { Button } from '../Button';
 import { TextArea } from './';
 
 export default {
+  component: TextArea,
   title: `${Sections.Inputs}/TextArea`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Text = () => {

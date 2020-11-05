@@ -2,10 +2,16 @@ import React from 'react';
 
 import { Sections } from '../../modules/sections';
 
-import { SolidAvatar } from '.';
+import { SolidAvatar } from './';
 
 export default {
+  component: SolidAvatar,
   title: `${Sections.Elements}/SolidAvatar`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 export const Default = () => (

@@ -2,10 +2,16 @@ import React, { useCallback, useState } from 'react';
 
 import { Sections } from '../../modules/sections';
 
-import { Accordion } from '.';
+import { Accordion } from './';
 
 export default {
+  component: Accordion,
   title: `${Sections.Elements}/Accordion`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 type Panels = React.ComponentPropsWithoutRef<typeof Accordion>['panels'];

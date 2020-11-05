@@ -5,7 +5,13 @@ import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 
 export default {
+  component: Icon,
   title: `${Sections.Elements}/Icon`,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+  },
 };
 
 const Container = styled.div`
