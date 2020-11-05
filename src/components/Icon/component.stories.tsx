@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Story } from '@storybook/react/types-6-0';
 
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
@@ -24,15 +25,23 @@ const Wrapper = styled.div`
   margin: 1em;
 `;
 
-export const Default = () => (
+export const Default: Story = (args) => (
   <Container>
     {Object.keys(Icon).map((iconName) => {
       const Component = Icon[iconName as keyof typeof Icon];
       return (
         <Wrapper key={iconName}>
-          <Component />
+          <Component {...args} />
         </Wrapper>
       );
     })}
   </Container>
 );
+Default.parameters = {
+  controls: {
+    disabled: false,
+  },
+};
+Default.argTypes = {
+  color: { control: 'color' },
+};
