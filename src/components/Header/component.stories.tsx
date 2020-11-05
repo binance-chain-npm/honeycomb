@@ -10,7 +10,6 @@ import { sizes, useWindowSize } from '../internal/useWindowSize';
 import { Header } from '.';
 
 export default {
-  component: Header,
   title: `${Sections.Elements}/Header`,
 };
 

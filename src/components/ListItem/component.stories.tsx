@@ -9,7 +9,6 @@ import { SolidAvatar } from '../SolidAvatar';
 import { ListItem } from './';
 
 export default {
-  component: ListItem,
   title: `${Sections.Elements}/ListItem`,
 };
 

@@ -5,7 +5,6 @@ import { Modal } from '../../src/components/Modal';
 import { Sections } from '../modules/sections';
 
 export default {
-  component: Modal,
   title: `${Sections.Tests}/Modal`,
 };
 

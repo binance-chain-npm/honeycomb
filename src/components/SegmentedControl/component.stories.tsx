@@ -9,7 +9,6 @@ import { Variant } from './styled';
 import { SegmentedControl } from '.';
 
 export default {
-  component: SegmentedControl,
   title: `${Sections.Elements}/SegmentedControl`,
 };
 

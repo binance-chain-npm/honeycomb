@@ -5,7 +5,6 @@ import { Sections } from '../../modules/sections';
 import { Balance } from './';
 
 export default {
-  component: Balance,
   title: `${Sections.Elements}/Balance`,
 };
 
