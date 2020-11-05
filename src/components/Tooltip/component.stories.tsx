@@ -42,7 +42,7 @@ Default.argTypes = {
     defaultValue: 'reduced',
   },
   shape: {
-    defaultValue: 'fill',
+    defaultValue: 'fit',
   },
   variant: {
     defaultValue: 'normal',
