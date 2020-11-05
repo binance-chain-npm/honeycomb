@@ -1,4 +1,5 @@
 import React from 'react';
+import { Story } from '@storybook/react/types-6-0';
 
 import { Sections } from '../../modules/sections';
 import { HoneycombThemeProvider } from '../../modules/themes';
@@ -9,12 +10,21 @@ export default {
   title: `${Sections.Elements}/Tooltip`,
 };
 
-export const Default = () => {
-  return (
-    <Tooltip content="Some tooltip content..." data-testid="tooltip">
-      <Tooltip.DefaultTarget>Tooltip</Tooltip.DefaultTarget>
-    </Tooltip>
-  );
+export const Default: Story = (args) => (
+  <Tooltip {...args} content="Some tooltip content..." data-testid="tooltip">
+    <Tooltip.DefaultTarget>Tooltip</Tooltip.DefaultTarget>
+  </Tooltip>
+);
+Default.parameters = { component: Tooltip };
+Default.argTypes = {
+  'data-testid': { table: { disable: true } },
+  content: { table: { disable: true } },
+  trigger: { table: { disable: true } },
+  arrow: {
+    control: {
+      type: 'boolean',
+    },
+  },
 };
 
 export const MixedThemes = () => {
