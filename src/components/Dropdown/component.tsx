@@ -19,6 +19,7 @@ export const Component = ({
   children,
   className,
   target,
+  radius = 'normal',
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -32,6 +33,7 @@ export const Component = ({
   return (
     <Context.Provider value={{ isShowing, onClose: toggle }}>
       <Tooltip
+        radius={radius}
         {...otherProps}
         className={className}
         interactive={true}
@@ -43,8 +45,8 @@ export const Component = ({
           </ContentContext.Provider>
         }
         data-testid={buildTestId()}
-        arrow={false}
         onClickOutside={toggle}
+        padding="none"
       >
         <Styleless htmlTag="div" onClick={toggle}>
           {target}

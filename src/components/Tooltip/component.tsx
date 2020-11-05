@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
 import Tippy from '@tippyjs/react';
+import { useTheme } from 'styled-components';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Styles, ContentContainer, Size, Variant } from './styled';
+import { Styles, Content, Target, Radius, Shape, Size, Variant } from './styled';
 
 export type TriggerValue = 'mouseenter' | 'click' | 'manual';
 
@@ -25,18 +26,24 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children' | 'style'> &
   Testable & {
     content: React.ReactNode;
     trigger: TriggerValue | TriggerValue[] | null;
-    radius?: Size;
+    padding?: Size;
+    radius?: Radius;
+    shape?: Shape;
     variant?: Variant;
   };
 
 export const Component = ({
   className,
-  radius,
+  children,
+  padding = 'small',
+  radius = 'reduced',
+  shape = 'fill',
   variant = 'normal',
   'data-testid': testId,
   ...otherProps
 }: Props) => {
   const buildTestId = useBuildTestId(testId);
+  const theme = useTheme();
 
   const trigger = useMemo(() => {
     if (!otherProps.trigger) return undefined;
@@ -50,19 +57,24 @@ export const Component = ({
       <Tippy
         {...otherProps}
         trigger={trigger}
-        theme="bc-honeycomb-bare"
+        theme={`bc-honeycomb-bare-${theme.honeycomb.id}-${variant}`}
         arrow={otherProps.arrow}
         animation="shift-away"
         placement={otherProps.placement ?? 'bottom-start'}
         content={
-          <ContentContainer radius={radius} variant={variant} data-testid={buildTestId('content')}>
+          <Content
+            padding={padding}
+            radius={radius}
+            variant={variant}
+            data-testid={buildTestId('content')}
+          >
             {otherProps.content}
-          </ContentContainer>
+          </Content>
         }
       >
-        <div className={className} data-testid={buildTestId('target')}>
-          {otherProps.children}
-        </div>
+        <Target className={className} shape={shape} data-testid={buildTestId('target')}>
+          {children}
+        </Target>
       </Tippy>
     </>
   );

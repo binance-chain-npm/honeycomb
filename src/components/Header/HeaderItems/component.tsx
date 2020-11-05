@@ -26,7 +26,6 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
               data-testid={buildTestId('dropdown')}
               key={index}
               target={<DropdownItem>{element}</DropdownItem>}
-              radius="micro"
             >
               {children.map((child, indexChild) => {
                 const component: React.ReactElement[] = [];

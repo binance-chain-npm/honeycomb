@@ -24,6 +24,8 @@ export const Component = ({ target, onClose, 'data-testid': testId, ...otherProp
         trigger={null}
         onClickOutside={onClose}
         data-testid={buildTestId()}
+        padding="none"
+        radius="normal"
       >
         {target}
       </Tooltip>
