@@ -38,6 +38,9 @@ Default.argTypes = {
       type: 'boolean',
     },
   },
+  position: {
+    defaultValue: 'center',
+  },
 };
 
 export const WithTitle = () => (
@@ -99,7 +102,7 @@ export const WithNestedModal = () => {
           </Button>
           <Modal open={showInner} data-testid="modal-inner">
             <Modal.Header onClose={() => setShowInner(false)} title="Inner Modal" />
-            <Modal.Content>{items}</Modal.Content>
+            <Modal.Content>Just a line</Modal.Content>
           </Modal>
         </Modal.Content>
       </Modal>
