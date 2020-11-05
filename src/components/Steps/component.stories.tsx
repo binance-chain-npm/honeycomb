@@ -7,6 +7,7 @@ import { Badge } from '../Badge';
 import { Steps } from '.';
 
 export default {
+  component: Steps,
   title: `${Sections.Elements}/Steps`,
 };
 
@@ -43,7 +44,7 @@ export const Horizontal = () => {
 
 export const Vertical = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 20px)' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 2rem)' }}>
       {new Array(5).fill(null).map((_, index) => {
         const key = `steps-${index}`;
 
