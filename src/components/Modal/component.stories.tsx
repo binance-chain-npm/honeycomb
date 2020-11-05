@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Story } from '@storybook/react/types-6-0';
 
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
@@ -10,19 +11,23 @@ export default {
 };
 
 const items = new Array(200).fill(null).map((_, index) => <div key={index}>{index + 1}</div>);
-export const Behaviour = () => {
-  const [show, setShow] = useState(false);
-  return (
-    <>
-      <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
-        Show
-      </Button>
-      <Modal open={show} data-testid="MyModal">
-        <Modal.Header onClose={() => setShow(false)} title="A title" />
-        <Modal.Content>{items}</Modal.Content>
-      </Modal>
-    </>
-  );
+
+export const Default: Story = (args) => (
+  <Modal {...args}>
+    <Modal.Header title="Modal" />
+    <Modal.Content>Some modal content...</Modal.Content>
+  </Modal>
+);
+Default.parameters = { component: Modal };
+Default.argTypes = {
+  'data-testid': { table: { disable: true } },
+  className: { table: { disable: true } },
+  open: {
+    defaultValue: true,
+    control: {
+      type: 'boolean',
+    },
+  },
 };
 
 export const WithTitle = () => (

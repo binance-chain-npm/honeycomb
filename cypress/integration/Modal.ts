@@ -1,12 +1,12 @@
 describe('Modal', () => {
   it('opens and closes', () => {
-    cy.visitStory({ storyId: 'elements-modal--behaviour', themeId: 'GoldDark' });
+    cy.visitStory({ storyId: 'tests-modal--default', themeId: 'GoldDark' });
 
-    cy.get('[data-testid="OpenButton"]').trigger('click');
-    cy.get('[data-testid="MyModal.box"]').should('be.visible');
+    cy.get('[data-testid="btn-open"]').trigger('click');
+    cy.get('[data-testid="modal.box"]').should('be.visible');
 
-    cy.get('[data-testid="MyModal.header.close-btn"]').click();
-    cy.get('[data-testid="MyModal.box"]').should('not.be.visible');
+    cy.get('[data-testid="modal.header.close-btn"]').click();
+    cy.get('[data-testid="modal.box"]').should('not.be.visible');
   });
 
   it('nested modal opens and closes', () => {
