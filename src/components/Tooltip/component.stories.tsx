@@ -35,17 +35,8 @@ Default.argTypes = {
       type: 'boolean',
     },
   },
-  padding: {
-    defaultValue: 'small',
-  },
-  radius: {
-    defaultValue: 'reduced',
-  },
   shape: {
     defaultValue: 'fit',
-  },
-  variant: {
-    defaultValue: 'normal',
   },
 };
 

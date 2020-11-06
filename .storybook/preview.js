@@ -1,5 +1,11 @@
 import React from 'react';
 import { addDecorator, addParameters } from '@storybook/react';
+import {
+  Title,
+  Subtitle,
+  Description,
+  Props,
+} from '@storybook/addon-docs/blocks';
 import { withThemesProvider } from 'storybook-styled-components-theme-selector';
 
 import { HoneycombTheme } from '../src/modules/themes';
@@ -41,7 +47,16 @@ const customViewports = {
 };
 
 addParameters({
-  docs: { page: null },
+  docs: {
+    page: () => (
+      <>
+        <Title />
+        <Subtitle />
+        <Description />
+        <Props />
+      </>
+    ),
+  },
   viewport: {
     viewports: customViewports,
   },

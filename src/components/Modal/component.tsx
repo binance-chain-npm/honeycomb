@@ -99,3 +99,6 @@ export const Component = ({
 };
 
 Component.displayName = 'Modal';
+Component.defaultProps = {
+  position: 'center',
+} as Props;

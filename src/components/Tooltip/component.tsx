@@ -84,4 +84,8 @@ Component.displayName = 'Tooltip';
 Component.defaultProps = {
   trigger: ['mouseenter', 'focus'],
   className: '',
+  padding: 'small',
+  radius: 'reduced',
+  shape: 'fill',
+  variant: 'normal',
 } as Props;
