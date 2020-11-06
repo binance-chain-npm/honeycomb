@@ -36,6 +36,27 @@ export const WithHelpers = () => {
   );
 };
 
+export const WithToggleHandler = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Dropdown
+      target={
+        <Button variant="secondary">
+          {open ? (
+            <Icon.EyeBlocked style={{ fontSize: 24 }} />
+          ) : (
+            <Icon.Eye style={{ fontSize: 24 }} />
+          )}
+        </Button>
+      }
+      onToggle={() => setOpen((value) => !value)}
+    >
+      <Dropdown.Item>Some content...</Dropdown.Item>
+    </Dropdown>
+  );
+};
+
 export const Selectable = () => {
   const [selected, setSelected] = useState<{ index: number; value: React.ReactNode }>({
     index: -1,
@@ -59,27 +80,6 @@ export const Selectable = () => {
           Option {index + 1}
         </Dropdown.Item>
       ))}
-    </Dropdown>
-  );
-};
-
-export const WithToggleHandler = () => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <Dropdown
-      target={
-        <Button variant="secondary">
-          {open ? (
-            <Icon.EyeBlocked style={{ fontSize: 24 }} />
-          ) : (
-            <Icon.Eye style={{ fontSize: 24 }} />
-          )}
-        </Button>
-      }
-      onToggle={() => setOpen((value) => !value)}
-    >
-      <Dropdown.Item>Some content...</Dropdown.Item>
     </Dropdown>
   );
 };
