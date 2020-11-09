@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import { Sections } from '../../modules/sections';
+import { Button } from '../Button';
+import { Icon } from '../Icon';
 
 import { Dropdown } from './';
 
@@ -15,7 +17,7 @@ export default {
 };
 
 export const Bare = () => {
-  return <Dropdown target="Click here!">Some content</Dropdown>;
+  return <Dropdown target="Click here!">Some content...</Dropdown>;
 };
 
 export const WithHelpers = () => {
@@ -36,6 +38,27 @@ export const WithHelpers = () => {
       </Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item interactive={false}>Non-interactive item</Dropdown.Item>
+    </Dropdown>
+  );
+};
+
+export const WithToggleHandler = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Dropdown
+      target={
+        <Button variant="secondary">
+          {open ? (
+            <Icon.EyeBlocked style={{ fontSize: 24 }} />
+          ) : (
+            <Icon.Eye style={{ fontSize: 24 }} />
+          )}
+        </Button>
+      }
+      onToggle={() => setOpen((value) => !value)}
+    >
+      <Dropdown.Item>Some content...</Dropdown.Item>
     </Dropdown>
   );
 };

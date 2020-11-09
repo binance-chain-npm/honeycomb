@@ -13,6 +13,7 @@ export type Props = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'child
   Pick<React.ComponentPropsWithoutRef<typeof Tooltip>, 'radius'> &
   Testable & {
     target: React.ReactNode;
+    onToggle?: () => void;
   };
 
 export const Component = ({
@@ -20,6 +21,7 @@ export const Component = ({
   className,
   target,
   radius = 'normal',
+  onToggle,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -28,7 +30,8 @@ export const Component = ({
 
   const toggle = useCallback(() => {
     setIsShowing((value) => !value);
-  }, []);
+    onToggle?.();
+  }, [onToggle]);
 
   return (
     <Context.Provider value={{ isShowing, onClose: toggle }}>
