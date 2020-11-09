@@ -2915,7 +2915,7 @@
     util-deprecate "^1.0.2"
     uuid "^8.0.0"
 
-"@storybook/addon-controls@^6.0.28":
+"@storybook/addon-controls@^6.0.27":
   version "6.0.28"
   resolved "https://registry.yarnpkg.com/@storybook/addon-controls/-/addon-controls-6.0.28.tgz#5872ede3d33b103c0b519304dedde1000b8c68f0"
   integrity sha512-wG42u5wkLSuk5M3VPAr6ui/lH75tU1BNGZWtCbDDVPRX/EOF3WxXDhS8gvWefyNcmshnFlbCOhA1Xt7rrLPfpg==
