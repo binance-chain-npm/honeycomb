@@ -2,7 +2,6 @@ describe('CryptoAddress', () => {
   it('displays modal on small devices', () => {
     cy.clock();
     cy.visitStory({ storyId: 'elements-cryptoaddress--default', themeId: 'GoldLight' });
-    cy.tick(10000);
 
     cy.get('[data-testid="crypto-address.modal.content"]').should('not.exist');
 
@@ -16,10 +15,9 @@ describe('CryptoAddress', () => {
   });
 
   it('displays dropdown on large devices', () => {
-    cy.viewport(768, 768);
+    cy.customViewport({ size: 'lg' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-cryptoaddress--default', themeId: 'GoldLight' });
-    cy.tick(10000);
 
     cy.get('[data-testid="crypto-address.btn-scan-qr-code"]').click();
     cy.tick(10000);
@@ -33,7 +31,6 @@ describe('CryptoAddress', () => {
   it('displays formatted text correctly', () => {
     cy.clock();
     cy.visitStory({ storyId: 'elements-cryptoaddress--format', themeId: 'GoldLight' });
-    cy.tick(10000);
 
     cy.get('[data-testid="crypto-address.btn-copy"]').click();
     cy.tick(10000);

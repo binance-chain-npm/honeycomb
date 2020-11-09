@@ -13,8 +13,8 @@ describe('Select', () => {
     cy.percySnapshot('Select while open on a small device');
   });
 
-  it('displays dropdown on large devices', () => {
-    cy.viewport(768, 768);
+  it('displays dropdown on medium devices', () => {
+    cy.customViewport({ size: 'md' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-select--responsive', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -25,7 +25,7 @@ describe('Select', () => {
     cy.get('[data-testid="select.modal.content"]').should('not.exist');
     cy.get('[data-testid="select.dropdown.content"]').should('be.visible');
 
-    cy.percySnapshot('Select while open on a large device', { widths: [800] });
+    cy.percySnapshot('Select while open on a large device', { widths: [768] });
   });
 
   it('search input not rendered when children are not filterable', () => {

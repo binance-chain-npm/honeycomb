@@ -11,3 +11,11 @@ Cypress.Commands.add('visitStory', (params, options) => {
 
   return cy.visit(`http://localhost:6006/iframe.html?${query}`, options);
 });
+
+Cypress.Commands.add('customViewport', (params, options) => {
+  if (params.size === 'sm') return cy.viewport(375, 660);
+  if (params.size === 'md') return cy.viewport(768, 660);
+  if (params.size === 'lg') return cy.viewport(1280, 660);
+
+  return cy.viewport(params, options);
+});

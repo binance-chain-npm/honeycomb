@@ -53,8 +53,8 @@ describe('Modal', () => {
     cy.percySnapshot('Modal without title with Gold Light theme');
   });
 
-  it('renders correctly without title in big screens', () => {
-    cy.viewport(768, 768);
+  it('renders correctly without title on medium devices', () => {
+    cy.customViewport({ size: 'md' });
     cy.clock();
 
     cy.visitStory({ storyId: 'elements-modal--without-title', themeId: 'GoldLight' });
