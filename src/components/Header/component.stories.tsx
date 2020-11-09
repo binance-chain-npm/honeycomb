@@ -85,10 +85,10 @@ export const WithDropdownItems = () => (
 );
 
 export const WithNonCollapsibleItems = () => {
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
-  const isMd = useMemo(() => width < sizes.lg || height < sizes.md, [width, height]);
-  const isSm = useMemo(() => width < sizes.md || height < sizes.sm, [width, height]);
+  const isMd = useMemo(() => width < sizes.lg, [width]);
+  const isSm = useMemo(() => width < sizes.md, [width]);
 
   return (
     <>

@@ -29,7 +29,7 @@ export const Component = ({
   const buildTestId = useBuildTestId(testId);
   const [showQRCode, setShowQRCode] = useState(false);
 
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
   const qRCode = useMemo(() => {
     return (
@@ -56,7 +56,7 @@ export const Component = ({
       <CryptoAddress data-testid={buildTestId('address')}>{text || value}</CryptoAddress>
       {canScanQrCode && (
         <>
-          {width < sizes.md || height < sizes.md ? (
+          {width < sizes.md ? (
             <>
               {scanQrCodeButton}
               <StyledModal open={showQRCode} data-testid={buildTestId('modal')}>
