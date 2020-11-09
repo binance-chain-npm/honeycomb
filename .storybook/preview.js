@@ -21,14 +21,14 @@ const customViewports = {
     name: 'Small Device',
     styles: {
       width: '375px',
-      height: '812px',
+      height: '768px',
     },
   },
   medium: {
     name: 'Medium Device',
     styles: {
       width: '768px',
-      height: '1024px',
+      height: '1080px',
     },
   },
   large: {
