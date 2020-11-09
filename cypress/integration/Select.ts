@@ -13,8 +13,8 @@ describe('Select', () => {
     cy.percySnapshot('Select while open on a small device');
   });
 
-  it('displays dropdown on medium devices', () => {
-    cy.customViewport({ size: 'md' });
+  it('displays dropdown on large devices', () => {
+    cy.customViewport({ size: 'lg' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-select--responsive', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -25,7 +25,7 @@ describe('Select', () => {
     cy.get('[data-testid="select.modal.content"]').should('not.exist');
     cy.get('[data-testid="select.dropdown.content"]').should('be.visible');
 
-    cy.percySnapshot('Select while open on a large device', { widths: [768] });
+    cy.percySnapshot('Select while open on a large device', { widths: [1280] });
   });
 
   it('search input not rendered when children are not filterable', () => {
@@ -44,7 +44,7 @@ describe('Select', () => {
     });
   });
 
-  it('<Select variant="dropdown" /> renders correctly', () => {
+  it('variant="dropdown" renders correctly', () => {
     cy.clock();
     cy.visitStory({ storyId: 'elements-select--dropdown', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -68,10 +68,10 @@ describe('Select', () => {
     cy.get('[data-testid="select.item.1.tick"]').should('not.exist');
     cy.get('[data-testid="select.item.2.tick"]').should('not.exist');
 
-    cy.percySnapshot('<Select variant="dropdown" />');
+    cy.percySnapshot('Select variant="dropdown"');
   });
 
-  it('<Select variant="modal" /> renders correctly', () => {
+  it('Select variant="modal" renders correctly', () => {
     cy.clock();
     cy.visitStory({ storyId: 'elements-select--modal', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -108,6 +108,6 @@ describe('Select', () => {
     cy.get('[data-testid="select.box"]').should('be.visible');
     cy.get('[data-testid="select.item.photo.tick"]').should('be.visible');
 
-    cy.percySnapshot('<Select variant="modal" />');
+    cy.percySnapshot('Select variant="modal"');
   });
 });

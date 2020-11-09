@@ -25,7 +25,7 @@ describe('CryptoAddress', () => {
     cy.get('[data-testid="crypto-address.modal.content"]').should('not.exist');
     cy.get('[data-testid="crypto-address.tooltip.content"]').should('be.visible');
 
-    cy.percySnapshot('CryptoAddress while open on a large device', { widths: [768] });
+    cy.percySnapshot('CryptoAddress while open on a large device', { widths: [1280] });
   });
 
   it('displays formatted text correctly', () => {
