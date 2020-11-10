@@ -4,7 +4,7 @@ import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 import { ListItem } from '../ListItem';
 
-import { Drawer } from '.';
+import { Drawer } from './';
 
 export default {
   title: `${Sections.Elements}/Drawer`,

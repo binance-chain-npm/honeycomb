@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Sections } from '../../modules/sections';
 
-import { SolidAvatar } from '.';
+import { SolidAvatar } from './';
 
 export default {
   title: `${Sections.Elements}/SolidAvatar`,

@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Sections } from '../../modules/sections';
 
-import { HoverEffect } from '.';
+import { HoverEffect } from './';
 
 export default {
   title: `${Sections.Elements}/HoverEffect`,

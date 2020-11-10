@@ -7,7 +7,7 @@ import { Card } from '../Card';
 import { Space } from '../Space';
 import { Styleless } from '../Styleless';
 
-import { Radio } from '.';
+import { Radio } from './';
 
 export default {
   title: `${Sections.Inputs}/Radio`,

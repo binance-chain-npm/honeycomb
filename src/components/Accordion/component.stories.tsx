@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import { Sections } from '../../modules/sections';
 
-import { Accordion } from '.';
+import { Accordion } from './';
 
 export default {
   title: `${Sections.Elements}/Accordion`,

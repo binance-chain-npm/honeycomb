@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Sections } from '../../modules/sections';
 
-import { AbstractAvatar } from '.';
+import { AbstractAvatar } from './';
 
 export default {
   title: `${Sections.Elements}/AbstractAvatar`,

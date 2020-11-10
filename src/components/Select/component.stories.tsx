@@ -8,7 +8,7 @@ import { ListItem } from '../ListItem';
 // @ts-ignore
 import pic from './pic.png';
 
-import { Select } from '.';
+import { Select } from './';
 
 export default {
   title: `${Sections.Elements}/Select`,

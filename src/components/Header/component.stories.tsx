@@ -7,7 +7,7 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { sizes, useWindowSize } from '../internal/useWindowSize';
 
-import { Header } from '.';
+import { Header } from './';
 
 export default {
   component: Header,

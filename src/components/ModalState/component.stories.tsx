@@ -4,7 +4,7 @@ import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 
-import { ModalState } from '.';
+import { ModalState } from './';
 
 export default {
   title: `${Sections.Elements}/ModalState`,
