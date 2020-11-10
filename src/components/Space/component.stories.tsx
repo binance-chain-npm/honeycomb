@@ -18,7 +18,14 @@ const Global = css`
 export const Default = () => (
   <>
     <Global />
-    <div style={{ display: 'flex', width: '100vw', height: '100vh', flexDirection: 'column' }}>
+    <div
+      style={{
+        display: 'flex',
+        width: 'calc(100vw - 2rem)',
+        height: 'calc(100vh - 2rem)',
+        flexDirection: 'column',
+      }}
+    >
       <div style={{ display: 'flex' }}>
         <span>a</span>
         <Space size="huge" />

@@ -1,11 +1,11 @@
 describe('Steps', () => {
-  it('<Steps orientation=horizontal /> renders correctly', () => {
+  it('Steps orientation=horizontal renders correctly', () => {
     cy.visitStory({ storyId: 'elements-steps--horizontal', themeId: 'GoldLight' });
-    cy.percySnapshot('<Steps orientation=horizontal />');
+    cy.percySnapshot('Steps orientation=horizontal');
   });
 
-  it('<Steps orientation=vertical /> renders correctly', () => {
+  it('Steps orientation=vertical renders correctly', () => {
     cy.visitStory({ storyId: 'elements-steps--vertical', themeId: 'GoldLight' });
-    cy.percySnapshot('<Steps orientation=vertical />');
+    cy.percySnapshot('Steps orientation=vertical');
   });
 });

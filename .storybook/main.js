@@ -1,12 +1,14 @@
 const svgrConfig = require('../svgr.config');
 
 module.exports = {
-  stories: ['../src/**/*.stories.(tsx|mdx)'],
+  stories: ['../src/**/*.stories.@(tsx|mdx)'],
   addons: [
     '@storybook/preset-typescript',
     '@storybook/addon-actions',
-    '@storybook/addon-links',
+    '@storybook/addon-controls',
     '@storybook/addon-docs',
+    '@storybook/addon-toolbars',
+    '@storybook/addon-viewport',
     'storybook-styled-components-theme-selector',
   ],
   webpackFinal: async (config) => {

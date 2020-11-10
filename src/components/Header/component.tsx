@@ -53,7 +53,7 @@ export const Component = ({
   const [open, setOpen] = useState(false);
   const [activePanel, setActivePanel] = useState(-1);
 
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
   const toggleDrawer = useCallback(() => {
     setOpen((value) => !value);
@@ -63,8 +63,8 @@ export const Component = ({
     setActivePanel((prev) => (prev === index ? -1 : index));
   }, []);
 
-  const isMd = useMemo(() => width < sizes.lg || height < sizes.md, [width, height]);
-  const isSm = useMemo(() => width < sizes.md || height < sizes.sm, [width, height]);
+  const isMd = useMemo(() => width < sizes.lg, [width]);
+  const isSm = useMemo(() => width < sizes.md, [width]);
 
   const rightHeaderItems = useMemo(() => {
     let rightElements: HeaderItem[] = [];

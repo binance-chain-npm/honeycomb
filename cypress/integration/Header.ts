@@ -1,6 +1,6 @@
 describe('Header', () => {
   it('renders correctly on large devices', () => {
-    cy.viewport(1280, 768);
+    cy.customViewport({ size: 'lg' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -23,7 +23,7 @@ describe('Header', () => {
   });
 
   it('renders correctly on medium devices', () => {
-    cy.viewport(768, 768);
+    cy.customViewport({ size: 'md' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -54,6 +54,7 @@ describe('Header', () => {
   });
 
   it('renders correctly on small devices', () => {
+    cy.customViewport({ size: 'sm' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -85,7 +86,7 @@ describe('Header', () => {
   });
 
   it('dropdown in header behaves correctly', () => {
-    cy.viewport(1280, 768);
+    cy.customViewport({ size: 'lg' });
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
 
     cy.get('[data-testid="header.left.dropdown.target"]').click();
@@ -123,7 +124,7 @@ describe('Header', () => {
   });
 
   it('non-collapsible items behave correctly', () => {
-    cy.viewport(1280, 768);
+    cy.customViewport({ size: 'lg' });
     cy.visitStory({ storyId: 'elements-header--with-non-collapsible-items', themeId: 'GoldLight' });
 
     cy.get('[data-testid="header.non-collapsible"]')
@@ -135,7 +136,7 @@ describe('Header', () => {
       });
     cy.get('[data-testid="header.menu"]').should('not.exist');
 
-    cy.viewport(768, 768);
+    cy.customViewport({ size: 'md' });
     cy.reload();
 
     cy.get('[data-testid="header.non-collapsible"]')
@@ -151,7 +152,7 @@ describe('Header', () => {
         expect(children[0]).to.have.attr('data-testid', 'non-collapsible.md');
       });
 
-    cy.viewport(375, 768);
+    cy.customViewport({ size: 'sm' });
     cy.reload();
 
     cy.get('[data-testid="header.non-collapsible"]')

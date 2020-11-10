@@ -11,11 +11,11 @@ export type Props = Omit<React.ComponentProps<typeof Select>, 'variant'>;
 export const Component = ({ onClose, 'data-testid': testId, ...otherProps }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
   return (
     <>
-      {width < sizes.md || height < sizes.md ? (
+      {width < sizes.md ? (
         <ModalSelect
           target={otherProps.target}
           open={otherProps.open}

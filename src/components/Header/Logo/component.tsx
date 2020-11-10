@@ -14,9 +14,9 @@ export type Props = Testable & {
 export const Component = ({ text, 'data-testid': testId }: Props) => {
   const buildTestId = useBuildTestId(testId);
 
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
-  const isSm = useMemo(() => width < sizes.md || height < sizes.sm, [width, height]);
+  const isSm = useMemo(() => width < sizes.md, [width]);
 
   return (
     <Styled data-testid={buildTestId()}>
