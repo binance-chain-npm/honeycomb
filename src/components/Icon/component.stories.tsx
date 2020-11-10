@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
+import { Tooltip } from '../Tooltip';
 
 export default {
   title: `${Sections.Elements}/Icon`,
@@ -24,7 +25,9 @@ export const Default = () => (
       const Component = Icon[iconName as keyof typeof Icon];
       return (
         <Wrapper key={iconName}>
-          <Component />
+          <Tooltip content={iconName} padding="tiny">
+            <Component />
+          </Tooltip>
         </Wrapper>
       );
     })}
