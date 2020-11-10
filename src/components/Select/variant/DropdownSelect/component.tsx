@@ -10,7 +10,7 @@ import { StyledContent } from './styled';
 export type Props = Omit<React.ComponentProps<typeof Select>, 'variant'>;
 
 export const Component = ({ target, onClose, 'data-testid': testId, ...otherProps }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
 
   const context = useMemo(() => ({ onClose, testId }), [onClose, testId]);
 

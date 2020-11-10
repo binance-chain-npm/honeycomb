@@ -21,7 +21,7 @@ const style: React.CSSProperties = {
 };
 
 export const Component = ({ 'data-testid': testId, value, initial, className }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const hash = useMemo(() => SHA1(value).toString(), [value]);
   const bgColor = useMemo(() => {
     const index = Number.parseInt(hash.split('')[0], 16) % SOLID_AVATAR_COLORS.length;

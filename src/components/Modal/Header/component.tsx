@@ -18,9 +18,9 @@ export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'classNam
 
 export const Component = ({ title, loading, className, onClose, 'data-testid': testId }: Props) => {
   const parentTestId = useContext(TestIdContext);
-  const buildTestId = useBuildTestId(
-    testId ?? (parentTestId ? `${parentTestId}.header` : undefined),
-  );
+  const { buildTestId } = useBuildTestId({
+    id: testId ?? (parentTestId ? `${parentTestId}.header` : undefined),
+  });
 
   return (
     <Header hasHeader={!!title} className={className}>

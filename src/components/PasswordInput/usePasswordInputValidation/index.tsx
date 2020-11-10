@@ -21,7 +21,7 @@ export const usePasswordInputValidation = ({
   mustHaveUpperCase = true,
   'data-testid': testId,
 }: Params) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const [isLongEnough, setIsLongEnough] = useState(false);
   const [hasUpperCase, setHasUpperCase] = useState(false);
   const [hasSymbol, setHasSymbol] = useState(false);

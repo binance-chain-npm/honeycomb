@@ -40,7 +40,7 @@ export const Component = ({
   className,
   position = 'center',
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const boxRef = useRef<HTMLDivElement>(null);
 
   const containerTransitions = useTransition(open, null, {

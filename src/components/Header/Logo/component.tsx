@@ -12,7 +12,7 @@ export type Props = Testable & {
 };
 
 export const Component = ({ text, 'data-testid': testId }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
 
   const { width } = useWindowSize();
 

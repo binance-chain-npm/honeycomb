@@ -13,7 +13,7 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'
   };
 
 export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
 
   return (
     <Styled {...otherProps} data-testid={buildTestId()}>

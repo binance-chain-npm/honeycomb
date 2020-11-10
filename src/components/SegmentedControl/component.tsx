@@ -27,7 +27,7 @@ export const Component = ({
   variant = 'segmented',
   ...otherProps
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
 
   const handleClickForOption = useCallback(
     (params: { selectedIndex: number }) => () => {

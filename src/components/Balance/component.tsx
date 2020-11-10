@@ -23,7 +23,7 @@ export const Component = ({
   currency,
   'data-testid': testId,
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
 
   const parts = useMemo(() => {
     if (variant === 'crypto') {

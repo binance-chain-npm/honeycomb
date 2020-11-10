@@ -20,7 +20,7 @@ export const Component = ({
   'data-testid': testId,
   ...otherProps
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const context = useMemo(() => ({ orientation }), [orientation]);
 
   const steps = useMemo(() => {

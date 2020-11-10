@@ -43,7 +43,7 @@ export const Component = ({
   'data-testid': testId,
   ...otherProps
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const theme = useTheme();
 
   const trigger = useMemo(() => {

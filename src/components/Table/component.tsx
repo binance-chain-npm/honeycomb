@@ -43,8 +43,8 @@ export const Component = <Data extends object>({
   'data-testid': testId,
   ...otherProps
 }: Props<Data>) => {
-  const buildTestId = useBuildTestId(testId);
-  const buildTestIdPagination = useBuildTestId(buildTestId('pagination'));
+  const { buildTestId } = useBuildTestId({ id: testId });
+  const { buildTestId: buildTestIdPagination } = useBuildTestId({ id: buildTestId('pagination') });
 
   const isControlled = useMemo(() => typeof otherProps.pageCount === 'number', [
     otherProps.pageCount,

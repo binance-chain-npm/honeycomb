@@ -26,7 +26,7 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const [isShowing, setIsShowing] = useState(false);
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
 
   const toggle = useCallback(() => {
     setIsShowing((value) => !value);
