@@ -8,8 +8,6 @@ export { ReactComponent as ArrowTopRight } from './assets/ArrowTopRight.svg';
 export { ReactComponent as ArrowUp } from './assets/ArrowUp.svg';
 export { ReactComponent as Binance } from './assets/Binance.svg';
 export { ReactComponent as BinanceChain } from './assets/BinanceChain.svg';
-export { ReactComponent as BinanceChainLogo } from './assets/BinanceChainLogo.svg';
-export { ReactComponent as BinanceChainLogoSmall } from './assets/BinanceChainLogoSmall.svg';
 export { ReactComponent as CaretDown } from './assets/CaretDown.svg';
 export { ReactComponent as CaretLeft } from './assets/CaretLeft.svg';
 export { ReactComponent as CaretRight } from './assets/CaretRight.svg';
