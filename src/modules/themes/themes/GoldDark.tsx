@@ -4,7 +4,7 @@ const readable = {
   normal: (bg: string) => readableColor(bg, '#1e2026', '#e6e8ea'),
   primary: (bg: string) => readableColor(bg, '#d0980b', '#d0980b'),
   masked: (bg: string) => readableColor(bg, '#76808f', '#76808f'),
-  disabled: (bg: string) => readableColor(bg, '#aeb4bc', '#aeb4bc'),
+  disabled: (bg: string) => readableColor(bg, '#aeb4bc', '#5e6673'),
   placeholder: (bg: string) => readableColor(bg, '#aeb4bc', '#5e6673'),
 } as const;
 
@@ -22,7 +22,7 @@ export const GoldDark = {
 
         tooltip: {
           normal: '#1e2026',
-          accent: '#33373e',
+          accent: '#2b2f36',
           outer: transparentize(0.2, '#0b0e11'),
         },
 
@@ -107,8 +107,9 @@ export const GoldDark = {
 
     zIndexes: {
       normal: 0,
+      tooltips: 600,
       modals: 500,
-      drawers: 490,
+      drawers: 400,
     },
   },
 };

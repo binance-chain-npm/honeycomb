@@ -25,7 +25,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children' | 'style'> &
   > &
   Testable & {
     content: React.ReactNode;
-    trigger: TriggerValue | TriggerValue[] | null;
+    trigger?: TriggerValue | TriggerValue[];
     padding?: Size;
     radius?: Radius;
     shape?: Shape;
@@ -39,6 +39,7 @@ export const Component = ({
   radius = 'reduced',
   shape = 'fill',
   variant = 'normal',
+  trigger: triggerProp = 'mouseenter',
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -46,10 +47,10 @@ export const Component = ({
   const theme = useTheme();
 
   const trigger = useMemo(() => {
-    if (!otherProps.trigger) return undefined;
-    if (!Array.isArray(otherProps.trigger)) return otherProps.trigger;
-    return otherProps.trigger.join(' ');
-  }, [otherProps.trigger]);
+    if (!triggerProp) return undefined;
+    if (!Array.isArray(triggerProp)) return triggerProp;
+    return triggerProp.join(' ');
+  }, [triggerProp]);
 
   return (
     <>
@@ -61,6 +62,7 @@ export const Component = ({
         arrow={otherProps.arrow}
         animation="shift-away"
         placement={otherProps.placement ?? 'bottom-start'}
+        zIndex={theme.honeycomb.zIndexes.tooltips}
         content={
           <Content
             padding={padding}
@@ -81,7 +83,3 @@ export const Component = ({
 };
 
 Component.displayName = 'Tooltip';
-Component.defaultProps = {
-  trigger: ['mouseenter', 'focus'],
-  className: '',
-} as Props;

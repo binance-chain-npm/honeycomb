@@ -35,6 +35,11 @@ export const Styles = createGlobalStyle<{ variant: Variant }>`
 
       .tippy-content {
         padding: 0;
+        z-index: ${({ theme }) => theme.honeycomb.zIndexes.tooltips};
+      }
+
+      .tippy-arrow {
+        z-index: ${({ theme }) => theme.honeycomb.zIndexes.tooltips + 2};
       }
 
       &[data-theme*='-GoldDark-normal'] {
@@ -75,6 +80,7 @@ export const Target = styled.div<{ shape?: Shape }>`
 export const Content = styled.div<{ padding: Size; radius: Radius; variant: Variant }>`
   color: ${({ theme }) =>
     theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.normal)};
+  box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   overflow: hidden;
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};

@@ -25,19 +25,19 @@ export const MixedThemes = () => {
           Tooltip
         </Tooltip>
       </HoneycombThemeProvider>
-      <div style={{ height: '4em' }} />
+      <div style={{ height: '5em' }} />
       <HoneycombThemeProvider variant="dark">
         <Tooltip content="Dark theme." visible arrow={true} shape="fit">
           Tooltip
         </Tooltip>
       </HoneycombThemeProvider>
-      <div style={{ height: '4em' }} />
+      <div style={{ height: '5em' }} />
       <HoneycombThemeProvider variant="light">
         <Tooltip content="Light accent theme." variant="accent" visible arrow={true} shape="fit">
           Tooltip
         </Tooltip>
       </HoneycombThemeProvider>
-      <div style={{ height: '4em' }} />
+      <div style={{ height: '5em' }} />
       <HoneycombThemeProvider variant="dark">
         <Tooltip content="Dark accent theme." variant="accent" visible arrow={true} shape="fit">
           Tooltip
