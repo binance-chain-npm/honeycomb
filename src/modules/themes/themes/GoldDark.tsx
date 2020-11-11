@@ -22,7 +22,7 @@ export const GoldDark = {
 
         tooltip: {
           normal: '#1e2026',
-          accent: '#33373e',
+          accent: '#2b2f36',
           outer: transparentize(0.2, '#0b0e11'),
         },
 
