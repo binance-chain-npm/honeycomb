@@ -63,7 +63,7 @@ const data: Array<Option> = [
   },
   {
     label: 'Warning',
-    icon: Icon.Warning,
+    icon: Icon.WarningCircleSolid,
   },
 ];
 
