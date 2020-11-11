@@ -41,7 +41,6 @@ export const Component = ({
         className={className}
         interactive={true}
         visible={isShowing}
-        trigger={null}
         content={
           <ContentContext.Provider value={{ testId: buildTestId('content') }}>
             <TooltipContent>{children}</TooltipContent>
