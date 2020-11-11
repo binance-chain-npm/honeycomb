@@ -25,7 +25,7 @@ export const Default = () => (
       const Component = Icon[iconName as keyof typeof Icon];
       return (
         <Wrapper key={iconName}>
-          <Tooltip content={iconName} padding="tiny">
+          <Tooltip content={iconName} arrow variant="accent" padding="tiny" placement="bottom">
             <Component />
           </Tooltip>
         </Wrapper>
