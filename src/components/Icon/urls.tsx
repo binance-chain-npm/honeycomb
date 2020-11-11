@@ -56,7 +56,7 @@ export { default as TriangleUp } from './assets/TriangleUp.svg';
 export { default as Video } from './assets/Video.svg';
 export { default as VisaColor } from './assets/VisaColor.svg';
 export { default as Wallet } from './assets/Wallet.svg';
-export { default as WalletConnect } from './assets/WalletConnect.svg';
+export { default as WalletConnectColor } from './assets/WalletConnectColor.svg';
 export { default as WarningCircle } from './assets/WarningCircle.svg';
 export { default as WarningCircleSolid } from './assets/WarningCircleSolid.svg';
 export { default as Write } from './assets/Write.svg';
