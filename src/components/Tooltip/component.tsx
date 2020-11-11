@@ -62,6 +62,7 @@ export const Component = ({
         arrow={otherProps.arrow}
         animation="shift-away"
         placement={otherProps.placement ?? 'bottom-start'}
+        zIndex={theme.honeycomb.zIndexes.tooltips}
         content={
           <Content
             padding={padding}

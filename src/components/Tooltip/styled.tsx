@@ -35,11 +35,11 @@ export const Styles = createGlobalStyle<{ variant: Variant }>`
 
       .tippy-content {
         padding: 0;
-        z-index: 0;
+        z-index: ${({ theme }) => theme.honeycomb.zIndexes.tooltips};
       }
 
       .tippy-arrow {
-        z-index: 1;
+        z-index: ${({ theme }) => theme.honeycomb.zIndexes.tooltips + 2};
       }
 
       &[data-theme*='-GoldDark-normal'] {
