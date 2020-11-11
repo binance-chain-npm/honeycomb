@@ -114,6 +114,11 @@ but there are a few things to make sure of.
 - The SVG viewport is a square (e.g. `viewBox="0 0 16 16"`) and the icon is centered both
   horizontally and vertically in it.
 - The SVG file is named with pascal casing (e.g. `CaretDown.svg`).
+- The SVG file is named with appropriate suffixes, in the correct order
+  (e.g. `Tick.svg`, `TickCircle.svg`, `TickCircleSolid.svg`).
+   1. `Circle` if the icon is circled.
+   2. `Solid` if the icon has a solid fill.
+   3. `Color` if the icon cannot change its colour.
 - The SVG file does not contain any font loading, styles or non-vector images.
 
 Once the SVG file has been added, it must be loaded and exported in **both**
