@@ -9,7 +9,7 @@ export default {
 };
 
 export const Default = () => (
-  <div style={{ fontSize: '5em' }}>
+  <div style={{ display: 'flex', fontSize: '5em' }}>
     <AbstractAvatar value="some random text here" />
     <AbstractAvatar value="some random text here" initial="鲁" />
     <AbstractAvatar value="a different random test" initial="A" />
