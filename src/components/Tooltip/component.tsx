@@ -47,10 +47,10 @@ export const Component = ({
   const theme = useTheme();
 
   const trigger = useMemo(() => {
-    if (!triggerProp) return undefined;
+    if (!triggerProp || otherProps.visible !== undefined) return undefined;
     if (!Array.isArray(triggerProp)) return triggerProp;
     return triggerProp.join(' ');
-  }, [triggerProp]);
+  }, [triggerProp, otherProps.visible]);
 
   return (
     <>
