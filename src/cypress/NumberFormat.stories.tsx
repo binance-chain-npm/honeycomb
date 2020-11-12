@@ -7,7 +7,7 @@ export default {
   title: `${Sections.Tests}/NumberFormat`,
 };
 
-export const fiat = () => {
+export const Fiat = () => {
   return (
     <>
       <div data-testid="en">
@@ -35,7 +35,7 @@ export const fiat = () => {
   );
 };
 
-export const crypto = () => {
+export const Crypto = () => {
   return (
     <>
       <div data-testid="en">
