@@ -5,6 +5,7 @@ import { Sections } from '../../modules/sections';
 import { CopyToClipboard } from './';
 
 export default {
+  component: CopyToClipboard,
   title: `${Sections.Elements}/CopyToClipboard`,
 };
 
