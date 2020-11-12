@@ -1,16 +1,23 @@
 describe('Modal', () => {
   it('opens and closes', () => {
-    cy.visitStory({ storyId: 'elements-modal--behaviour', themeId: 'GoldDark' });
+    cy.clock();
 
-    cy.get('[data-testid="OpenButton"]').trigger('click');
-    cy.get('[data-testid="MyModal.box"]').should('be.visible');
+    cy.visitStory({ storyId: 'elements-modal--default', themeId: 'GoldLight' });
+    cy.tick(10000);
 
-    cy.get('[data-testid="MyModal.header.close-btn"]').click();
-    cy.get('[data-testid="MyModal.box"]').should('not.be.visible');
+    cy.get('[data-testid="dark.btn-open"]').trigger('click');
+    cy.tick(10000);
+    cy.get('[data-testid="dark.modal.box"]').should('be.visible');
+
+    cy.percySnapshot('Modal with Gold Dark theme');
+
+    cy.get('[data-testid="dark.modal.header.close-btn"]').click();
+    cy.tick(10000);
+    cy.get('[data-testid="dark.modal.box"]').should('not.be.visible');
   });
 
   it('nested modal opens and closes', () => {
-    cy.visitStory({ storyId: 'elements-modal--with-nested-modal', themeId: 'GoldDark' });
+    cy.visitStory({ storyId: 'elements-modal--with-nested-modal', themeId: 'GoldLight' });
 
     cy.get('[data-testid="open-btn-outer"]').trigger('click');
     cy.get('[data-testid="modal-outer.box"]').should('be.visible');
@@ -33,33 +40,34 @@ describe('Modal', () => {
   it('renders correctly with title', () => {
     cy.clock();
 
-    cy.visitStory({ storyId: 'elements-modal--with-title', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-modal--with-title-at-bottom', themeId: 'GoldLight' });
     cy.tick(10000);
-    cy.percySnapshot('Modal with title with Gold Light theme');
 
-    cy.visitStory({ storyId: 'elements-modal--with-title-at-bottom', themeId: 'GoldDark' });
-    cy.tick(10000);
-    cy.percySnapshot('Modal with title at bottom with Gold Dark theme');
+    cy.percySnapshot('Modal with title at bottom');
 
     cy.visitStory({ storyId: 'elements-modal--small-with-title', themeId: 'GoldLight' });
     cy.tick(10000);
-    cy.percySnapshot('Small modal with title with Gold Light theme');
+
+    cy.percySnapshot('Small modal with title');
   });
 
   it('renders correctly without title', () => {
     cy.clock();
+
     cy.visitStory({ storyId: 'elements-modal--without-title', themeId: 'GoldLight' });
     cy.tick(10000);
-    cy.percySnapshot('Modal without title with Gold Light theme');
+
+    cy.percySnapshot('Modal without title');
   });
 
-  it('renders correctly without title on medium devices', () => {
+  it('renders correctly on medium devices', () => {
     cy.customViewport({ size: 'md' });
     cy.clock();
 
     cy.visitStory({ storyId: 'elements-modal--without-title', themeId: 'GoldLight' });
     cy.tick(10000);
-    cy.percySnapshot('Modal without title with Gold Light theme on a big screen', {
+
+    cy.percySnapshot('Modal while open on a medium device', {
       widths: [768],
     });
   });
