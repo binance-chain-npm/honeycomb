@@ -6,6 +6,7 @@ import { Sections } from '../../modules/sections';
 import { AbstractAvatar } from './';
 
 export default {
+  component: AbstractAvatar,
   title: `${Sections.Elements}/AbstractAvatar`,
 };
 

@@ -8,6 +8,7 @@ import { ListItem } from '../ListItem';
 import { Accordion } from './';
 
 export default {
+  component: Accordion,
   title: `${Sections.Elements}/Accordion`,
 };
 

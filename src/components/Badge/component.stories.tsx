@@ -8,6 +8,7 @@ import { variants } from './styled';
 import { Badge } from './';
 
 export default {
+  component: Badge,
   title: `${Sections.Elements}/Badge`,
 };
 
