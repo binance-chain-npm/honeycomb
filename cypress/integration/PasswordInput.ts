@@ -1,6 +1,6 @@
 describe('PasswordInput', () => {
   it('renders a pristine component by default', () => {
-    cy.visitStory({ storyId: 'tests-passwordinput--default', themeId: 'GoldDark' });
+    cy.visitStory({ storyId: 'tests-passwordinput--default', themeId: 'GoldLight' });
 
     cy.percySnapshot('PasswordInput with invalid value in pristine state');
   });

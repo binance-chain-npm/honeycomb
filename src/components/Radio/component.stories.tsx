@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { useBuildTestId } from '../../modules/test-ids';
-import { Card } from '../Card';
 import { Space } from '../Space';
 import { Styleless } from '../Styleless';
 
@@ -17,9 +16,7 @@ export default {
   title: `${Sections.Inputs}/Radio`,
 };
 
-export const Default = () => (
-  <Radio onChange={action('change')} label="A value" />
-);
+export const Default = () => <Radio onChange={action('change')} label="A value" />;
 
 const Container = styled.div`
   display: flex;

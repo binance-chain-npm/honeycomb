@@ -4,7 +4,6 @@ import { em } from 'polished';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
-import { Space } from '../Space';
 import { Badge } from '../Badge';
 
 import { Steps } from './';

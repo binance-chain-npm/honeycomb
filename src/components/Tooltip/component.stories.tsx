@@ -7,11 +7,11 @@ import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { HoneycombThemeProvider } from '../../modules/themes';
 import { Space } from '../Space';
+import { Button } from '../Button';
 
 import { radii, sizes, variants } from './styled';
 
 import { Tooltip } from './';
-import { Button } from '../Button';
 
 export default {
   component: Tooltip,
@@ -104,16 +104,24 @@ export const Variants = () => {
       <Label>default="bottom-start"</Label>
       <PlacementContainer>
         <Tooltip content="top" placement="top" shape="fit" arrow>
-          <Button variant="primary" shape="fit">top</Button>
+          <Button variant="primary" shape="fit">
+            top
+          </Button>
         </Tooltip>
         <Tooltip content="right" placement="right" shape="fit" arrow>
-          <Button variant="primary" shape="fit">right</Button>
+          <Button variant="primary" shape="fit">
+            right
+          </Button>
         </Tooltip>
         <Tooltip content="bottom" placement="bottom" shape="fit" arrow>
-          <Button variant="primary" shape="fit">bottom</Button>
+          <Button variant="primary" shape="fit">
+            bottom
+          </Button>
         </Tooltip>
         <Tooltip content="left" placement="left" shape="fit" arrow>
-          <Button variant="primary" shape="fit">left</Button>
+          <Button variant="primary" shape="fit">
+            left
+          </Button>
         </Tooltip>
         <span>...etc.</span>
       </PlacementContainer>
