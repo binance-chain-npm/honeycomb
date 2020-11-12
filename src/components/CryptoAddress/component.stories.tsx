@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
 import { CryptoAddress } from './';
 
 export default {
   component: CryptoAddress,
+  decorators,
   title: `${Sections.Elements}/CryptoAddress`,
 };
 

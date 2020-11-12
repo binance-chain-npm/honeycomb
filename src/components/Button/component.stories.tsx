@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { em } from 'polished';
 import { action } from '@storybook/addon-actions';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 import { shapes } from '../internal/Shape';
@@ -14,6 +15,7 @@ import { Button } from './';
 
 export default {
   component: Button,
+  decorators,
   title: `${Sections.Elements}/Button`,
 };
 

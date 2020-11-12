@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Icon } from '../Icon';
@@ -10,6 +11,7 @@ import { Accordion } from './';
 
 export default {
   component: Accordion,
+  decorators,
   title: `${Sections.Elements}/Accordion`,
 };
 

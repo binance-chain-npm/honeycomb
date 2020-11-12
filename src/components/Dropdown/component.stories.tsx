@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Button } from '../Button';
@@ -9,6 +10,7 @@ import { Dropdown } from './';
 
 export default {
   component: Dropdown,
+  decorators,
   title: `${Sections.Elements}/Dropdown`,
 };
 

@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
 import { AbstractAvatar } from './';
 
 export default {
   component: AbstractAvatar,
+  decorators,
   title: `${Sections.Elements}/AbstractAvatar`,
 };
 

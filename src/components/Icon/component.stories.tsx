@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 import { Tooltip } from '../Tooltip';
 
 export default {
+  component: Icon,
+  decorators,
   title: `${Sections.Elements}/Icon`,
 };
 

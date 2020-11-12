@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
 import { variants } from './styled';
@@ -10,6 +11,7 @@ import { Badge } from './';
 
 export default {
   component: Badge,
+  decorators,
   title: `${Sections.Elements}/Badge`,
 };
 

@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
 import { Balance } from './';
 
 export default {
   component: Balance,
+  decorators,
   title: `${Sections.Elements}/Balance`,
 };
 
