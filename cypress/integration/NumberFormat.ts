@@ -1,6 +1,6 @@
-const NON_BREAKING_SPACE = '\u00A0';
-
 describe('Formatting numbers', () => {
+  const NON_BREAKING_SPACE = '\u00A0';
+
   it('renders fiat currencies correctly', () => {
     cy.visitStory({ storyId: 'tests-numberformat--fiat', themeId: 'GoldLight' });
 
