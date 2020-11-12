@@ -5,6 +5,7 @@ import { Sections } from '../../modules/sections';
 import { MnemonicPhrase } from './';
 
 export default {
+  component: MnemonicPhrase,
   title: `${Sections.Elements}/MnemonicPhrase`,
 };
 
