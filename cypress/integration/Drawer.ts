@@ -12,7 +12,7 @@ describe('Drawer', () => {
 
     cy.get('[data-testid="light.drawer.container"]').should('be.visible');
     cy.get('[data-testid="light.drawer.content"]').should('be.visible');
-    cy.percySnapshot('Drawer with Gold Light theme');
+    cy.percySnapshot('Drawer');
 
     cy.get('[data-testid="light.drawer.container"]').click(0, 0);
     cy.tick(10000);

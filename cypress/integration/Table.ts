@@ -11,14 +11,14 @@ describe('Table', () => {
     cy.get('[data-testid="light.table.pagination.0.ellipsis"]').should('not.exist');
     cy.get('[data-testid="light.table.pagination.1.ellipsis"]').should('exist');
 
-    cy.percySnapshot('Table (page 1) with Gold Light theme');
+    cy.percySnapshot('Table (page 1)');
 
     cy.get('[data-testid="light.table.pagination.go-to-1-btn"]').click();
     cy.tick(10000);
     cy.get('[data-testid="light.table.pagination.0.ellipsis"]').should('not.exist');
     cy.get('[data-testid="light.table.pagination.2.ellipsis"]').should('exist');
 
-    cy.percySnapshot('Table (page 2) with Gold Light theme');
+    cy.percySnapshot('Table (page 2)');
 
     cy.get('[data-testid="light.table.pagination.go-to-2-btn"]').click();
     cy.tick(10000);
@@ -29,7 +29,7 @@ describe('Table', () => {
     cy.get('[data-testid="light.table.pagination.0.ellipsis"]').should('exist');
     cy.get('[data-testid="light.table.pagination.4.ellipsis"]').should('exist');
 
-    cy.percySnapshot('Table (page 4) with Gold Light theme');
+    cy.percySnapshot('Table (page 4)');
   });
 
   it('goes back to first page if page index is invalid', () => {
