@@ -7,16 +7,17 @@ import { ListItem } from '../ListItem';
 import { Drawer } from './';
 
 export default {
+  component: Drawer,
   title: `${Sections.Elements}/Drawer`,
 };
 
-export const Behaviour = () => {
+export const Default = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button variant="primary" onClick={() => setOpen(true)} data-testid="btn-open">
-        Show
+        {open ? 'Close' : 'Open'}
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} data-testid="drawer">
         <ListItem>Item 1</ListItem>
