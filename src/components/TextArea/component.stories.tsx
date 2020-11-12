@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 
 import { TextArea } from './';
 
 export default {
+  component: TextArea,
+  decorators,
   title: `${Sections.Inputs}/TextArea`,
 };
 
@@ -19,13 +22,13 @@ export const WithLabel = () => (
   <TextArea placeholder="Some placeholder…" label="A label" value="" />
 );
 
-export const WithLabelAndDescription = () => (
-  <TextArea placeholder="Some placeholder…" label="A label" description="A description" value="" />
+export const WithDescription = () => (
+  <TextArea placeholder="Some placeholder…" description="A description" value="" />
 );
 
-export const Placeholder = () => <TextArea placeholder="Some placeholder…" value="" />;
+export const WithPlaceholder = () => <TextArea placeholder="Some placeholder…" value="" />;
 
-export const LeftAndRightAppendixes = () => (
+export const WithLeftAndRightAppendixes = () => (
   <TextArea
     label="Amount"
     placeholder="Some placeholder…"
