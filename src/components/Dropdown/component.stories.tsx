@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
 
 import { Sections } from '../../modules/sections';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 
 import { Dropdown } from './';
 
 export default {
+  component: Dropdown,
   title: `${Sections.Elements}/Dropdown`,
 };
 
 export const Bare = () => {
-  return <Dropdown target="Click here!">Some content...</Dropdown>;
+  return <Dropdown target="Dropdown">Some content...</Dropdown>;
 };
 
 export const WithHelpers = () => {
   return (
     <Dropdown
-      target={<Dropdown.DefaultTarget>Click here!</Dropdown.DefaultTarget>}
+      target={<Dropdown.DefaultTarget>Dropdown</Dropdown.DefaultTarget>}
       data-testid="dropdown"
     >
-      <Dropdown.Item>Item 1</Dropdown.Item>
+      <Dropdown.Item data-testid="item1" onClick={() => alert('item1')}>
+        Item 1
+      </Dropdown.Item>
       <Dropdown.Item htmlTag="a">Item 2</Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item variant="accent">Item 3</Dropdown.Item>
@@ -44,9 +48,9 @@ export const WithToggleHandler = () => {
       target={
         <Button variant="secondary">
           {open ? (
-            <Icon.EyeBlocked style={{ fontSize: 24 }} />
+            <Icon.EyeBlocked fontSize={GoldLight.honeycomb.size.increased} />
           ) : (
-            <Icon.Eye style={{ fontSize: 24 }} />
+            <Icon.Eye fontSize={GoldLight.honeycomb.size.increased} />
           )}
         </Button>
       }
@@ -60,7 +64,7 @@ export const WithToggleHandler = () => {
 export const Selectable = () => {
   const [selected, setSelected] = useState<{ index: number; value: React.ReactNode }>({
     index: -1,
-    value: 'Click here!',
+    value: 'Dropdown',
   });
 
   return (
