@@ -1,5 +1,5 @@
 describe('Tooltip', () => {
-  it('renders correctly with Gold Dark theme', () => {
+  it('renders correctly', () => {
     cy.visitStory({ storyId: 'elements-tooltip--mixed-themes', themeId: 'GoldLight' });
 
     cy.clock();
