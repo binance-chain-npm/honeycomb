@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 
 import { TextArea } from '../../src/components/TextArea';
+import { decorators } from '../modules/decorators';
 import { Sections } from '../../src/modules/sections';
 
 export default {
+  component: TextArea,
+  decorators,
   title: `${Sections.Tests}/TextArea`,
 };
 

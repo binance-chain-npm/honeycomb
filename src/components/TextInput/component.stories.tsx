@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { sizes } from '../internal/Size';
 import { Button } from '../Button';
@@ -8,6 +9,8 @@ import { Button } from '../Button';
 import { TextInput } from './';
 
 export default {
+  component: TextInput,
+  decorators,
   title: `${Sections.Inputs}/TextInput`,
 };
 
@@ -25,13 +28,13 @@ export const WithLabel = () => (
   <TextInput placeholder="Some placeholder…" label="A label" value="" />
 );
 
-export const WithLabelAndDescription = () => (
-  <TextInput placeholder="Some placeholder…" label="A label" description="A description" value="" />
+export const WithDescription = () => (
+  <TextInput placeholder="Some placeholder…" label="A label" value="" />
 );
 
-export const Placeholder = () => <TextInput placeholder="Some placeholder…" value="" />;
+export const WithPlaceholder = () => <TextInput placeholder="Some placeholder…" value="" />;
 
-export const LeftAndRightAppendixes = () => (
+export const WithLeftAndRightAppendixes = () => (
   <TextInput
     label="Amount"
     placeholder="Some placeholder…"
@@ -43,35 +46,6 @@ export const LeftAndRightAppendixes = () => (
       </Button>
     }
   />
-);
-
-const CustomTextInput = styled(TextInput)`
-  ${TextInput.Label} {
-    color: #f8bbd0;
-  }
-
-  ${TextInput.InputContainer} {
-    background: #e8f5e9;
-    color: #64b5f6;
-
-    ::placeholder {
-      color: #7e57c2;
-    }
-  }
-`;
-
-export const Sizes = () => (
-  <>
-    {sizes.map((size) => (
-      <div style={{ marginBottom: '1em' }}>
-        <TextInput key={`${size}`} size={size} value={`A ${size} text input`} />
-      </div>
-    ))}
-  </>
-);
-
-export const CustomStyles = () => (
-  <CustomTextInput placeholder="Some placeholder…" label="A label" value="" />
 );
 
 export const Dynamic = () => {
@@ -93,3 +67,32 @@ export const Dynamic = () => {
     </>
   );
 };
+
+export const Sizes = () => (
+  <>
+    {sizes.map((size) => (
+      <div style={{ marginBottom: '1em' }}>
+        <TextInput key={`${size}`} size={size} value={`A ${size} text input`} />
+      </div>
+    ))}
+  </>
+);
+
+const CustomTextInput = styled(TextInput)`
+  ${TextInput.Label} {
+    color: #f8bbd0;
+  }
+
+  ${TextInput.InputContainer} {
+    background: #e8f5e9;
+    color: #64b5f6;
+
+    ::placeholder {
+      color: #7e57c2;
+    }
+  }
+`;
+
+export const CustomStyles = () => (
+  <CustomTextInput placeholder="Some placeholder…" label="A label" value="" />
+);
