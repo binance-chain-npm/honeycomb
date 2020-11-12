@@ -15,7 +15,7 @@ export default {
 const Container = styled.div`
   display: flex;
   font-size: 5em;
-  overflow-x: auto;
+  flex-wrap: wrap;
 `;
 
 export const Default = () => (
