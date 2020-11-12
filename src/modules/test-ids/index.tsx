@@ -21,7 +21,7 @@ export const HoneycombTestIdProvider = ({
 
 const genericBuildTestId = ({ parent, id }: { parent?: string; id?: string }) => {
   if (!parent && !id) return undefined;
-  if (!parent) return id;
+  if (!parent || id?.startsWith(parent)) return id;
   if (!id) return parent;
   return `${parent}.${id}`;
 };
@@ -30,6 +30,10 @@ export const useBuildTestId = ({ id: parent }: { id?: string } = {}) => {
   const contextTestId = useContext(HoneycombTestContext);
   return useMemo(() => {
     const buildTestId = (id?: string) => {
+      if (process.env.NODE_ENV !== 'production' && contextTestId === parent) {
+        console.error('Component cannot have the same test ID as the test ID provider');
+      }
+
       return genericBuildTestId({
         parent: genericBuildTestId({ parent: contextTestId, id: parent }),
         id,
