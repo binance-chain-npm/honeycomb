@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import { em } from 'polished';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { sizes } from '../internal/Size';
 import { Space } from '../Space';
@@ -10,17 +13,23 @@ import { SegmentedControl } from './';
 
 export default {
   component: SegmentedControl,
+  decorators,
   title: `${Sections.Elements}/SegmentedControl`,
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const render = (
   selected: Record<number, number>,
   setSelected: React.Dispatch<React.SetStateAction<Record<number, number>>>,
   variant?: Variant,
 ) => (
-  <div style={{ display: 'flex', flexDirection: 'column' }}>
+  <Container>
     {sizes.map((size, index) => (
-      <div key={size} style={{ marginBottom: '1em' }}>
+      <>
         <h3>{size}</h3>
         <SegmentedControl
           size={size}
@@ -35,7 +44,8 @@ const render = (
           <span>BNB</span>
           <i>USDT</i>
         </SegmentedControl>
-      </div>
+        <Space size="normal" />
+      </>
     ))}
 
     <h3>disabled</h3>
@@ -63,7 +73,7 @@ const render = (
       <span>BTC</span>
       <span>BNB</span>
     </SegmentedControl>
-  </div>
+  </Container>
 );
 
 export const Default = () => {
