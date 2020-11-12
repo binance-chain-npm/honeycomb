@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { useBuildTestId } from '../../modules/test-ids';
 import { Card } from '../Card';
 import { Space } from '../Space';
 import { Styleless } from '../Styleless';
@@ -10,28 +12,30 @@ import { Styleless } from '../Styleless';
 import { Radio } from './';
 
 export default {
+  component: Radio,
+  decorators,
   title: `${Sections.Inputs}/Radio`,
 };
 
 export const Default = () => (
-  <Card>
-    <Radio onChange={action('change')} label="A value" />
-  </Card>
+  <Radio onChange={action('change')} label="A value" />
 );
 
-const StyledCard = styled(Card)`
+const Container = styled.div`
   display: flex;
 `;
 
 export const Grouped = () => {
+  const { buildTestId } = useBuildTestId();
+
   const [checkedA, setCheckedA] = useState(1);
   const [checkedB, setCheckedB] = useState(-1);
 
   return (
-    <StyledCard>
+    <Container>
       <Styleless
         htmlTag="fieldset"
-        id="groupA"
+        id={buildTestId('groupA')}
         style={{ flexDirection: 'column', alignItems: 'flex-start' }}
       >
         Group A
@@ -40,18 +44,18 @@ export const Grouped = () => {
           <>
             <Radio
               onChange={() => setCheckedA(index)}
-              label={`Option ${index}`}
-              name="groupA"
+              label={`Option ${index + 1}`}
+              name={buildTestId('groupA')}
               checked={checkedA === index}
             />
             <Space size="tiny" />
           </>
         ))}
       </Styleless>
-      <Space size="increased" />
+      <Space size="large" />
       <Styleless
         htmlTag="fieldset"
-        id="groupA"
+        id={buildTestId('groupB')}
         style={{ flexDirection: 'column', alignItems: 'flex-start' }}
       >
         Group B
@@ -60,14 +64,14 @@ export const Grouped = () => {
           <>
             <Radio
               onChange={() => setCheckedB(index)}
-              label={`Option ${index}`}
-              name="groupB"
+              label={`Option ${index + 1}`}
+              name={buildTestId('groupB')}
               checked={checkedB === index}
             />
             <Space size="tiny" />
           </>
         ))}
       </Styleless>
-    </StyledCard>
+    </Container>
   );
 };
