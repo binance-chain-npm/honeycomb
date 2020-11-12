@@ -1,33 +1,42 @@
 import React from 'react';
+import styled from 'styled-components';
+import { em } from 'polished';
 
 import { Sections } from '../../modules/sections';
 
 import { QRCode } from './';
 
 export default {
+  component: QRCode,
   title: `${Sections.Elements}/QRCode`,
 };
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+`;
+
 export const Default = () => (
   <>
-    <div style={{ marginBottom: '1em' }}>
+    <Container>
       <QRCode value="a value here" />
-    </div>
-    <div style={{ marginBottom: '1em' }}>
+    </Container>
+    <Container>
       <QRCode value="a value here" style={{ fontSize: 100 }} />
-    </div>
+    </Container>
     <QRCode value="a value here" style={{ fontSize: 300 }} />
   </>
 );
 
 export const WithFrame = () => (
   <>
-    <div style={{ marginBottom: '1em' }}>
+    <Container>
       <QRCode value="a value here" hasFrame />
-    </div>
-    <div style={{ marginBottom: '1em' }}>
+    </Container>
+    <Container>
       <QRCode value="a value here" style={{ fontSize: 100 }} hasFrame />
-    </div>
+    </Container>
     <QRCode value="a value here" style={{ fontSize: 300 }} hasFrame />
   </>
 );
