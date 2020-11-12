@@ -1,7 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
+import { em } from 'polished';
 
 import { Sections } from '../../modules/sections';
-import { Space } from '../Space';
 
 import { variants } from './styled';
 
@@ -12,13 +13,20 @@ export default {
   title: `${Sections.Elements}/Badge`,
 };
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
+
 export const Default = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-    {variants.map((variant, index) => (
-      <>
-        <Badge variant={variant}>{variant}</Badge>
-        {index !== variants.length - 1 && <Space size="normal" />}
-      </>
+  <Container>
+    {variants.map((variant) => (
+      <Badge variant={variant}>{variant}</Badge>
     ))}
-  </div>
+  </Container>
 );

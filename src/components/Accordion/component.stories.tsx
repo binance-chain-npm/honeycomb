@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import styled from 'styled-components';
 
 import { Sections } from '../../modules/sections';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
@@ -13,6 +14,10 @@ export default {
 };
 
 type Panels = React.ComponentPropsWithoutRef<typeof Accordion>['panels'];
+
+const StyledListItem = styled(ListItem)`
+  height: 5em;
+`;
 
 export const Default = () => {
   const [activePanel, setActivePanel] = useState(-1);
@@ -38,9 +43,9 @@ export const Default = () => {
         </ListItem>
       ),
       children: (
-        <ListItem style={{ height: '2em' }} data-testid={'child'}>
+        <StyledListItem data-testid={'child'}>
           Panel {index + 1}
-        </ListItem>
+        </StyledListItem>
       ),
     };
   });
