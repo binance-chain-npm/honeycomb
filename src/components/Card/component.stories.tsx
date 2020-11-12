@@ -1,27 +1,35 @@
 import React from 'react';
+import styled from 'styled-components';
+import { em } from 'polished';
 
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
-import { Space } from '../Space';
 
 import { POSITIONS } from './styled';
 
 import { Card } from './';
 
 export default {
+  component: Card,
   title: `${Sections.Elements}/Card`,
 };
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
+
 export const Default = () => (
-  <div style={{ display: 'flex', flexDirection: 'column' }}>
+  <Container>
     {POSITIONS.map((position) => (
-      <>
-        <Card position={position}>
-          <div>A card with position={position}</div>
-          <Button variant="primary">A button</Button>
-        </Card>
-        <Space size="normal" />
-      </>
+      <Card position={position}>
+        <div>A card with position={position}</div>
+        <Button variant="primary">A button</Button>
+      </Card>
     ))}
-  </div>
+  </Container>
 );
