@@ -5,6 +5,7 @@ import { Sections } from '../../modules/sections';
 import { BuyWithMoonPay } from './';
 
 export default {
+  component: BuyWithMoonPay,
   title: `${Sections.Elements}/BuyWithMoonPay`,
 };
 
