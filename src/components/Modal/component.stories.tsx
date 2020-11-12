@@ -28,7 +28,7 @@ export const Default: Story = () => {
         )}
       </Button>
       <Modal open={open} data-testid="modal">
-        <Modal.Header onClose={() => setOpen(false)} title="Title" />
+        <Modal.Header onClose={() => setOpen(false)} title="A Title" />
         <Modal.Content>{items}</Modal.Content>
       </Modal>
     </>
@@ -38,28 +38,28 @@ Default.decorators = decorators;
 
 export const TitleComponentWithLoading = () => (
   <Modal open={true} data-testid="modal">
-    <Modal.Header loading={true} title={<div>Title</div>} />
+    <Modal.Header loading={true} title={<div>A Title</div>} />
     <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
 
 export const WithTitleAtBottom = () => (
   <Modal open={true} data-testid="modal" position="bottom">
-    <Modal.Header title="Title" />
+    <Modal.Header title="A Title" />
     <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
 
 export const SmallWithTitle = () => (
   <Modal open={true} data-testid="modal">
-    <Modal.Header title="Title" />
+    <Modal.Header title="A Title" />
     <Modal.Content>Just a line...</Modal.Content>
   </Modal>
 );
 
 export const SmallWithTitleAtBottom = () => (
   <Modal open={true} data-testid="modal" position="bottom">
-    <Modal.Header title="Title" />
+    <Modal.Header title="A Title" />
     <Modal.Content>Just a line...</Modal.Content>
   </Modal>
 );
