@@ -9,7 +9,6 @@ module.exports = {
     '@storybook/addon-docs',
     '@storybook/addon-toolbars',
     '@storybook/addon-viewport',
-    'storybook-styled-components-theme-selector',
   ],
   webpackFinal: async (config) => {
     // Make sure SVGs are not loaded with `file-loader`.
