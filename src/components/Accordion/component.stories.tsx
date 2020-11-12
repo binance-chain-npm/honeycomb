@@ -18,7 +18,7 @@ export default {
 type Panels = React.ComponentPropsWithoutRef<typeof Accordion>['panels'];
 
 const StyledListItem = styled(ListItem)`
-  height: 5em;
+  height: 2em;
 `;
 
 export const Default = () => {

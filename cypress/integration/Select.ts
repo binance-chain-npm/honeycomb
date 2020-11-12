@@ -10,7 +10,7 @@ describe('Select', () => {
     cy.get('[data-testid="dark.select.modal.content"]').should('be.visible');
     cy.get('[data-testid="dark.select.dropdown.content"]').should('not.exist');
 
-    cy.percySnapshot('Select while open on a small device');
+    cy.percySnapshot('Select with Gold Dark theme while open on a small device');
   });
 
   it('displays dropdown on large devices', () => {
@@ -25,7 +25,7 @@ describe('Select', () => {
     cy.get('[data-testid="dark.select.modal.content"]').should('not.exist');
     cy.get('[data-testid="dark.select.dropdown.content"]').should('be.visible');
 
-    cy.percySnapshot('Select while open on a large device', { widths: [1280] });
+    cy.percySnapshot('Select with Gold Dark theme while open on a large device', { widths: [1280] });
   });
 
   it('search input not rendered when children are not filterable', () => {
