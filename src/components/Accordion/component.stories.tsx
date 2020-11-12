@@ -42,11 +42,7 @@ export const Default = () => {
           Accordion {index + 1}
         </ListItem>
       ),
-      children: (
-        <StyledListItem data-testid={'child'}>
-          Panel {index + 1}
-        </StyledListItem>
-      ),
+      children: <StyledListItem data-testid={'child'}>Panel {index + 1}</StyledListItem>,
     };
   });
 
