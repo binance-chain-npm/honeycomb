@@ -62,9 +62,9 @@ export const usePasswordInputValidation = ({
       label: (
         <Label data-testid={buildTestId('error-length')}>
           {!isLongEnough ? (
-            <Icon.CircledCross data-testid={buildTestId('error-length-ic-cross')} />
+            <Icon.CrossCircle data-testid={buildTestId('error-length-ic-cross')} />
           ) : (
-            <Icon.CircledTick data-testid={buildTestId('error-length-ic-tick')} />
+            <Icon.TickCircle data-testid={buildTestId('error-length-ic-tick')} />
           )}
           &nbsp;8 or more characters.
         </Label>
@@ -76,9 +76,9 @@ export const usePasswordInputValidation = ({
       label: (
         <Label data-testid={buildTestId('error-upper-case')}>
           {mustHaveUpperCase && !hasUpperCase ? (
-            <Icon.CircledCross data-testid={buildTestId('error-upper-case-ic-cross')} />
+            <Icon.CrossCircle data-testid={buildTestId('error-upper-case-ic-cross')} />
           ) : (
-            <Icon.CircledTick data-testid={buildTestId('error-upper-case-ic-tick')} />
+            <Icon.TickCircle data-testid={buildTestId('error-upper-case-ic-tick')} />
           )}
           &nbsp;At least one upper case character.
         </Label>
@@ -90,9 +90,9 @@ export const usePasswordInputValidation = ({
       label: (
         <Label data-testid={buildTestId('error-digit')}>
           {mustHaveDigit && !hasDigit ? (
-            <Icon.CircledCross data-testid={buildTestId('error-digit-ic-cross')} />
+            <Icon.CrossCircle data-testid={buildTestId('error-digit-ic-cross')} />
           ) : (
-            <Icon.CircledTick data-testid={buildTestId('error-digit-ic-tick')} />
+            <Icon.TickCircle data-testid={buildTestId('error-digit-ic-tick')} />
           )}
           &nbsp;At least one digit.
         </Label>
@@ -104,9 +104,9 @@ export const usePasswordInputValidation = ({
       label: (
         <Label data-testid={buildTestId('error-symbol')}>
           {mustHaveSymbol && !hasSymbol ? (
-            <Icon.CircledCross data-testid={buildTestId('error-symbol-ic-cross')} />
+            <Icon.CrossCircle data-testid={buildTestId('error-symbol-ic-cross')} />
           ) : (
-            <Icon.CircledTick data-testid={buildTestId('error-symbol-ic-tick')} />
+            <Icon.TickCircle data-testid={buildTestId('error-symbol-ic-tick')} />
           )}
           &nbsp;At least one symbol.
         </Label>

@@ -50,9 +50,9 @@ export const Component = ({
       ) : (
         <>
           <StyledVisa />
-          <Space size="micro" />
+          <Space size="tiny" />
           <StyledMastercard />
-          <Space size="micro" />
+          <Space size="tiny" />
           {children ?? 'Buy crypto'}
         </>
       )}

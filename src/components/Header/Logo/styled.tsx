@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
-import { Icon } from '../../Icon';
+import { ReactComponent as HeaderLogo } from './Logo.svg';
+import { ReactComponent as HeaderLogoSmall } from './LogoSmall.svg';
 
 export const Styled = styled.div`
   display: flex;
@@ -14,10 +15,10 @@ const logo = css`
   font-size: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;
 
-export const Logo = styled(Icon.BinanceChainLogo)`
+export const Logo = styled(HeaderLogo)`
   ${logo};
 `;
 
-export const LogoSmall = styled(Icon.BinanceChainLogoSmall)`
+export const LogoSmall = styled(HeaderLogoSmall)`
   ${logo};
 `;
