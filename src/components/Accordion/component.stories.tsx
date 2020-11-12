@@ -1,6 +1,9 @@
 import React, { useCallback, useState } from 'react';
 
 import { Sections } from '../../modules/sections';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
+import { Icon } from '../Icon';
+import { ListItem } from '../ListItem';
 
 import { Accordion } from './';
 
@@ -10,7 +13,7 @@ export default {
 
 type Panels = React.ComponentPropsWithoutRef<typeof Accordion>['panels'];
 
-export const Behaviour = () => {
+export const Default = () => {
   const [activePanel, setActivePanel] = useState(-1);
 
   const changePanel = useCallback((index) => {
@@ -20,11 +23,24 @@ export const Behaviour = () => {
   const panels: Panels = new Array(5).fill(null).map((_, index) => {
     return {
       element: (
-        <div style={{ height: '3em', display: 'flex', alignItems: 'center' }}>
-          Accordion {index}
-        </div>
+        <ListItem
+          right={
+            activePanel === index ? (
+              <Icon.CaretUp fontSize={GoldLight.honeycomb.size.small} />
+            ) : (
+              <Icon.CaretDown fontSize={GoldLight.honeycomb.size.small} />
+            )
+          }
+          data-testid={'item'}
+        >
+          Accordion {index + 1}
+        </ListItem>
       ),
-      children: <div style={{ marginLeft: '1em' }}>Panel {index}</div>,
+      children: (
+        <ListItem style={{ height: '2em' }} data-testid={'child'}>
+          Panel {index + 1}
+        </ListItem>
+      ),
     };
   });
 
