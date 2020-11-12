@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { addDecorator, addParameters } from '@storybook/react';
 
 import { HoneycombThemeProvider } from '../src/modules/themes';
@@ -46,10 +46,20 @@ const Container = styled.div`
   font-size: 16px;
 `;
 
-const Section = styled.div`
+const section = css`
   background: ${({ theme }) => theme.honeycomb.color.bg.normal};
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
   padding: 1em;
+`;
+
+const Section = styled.div`
+  ${section};
+`;
+
+const FilledSection = styled.div`
+  ${section};
+  flex-grow: 1;
+  flex-shrink: 0;
 `;
 
 export const decorators = [
@@ -70,11 +80,11 @@ export const decorators = [
         </Section>
       </HoneycombThemeProvider>
       <HoneycombThemeProvider variant="light">
-        <Section style={{ flexGrow: '1', flexShrink: '0' }}>
+        <FilledSection>
           <HoneycombTestIdProvider value="light">
             <Story />
           </HoneycombTestIdProvider>
-        </Section>
+        </FilledSection>
       </HoneycombThemeProvider>
     </Container>
   ),
