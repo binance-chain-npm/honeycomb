@@ -1,11 +1,14 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
 import { Styleless } from './';
 
 export default {
+  component: Styleless,
+  decorators,
   title: `${Sections.Elements}/Styleless`,
 };
 
