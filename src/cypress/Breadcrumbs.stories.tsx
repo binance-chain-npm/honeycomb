@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 import { BreadcrumbProvider, useAddBreadcrumbEffect, useBreadcrumbs } from '../modules/breadcrumbs';
+import { decorators } from '../modules/decorators';
 import { Sections } from '../modules/sections';
 import { useBuildTestId } from '../modules/test-ids';
 
 export default {
+  decorators,
   title: `${Sections.Elements}/Breadcrumbs`,
 };
 
