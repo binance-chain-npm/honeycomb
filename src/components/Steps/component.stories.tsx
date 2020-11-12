@@ -1,5 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
+import { em } from 'polished';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Space } from '../Space';
 import { Badge } from '../Badge';
@@ -8,6 +11,7 @@ import { Steps } from './';
 
 export default {
   component: Steps,
+  decorators,
   title: `${Sections.Elements}/Steps`,
 };
 
@@ -23,41 +27,54 @@ const renderItems = (key: string) => {
   );
 };
 
+const HorizontalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
+
 export const Horizontal = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <HorizontalContainer>
       {new Array(5).fill(null).map((_, index) => {
         const key = `steps-${index}`;
 
         return (
-          <React.Fragment key={key}>
-            <Steps orientation="horizontal" activeStep={index - 1}>
-              {renderItems(key)}
-            </Steps>
-            <Space size="normal" />
-          </React.Fragment>
+          <Steps key={key} orientation="horizontal" activeStep={index - 1}>
+            {renderItems(key)}
+          </Steps>
         );
       })}
-    </div>
+    </HorizontalContainer>
   );
 };
 
+const VerticalContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 15em;
+
+  > *:not(:last-child) {
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
+
 export const Vertical = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', height: 'calc(100vh - 2rem)' }}>
+    <VerticalContainer>
       {new Array(5).fill(null).map((_, index) => {
         const key = `steps-${index}`;
 
         return (
-          <React.Fragment key={key}>
-            <Steps orientation="vertical" activeStep={index - 1}>
-              {renderItems(key)}
-            </Steps>
-            <Space size="normal" />
-          </React.Fragment>
+          <Steps key={key} orientation="vertical" activeStep={index - 1}>
+            {renderItems(key)}
+          </Steps>
         );
       })}
-    </div>
+    </VerticalContainer>
   );
 };
 
