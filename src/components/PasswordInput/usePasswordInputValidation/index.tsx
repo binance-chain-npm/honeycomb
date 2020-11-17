@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
-import { Icon } from '../../Icon';
-import { Space } from '../../Space';
 import { TextInput, ValidationMessage } from '../../TextInput';
-import { Label } from '../styled';
+import { Label, Tick, Cross } from '../styled';
 
 export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
   Testable & {
@@ -64,16 +62,12 @@ export const usePasswordInputValidation = ({
     {
       label: (
         <Label data-testid={buildTestId('error-length')}>
-          {icons && (
-            <>
-              {!isLongEnough ? (
-                <Icon.CrossCircle data-testid={buildTestId('error-length-ic-cross')} />
-              ) : (
-                <Icon.TickCircle data-testid={buildTestId('error-length-ic-tick')} />
-              )}
-              <Space size="micro" />
-            </>
-          )}
+          {icons &&
+            (!isLongEnough ? (
+              <Cross data-testid={buildTestId('error-length-ic-cross')} />
+            ) : (
+              <Tick data-testid={buildTestId('error-length-ic-tick')} />
+            ))}
           8 or more characters.
         </Label>
       ),
@@ -83,16 +77,12 @@ export const usePasswordInputValidation = ({
     {
       label: (
         <Label data-testid={buildTestId('error-upper-case')}>
-          {icons && (
-            <>
-              {mustHaveUpperCase && !hasUpperCase ? (
-                <Icon.CrossCircle data-testid={buildTestId('error-upper-case-ic-cross')} />
-              ) : (
-                <Icon.TickCircle data-testid={buildTestId('error-upper-case-ic-tick')} />
-              )}
-              <Space size="micro" />
-            </>
-          )}
+          {icons &&
+            (mustHaveUpperCase && !hasUpperCase ? (
+              <Cross data-testid={buildTestId('error-upper-case-ic-cross')} />
+            ) : (
+              <Tick data-testid={buildTestId('error-upper-case-ic-tick')} />
+            ))}
           At least one upper case character.
         </Label>
       ),
@@ -102,16 +92,12 @@ export const usePasswordInputValidation = ({
     {
       label: (
         <Label data-testid={buildTestId('error-digit')}>
-          {icons && (
-            <>
-              {mustHaveDigit && !hasDigit ? (
-                <Icon.CrossCircle data-testid={buildTestId('error-digit-ic-cross')} />
-              ) : (
-                <Icon.TickCircle data-testid={buildTestId('error-digit-ic-tick')} />
-              )}
-              <Space size="micro" />
-            </>
-          )}
+          {icons &&
+            (mustHaveDigit && !hasDigit ? (
+              <Cross data-testid={buildTestId('error-digit-ic-cross')} />
+            ) : (
+              <Tick data-testid={buildTestId('error-digit-ic-tick')} />
+            ))}
           At least one digit.
         </Label>
       ),
@@ -121,16 +107,12 @@ export const usePasswordInputValidation = ({
     {
       label: (
         <Label data-testid={buildTestId('error-symbol')}>
-          {icons && (
-            <>
-              {mustHaveSymbol && !hasSymbol ? (
-                <Icon.CrossCircle data-testid={buildTestId('error-symbol-ic-cross')} />
-              ) : (
-                <Icon.TickCircle data-testid={buildTestId('error-symbol-ic-tick')} />
-              )}
-              <Space size="micro" />
-            </>
-          )}
+          {icons &&
+            (mustHaveSymbol && !hasSymbol ? (
+              <Cross data-testid={buildTestId('error-symbol-ic-cross')} />
+            ) : (
+              <Tick data-testid={buildTestId('error-symbol-ic-tick')} />
+            ))}
           At least one symbol.
         </Label>
       ),
