@@ -24,3 +24,18 @@ export const Default = () => {
     />
   );
 };
+
+export const WithValidationIcons = () => {
+  const [value, setValue] = useState('');
+  const validationProps = usePasswordInputValidation({ value, 'data-testid': 'password-input', icons: true });
+
+  return (
+    <PasswordInput
+      {...validationProps}
+      label="Password"
+      onChange={(evt) => setValue(evt.target.value)}
+      data-testid="password-input"
+      value={value}
+    />
+  );
+};
