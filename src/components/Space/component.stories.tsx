@@ -1,11 +1,12 @@
 import React from 'react';
-import { createGlobalStyle as css } from 'styled-components';
+import styled, { createGlobalStyle as css } from 'styled-components';
 
 import { Sections } from '../../modules/sections';
 
 import { Space } from './';
 
 export default {
+  component: Space,
   title: `${Sections.Elements}/Space`,
 };
 
@@ -15,17 +16,17 @@ const Global = css`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw - 2rem);
+  height: calc(100vh - 2rem);
+`;
+
 export const Default = () => (
   <>
     <Global />
-    <div
-      style={{
-        display: 'flex',
-        width: 'calc(100vw - 2rem)',
-        height: 'calc(100vh - 2rem)',
-        flexDirection: 'column',
-      }}
-    >
+    <Container>
       <div style={{ display: 'flex' }}>
         <span>a</span>
         <Space size="huge" />
@@ -41,6 +42,6 @@ export const Default = () => (
         <Space size="fill" />
         <span>f</span>
       </div>
-    </div>
+    </Container>
   </>
 );

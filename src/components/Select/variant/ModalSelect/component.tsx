@@ -22,7 +22,7 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const context = useMemo(() => ({ onClose, testId }), [onClose, testId]);
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
 
   return (
     <>

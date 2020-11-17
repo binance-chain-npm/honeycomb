@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
 import { BuyWithMoonPay } from './';
 
 export default {
+  component: BuyWithMoonPay,
+  decorators,
   title: `${Sections.Elements}/BuyWithMoonPay`,
 };
 

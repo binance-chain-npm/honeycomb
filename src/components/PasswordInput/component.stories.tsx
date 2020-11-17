@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
 import { PasswordInput, usePasswordInputValidation } from './';
 
 export default {
+  component: PasswordInput,
+  decorators,
   title: `${Sections.Inputs}/PasswordInput`,
 };
 
-export const Text = () => {
+export const Default = () => {
   const [value, setValue] = useState('Some text…');
   const validationProps = usePasswordInputValidation({ value });
+
   return (
     <PasswordInput
       {...validationProps}

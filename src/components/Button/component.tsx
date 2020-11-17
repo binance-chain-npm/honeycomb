@@ -32,7 +32,7 @@ export const Component = ({
   shape = 'fill',
   ...otherProps
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const [animationState, setAnimationState] = useState(false);
 
   const asProp = useMemo(() => {

@@ -30,7 +30,7 @@ export const Component = ({
   'data-testid': testId,
   ...otherProps
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const [search, setSearch] = useState('');
   const updateSearch = useCallback(
     (evt: React.ChangeEvent<HTMLInputElement>) => setSearch(evt.target.value),

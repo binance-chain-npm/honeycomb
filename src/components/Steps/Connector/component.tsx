@@ -10,7 +10,7 @@ export type Props = Testable & {
 };
 
 export const Component = ({ size, 'data-testid': testId, ...otherProps }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const { orientation } = useContext(Context);
 
   return (

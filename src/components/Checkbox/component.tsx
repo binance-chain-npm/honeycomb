@@ -12,7 +12,7 @@ export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> &
 
 export const Component = (props: Props) => {
   const { className, label, 'data-testid': testId, ...otherProps } = props;
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const id = useMemo(() => props.id || `id-${nanoid()}`, [props.id]);
 
   return (

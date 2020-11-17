@@ -23,7 +23,7 @@ export const Component = ({
   shape = 'square',
   'data-testid': testId,
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const [wasJustCopied, setWasJustCopied] = useState(false);
 
   const copy = useCallback(() => {

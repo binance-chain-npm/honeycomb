@@ -14,7 +14,7 @@ export type Props = Testable & {
 };
 
 export const Component = ({ 'data-testid': testId, value, initial, className }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const hash = useMemo(() => SHA1(value).toString(), [value]);
   const values = useMemo(() => hash.split('').map((it) => Number.parseInt(it, 16)), [hash]);
   const bgColor = useMemo(() => {

@@ -11,7 +11,7 @@ import { Styled, Pulse } from './styled';
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> & Testable;
 
 export const Component = ({ children, 'data-testid': testId, ...otherProps }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const theme = useTheme();
   const { active, completed } = useContext(Context);
 

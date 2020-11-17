@@ -4,13 +4,13 @@ describe('Select', () => {
     cy.visitStory({ storyId: 'elements-select--responsive', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="select"]').click();
+    cy.get('[data-testid="dark.select"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="select.modal.content"]').should('be.visible');
-    cy.get('[data-testid="select.dropdown.content"]').should('not.exist');
+    cy.get('[data-testid="dark.select.modal.content"]').should('be.visible');
+    cy.get('[data-testid="dark.select.dropdown.content"]').should('not.exist');
 
-    cy.percySnapshot('Select while open on a small device');
+    cy.percySnapshot('Select with Gold Dark theme while open on a small device');
   });
 
   it('displays dropdown on large devices', () => {
@@ -19,13 +19,13 @@ describe('Select', () => {
     cy.visitStory({ storyId: 'elements-select--responsive', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="select"]').click();
+    cy.get('[data-testid="dark.select"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="select.modal.content"]').should('not.exist');
-    cy.get('[data-testid="select.dropdown.content"]').should('be.visible');
+    cy.get('[data-testid="dark.select.modal.content"]').should('not.exist');
+    cy.get('[data-testid="dark.select.dropdown.content"]').should('be.visible');
 
-    cy.percySnapshot('Select while open on a large device', { widths: [1280] });
+    cy.percySnapshot('Select with Gold Dark theme while open on a large device', { widths: [1280] });
   });
 
   it('search input not rendered when children are not filterable', () => {
@@ -83,6 +83,11 @@ describe('Select', () => {
     cy.get('[data-testid="select.item.1"]').should('be.visible');
     cy.get('[data-testid="select.item.2"]').should('be.visible');
     cy.get('[data-testid="select.item.photo"]').should('be.visible');
+
+    cy.get('[data-testid="select.item.0"]').click();
+    cy.tick(10000);
+    cy.get('[data-testid="select"]').click();
+    cy.tick(10000);
 
     cy.get('[data-testid="select.item.0.tick"]').should('be.visible');
     cy.get('[data-testid="select.item.1.tick"]').should('not.exist');

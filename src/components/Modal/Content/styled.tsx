@@ -28,6 +28,7 @@ export const Content = styled.div<{ padding: Padding }>`
   justify-content: flex-start;
   align-items: stretch;
   min-height: 100%;
+  color: ${({ theme }) => theme.honeycomb.color.text.normal};
 
   ${({ padding }) => padding === 'normal' && normal};
   ${({ padding }) => padding === 'none' && none};

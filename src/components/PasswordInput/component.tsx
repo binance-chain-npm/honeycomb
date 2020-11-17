@@ -19,7 +19,7 @@ export const Component = ({
   'data-testid': testId,
   ...otherProps
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const [shouldDisplay, setShouldDisplay] = useState(false);
 
   const focus = useCallback<NonNullable<Props['onFocus']>>(

@@ -1,6 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+import { em } from 'polished';
 import { action } from '@storybook/addon-actions';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 import { shapes } from '../internal/Shape';
@@ -12,8 +15,18 @@ import { Button } from './';
 
 export default {
   component: Button,
+  decorators,
   title: `${Sections.Elements}/Button`,
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
 
 const getText = ({
   variant,
@@ -24,36 +37,36 @@ const getText = ({
 };
 
 export const Default = () => (
-  <>
+  <Container>
     {variants.map((variant) =>
       shapes.map((shape) => (
-        <div style={{ marginBottom: '1em' }}>
+        <Container>
           <Button onClick={action('clicked')} key={`${variant}`} variant={variant} shape={shape}>
             {getText({ variant, shape })}
           </Button>
-        </div>
+        </Container>
       )),
     )}
-  </>
+  </Container>
 );
 
 export const Sizes = () => (
-  <>
+  <Container>
     {sizes.map((size) => (
-      <div style={{ marginBottom: '1em' }}>
+      <Container>
         <Button onClick={action('clicked')} key={`${size}`} variant="primary" size={size}>
           A {size} button
         </Button>
-      </div>
+      </Container>
     ))}
-  </>
+  </Container>
 );
 
 export const Disabled = () => (
-  <>
+  <Container>
     {variants.map((variant) =>
       shapes.map((shape) => (
-        <div style={{ marginBottom: '1em' }}>
+        <Container>
           <Button
             onClick={action('clicked')}
             key={`${variant}`}
@@ -63,17 +76,17 @@ export const Disabled = () => (
           >
             {getText({ variant, shape })}
           </Button>
-        </div>
+        </Container>
       )),
     )}
-  </>
+  </Container>
 );
 
 export const AsAnchor = () => (
-  <>
+  <Container>
     {variants.map((variant) =>
       shapes.map((shape) => (
-        <div style={{ marginBottom: '1em' }}>
+        <Container>
           <Button
             href="https://binance.org"
             onClick={action('clicked')}
@@ -83,16 +96,16 @@ export const AsAnchor = () => (
           >
             {getText({ variant, shape })}
           </Button>
-        </div>
+        </Container>
       )),
     )}
-  </>
+  </Container>
 );
 
 export const WithIcon = () => (
-  <>
+  <Container>
     {variants.map((variant) => (
-      <div style={{ marginBottom: '1em' }}>
+      <Container>
         <Button
           href="https://binance.org"
           onClick={action('clicked')}
@@ -102,7 +115,7 @@ export const WithIcon = () => (
         >
           A button
         </Button>
-      </div>
+      </Container>
     ))}
-  </>
+  </Container>
 );

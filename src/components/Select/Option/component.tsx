@@ -10,8 +10,10 @@ export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & {
 
 export const Component = ({ children, onClick, 'data-testid': testId, ...otherProps }: Props) => {
   const { onClose, testId: parentTestId } = useContext(Context);
-  const buildTestIdParent = useBuildTestId(parentTestId);
-  const buildTestId = useBuildTestId(buildTestIdParent(testId ? `item.${testId}` : undefined));
+  const { buildTestId: buildTestIdParent } = useBuildTestId({ id: parentTestId });
+  const { buildTestId } = useBuildTestId({
+    id: buildTestIdParent(testId ? `item.${testId}` : undefined),
+  });
 
   const click = useCallback<NonNullable<Props['onClick']>>(
     (evt) => {

@@ -30,7 +30,7 @@ export const Component = ({
   onChange,
   'data-testid': testId,
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
 
   const stopPropagation = useCallback(
     (evt: React.MouseEvent, index: number) => {

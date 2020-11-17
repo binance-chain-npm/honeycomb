@@ -31,7 +31,7 @@ export const Component = ({
   'data-testid': testId,
   ...otherProps
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
 
   const isActive = useMemo(() => activePanel === index, [activePanel, index]);
   const boxTransitions = useTransition(isActive ? children : null, null, {

@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
+import { GoldLight } from '../../../modules/themes/themes/GoldLight';
+
 import { ReactComponent as HeaderLogo } from './Logo.svg';
 import { ReactComponent as HeaderLogoSmall } from './LogoSmall.svg';
 
@@ -11,7 +13,7 @@ export const Styled = styled.div`
 
 const logo = css`
   flex-shrink: 0;
-  fill: ${({ theme }) => theme.honeycomb.color.primary.normal};
+  fill: ${GoldLight.honeycomb.color.primary.normal};
   font-size: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;
 

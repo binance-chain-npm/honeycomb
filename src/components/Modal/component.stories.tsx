@@ -1,67 +1,71 @@
 import React, { useState } from 'react';
+import { Story } from '@storybook/react/types-6-0';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Button } from '../Button';
+import { Icon } from '../Icon';
 
 import { Modal } from './';
 
 export default {
+  component: Modal,
   title: `${Sections.Elements}/Modal`,
 };
 
 const items = new Array(200).fill(null).map((_, index) => <div key={index}>{index + 1}</div>);
-export const Behaviour = () => {
-  const [show, setShow] = useState(false);
+export const Default: Story = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)} data-testid="OpenButton">
-        Show
+      <Button variant="primary" onClick={() => setOpen(true)} data-testid="btn-open">
+        {open ? (
+          <Icon.EyeBlocked fontSize={GoldLight.honeycomb.size.increased} />
+        ) : (
+          <Icon.Eye fontSize={GoldLight.honeycomb.size.increased} />
+        )}
       </Button>
-      <Modal open={show} data-testid="MyModal">
-        <Modal.Header onClose={() => setShow(false)} title="A title" />
+      <Modal open={open} data-testid="modal">
+        <Modal.Header onClose={() => setOpen(false)} title="A Title" />
         <Modal.Content>{items}</Modal.Content>
       </Modal>
     </>
   );
 };
-
-export const WithTitle = () => (
-  <Modal open={true} data-testid="MyModal">
-    <Modal.Header title="A title" />
-    <Modal.Content>{items}</Modal.Content>
-  </Modal>
-);
+Default.decorators = decorators;
 
 export const TitleComponentWithLoading = () => (
-  <Modal open={true} data-testid="MyModal">
-    <Modal.Header loading={true} title={<div>A title</div>} />
+  <Modal open={true} data-testid="modal">
+    <Modal.Header loading={true} title={<div>A Title</div>} />
     <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
 
 export const WithTitleAtBottom = () => (
-  <Modal open={true} data-testid="MyModal" position="bottom">
-    <Modal.Header title="A title" />
+  <Modal open={true} data-testid="modal" position="bottom">
+    <Modal.Header title="A Title" />
     <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
 
 export const SmallWithTitle = () => (
-  <Modal open={true} data-testid="MyModal">
-    <Modal.Header title="A title" />
-    <Modal.Content>Just a line</Modal.Content>
+  <Modal open={true} data-testid="modal">
+    <Modal.Header title="A Title" />
+    <Modal.Content>Just a line...</Modal.Content>
   </Modal>
 );
 
 export const SmallWithTitleAtBottom = () => (
-  <Modal open={true} data-testid="MyModal" position="bottom">
-    <Modal.Header title="A title" />
-    <Modal.Content>Just a line</Modal.Content>
+  <Modal open={true} data-testid="modal" position="bottom">
+    <Modal.Header title="A Title" />
+    <Modal.Content>Just a line...</Modal.Content>
   </Modal>
 );
 
 export const WithoutTitle = () => (
-  <Modal open={true} data-testid="MyModal">
+  <Modal open={true} data-testid="modal">
     <Modal.Header />
     <Modal.Content>{items}</Modal.Content>
   </Modal>

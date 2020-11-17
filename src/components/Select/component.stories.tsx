@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 import { ListItem } from '../ListItem';
@@ -8,9 +9,10 @@ import { ListItem } from '../ListItem';
 // @ts-ignore
 import pic from './pic.png';
 
-import { Select } from '.';
+import { Select } from './';
 
 export default {
+  component: Select,
   title: `${Sections.Elements}/Select`,
 };
 
@@ -66,6 +68,7 @@ const data: Array<Option> = [
     icon: Icon.WarningCircleSolid,
   },
 ];
+const placeholder = 'Select an option...';
 
 export const Responsive = () => {
   const [open, setOpen] = useState(false);
@@ -85,7 +88,7 @@ export const Responsive = () => {
             left={selected ? <selected.icon /> : undefined}
             data-testid="select"
           >
-            {selected ? selected.label : 'Select an option...'}
+            {selected ? selected.label : placeholder}
           </Select.DefaultTarget>
         }
       >
@@ -105,6 +108,7 @@ export const Responsive = () => {
     </>
   );
 };
+Responsive.decorators = decorators;
 
 export const Dropdown = () => {
   const [open, setOpen] = useState(false);
@@ -125,7 +129,7 @@ export const Dropdown = () => {
             left={selected ? <selected.icon /> : undefined}
             data-testid="select"
           >
-            {selected ? selected.label : 'Select an option...'}
+            {selected ? selected.label : placeholder}
           </Select.DefaultTarget>
         }
       >
@@ -154,7 +158,7 @@ const StyledSelectOption = styled(Select.Option)`
 
 export const Modal = () => {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState('Add');
+  const [selected, setSelected] = useState('');
 
   return (
     <>
@@ -166,7 +170,7 @@ export const Modal = () => {
         onClose={() => setOpen(false)}
         target={
           <Select.DefaultTarget onClick={() => setOpen((value) => !value)} data-testid="select">
-            {selected ? selected : 'Select an option...'}
+            {selected ? selected : placeholder}
           </Select.DefaultTarget>
         }
       >
@@ -216,7 +220,7 @@ export const NonFilterable = () => {
         <div data-testid="div">Some non-filterable element</div>
         {new Array(5).fill(null).map((_, index) => (
           <Select.Option key={index} searchAs="" data-testid={`${index}`}>
-            {index}
+            {index + 1}
           </Select.Option>
         ))}
       </Select>

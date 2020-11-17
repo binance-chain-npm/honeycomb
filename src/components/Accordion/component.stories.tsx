@@ -1,16 +1,27 @@
 import React, { useCallback, useState } from 'react';
+import styled from 'styled-components';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
+import { Icon } from '../Icon';
+import { ListItem } from '../ListItem';
 
-import { Accordion } from '.';
+import { Accordion } from './';
 
 export default {
+  component: Accordion,
+  decorators,
   title: `${Sections.Elements}/Accordion`,
 };
 
 type Panels = React.ComponentPropsWithoutRef<typeof Accordion>['panels'];
 
-export const Behaviour = () => {
+const StyledListItem = styled(ListItem)`
+  height: 2em;
+`;
+
+export const Default = () => {
   const [activePanel, setActivePanel] = useState(-1);
 
   const changePanel = useCallback((index) => {
@@ -20,11 +31,20 @@ export const Behaviour = () => {
   const panels: Panels = new Array(5).fill(null).map((_, index) => {
     return {
       element: (
-        <div style={{ height: '3em', display: 'flex', alignItems: 'center' }}>
-          Accordion {index}
-        </div>
+        <ListItem
+          right={
+            activePanel === index ? (
+              <Icon.CaretUp fontSize={GoldLight.honeycomb.size.small} />
+            ) : (
+              <Icon.CaretDown fontSize={GoldLight.honeycomb.size.small} />
+            )
+          }
+          data-testid={'item'}
+        >
+          Accordion {index + 1}
+        </ListItem>
       ),
-      children: <div style={{ marginLeft: '1em' }}>Panel {index}</div>,
+      children: <StyledListItem data-testid={'child'}>Panel {index + 1}</StyledListItem>,
     };
   });
 

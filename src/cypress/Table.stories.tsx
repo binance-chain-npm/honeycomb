@@ -6,6 +6,7 @@ import { Dropdown } from '../components/Dropdown';
 import { Table } from '../components/Table';
 
 export default {
+  component: Table,
   title: `${Sections.Tests}/Table`,
 };
 

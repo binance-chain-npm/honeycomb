@@ -56,7 +56,7 @@ export const Component = ({
   dynamic = false,
   ...otherProps
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const id = useMemo(() => otherProps.id || `id-${nanoid()}`, [otherProps.id]);
   const [isFocused, setFocused] = useState(false);
   const [isPristine, setIsPristine] = useState(!value);

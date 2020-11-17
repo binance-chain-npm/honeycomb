@@ -1,20 +1,49 @@
 import React, { useState } from 'react';
+import { Story } from '@storybook/react/types-6-0';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 
-import { ModalState } from '.';
+import { ModalState } from './';
 
 export default {
+  component: ModalState,
   title: `${Sections.Elements}/ModalState`,
 };
 
 const scenario = {
-  name: 'Warning',
-  description: 'Some description to guide users to understand this warning.',
+  name: 'Title',
+  description: 'Some description...',
   children: null as React.ReactNode,
 };
+
+export const Default: Story = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button variant="primary" onClick={() => setOpen(true)} data-testid="open-btn">
+        {open ? (
+          <Icon.EyeBlocked fontSize={GoldLight.honeycomb.size.increased} />
+        ) : (
+          <Icon.Eye fontSize={GoldLight.honeycomb.size.increased} />
+        )}
+      </Button>
+      <ModalState
+        open={open}
+        onClose={() => setOpen(false)}
+        data-testid="modal-state"
+        title={scenario.name}
+        description={scenario.description}
+        icon={<ModalState.Icon.Success />}
+      />
+    </>
+  );
+};
+Default.decorators = decorators;
 
 export const Success = () => (
   <ModalState
@@ -58,26 +87,6 @@ export const WithCustomIcon = () => (
     data-testid="modal-state"
     title={scenario.name}
     description={scenario.description}
-    icon={<Icon.Tick />}
+    icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}
   />
 );
-
-export const Behaviour = () => {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <>
-      <Button variant="primary" onClick={() => setOpen(true)} data-testid="open-btn">
-        Show
-      </Button>
-      <ModalState
-        open={open}
-        onClose={() => setOpen(false)}
-        data-testid="modal-state"
-        title={scenario.name}
-        description={scenario.description}
-        icon={<Icon.Tick />}
-      />
-    </>
-  );
-};

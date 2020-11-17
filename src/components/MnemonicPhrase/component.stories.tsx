@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
 import { MnemonicPhrase } from './';
 
 export default {
+  component: MnemonicPhrase,
+  decorators,
   title: `${Sections.Elements}/MnemonicPhrase`,
 };
 

@@ -1,15 +1,25 @@
 import React from 'react';
+import styled from 'styled-components';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
-import { SolidAvatar } from '.';
+import { SolidAvatar } from './';
 
 export default {
+  component: SolidAvatar,
+  decorators,
   title: `${Sections.Elements}/SolidAvatar`,
 };
 
+const Container = styled.div`
+  display: flex;
+  font-size: 5em;
+  flex-wrap: wrap;
+`;
+
 export const Default = () => (
-  <div style={{ fontSize: '5em' }}>
+  <Container>
     <SolidAvatar value="9" initial="ภ" />
     <SolidAvatar value="4" initial="鲁" />
     <SolidAvatar value="30" initial="A" />
@@ -26,5 +36,5 @@ export const Default = () => (
     <SolidAvatar value="2" initial="ᨒᨚ" />
     <SolidAvatar value="50" initial="བོ" />
     <SolidAvatar value="8" initial="ᠮ" />
-  </div>
+  </Container>
 );

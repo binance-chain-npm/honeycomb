@@ -26,7 +26,7 @@ export const Component = ({
   canScanQrCode = true,
   'data-testid': testId,
 }: Props) => {
-  const buildTestId = useBuildTestId(testId);
+  const { buildTestId } = useBuildTestId({ id: testId });
   const [showQRCode, setShowQRCode] = useState(false);
 
   const { width } = useWindowSize();

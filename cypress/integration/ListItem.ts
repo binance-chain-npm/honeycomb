@@ -1,5 +1,5 @@
 describe('ListItem', () => {
-  it('exposes value when typing', () => {
+  it('renders correctly', () => {
     cy.visitStory({ storyId: 'elements-listitem--default', themeId: 'GoldLight' });
     cy.percySnapshot('ListItem');
   });

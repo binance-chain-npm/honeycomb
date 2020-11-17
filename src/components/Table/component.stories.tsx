@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Story } from '@storybook/react/types-6-0';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Card } from '../Card';
 import { AbstractAvatar } from '../AbstractAvatar';
@@ -8,25 +11,31 @@ import { Space } from '../Space';
 import { Table } from './';
 
 export default {
+  component: Table,
   title: `${Sections.Elements}/Table`,
 };
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const data = new Array(200).fill(null).map(
   (_, index) =>
     ({
       col1: (
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        <Header>
           <AbstractAvatar value="hello" />
           <Space size="small" />
           {index + 1} Hello
-        </div>
+        </Header>
       ),
       col2: (
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        <Header>
           <AbstractAvatar value="World" />
           <Space size="small" />
           World
-        </div>
+        </Header>
       ),
     } as const),
 );
@@ -42,19 +51,25 @@ const columns = [
   } as const,
 ];
 
+export const Default = () => (
+  <Card variant="bare">
+    <Table data={data.slice(0, 10)} columns={columns} />
+  </Card>
+);
+
 export const NoHeader = () => (
   <Card variant="bare">
-    <Table data={data} columns={columns} hasHeader={false} />
+    <Table data={data.slice(0, 10)} columns={columns} hasHeader={false} />
   </Card>
 );
 
 export const Interactive = () => (
   <Card variant="bare">
-    <Table data={data} columns={columns} interactive />
+    <Table data={data.slice(0, 10)} columns={columns} interactive />
   </Card>
 );
 
-export const ControlledWithPagination = () => {
+export const ControlledWithPagination: Story = () => {
   const [pageIndex, setPageIndex] = useState(5);
   const pageSize = 3;
 
@@ -73,3 +88,4 @@ export const ControlledWithPagination = () => {
     </Card>
   );
 };
+ControlledWithPagination.decorators = decorators;

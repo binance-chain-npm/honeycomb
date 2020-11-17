@@ -19,9 +19,9 @@ export const Component = ({
   'data-testid': testId,
 }: Props) => {
   const parentTestId = useContext(TestIdContext);
-  const buildTestId = useBuildTestId(
-    testId ?? (parentTestId ? `${parentTestId}.content` : undefined),
-  );
+  const { buildTestId } = useBuildTestId({
+    id: testId ?? (parentTestId ? `${parentTestId}.content` : undefined),
+  });
 
   return (
     <Scroll>

@@ -1,16 +1,18 @@
 import React, { useMemo } from 'react';
 import { action } from '@storybook/addon-actions';
 
+import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { sizes, useWindowSize } from '../internal/useWindowSize';
 
-import { Header } from '.';
+import { Header } from './';
 
 export default {
   component: Header,
+  decorators,
   title: `${Sections.Elements}/Header`,
 };
 

@@ -1,40 +1,35 @@
 describe('Table', () => {
-  it('renders properly with Gold Light theme', () => {
+  it('renders correctly', () => {
     cy.visitStory({ storyId: 'elements-table--controlled-with-pagination', themeId: 'GoldLight' });
     cy.clock();
 
-    cy.get('[data-testid="table.row0.col1.td"]').should('contain.text', '16 Hello');
-    cy.get('[data-testid="table.pagination.go-to-0-btn"]').should('have.text', '1');
-    cy.get('[data-testid="table.pagination.go-to-0-btn"]').click();
+    cy.get('[data-testid="light.table.row0.col1.td"]').should('contain.text', '16 Hello');
+    cy.get('[data-testid="light.table.pagination.go-to-0-btn"]').should('have.text', '1');
+    cy.get('[data-testid="light.table.pagination.go-to-0-btn"]').click();
     cy.tick(10000);
-    cy.get('[data-testid="table.row0.col1.td"]').should('contain.text', '1 Hello');
-    cy.get('[data-testid="table.pagination.0.ellipsis"]').should('not.exist');
-    cy.get('[data-testid="table.pagination.1.ellipsis"]').should('exist');
+    cy.get('[data-testid="light.table.row0.col1.td"]').should('contain.text', '1 Hello');
+    cy.get('[data-testid="light.table.pagination.0.ellipsis"]').should('not.exist');
+    cy.get('[data-testid="light.table.pagination.1.ellipsis"]').should('exist');
 
-    cy.percySnapshot('Table (page 1) with Gold Light theme');
+    cy.percySnapshot('Table (page 1)');
 
-    cy.get('[data-testid="table.pagination.go-to-1-btn"]').click();
+    cy.get('[data-testid="light.table.pagination.go-to-1-btn"]').click();
     cy.tick(10000);
-    cy.get('[data-testid="table.pagination.0.ellipsis"]').should('not.exist');
-    cy.get('[data-testid="table.pagination.2.ellipsis"]').should('exist');
+    cy.get('[data-testid="light.table.pagination.0.ellipsis"]').should('not.exist');
+    cy.get('[data-testid="light.table.pagination.2.ellipsis"]').should('exist');
 
-    cy.percySnapshot('Table (page 2) with Gold Light theme');
+    cy.percySnapshot('Table (page 2)');
 
-    cy.get('[data-testid="table.pagination.go-to-2-btn"]').click();
+    cy.get('[data-testid="light.table.pagination.go-to-2-btn"]').click();
     cy.tick(10000);
-    cy.get('[data-testid="table.pagination.0.ellipsis"]').should('not.exist');
-    cy.get('[data-testid="table.pagination.3.ellipsis"]').should('exist');
-    cy.get('[data-testid="table.pagination.go-to-3-btn"]').click();
+    cy.get('[data-testid="light.table.pagination.0.ellipsis"]').should('not.exist');
+    cy.get('[data-testid="light.table.pagination.3.ellipsis"]').should('exist');
+    cy.get('[data-testid="light.table.pagination.go-to-3-btn"]').click();
     cy.tick(10000);
-    cy.get('[data-testid="table.pagination.0.ellipsis"]').should('exist');
-    cy.get('[data-testid="table.pagination.4.ellipsis"]').should('exist');
+    cy.get('[data-testid="light.table.pagination.0.ellipsis"]').should('exist');
+    cy.get('[data-testid="light.table.pagination.4.ellipsis"]').should('exist');
 
-    cy.percySnapshot('Table (page 4) with Gold Light theme');
-  });
-
-  it('renders properly with Gold Dark theme', () => {
-    cy.visitStory({ storyId: 'elements-table--controlled-with-pagination', themeId: 'GoldDark' });
-    cy.percySnapshot('Table with Gold Dark theme');
+    cy.percySnapshot('Table (page 4)');
   });
 
   it('goes back to first page if page index is invalid', () => {
