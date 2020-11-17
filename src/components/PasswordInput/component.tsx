@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { TextInput } from '../TextInput';
@@ -20,6 +21,7 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
+  const theme = useTheme();
   const [shouldDisplay, setShouldDisplay] = useState(false);
 
   const focus = useCallback<NonNullable<Props['onFocus']>>(
@@ -50,7 +52,7 @@ export const Component = ({
           data-testid={buildTestId('toggle-show')}
           htmlTag="button"
           onClick={() => setShouldDisplay(!shouldDisplay)}
-          style={{ fontSize: 24 }}
+          style={{ fontSize: theme.honeycomb.size.increased }}
         >
           {shouldDisplay ? <Icon.EyeBlocked /> : <Icon.Eye />}
         </Styleless>
