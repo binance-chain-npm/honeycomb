@@ -27,7 +27,11 @@ export const Default = () => {
 
 export const WithValidationIcons = () => {
   const [value, setValue] = useState('');
-  const validationProps = usePasswordInputValidation({ value, 'data-testid': 'password-input', icons: true });
+  const validationProps = usePasswordInputValidation({
+    value,
+    'data-testid': 'password-input',
+    icons: true,
+  });
 
   return (
     <PasswordInput
