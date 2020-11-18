@@ -4,8 +4,8 @@ import { em } from 'polished';
 import { boxSizing } from '../../modules/box-sizing';
 import { SIZES } from '../internal/useWindowSize';
 
-export const positions = ['center', 'bottom'] as const;
-export type Position = typeof positions[number];
+export const POSITIONS = ['center', 'bottom'] as const;
+export type Position = typeof POSITIONS[number];
 
 export const bigScreen = `min-width: ${em(SIZES.md)}`;
 
