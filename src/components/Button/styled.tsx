@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { Shape, fill, fit, square } from '../internal/Shape';
-import { Size, increased, huge, giant } from '../internal/Size';
+import { Size, normal, increased, huge, giant } from '../internal/Size';
 import { styleless as stylelessCommon } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
 import { Space } from '../Space';
@@ -159,6 +159,7 @@ export const Styled = styled.button<Props>`
   ${({ variant }) => variant === 'primary' && primary};
   ${({ variant }) => variant === 'transparent' && transparent};
 
+  ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
   ${({ size }) => size === 'giant' && giant};

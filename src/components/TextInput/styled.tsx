@@ -2,7 +2,7 @@ import styled, { css, DefaultTheme } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
-import { Size, increased, huge, giant } from '../internal/Size';
+import { Size, normal, increased, huge, giant } from '../internal/Size';
 
 export type ValidationMessage = { label: React.ReactNode; state?: State; alwaysShow?: boolean };
 
@@ -67,6 +67,7 @@ export const InputContainer = styled.div<InputContainerProps>`
   overflow: hidden;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
+  ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
   ${({ size }) => size === 'giant' && giant};
@@ -91,6 +92,8 @@ export const InputContainer = styled.div<InputContainerProps>`
 
 const getDynamicFontSize = (theme: DefaultTheme, size: Size) => {
   switch (size) {
+    case 'normal':
+      return theme.honeycomb.size.reduced;
     case 'increased':
       return theme.honeycomb.size.reduced;
     case 'huge':
@@ -123,18 +126,11 @@ export const Input = styled.div<InputProps>`
   }
 
   ${({ dynamic, size }) =>
-    (size === 'increased' &&
+    ((size === 'normal' || size === 'increased' || size === 'huge') &&
       css`
-        height: ${({ theme }) =>
-          em(theme.honeycomb.size.increased - 2, theme.honeycomb.size.reduced)};
+        height: ${({ theme }) => em(theme.honeycomb.size[size] - 2, theme.honeycomb.size.reduced)};
         line-height: ${({ theme }) =>
-          em(theme.honeycomb.size.increased - 2, theme.honeycomb.size.reduced)};
-      `) ||
-    (size === 'huge' &&
-      css`
-        height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
-        line-height: ${({ theme }) =>
-          em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
+          em(theme.honeycomb.size[size] - 2, theme.honeycomb.size.reduced)};
       `) ||
     (size === 'giant' &&
       (dynamic

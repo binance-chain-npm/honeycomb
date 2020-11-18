@@ -1,8 +1,15 @@
 import { css } from 'styled-components';
 import { em } from 'polished';
 
-export const sizes = ['increased', 'huge', 'giant'] as const;
+export const sizes = ['normal', 'increased', 'huge', 'giant'] as const;
 export type Size = typeof sizes[number];
+
+export const normal = css`
+  height: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
+  padding-left: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.reduced)};
+  padding-right: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.reduced)};
+`;
 
 export const increased = css`
   height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
