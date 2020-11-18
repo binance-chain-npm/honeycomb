@@ -39,16 +39,30 @@ export const Default = () => {
       ))}
 
       <h3>color</h3>
+      <Text size="small" style={{ justifyContent: 'flex-start' }}>
+        default="normal"
+      </Text>
       <Space size="normal" />
-      <Text>normal</Text>
-      <Text color={theme.honeycomb.color.text.masked}>masked</Text>
-      <Text color={theme.honeycomb.color.text.primary}>primary</Text>
+      <Text size="normal">normal</Text>
+      <Text size="normal" color={theme.honeycomb.color.text.masked}>
+        masked
+      </Text>
+      <Text size="normal" color={theme.honeycomb.color.text.primary}>
+        primary
+      </Text>
 
       <h3>weight</h3>
+      <Text size="small" style={{ justifyContent: 'flex-start' }}>
+        default="regular"
+      </Text>
       <Space size="normal" />
-      <Text weight="light">light</Text>
-      <Text>regular</Text>
-      <Text weight="bold">bold</Text>
+      <Text size="normal" weight="light">
+        light
+      </Text>
+      <Text size="normal">regular</Text>
+      <Text size="normal" weight="bold">
+        bold
+      </Text>
     </Container>
   );
 };

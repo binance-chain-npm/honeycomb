@@ -19,12 +19,11 @@ export type Size = typeof sizes[number];
 export const weights = ['light', 'regular', 'bold'] as const;
 export type Weight = typeof weights[number];
 
-export const Styled = styled.div<{ color?: string; size?: Size; weight?: Weight }>`
+export const Styled = styled.div<{ color?: string; size: Size; weight?: Weight }>`
   ${styleless};
   ${boxSizing};
 
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
-  font-size: ${({ theme }) => em(theme.honeycomb.size.normal)};
   font-weight: 400;
 
   ${({ color }) =>

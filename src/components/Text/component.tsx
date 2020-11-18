@@ -9,7 +9,7 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
   Testable & {
     htmlTag?: HtmlTag;
     color?: string;
-    size?: Size;
+    size: Size;
     weight?: Weight;
   };
 
