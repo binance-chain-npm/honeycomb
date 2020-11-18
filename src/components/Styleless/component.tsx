@@ -5,7 +5,8 @@ import { HtmlTag } from '../../modules/html-tag';
 
 import { Styled } from './styled';
 
-export type Props = React.AllHTMLAttributes<HTMLElement> & Testable & { htmlTag?: HtmlTag };
+export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
+  Testable & { htmlTag?: HtmlTag };
 
 export const Component = ({ htmlTag, ...otherProps }: Props) => (
   <Styled {...otherProps} as={htmlTag as any} />

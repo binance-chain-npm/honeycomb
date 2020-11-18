@@ -13,25 +13,25 @@ export default {
 };
 
 export const paragraph = () => (
-  <Styleless onClick={action('clicked')} as="p">
+  <Styleless onClick={action('clicked')} htmlTag="p">
     Some text
   </Styleless>
 );
 
 export const heading = () => (
-  <Styleless onClick={action('clicked')} as="h1">
+  <Styleless onClick={action('clicked')} htmlTag="h1">
     This is a heading
   </Styleless>
 );
 
 export const anchor = () => (
-  <Styleless onClick={action('clicked')} as="a">
+  <Styleless onClick={action('clicked')} htmlTag="a">
     This is an anchor tag
   </Styleless>
 );
 
 export const button = () => (
-  <Styleless onClick={action('clicked')} as="button">
+  <Styleless onClick={action('clicked')} htmlTag="button">
     This is a button
   </Styleless>
 );
