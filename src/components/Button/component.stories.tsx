@@ -9,7 +9,7 @@ import { Icon } from '../Icon';
 import { shapes } from '../internal/Shape';
 import { sizes } from '../internal/Size';
 
-import { variants } from './styled';
+import { VARIANTS } from './styled';
 
 import { Button } from './';
 
@@ -38,7 +38,7 @@ const getText = ({
 
 export const Default = () => (
   <Container>
-    {variants.map((variant) =>
+    {VARIANTS.map((variant) =>
       shapes.map((shape) => (
         <Container>
           <Button onClick={action('clicked')} key={`${variant}`} variant={variant} shape={shape}>
@@ -64,7 +64,7 @@ export const Sizes = () => (
 
 export const Disabled = () => (
   <Container>
-    {variants.map((variant) =>
+    {VARIANTS.map((variant) =>
       shapes.map((shape) => (
         <Container>
           <Button
@@ -84,7 +84,7 @@ export const Disabled = () => (
 
 export const AsAnchor = () => (
   <Container>
-    {variants.map((variant) =>
+    {VARIANTS.map((variant) =>
       shapes.map((shape) => (
         <Container>
           <Button
@@ -104,7 +104,7 @@ export const AsAnchor = () => (
 
 export const WithIcon = () => (
   <Container>
-    {variants.map((variant) => (
+    {VARIANTS.map((variant) => (
       <Container>
         <Button
           href="https://binance.org"
