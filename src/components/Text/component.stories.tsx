@@ -23,13 +23,17 @@ const Container = styled.div`
 export const Default = () => {
   const theme = useTheme();
 
+  const values = new Map(Object.entries(theme.honeycomb.size));
+
   return (
     <Container>
       <h3>size</h3>
       <Space size="normal" />
       {sizes.map((size) => (
         <>
-          <Text size={size}>{size}</Text>
+          <Text size={size}>
+            {size} ({values.get(size)}px)
+          </Text>
           <Space size="normal" />
         </>
       ))}
