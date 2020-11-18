@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Accordion } from '../Accordion';
-import { sizes, useWindowSize } from '../internal/useWindowSize';
+import { SIZES, useWindowSize } from '../internal/useWindowSize';
 import { ListItem } from '../ListItem';
 
 import { HeaderDrawer } from './HeaderDrawer';
@@ -63,8 +63,8 @@ export const Component = ({
     setActivePanel((prev) => (prev === index ? -1 : index));
   }, []);
 
-  const isMd = useMemo(() => width < sizes.lg, [width]);
-  const isSm = useMemo(() => width < sizes.md, [width]);
+  const isMd = useMemo(() => width < SIZES.lg, [width]);
+  const isSm = useMemo(() => width < SIZES.md, [width]);
 
   const rightHeaderItems = useMemo(() => {
     let rightElements: HeaderItem[] = [];

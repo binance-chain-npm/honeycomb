@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
-import { sizes } from '../internal/useWindowSize';
+import { SIZES } from '../internal/useWindowSize';
 
 export const positions = ['center', 'bottom'] as const;
 export type Position = typeof positions[number];
 
-export const bigScreen = `min-width: ${em(sizes.md)}`;
+export const bigScreen = `min-width: ${em(SIZES.md)}`;
 
 export const Container = styled.div`
   ${boxSizing};

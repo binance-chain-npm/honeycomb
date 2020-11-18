@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Badge } from '../../Badge';
-import { sizes, useWindowSize } from '../../internal/useWindowSize';
+import { SIZES, useWindowSize } from '../../internal/useWindowSize';
 import { Space } from '../../Space';
 
 import { Styled, Logo, LogoSmall } from './styled';
@@ -16,7 +16,7 @@ export const Component = ({ text, 'data-testid': testId }: Props) => {
 
   const { width } = useWindowSize();
 
-  const isSm = useMemo(() => width < sizes.md, [width]);
+  const isSm = useMemo(() => width < SIZES.md, [width]);
 
   return (
     <Styled data-testid={buildTestId()}>

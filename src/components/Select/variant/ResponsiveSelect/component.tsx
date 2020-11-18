@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
-import { useWindowSize, sizes } from '../../../internal/useWindowSize';
+import { useWindowSize, SIZES } from '../../../internal/useWindowSize';
 import { DropdownSelect } from '../DropdownSelect';
 import { ModalSelect } from '../ModalSelect';
 import { Select } from '../../../Select';
@@ -15,7 +15,7 @@ export const Component = ({ onClose, 'data-testid': testId, ...otherProps }: Pro
 
   return (
     <>
-      {width < sizes.md ? (
+      {width < SIZES.md ? (
         <ModalSelect
           target={otherProps.target}
           open={otherProps.open}

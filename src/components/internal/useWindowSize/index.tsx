@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const sizes = {
+export const SIZES = {
   xs: 0,
   sm: 375,
   md: 768,
