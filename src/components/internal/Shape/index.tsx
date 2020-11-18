@@ -3,8 +3,8 @@ import { em } from 'polished';
 
 import { Size } from '../Size';
 
-export const shapes = ['fill', 'fit', 'square'] as const;
-export type Shape = typeof shapes[number];
+export const SHAPES = ['fill', 'fit', 'square'] as const;
+export type Shape = typeof SHAPES[number];
 
 export const fill = css`
   width: 100%;

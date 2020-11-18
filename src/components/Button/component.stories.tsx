@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
-import { shapes } from '../internal/Shape';
+import { SHAPES } from '../internal/Shape';
 import { sizes } from '../internal/Size';
 
 import { VARIANTS } from './styled';
@@ -39,7 +39,7 @@ const getText = ({
 export const Default = () => (
   <Container>
     {VARIANTS.map((variant) =>
-      shapes.map((shape) => (
+      SHAPES.map((shape) => (
         <Container>
           <Button onClick={action('clicked')} key={`${variant}`} variant={variant} shape={shape}>
             {getText({ variant, shape })}
@@ -65,7 +65,7 @@ export const Sizes = () => (
 export const Disabled = () => (
   <Container>
     {VARIANTS.map((variant) =>
-      shapes.map((shape) => (
+      SHAPES.map((shape) => (
         <Container>
           <Button
             onClick={action('clicked')}
@@ -85,7 +85,7 @@ export const Disabled = () => (
 export const AsAnchor = () => (
   <Container>
     {VARIANTS.map((variant) =>
-      shapes.map((shape) => (
+      SHAPES.map((shape) => (
         <Container>
           <Button
             href="https://binance.org"
