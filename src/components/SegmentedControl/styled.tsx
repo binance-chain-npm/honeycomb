@@ -6,8 +6,8 @@ import { Shape as ComponentShape, fit } from '../internal/Shape';
 import { Size, normal, increased, huge, giant } from '../internal/Size';
 import { styleless } from '../Styleless';
 
-export const variants = ['segmented', 'tab'] as const;
-export type Variant = typeof variants[number];
+export const VARIANTS = ['segmented', 'tab'] as const;
+export type Variant = typeof VARIANTS[number];
 
 export type Shape = Omit<ComponentShape, 'square'>;
 
