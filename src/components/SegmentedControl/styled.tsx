@@ -3,7 +3,7 @@ import { em, transitions } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
 import { Shape as ComponentShape, fit } from '../internal/Shape';
-import { Size, increased, huge, giant } from '../internal/Size';
+import { Size, normal, increased, huge, giant } from '../internal/Size';
 import { styleless } from '../Styleless';
 
 export const variants = ['segmented', 'tab'] as const;
@@ -52,6 +52,7 @@ export const Element = styled.li<ElementProps>`
   height: 100%;
   font-weight: 600;
 
+  ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
   ${({ size }) => size === 'giant' && giant};
@@ -76,6 +77,7 @@ export const Container = styled.ul<ContainerProps>`
   position: relative;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
+  ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
   ${({ size }) => size === 'giant' && giant};
