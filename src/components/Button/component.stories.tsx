@@ -7,7 +7,7 @@ import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
 import { SHAPES } from '../internal/Shape';
-import { sizes } from '../internal/Size';
+import { SIZES } from '../internal/Size';
 
 import { VARIANTS } from './styled';
 
@@ -52,7 +52,7 @@ export const Default = () => (
 
 export const Sizes = () => (
   <Container>
-    {sizes.map((size) => (
+    {SIZES.map((size) => (
       <Container>
         <Button onClick={action('clicked')} key={`${size}`} variant="primary" size={size}>
           A {size} button

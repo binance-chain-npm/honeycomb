@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 import { em } from 'polished';
 
-export const sizes = ['normal', 'increased', 'huge', 'giant'] as const;
-export type Size = typeof sizes[number];
+export const SIZES = ['normal', 'increased', 'huge', 'giant'] as const;
+export type Size = typeof SIZES[number];
 
 export const normal = css`
   height: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
