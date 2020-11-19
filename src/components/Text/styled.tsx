@@ -4,7 +4,7 @@ import { em } from 'polished';
 import { boxSizing } from '../../modules/box-sizing';
 import { styleless } from '../Styleless';
 
-export const sizes = [
+export const SIZES = [
   'micro',
   'tiny',
   'small',
@@ -14,10 +14,10 @@ export const sizes = [
   'huge',
   'giant',
 ] as const;
-export type Size = typeof sizes[number];
+export type Size = typeof SIZES[number];
 
-export const weights = ['light', 'regular', 'bold'] as const;
-export type Weight = typeof weights[number];
+export const WEIGHTS = ['light', 'regular', 'bold'] as const;
+export type Weight = typeof WEIGHTS[number];
 
 export const Styled = styled.div<{ color?: string; size: Size; weight?: Weight }>`
   ${styleless};
