@@ -9,7 +9,7 @@ import { HoneycombThemeProvider } from '../../modules/themes';
 import { Space } from '../Space';
 import { Button } from '../Button';
 
-import { radii, sizes, variants } from './styled';
+import { RADII, SIZES, VARIANTS } from './styled';
 
 import { Tooltip } from './';
 
@@ -61,7 +61,7 @@ export const Variants = () => {
       <h3>padding</h3>
       <Label>default="small"</Label>
       <Row>
-        {sizes.map((size) => (
+        {SIZES.map((size) => (
           <Tooltip visible content={size} padding={size}>
             <div />
           </Tooltip>
@@ -72,7 +72,7 @@ export const Variants = () => {
       <h3>radius</h3>
       <Label>default="reduced"</Label>
       <Row>
-        {radii.map((radius) => (
+        {RADII.map((radius) => (
           <Tooltip visible content={radius} radius={radius}>
             <div />
           </Tooltip>
@@ -83,7 +83,7 @@ export const Variants = () => {
       <h3>variant</h3>
       <Label>default="normal"</Label>
       <Row>
-        {variants.map((variant) => (
+        {VARIANTS.map((variant) => (
           <Tooltip visible content={variant} variant={variant}>
             <div />
           </Tooltip>

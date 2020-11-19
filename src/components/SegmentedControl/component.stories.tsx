@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
-import { sizes } from '../internal/Size';
+import { SIZES } from '../internal/Size';
 import { Space } from '../Space';
 
 import { Variant } from './styled';
@@ -27,7 +27,7 @@ const render = (
   variant?: Variant,
 ) => (
   <Container>
-    {sizes.map((size, index) => (
+    {SIZES.map((size, index) => (
       <>
         <h3>{size}</h3>
         <SegmentedControl

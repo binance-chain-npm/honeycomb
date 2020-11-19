@@ -3,8 +3,8 @@ import { em } from 'polished';
 
 import { ListItem } from '../../ListItem';
 
-export const variants = ['normal', 'accent'] as const;
-export type Variant = typeof variants[number];
+export const VARIANTS = ['normal', 'accent'] as const;
+export type Variant = typeof VARIANTS[number];
 
 const accent = css`
   font-weight: 600;

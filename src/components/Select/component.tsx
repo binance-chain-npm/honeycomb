@@ -10,8 +10,8 @@ import { ModalSelect } from './variant/ModalSelect';
 import { ResponsiveSelect } from './variant/ResponsiveSelect';
 import { Container, OptionsContainer, Search, Options, OptionsTitle } from './styled';
 
-export const variants = ['responsive', 'dropdown', 'modal'] as const;
-export type Variant = typeof variants[number];
+export const VARIANTS = ['responsive', 'dropdown', 'modal'] as const;
+export type Variant = typeof VARIANTS[number];
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Testable & {

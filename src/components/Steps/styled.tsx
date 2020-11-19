@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-export const orientation = ['horizontal', 'vertical'] as const;
-export type Orientation = typeof orientation[number];
+export const ORIENTATION = ['horizontal', 'vertical'] as const;
+export type Orientation = typeof ORIENTATION[number];
 
 export const Styled = styled.div<{ orientation: Orientation }>`
   display: flex;

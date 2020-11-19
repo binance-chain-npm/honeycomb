@@ -5,7 +5,7 @@ import { em } from 'polished';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
-import { variants } from './styled';
+import { VARIANTS } from './styled';
 
 import { Badge } from './';
 
@@ -27,7 +27,7 @@ const Container = styled.div`
 
 export const Default = () => (
   <Container>
-    {variants.map((variant) => (
+    {VARIANTS.map((variant) => (
       <Badge variant={variant}>{variant}</Badge>
     ))}
   </Container>

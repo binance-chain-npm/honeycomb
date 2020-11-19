@@ -6,7 +6,7 @@ import { Sections } from '../../modules/sections';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
-import { sizes, useWindowSize } from '../internal/useWindowSize';
+import { SIZES, useWindowSize } from '../internal/useWindowSize';
 
 import { Header } from './';
 
@@ -89,8 +89,8 @@ export const WithDropdownItems = () => (
 export const WithNonCollapsibleItems = () => {
   const { width } = useWindowSize();
 
-  const isMd = useMemo(() => width < sizes.lg, [width]);
-  const isSm = useMemo(() => width < sizes.md, [width]);
+  const isMd = useMemo(() => width < SIZES.lg, [width]);
+  const isSm = useMemo(() => width < SIZES.md, [width]);
 
   return (
     <>

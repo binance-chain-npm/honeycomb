@@ -7,7 +7,7 @@ import { styleless as stylelessCommon } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
 import { Space } from '../Space';
 
-export const variants = [
+export const VARIANTS = [
   'transparent',
   'primary',
   'secondary',
@@ -16,7 +16,7 @@ export const variants = [
   'buy',
   'sell',
 ] as const;
-export type Variant = typeof variants[number];
+export type Variant = typeof VARIANTS[number];
 
 export interface Props {
   variant: Variant;

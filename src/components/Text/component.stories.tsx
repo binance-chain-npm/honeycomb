@@ -5,7 +5,7 @@ import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Space } from '../Space';
 
-import { sizes } from './styled';
+import { SIZES, WEIGHTS } from './styled';
 
 import { Text } from './';
 
@@ -29,18 +29,18 @@ export const Default = () => {
     <Container>
       <h3>size</h3>
       <Space size="normal" />
-      {sizes.map((size) => (
+      {SIZES.map((size) => (
         <>
           <Text size={size}>
             {size} ({values.get(size)}px)
           </Text>
-          <Space size="normal" />
+          <Space size="tiny" />
         </>
       ))}
 
       <h3>color</h3>
       <Text size="small" style={{ justifyContent: 'flex-start' }}>
-        default="normal"
+        default=theme "normal"
       </Text>
       <Space size="normal" />
       <Text size="normal">normal</Text>
@@ -56,13 +56,11 @@ export const Default = () => {
         default="regular"
       </Text>
       <Space size="normal" />
-      <Text size="normal" weight="light">
-        light
-      </Text>
-      <Text size="normal">regular</Text>
-      <Text size="normal" weight="bold">
-        bold
-      </Text>
+      {WEIGHTS.map((weight) => (
+        <Text size="normal" weight={weight}>
+          {weight}
+        </Text>
+      ))}
     </Container>
   );
 };

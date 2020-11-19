@@ -7,17 +7,17 @@ import { boxSizing } from '../../modules/box-sizing';
 import { GoldDark } from '../../modules/themes/themes/GoldDark';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
 
-export const sizes = ['reduced', 'small', 'tiny', 'micro', 'none'] as const;
-export type Size = typeof sizes[number];
+export const SIZES = ['reduced', 'small', 'tiny', 'micro', 'none'] as const;
+export type Size = typeof SIZES[number];
 
-export const radii = ['increased', 'normal', 'reduced'] as const;
-export type Radius = typeof radii[number];
+export const RADII = ['increased', 'normal', 'reduced'] as const;
+export type Radius = typeof RADII[number];
 
-export const variants = ['normal', 'accent'] as const;
-export type Variant = typeof variants[number];
+export const VARIANTS = ['normal', 'accent'] as const;
+export type Variant = typeof VARIANTS[number];
 
-export const shapes = ['fill', 'fit'] as const;
-export type Shape = typeof shapes[number];
+export const SHAPES = ['fill', 'fit'] as const;
+export type Shape = typeof SHAPES[number];
 
 export const Styles = createGlobalStyle<{ variant: Variant }>`
   ${tippy};

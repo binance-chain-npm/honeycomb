@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
-import { sizes } from '../internal/Size';
+import { SIZES } from '../internal/Size';
 import { Button } from '../Button';
 
 import { TextInput } from './';
@@ -53,7 +53,7 @@ export const Dynamic = () => {
 
   return (
     <>
-      {sizes.map((size) => (
+      {SIZES.map((size) => (
         <div style={{ marginBottom: '1em' }}>
           <TextInput
             value={value}
@@ -70,7 +70,7 @@ export const Dynamic = () => {
 
 export const Sizes = () => (
   <>
-    {sizes.map((size) => (
+    {SIZES.map((size) => (
       <div style={{ marginBottom: '1em' }}>
         <TextInput key={`${size}`} size={size} value={`A ${size} text input`} />
       </div>

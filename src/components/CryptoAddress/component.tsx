@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 
 import { Icon } from '../Icon';
-import { useWindowSize, sizes } from '../internal/useWindowSize';
+import { useWindowSize, SIZES } from '../internal/useWindowSize';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Modal } from '../Modal';
 import { Button } from '../Button';
@@ -56,7 +56,7 @@ export const Component = ({
       <CryptoAddress data-testid={buildTestId('address')}>{text || value}</CryptoAddress>
       {canScanQrCode && (
         <>
-          {width < sizes.md ? (
+          {width < SIZES.md ? (
             <>
               {scanQrCodeButton}
               <StyledModal open={showQRCode} data-testid={buildTestId('modal')}>

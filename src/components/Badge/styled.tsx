@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { em, transparentize } from 'polished';
 
-export const variants = [
+export const VARIANTS = [
   'success',
   'warning',
   'danger',
@@ -10,7 +10,7 @@ export const variants = [
   'sell',
   'cancel',
 ] as const;
-export type Variant = typeof variants[number];
+export type Variant = typeof VARIANTS[number];
 
 const success = css`
   background: ${({ theme }) => transparentize(0.9, theme.honeycomb.color.success.normal)};

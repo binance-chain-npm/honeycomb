@@ -6,10 +6,10 @@ import { action } from '@storybook/addon-actions';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
-import { shapes } from '../internal/Shape';
-import { sizes } from '../internal/Size';
+import { SHAPES } from '../internal/Shape';
+import { SIZES } from '../internal/Size';
 
-import { variants } from './styled';
+import { VARIANTS } from './styled';
 
 import { Button } from './';
 
@@ -38,8 +38,8 @@ const getText = ({
 
 export const Default = () => (
   <Container>
-    {variants.map((variant) =>
-      shapes.map((shape) => (
+    {VARIANTS.map((variant) =>
+      SHAPES.map((shape) => (
         <Container>
           <Button onClick={action('clicked')} key={`${variant}`} variant={variant} shape={shape}>
             {getText({ variant, shape })}
@@ -52,7 +52,7 @@ export const Default = () => (
 
 export const Sizes = () => (
   <Container>
-    {sizes.map((size) => (
+    {SIZES.map((size) => (
       <Container>
         <Button onClick={action('clicked')} key={`${size}`} variant="primary" size={size}>
           A {size} button
@@ -64,8 +64,8 @@ export const Sizes = () => (
 
 export const Disabled = () => (
   <Container>
-    {variants.map((variant) =>
-      shapes.map((shape) => (
+    {VARIANTS.map((variant) =>
+      SHAPES.map((shape) => (
         <Container>
           <Button
             onClick={action('clicked')}
@@ -84,8 +84,8 @@ export const Disabled = () => (
 
 export const AsAnchor = () => (
   <Container>
-    {variants.map((variant) =>
-      shapes.map((shape) => (
+    {VARIANTS.map((variant) =>
+      SHAPES.map((shape) => (
         <Container>
           <Button
             href="https://binance.org"
@@ -104,7 +104,7 @@ export const AsAnchor = () => (
 
 export const WithIcon = () => (
   <Container>
-    {variants.map((variant) => (
+    {VARIANTS.map((variant) => (
       <Container>
         <Button
           href="https://binance.org"
