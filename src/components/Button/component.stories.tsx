@@ -102,7 +102,7 @@ export const AsAnchor = () => (
   </Container>
 );
 
-export const WithIconAndText = () => (
+export const WithIcon = () => (
   <Container>
     {VARIANTS.map((variant) => (
       <Container>
