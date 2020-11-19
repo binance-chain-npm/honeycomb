@@ -40,7 +40,7 @@ export const Default = () => {
 
       <h3>color</h3>
       <Text size="small" style={{ justifyContent: 'flex-start' }}>
-        default=Honeycomb "normal"
+        default=theme "normal"
       </Text>
       <Space size="normal" />
       <Text size="normal">normal</Text>
