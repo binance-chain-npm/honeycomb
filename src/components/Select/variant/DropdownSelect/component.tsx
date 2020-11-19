@@ -5,7 +5,7 @@ import { Select } from '../../../Select';
 import { Tooltip } from '../../../Tooltip';
 import { Context } from '../../context';
 
-import { StyledContent } from './styled';
+import { Content } from './styled';
 
 export type Props = Omit<React.ComponentProps<typeof Select>, 'variant'>;
 
@@ -19,7 +19,7 @@ export const Component = ({ target, onClose, 'data-testid': testId, ...otherProp
       <Tooltip
         interactive={true}
         arrow={false}
-        content={<StyledContent>{otherProps.children}</StyledContent>}
+        content={<Content>{otherProps.children}</Content>}
         visible={otherProps.open}
         onClickOutside={onClose}
         data-testid={buildTestId()}

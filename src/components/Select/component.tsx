@@ -100,7 +100,7 @@ export const Component = ({
         {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
         <Space size="normal" />
         <OptionsContainer position="bottom">
-          <Options>{isFilterable ? filteredResults : children}</Options>
+          <Options data-testid={buildTestId('options')}>{isFilterable ? filteredResults : children}</Options>
         </OptionsContainer>
       </Container>
     );

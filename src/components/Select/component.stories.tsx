@@ -217,7 +217,7 @@ export const NonFilterable = () => {
           </Select.DefaultTarget>
         }
       >
-        <div data-testid="div">Some non-filterable element</div>
+        <ListItem interactive={false} data-testid="non-filterable">Some non-filterable element</ListItem>
         {new Array(5).fill(null).map((_, index) => (
           <Select.Option key={index} searchAs="" data-testid={`${index}`}>
             {index + 1}
