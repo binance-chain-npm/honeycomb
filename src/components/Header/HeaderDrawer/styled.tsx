@@ -4,7 +4,7 @@ import { em } from 'polished';
 import { ListItem } from '../../ListItem';
 
 const panel = css`
-  height: ${({ theme }) => em(theme.honeycomb.size.huge)};
+  height: ${em(40)};
 `;
 
 export const PanelElementItem = styled.div`
@@ -23,6 +23,7 @@ export const PanelItem = styled.div<{ hasChildren: boolean }>`
   display: flex;
   align-items: center;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+  font-weight: 600;
 
   ${({ hasChildren }) =>
     hasChildren &&
