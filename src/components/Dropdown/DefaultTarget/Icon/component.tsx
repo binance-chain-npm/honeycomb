@@ -1,13 +1,17 @@
 import React from 'react';
 
 import { Testable } from '../../../../modules/test-ids';
+import { Icon } from '../../../Icon';
 
-export type Props = Testable & {
-  icon: React.ReactNode;
-};
+import { Open, Close } from './styled';
 
-export const Component = ({ icon }: Props) => {
-  return icon;
+export type Props = React.ComponentPropsWithoutRef<typeof Icon.Binance> &
+  Testable & {
+    open: boolean;
+  };
+
+export const Component = ({ open, ...otherProps }: Props) => {
+  return open ? <Close {...otherProps} /> : <Open {...otherProps} />;
 };
 
 Component.displayName = 'Dropdown.DefaultTarget.Icon';

@@ -8,10 +8,10 @@ const icon = css`
   flex-shrink: 0;
 `;
 
-export const TriangleUp = styled(Icon.TriangleUp)`
+export const Close = styled(Icon.TriangleUp)`
   ${icon};
 `;
 
-export const TriangleDown = styled(Icon.TriangleDown)`
+export const Open = styled(Icon.TriangleDown)`
   ${icon};
 `;
