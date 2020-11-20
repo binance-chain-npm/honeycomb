@@ -36,4 +36,19 @@ describe('Dropdown', () => {
 
     cy.get('[data-testid="light.dropdown.content"]').should('not.exist');
   });
+
+  it('selectable behaves correctly', () => {
+    cy.visitStory({ storyId: 'elements-dropdown--selectable', themeId: 'GoldLight' });
+
+    cy.get('[data-testid="light.dropdown.target"]').click();
+
+    new Array(5).fill(null).forEach((_, index) => {
+      cy.get(`[data-testid="light.dropdown.content.${index}"]`).should('be.visible');
+      cy.get(`[data-testid="light.dropdown.content.${index}.tick"]`).should('not.exist');
+    });
+
+    cy.get(`[data-testid="light.dropdown.content.0"]`).click();
+    cy.get('[data-testid="light.dropdown.target"]').click();
+    cy.get(`[data-testid="light.dropdown.content.0.tick"]`).should('be.visible');
+  });
 });

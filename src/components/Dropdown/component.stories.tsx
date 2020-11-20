@@ -42,7 +42,7 @@ export const WithHelpers = () => {
   );
 };
 
-export const WithToggleHandler = () => {
+export const WithClickHandler = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -56,7 +56,7 @@ export const WithToggleHandler = () => {
           )}
         </Button>
       }
-      onToggle={() => setOpen((value) => !value)}
+      onClick={() => setOpen((value) => !value)}
     >
       <Dropdown.Item>Some content...</Dropdown.Item>
     </Dropdown>
@@ -70,7 +70,10 @@ export const Selectable = () => {
   });
 
   return (
-    <Dropdown target={<Dropdown.DefaultTarget>{selected.value}</Dropdown.DefaultTarget>}>
+    <Dropdown
+      target={<Dropdown.DefaultTarget>{selected.value}</Dropdown.DefaultTarget>}
+      data-testid="dropdown"
+    >
       {new Array(5).fill(null).map((_, index) => (
         <Dropdown.Item
           key={index}

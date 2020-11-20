@@ -13,7 +13,7 @@ export type Props = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'child
   Pick<React.ComponentPropsWithoutRef<typeof Tooltip>, 'radius'> &
   Testable & {
     target: React.ReactNode;
-    onToggle?: () => void;
+    onClick?: () => void;
   };
 
 export const Component = ({
@@ -21,20 +21,20 @@ export const Component = ({
   className,
   target,
   radius = 'normal',
-  onToggle,
+  onClick,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
   const [isShowing, setIsShowing] = useState(false);
   const { buildTestId } = useBuildTestId({ id: testId });
 
-  const toggle = useCallback(() => {
+  const click = useCallback<NonNullable<Props['onClick']>>(() => {
     setIsShowing((value) => !value);
-    onToggle?.();
-  }, [onToggle]);
+    onClick?.();
+  }, [onClick]);
 
   return (
-    <Context.Provider value={{ isShowing, onClose: toggle }}>
+    <Context.Provider value={{ isShowing, onClose: click }}>
       <Tooltip
         radius={radius}
         {...otherProps}
@@ -47,10 +47,10 @@ export const Component = ({
           </ContentContext.Provider>
         }
         data-testid={buildTestId()}
-        onClickOutside={toggle}
+        onClickOutside={click}
         padding="none"
       >
-        <Styleless htmlTag="div" onClick={toggle}>
+        <Styleless htmlTag="div" onClick={click}>
           {target}
         </Styleless>
       </Tooltip>

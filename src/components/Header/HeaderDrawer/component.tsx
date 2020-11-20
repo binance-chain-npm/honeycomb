@@ -3,6 +3,7 @@ import React, { useCallback, useMemo } from 'react';
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Accordion } from '../../Accordion';
 import { Drawer } from '../../Drawer';
+import { Dropdown } from '../../Dropdown';
 import { Icon } from '../../Icon';
 import { Space } from '../../Space';
 import { HeaderItem, Panels } from '../component';
@@ -76,11 +77,10 @@ export const Component = ({
               {hasChildren && (
                 <>
                   <Space size="micro" />
-                  {activePanel === index ? (
-                    <Icon.TriangleUp onClick={(evt) => stopPropagation(evt, index)} />
-                  ) : (
-                    <Icon.TriangleDown onClick={(evt) => stopPropagation(evt, index)} />
-                  )}
+                  <Dropdown.DefaultTarget.Icon
+                    open={activePanel === index}
+                    onClick={(evt) => stopPropagation(evt, index)}
+                  />
                 </>
               )}
             </PanelItem>
