@@ -4,10 +4,15 @@ import { em } from 'polished';
 import { HoneycombThemeType } from '../../modules/themes';
 import { boxSizing } from '../../modules/box-sizing';
 
-export type Props = { size: keyof HoneycombThemeType['honeycomb']['size'] | 'fill' };
+export type Props = {
+  size: keyof HoneycombThemeType['honeycomb']['size'] | 'fill';
+  base?: keyof HoneycombThemeType['honeycomb']['size'];
+};
 
-const sizeCss = css<{ size: Props['size'] }>`
-  flex-basis: ${({ size, theme }) => size !== 'fill' && em(theme.honeycomb.size[size])};
+const sizes = css<{ size: Props['size']; base?: Props['base'] }>`
+  flex-basis: ${({ size, base, theme }) =>
+    size !== 'fill' &&
+    em(theme.honeycomb.size[size], base ? theme.honeycomb.size[base] : undefined)};
   flex-shrink: 0;
 `;
 
@@ -18,7 +23,7 @@ const fill = css`
 export const Space = styled.div<Props>`
   ${boxSizing};
   ${({ size }) => size === 'fill' && fill};
-  ${({ size }) => size !== 'fill' && sizeCss};
+  ${({ size }) => size !== 'fill' && sizes};
 `;
 
 Space.displayName = 'Space';

@@ -5,8 +5,9 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { HtmlTag } from '../../modules/html-tag';
 import { Shape } from '../internal/Shape';
 import { Size } from '../internal/Size';
+import { Space } from '../Space';
 
-import { Styled, Variant, Shadow, IconSpace } from './styled';
+import { Styled, Variant, Shadow } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
   Testable & {
@@ -69,7 +70,7 @@ export const Component = ({
       {icon && (
         <>
           {icon}
-          <IconSpace size="micro" />
+          <Space size="micro" base="reduced" />
         </>
       )}
       {children}

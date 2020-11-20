@@ -15,7 +15,7 @@ export const Component = ({
   return (
     <DefaultTarget {...otherProps} as={htmlTag as any} isShowing={isShowing}>
       {otherProps.children}
-      <Space size="micro" />
+      <Space size="micro" base="reduced" />
       {isShowing ? <Icon.TriangleUp /> : <Icon.TriangleDown />}
     </DefaultTarget>
   );
