@@ -38,9 +38,9 @@ describe('Select', () => {
 
     cy.get('[data-testid="select.input.native-input"]').should('not.exist');
 
-    cy.get('[data-testid="div"]').should('be.visible');
+    cy.get('[data-testid="non-filterable"]').should('be.visible');
     new Array(5).fill(null).forEach((_, index) => {
-      cy.get(`[data-testid="select.modal.item.${index}"]`).should('be.visible');
+      cy.get(`[data-testid="select.modal.item.${index}"]`).should('exist');
     });
   });
 
@@ -71,7 +71,7 @@ describe('Select', () => {
     cy.percySnapshot('Select variant="dropdown"');
   });
 
-  it('Select variant="modal" renders correctly', () => {
+  it('variant="modal" renders correctly', () => {
     cy.clock();
     cy.visitStory({ storyId: 'elements-select--modal', themeId: 'GoldLight' });
     cy.tick(10000);

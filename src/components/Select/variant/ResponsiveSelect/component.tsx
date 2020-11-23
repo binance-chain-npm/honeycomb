@@ -26,7 +26,7 @@ export const Component = ({ onClose, 'data-testid': testId, ...otherProps }: Pro
           {otherProps.children}
         </ModalSelect>
       ) : (
-        <DropdownSelect {...otherProps} data-testid={buildTestId('dropdown')}>
+        <DropdownSelect {...otherProps} onClose={onClose} data-testid={buildTestId('dropdown')}>
           {otherProps.children}
         </DropdownSelect>
       )}
