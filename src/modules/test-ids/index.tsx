@@ -19,27 +19,50 @@ export const HoneycombTestIdProvider = ({
   );
 };
 
-const genericBuildTestId = ({ parent, id }: { parent?: string; id?: string }) => {
-  if (!parent && !id) return undefined;
-  if (!parent || id?.startsWith(parent)) return id;
-  if (!id) return parent;
-  return `${parent}.${id}`;
+const genericBuildTestId = ({
+  context,
+  parent,
+  id,
+}: {
+  context?: string;
+  parent?: string;
+  id?: string;
+}) => {
+  const res = (() => {
+    if (!id || !parent) return id;
+
+    const parentArray = parent.split('.');
+    const idArray = id.split('.');
+
+    for (let i = 0; i < idArray.length; i++) {
+      if (parentArray[i] === idArray[i]) continue;
+      if (i === 0) return id;
+      return idArray.slice(i).join('.');
+    }
+
+    return id;
+  })();
+
+  const withoutContext = [parent, res].filter((it) => !!it).join('.');
+  if (!context || withoutContext.startsWith(context)) {
+    return withoutContext;
+  }
+
+  return [context, withoutContext].filter((it) => !!it).join('.');
 };
 
 export const useBuildTestId = ({ id: parent }: { id?: string } = {}) => {
-  const contextTestId = useContext(HoneycombTestContext);
+  const context = useContext(HoneycombTestContext);
+
   return useMemo(() => {
     const buildTestId = (id?: string) => {
-      if (process.env.NODE_ENV !== 'production' && !!contextTestId && contextTestId === parent) {
+      if (process.env.NODE_ENV !== 'production' && !!context && context === parent) {
         console.error('Component cannot have the same test ID as the test ID provider');
       }
 
-      return genericBuildTestId({
-        parent: genericBuildTestId({ parent: contextTestId, id: parent }),
-        id,
-      });
+      return genericBuildTestId({ context, parent, id });
     };
 
     return { buildTestId } as const;
-  }, [parent, contextTestId]);
+  }, [parent, context]);
 };
