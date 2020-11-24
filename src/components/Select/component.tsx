@@ -8,7 +8,10 @@ import { TextInput } from '../TextInput';
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
 import { ResponsiveSelect } from './variant/ResponsiveSelect';
-import { Container, OptionsContainer, Search, Options, OptionsTitle, Variant } from './styled';
+import { Container, OptionsContainer, Search, Options, OptionsTitle } from './styled';
+
+export const VARIANTS = ['responsive', 'dropdown', 'modal'] as const;
+export type Variant = typeof VARIANTS[number];
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Testable & {
@@ -96,7 +99,7 @@ export const Component = ({
         <Space size="normal" />
         {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
         <Space size="normal" />
-        <OptionsContainer position="bottom" variant={variant}>
+        <OptionsContainer position="bottom">
           <Options data-testid={buildTestId('options')}>
             {isFilterable ? filteredResults : children}
           </Options>
