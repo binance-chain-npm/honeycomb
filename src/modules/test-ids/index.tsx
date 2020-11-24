@@ -30,7 +30,7 @@ export const useBuildTestId = ({ id: parent }: { id?: string } = {}) => {
   const contextTestId = useContext(HoneycombTestContext);
   return useMemo(() => {
     const buildTestId = (id?: string) => {
-      if (process.env.NODE_ENV !== 'production' && contextTestId === parent) {
+      if (process.env.NODE_ENV !== 'production' && !!contextTestId && contextTestId === parent) {
         console.error('Component cannot have the same test ID as the test ID provider');
       }
 
