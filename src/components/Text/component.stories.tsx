@@ -39,7 +39,7 @@ export const Default = () => {
       ))}
 
       <h3>color</h3>
-      <Text size="small" style={{ justifyContent: 'flex-start' }}>
+      <Text size="small" align="flex-start">
         default=theme "normal"
       </Text>
       <Space size="normal" />
@@ -52,7 +52,7 @@ export const Default = () => {
       </Text>
 
       <h3>weight</h3>
-      <Text size="small" style={{ justifyContent: 'flex-start' }}>
+      <Text size="small" align="flex-start">
         default="regular"
       </Text>
       <Space size="normal" />
@@ -61,6 +61,18 @@ export const Default = () => {
           {weight}
         </Text>
       ))}
+
+      <h3>align</h3>
+      <Space size="normal" />
+      <Text size="normal" align="start">
+        start
+      </Text>
+      <Text size="normal" align="center">
+        center
+      </Text>
+      <Text size="normal" align="end">
+        end
+      </Text>
     </Container>
   );
 };
