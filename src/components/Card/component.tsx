@@ -3,13 +3,13 @@ import React from 'react';
 import { HtmlTag } from '../../modules/html-tag';
 import { Testable } from '../../modules/test-ids';
 
-import { Container, Position, Variant } from './styled';
+import { Container, Position, Padding } from './styled';
 
 export type Props = Pick<React.AllHTMLAttributes<HTMLElement>, 'className' | 'children'> &
   Testable & {
     htmlTag?: HtmlTag;
     position?: Position;
-    variant?: Variant;
+    padding?: Padding;
   };
 
 export const Component = ({
@@ -18,13 +18,13 @@ export const Component = ({
   htmlTag,
   'data-testid': testId,
   position = 'center',
-  variant = 'default',
+  padding = 'normal',
 }: Props) => (
   <Container
     className={className}
     as={htmlTag as any}
     position={position}
-    variant={variant}
+    padding={padding}
     data-testid={testId}
   >
     {children}
