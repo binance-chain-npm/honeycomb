@@ -20,6 +20,10 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
+const StyledText = styled(Text)`
+  background: ${({ theme }) => theme.honeycomb.color.border};
+`;
+
 export const Default = () => {
   const theme = useTheme();
 
@@ -42,6 +46,9 @@ export const Default = () => {
       <Text size="small" align="flex-start">
         default=theme "normal"
       </Text>
+      <Text size="small" align="flex-start">
+        accepts any CSS `color` value
+      </Text>
       <Space size="normal" />
       <Text size="normal">normal</Text>
       <Text size="normal" color={theme.honeycomb.color.text.masked}>
@@ -63,16 +70,22 @@ export const Default = () => {
       ))}
 
       <h3>align</h3>
+      <Text size="small" align="flex-start">
+        accepts any CSS `align-self` value
+      </Text>
       <Space size="normal" />
-      <Text size="normal" align="start">
+      <StyledText size="normal" align="start">
         start
-      </Text>
-      <Text size="normal" align="center">
+      </StyledText>
+      <StyledText size="normal" align="center">
         center
-      </Text>
-      <Text size="normal" align="end">
+      </StyledText>
+      <StyledText size="normal" align="end">
         end
-      </Text>
+      </StyledText>
+      <StyledText size="normal" align="stretch">
+        stretch
+      </StyledText>
     </Container>
   );
 };
