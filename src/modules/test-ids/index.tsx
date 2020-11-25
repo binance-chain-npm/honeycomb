@@ -56,10 +56,6 @@ export const useBuildTestId = ({ id: parent }: { id?: string } = {}) => {
 
   return useMemo(() => {
     const buildTestId = (id?: string) => {
-      if (process.env.NODE_ENV !== 'production' && !!context && context === parent) {
-        console.error('Component cannot have the same test ID as the test ID provider');
-      }
-
       return genericBuildTestId({ context, parent, id });
     };
 
