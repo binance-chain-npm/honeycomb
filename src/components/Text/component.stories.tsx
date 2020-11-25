@@ -3,6 +3,7 @@ import styled, { useTheme } from 'styled-components';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { Button } from '../Button';
 import { Space } from '../Space';
 
 import { SIZES, WEIGHTS } from './styled';
@@ -22,6 +23,7 @@ const Container = styled.div`
 
 const StyledText = styled(Text)`
   background: ${({ theme }) => theme.honeycomb.color.border};
+  margin-bottom: 1em;
 `;
 
 export const Default = () => {
@@ -68,23 +70,51 @@ export const Default = () => {
           {weight}
         </Text>
       ))}
+    </Container>
+  );
+};
 
-      <h3>align</h3>
+export const Align = () => {
+  return (
+    <Container>
+      <h3>Align</h3>
       <Text size="small" alignSelf="start">
-        accepts any CSS `align-self` value
+        accepts any CSS `align-self` / `align-items` value
+      </Text>
+      <Text size="small" alignSelf="start">
+        `alignSelf` default="auto"
+      </Text>
+      <Text size="small" alignSelf="start">
+        `alignItems` default="center"
       </Text>
       <Space size="normal" />
-      <StyledText size="normal" alignSelf="start">
-        start
+      <StyledText size="normal" alignSelf="start" alignItems="start">
+        alignSelf="start"
+        <Space size="normal" />
+        <Button variant="primary" shape="fit">
+          alignItems="start"
+        </Button>
       </StyledText>
       <StyledText size="normal" alignSelf="center">
-        center
+        alignSelf="center"
+        <Space size="normal" />
+        <Button variant="primary" shape="fit">
+          alignItems="center"
+        </Button>
       </StyledText>
-      <StyledText size="normal" alignSelf="end">
-        end
+      <StyledText size="normal" alignSelf="end" alignItems="end">
+        alignSelf="end"
+        <Space size="normal" />
+        <Button variant="primary" shape="fit">
+          alignItems="end"
+        </Button>
       </StyledText>
-      <StyledText size="normal" alignSelf="stretch">
-        stretch
+      <StyledText size="normal" alignSelf="stretch" alignItems="stretch">
+        alignSelf="stretch"
+        <Space size="normal" />
+        <Button variant="primary" shape="fit">
+          alignItems="stretch"
+        </Button>
       </StyledText>
     </Container>
   );
