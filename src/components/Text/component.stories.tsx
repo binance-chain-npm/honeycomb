@@ -43,10 +43,10 @@ export const Default = () => {
       ))}
 
       <h3>color</h3>
-      <Text size="small" align="flex-start">
+      <Text size="small" alignSelf="start">
         default=theme "normal"
       </Text>
-      <Text size="small" align="flex-start">
+      <Text size="small" alignSelf="start">
         accepts any CSS `color` value
       </Text>
       <Space size="normal" />
@@ -59,7 +59,7 @@ export const Default = () => {
       </Text>
 
       <h3>weight</h3>
-      <Text size="small" align="flex-start">
+      <Text size="small" alignSelf="start">
         default="regular"
       </Text>
       <Space size="normal" />
@@ -70,20 +70,20 @@ export const Default = () => {
       ))}
 
       <h3>align</h3>
-      <Text size="small" align="flex-start">
+      <Text size="small" alignSelf="start">
         accepts any CSS `align-self` value
       </Text>
       <Space size="normal" />
-      <StyledText size="normal" align="start">
+      <StyledText size="normal" alignSelf="start">
         start
       </StyledText>
-      <StyledText size="normal" align="center">
+      <StyledText size="normal" alignSelf="center">
         center
       </StyledText>
-      <StyledText size="normal" align="end">
+      <StyledText size="normal" alignSelf="end">
         end
       </StyledText>
-      <StyledText size="normal" align="stretch">
+      <StyledText size="normal" alignSelf="stretch">
         stretch
       </StyledText>
     </Container>

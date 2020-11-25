@@ -21,7 +21,7 @@ export const WEIGHTS = ['light', 'regular', 'bold'] as const;
 export type Weight = typeof WEIGHTS[number];
 
 export const Styled = styled.div<{
-  align?: AlignSelfProperty;
+  alignSelf?: AlignSelfProperty;
   color?: string;
   size: Size;
   weight?: Weight;
@@ -32,10 +32,10 @@ export const Styled = styled.div<{
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
   font-weight: 400;
 
-  ${({ align }) =>
-    align &&
+  ${({ alignSelf }) =>
+    alignSelf &&
     css`
-      align-self: ${align};
+      align-self: ${alignSelf};
     `};
 
   ${({ color }) =>

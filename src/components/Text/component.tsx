@@ -9,7 +9,7 @@ import { Size, Styled, Weight } from './styled';
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
   Testable & {
     htmlTag?: HtmlTag;
-    align?: AlignSelfProperty;
+    alignSelf?: AlignSelfProperty;
     color?: string;
     size: Size;
     weight?: Weight;
