@@ -77,7 +77,6 @@ export const Default = () => {
 export const Align = () => {
   return (
     <Container>
-      <h3>Align</h3>
       <Text size="small" alignSelf="start">
         accepts any CSS `align-self` / `align-items` value
       </Text>
