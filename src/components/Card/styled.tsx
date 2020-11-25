@@ -3,8 +3,8 @@ import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
 
-export const VARIANTS = ['default', 'bare'] as const;
-export type Variant = typeof VARIANTS[number];
+export const PADDING = ['normal', 'none'] as const;
+export type Padding = typeof PADDING[number];
 
 export const POSITIONS = ['center', 'top', 'right', 'bottom', 'left'] as const;
 export type Position = typeof POSITIONS[number];
@@ -33,15 +33,15 @@ const left = css`
   border-bottom-right-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
 `;
 
-const variantDefault = css`
-  padding: ${({ theme }) => em(theme.honeycomb.radius.increased)};
+const normal = css`
+  padding: ${({ theme }) => em(theme.honeycomb.size.normal)};
 `;
 
-const variantBare = css`
+const none = css`
   padding: 0;
 `;
 
-export const Container = styled.div<{ position: Position; variant: Variant }>`
+export const Container = styled.div<{ position: Position; padding: Padding }>`
   ${boxSizing};
 
   background: ${({ theme }) => theme.honeycomb.color.bg.normal};
@@ -54,6 +54,6 @@ export const Container = styled.div<{ position: Position; variant: Variant }>`
   ${({ position }) => position === 'bottom' && bottom};
   ${({ position }) => position === 'left' && left};
 
-  ${({ variant }) => variant === 'default' && variantDefault};
-  ${({ variant }) => variant === 'bare' && variantBare};
+  ${({ padding }) => padding === 'normal' && normal};
+  ${({ padding }) => padding === 'none' && none};
 `;

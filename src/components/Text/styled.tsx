@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
+import { AlignItemsProperty, AlignSelfProperty } from 'csstype';
 
 import { boxSizing } from '../../modules/box-sizing';
 import { styleless } from '../Styleless';
@@ -19,12 +20,30 @@ export type Size = typeof SIZES[number];
 export const WEIGHTS = ['light', 'regular', 'bold'] as const;
 export type Weight = typeof WEIGHTS[number];
 
-export const Styled = styled.div<{ color?: string; size: Size; weight?: Weight }>`
+export const Styled = styled.div<{
+  alignItems?: AlignItemsProperty;
+  alignSelf?: AlignSelfProperty;
+  color?: string;
+  size: Size;
+  weight?: Weight;
+}>`
   ${styleless};
   ${boxSizing};
 
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
   font-weight: 400;
+
+  ${({ alignItems }) =>
+    alignItems &&
+    css`
+      align-items: ${alignItems};
+    `};
+
+  ${({ alignSelf }) =>
+    alignSelf &&
+    css`
+      align-self: ${alignSelf};
+    `};
 
   ${({ color }) =>
     color &&

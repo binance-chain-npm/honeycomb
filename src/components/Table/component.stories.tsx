@@ -52,19 +52,19 @@ const columns = [
 ];
 
 export const Default = () => (
-  <Card variant="bare">
+  <Card padding="none">
     <Table data={data.slice(0, 10)} columns={columns} />
   </Card>
 );
 
 export const NoHeader = () => (
-  <Card variant="bare">
+  <Card padding="none">
     <Table data={data.slice(0, 10)} columns={columns} hasHeader={false} />
   </Card>
 );
 
 export const Interactive = () => (
-  <Card variant="bare">
+  <Card padding="none">
     <Table data={data.slice(0, 10)} columns={columns} interactive />
   </Card>
 );
@@ -74,7 +74,7 @@ export const ControlledWithPagination: Story = () => {
   const pageSize = 3;
 
   return (
-    <Card variant="bare">
+    <Card padding="none">
       <Table
         data={data.slice(pageSize * pageIndex, pageSize * pageIndex + pageSize)}
         columns={columns}

@@ -95,7 +95,7 @@ export const Default = () => {
   );
 
   return (
-    <Card variant="bare">
+    <Card padding="none">
       <Table
         data={data}
         columns={columns}
