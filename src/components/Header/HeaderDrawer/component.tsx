@@ -129,4 +129,4 @@ export const Component = ({
   );
 };
 
-Component.displayName = 'HeaderItems';
+Component.displayName = 'HeaderDrawer';
