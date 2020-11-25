@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { transitions, em } from 'polished';
+import { em, transitions } from 'polished';
 
 import { icons } from '../Icon';
 import { boxSizing } from '../../modules/box-sizing';
@@ -31,6 +31,7 @@ export const label = css`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     width: ${({ theme }) => em(theme.honeycomb.size.normal)};
     height: ${({ theme }) => em(theme.honeycomb.size.normal)};
     background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
