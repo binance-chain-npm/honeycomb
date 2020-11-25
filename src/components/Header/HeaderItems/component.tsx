@@ -25,7 +25,11 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
             <Dropdown
               data-testid={buildTestId('dropdown')}
               key={index}
-              target={<StyledDropdownDefaultTarget>{element}</StyledDropdownDefaultTarget>}
+              target={
+                <StyledDropdownDefaultTarget variant="accent">
+                  {element}
+                </StyledDropdownDefaultTarget>
+              }
             >
               {children.map((child, indexChild) => {
                 const component: React.ReactElement[] = [];
