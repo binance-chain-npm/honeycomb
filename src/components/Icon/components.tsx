@@ -35,7 +35,6 @@ export { ReactComponent as InfoCircleSolid } from './assets/InfoCircleSolid.svg'
 export { ReactComponent as Key } from './assets/Key.svg';
 export { ReactComponent as Link } from './assets/Link.svg';
 export { ReactComponent as Lock } from './assets/Lock.svg';
-export { ReactComponent as MastercardColor } from './assets/MastercardColor.svg';
 export { ReactComponent as Page403 } from './assets/Page403.svg';
 export { ReactComponent as Page404 } from './assets/Page404.svg';
 export { ReactComponent as Page500 } from './assets/Page500.svg';
@@ -52,9 +51,23 @@ export { ReactComponent as TickCircleSolid } from './assets/TickCircleSolid.svg'
 export { ReactComponent as TriangleDown } from './assets/TriangleDown.svg';
 export { ReactComponent as TriangleUp } from './assets/TriangleUp.svg';
 export { ReactComponent as Video } from './assets/Video.svg';
-export { ReactComponent as VisaColor } from './assets/VisaColor.svg';
 export { ReactComponent as Wallet } from './assets/Wallet.svg';
 export { ReactComponent as WalletConnectColor } from './assets/WalletConnectColor.svg';
 export { ReactComponent as WarningCircle } from './assets/WarningCircle.svg';
 export { ReactComponent as WarningCircleSolid } from './assets/WarningCircleSolid.svg';
 export { ReactComponent as Write } from './assets/Write.svg';
+
+// Payment.
+export { ReactComponent as MastercardColor } from './assets/payment/MastercardColor.svg';
+export { ReactComponent as VisaColor } from './assets/payment/VisaColor.svg';
+
+// Social.
+export { ReactComponent as CMC } from './assets/social/CMC.svg';
+export { ReactComponent as Facebook } from './assets/social/Facebook.svg';
+export { ReactComponent as Instagram } from './assets/social/Instagram.svg';
+export { ReactComponent as Reddit } from './assets/social/Reddit.svg';
+export { ReactComponent as Telegram } from './assets/social/Telegram.svg';
+export { ReactComponent as Twitter } from './assets/social/Twitter.svg';
+export { ReactComponent as VK } from './assets/social/VK.svg';
+export { ReactComponent as Weibo } from './assets/social/Weibo.svg';
+export { ReactComponent as YouTube } from './assets/social/YouTube.svg';
