@@ -79,6 +79,14 @@ export const Item = styled(ListItem)<{ isMenu?: boolean }>`
     `};
 `;
 
-export const DropdownItem = styled(Dropdown.DefaultTarget)`
+export const StyledDropdownDefaultTarget = styled(Dropdown.DefaultTarget)`
   ${headerItem};
+`;
+
+export const StyledDropdownItem = styled(Dropdown.Item)`
+  :focus,
+  :hover,
+  :active {
+    color: ${({ theme }) => theme.honeycomb.color.primary.normal};
+  }
 `;
