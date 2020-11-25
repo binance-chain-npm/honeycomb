@@ -45,24 +45,13 @@ export const Default = () => (
     logo={<Header.Logo />}
     left={[
       {
-        element: 'Left Item 1',
+        element: 'Item 1',
       },
       {
-        element: 'Left Item 2',
+        element: 'Item 2',
       },
       {
-        element: 'Left Item 3',
-      },
-    ]}
-    right={[
-      {
-        element: 'Right Item 1',
-      },
-      {
-        element: 'Right Item 2',
-      },
-      {
-        element: 'Right Item 3',
+        element: 'Item 3',
       },
     ]}
   />

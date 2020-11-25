@@ -108,6 +108,10 @@ export const Component = ({
     });
   }, [items, activePanel, stopPropagation, clickPanelItem]);
 
+  if (panels.length === 0) {
+    return null;
+  }
+
   return (
     <>
       <Item showBorder={false} onClick={onClose} isMenu data-testid={buildTestId('menu')}>

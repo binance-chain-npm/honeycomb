@@ -172,4 +172,11 @@ describe('Header', () => {
         expect(children[0]).to.have.attr('data-testid', 'light.non-collapsible.sm');
       });
   });
+
+  it('hamburger menu should not be shown if drawer has no elements', () => {
+    cy.customViewport({ size: 'md' });
+    cy.visitStory({ storyId: 'elements-header--default', themeId: 'GoldLight' });
+
+    cy.get('[data-testid="light.header.menu"]').should('not.exist');
+  });
 });
