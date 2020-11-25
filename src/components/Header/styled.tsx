@@ -61,6 +61,7 @@ export const headerItem = css`
   :hover,
   :active {
     background-color: transparent;
+    color: ${({ theme }) => theme.honeycomb.color.primary.normal};
   }
 `;
 
