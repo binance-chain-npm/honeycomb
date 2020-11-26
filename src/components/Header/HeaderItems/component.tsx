@@ -3,7 +3,7 @@ import React from 'react';
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Dropdown } from '../../Dropdown';
 import { HeaderItem } from '../component';
-import { Item, DropdownItem } from '../styled';
+import { Item, StyledDropdownDefaultTarget, StyledDropdownItem } from '../styled';
 
 import { Styled, Label } from './styled';
 
@@ -25,7 +25,11 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
             <Dropdown
               data-testid={buildTestId('dropdown')}
               key={index}
-              target={<DropdownItem>{element}</DropdownItem>}
+              target={
+                <StyledDropdownDefaultTarget variant="accent">
+                  {element}
+                </StyledDropdownDefaultTarget>
+              }
             >
               {children.map((child, indexChild) => {
                 const component: React.ReactElement[] = [];
@@ -40,9 +44,9 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
                 }
 
                 component.push(
-                  <Dropdown.Item key={`${index}-item-${indexChild}`} {...otherChildProps}>
+                  <StyledDropdownItem key={`${index}-item-${indexChild}`} {...otherChildProps}>
                     {childTarget}
-                  </Dropdown.Item>,
+                  </StyledDropdownItem>,
                 );
 
                 if (showBorder) {
