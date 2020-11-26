@@ -1,29 +1,24 @@
 import React, { useContext } from 'react';
 
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
-import { Modal } from '../../Modal';
+import { Modal } from '..';
 import { TestIdContext } from '../context';
 import { Padding } from '../styled';
 
-import { Scroll, Content } from './styled';
+import { Footer } from './styled';
 
-export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'children'> &
+export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'children' | 'className'> &
   Testable & {
     padding?: Padding;
-    className?: string;
   };
 
 export const Component = ({ padding = 'normal', 'data-testid': testId, ...otherProps }: Props) => {
   const parentTestId = useContext(TestIdContext);
   const { buildTestId } = useBuildTestId({
-    id: testId ?? (parentTestId ? `${parentTestId}.content` : undefined),
+    id: testId ?? (parentTestId ? `${parentTestId}.footer` : undefined),
   });
 
-  return (
-    <Scroll>
-      <Content {...otherProps} padding={padding} data-testid={buildTestId()} />
-    </Scroll>
-  );
+  return <Footer {...otherProps} padding={padding} data-testid={buildTestId()} />;
 };
 
-Component.displayName = 'Modal.Content';
+Component.displayName = 'Modal.Footer';
