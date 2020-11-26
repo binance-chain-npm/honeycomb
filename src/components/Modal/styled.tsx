@@ -4,6 +4,9 @@ import { em } from 'polished';
 import { boxSizing } from '../../modules/box-sizing';
 import { SIZES } from '../internal/useWindowSize';
 
+export const PADDING = ['normal', 'none'] as const;
+export type Padding = typeof PADDING[number];
+
 export const POSITIONS = ['center', 'bottom'] as const;
 export type Position = typeof POSITIONS[number];
 

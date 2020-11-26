@@ -1,9 +1,6 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
-export const PADDING = ['normal', 'none'] as const;
-export type Padding = typeof PADDING[number];
-
 export const Scroll = styled.div`
   flex: 1;
   scroll-behavior: smooth;

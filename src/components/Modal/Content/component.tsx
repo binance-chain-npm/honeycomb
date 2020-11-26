@@ -3,8 +3,9 @@ import React, { useContext } from 'react';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { Modal } from '../../Modal';
 import { TestIdContext } from '../context';
+import { Padding } from '../styled';
 
-import { Scroll, Content, Padding } from './styled';
+import { Scroll, Content } from './styled';
 
 export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'children'> &
   Testable & {
