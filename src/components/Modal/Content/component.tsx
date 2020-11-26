@@ -13,12 +13,7 @@ export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'children
     className?: string;
   };
 
-export const Component = ({
-  className,
-  padding = 'normal',
-  children,
-  'data-testid': testId,
-}: Props) => {
+export const Component = ({ padding = 'normal', 'data-testid': testId, ...otherProps }: Props) => {
   const parentTestId = useContext(TestIdContext);
   const { buildTestId } = useBuildTestId({
     id: testId ?? (parentTestId ? `${parentTestId}.content` : undefined),
@@ -26,9 +21,7 @@ export const Component = ({
 
   return (
     <Scroll>
-      <Content className={className} padding={padding} data-testid={buildTestId()}>
-        {children}
-      </Content>
+      <Content {...otherProps} padding={padding} data-testid={buildTestId()} />
     </Scroll>
   );
 };

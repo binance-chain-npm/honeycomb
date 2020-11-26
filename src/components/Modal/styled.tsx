@@ -69,3 +69,11 @@ export const Box = styled.div<{ position: Position }>`
     max-width: ${em(500)};
   }
 `;
+
+export const normal = css`
+  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
+`;
+
+export const none = css`
+  padding: 0;
+`;

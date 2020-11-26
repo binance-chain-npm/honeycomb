@@ -1,21 +1,12 @@
-import styled, { css } from 'styled-components';
-import { em } from 'polished';
+import styled from 'styled-components';
 
-import { Padding } from '../styled';
+import { none, normal, Padding } from '../styled';
 
 export const Scroll = styled.div`
   flex: 1;
   scroll-behavior: smooth;
   overflow: hidden;
   overflow-y: auto;
-`;
-
-const normal = css`
-  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
-`;
-
-const none = css`
-  padding: 0;
 `;
 
 export const Content = styled.div<{ padding: Padding }>`
