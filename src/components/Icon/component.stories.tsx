@@ -63,7 +63,6 @@ export const Default = () => (
         })
         .map((iconName) => {
           const Svg = Icon[iconName as keyof typeof Icon];
-
           return <Component iconName={iconName} component={<Svg />} />;
         })}
     </Group>
@@ -71,7 +70,6 @@ export const Default = () => (
     <Group>
       {payment.map((iconName) => {
         const Svg = Icon[iconName as keyof typeof Icon];
-
         return <Component iconName={iconName} component={<Svg />} />;
       })}
     </Group>
@@ -79,7 +77,6 @@ export const Default = () => (
     <Group>
       {social.map((iconName) => {
         const Svg = Icon[iconName as keyof typeof Icon];
-
         return <Component iconName={iconName} component={<Svg />} />;
       })}
     </Group>
