@@ -35,7 +35,6 @@ export { default as InfoCircleSolid } from './assets/InfoCircleSolid.svg';
 export { default as Key } from './assets/Key.svg';
 export { default as Link } from './assets/Link.svg';
 export { default as Lock } from './assets/Lock.svg';
-export { default as MastercardColor } from './assets/MastercardColor.svg';
 export { default as Page403 } from './assets/Page403.svg';
 export { default as Page404 } from './assets/Page404.svg';
 export { default as Page500 } from './assets/Page500.svg';
@@ -52,9 +51,23 @@ export { default as TickCircleSolid } from './assets/TickCircleSolid.svg';
 export { default as TriangleDown } from './assets/TriangleDown.svg';
 export { default as TriangleUp } from './assets/TriangleUp.svg';
 export { default as Video } from './assets/Video.svg';
-export { default as VisaColor } from './assets/VisaColor.svg';
 export { default as Wallet } from './assets/Wallet.svg';
 export { default as WalletConnectColor } from './assets/WalletConnectColor.svg';
 export { default as WarningCircle } from './assets/WarningCircle.svg';
 export { default as WarningCircleSolid } from './assets/WarningCircleSolid.svg';
 export { default as Write } from './assets/Write.svg';
+
+// Payment.
+export { default as MastercardColor } from './assets/payment/MastercardColor.svg';
+export { default as VisaColor } from './assets/payment/VisaColor.svg';
+
+// Social.
+export { default as CMC } from './assets/social/CMC.svg';
+export { default as Facebook } from './assets/social/Facebook.svg';
+export { default as Instagram } from './assets/social/Instagram.svg';
+export { default as Reddit } from './assets/social/Reddit.svg';
+export { default as Telegram } from './assets/social/Telegram.svg';
+export { default as Twitter } from './assets/social/Twitter.svg';
+export { default as VK } from './assets/social/VK.svg';
+export { default as Weibo } from './assets/social/Weibo.svg';
+export { default as YouTube } from './assets/social/YouTube.svg';
