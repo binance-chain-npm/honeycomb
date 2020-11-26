@@ -40,15 +40,24 @@ describe('Modal', () => {
   it('renders correctly with title', () => {
     cy.clock();
 
-    cy.visitStory({ storyId: 'elements-modal--with-title-at-bottom', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-modal--position-bottom', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.percySnapshot('Modal with title at bottom');
+    cy.percySnapshot('Modal with title at position bottom');
 
-    cy.visitStory({ storyId: 'elements-modal--small-with-title', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-modal--small', themeId: 'GoldLight' });
     cy.tick(10000);
 
     cy.percySnapshot('Small modal with title');
+  });
+
+  it('renders correctly with footer', () => {
+    cy.clock();
+
+    cy.visitStory({ storyId: 'elements-modal--with-footer', themeId: 'GoldLight' });
+    cy.tick(10000);
+
+    cy.percySnapshot('Modal with footer');
   });
 
   it('renders correctly without title', () => {
