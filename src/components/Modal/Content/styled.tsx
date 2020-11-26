@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
+import { Padding } from '../styled';
+
 export const Scroll = styled.div`
   flex: 1;
   scroll-behavior: smooth;
