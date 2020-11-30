@@ -23,7 +23,12 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
-  const context = useMemo(() => ({ orientation, shape, variant }), [orientation, shape, variant]);
+  const context = useMemo(() => ({ orientation, shape, variant, testId }), [
+    orientation,
+    shape,
+    variant,
+    testId,
+  ]);
 
   return (
     <Styled {...otherProps} orientation={orientation} data-testid={buildTestId()}>

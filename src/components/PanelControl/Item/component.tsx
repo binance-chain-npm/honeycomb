@@ -18,8 +18,11 @@ export const Component = ({
   'data-testid': testId,
   ...otherProps
 }: Props) => {
-  const { buildTestId } = useBuildTestId({ id: testId });
-  const { orientation, shape, variant } = useContext(Context);
+  const { orientation, shape, variant, testId: parentTestId } = useContext(Context);
+  const { buildTestId: buildTestIdParent } = useBuildTestId({ id: parentTestId });
+  const { buildTestId } = useBuildTestId({
+    id: buildTestIdParent(testId ? `item.${testId}` : undefined),
+  });
 
   return (
     <Styled
@@ -30,6 +33,7 @@ export const Component = ({
       shape={shape}
       variant={variant}
       data-testid={buildTestId()}
+      data-testisselected={!!selected}
     />
   );
 };

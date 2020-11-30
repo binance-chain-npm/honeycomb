@@ -26,20 +26,20 @@ export const Horizontal = () => {
   const [selected, setSelected] = useState(0);
 
   return (
-    <PanelControl orientation="horizontal" variant="solid">
-      <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)}>
+    <PanelControl orientation="horizontal" variant="solid" data-testid="panel-control">
+      <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)} data-testid="0">
         <Item size="reduced">Item</Item>
       </PanelControl.Item>
       <Space size="normal" />
-      <PanelControl.Item selected={selected === 1} onClick={() => setSelected(1)}>
+      <PanelControl.Item selected={selected === 1} onClick={() => setSelected(1)} data-testid="1">
         <Item size="reduced">Item</Item>
       </PanelControl.Item>
       <Space size="normal" />
-      <PanelControl.Item selected={selected === 2} onClick={() => setSelected(2)}>
+      <PanelControl.Item selected={selected === 2} onClick={() => setSelected(2)} data-testid="2">
         <Item size="reduced">Item</Item>
       </PanelControl.Item>
       <Space size="normal" />
-      <PanelControl.Item disabled>
+      <PanelControl.Item disabled data-testid="disabled">
         <Item size="reduced">Disabled Item</Item>
       </PanelControl.Item>
     </PanelControl>
