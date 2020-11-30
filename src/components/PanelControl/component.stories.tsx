@@ -17,7 +17,7 @@ export const Horizontal = () => {
   const [selected, setSelected] = useState(0);
 
   return (
-    <PanelControl orientation="horizontal">
+    <PanelControl orientation="horizontal" padding="small">
       <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)}>
         <Text size="reduced">Item</Text>
       </PanelControl.Item>
@@ -41,7 +41,7 @@ export const Vertical = () => {
   const [selected, setSelected] = useState(0);
 
   return (
-    <PanelControl orientation="vertical">
+    <PanelControl orientation="vertical" padding="small">
       <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)}>
         <Text size="reduced">Item</Text>
       </PanelControl.Item>

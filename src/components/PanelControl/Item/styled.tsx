@@ -3,10 +3,7 @@ import { em, rgba, transitions } from 'polished';
 
 import { fill } from '../../internal/Shape';
 import { styleless } from '../../Styleless';
-import { Orientation } from '../styled';
-
-export const SIZES = ['increased', 'normal', 'reduced', 'small', 'tiny', 'micro', 'none'] as const;
-export type Size = typeof SIZES[number];
+import { Orientation, Size } from '../styled';
 
 export interface Props {
   selected: boolean;

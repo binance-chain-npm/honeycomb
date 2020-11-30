@@ -4,24 +4,22 @@ import { HtmlTag } from '../../../modules/html-tag';
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { Context } from '../context';
 
-import { Size, Styled } from './styled';
+import { Styled } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
   Testable & {
     htmlTag?: HtmlTag;
     selected?: boolean;
-    padding?: Size;
   };
 
 export const Component = ({
   htmlTag = 'button',
   selected,
-  padding = 'normal',
   'data-testid': testId,
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
-  const { orientation } = useContext(Context);
+  const { orientation, padding } = useContext(Context);
 
   return (
     <Styled
