@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
+import { Context } from '../context';
 
 import { Size, Styled } from './styled';
 
@@ -17,9 +18,16 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
+  const { orientation } = useContext(Context);
 
   return (
-    <Styled {...otherProps} padding={padding} selected={!!selected} data-testid={buildTestId()} />
+    <Styled
+      {...otherProps}
+      orientation={orientation}
+      padding={padding}
+      selected={!!selected}
+      data-testid={buildTestId()}
+    />
   );
 };
 
