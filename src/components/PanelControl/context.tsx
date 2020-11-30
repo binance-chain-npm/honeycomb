@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Orientation, Size } from './styled';
+import { Orientation, Shape } from './styled';
 
-export const Context = React.createContext<{ orientation: Orientation; padding: Size }>({
+export const Context = React.createContext<{ orientation: Orientation; shape: Shape }>({
   orientation: 'horizontal',
-  padding: 'none',
+  shape: 'fill',
 });

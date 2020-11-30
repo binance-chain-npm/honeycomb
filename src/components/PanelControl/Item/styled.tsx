@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 import { em, rgba, transitions } from 'polished';
 
-import { fill } from '../../internal/Shape';
+import { fill, fit } from '../../internal/Shape';
 import { styleless } from '../../Styleless';
-import { Orientation, Size } from '../styled';
+import { Orientation, Shape } from '../styled';
 
 export interface Props {
   selected: boolean;
   orientation: Orientation;
-  padding: Size;
+  shape: Shape;
 }
 
 export const Styled = styled.div<Props>`
@@ -34,17 +34,18 @@ export const Styled = styled.div<Props>`
         ${fill};
       `)};
 
-  padding: ${({ theme, padding }) =>
-    padding !== 'none' &&
-    css`
-      ${em(theme.honeycomb.size[padding])}
-    `};
-
   ${({ selected }) =>
     selected &&
     css`
       border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
       background-color: ${({ theme }) => rgba(theme.honeycomb.color.primary.normal, 0.1)};
+    `};
+
+  ${({ shape }) =>
+    shape === 'fit' &&
+    css`
+      flex-grow: 0;
+      ${fit};
     `};
 
   ${({ theme }) => transitions(['background', 'border'], theme.honeycomb.duration.normal)};

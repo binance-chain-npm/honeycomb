@@ -19,14 +19,14 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
-  const { orientation, padding } = useContext(Context);
+  const { orientation, shape } = useContext(Context);
 
   return (
     <Styled
       {...otherProps}
       as={htmlTag as any}
       orientation={orientation}
-      padding={padding}
+      shape={shape}
       selected={!!selected}
       data-testid={buildTestId()}
     />

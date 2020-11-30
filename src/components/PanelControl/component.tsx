@@ -3,25 +3,25 @@ import React, { useMemo } from 'react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Context } from './context';
-import { Orientation, Size, Styled } from './styled';
+import { Orientation, Shape, Styled } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
     children: React.ReactNode;
     orientation: Orientation;
-    padding?: Size;
+    shape?: Shape;
   };
 
 export const Component = ({
   children,
   orientation,
-  padding = 'none',
+  shape = 'fill',
   onChange,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
-  const context = useMemo(() => ({ orientation, padding }), [orientation, padding]);
+  const context = useMemo(() => ({ orientation, shape }), [orientation, shape]);
 
   return (
     <Styled {...otherProps} orientation={orientation} data-testid={buildTestId()}>
