@@ -6,6 +6,9 @@ export type Orientation = typeof ORIENTATION[number];
 export const SHAPES = ['fill', 'fit'] as const;
 export type Shape = typeof SHAPES[number];
 
+export const VARIANTS = ['outlined', 'solid'] as const;
+export type Variant = typeof VARIANTS[number];
+
 export const Styled = styled.div<{ orientation: Orientation }>`
   display: flex;
   align-items: center;

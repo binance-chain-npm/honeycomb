@@ -7,7 +7,9 @@ import { Sections } from '../../modules/sections';
 import { Space } from '../Space';
 import { Text } from '../Text';
 
-import { PanelControl } from '.';
+import { VARIANTS } from './styled';
+
+import { PanelControl } from './';
 
 export default {
   component: PanelControl,
@@ -24,7 +26,7 @@ export const Horizontal = () => {
   const [selected, setSelected] = useState(0);
 
   return (
-    <PanelControl orientation="horizontal">
+    <PanelControl orientation="horizontal" variant="solid">
       <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)}>
         <Item size="reduced">Item</Item>
       </PanelControl.Item>
@@ -48,7 +50,7 @@ export const Vertical = () => {
   const [selected, setSelected] = useState(0);
 
   return (
-    <PanelControl orientation="vertical">
+    <PanelControl orientation="vertical" variant="solid">
       <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)}>
         <Item size="reduced">Item</Item>
       </PanelControl.Item>
@@ -74,7 +76,7 @@ const FixedWidthItem = styled(Item)`
 
 export const FixedWidth = () => {
   return (
-    <PanelControl orientation="horizontal" shape="fit">
+    <PanelControl orientation="horizontal" shape="fit" variant="solid">
       <PanelControl.Item selected>
         <FixedWidthItem size="reduced">ERC20</FixedWidthItem>
       </PanelControl.Item>
@@ -88,4 +90,25 @@ export const FixedWidth = () => {
       </PanelControl.Item>
     </PanelControl>
   );
+};
+
+export const Variant = () => {
+  return VARIANTS.map((variant) => (
+    <>
+      <h3>{variant}</h3>
+      <PanelControl orientation="horizontal" variant={variant}>
+        <PanelControl.Item selected>
+          <Item size="reduced">Item</Item>
+        </PanelControl.Item>
+        <Space size="normal" />
+        <PanelControl.Item>
+          <Item size="reduced">Item</Item>
+        </PanelControl.Item>
+        <Space size="normal" />
+        <PanelControl.Item>
+          <Item size="reduced">Item</Item>
+        </PanelControl.Item>
+      </PanelControl>
+    </>
+  ));
 };
