@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
-import { em, rgba } from 'polished';
+import { em, rgba, transitions } from 'polished';
 
 import { fill } from '../../internal/Shape';
+import { styleless } from '../../Styleless';
 import { Orientation } from '../styled';
 
 export const SIZES = ['increased', 'normal', 'reduced', 'small', 'tiny', 'micro', 'none'] as const;
@@ -14,12 +15,17 @@ export interface Props {
 }
 
 export const Styled = styled.div<Props>`
-  display: flex;
+  ${styleless};
+
   flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
   border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+  cursor: pointer;
+
+  :disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
 
   ${({ orientation }) =>
     (orientation === 'horizontal' &&
@@ -43,4 +49,6 @@ export const Styled = styled.div<Props>`
       border: 1px solid ${({ theme }) => theme.honeycomb.color.primary.normal};
       background-color: ${({ theme }) => rgba(theme.honeycomb.color.primary.normal, 0.1)};
     `};
+
+  ${({ theme }) => transitions(['background', 'border'], theme.honeycomb.duration.normal)};
 `;

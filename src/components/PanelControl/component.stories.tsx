@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Space } from '../Space';
+import { Text } from '../Text';
 
 import { PanelControl } from '.';
 
@@ -17,22 +18,21 @@ export const Horizontal = () => {
 
   return (
     <PanelControl orientation="horizontal">
-      {new Array(5).fill(null).map((_, index) => {
-        const key = `panel-control-${index}`;
-
-        return (
-          <>
-            <PanelControl.Item
-              key={key}
-              selected={selected === index}
-              onClick={() => setSelected(index)}
-            >
-              Item
-            </PanelControl.Item>
-            {index < 4 && <Space key={`step_${key}`} size="normal" />}
-          </>
-        );
-      })}
+      <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)}>
+        <Text size="reduced">Item</Text>
+      </PanelControl.Item>
+      <Space size="normal" />
+      <PanelControl.Item selected={selected === 1} onClick={() => setSelected(1)}>
+        <Text size="reduced">Item</Text>
+      </PanelControl.Item>
+      <Space size="normal" />
+      <PanelControl.Item selected={selected === 2} onClick={() => setSelected(2)}>
+        <Text size="reduced">Item</Text>
+      </PanelControl.Item>
+      <Space size="normal" />
+      <PanelControl.Item disabled>
+        <Text size="reduced">Disabled Item</Text>
+      </PanelControl.Item>
     </PanelControl>
   );
 };
@@ -42,22 +42,21 @@ export const Vertical = () => {
 
   return (
     <PanelControl orientation="vertical">
-      {new Array(5).fill(null).map((_, index) => {
-        const key = `panel-control-${index}`;
-
-        return (
-          <>
-            <PanelControl.Item
-              key={key}
-              selected={selected === index}
-              onClick={() => setSelected(index)}
-            >
-              Item
-            </PanelControl.Item>
-            {index < 4 && <Space key={`step_${key}`} size="normal" />}
-          </>
-        );
-      })}
+      <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)}>
+        <Text size="reduced">Item</Text>
+      </PanelControl.Item>
+      <Space size="normal" />
+      <PanelControl.Item selected={selected === 1} onClick={() => setSelected(1)}>
+        <Text size="reduced">Item</Text>
+      </PanelControl.Item>
+      <Space size="normal" />
+      <PanelControl.Item selected={selected === 2} onClick={() => setSelected(2)}>
+        <Text size="reduced">Item</Text>
+      </PanelControl.Item>
+      <Space size="normal" />
+      <PanelControl.Item disabled>
+        <Text size="reduced">Disabled Item</Text>
+      </PanelControl.Item>
     </PanelControl>
   );
 };
