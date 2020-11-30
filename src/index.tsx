@@ -36,6 +36,7 @@ export { Loading } from './components/Loading';
 export { MnemonicPhrase } from './components/MnemonicPhrase';
 export { Modal } from './components/Modal';
 export { ModalState } from './components/ModalState';
+export { PanelControl } from './components/PanelControl';
 export { PasswordInput, usePasswordInputValidation } from './components/PasswordInput';
 export { QRCode } from './components/QRCode';
 export { Radio } from './components/Radio';
