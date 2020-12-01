@@ -22,6 +22,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children' | 'style'> &
     | 'reference'
     | 'placement'
     | 'onClickOutside'
+    | 'maxWidth'
   > &
   Testable & {
     content: React.ReactNode;
