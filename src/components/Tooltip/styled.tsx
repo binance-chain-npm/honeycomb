@@ -6,6 +6,7 @@ import tippyAnimations from '../../../node_modules/tippy.js/animations/shift-awa
 import { boxSizing } from '../../modules/box-sizing';
 import { GoldDark } from '../../modules/themes/themes/GoldDark';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
+import { fit } from '../internal/Shape';
 
 export const SIZES = ['reduced', 'small', 'tiny', 'micro', 'none'] as const;
 export type Size = typeof SIZES[number];
@@ -70,11 +71,7 @@ export const Styles = createGlobalStyle<{ variant: Variant }>`
 `;
 
 export const Target = styled.div<{ shape?: Shape }>`
-  ${({ shape }) =>
-    shape === 'fit' &&
-    css`
-      display: inline-block;
-    `};
+  ${({ shape }) => shape === 'fit' && fit};
 `;
 
 export const Content = styled.div<{ padding: Size; radius: Radius; variant: Variant }>`
