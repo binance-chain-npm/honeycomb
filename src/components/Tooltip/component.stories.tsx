@@ -135,7 +135,7 @@ export const Variants = () => {
 };
 
 const FixedHeight = styled.div`
-  height: 3em;
+  height: 4em;
 `;
 
 export const MixedThemes = () => {
@@ -146,22 +146,19 @@ export const MixedThemes = () => {
           <div />
         </Tooltip>
       </HoneycombThemeProvider>
-      <FixedHeight />
       <HoneycombThemeProvider variant="dark">
         <Tooltip content="Dark theme." visible arrow={true} shape="fit">
-          <div />
+          <FixedHeight />
         </Tooltip>
       </HoneycombThemeProvider>
-      <FixedHeight />
       <HoneycombThemeProvider variant="light">
         <Tooltip content="Light accent theme." variant="accent" visible arrow={true} shape="fit">
-          <div />
+          <FixedHeight />
         </Tooltip>
       </HoneycombThemeProvider>
-      <FixedHeight />
       <HoneycombThemeProvider variant="dark">
         <Tooltip content="Dark accent theme." variant="accent" visible arrow={true} shape="fit">
-          <div />
+          <FixedHeight />
         </Tooltip>
       </HoneycombThemeProvider>
     </>
