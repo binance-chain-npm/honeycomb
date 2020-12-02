@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
+import { styleless } from '../../Styleless';
+
 export const DefaultTarget = styled.div`
+  ${styleless};
+
   :focus,
   :hover,
   :active {
