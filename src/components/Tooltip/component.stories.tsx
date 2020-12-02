@@ -51,8 +51,7 @@ const Label = styled.div`
 
 const PlacementContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: end;
+  align-items: center;
 
   > *:not(:last-child) {
     margin-right: ${({ theme }) => em(theme.honeycomb.size.normal)};
