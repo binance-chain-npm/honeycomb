@@ -49,7 +49,7 @@ export const GoldLight: HoneycombThemeType = {
     },
 
     shadow: {
-      normal: '0px 2px 16px rgba(11, 14, 17, 0.04)',
+      normal: '0px 2px 8px rgba(11, 14, 17, 0.16)',
     },
   },
 };
