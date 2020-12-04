@@ -3,13 +3,16 @@ import React from 'react';
 import { Testable } from '../../modules/test-ids';
 import { HtmlTag } from '../../modules/html-tag';
 
-import { Styled } from './styled';
+import { Size, Styled } from './styled';
 
-export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
-  Testable & { htmlTag?: HtmlTag };
+export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
+  Testable & {
+    htmlTag?: HtmlTag;
+    size: Size;
+  };
 
 export const Component = ({ htmlTag, ...otherProps }: Props) => (
   <Styled {...otherProps} as={htmlTag as any} />
 );
 
-Component.displayName = 'HoverEffect';
+Component.displayName = 'ShadowEffect';

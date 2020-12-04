@@ -50,6 +50,10 @@ export const GoldLight: HoneycombThemeType = {
 
     shadow: {
       normal: '0px 2px 8px rgba(11, 14, 17, 0.16)',
+      box: {
+        normal: '0px 0px 16px rgba(11, 14, 17, 0.08)',
+        increased: '0px 0px 16px rgba(11, 14, 17, 0.04)',
+      },
     },
   },
 };
