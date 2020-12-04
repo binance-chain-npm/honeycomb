@@ -3,6 +3,9 @@ import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
 
+export const SHADOWS = ['increased', 'normal', 'none'] as const;
+export type Shadow = typeof SHADOWS[number];
+
 export const PADDING = ['normal', 'none'] as const;
 export type Padding = typeof PADDING[number];
 
@@ -41,12 +44,17 @@ const none = css`
   padding: 0;
 `;
 
-export const Container = styled.div<{ position: Position; padding: Padding }>`
+export const Container = styled.div<{ padding: Padding; position: Position; shadow: Shadow }>`
   ${boxSizing};
 
   background: ${({ theme }) => theme.honeycomb.color.bg.normal};
-  box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
   overflow: hidden;
+
+  ${({ shadow }) =>
+    shadow !== 'none' &&
+    css`
+      box-shadow: ${({ theme }) => theme.honeycomb.shadow.box[shadow]};
+    `};
 
   ${({ position }) => position === 'center' && center};
   ${({ position }) => position === 'top' && top};
