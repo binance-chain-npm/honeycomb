@@ -42,6 +42,7 @@ export { QRCode } from './components/QRCode';
 export { Radio } from './components/Radio';
 export { SegmentedControl } from './components/SegmentedControl';
 export { Select } from './components/Select';
+export { ShadowEffect, shadowEffect } from './components/ShadowEffect';
 export { SolidAvatar } from './components/SolidAvatar';
 export { Space } from './components/Space';
 export { Steps } from './components/Steps';

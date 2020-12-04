@@ -103,6 +103,10 @@ export const GoldDark = {
 
     shadow: {
       normal: '0px 2px 8px rgba(11, 14, 17, 1)',
+      box: {
+        normal: '0px 0px 16px rgba(11, 14, 17, 1)',
+        increased: '0px 0px 16px rgba(11, 14, 17, 0.24)',
+      },
     },
 
     zIndexes: {
