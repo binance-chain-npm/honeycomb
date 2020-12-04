@@ -4,11 +4,7 @@ module.exports = {
   stories: ['../src/**/*.stories.@(tsx|mdx)'],
   addons: [
     '@storybook/preset-typescript',
-    '@storybook/addon-actions',
-    '@storybook/addon-controls',
-    '@storybook/addon-docs',
-    '@storybook/addon-toolbars',
-    '@storybook/addon-viewport',
+    '@storybook/addon-essentials',
   ],
   webpackFinal: async (config) => {
     // Make sure SVGs are not loaded with `file-loader`.
