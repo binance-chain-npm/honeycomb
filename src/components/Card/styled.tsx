@@ -3,11 +3,25 @@ import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
 
+export const SHADOWS = ['increased', 'normal', 'none'] as const;
+export type Shadow = typeof SHADOWS[number];
+
 export const PADDING = ['normal', 'none'] as const;
 export type Padding = typeof PADDING[number];
 
 export const POSITIONS = ['center', 'top', 'right', 'bottom', 'left'] as const;
 export type Position = typeof POSITIONS[number];
+
+export interface Props {
+  outlined: boolean;
+  padding: Padding;
+  position: Position;
+  shadow: Shadow;
+}
+
+const outline = css`
+  border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+`;
 
 const center = css`
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
@@ -41,12 +55,13 @@ const none = css`
   padding: 0;
 `;
 
-export const Container = styled.div<{ position: Position; padding: Padding }>`
+export const Container = styled.div<Props>`
   ${boxSizing};
 
   background: ${({ theme }) => theme.honeycomb.color.bg.normal};
-  box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
   overflow: hidden;
+
+  ${({ outlined }) => outlined && outline};
 
   ${({ position }) => position === 'center' && center};
   ${({ position }) => position === 'top' && top};
@@ -56,4 +71,10 @@ export const Container = styled.div<{ position: Position; padding: Padding }>`
 
   ${({ padding }) => padding === 'normal' && normal};
   ${({ padding }) => padding === 'none' && none};
+
+  ${({ shadow }) =>
+    shadow !== 'none' &&
+    css`
+      box-shadow: ${({ theme }) => theme.honeycomb.shadow.box[shadow]};
+    `};
 `;

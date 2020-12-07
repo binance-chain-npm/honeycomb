@@ -57,7 +57,7 @@ export const Box = styled.div<{ position: Position }>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
+  box-shadow: ${({ theme }) => theme.honeycomb.shadow.box.normal};
   overflow: hidden;
   ${({ position }) => position === 'center' && center};
   ${({ position }) => position === 'bottom' && bottom};
