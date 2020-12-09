@@ -31,6 +31,7 @@ export { ReactComponent as Faucet } from './assets/Faucet.svg';
 export { ReactComponent as Globe } from './assets/Globe.svg';
 export { ReactComponent as HamburgerMenu } from './assets/HamburgerMenu.svg';
 export { ReactComponent as Hourglass } from './assets/Hourglass.svg';
+export { ReactComponent as InfoCircle } from './assets/InfoCircle.svg';
 export { ReactComponent as InfoCircleSolid } from './assets/InfoCircleSolid.svg';
 export { ReactComponent as Key } from './assets/Key.svg';
 export { ReactComponent as Link } from './assets/Link.svg';

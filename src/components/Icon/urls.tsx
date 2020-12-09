@@ -31,6 +31,7 @@ export { default as Faucet } from './assets/Faucet.svg';
 export { default as Globe } from './assets/Globe.svg';
 export { default as HamburgerMenu } from './assets/HamburgerMenu.svg';
 export { default as Hourglass } from './assets/Hourglass.svg';
+export { default as InfoCircle } from './assets/InfoCircle.svg';
 export { default as InfoCircleSolid } from './assets/InfoCircleSolid.svg';
 export { default as Key } from './assets/Key.svg';
 export { default as Link } from './assets/Link.svg';
