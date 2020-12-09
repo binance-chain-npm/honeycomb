@@ -30,6 +30,7 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
                   {element}
                 </StyledDropdownDefaultTarget>
               }
+              radius="reduced"
             >
               {children.map((child, indexChild) => {
                 const component: React.ReactElement[] = [];
