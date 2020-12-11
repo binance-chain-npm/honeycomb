@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { em, transitions } from 'polished';
+import { transitions } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
 import { Shape as ComponentShape, fit } from '../internal/Shape';
-import { Size, normal, increased, huge, giant } from '../internal/Size';
+import { Size, normal, increased, huge, giant, fontSize } from '../internal/Size';
 import { styleless } from '../Styleless';
 
 export const VARIANTS = ['segmented', 'tab'] as const;
@@ -75,8 +75,8 @@ export const Container = styled.ul<ContainerProps>`
   display: flex;
   width: 100%;
   position: relative;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
+  ${fontSize};
   ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
