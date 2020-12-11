@@ -130,7 +130,6 @@ export const Styled = styled.button<Props>`
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   flex-shrink: 0;
   position: relative;
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};

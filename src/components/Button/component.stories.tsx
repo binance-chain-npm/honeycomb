@@ -57,6 +57,9 @@ export const Sizes = () => (
         <Button onClick={action('clicked')} key={`${size}`} variant="primary" size={size}>
           A {size} button
         </Button>
+        <Button onClick={action('clicked')} key={`${size}`} variant="primary" size={size} shape="square">
+          <Icon.BinanceChain />
+        </Button>
       </Container>
     ))}
   </Container>
