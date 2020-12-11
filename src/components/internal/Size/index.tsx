@@ -1,15 +1,14 @@
-import { css } from 'styled-components';
+import { css, DefaultTheme } from 'styled-components';
 import { em } from 'polished';
 
 export const SIZES = ['normal', 'increased', 'huge', 'giant'] as const;
 export type Size = typeof SIZES[number];
 
-export const fontSize = css<{ size: Size }>`
-  font-size: ${({ theme, size }) =>
-    size === 'normal' || size === 'increased'
-      ? em(theme.honeycomb.size.small)
-      : em(theme.honeycomb.size.reduced)};
-`;
+export const fontSize = ({ theme, size }: { theme: DefaultTheme; size: Size }) => {
+  return size === 'normal' || size === 'increased'
+    ? theme.honeycomb.size.small
+    : theme.honeycomb.size.reduced;
+};
 
 export const normal = css`
   height: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.small)};

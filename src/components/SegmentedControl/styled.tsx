@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { transitions } from 'polished';
+import { em, transitions } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
 import { Shape as ComponentShape, fit } from '../internal/Shape';
@@ -76,7 +76,7 @@ export const Container = styled.ul<ContainerProps>`
   width: 100%;
   position: relative;
 
-  ${fontSize};
+  font-size: ${({ theme, size }) => em(fontSize({ theme, size }))};
   ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};

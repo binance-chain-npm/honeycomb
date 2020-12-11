@@ -157,7 +157,7 @@ export const Styled = styled.button<Props>`
   ${({ variant }) => variant === 'primary' && primary};
   ${({ variant }) => variant === 'transparent' && transparent};
 
-  ${fontSize};
+  font-size: ${({ theme, size }) => em(fontSize({ theme, size }))};
   ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
