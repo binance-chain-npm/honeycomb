@@ -87,6 +87,6 @@ export const PaginationEllipsis = styled.span`
 `;
 
 export const PageNumberButton = styled(Button)`
-  padding: 0 ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.reduced)};
-  min-width: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.small)};
+  min-width: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.small)};
 `;
