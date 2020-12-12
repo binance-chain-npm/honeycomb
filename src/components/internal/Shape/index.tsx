@@ -16,6 +16,9 @@ export const fit = css`
 `;
 
 export const square = css<{ size: Size }>`
-  width: ${({ theme, size }) => em(theme.honeycomb.size[size], theme.honeycomb.size.reduced)};
+  width: ${({ theme, size }) =>
+    size === 'normal' || size === 'increased'
+      ? em(theme.honeycomb.size[size], theme.honeycomb.size.small)
+      : em(theme.honeycomb.size[size], theme.honeycomb.size.reduced)};
   padding: 0;
 `;

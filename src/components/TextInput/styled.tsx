@@ -2,7 +2,7 @@ import styled, { css, DefaultTheme } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
-import { Size, normal, increased, huge, giant } from '../internal/Size';
+import { Size, normal, increased, huge, giant, fontSize } from '../internal/Size';
 
 export type ValidationMessage = { label: React.ReactNode; state?: State; alwaysShow?: boolean };
 
@@ -65,8 +65,8 @@ export const InputContainer = styled.div<InputContainerProps>`
   border: 1px solid transparent;
   color: ${({ theme }) => theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.masked)};
   overflow: hidden;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
+  font-size: ${({ theme, size }) => em(fontSize({ theme, size }))};
   ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
@@ -90,12 +90,12 @@ export const InputContainer = styled.div<InputContainerProps>`
   ${({ state, isPristine }) => state === 'danger' && !isPristine && danger};
 `;
 
-const getDynamicFontSize = (theme: DefaultTheme, size: Size) => {
+const dynamicFontSize = ({ theme, size }: { theme: DefaultTheme; size: Size }) => {
   switch (size) {
     case 'normal':
-      return theme.honeycomb.size.reduced;
+      return theme.honeycomb.size.small;
     case 'increased':
-      return theme.honeycomb.size.reduced;
+      return theme.honeycomb.size.small;
     case 'huge':
       return theme.honeycomb.size.reduced;
     case 'giant':
@@ -119,43 +119,35 @@ export const Input = styled.div<InputProps>`
   text-decoration: none;
   background: transparent;
   color: inherit;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
+  font-size: ${({ theme, size }) => em(fontSize({ theme, size }), fontSize({ theme, size }))};
+  ${({ theme }) => transitions(['color'], `${theme.honeycomb.duration.normal} ease-in-out`)};
 
   ::placeholder {
     color: ${({ theme }) => theme.honeycomb.color.text.masked};
   }
 
-  ${({ dynamic, size }) =>
-    ((size === 'normal' || size === 'increased' || size === 'huge') &&
-      css`
-        height: ${({ theme }) => em(theme.honeycomb.size[size] - 2, theme.honeycomb.size.reduced)};
-        line-height: ${({ theme }) =>
-          em(theme.honeycomb.size[size] - 2, theme.honeycomb.size.reduced)};
-      `) ||
-    (size === 'giant' &&
-      (dynamic
-        ? css`
-            height: ${({ theme }) =>
-              em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
-            line-height: ${({ theme }) =>
-              em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
-          `
-        : css`
-            height: ${({ theme }) =>
-              em(theme.honeycomb.size.giant - 2, theme.honeycomb.size.reduced)};
-            line-height: ${({ theme }) =>
-              em(theme.honeycomb.size.giant - 2, theme.honeycomb.size.reduced)};
-          `))};
+  ${({ size }) =>
+    css`
+      height: ${({ theme }) => em(theme.honeycomb.size[size] - 2, fontSize({ theme, size }))};
+      line-height: ${({ theme }) => em(theme.honeycomb.size[size] - 2, fontSize({ theme, size }))};
+    `};
 
-  ${({ theme }) => transitions(['color'], `${theme.honeycomb.duration.normal} ease-in-out`)};
-
-  ${({ dynamic, size, scale }) =>
+  ${({ dynamic }) =>
     dynamic &&
     css`
       width: 100%;
+    `};
+
+  ${({ dynamic, size, scale }) =>
+    size === 'giant' &&
+    dynamic &&
+    css`
+      height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+      line-height: ${({ theme }) =>
+        em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
       font-size: ${({ theme }) =>
         `max(calc(${em(
-          getDynamicFontSize(theme, size),
+          dynamicFontSize({ theme, size }),
           theme.honeycomb.size.reduced,
         )} * ${scale}), ${em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)})`};
     `};
@@ -194,7 +186,7 @@ export const DynamicTextContainer = styled.div`
 
 export const DynamicText = styled.span<{ scale: number; size: Size }>`
   font-size: ${({ theme, size }) =>
-    em(getDynamicFontSize(theme, size), theme.honeycomb.size.reduced)};
+    em(dynamicFontSize({ theme, size }), fontSize({ theme, size }))};
   position: absolute;
   display: inline-block;
   white-space: nowrap;

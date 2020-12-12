@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { Shape, fill, fit, square } from '../internal/Shape';
-import { Size, normal, increased, huge, giant } from '../internal/Size';
+import { Size, normal, increased, huge, giant, fontSize } from '../internal/Size';
 import { styleless as stylelessCommon } from '../Styleless';
 import { boxSizing } from '../../modules/box-sizing';
 
@@ -130,7 +130,6 @@ export const Styled = styled.button<Props>`
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   flex-shrink: 0;
   position: relative;
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
@@ -158,6 +157,7 @@ export const Styled = styled.button<Props>`
   ${({ variant }) => variant === 'primary' && primary};
   ${({ variant }) => variant === 'transparent' && transparent};
 
+  font-size: ${({ theme, size }) => em(fontSize({ theme, size }))};
   ${({ size }) => size === 'normal' && normal};
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
