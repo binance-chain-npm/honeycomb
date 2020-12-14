@@ -24,6 +24,7 @@ export { ReactComponent as Docs } from './assets/Docs.svg';
 export { ReactComponent as Download } from './assets/Download.svg';
 export { ReactComponent as Earth } from './assets/Earth.svg';
 export { ReactComponent as Edit } from './assets/Edit.svg';
+export { ReactComponent as Ellipsis } from './assets/Ellipsis.svg';
 export { ReactComponent as Email } from './assets/Email.svg';
 export { ReactComponent as Eye } from './assets/Eye.svg';
 export { ReactComponent as EyeBlocked } from './assets/EyeBlocked.svg';
