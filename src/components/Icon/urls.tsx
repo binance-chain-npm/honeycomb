@@ -24,6 +24,7 @@ export { default as Docs } from './assets/Docs.svg';
 export { default as Download } from './assets/Download.svg';
 export { default as Earth } from './assets/Earth.svg';
 export { default as Edit } from './assets/Edit.svg';
+export { default as Ellipsis } from './assets/Ellipsis.svg';
 export { default as Email } from './assets/Email.svg';
 export { default as Eye } from './assets/Eye.svg';
 export { default as EyeBlocked } from './assets/EyeBlocked.svg';
