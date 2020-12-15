@@ -65,7 +65,7 @@ export const Box = styled.div<{ position: Position }>`
   @media (${bigScreen}) {
     height: auto;
     width: 50vw;
-    max-height: 75vh;
+    max-height: ${em(620)};
     max-width: ${em(500)};
   }
 `;

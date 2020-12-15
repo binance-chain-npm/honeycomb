@@ -27,7 +27,7 @@ export const OptionsContainer = styled(Card)`
   margin: 0 ${({ theme }) => em(theme.honeycomb.radius.increased)};
   padding: 0;
   scroll-behavior: smooth;
-  max-height: 40vh;
+  max-height: ${em(392)};
   overflow: hidden;
   overflow-y: auto;
 `;
