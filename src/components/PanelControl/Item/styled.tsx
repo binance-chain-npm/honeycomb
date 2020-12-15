@@ -33,7 +33,8 @@ const solid = css`
 export const Styled = styled.div<Props>`
   ${styleless};
 
-  flex-shrink: 0;
+  flex: 1 1 0;
+  width: 0;
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
   cursor: pointer;
 

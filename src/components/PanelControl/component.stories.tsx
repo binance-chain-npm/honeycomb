@@ -17,9 +17,9 @@ export default {
   title: `${Sections.Elements}/PanelControl`,
 };
 
-const Item = styled(Text)`
-  padding: 0 ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
-  height: ${({ theme }) => em(theme.honeycomb.size.huge - 2, theme.honeycomb.size.reduced)};
+const Item = styled(PanelControl.Item)`
+  padding: ${({ theme }) => em(theme.honeycomb.size.small)};
+  height: ${({ theme }) => em(theme.honeycomb.size.huge)};
 `;
 
 export const Horizontal = () => {
@@ -27,21 +27,21 @@ export const Horizontal = () => {
 
   return (
     <PanelControl orientation="horizontal" variant="solid" data-testid="panel-control">
-      <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)} data-testid="0">
-        <Item size="reduced">Item</Item>
-      </PanelControl.Item>
+      <Item selected={selected === 0} onClick={() => setSelected(0)} data-testid="0">
+        <Text size="reduced">Item</Text>
+      </Item>
       <Space size="normal" />
-      <PanelControl.Item selected={selected === 1} onClick={() => setSelected(1)} data-testid="1">
-        <Item size="reduced">Item</Item>
-      </PanelControl.Item>
+      <Item selected={selected === 1} onClick={() => setSelected(1)} data-testid="1">
+        <Text size="reduced">Item</Text>
+      </Item>
       <Space size="normal" />
-      <PanelControl.Item selected={selected === 2} onClick={() => setSelected(2)} data-testid="2">
-        <Item size="reduced">Item</Item>
-      </PanelControl.Item>
+      <Item selected={selected === 2} onClick={() => setSelected(2)} data-testid="2">
+        <Text size="reduced">Item</Text>
+      </Item>
       <Space size="normal" />
-      <PanelControl.Item disabled data-testid="disabled">
-        <Item size="reduced">Disabled Item</Item>
-      </PanelControl.Item>
+      <Item disabled data-testid="disabled">
+        <Text size="reduced">Disabled Item</Text>
+      </Item>
     </PanelControl>
   );
 };
@@ -51,43 +51,43 @@ export const Vertical = () => {
 
   return (
     <PanelControl orientation="vertical" variant="solid">
-      <PanelControl.Item selected={selected === 0} onClick={() => setSelected(0)}>
-        <Item size="reduced">Item</Item>
-      </PanelControl.Item>
+      <Item selected={selected === 0} onClick={() => setSelected(0)}>
+        <Text size="reduced">Item</Text>
+      </Item>
       <Space size="normal" />
-      <PanelControl.Item selected={selected === 1} onClick={() => setSelected(1)}>
-        <Item size="reduced">Item</Item>
-      </PanelControl.Item>
+      <Item selected={selected === 1} onClick={() => setSelected(1)}>
+        <Text size="reduced">Item</Text>
+      </Item>
       <Space size="normal" />
-      <PanelControl.Item selected={selected === 2} onClick={() => setSelected(2)}>
-        <Item size="reduced">Item</Item>
-      </PanelControl.Item>
+      <Item selected={selected === 2} onClick={() => setSelected(2)}>
+        <Text size="reduced">Item</Text>
+      </Item>
       <Space size="normal" />
-      <PanelControl.Item disabled>
-        <Item size="reduced">Disabled Item</Item>
-      </PanelControl.Item>
+      <Item disabled>
+        <Text size="reduced">Disabled Item</Text>
+      </Item>
     </PanelControl>
   );
 };
 
-const FixedWidthItem = styled(Item)`
+const FixedWidthItem = styled(Text)`
   width: ${({ theme }) => em(theme.honeycomb.size.giant - 2, theme.honeycomb.size.reduced)};
 `;
 
 export const FixedWidth = () => {
   return (
     <PanelControl orientation="horizontal" shape="fit" variant="solid">
-      <PanelControl.Item selected>
+      <Item selected>
         <FixedWidthItem size="reduced">ERC20</FixedWidthItem>
-      </PanelControl.Item>
+      </Item>
       <Space size="normal" />
-      <PanelControl.Item>
+      <Item>
         <FixedWidthItem size="reduced">OMNI</FixedWidthItem>
-      </PanelControl.Item>
+      </Item>
       <Space size="normal" />
-      <PanelControl.Item>
+      <Item>
         <FixedWidthItem size="reduced">TRC20</FixedWidthItem>
-      </PanelControl.Item>
+      </Item>
     </PanelControl>
   );
 };
@@ -97,17 +97,17 @@ export const Variant = () => {
     <>
       <h3>{variant}</h3>
       <PanelControl orientation="horizontal" variant={variant}>
-        <PanelControl.Item selected>
-          <Item size="reduced">Item</Item>
-        </PanelControl.Item>
+        <Item selected>
+          <Text size="reduced">Item</Text>
+        </Item>
         <Space size="normal" />
-        <PanelControl.Item>
-          <Item size="reduced">Item</Item>
-        </PanelControl.Item>
+        <Item>
+          <Text size="reduced">Item</Text>
+        </Item>
         <Space size="normal" />
-        <PanelControl.Item>
-          <Item size="reduced">Item</Item>
-        </PanelControl.Item>
+        <Item>
+          <Text size="reduced">Item</Text>
+        </Item>
       </PanelControl>
     </>
   ));
