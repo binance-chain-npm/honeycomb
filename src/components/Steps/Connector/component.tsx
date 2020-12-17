@@ -14,7 +14,7 @@ export const Component = ({ size, 'data-testid': testId, ...otherProps }: Props)
   const { orientation } = useContext(Context);
 
   return (
-    <Styled {...otherProps} size={size} orientation={orientation} data-testid={buildTestId()} />
+    <Styled {...otherProps} size={size} $orientation={orientation} data-testid={buildTestId()} />
   );
 };
 

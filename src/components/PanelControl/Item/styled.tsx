@@ -7,7 +7,7 @@ import { Orientation, Shape, Variant } from '../styled';
 
 export interface Props {
   selected: boolean;
-  orientation: Orientation;
+  $orientation: Orientation;
   shape: Shape;
   variant: Variant;
 }
@@ -46,8 +46,8 @@ export const Styled = styled.div<Props>`
   ${({ variant }) => variant === 'solid' && solid};
   ${({ variant }) => variant === 'outlined' && outlined};
 
-  ${({ orientation }) => orientation === 'horizontal' && horizontal};
-  ${({ orientation }) => orientation === 'vertical' && vertical};
+  ${({ $orientation: orientation }) => orientation === 'horizontal' && horizontal};
+  ${({ $orientation: orientation }) => orientation === 'vertical' && vertical};
 
   ${({ selected }) =>
     selected &&

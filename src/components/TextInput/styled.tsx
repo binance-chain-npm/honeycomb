@@ -53,7 +53,7 @@ type InputContainerProps = {
   isPristine?: boolean;
   dynamic: boolean;
   size: Size;
-  scale: number;
+  $scale: number;
 };
 
 export const InputContainer = styled.div<InputContainerProps>`
@@ -71,7 +71,7 @@ export const InputContainer = styled.div<InputContainerProps>`
   ${({ size }) => size === 'increased' && increased};
   ${({ size }) => size === 'huge' && huge};
   ${({ size }) => size === 'giant' && giant};
-  ${({ size, scale }) =>
+  ${({ size, $scale: scale }) =>
     size === 'giant' &&
     scale !== 1 &&
     css`
@@ -106,7 +106,7 @@ const dynamicFontSize = ({ theme, size }: { theme: DefaultTheme; size: Size }) =
 type InputProps = {
   dynamic: boolean;
   size: Size;
-  scale: number;
+  $scale: number;
 };
 
 export const Input = styled.div<InputProps>`
@@ -138,7 +138,7 @@ export const Input = styled.div<InputProps>`
       width: 100%;
     `};
 
-  ${({ dynamic, size, scale }) =>
+  ${({ dynamic, size, $scale: scale }) =>
     size === 'giant' &&
     dynamic &&
     css`
@@ -184,14 +184,14 @@ export const DynamicTextContainer = styled.div`
   width: 100%;
 `;
 
-export const DynamicText = styled.span<{ scale: number; size: Size }>`
+export const DynamicText = styled.span<{ $scale: number; size: Size }>`
   font-size: ${({ theme, size }) =>
     em(dynamicFontSize({ theme, size }), fontSize({ theme, size }))};
   position: absolute;
   display: inline-block;
   white-space: nowrap;
   transform-origin: 0 50%;
-  transform: ${({ scale }) => `scale(${scale})`};
+  transform: ${({ $scale: scale }) => `scale(${scale})`};
   height: 0;
   overflow: hidden;
 `;

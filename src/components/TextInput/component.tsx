@@ -128,7 +128,7 @@ export const Component = ({
       onChange={readOnly ? undefined : change}
       readOnly={readOnly}
       dynamic={dynamic}
-      scale={scale}
+      $scale={scale}
       size={size}
       as={htmlTag as any}
     />
@@ -147,13 +147,13 @@ export const Component = ({
         isPristine={isPristine}
         dynamic={dynamic}
         size={size}
-        scale={scale}
+        $scale={scale}
       >
         {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
         {dynamic ? (
           <DynamicTextContainer>
             {input}
-            <DynamicText ref={spanRef} size={size} scale={scale}>
+            <DynamicText ref={spanRef} size={size} $scale={scale}>
               {value}
             </DynamicText>
           </DynamicTextContainer>
