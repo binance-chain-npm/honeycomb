@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal } from '../Modal';
 import { useBuildTestId } from '../../modules/test-ids';
 
-import { Title, Description, StyledModal, StyledModalContent } from './styled';
+import { Title, Description, StyledModalContent } from './styled';
 import { Icon } from './Icon';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> & {
@@ -25,7 +25,7 @@ export const Component = ({
   const { buildTestId } = useBuildTestId({ id: testId });
 
   return (
-    <StyledModal {...otherProps} data-testid={buildTestId()}>
+    <Modal {...otherProps} data-testid={buildTestId()}>
       <Modal.Header {...otherProps} onClose={onClose}></Modal.Header>
       <StyledModalContent>
         {icon && <Icon icon={icon} />}
@@ -33,7 +33,7 @@ export const Component = ({
         <Description>{description}</Description>
         {children}
       </StyledModalContent>
-    </StyledModal>
+    </Modal>
   );
 };
 
