@@ -35,6 +35,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children' | 'style'> &
   };
 
 export const Component = ({
+  className,
   children,
   padding = 'small',
   radius = 'reduced',
@@ -69,6 +70,7 @@ export const Component = ({
             padding={padding}
             $radius={radius}
             variant={variant}
+            className={className}
             data-testid={buildTestId('content')}
           >
             {otherProps.content}
