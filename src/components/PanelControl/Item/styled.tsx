@@ -8,7 +8,7 @@ import { Orientation, Shape, Variant } from '../styled';
 export interface Props {
   selected: boolean;
   $orientation: Orientation;
-  shape: Shape;
+  $shape: Shape;
   variant: Variant;
 }
 
@@ -56,7 +56,7 @@ export const Styled = styled.div<Props>`
       background-color: ${({ theme }) => rgba(theme.honeycomb.color.primary.normal, 0.1)};
     `};
 
-  ${({ shape }) =>
+  ${({ $shape: shape }) =>
     shape === 'fit' &&
     css`
       flex-grow: 0;

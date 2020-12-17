@@ -13,7 +13,7 @@ export type Shape = Omit<ComponentShape, 'square'>;
 
 export interface ContainerProps {
   size: Size;
-  shape: Shape;
+  $shape: Shape;
   disabled?: boolean;
   variant: Variant;
 }
@@ -83,7 +83,7 @@ export const Container = styled.ul<ContainerProps>`
   ${({ size }) => size === 'giant' && giant};
   padding: 0;
 
-  ${({ shape }) => shape === 'fit' && fit};
+  ${({ $shape: shape }) => shape === 'fit' && fit};
 
   ${({ disabled }) =>
     disabled &&
