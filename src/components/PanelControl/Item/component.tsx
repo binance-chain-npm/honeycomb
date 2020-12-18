@@ -29,8 +29,8 @@ export const Component = ({
       {...otherProps}
       as={htmlTag as any}
       selected={!!selected}
-      orientation={orientation}
-      shape={shape}
+      $orientation={orientation}
+      $shape={shape}
       variant={variant}
       data-testid={buildTestId()}
       data-testisselected={!!selected}

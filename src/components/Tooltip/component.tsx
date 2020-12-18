@@ -68,15 +68,16 @@ export const Component = ({
         content={
           <Content
             padding={padding}
-            radius={radius}
+            $radius={radius}
             variant={variant}
+            className={className}
             data-testid={buildTestId('content')}
           >
             {otherProps.content}
           </Content>
         }
       >
-        <Target className={className} shape={shape} data-testid={buildTestId('target')}>
+        <Target $shape={shape} data-testid={buildTestId('target')}>
           {children}
         </Target>
       </Tippy>

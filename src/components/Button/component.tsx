@@ -64,7 +64,7 @@ export const Component = ({
       disabled={disabled}
       variant={variant}
       size={size}
-      shape={shape}
+      $shape={shape}
       onClick={click}
     >
       {icon && (

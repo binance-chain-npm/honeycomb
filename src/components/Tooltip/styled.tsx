@@ -70,11 +70,11 @@ export const Styles = createGlobalStyle<{ variant: Variant }>`
   }
 `;
 
-export const Target = styled.div<{ shape?: Shape }>`
-  ${({ shape }) => shape === 'fit' && fit};
+export const Target = styled.div<{ $shape?: Shape }>`
+  ${({ $shape: shape }) => shape === 'fit' && fit};
 `;
 
-export const Content = styled.div<{ padding: Size; radius: Radius; variant: Variant }>`
+export const Content = styled.div<{ padding: Size; $radius: Radius; variant: Variant }>`
   color: ${({ theme }) =>
     theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.normal)};
   box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
@@ -86,7 +86,7 @@ export const Content = styled.div<{ padding: Size; radius: Radius; variant: Vari
     css`
       ${em(theme.honeycomb.size[padding], theme.honeycomb.size.reduced)}
     `};
-  border-radius: ${({ theme, radius }) =>
+  border-radius: ${({ theme, $radius: radius }) =>
     em(theme.honeycomb.radius[radius], theme.honeycomb.size.reduced)};
 
   ${({ theme, variant }) =>

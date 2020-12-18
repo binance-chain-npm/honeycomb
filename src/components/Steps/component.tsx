@@ -42,7 +42,7 @@ export const Component = ({
   }, [activeStep, otherProps.children]);
 
   return (
-    <Styled {...otherProps} orientation={orientation} data-testid={buildTestId()}>
+    <Styled {...otherProps} $orientation={orientation} data-testid={buildTestId()}>
       <Context.Provider value={context}>{steps}</Context.Provider>
     </Styled>
   );

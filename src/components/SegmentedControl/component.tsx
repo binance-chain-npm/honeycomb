@@ -43,7 +43,7 @@ export const Component = ({
         data-testid={buildTestId()}
         disabled={disabled}
         size={size}
-        shape={shape}
+        $shape={shape}
         variant={variant}
         {...otherProps}
       >

@@ -3,14 +3,6 @@ import { em } from 'polished';
 
 import { Modal } from '../Modal';
 
-export const StyledModal = styled(Modal)`
-  ${Modal.Box} {
-    @media (min-width: ${em(768)}) {
-      width: ${em(300)};
-    }
-  }
-`;
-
 export const StyledModalContent = styled(Modal.Content)`
   align-items: center;
   justify-content: center;

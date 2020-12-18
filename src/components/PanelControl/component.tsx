@@ -31,7 +31,7 @@ export const Component = ({
   ]);
 
   return (
-    <Styled {...otherProps} orientation={orientation} data-testid={buildTestId()}>
+    <Styled {...otherProps} $orientation={orientation} data-testid={buildTestId()}>
       <Context.Provider value={context}>{children}</Context.Provider>
     </Styled>
   );

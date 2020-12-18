@@ -20,7 +20,7 @@ export type Variant = typeof VARIANTS[number];
 export interface Props {
   variant: Variant;
   size: Size;
-  shape: Shape;
+  $shape: Shape;
   disabled?: boolean;
 }
 
@@ -163,7 +163,7 @@ export const Styled = styled.button<Props>`
   ${({ size }) => size === 'huge' && huge};
   ${({ size }) => size === 'giant' && giant};
 
-  ${({ shape }) => shape === 'fill' && fill};
-  ${({ shape }) => shape === 'fit' && fit};
-  ${({ shape }) => shape === 'square' && square};
+  ${({ $shape: shape }) => shape === 'fill' && fill};
+  ${({ $shape: shape }) => shape === 'fit' && fit};
+  ${({ $shape: shape }) => shape === 'square' && square};
 `;
