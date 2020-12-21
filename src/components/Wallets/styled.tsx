@@ -20,10 +20,6 @@ export const StyledPanelControlItem = styled(PanelControl.Item)`
   height: auto;
   margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
 
-  :hover {
-    border-color: ${({ theme }) => theme.honeycomb.color.primary.normal};
-  }
-
   img,
   svg {
     width: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};

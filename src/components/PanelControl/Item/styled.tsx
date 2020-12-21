@@ -43,6 +43,10 @@ export const Styled = styled.div<Props>`
     pointer-events: none;
   }
 
+  :hover {
+    border-color: ${({ theme }) => theme.honeycomb.color.primary.normal};
+  }
+
   ${({ variant }) => variant === 'solid' && solid};
   ${({ variant }) => variant === 'outlined' && outlined};
 
