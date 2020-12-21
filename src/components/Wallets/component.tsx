@@ -25,12 +25,12 @@ export const Component = ({
   const { providers: defaultProviders } = useWalletProviders();
   const { width } = useWindowSize();
 
-  const isXs = useMemo(() => width <= SIZES.sm, [width]);
+  const isSm = useMemo(() => width < SIZES.md, [width]);
 
   return (
     <StyledPanelControl
       {...otherProps}
-      orientation={isXs ? 'vertical' : 'horizontal'}
+      orientation={isSm ? 'vertical' : 'horizontal'}
       variant="solid"
       data-testid={buildTestId()}
     >
@@ -46,14 +46,13 @@ export const Component = ({
                 e.preventDefault();
                 onChange({ provider: element });
               }}
-              isXs={isXs}
             >
               {element.icon}
               <Space size="small" base="reduced" />
               {element.name}
             </StyledPanelControlItem>
-            {((index + 1) % 3 !== 0 || isXs) && <Space size="normal" />}
-            {(index + 1) % 3 === 0 && !isXs && <Break />}
+            {(index + 1) % 3 !== 0 && !isSm && <Space size="normal" />}
+            {(index + 1) % 3 === 0 && !isSm && <Break />}
           </>
         );
       })}
