@@ -52,3 +52,4 @@ export { Text } from './components/Text';
 export { TextArea } from './components/TextArea';
 export { TextInput } from './components/TextInput';
 export { Tooltip } from './components/Tooltip';
+export { Wallets, useWalletProviders } from './components/Wallets';
