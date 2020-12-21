@@ -69,14 +69,14 @@ describe('Modal', () => {
     cy.percySnapshot('Modal without title');
   });
 
-  it('renders correctly on medium devices', () => {
+  it('renders correctly on medium screens', () => {
     cy.customViewport({ size: 'md' });
     cy.clock();
 
     cy.visitStory({ storyId: 'elements-modal--without-title', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.percySnapshot('Modal while open on a medium device', {
+    cy.percySnapshot('Modal while open on a medium screen', {
       widths: [768],
     });
   });

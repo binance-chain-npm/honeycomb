@@ -1,5 +1,5 @@
 describe('Wallets', () => {
-  it('renders correctly on small devices', () => {
+  it('renders correctly on different sized screens', () => {
     cy.customViewport({ size: 'sm' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-wallets--default', themeId: 'GoldLight' });
@@ -12,7 +12,7 @@ describe('Wallets', () => {
       'true',
     );
 
-    cy.percySnapshot('Wallets while open on a small device');
+    cy.percySnapshot('Wallets while open on a small screen');
 
     cy.customViewport({ size: 'md' });
     cy.reload();
@@ -25,7 +25,7 @@ describe('Wallets', () => {
       'true',
     );
 
-    cy.percySnapshot('Wallets while open on a medium device', { widths: [768] });
+    cy.percySnapshot('Wallets while open on a medium screen', { widths: [768] });
   });
 
   it('custom providers and number of columns renders correctly', () => {

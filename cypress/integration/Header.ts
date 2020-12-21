@@ -1,5 +1,5 @@
 describe('Header', () => {
-  it('renders correctly on large devices', () => {
+  it('renders correctly on large screens', () => {
     cy.customViewport({ size: 'lg' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
@@ -19,10 +19,10 @@ describe('Header', () => {
 
     cy.get('[data-testid="light.header.left.dropdown.content"]').should('be.visible');
 
-    cy.percySnapshot('Header while open on a large device', { widths: [1280] });
+    cy.percySnapshot('Header while open on a large screen', { widths: [1280] });
   });
 
-  it('renders correctly on medium devices', () => {
+  it('renders correctly on medium screens', () => {
     cy.customViewport({ size: 'md' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
@@ -50,10 +50,10 @@ describe('Header', () => {
         expect(children.length).to.equal(4);
       });
 
-    cy.percySnapshot('Header while open on a medium device', { widths: [768] });
+    cy.percySnapshot('Header while open on a medium screen', { widths: [768] });
   });
 
-  it('renders correctly on small devices', () => {
+  it('renders correctly on small screens', () => {
     cy.customViewport({ size: 'sm' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
@@ -82,7 +82,7 @@ describe('Header', () => {
         expect(children.length).to.equal(6);
       });
 
-    cy.percySnapshot('Header while open on a small device');
+    cy.percySnapshot('Header while open on a small screen');
   });
 
   it('dropdown in header behaves correctly', () => {

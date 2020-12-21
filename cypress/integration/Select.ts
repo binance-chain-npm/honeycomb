@@ -1,5 +1,5 @@
 describe('Select', () => {
-  it('displays modal on small devices', () => {
+  it('displays modal on small screens', () => {
     cy.clock();
     cy.visitStory({ storyId: 'elements-select--responsive', themeId: 'GoldLight' });
     cy.tick(10000);
@@ -10,10 +10,10 @@ describe('Select', () => {
     cy.get('[data-testid="dark.select.modal.content"]').should('be.visible');
     cy.get('[data-testid="dark.select.dropdown.content"]').should('not.exist');
 
-    cy.percySnapshot('Select with Gold Dark theme while open on a small device');
+    cy.percySnapshot('Select with Gold Dark theme while open on a small screen');
   });
 
-  it('displays dropdown on large devices', () => {
+  it('displays dropdown on large screens', () => {
     cy.customViewport({ size: 'lg' });
     cy.clock();
     cy.visitStory({ storyId: 'elements-select--responsive', themeId: 'GoldLight' });
@@ -25,7 +25,7 @@ describe('Select', () => {
     cy.get('[data-testid="dark.select.modal.content"]').should('not.exist');
     cy.get('[data-testid="dark.select.dropdown.content"]').should('be.visible');
 
-    cy.percySnapshot('Select with Gold Dark theme while open on a large device', { widths: [1280] });
+    cy.percySnapshot('Select with Gold Dark theme while open on a large screen', { widths: [1280] });
   });
 
   it('search input not rendered when children are not filterable', () => {

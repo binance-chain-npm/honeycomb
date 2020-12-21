@@ -19,16 +19,20 @@ export const StyledPanelControlItem = styled(PanelControl.Item)`
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   padding: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
   padding-top: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
-  flex-direction: column;
   align-items: center;
-  justify-content: start;
   width: 100%;
-  height: ${({ theme }) => em(116, theme.honeycomb.size.reduced)};
+  justify-content: space-between;
 
   img,
   svg {
     width: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
     height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
     flex-shrink: 0;
+  }
+
+  @media (min-width: ${em(SIZES.md)}) {
+    flex-direction: column;
+    justify-content: start;
+    height: ${({ theme }) => em(116, theme.honeycomb.size.reduced)};
   }
 `;
