@@ -4,9 +4,15 @@ import { em } from 'polished';
 import { SIZES } from '../internal/useWindowSize';
 import { PanelControl } from '../PanelControl';
 
-export const StyledPanelControl = styled(PanelControl)`
-  flex-wrap: wrap;
-  margin-bottom: -${({ theme }) => em(theme.honeycomb.size.normal)};
+export const StyledPanelControl = styled(PanelControl)<{ columns: number }>`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: ${({ theme }) => em(theme.honeycomb.size.normal)};
+
+  @media (min-width: ${em(SIZES.md)}) {
+    grid-template-columns: repeat(${({ columns }) => columns}, minmax(0, 1fr));
+    column-gap: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
 `;
 
 export const StyledPanelControlItem = styled(PanelControl.Item)`
@@ -17,25 +23,11 @@ export const StyledPanelControlItem = styled(PanelControl.Item)`
   align-items: center;
   justify-content: start;
   width: 100%;
-  height: auto;
-  margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
+  height: 100%;
 
   img,
   svg {
     width: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
     height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
   }
-
-  @media (min-width: ${em(SIZES.md)}) {
-    width: calc(
-      (100% - ${({ theme }) => em(theme.honeycomb.size.normal * 2, theme.honeycomb.size.reduced)}) /
-        3
-    );
-    height: ${({ theme }) => em(116, theme.honeycomb.size.reduced)};
-  }
-`;
-
-export const Break = styled.div`
-  flex-basis: 100%;
-  height: 0;
 `;

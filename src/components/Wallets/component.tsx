@@ -4,7 +4,7 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { SIZES, useWindowSize } from '../internal/useWindowSize';
 import { Space } from '../Space';
 
-import { Break, StyledPanelControl, StyledPanelControlItem } from './styled';
+import { StyledPanelControl, StyledPanelControlItem } from './styled';
 import { DefaultWalletProvider, WalletProvider, useWalletProviders } from './useWalletProviders';
 
 export type Props = Testable & {
@@ -12,12 +12,14 @@ export type Props = Testable & {
   providers: (DefaultWalletProvider | WalletProvider)[];
   selected?: WalletProvider;
   onChange: ({ provider }: { provider?: WalletProvider }) => void;
+  columns?: number;
 };
 
 export const Component = ({
   providers,
   selected,
   onChange,
+  columns = 3,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -32,6 +34,7 @@ export const Component = ({
       {...otherProps}
       orientation={isSm ? 'vertical' : 'horizontal'}
       variant="solid"
+      columns={columns}
       data-testid={buildTestId()}
     >
       {providers.map((it, index) => {
@@ -51,8 +54,6 @@ export const Component = ({
               <Space size="small" base="reduced" />
               {element.name}
             </StyledPanelControlItem>
-            {(index + 1) % 3 !== 0 && !isSm && <Space size="normal" />}
-            {(index + 1) % 3 === 0 && !isSm && <Break />}
           </>
         );
       })}

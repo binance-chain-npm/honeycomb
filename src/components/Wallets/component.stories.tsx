@@ -4,6 +4,7 @@ import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
 import { WalletProvider, Wallets } from './';
+import { DEFAULT_WALLET_PROVIDERS } from './useWalletProviders';
 
 export default {
   component: Wallets,
@@ -23,14 +24,19 @@ export const Default = () => {
       <Wallets
         selected={selected}
         onChange={change}
-        providers={[
-          'Binance Chain Wallet',
-          'Ledger',
-          'Math Wallet',
-          'MetaMask',
-          'TokenPocket',
-          'Trust Wallet',
-        ]}
+        providers={Array.from(DEFAULT_WALLET_PROVIDERS)}
+      />
+    </>
+  );
+};
+
+export const SetNumberOfColumns = () => {
+  return (
+    <>
+      <Wallets
+        onChange={() => {}}
+        providers={Array.from(DEFAULT_WALLET_PROVIDERS)}
+        columns={4}
       />
     </>
   );

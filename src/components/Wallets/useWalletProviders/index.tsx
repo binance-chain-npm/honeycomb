@@ -7,7 +7,7 @@ import { ReactComponent as MetaMask } from './Logos/MetaMask.svg';
 import { ReactComponent as TokenPocket } from './Logos/TokenPocket.svg';
 import { ReactComponent as TrustWallet } from './Logos/TrustWallet.svg';
 
-export const DEFAULT_PROVIDERS = [
+export const DEFAULT_WALLET_PROVIDERS = [
   'Binance Chain Wallet',
   'Ledger',
   'Math Wallet',
@@ -15,7 +15,7 @@ export const DEFAULT_PROVIDERS = [
   'TokenPocket',
   'Trust Wallet',
 ] as const;
-export type DefaultWalletProvider = typeof DEFAULT_PROVIDERS[number];
+export type DefaultWalletProvider = typeof DEFAULT_WALLET_PROVIDERS[number];
 
 export type WalletProvider = {
   name: string;
