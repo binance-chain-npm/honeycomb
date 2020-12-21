@@ -22,22 +22,18 @@ export const Default = () => {
   }, []);
 
   return (
-    <>
-      <Wallets
-        selected={selected}
-        onChange={change}
-        providers={Array.from(DEFAULT_WALLET_PROVIDERS)}
-        data-testid="wallets"
-      />
-    </>
+    <Wallets
+      selected={selected}
+      onChange={change}
+      providers={Array.from(DEFAULT_WALLET_PROVIDERS)}
+      data-testid="wallets"
+    />
   );
 };
 
 export const WithCustomNumberOfColumns = () => {
   return (
-    <>
-      <Wallets onChange={() => {}} providers={Array.from(DEFAULT_WALLET_PROVIDERS)} columns={4} />
-    </>
+    <Wallets onChange={() => { }} providers={Array.from(DEFAULT_WALLET_PROVIDERS)} columns={4} />
   );
 };
 
@@ -49,13 +45,11 @@ export const WithCustomWalletProvider = () => {
   }));
 
   return (
-    <>
-      <Wallets
-        onChange={() => {}}
-        providers={['Binance Chain Wallet', ...wallets]}
-        columns={4}
-        data-testid="wallets"
-      />
-    </>
+    <Wallets
+      onChange={() => { }}
+      providers={['Binance Chain Wallet', ...wallets]}
+      columns={4}
+      data-testid="wallets"
+    />
   );
 };
