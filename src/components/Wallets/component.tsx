@@ -49,6 +49,7 @@ export const Component = ({
                 e.preventDefault();
                 onChange({ provider: element });
               }}
+              data-testid={`${index}`}
             >
               {element.icon}
               <Space size="small" base="reduced" />

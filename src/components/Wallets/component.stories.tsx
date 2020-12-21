@@ -27,6 +27,7 @@ export const Default = () => {
         selected={selected}
         onChange={change}
         providers={Array.from(DEFAULT_WALLET_PROVIDERS)}
+        data-testid="wallets"
       />
     </>
   );
@@ -41,19 +42,19 @@ export const WithCustomNumberOfColumns = () => {
 };
 
 export const WithCustomWalletProvider = () => {
+  const wallets = new Array(5).fill(null).map((_, index) => ({
+    name: `Custom Wallet ${index + 1}`,
+    icon: <Wallet />,
+    href: '#',
+  }));
+
   return (
     <>
       <Wallets
         onChange={() => {}}
-        providers={[
-          'Binance Chain Wallet',
-          {
-            name: 'Custom Wallet',
-            icon: <Wallet />,
-            href: '#',
-          },
-        ]}
+        providers={['Binance Chain Wallet', ...wallets]}
         columns={4}
+        data-testid="wallets"
       />
     </>
   );
