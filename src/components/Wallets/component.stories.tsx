@@ -2,9 +2,11 @@ import React, { useCallback, useState } from 'react';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { ReactComponent as Wallet } from '../Icon/assets/Wallet.svg';
+
+import { DEFAULT_WALLET_PROVIDERS } from './useWalletProviders';
 
 import { WalletProvider, Wallets } from './';
-import { DEFAULT_WALLET_PROVIDERS } from './useWalletProviders';
 
 export default {
   component: Wallets,
@@ -30,12 +32,27 @@ export const Default = () => {
   );
 };
 
-export const SetNumberOfColumns = () => {
+export const WithCustomNumberOfColumns = () => {
+  return (
+    <>
+      <Wallets onChange={() => {}} providers={Array.from(DEFAULT_WALLET_PROVIDERS)} columns={4} />
+    </>
+  );
+};
+
+export const WithCustomWalletProvider = () => {
   return (
     <>
       <Wallets
         onChange={() => {}}
-        providers={Array.from(DEFAULT_WALLET_PROVIDERS)}
+        providers={[
+          'Binance Chain Wallet',
+          {
+            name: 'Custom Wallet',
+            icon: <Wallet />,
+            href: '#',
+          },
+        ]}
         columns={4}
       />
     </>
