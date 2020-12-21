@@ -69,12 +69,19 @@ const StyledModal = styled(Modal)`
 `;
 
 export const InsideModal = () => {
+  const [selected, setSelected] = useState<WalletProvider>();
+
+  const change = useCallback(({ provider }) => {
+    setSelected(provider);
+  }, []);
+
   return (
     <StyledModal open={true}>
       <Modal.Header title="Wallets" />
       <Modal.Content>
         <Wallets
-          onChange={() => {}}
+          selected={selected}
+          onChange={change}
           providers={[
             'Trust Wallet',
             'Binance Chain Wallet',
