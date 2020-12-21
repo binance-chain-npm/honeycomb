@@ -82,6 +82,11 @@ export const InsideModal = () => {
             'Math Wallet',
             'Ledger',
             'TokenPocket',
+            {
+              name: `Custom Wallet`,
+              icon: <Wallet />,
+              href: '#',
+            },
           ]}
           columns={4}
         />
