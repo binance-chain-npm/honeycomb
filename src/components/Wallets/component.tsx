@@ -1,7 +1,6 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { SIZES, useWindowSize } from '../internal/useWindowSize';
 import { Space } from '../Space';
 
 import { StyledPanelControl, StyledPanelControlItem } from './styled';
@@ -25,14 +24,11 @@ export const Component = ({
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
   const { providers: defaultProviders } = useWalletProviders();
-  const { width } = useWindowSize();
-
-  const isSm = useMemo(() => width < SIZES.md, [width]);
 
   return (
     <StyledPanelControl
       {...otherProps}
-      orientation={isSm ? 'vertical' : 'horizontal'}
+      orientation="horizontal"
       variant="solid"
       columns={columns}
       data-testid={buildTestId()}

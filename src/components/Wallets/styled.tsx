@@ -23,11 +23,12 @@ export const StyledPanelControlItem = styled(PanelControl.Item)`
   align-items: center;
   justify-content: start;
   width: 100%;
-  height: 100%;
+  height: ${({ theme }) => em(116, theme.honeycomb.size.reduced)};
 
   img,
   svg {
     width: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
     height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+    flex-shrink: 0;
   }
 `;
