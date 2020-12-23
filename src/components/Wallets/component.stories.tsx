@@ -11,7 +11,9 @@ import { Modal } from '../Modal';
 
 import { DEFAULT_WALLET_PROVIDERS } from './useWalletProviders';
 
-import { WalletProvider, Wallets } from './';
+import { Wallets } from './';
+
+type WalletProvider = React.ComponentPropsWithoutRef<typeof Wallets>['selected'];
 
 export default {
   component: Wallets,
