@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import { useBuildTestId, Testable } from '../../../modules/test-ids';
-import { TextInput, ValidationMessage } from '../../TextInput';
+import { TextInput } from '../../TextInput';
 import { Label, Tick, Cross } from '../styled';
+
+type ValidationMessages = React.ComponentPropsWithoutRef<typeof TextInput>['validationMessages'];
 
 export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
   Testable & {
@@ -58,7 +60,7 @@ export const usePasswordInputValidation = ({
     mustHaveUpperCase,
   ]);
 
-  const validationMessages: ValidationMessage[] = [
+  const validationMessages: ValidationMessages = [
     {
       label: (
         <Label data-testid={buildTestId('error-length')}>

@@ -25,8 +25,8 @@ export const StyledPanelControlItem = styled(PanelControl.Item)`
 
   img,
   svg {
-    width: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
-    height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+    width: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+    height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
     flex-shrink: 0;
   }
 
@@ -34,5 +34,11 @@ export const StyledPanelControlItem = styled(PanelControl.Item)`
     flex-direction: column;
     justify-content: start;
     height: ${({ theme }) => em(116, theme.honeycomb.size.reduced)};
+
+    img,
+    svg {
+      width: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+      height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+    }
   }
 `;
