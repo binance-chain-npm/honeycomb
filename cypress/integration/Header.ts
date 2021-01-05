@@ -130,6 +130,7 @@ describe('Header', () => {
     cy.get('[data-testid="light.header.non-collapsible"]')
       .children()
       .then((children) => {
+        expect(children.length).to.equal(3);
         expect(children[0]).to.have.attr('data-testid', 'light.non-collapsible');
         expect(children[1]).to.have.attr('data-testid', 'light.non-collapsible.md');
         expect(children[2]).to.have.attr('data-testid', 'light.non-collapsible.sm');
@@ -142,6 +143,7 @@ describe('Header', () => {
     cy.get('[data-testid="light.header.non-collapsible"]')
       .children()
       .then((children) => {
+        expect(children.length).to.equal(2);
         expect(children[0]).to.have.attr('data-testid', 'light.non-collapsible');
         expect(children[1]).to.have.attr('data-testid', 'light.non-collapsible.sm');
       });
@@ -158,6 +160,7 @@ describe('Header', () => {
     cy.get('[data-testid="light.header.non-collapsible"]')
       .children()
       .then((children) => {
+        expect(children.length).to.equal(1);
         expect(children[0]).to.have.attr('data-testid', 'light.non-collapsible');
       });
     cy.get('[data-testid="light.header.menu"]').click();
