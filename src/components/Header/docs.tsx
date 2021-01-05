@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
 import {
-  Description,
   ArgsTable,
+  Description,
   Heading,
-  Subheading,
-  Stories,
   Source,
+  Stories,
+  Subheading,
 } from '@storybook/addon-docs/blocks';
 
 import { Table } from '../Table';
