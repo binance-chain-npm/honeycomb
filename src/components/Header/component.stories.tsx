@@ -58,6 +58,10 @@ export const Default = () => (
       {
         element: 'Item 3',
       },
+      {
+        element: 'Disabled Item',
+        disabled: true,
+      },
     ]}
   />
 );
@@ -141,7 +145,7 @@ export const WithComplexItems = () => (
       {
         element: (
           <>
-            <span style={{ marginRight: '0.5em' }}>Multiple Items</span>
+            <span style={{ marginRight: '0.5em' }}>Link</span>
             <Icon.Link />
           </>
         ),

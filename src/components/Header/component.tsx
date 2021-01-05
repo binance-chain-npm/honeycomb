@@ -22,22 +22,22 @@ export type Props = Testable & {
   nonCollapsible?: NonCollapsibleHeaderItem[];
 };
 
-export type HeaderItem = Omit<
-  React.ComponentPropsWithoutRef<typeof ListItem>,
-  'showCaretRight' | 'children'
-> & {
-  element: React.ReactNode;
-  children?: HeaderChildItem[];
-  styled?: boolean;
-};
+export type HeaderItem = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
+  Pick<React.ComponentPropsWithoutRef<typeof ListItem>, 'disabled' | 'htmlTag'> &
+  Testable & {
+    element: React.ReactNode;
+    children?: HeaderChildItem[];
+    styled?: boolean;
+  };
 
 export type NonCollapsibleHeaderItem = HeaderItem & {
   collapseOn?: 'sm' | 'md';
 };
 
-export type HeaderChildItem = Omit<HeaderItem, 'children'> & {
-  label?: React.ReactNode;
-};
+export type HeaderChildItem = Pick<HeaderItem, 'element' | 'styled'> &
+  Omit<React.ComponentPropsWithoutRef<typeof ListItem>, 'children'> & {
+    label?: React.ReactNode;
+  };
 
 export type Panels = React.ComponentPropsWithoutRef<typeof Accordion>['panels'];
 

@@ -65,7 +65,7 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
         }
 
         return (
-          <Item key={index} {...otherItemProps} showBorder={!!otherItemProps.showBorder}>
+          <Item key={index} {...otherItemProps} showBorder={false}>
             {element}
           </Item>
         );
