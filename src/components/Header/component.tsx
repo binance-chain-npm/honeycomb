@@ -135,11 +135,11 @@ export const Component = ({
     if (!nonCollapsible || nonCollapsible.length === 0) return null;
 
     let items = nonCollapsible;
-    if (isSm && !isMd) {
-      items = nonCollapsible.filter((it) => !it.collapseOn);
-    }
     if (isMd) {
       items = nonCollapsible.filter((it) => !it.collapseOn || it.collapseOn === 'sm');
+    }
+    if (isSm) {
+      items = nonCollapsible.filter((it) => !it.collapseOn);
     }
 
     return <NonCollapsibleHeaderItems items={items} data-testid={buildTestId('non-collapsible')} />;
