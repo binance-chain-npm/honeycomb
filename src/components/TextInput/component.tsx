@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import { Size } from '../internal/Size';
@@ -80,6 +80,12 @@ export const Component = ({
       }
     }
   }, [value]);
+
+  useEffect(() => {
+    if (!isPristine) return;
+
+    setIsPristine(!value);
+  }, [value, isPristine]);
 
   useLayoutEffect(() => {
     if (!dynamic) return;
