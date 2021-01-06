@@ -154,11 +154,7 @@ export const WithComplexItems = () => (
         target: '_blank',
       },
       {
-        element: (
-          <Badge variant="primary">
-            Unstyled Item
-          </Badge>
-        ),
+        element: <Badge variant="primary">Unstyled Item</Badge>,
         styled: true,
       },
     ]}
