@@ -28,6 +28,7 @@ export type Props<Data extends object> = Testable & {
   hasPagination?: boolean;
   hasHeader?: boolean;
   interactive?: boolean;
+  className?: string;
   onPageIndexChange?: (params: { pageIndex: number }) => void;
 };
 
@@ -39,6 +40,7 @@ export const Component = <Data extends object>({
   hasPagination = false,
   hasHeader = true,
   interactive = false,
+  className,
   onPageIndexChange,
   'data-testid': testId,
   ...otherProps
@@ -108,7 +110,7 @@ export const Component = <Data extends object>({
   return (
     <Container data-testid={buildTestId()}>
       <Scroll>
-        <Table {...getTableProps()}>
+        <Table {...getTableProps()} className={className}>
           {hasHeader && (
             <Thead>
               {headerGroups.map((headerGroup) => (

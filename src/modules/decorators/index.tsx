@@ -7,7 +7,6 @@ import { HoneycombThemeProvider } from '../themes';
 import { HoneycombTestIdProvider } from '../test-ids';
 
 const Container = styled.div`
-  min-height: calc(100vh - 2em);
   display: flex;
   flex-direction: column;
   align-items: stretch;

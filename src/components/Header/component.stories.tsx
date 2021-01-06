@@ -8,12 +8,17 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { SIZES, useWindowSize } from '../internal/useWindowSize';
 
+import { docs } from './docs';
+
 import { Header } from './';
 
 export default {
   component: Header,
   decorators,
   title: `${Sections.Elements}/Header`,
+  parameters: {
+    docs: docs,
+  },
 };
 
 const dropdown = [
@@ -52,6 +57,10 @@ export const Default = () => (
       },
       {
         element: 'Item 3',
+      },
+      {
+        element: 'Disabled Item',
+        disabled: true,
       },
     ]}
   />
@@ -136,7 +145,7 @@ export const WithComplexItems = () => (
       {
         element: (
           <>
-            <span style={{ marginRight: '0.5em' }}>Multiple Items</span>
+            <span style={{ marginRight: '0.5em' }}>Link</span>
             <Icon.Link />
           </>
         ),
@@ -145,27 +154,13 @@ export const WithComplexItems = () => (
         target: '_blank',
       },
       {
-        element: (
-          <Button variant="secondary" shape="fit" onClick={() => action('clicked')()}>
-            Button
-          </Button>
-        ),
-        htmlTag: 'button',
+        element: <Badge variant="primary">Unstyled Item</Badge>,
         styled: true,
-      },
-      {
-        element: 'Dropdown Item',
-        children: dropdown,
       },
     ]}
     nonCollapsible={[
       {
-        element: (
-          <Button variant="secondary" shape="fit">
-            Non-Collapsible Item
-          </Button>
-        ),
-        styled: true,
+        element: 'Non-Collapsible Item',
       },
       {
         element: (
@@ -173,6 +168,7 @@ export const WithComplexItems = () => (
             Button on LG
           </Button>
         ),
+        htmlTag: 'button',
         styled: true,
         collapseOn: 'md',
       },

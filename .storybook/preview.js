@@ -1,5 +1,6 @@
 import React from 'react';
 import { addParameters } from '@storybook/react';
+import { DocsContainer, Title } from '@storybook/addon-docs/blocks';
 
 import { HoneycombThemeProvider } from '../src/modules/themes';
 import { GlobalStyles } from '../src/modules/core';
@@ -29,7 +30,18 @@ const customViewports = {
 };
 
 addParameters({
-  docs: { page: null },
+  docs: {
+    container: ({ children, context }) => (
+      <HoneycombThemeProvider>
+        <GlobalStyles />
+        <DocsContainer context={context}>
+          <Title />
+          {children}
+        </DocsContainer>
+      </HoneycombThemeProvider>
+    ),
+    page: null,
+  },
   viewport: {
     viewports: customViewports,
   },
