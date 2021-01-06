@@ -19,7 +19,7 @@ export const Styled = styled(Table)`
   code {
     font-family: monospace;
     padding: ${({ theme }) => em(theme.honeycomb.size.micro)}
-      ${({ theme }) => em(theme.honeycomb.size.micro)};
+      ${({ theme }) => em(theme.honeycomb.size.tiny)};
     margin: 0 ${({ theme }) => em(theme.honeycomb.size.micro)};
     border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
     border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};

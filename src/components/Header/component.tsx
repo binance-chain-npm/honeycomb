@@ -23,7 +23,7 @@ export type Props = Testable & {
 };
 
 export type HeaderItem = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
-  Pick<React.ComponentPropsWithoutRef<typeof ListItem>, 'disabled' | 'htmlTag'> &
+  Pick<React.ComponentPropsWithoutRef<typeof ListItem>, 'htmlTag'> &
   Testable & {
     element: React.ReactNode;
     children?: HeaderChildItem[];
