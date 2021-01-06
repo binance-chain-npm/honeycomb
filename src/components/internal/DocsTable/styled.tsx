@@ -32,6 +32,6 @@ export const Asterisk = styled.span`
   ::before {
     content: '*';
     color: ${({ theme }) => theme.honeycomb.color.danger.normal};
-    padding-left: ${({ theme }) => em(theme.honeycomb.size.micro)}
+    padding-left: ${({ theme }) => em(theme.honeycomb.size.micro)};
   }
 `;
