@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import { em } from 'polished';
 import {
   ArgsTable,
   Description,
@@ -10,58 +8,9 @@ import {
   Subheading,
 } from '@storybook/addon-docs/blocks';
 
-import { Table } from '../Table';
+import { DocsTable } from '../internal/DocsTable';
 
 import { Header } from './';
-
-const columns = [
-  {
-    Header: 'Name',
-    accessor: 'name',
-  } as const,
-  {
-    Header: 'Type',
-    accessor: 'type',
-  } as const,
-  {
-    Header: 'Default',
-    accessor: 'default',
-  } as const,
-  {
-    Header: 'Description',
-    accessor: 'description',
-  } as const,
-];
-
-const DocsTable = styled(Table)`
-  tr td:first-child {
-    width: 20%;
-  }
-
-  tr td:nth-child(2) {
-    width: 20%;
-  }
-
-  tr td:nth-child(3) {
-    width: 15%;
-  }
-
-  code {
-    font-family: monospace;
-    padding: ${em(3)} ${em(5)};
-    margin: 0 ${em(3)};
-    border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
-    background-color: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
-    color: ${({ theme }) => theme.honeycomb.color.text.masked};
-  }
-`;
-
-const Asterisk = styled.span`
-  ::before {
-    content: ' *';
-    color: ${({ theme }) => theme.honeycomb.color.danger.normal};
-  }
-`;
 
 export const docs = {
   page: () => (
@@ -79,13 +28,10 @@ export const docs = {
       <DocsTable
         data={[
           {
-            name: <>All HTML attributes.</>,
-          },
-          {
             name: (
               <>
                 children
-                <Asterisk />
+                <DocsTable.Asterisk />
               </>
             ),
             type: <code>HeaderChildItem[]</code>,
@@ -106,7 +52,7 @@ export const docs = {
             name: (
               <>
                 element
-                <Asterisk />
+                <DocsTable.Asterisk />
               </>
             ),
             type: <code>node</code>,
@@ -131,11 +77,10 @@ export const docs = {
             ),
           },
         ]}
-        columns={columns}
       />
       <Description>
         Header items also accept most HTML attributes as props. This means we can make a header item
-        any HTML tag, with any HTML attributes.
+        any HTML tag, with any HTML attributes, like this:
       </Description>
       <Source
         code={`
@@ -157,22 +102,10 @@ export const docs = {
         A child of an item in the header. These will be rendered in a `Dropdown` component
         internally.
       </Description>
+      <Description>All `HeaderItem` props, except `children`.</Description>
+      <Description>All `ListItem` props.</Description>
       <DocsTable
         data={[
-          {
-            name: (
-              <>
-                All <code>HeaderItem</code> props, except <code>children</code>.
-              </>
-            ),
-          },
-          {
-            name: (
-              <>
-                All <code>ListItem</code> props.
-              </>
-            ),
-          },
           {
             name: 'label',
             type: <code>node</code>,
@@ -180,22 +113,15 @@ export const docs = {
             description: 'The label for this header child item.',
           },
         ]}
-        columns={columns}
       />
 
       <Subheading>NonCollapsibleHeaderItem</Subheading>
       <Description>
         A header that does not collapse automatically based on screen width.
       </Description>
+      <Description>All `HeaderItem` props.</Description>
       <DocsTable
         data={[
-          {
-            name: (
-              <>
-                All <code>HeaderItem</code> props.
-              </>
-            ),
-          },
           {
             name: 'collapseOn',
             type: (
@@ -208,7 +134,6 @@ export const docs = {
               'If specified, the non-collapsible will be collapsed when the screen width is smaller than the specified width.',
           },
         ]}
-        columns={columns}
       />
 
       <Stories />
