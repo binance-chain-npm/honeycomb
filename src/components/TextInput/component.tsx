@@ -111,7 +111,6 @@ export const Component = ({
 
   const change = useCallback<NonNullable<Props['onChange']>>(
     (evt) => {
-      setIsPristine(false);
       onChange?.(evt);
     },
     [onChange],
