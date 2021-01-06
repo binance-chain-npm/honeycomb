@@ -155,26 +155,16 @@ export const WithComplexItems = () => (
       },
       {
         element: (
-          <Button variant="secondary" shape="fit" onClick={() => action('clicked')()}>
-            Button
-          </Button>
+          <Badge variant="primary">
+            Unstyled Item
+          </Badge>
         ),
-        htmlTag: 'button',
         styled: true,
-      },
-      {
-        element: 'Dropdown Item',
-        children: dropdown,
       },
     ]}
     nonCollapsible={[
       {
-        element: (
-          <Button variant="secondary" shape="fit">
-            Non-Collapsible Item
-          </Button>
-        ),
-        styled: true,
+        element: 'Non-Collapsible Item',
       },
       {
         element: (
@@ -182,6 +172,7 @@ export const WithComplexItems = () => (
             Button on LG
           </Button>
         ),
+        htmlTag: 'button',
         styled: true,
         collapseOn: 'md',
       },

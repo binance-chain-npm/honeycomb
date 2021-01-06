@@ -47,7 +47,7 @@ describe('Header', () => {
     cy.get('[data-testid="light.header.accordion"]')
       .children()
       .then((children) => {
-        expect(children.length).to.equal(4);
+        expect(children.length).to.equal(3);
       });
 
     cy.percySnapshot('Header while open on a medium screen', { widths: [768] });
@@ -79,7 +79,7 @@ describe('Header', () => {
     cy.get('[data-testid="light.header.accordion"]')
       .children()
       .then((children) => {
-        expect(children.length).to.equal(6);
+        expect(children.length).to.equal(5);
       });
 
     cy.percySnapshot('Header while open on a small screen');
