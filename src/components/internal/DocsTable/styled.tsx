@@ -30,7 +30,8 @@ export const Styled = styled(Table)`
 
 export const Asterisk = styled.span`
   ::before {
-    content: ' *';
+    content: '*';
     color: ${({ theme }) => theme.honeycomb.color.danger.normal};
+    padding-left: ${({ theme }) => em(theme.honeycomb.size.micro)}
   }
 `;
