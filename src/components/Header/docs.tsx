@@ -117,7 +117,7 @@ export const docs = {
             name: 'htmlTag',
             type: <code>HTMLAttribute</code>,
             default: '',
-            description: 'The HTML tag to cast this node into.',
+            description: 'The HTML tag to cast this element into.',
           },
           {
             name: 'styled',
