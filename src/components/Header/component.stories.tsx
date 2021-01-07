@@ -170,7 +170,6 @@ export const WithComplexItems = () => (
             Button on LG
           </Button>
         ),
-        htmlTag: 'button',
         styled: true,
         collapseOn: 'md',
       },
