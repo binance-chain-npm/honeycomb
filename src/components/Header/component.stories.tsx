@@ -58,6 +58,8 @@ export const Default = () => (
       {
         element: 'Item 3',
       },
+    ]}
+    right={[
       {
         element: 'Disabled Item',
         disabled: true,
@@ -106,7 +108,7 @@ export const WithNonCollapsibleItems = () => {
         ]}
         nonCollapsible={[
           {
-            element: 'Non-collapsible',
+            element: 'Non-Collapsible',
             'data-testid': 'non-collapsible',
           },
           {
