@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
-import { Badge } from '../../Badge';
 import { SIZES, useWindowSize } from '../../internal/useWindowSize';
 import { Space } from '../../Space';
 
-import { Styled, Logo, LogoSmall } from './styled';
+import { Styled, Logo, LogoSmall, StyledBadge } from './styled';
 
 export type Props = Testable & {
   text?: React.ReactNode;
@@ -28,9 +27,9 @@ export const Component = ({ text, 'data-testid': testId }: Props) => {
       {text && (
         <>
           <Space size="tiny" />
-          <Badge variant="primary" data-testid={buildTestId('badge')}>
+          <StyledBadge variant="primary" data-testid={buildTestId('badge')}>
             {text}
-          </Badge>
+          </StyledBadge>
         </>
       )}
     </Styled>
