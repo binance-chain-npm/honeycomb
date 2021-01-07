@@ -58,6 +58,8 @@ export const Default = () => (
       {
         element: 'Item 3',
       },
+    ]}
+    right={[
       {
         element: 'Disabled Item',
         disabled: true,
@@ -106,7 +108,7 @@ export const WithNonCollapsibleItems = () => {
         ]}
         nonCollapsible={[
           {
-            element: 'Non-collapsible',
+            element: 'Non-Collapsible',
             'data-testid': 'non-collapsible',
           },
           {
@@ -131,7 +133,7 @@ export const WithNonCollapsibleItems = () => {
 
 export const WithComplexItems = () => (
   <Header
-    logo={<Header.Logo text="Project" data-testid="header.logo" />}
+    logo={<Header.Logo text="Project Name" data-testid="header.logo" />}
     left={[
       {
         element: 'Item',
@@ -168,7 +170,6 @@ export const WithComplexItems = () => (
             Button on LG
           </Button>
         ),
-        htmlTag: 'button',
         styled: true,
         collapseOn: 'md',
       },

@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { GoldLight } from '../../../modules/themes/themes/GoldLight';
+import { Badge } from '../../Badge';
 
 import { ReactComponent as HeaderLogo } from './Logo.svg';
 import { ReactComponent as HeaderLogoSmall } from './LogoSmall.svg';
@@ -23,4 +24,8 @@ export const Logo = styled(HeaderLogo)`
 
 export const LogoSmall = styled(HeaderLogoSmall)`
   ${logo};
+`;
+
+export const StyledBadge = styled(Badge)`
+  white-space: nowrap;
 `;
