@@ -51,6 +51,7 @@ export const Component = ({
         <Styleless
           data-testid={buildTestId('toggle-show')}
           htmlTag="button"
+          type="button"
           onClick={() => setShouldDisplay(!shouldDisplay)}
           style={{ fontSize: theme.honeycomb.size.increased }}
         >
