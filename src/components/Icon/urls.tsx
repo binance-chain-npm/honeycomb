@@ -65,6 +65,7 @@ export { default as VisaColor } from './assets/payment/VisaColor.svg';
 
 // Social.
 export { default as CMC } from './assets/social/CMC.svg';
+export { default as Discord } from './assets/social/Discord.svg';
 export { default as Facebook } from './assets/social/Facebook.svg';
 export { default as Instagram } from './assets/social/Instagram.svg';
 export { default as Reddit } from './assets/social/Reddit.svg';

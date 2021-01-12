@@ -65,6 +65,7 @@ export { ReactComponent as VisaColor } from './assets/payment/VisaColor.svg';
 
 // Social.
 export { ReactComponent as CMC } from './assets/social/CMC.svg';
+export { ReactComponent as Discord } from './assets/social/Discord.svg';
 export { ReactComponent as Facebook } from './assets/social/Facebook.svg';
 export { ReactComponent as Instagram } from './assets/social/Instagram.svg';
 export { ReactComponent as Reddit } from './assets/social/Reddit.svg';
