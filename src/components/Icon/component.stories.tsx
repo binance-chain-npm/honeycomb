@@ -36,6 +36,7 @@ const payment = ['MastercardColor', 'VisaColor'];
 
 const social = [
   'CMC',
+  'Discord',
   'Facebook',
   'Instagram',
   'Reddit',
