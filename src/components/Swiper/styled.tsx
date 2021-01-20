@@ -1,7 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import { em, transparentize } from 'polished';
 import { Swiper } from 'swiper/react';
 
+import swiper from '../../../node_modules/swiper/swiper.min.css';
+import swiperNavigation from '../../../node_modules/swiper/components/navigation/navigation.min.css';
 import { GoldDark } from '../../modules/themes/themes/GoldDark';
 
 import prev from './prev.svg';
@@ -10,6 +12,11 @@ import next from './next.svg';
 const SLIDE_WIDTH = 270;
 const SLIDE_HEIGHT = 152;
 export const MARGIN_WIDTH = 40;
+
+export const Styles = createGlobalStyle`
+  ${swiper};
+  ${swiperNavigation};
+`;
 
 const buttons = css`
   width: ${({ theme }) => em(theme.honeycomb.size.large)};

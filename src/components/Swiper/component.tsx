@@ -3,11 +3,10 @@ import SwiperCore, { Navigation } from 'swiper';
 import { Swiper } from 'swiper/react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import '../../../node_modules/swiper/swiper.min.css';
-import '../../../node_modules/swiper/components/navigation/navigation.min.css';
+import { SIZES, useWindowSize } from '../internal/useWindowSize';
 
 import { Context } from './context';
-import { MARGIN_WIDTH, Styled } from './styled';
+import { MARGIN_WIDTH, Styled, Styles } from './styled';
 
 SwiperCore.use([Navigation]);
 
@@ -22,19 +21,25 @@ export type Props = Omit<
 export const Component = ({ children, 'data-testid': testId, ...otherProps }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
   const context = useMemo(() => ({ testId }), [testId]);
+  const { width } = useWindowSize();
+
+  const isSm = useMemo(() => width < SIZES.md, [width]);
 
   return (
-    <Context.Provider value={context}>
-      <Styled
-        {...otherProps}
-        spaceBetween={MARGIN_WIDTH}
-        slidesPerView="auto"
-        navigation
-        data-testid={buildTestId()}
-      >
-        {children}
-      </Styled>
-    </Context.Provider>
+    <>
+      <Styles />
+      <Context.Provider value={context}>
+        <Styled
+          {...otherProps}
+          spaceBetween={MARGIN_WIDTH}
+          slidesPerView="auto"
+          navigation={!isSm}
+          data-testid={buildTestId()}
+        >
+          {children}
+        </Styled>
+      </Context.Provider>
+    </>
   );
 };
 
