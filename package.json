@@ -44,15 +44,15 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "^7.12.10",
     "@binance-chain/prettier-config": "^1.0.1",
     "@percy/cypress": "^2.3.0",
     "@rollup/plugin-image": "^2.0.5",
     "@rollup/plugin-url": "^5.0.1",
-    "@storybook/addon-essentials": "^6.1.10",
-    "@storybook/addons": "^6.1.10",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/addons": "^6.1.14",
     "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^6.1.10",
+    "@storybook/react": "^6.1.14",
     "@svgr/rollup": "^5.4.0",
     "@svgr/webpack": "^5.4.0",
     "@types/crypto-js": "^3.1.47",
@@ -92,9 +92,9 @@
     "polished": "^3.6.5",
     "qrcode.react": "^1.0.0",
     "query-string": "^6.13.1",
-    "rc-table": "^7.8.4",
     "react-spring": "^8.0.27",
-    "react-table": "^7.6.0"
+    "react-table": "^7.6.0",
+    "swiper": "^6.4.5"
   },
   "resolutions": {
     "@types/react": "16.9.35"
