@@ -20,10 +20,6 @@ const Container = styled.div`
   position: relative;
   display: flex;
   color: ${({ theme }) => theme.honeycomb.color.text.masked};
-
-  > img {
-    width: 100%;
-  }
 `;
 
 const Label = styled.div`
@@ -44,7 +40,7 @@ export const Default = () => {
       {new Array(5).fill(null).map((_, index) => (
         <Swiper.Item data-testid={buildTestId(`item-${index}`)}>
           <Container>
-            <img alt="" src={placeholder} />
+            <img alt="" src={placeholder} width="100%" />
             <Label data-testid={buildTestId(`item-${index}.label`)}>{index + 1}</Label>
           </Container>
         </Swiper.Item>
