@@ -18,7 +18,11 @@ export default {
 const Container = styled.div`
   position: relative;
   display: flex;
-  color: ${({ theme }) => theme.honeycomb.color.text.primary};
+  color: ${({ theme }) => theme.honeycomb.color.text.masked};
+
+  > img {
+    width: 100%;
+  }
 `;
 
 const Label = styled.div`
@@ -28,7 +32,7 @@ const Label = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.huge)};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;
 
 export const Default = () => {
