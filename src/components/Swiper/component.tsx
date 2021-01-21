@@ -26,9 +26,13 @@ export const Component = ({ children, 'data-testid': testId, ...otherProps }: Pr
         <Styled
           {...otherProps}
           spaceBetween={MARGIN_WIDTH}
-          navigation
+          navigation={{
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+          }}
           pagination={{
             clickable: true,
+            el: '.swiper-pagination',
           }}
           breakpoints={{
             // SIZES.md
@@ -39,6 +43,9 @@ export const Component = ({ children, 'data-testid': testId, ...otherProps }: Pr
           data-testid={buildTestId()}
         >
           {children}
+          <div className="swiper-button-prev" data-testid={buildTestId('btn-prev')}></div>
+          <div className="swiper-button-next" data-testid={buildTestId('btn-next')}></div>
+          <div className="swiper-pagination" data-testid={buildTestId('pagination')}></div>
         </Styled>
       </Context.Provider>
     </>

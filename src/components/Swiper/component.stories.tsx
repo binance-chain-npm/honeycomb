@@ -4,6 +4,7 @@ import { em } from 'polished';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { useBuildTestId } from '../../modules/test-ids';
 
 import placeholder from './placeholder.svg';
 
@@ -36,13 +37,15 @@ const Label = styled.div`
 `;
 
 export const Default = () => {
+  const { buildTestId } = useBuildTestId({ id: 'swiper' });
+
   return (
-    <Swiper data-testid="swiper">
+    <Swiper data-testid={buildTestId()}>
       {new Array(5).fill(null).map((_, index) => (
-        <Swiper.Item data-testid={`item-${index}`}>
+        <Swiper.Item data-testid={buildTestId(`item-${index}`)}>
           <Container>
             <img alt="" src={placeholder} />
-            <Label>{index + 1}</Label>
+            <Label data-testid={buildTestId(`item-${index}.label`)}>{index + 1}</Label>
           </Container>
         </Swiper.Item>
       ))}
