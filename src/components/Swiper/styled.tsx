@@ -21,36 +21,31 @@ export const Styles = createGlobalStyle`
   ${swiperPagination};
 `;
 
-const buttons = css`
-  width: ${({ theme }) => em(theme.honeycomb.size.large)};
-  height: ${em(SLIDE_HEIGHT)};
-  top: 0;
-  margin: 0;
-  cursor: pointer;
-  background-color: ${transparentize(0.7, GoldDark.honeycomb.color.bg.tooltip.normal)};
-  background-repeat: no-repeat;
-  background-position: center;
-`;
-
 const navigation = css`
-  .swiper-button-prev {
-    ${buttons};
-    left: 0;
-    background-image: url(${prev});
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: ${({ theme }) => em(theme.honeycomb.size.large)};
+    height: ${em(SLIDE_HEIGHT)};
+    top: 0;
+    margin: 0;
+    cursor: pointer;
+    background-color: ${transparentize(0.7, GoldDark.honeycomb.color.bg.tooltip.normal)};
+    background-repeat: no-repeat;
+    background-position: center;
 
     ::after {
       display: none;
     }
   }
 
+  .swiper-button-prev {
+    left: 0;
+    background-image: url(${prev});
+  }
+
   .swiper-button-next {
-    ${buttons};
     right: 0;
     background-image: url(${next});
-
-    ::after {
-      display: none;
-    }
   }
 
   .swiper-button-disabled {
@@ -88,8 +83,8 @@ export const Styled = styled(Swiper)`
   ${pagination};
   padding-bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
 
-  .swiper-button-next,
-  .swiper-button-prev {
+  .swiper-button-prev,
+  .swiper-button-next {
     display: none;
   }
 
@@ -102,8 +97,8 @@ export const Styled = styled(Swiper)`
       height: ${em(SLIDE_HEIGHT)} !important;
     }
 
-    .swiper-button-next,
-    .swiper-button-prev {
+    .swiper-button-prev,
+    .swiper-button-next {
       :not(.swiper-button-disabled) {
         display: flex;
       }
