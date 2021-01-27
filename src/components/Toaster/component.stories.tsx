@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { em } from 'polished';
 
 import { Sections } from '../../modules/sections';
-import { Button } from '../Button';
-import { Toast } from '../Toast';
-import { Icon } from '../Icon';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
+import { Button } from '../Button';
+import { Header } from '../Header';
+import { Icon } from '../Icon';
+import { Toast } from '../Toast';
 
 import { Toaster, toast } from './';
 
@@ -25,6 +26,13 @@ const Container = styled.div`
 `;
 
 const CONTENT = 'Some content...';
+
+const makeToast = () =>
+  toast(
+    <Toast icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}>
+      {CONTENT}
+    </Toast>,
+  );
 
 export const Default = () => (
   <>
@@ -76,17 +84,26 @@ export const Default = () => (
 export const WithCustomIcon = () => (
   <>
     <Toaster position="top-right" />
-    <Button
-      variant="primary"
-      onClick={() =>
-        toast(
-          <Toast icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}>
-            {CONTENT}
-          </Toast>,
-        )
-      }
-    >
+    <Button variant="primary" onClick={makeToast}>
       Toast
     </Button>
+  </>
+);
+
+export const UnderComponent = () => (
+  <>
+    <Header
+      logo={<Header.Logo />}
+      left={[
+        {
+          element: (
+            <Button variant="primary" onClick={makeToast}>
+              Toast
+            </Button>
+          ),
+        },
+      ]}
+    />
+    <Toaster position="top-right" style={{ marginTop: 'calc(4em + 12px)' }} />
   </>
 );
