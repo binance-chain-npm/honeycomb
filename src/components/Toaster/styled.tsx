@@ -4,20 +4,24 @@ import { em } from 'polished';
 import toastify from '../../../node_modules/react-toastify/dist/ReactToastify.min.css';
 import { Button } from '../Button';
 
+const TOAST_WIDTH = 278;
+const TOAST_HEIGHT = 56;
+
 export const Styles = createGlobalStyle`
   ${toastify};
 
   .Toastify__toast-container {
-    max-width: ${em(278)};
+    max-width: ${em(TOAST_WIDTH)};
   }
   .Toastify__toast {
-    min-height: ${em(56)};
+    min-height: ${em(TOAST_HEIGHT)};
     box-shadow: ${({ theme }) => theme.honeycomb.shadow.box.normal};
     margin-bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
     padding: 0;
   }
   .Toastify__toast-body {
     display: flex;
+    margin: 0;
     padding: 0;
   }
 

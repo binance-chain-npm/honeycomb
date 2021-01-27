@@ -6,7 +6,6 @@ export const Styled = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.honeycomb.color.bg.normal};
   width: 100%;
-  min-height: ${({ theme }) => em(56, theme.honeycomb.size.normal)};
 `;
 
 const flex = css`

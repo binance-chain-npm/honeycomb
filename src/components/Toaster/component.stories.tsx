@@ -92,7 +92,7 @@ export const WithCustomIcon = () => (
 
 export const WithComplexItems = () => (
   <>
-    <Toaster autoClose={false} position="top-right" />
+    <Toaster position="top-right" />
     <Button
       variant="primary"
       onClick={() =>
