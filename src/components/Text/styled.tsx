@@ -3,7 +3,6 @@ import { em } from 'polished';
 import { AlignItemsProperty, AlignSelfProperty } from 'csstype';
 
 import { boxSizing } from '../../modules/box-sizing';
-import { styleless } from '../Styleless';
 
 export const SIZES = [
   'micro',
@@ -27,8 +26,11 @@ export const Styled = styled.div<{
   size: Size;
   weight?: Weight;
 }>`
-  ${styleless};
   ${boxSizing};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
   font-weight: 400;
