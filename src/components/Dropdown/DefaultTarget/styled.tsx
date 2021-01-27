@@ -2,13 +2,15 @@ import styled, { css } from 'styled-components';
 
 import { DefaultTarget } from '../../internal/DefaultTarget';
 
-export const VARIANTS = ['normal', 'accent'] as const;
-export type Variant = typeof VARIANTS[number];
+export const StyledDefaultTarget = styled(DefaultTarget)<{
+  highlightWhenOpen: boolean;
+  isShowing: boolean;
+}>`
+  color: ${({ theme }) => theme.honeycomb.color.text.normal};
 
-export const StyledDefaultTarget = styled(DefaultTarget)<{ variant: Variant; isShowing: boolean }>`
-  ${({ isShowing, variant }) =>
+  ${({ isShowing, highlightWhenOpen }) =>
     isShowing &&
-    variant === 'accent' &&
+    highlightWhenOpen &&
     css`
       color: ${({ theme }) => theme.honeycomb.color.primary.normal};
     `};
