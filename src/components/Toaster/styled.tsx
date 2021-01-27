@@ -17,6 +17,7 @@ export const Styles = createGlobalStyle`
     padding: 0;
   }
   .Toastify__toast-body {
+    display: flex;
     padding: 0;
   }
 

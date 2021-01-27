@@ -90,6 +90,27 @@ export const WithCustomIcon = () => (
   </>
 );
 
+export const WithComplexItems = () => (
+  <>
+    <Toaster autoClose={false} position="top-right" />
+    <Button
+      variant="primary"
+      onClick={() =>
+        toast(
+          <Toast icon={<Toast.Icon.Success />}>
+            <Container>
+              <div style={{ fontWeight: 'bold' }}>Limit Buy Order Created</div>
+              <div>You have successfully created a limit order to buy 0.1 BTC</div>
+            </Container>
+          </Toast>,
+        )
+      }
+    >
+      Toast
+    </Button>
+  </>
+);
+
 export const UnderComponent = () => (
   <>
     <Header

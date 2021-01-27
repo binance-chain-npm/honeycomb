@@ -6,9 +6,7 @@ export const Styled = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.honeycomb.color.bg.normal};
   width: 100%;
-  height: ${({ theme }) => em(56, theme.honeycomb.size.normal)};
-  margin-right: ${({ theme }) => em(theme.honeycomb.size.normal)};
-  overflow: hidden;
+  min-height: ${({ theme }) => em(56, theme.honeycomb.size.normal)};
 `;
 
 const flex = css`
@@ -20,6 +18,7 @@ const flex = css`
 export const Left = styled.div`
   ${flex};
   justify-content: center;
+  flex-shrink: 0;
   width: ${em(60)};
   background-color: ${({ theme }) => theme.honeycomb.color.text.normal};
 `;
@@ -30,6 +29,6 @@ export const Right = styled.div`
   flex-grow: 1;
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  margin-left: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
+  margin: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
   margin-right: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
 `;
