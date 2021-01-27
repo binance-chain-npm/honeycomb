@@ -20,7 +20,7 @@ export const useWindowSize = () => {
 
     const resizeListener = () => {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
+      timeoutId = window.setTimeout(() => {
         setWidth(getWidth());
         setHeight(getHeight());
       }, 150);
