@@ -1,12 +1,6 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
-export const VARIANTS = ['success', 'danger', 'warning'] as const;
-export type Variant = typeof VARIANTS[number];
-
-export const POSITIONS = ['center', 'bottom', 'top'] as const;
-export type Position = typeof POSITIONS[number];
-
 export const Styled = styled.div`
   display: flex;
   align-items: center;

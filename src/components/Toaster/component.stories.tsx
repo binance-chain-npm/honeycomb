@@ -5,6 +5,8 @@ import { em } from 'polished';
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 import { Toast } from '../Toast';
+import { Icon } from '../Icon';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
 
 import { Toaster, toast } from './';
 
@@ -68,5 +70,23 @@ export const Default = () => (
         Danger
       </Button>
     </Container>
+  </>
+);
+
+export const WithCustomIcon = () => (
+  <>
+    <Toaster position="top-right" />
+    <Button
+      variant="primary"
+      onClick={() =>
+        toast(
+          <Toast icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}>
+            {CONTENT}
+          </Toast>,
+        )
+      }
+    >
+      Toast
+    </Button>
   </>
 );

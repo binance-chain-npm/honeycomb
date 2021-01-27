@@ -1,14 +1,16 @@
 import React, { useCallback, useMemo } from 'react';
-import { ToastContainer } from 'react-toastify';
+import { Slide, ToastContainer } from 'react-toastify';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Icon } from '../Icon';
 
 import { StyledButton, Styles } from './styled';
 
-type ToastContainerProps = React.ComponentPropsWithoutRef<typeof ToastContainer>;
-
-export type Props = Omit<ToastContainerProps, 'closeButton'> & Testable;
+export type Props = Omit<
+  React.ComponentPropsWithoutRef<typeof ToastContainer>,
+  'closeButton' | 'hideProgressBar' | 'transition'
+> &
+  Testable;
 
 export const Component = ({
   position = 'bottom-center',
@@ -43,8 +45,10 @@ export const Component = ({
       <ToastContainer
         {...otherProps}
         closeButton={close}
+        hideProgressBar
         newestOnTop={newestOnTop}
         position={position}
+        transition={Slide}
         data-testid={buildTestId()}
       />
     </>
