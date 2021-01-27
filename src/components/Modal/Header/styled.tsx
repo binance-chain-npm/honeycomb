@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
-import { bigScreen } from '../styled';
+import { mdScreen } from '../styled';
 
 export interface Props {
   hasHeader: boolean;
@@ -39,7 +39,7 @@ export const Title = styled.div`
   font-weight: 600;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
-  @media (${bigScreen}) {
+  @media (${mdScreen}) {
     font-size: ${({ theme }) => em(theme.honeycomb.size.normal)};
     margin-right: -${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.normal)};
   }
@@ -47,7 +47,7 @@ export const Title = styled.div`
 
 export const LoadingState = styled.div`
   margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
-  @media (${bigScreen}) {
+  @media (${mdScreen}) {
     margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.normal)};
   }
 `;

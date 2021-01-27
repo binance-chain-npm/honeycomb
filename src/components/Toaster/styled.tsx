@@ -3,15 +3,27 @@ import { em } from 'polished';
 
 import toastify from '../../../node_modules/react-toastify/dist/ReactToastify.min.css';
 import { Button } from '../Button';
+import { SIZES } from '../internal/useWindowSize';
 
 const TOAST_WIDTH = 278;
 const TOAST_HEIGHT = 56;
+
+export const mdScreen = `min-width: ${em(SIZES.md)}`;
 
 export const Styles = createGlobalStyle`
   ${toastify};
 
   .Toastify__toast-container {
-    max-width: ${em(TOAST_WIDTH)};
+    margin-left: ${({ theme }) => em(theme.honeycomb.size.small)};
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.small)};
+    margin-bottom: -${({ theme }) => em(theme.honeycomb.size.small)};
+    width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.increased)});
+
+    @media (${mdScreen}) {
+      max-width: ${em(TOAST_WIDTH)};
+      margin: 0;
+      margin-bottom: -${({ theme }) => em(theme.honeycomb.size.small)};
+    }
   }
   .Toastify__toast {
     min-height: ${em(TOAST_HEIGHT)};

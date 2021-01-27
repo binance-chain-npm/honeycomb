@@ -10,7 +10,7 @@ export type Padding = typeof PADDING[number];
 export const POSITIONS = ['center', 'bottom'] as const;
 export type Position = typeof POSITIONS[number];
 
-export const bigScreen = `min-width: ${em(SIZES.md)}`;
+export const mdScreen = `min-width: ${em(SIZES.md)}`;
 
 export const Container = styled.div`
   ${boxSizing};
@@ -32,7 +32,7 @@ const center = css`
   max-height: calc(100vh - ${({ theme }) => em(theme.honeycomb.size.increased * 2)});
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
 
-  @media (${bigScreen}) {
+  @media (${mdScreen}) {
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
   }
 `;
@@ -44,7 +44,7 @@ const bottom = css`
   border-top-right-radius: ${({ theme }) => em(theme.honeycomb.radius.normal)};
   align-self: flex-end;
 
-  @media (${bigScreen}) {
+  @media (${mdScreen}) {
     width: 100%;
     margin: ${({ theme }) => em(theme.honeycomb.radius.increased)};
     margin-bottom: 0;
@@ -62,7 +62,7 @@ export const Box = styled.div<{ position: Position }>`
   ${({ position }) => position === 'center' && center};
   ${({ position }) => position === 'bottom' && bottom};
 
-  @media (${bigScreen}) {
+  @media (${mdScreen}) {
     height: auto;
     width: 50vw;
     max-height: min(${em(620)}, 75vh);
