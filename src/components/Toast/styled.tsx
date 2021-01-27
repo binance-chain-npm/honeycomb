@@ -4,7 +4,6 @@ import { em } from 'polished';
 export const Styled = styled.div`
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.honeycomb.color.bg.normal};
   width: 100%;
 `;
 

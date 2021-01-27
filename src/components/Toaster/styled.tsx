@@ -18,6 +18,7 @@ export const Styles = createGlobalStyle`
     box-shadow: ${({ theme }) => theme.honeycomb.shadow.box.normal};
     margin-bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
     padding: 0;
+    background-color: ${({ theme }) => theme.honeycomb.color.bg.normal};
   }
   .Toastify__toast-body {
     display: flex;
