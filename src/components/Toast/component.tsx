@@ -3,7 +3,7 @@ import React from 'react';
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
 import { Icon as ToastIcon } from './Icon';
-import { Box, Left, Row, Styled } from './styled';
+import { Styled, Left, Right } from './styled';
 
 export type Props = Testable & {
   children: React.ReactNode;
@@ -15,14 +15,10 @@ export const Component = ({ children, icon, 'data-testid': testId }: Props) => {
 
   return (
     <Styled data-testid={buildTestId()}>
-      <Row>
-        <Left>
-          <Box>
-            <ToastIcon icon={icon} />
-          </Box>
-          {children}
-        </Left>
-      </Row>
+      <Left>
+        <ToastIcon icon={icon} />
+      </Left>
+      <Right>{children}</Right>
     </Styled>
   );
 };

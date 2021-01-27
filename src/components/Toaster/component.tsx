@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Icon } from '../Icon';
 
-import { Styled, StyledButton } from './styled';
+import { StyledButton, Styles } from './styled';
 
 type ToastContainerProps = React.ComponentPropsWithoutRef<typeof ToastContainer>;
 
@@ -28,7 +28,12 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
     [buildTestId],
   );
 
-  return <Styled {...otherProps} closeButton={close} data-testid={testId} />;
+  return (
+    <>
+      <Styles />
+      <ToastContainer {...otherProps} closeButton={close} data-testid={testId} />
+    </>
+  );
 };
 
 Component.displayName = 'Toaster';

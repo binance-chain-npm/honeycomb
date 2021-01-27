@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 export const VARIANTS = ['success', 'danger', 'warning'] as const;
@@ -8,34 +8,34 @@ export const POSITIONS = ['center', 'bottom', 'top'] as const;
 export type Position = typeof POSITIONS[number];
 
 export const Styled = styled.div`
-  border-radius: 0;
-  border-top-left-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
-  border-bottom-left-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
-`;
-
-export const Row = styled.div`
   display: flex;
   align-items: center;
   background-color: ${({ theme }) => theme.honeycomb.color.bg.normal};
+  width: 100%;
   height: ${({ theme }) => em(56, theme.honeycomb.size.normal)};
-  padding-right: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  margin-right: ${({ theme }) => em(theme.honeycomb.size.normal)};
   overflow: hidden;
 `;
 
-export const Left = styled.div`
+const flex = css`
+  height: 100%;
   display: flex;
   align-items: center;
-  height: 100%;
-  flex-grow: 1;
-  color: ${({ theme }) => theme.honeycomb.color.text.normal};
 `;
 
-export const Box = styled.div`
-  width: ${em(60)};
-  height: 100%;
-  display: flex;
+export const Left = styled.div`
+  ${flex};
   justify-content: center;
-  align-items: center;
+  width: ${em(60)};
   background-color: ${({ theme }) => theme.honeycomb.color.text.normal};
-  margin-right: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+`;
+
+export const Right = styled.div`
+  ${flex};
+  justify-content: start;
+  flex-grow: 1;
+  color: ${({ theme }) => theme.honeycomb.color.text.normal};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
+  margin-right: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
 `;
