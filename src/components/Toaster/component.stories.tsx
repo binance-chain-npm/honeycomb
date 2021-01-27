@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
 
 import { Sections } from '../../modules/sections';
+import { HoneycombThemeProvider } from '../../modules/themes';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
+import { Variant } from '../../modules/themes/HoneycombThemeProvider';
 import { Button } from '../Button';
+import { Card } from '../Card';
+import { Dropdown } from '../Dropdown';
 import { Header } from '../Header';
 import { Icon } from '../Icon';
 import { Toast } from '../Toast';
@@ -128,3 +132,29 @@ export const UnderComponent = () => (
     <Toaster position="top-right" style={{ marginTop: 'calc(4em + 12px)' }} />
   </>
 );
+
+export const WithTheme = () => {
+  const [selected, setSelected] = useState<Variant>('light');
+
+  return (
+    <HoneycombThemeProvider variant={selected}>
+      <Toaster position="top-right" />
+      <Card>
+        <Dropdown target={<Dropdown.DefaultTarget>With {selected} theme</Dropdown.DefaultTarget>}>
+          {['accent', 'dark', 'light'].map((it) => (
+            <Dropdown.Item
+              key={it}
+              onClick={() => {
+                setSelected(it as Variant);
+                makeToast();
+              }}
+              selected={selected === it}
+            >
+              {it}
+            </Dropdown.Item>
+          ))}
+        </Dropdown>
+      </Card>
+    </HoneycombThemeProvider>
+  );
+};
