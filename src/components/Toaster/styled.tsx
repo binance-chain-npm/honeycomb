@@ -16,6 +16,9 @@ export const Styles = createGlobalStyle`
     margin-bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
     padding: 0;
   }
+  .Toastify__toast-body {
+    padding: 0;
+  }
 
   .Toastify__toast-container--top-left {
     top: ${({ theme }) => em(theme.honeycomb.size.small)};
