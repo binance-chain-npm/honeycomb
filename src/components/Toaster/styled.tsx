@@ -11,21 +11,33 @@ export const Styles = createGlobalStyle`
     max-width: ${em(278)};
   }
   .Toastify__toast {
-    padding: 0;
     min-height: ${em(56)};
     box-shadow: ${({ theme }) => theme.honeycomb.shadow.box.normal};
-  }
-  .Toastify__toast--error {
-  }
-  .Toastify__toast--warning {
-  }
-  .Toastify__toast--success {
-  }
-  .Toastify__toast-body {
-    width: 100%;
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
     padding: 0;
   }
-  .Toastify__progress-bar {
+
+  .Toastify__toast-container--top-left {
+    top: ${({ theme }) => em(theme.honeycomb.size.small)};
+    left: ${({ theme }) => em(theme.honeycomb.size.small)};
+  }
+  .Toastify__toast-container--top-center {
+    top: ${({ theme }) => em(theme.honeycomb.size.small)};
+  }
+  .Toastify__toast-container--top-right {
+    top: ${({ theme }) => em(theme.honeycomb.size.small)};
+    right: ${({ theme }) => em(theme.honeycomb.size.small)};
+  }
+  .Toastify__toast-container--bottom-left {
+    bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
+    left: ${({ theme }) => em(theme.honeycomb.size.small)};
+  }
+  .Toastify__toast-container--bottom-center {
+    bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
+  }
+  .Toastify__toast-container--bottom-right {
+    bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
+    right: ${({ theme }) => em(theme.honeycomb.size.small)};
   }
 `;
 
