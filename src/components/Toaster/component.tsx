@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { ToastContainer } from 'react-toastify';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
@@ -10,7 +10,11 @@ type ToastContainerProps = React.ComponentPropsWithoutRef<typeof ToastContainer>
 
 export type Props = Omit<ToastContainerProps, 'closeButton'> & Testable;
 
-export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
+export const Component = ({
+  position = 'bottom-center',
+  'data-testid': testId,
+  ...otherProps
+}: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
   const close = useCallback(
@@ -28,10 +32,21 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
     [buildTestId],
   );
 
+  const newestOnTop = useMemo(
+    () => (position === 'bottom-center' ? true : otherProps.newestOnTop),
+    [position, otherProps.newestOnTop],
+  );
+
   return (
     <>
       <Styles />
-      <ToastContainer {...otherProps} closeButton={close} data-testid={testId} />
+      <ToastContainer
+        {...otherProps}
+        closeButton={close}
+        newestOnTop={newestOnTop}
+        position={position}
+        data-testid={buildTestId()}
+      />
     </>
   );
 };
