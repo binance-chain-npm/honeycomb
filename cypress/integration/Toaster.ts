@@ -1,4 +1,4 @@
-describe('Swiper', () => {
+describe('Toaster', () => {
   it.skip('renders correctly on small screens', () => {
     cy.customViewport({ size: 'sm' });
     cy.clock();
