@@ -1,6 +1,5 @@
 describe('Toaster', () => {
-  it.skip('renders correctly on small screens', () => {
-    cy.customViewport({ size: 'sm' });
+  it('renders correctly on small screens', () => {
     cy.clock();
     cy.visitStory({ storyId: 'elements-toaster--default', themeId: 'GoldLight' });
 
