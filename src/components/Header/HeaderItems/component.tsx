@@ -26,7 +26,7 @@ export const Component = ({ items, 'data-testid': testId, ...otherProps }: Props
               data-testid={buildTestId('dropdown')}
               key={index}
               target={
-                <StyledDropdownDefaultTarget variant="accent">
+                <StyledDropdownDefaultTarget highlightWhenOpen>
                   {element}
                 </StyledDropdownDefaultTarget>
               }

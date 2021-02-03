@@ -5,16 +5,16 @@ import { Space } from '../../Space';
 import { Styleless } from '../../Styleless';
 
 import { Icon } from './Icon';
-import { StyledDefaultTarget, Variant } from './styled';
+import { StyledDefaultTarget } from './styled';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Styleless> & {
   children: React.ReactNode;
-  variant?: Variant;
+  highlightWhenOpen?: boolean;
 };
 
 export const Component = ({
   htmlTag = 'button',
-  variant = 'normal',
+  highlightWhenOpen = false,
   ...otherProps
 }: Partial<Props>) => {
   const { isShowing } = useContext(Context);
@@ -23,7 +23,7 @@ export const Component = ({
     <StyledDefaultTarget
       {...otherProps}
       as={htmlTag as any}
-      variant={variant}
+      highlightWhenOpen={highlightWhenOpen}
       isShowing={isShowing}
     >
       {otherProps.children}

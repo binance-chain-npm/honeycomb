@@ -12,15 +12,15 @@ const getWidth = () => (typeof window === 'undefined' ? 0 : window.innerWidth);
 const getHeight = () => (typeof window === 'undefined' ? 0 : window.innerHeight);
 
 export const useWindowSize = () => {
-  let [width, setWidth] = useState(getWidth());
-  let [height, setHeight] = useState(getHeight());
+  const [width, setWidth] = useState(getWidth());
+  const [height, setHeight] = useState(getHeight());
 
   useEffect(() => {
     let timeoutId: number | undefined = undefined;
 
     const resizeListener = () => {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
+      timeoutId = window.setTimeout(() => {
         setWidth(getWidth());
         setHeight(getHeight());
       }, 150);
