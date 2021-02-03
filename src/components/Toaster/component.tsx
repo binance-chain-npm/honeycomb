@@ -20,7 +20,11 @@ export const Component = ({
   const { buildTestId } = useBuildTestId({ id: testId });
 
   const close = useCallback(
-    ({ closeToast }: { closeToast: any }) => (
+    ({
+      closeToast,
+    }: {
+      closeToast: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+    }) => (
       <StyledButton
         variant="secondary"
         size="increased"

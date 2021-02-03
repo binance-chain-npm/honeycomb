@@ -25,19 +25,6 @@ export const Styles = createGlobalStyle`
       margin-bottom: -${({ theme }) => em(theme.honeycomb.size.small)};
     }
   }
-  .Toastify__toast {
-    min-height: ${em(TOAST_HEIGHT)};
-    box-shadow: ${({ theme }) => theme.honeycomb.shadow.box.normal};
-    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
-    padding: 0;
-    background-color: ${({ theme }) => theme.honeycomb.color.bg.normal};
-  }
-  .Toastify__toast-body {
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
-
   .Toastify__toast-container--top-left {
     top: ${({ theme }) => em(theme.honeycomb.size.small)};
     left: ${({ theme }) => em(theme.honeycomb.size.small)};
@@ -59,6 +46,18 @@ export const Styles = createGlobalStyle`
   .Toastify__toast-container--bottom-right {
     bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
     right: ${({ theme }) => em(theme.honeycomb.size.small)};
+  }
+  .Toastify__toast {
+    min-height: ${em(TOAST_HEIGHT)};
+    box-shadow: ${({ theme }) => theme.honeycomb.shadow.box.normal};
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
+    padding: 0;
+    background-color: ${({ theme }) => theme.honeycomb.color.bg.normal};
+  }
+  .Toastify__toast-body {
+    display: flex;
+    margin: 0;
+    padding: 0;
   }
 `;
 
