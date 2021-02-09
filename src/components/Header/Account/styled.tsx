@@ -1,32 +1,28 @@
 import styled from 'styled-components';
 import { em } from 'polished';
 
-import { GoldLight } from '../../../modules/themes/themes/GoldLight';
-import { StyledDropdownDefaultTarget } from '../styled';
+import { Dropdown } from '../../Dropdown';
 
-export const Styled = styled(StyledDropdownDefaultTarget)`
+export const Styled = styled(Dropdown.DefaultTarget)`
   flex-direction: column;
   align-items: start;
-  background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
   padding: ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)}
     ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+`;
 
-  :focus,
-  :hover,
-  :active {
-    background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
-  }
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Icon = styled.div`
+  display: flex;
+  flex-shrink: 0;
 `;
 
 export const Address = styled.div`
-  display: flex;
-  align-items: center;
   font-weight: 500;
-
-  > svg {
-    color: ${GoldLight.honeycomb.color.primary.normal};
-    flex-shrink: 0;
-  }
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.reduced)};
 `;
 
 export const Network = styled.div`

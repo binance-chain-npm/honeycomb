@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
@@ -139,6 +140,16 @@ export const WithAccount = () => {
         {
           element: (
             <Header.Account
+              icon={<Icon.WalletConnectColor />}
+              address="bnb1...ur8v"
+            />
+          ),
+          styled: true,
+        },
+        {
+          element: (
+            <Header.Account
+              icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}
               address="bnb1...ur8v"
               network="Binance Smart Chain Test Network"
               children={[
