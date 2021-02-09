@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
 import light from './BinancePlex-Light.otf';
-import medium from './BinancePlex-Medium.otf';
 import regular from './BinancePlex-Regular.otf';
+import medium from './BinancePlex-Medium.otf';
 import semiBold from './BinancePlex-SemiBold.otf';
 
 export const fontName = 'BinancePlex';
@@ -22,7 +22,7 @@ export const fontFaces = css`
 
   @font-face {
     font-family: "${fontName}";
-    src: url(${medium}) format('opentype');
+    src: url(${regular}) format('opentype');
     font-weight: 300;
   }
 
@@ -34,13 +34,13 @@ export const fontFaces = css`
 
   @font-face {
     font-family: "${fontName}";
-    src: url(${semiBold}) format('opentype');
+    src: url(${medium}) format('opentype');
     font-weight: 500;
   }
 
   @font-face {
     font-family: "${fontName}";
-    src: url(${semiBold}) format('opentype');
+    src: url(${medium}) format('opentype');
     font-weight: 600;
   }
 
