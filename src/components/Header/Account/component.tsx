@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Dropdown } from '../../Dropdown';
@@ -19,10 +19,32 @@ export type Props = Testable & {
 export const Component = ({ icon, address, network, children, 'data-testid': testId }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
+  const hasChildren = useMemo(() => children && children.length > 0, [children]);
+  const content = useMemo(() => {
+    if (!children) return null;
+
+    return children.map((it, index) => {
+      const component: React.ReactElement[] = [];
+      const { showBorder, element, ...otherProps } = it;
+
+      component.push(
+        <StyledDropdownItem key={buildTestId(`item-${index}`)} {...otherProps}>
+          {element}
+        </StyledDropdownItem>,
+      );
+
+      if (showBorder) {
+        component.push(<Dropdown.Divider key={buildTestId(`divider-${index}`)} />);
+      }
+
+      return component;
+    });
+  }, [children, buildTestId]);
+
   return (
     <Dropdown
       target={
-        <Styled arrow={false} highlightWhenOpen>
+        <Styled arrow={false} highlightWhenOpen={hasChildren}>
           <Row>
             <Icon>{icon}</Icon>
             <Address>{address}</Address>
@@ -33,23 +55,7 @@ export const Component = ({ icon, address, network, children, 'data-testid': tes
       radius="reduced"
       data-testid={buildTestId()}
     >
-      {children &&
-        children.map((it, index) => {
-          const component: React.ReactElement[] = [];
-          const { showBorder, element, ...otherProps } = it;
-
-          component.push(
-            <StyledDropdownItem key={buildTestId(`item-${index}`)} {...otherProps}>
-              {element}
-            </StyledDropdownItem>,
-          );
-
-          if (showBorder) {
-            component.push(<Dropdown.Divider key={buildTestId(`divider-${index}`)} />);
-          }
-
-          return component;
-        })}
+      {content}
     </Dropdown>
   );
 };

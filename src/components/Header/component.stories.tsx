@@ -69,6 +69,43 @@ export const Default = () => (
   />
 );
 
+export const Account = () => {
+  return (
+    <Header
+      logo={<Header.Logo />}
+      nonCollapsible={[
+        {
+          element: <Header.Account icon={<Icon.WalletConnectColor />} address="bnb1...ur8v" />,
+          styled: true,
+        },
+        {
+          element: (
+            <Header.Account
+              icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}
+              address="bnb1...ur8v"
+              network="Binance Smart Chain Test Network"
+              children={[
+                {
+                  element: 'Account Item 1',
+                },
+                {
+                  element: 'Account Item 2',
+                },
+                {
+                  element: 'Account Item 3',
+                },
+              ]}
+              data-testid="account"
+            />
+          ),
+          styled: true,
+        },
+      ]}
+      data-testid="header"
+    />
+  );
+};
+
 export const WithDropdownItems = () => (
   <Header
     logo={<Header.Logo />}
@@ -129,48 +166,6 @@ export const WithNonCollapsibleItems = () => {
         Current window size: {isMd ? (isSm ? 'SM' : 'MD') : 'LG'}
       </div>
     </>
-  );
-};
-
-export const WithAccount = () => {
-  return (
-    <Header
-      logo={<Header.Logo />}
-      nonCollapsible={[
-        {
-          element: (
-            <Header.Account
-              icon={<Icon.WalletConnectColor />}
-              address="bnb1...ur8v"
-            />
-          ),
-          styled: true,
-        },
-        {
-          element: (
-            <Header.Account
-              icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}
-              address="bnb1...ur8v"
-              network="Binance Smart Chain Test Network"
-              children={[
-                {
-                  element: 'Account Item 1',
-                },
-                {
-                  element: 'Account Item 2',
-                },
-                {
-                  element: 'Account Item 3',
-                },
-              ]}
-              data-testid="account"
-            />
-          ),
-          styled: true,
-        },
-      ]}
-      data-testid="header"
-    />
   );
 };
 
