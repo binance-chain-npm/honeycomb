@@ -19,7 +19,7 @@ export type Props = Testable & {
 export const Component = ({ icon, address, network, children, 'data-testid': testId }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
-  const hasChildren = useMemo(() => children && children.length > 0, [children]);
+  const hasChildren = useMemo(() => !!children && children.length > 0, [children]);
   const content = useMemo(() => {
     if (!children) return null;
 
@@ -44,7 +44,7 @@ export const Component = ({ icon, address, network, children, 'data-testid': tes
   return (
     <Dropdown
       target={
-        <Styled arrow={false} highlightWhenOpen={hasChildren}>
+        <Styled arrow={false} highlightWhenOpen={hasChildren} interactive={hasChildren}>
           <Row>
             <Icon>{icon}</Icon>
             <Address>{address}</Address>

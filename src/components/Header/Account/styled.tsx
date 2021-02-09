@@ -1,13 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { Dropdown } from '../../Dropdown';
 
-export const Styled = styled(Dropdown.DefaultTarget)`
+export const Styled = styled(Dropdown.DefaultTarget) <{ interactive: boolean; }>`
   flex-direction: column;
   align-items: start;
   padding: ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)}
     ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  cursor: auto;
+
+  ${({ interactive }) => interactive && css`
+    cursor: pointer;
+
+    :focus,
+    :hover,
+    :active {
+      color: ${({ theme }) => theme.honeycomb.color.primary.normal};
+    }
+  `};
 `;
 
 export const Row = styled.div`
