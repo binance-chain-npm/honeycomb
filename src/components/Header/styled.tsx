@@ -84,6 +84,9 @@ export const StyledDropdownDefaultTarget = styled(Dropdown.DefaultTarget)`
 `;
 
 export const StyledDropdownItem = styled(Dropdown.Item)`
+  padding-left: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
+  padding-right: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
+
   :focus,
   :hover,
   :active {

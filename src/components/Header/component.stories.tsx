@@ -131,6 +131,38 @@ export const WithNonCollapsibleItems = () => {
   );
 };
 
+export const WithAccount = () => {
+  return (
+    <Header
+      logo={<Header.Logo />}
+      nonCollapsible={[
+        {
+          element: (
+            <Header.Account
+              address="bnb1...ur8v"
+              network="Binance Smart Chain Test Network"
+              children={[
+                {
+                  element: 'Account Item 1',
+                },
+                {
+                  element: 'Account Item 2',
+                },
+                {
+                  element: 'Account Item 3',
+                },
+              ]}
+              data-testid="account"
+            />
+          ),
+          styled: true,
+        },
+      ]}
+      data-testid="header"
+    />
+  );
+};
+
 export const WithComplexItems = () => (
   <Header
     logo={<Header.Logo text="Project Name" data-testid="header.logo" />}

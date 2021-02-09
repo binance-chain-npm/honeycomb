@@ -23,7 +23,7 @@ export const Component = ({ address, network, children, 'data-testid': testId }:
   return (
     <Dropdown
       target={
-        <Styled arrow={false} highlightWhenOpen data-testid={buildTestId()}>
+        <Styled arrow={false} highlightWhenOpen>
           <Address>
             <Icon.BinanceChain />
             <Space size="micro" base="reduced" />
@@ -33,6 +33,7 @@ export const Component = ({ address, network, children, 'data-testid': testId }:
         </Styled>
       }
       radius="reduced"
+      data-testid={buildTestId()}
     >
       {children &&
         children.map((it, index) => {
@@ -40,13 +41,13 @@ export const Component = ({ address, network, children, 'data-testid': testId }:
           const { showBorder, element, ...otherProps } = it;
 
           component.push(
-            <StyledDropdownItem key={`item-${index}`} {...otherProps}>
+            <StyledDropdownItem key={buildTestId(`item-${index}`)} {...otherProps}>
               {element}
             </StyledDropdownItem>,
           );
 
           if (showBorder) {
-            component.push(<Dropdown.Divider key={`${index}-divider-${index}`} />);
+            component.push(<Dropdown.Divider key={buildTestId(`divider-${index}`)} />);
           }
 
           return component;
