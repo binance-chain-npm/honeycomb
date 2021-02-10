@@ -5,21 +5,35 @@ import { Dropdown } from '../../Dropdown';
 import { HeaderChildItem } from '../component';
 import { StyledDropdownItem } from '../styled';
 
-import { Row, Icon, Address, Network, Styled } from './styled';
+import { Row, StyledLoading, Icon, Address, Network, Styled } from './styled';
 
 export type HeaderAccountChildItem = Omit<HeaderChildItem, 'label'>;
 
 export type Props = Testable & {
   icon: React.ReactNode;
-  address: React.ReactNode;
-  network?: React.ReactNode;
   children?: HeaderAccountChildItem[];
+  pre: React.ReactNode;
+  post: {
+    address: React.ReactNode;
+    network?: React.ReactNode;
+  };
+  pending: React.ReactNode;
+  state: 'pre' | 'post' | 'pending';
 };
 
-export const Component = ({ icon, address, network, children, 'data-testid': testId }: Props) => {
+export const Component = ({
+  icon,
+  children,
+  pre,
+  post,
+  pending,
+  state,
+  'data-testid': testId,
+}: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
   const hasChildren = useMemo(() => !!children && children.length > 0, [children]);
+
   const content = useMemo(() => {
     if (!children) return null;
 
@@ -41,15 +55,36 @@ export const Component = ({ icon, address, network, children, 'data-testid': tes
     });
   }, [children, buildTestId]);
 
+  const target = useMemo(() => {
+    switch (state) {
+      case 'pre':
+        return pre;
+      case 'post':
+        return (
+          <>
+            <Row>
+              <Icon>{icon}</Icon>
+              <Address>{post.address}</Address>
+            </Row>
+            {post.network && <Network>{post.network}</Network>}
+          </>
+        );
+      case 'pending':
+        return (
+          <Row>
+            <Icon>{icon}</Icon>
+            {pending}
+            <StyledLoading />
+          </Row>
+        );
+    }
+  }, [icon, pre, post, pending, state]);
+
   return (
     <Dropdown
       target={
         <Styled arrow={false} highlightWhenOpen={hasChildren} interactive={hasChildren}>
-          <Row>
-            <Icon>{icon}</Icon>
-            <Address>{address}</Address>
-          </Row>
-          {network && <Network>{network}</Network>}
+          {target}
         </Styled>
       }
       radius="reduced"
