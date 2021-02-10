@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  ArgsTable,
-  Description,
-  Heading,
-  Source,
-  Stories,
-  Subheading,
-} from '@storybook/addon-docs/blocks';
+import { ArgsTable, Description, Heading, Source, Subheading } from '@storybook/addon-docs/blocks';
 
-import { DocsTable } from '../internal/DocsTable';
+import { DocsTable } from '../../internal/DocsTable';
+import { Header } from '../../Header';
 
-import { Header } from './';
+import { Account } from './Account';
 
 export const docs = {
   page: () => (
@@ -136,7 +130,7 @@ export const docs = {
         ]}
       />
 
-      <Stories />
+      <Account />
     </>
   ),
 };
