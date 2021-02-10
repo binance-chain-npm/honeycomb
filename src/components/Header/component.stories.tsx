@@ -9,6 +9,7 @@ import { Icon } from '../Icon';
 import { SIZES, useWindowSize } from '../internal/useWindowSize';
 
 import { docs } from './docs';
+import { Account } from './docs/Account';
 
 import { Header } from './';
 
@@ -65,6 +66,19 @@ export const Default = () => (
         disabled: true,
       },
     ]}
+  />
+);
+
+export const WithAccount = () => (
+  <Header
+    logo={<Header.Logo />}
+    nonCollapsible={[
+      {
+        element: <Account state="post" />,
+        styled: true,
+      },
+    ]}
+    data-testid="header"
   />
 );
 

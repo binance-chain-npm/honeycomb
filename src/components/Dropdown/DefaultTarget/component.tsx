@@ -9,11 +9,13 @@ import { StyledDefaultTarget } from './styled';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Styleless> & {
   children: React.ReactNode;
+  arrow?: boolean;
   highlightWhenOpen?: boolean;
 };
 
 export const Component = ({
   htmlTag = 'button',
+  arrow = true,
   highlightWhenOpen = false,
   ...otherProps
 }: Partial<Props>) => {
@@ -27,8 +29,12 @@ export const Component = ({
       isShowing={isShowing}
     >
       {otherProps.children}
-      <Space size="micro" base="reduced" />
-      <Icon open={isShowing} />
+      {arrow && (
+        <>
+          <Space size="micro" base="reduced" />
+          <Icon open={isShowing} />
+        </>
+      )}
     </StyledDefaultTarget>
   );
 };
