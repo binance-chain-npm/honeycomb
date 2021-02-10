@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { action } from '@storybook/addon-actions';
+import { Story } from '@storybook/react/types-6-0';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
@@ -69,35 +70,62 @@ export const Default = () => (
   />
 );
 
-export const Account = () => {
+type State = React.ComponentPropsWithoutRef<typeof Header.Account>['state'];
+
+export const Account: Story = () => {
+  const account = ({ state }: { state: State }) => (
+    <Header.Account
+      icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}
+      children={[
+        {
+          element: 'Account Item 1',
+        },
+        {
+          element: 'Account Item 2',
+        },
+        {
+          element: 'Account Item 3',
+        },
+      ]}
+      pre="Connect"
+      post={{
+        address: 'bnb1...ur8v',
+        network: 'Binance Smart Chain Test Network',
+      }}
+      pending="Pending"
+      state={state}
+      data-testid="account"
+    />
+  );
+
   return (
     <Header
       logo={<Header.Logo />}
       nonCollapsible={[
         {
-          element: <Header.Account icon={<Icon.WalletConnectColor />} address="bnb1...ur8v" />,
+          element: (
+            <Header.Account
+              icon={<Icon.WalletConnectColor />}
+              pre={null}
+              post={{
+                address: 'bnb1...ur8v',
+              }}
+              pending={null}
+              state="post"
+            />
+          ),
           styled: true,
         },
         {
-          element: (
-            <Header.Account
-              icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}
-              address="bnb1...ur8v"
-              network="Binance Smart Chain Test Network"
-              children={[
-                {
-                  element: 'Account Item 1',
-                },
-                {
-                  element: 'Account Item 2',
-                },
-                {
-                  element: 'Account Item 3',
-                },
-              ]}
-              data-testid="account"
-            />
-          ),
+          element: account({ state: 'pre' }),
+          styled: true,
+        },
+        {
+          element: account({ state: 'pending' }),
+          styled: true,
+        },
+        {
+          element: account({ state: 'post' }),
           styled: true,
         },
       ]}
