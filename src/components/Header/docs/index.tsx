@@ -4,7 +4,7 @@ import { ArgsTable, Description, Heading, Source, Subheading } from '@storybook/
 import { DocsTable } from '../../internal/DocsTable';
 import { Header } from '../../Header';
 
-import { Account } from './Account';
+import { AccountDocs } from './Account';
 
 export const docs = {
   page: () => (
@@ -130,7 +130,7 @@ export const docs = {
         ]}
       />
 
-      <Account />
+      <AccountDocs />
     </>
   ),
 };
