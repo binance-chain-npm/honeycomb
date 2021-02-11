@@ -6,8 +6,9 @@ import { Story } from '@storybook/react/types-6-0';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { HoneycombThemeProvider } from '../../modules/themes';
-import { Space } from '../Space';
 import { Button } from '../Button';
+import { Space } from '../Space';
+import { Text } from '../Text';
 
 import { RADII, SIZES, VARIANTS } from './styled';
 
@@ -61,6 +62,15 @@ const PlacementContainer = styled.div`
 export const Variants = () => {
   return (
     <Container>
+      <h3>bare</h3>
+      <Label>default=false</Label>
+      <Row>
+        <Tooltip visible content={<Text size="small">bare</Text>} bare>
+          <div />
+        </Tooltip>
+      </Row>
+      <Space size="increased" />
+
       <h3>padding</h3>
       <Label>default="small"</Label>
       <Row>

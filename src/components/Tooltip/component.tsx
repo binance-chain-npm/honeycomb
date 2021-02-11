@@ -32,16 +32,19 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children' | 'style'> &
     radius?: Radius;
     shape?: Shape;
     variant?: Variant;
+    bare?: boolean;
   };
 
 export const Component = ({
   className,
   children,
+  content: contentProp,
   padding = 'small',
   radius = 'reduced',
   shape = 'fill',
   variant = 'normal',
   trigger: triggerProp = 'mouseenter',
+  bare = false,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -54,28 +57,36 @@ export const Component = ({
     return triggerProp.join(' ');
   }, [triggerProp, otherProps.visible]);
 
+  const content = useMemo(() => {
+    if (bare) {
+      return <div data-testid={buildTestId('content')}>{contentProp}</div>;
+    }
+
+    return (
+      <Content
+        padding={padding}
+        $radius={radius}
+        variant={variant}
+        data-testid={buildTestId('content')}
+      >
+        {contentProp}
+      </Content>
+    );
+  }, [contentProp, bare, padding, radius, variant, buildTestId]);
+
   return (
     <>
       <Styles variant={variant} />
       <Tippy
         {...otherProps}
+        className={className || ''} // Tippy throws error if className is undefined.
         trigger={trigger}
         theme={`bc-honeycomb-bare-${theme.honeycomb.id}-${variant}`}
         arrow={otherProps.arrow}
         animation="shift-away"
         placement={otherProps.placement ?? 'bottom-start'}
         zIndex={theme.honeycomb.zIndexes.tooltips}
-        content={
-          <Content
-            padding={padding}
-            $radius={radius}
-            variant={variant}
-            className={className}
-            data-testid={buildTestId('content')}
-          >
-            {otherProps.content}
-          </Content>
-        }
+        content={content}
       >
         <Target $shape={shape} data-testid={buildTestId('target')}>
           {children}
