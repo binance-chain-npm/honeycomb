@@ -49,7 +49,7 @@ export const Columns: Story = () => {
       selected={selected}
       onChange={change}
       providers={Array.from(DEFAULT_WALLET_PROVIDERS)}
-      columns={4}
+      columns={3}
     />
   );
 };
