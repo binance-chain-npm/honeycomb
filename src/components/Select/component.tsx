@@ -1,13 +1,21 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Space } from '../Space';
-import { TextInput } from '../TextInput';
+import { Icon } from '../Icon';
 
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
 import { ResponsiveSelect } from './variant/ResponsiveSelect';
-import { Container, OptionsContainer, StyledCard, Options, OptionsTitle } from './styled';
+import {
+  Container,
+  StyledCard,
+  StyledTextInput,
+  OptionsContainer,
+  OptionsTitle,
+  Options,
+} from './styled';
 
 export const VARIANTS = ['responsive', 'dropdown', 'modal'] as const;
 export type Variant = typeof VARIANTS[number];
@@ -17,6 +25,8 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     variant?: Variant;
     title?: React.ReactNode;
     optionsTitle?: React.ReactNode;
+    searchIcon?: boolean;
+    searchPlaceholder?: string;
     open: boolean;
     target: React.ReactNode;
     onClose?: () => void;
@@ -26,11 +36,16 @@ export const Component = ({
   variant = 'responsive',
   children,
   optionsTitle,
+  searchIcon = true,
+  searchPlaceholder,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
+  const theme = useTheme();
+
   const [search, setSearch] = useState('');
+
   const updateSearch = useCallback(
     (evt: React.ChangeEvent<HTMLInputElement>) => setSearch(evt.target.value),
     [],
@@ -86,7 +101,22 @@ export const Component = ({
       <Container>
         {isFilterable && (
           <StyledCard position="top">
-            <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
+            <StyledTextInput
+              value={search}
+              onChange={updateSearch}
+              left={
+                searchIcon ? (
+                  <Icon.Search
+                    fontSize={theme.honeycomb.size.increased}
+                    color={theme.honeycomb.color.text.placeholder}
+                  />
+                ) : (
+                  undefined
+                )
+              }
+              placeholder={searchPlaceholder}
+              data-testid={buildTestId('input')}
+            />
           </StyledCard>
         )}
         <Space size="small" />
@@ -99,7 +129,19 @@ export const Component = ({
         </OptionsContainer>
       </Container>
     );
-  }, [isFilterable, filteredResults, children, optionsTitle, search, updateSearch, buildTestId]);
+  }, [
+    isFilterable,
+    filteredResults,
+    search,
+    searchIcon,
+    searchPlaceholder,
+    theme.honeycomb.size.increased,
+    theme.honeycomb.color.text.placeholder,
+    optionsTitle,
+    children,
+    updateSearch,
+    buildTestId,
+  ]);
 
   switch (variant) {
     case 'dropdown':

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { em } from 'polished';
 
 import { Card } from '../Card';
+import { TextInput } from '../TextInput';
 
 export const Container = styled.div`
   display: flex;
@@ -11,6 +12,12 @@ export const Container = styled.div`
 
 export const StyledCard = styled(Card)`
   padding: ${({ theme }) => em(theme.honeycomb.size.small)};
+`;
+
+export const StyledTextInput = styled(TextInput)`
+  ${TextInput.Left} {
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.reduced)};
+  }
 `;
 
 export const OptionsTitle = styled.div`

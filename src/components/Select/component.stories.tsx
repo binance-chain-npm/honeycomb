@@ -217,3 +217,17 @@ export const NonFilterable = () => {
     </>
   );
 };
+
+export const WithSearchPlaceholder = () => {
+  return (
+    <>
+      <Select open={true} target={null} searchPlaceholder="Search...">
+        {new Array(5).fill(null).map((_, index) => (
+          <Select.Option key={index} searchAs={`Option ${index + 1}`} data-testid={`${index}`}>
+            Option {index + 1}
+          </Select.Option>
+        ))}
+      </Select>
+    </>
+  );
+};
