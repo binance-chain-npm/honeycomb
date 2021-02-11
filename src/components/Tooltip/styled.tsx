@@ -74,13 +74,18 @@ export const Target = styled.div<{ $shape?: Shape }>`
   ${({ $shape: shape }) => shape === 'fit' && fit};
 `;
 
-export const Content = styled.div<{ padding: Size; $radius: Radius; variant: Variant }>`
+export const tooltip = css`
   color: ${({ theme }) =>
     theme.honeycomb.color.readable.normal(theme.honeycomb.color.bg.tooltip.normal)};
   box-shadow: ${({ theme }) => theme.honeycomb.shadow.normal};
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  overflow: hidden;
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
+  overflow: hidden;
+`;
+
+export const Content = styled.div<{ padding: Size; $radius: Radius; variant: Variant }>`
+  ${tooltip};
+
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   padding: ${({ theme, padding }) =>
     padding !== 'none' &&
     css`
