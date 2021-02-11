@@ -33,12 +33,9 @@ describe('Select', () => {
     cy.visitStory({ storyId: 'elements-select--non-filterable', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="select"]').click();
-    cy.tick(10000);
-
+    cy.get('[data-testid="non-filterable"]').should('be.visible');
     cy.get('[data-testid="select.input.native-input"]').should('not.exist');
 
-    cy.get('[data-testid="non-filterable"]').should('be.visible');
     new Array(5).fill(null).forEach((_, index) => {
       cy.get(`[data-testid="select.modal.item.${index}"]`).should('exist');
     });

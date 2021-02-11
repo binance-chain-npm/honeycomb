@@ -202,22 +202,9 @@ export const Modal = () => {
 };
 
 export const NonFilterable = () => {
-  const [open, setOpen] = useState(false);
-
   return (
     <>
-      <Select
-        data-testid="select"
-        title="A Title"
-        optionsTitle="Options"
-        open={open}
-        onClose={() => setOpen(false)}
-        target={
-          <Select.DefaultTarget onClick={() => setOpen((value) => !value)} data-testid="select">
-            Select an option...
-          </Select.DefaultTarget>
-        }
-      >
+      <Select data-testid="select" optionsTitle="Non-Filterable Options" open={true} target={null}>
         <ListItem interactive={false} data-testid="non-filterable">
           Some non-filterable element
         </ListItem>
