@@ -3,7 +3,7 @@ import React from 'react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Space } from '../Space';
 
-import { StyledPanelControl, StyledPanelControlItem } from './styled';
+import { StyledPanelControl, StyledPanelControlItem, Description } from './styled';
 import { DefaultWalletProvider, WalletProvider, useWalletProviders } from './useWalletProviders';
 
 export type Props = Testable & {
@@ -34,7 +34,7 @@ export const Component = ({
       data-testid={buildTestId()}
     >
       {providers.map((it, index) => {
-        const element = typeof it === 'string' ? defaultProviders[it] : it;
+        const element: WalletProvider = typeof it === 'string' ? defaultProviders[it] : it;
 
         return (
           <>
@@ -48,8 +48,9 @@ export const Component = ({
               data-testid={`${index}`}
             >
               {element.icon}
-              <Space size="small" base="reduced" />
+              <Space size="tiny" base="reduced" />
               {element.name}
+              {element.description && <Description>{element.description}</Description>}
             </StyledPanelControlItem>
           </>
         );
