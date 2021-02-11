@@ -5,7 +5,7 @@ import { Story } from '@storybook/react/types-6-0';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
-import { ReactComponent as Wallet } from '../Icon/assets/Wallet.svg';
+import { Icon } from '../Icon';
 import { SIZES } from '../internal/useWindowSize';
 import { Modal } from '../Modal';
 
@@ -48,7 +48,7 @@ WithCustomNumberOfColumns.decorators = decorators;
 export const WithCustomWalletProvider: Story = () => {
   const wallets = new Array(5).fill(null).map((_, index) => ({
     name: `Custom Wallet ${index + 1}`,
-    icon: <Wallet />,
+    icon: <Icon.Wallet />,
     href: '#',
   }));
 
@@ -62,6 +62,31 @@ export const WithCustomWalletProvider: Story = () => {
   );
 };
 WithCustomWalletProvider.decorators = decorators;
+
+export const WithDescription: Story = () => {
+  return (
+    <Wallets
+      onChange={() => {}}
+      providers={[
+        ...Array.from(DEFAULT_WALLET_PROVIDERS),
+        {
+          name: `Custom Wallet`,
+          icon: <Icon.Wallet />,
+          href: '#',
+          description: 'Some description...',
+        },
+        {
+          name: `Custom Wallet`,
+          icon: <Icon.Wallet />,
+          href: '#',
+          description: 'Some really really really really really really long description...',
+        },
+      ]}
+      columns={4}
+    />
+  );
+};
+WithDescription.decorators = decorators;
 
 const StyledModal = styled(Modal)`
   @media (min-width: ${em(SIZES.md)}) {
@@ -93,7 +118,7 @@ export const InsideModal = () => {
             'TokenPocket',
             {
               name: `Custom Wallet`,
-              icon: <Wallet />,
+              icon: <Icon.Wallet />,
               href: '#',
             },
           ]}

@@ -21,6 +21,7 @@ export type WalletProvider = {
   name: string;
   icon: React.ReactNode;
   href: string;
+  description?: React.ReactNode;
 };
 
 export const useWalletProviders = () => {
