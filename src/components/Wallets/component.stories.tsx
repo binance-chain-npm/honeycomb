@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
 import { Story } from '@storybook/react/types-6-0';
@@ -6,7 +6,7 @@ import { Story } from '@storybook/react/types-6-0';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Icon } from '../Icon';
-import { SIZES } from '../internal/useWindowSize';
+import { SIZES, useWindowSize } from '../internal/useWindowSize';
 import { Modal } from '../Modal';
 
 import { DEFAULT_WALLET_PROVIDERS } from './useWalletProviders';
@@ -20,7 +20,7 @@ export default {
   title: `${Sections.Elements}/Wallets`,
 };
 
-export const Default: Story = () => {
+export const Rows: Story = () => {
   const [selected, setSelected] = useState<WalletProvider>();
 
   const change = useCallback(({ provider }) => {
@@ -32,20 +32,36 @@ export const Default: Story = () => {
       selected={selected}
       onChange={change}
       providers={Array.from(DEFAULT_WALLET_PROVIDERS)}
-      data-testid="wallets"
     />
   );
 };
-Default.decorators = decorators;
+Rows.decorators = decorators;
 
-export const WithCustomNumberOfColumns: Story = () => {
+export const Columns: Story = () => {
+  const [selected, setSelected] = useState<WalletProvider>();
+
+  const change = useCallback(({ provider }) => {
+    setSelected(provider);
+  }, []);
+
   return (
-    <Wallets onChange={() => {}} providers={Array.from(DEFAULT_WALLET_PROVIDERS)} columns={4} />
+    <Wallets
+      selected={selected}
+      onChange={change}
+      providers={Array.from(DEFAULT_WALLET_PROVIDERS)}
+      columns={4}
+    />
   );
 };
-WithCustomNumberOfColumns.decorators = decorators;
+Columns.decorators = decorators;
 
 export const WithCustomWalletProvider: Story = () => {
+  const [selected, setSelected] = useState<WalletProvider>();
+
+  const change = useCallback(({ provider }) => {
+    setSelected(provider);
+  }, []);
+
   const wallets = new Array(5).fill(null).map((_, index) => ({
     name: `Custom Wallet ${index + 1}`,
     icon: <Icon.Wallet />,
@@ -54,39 +70,50 @@ export const WithCustomWalletProvider: Story = () => {
 
   return (
     <Wallets
-      onChange={() => {}}
+      selected={selected}
+      onChange={change}
       providers={['Binance Chain Wallet', ...wallets]}
       columns={4}
-      data-testid="wallets"
     />
   );
 };
 WithCustomWalletProvider.decorators = decorators;
 
-export const WithDescription: Story = () => {
+export const ResponsiveWithDescription: Story = () => {
+  const { width } = useWindowSize();
+  const [selected, setSelected] = useState<WalletProvider>();
+
+  const change = useCallback(({ provider }) => {
+    setSelected(provider);
+  }, []);
+
+  const cols = useMemo(() => (width < SIZES.md ? 0 : 4), [width]);
+
   return (
     <Wallets
-      onChange={() => {}}
+      selected={selected}
+      onChange={change}
       providers={[
         ...Array.from(DEFAULT_WALLET_PROVIDERS),
         {
-          name: `Custom Wallet`,
+          name: `Custom Wallet 1`,
           icon: <Icon.Wallet />,
           href: '#',
           description: 'Some description...',
         },
         {
-          name: `Custom Wallet`,
+          name: `Custom Wallet 2`,
           icon: <Icon.Wallet />,
           href: '#',
           description: 'Some really really really really really really long description...',
         },
       ]}
-      columns={4}
+      columns={cols}
+      data-testid="wallets"
     />
   );
 };
-WithDescription.decorators = decorators;
+ResponsiveWithDescription.decorators = decorators;
 
 const StyledModal = styled(Modal)`
   @media (min-width: ${em(SIZES.md)}) {

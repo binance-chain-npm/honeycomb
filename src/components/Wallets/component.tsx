@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Space } from '../Space';
@@ -18,19 +18,21 @@ export const Component = ({
   providers,
   selected,
   onChange,
-  columns = 3,
+  columns,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
   const { providers: defaultProviders } = useWalletProviders();
 
+  const cols = useMemo(() => (columns && columns > 1 ? columns : 0), [columns]);
+
   return (
     <StyledPanelControl
       {...otherProps}
       orientation="horizontal"
       variant="solid"
-      columns={columns}
+      columns={cols}
       data-testid={buildTestId()}
     >
       {providers.map((it, index) => {
@@ -45,12 +47,15 @@ export const Component = ({
                 e.preventDefault();
                 onChange({ provider: element });
               }}
+              columns={cols}
               data-testid={`${index}`}
             >
               {element.icon}
               <Space size="tiny" base="reduced" />
               {element.name}
-              {element.description && <Description>{element.description}</Description>}
+              {element.description && (
+                <Description columns={cols}>{element.description}</Description>
+              )}
             </StyledPanelControlItem>
           </>
         );
