@@ -78,7 +78,7 @@ export const Responsive = () => {
     <>
       <Select
         data-testid="select"
-        title="A Title"
+        title="Select an Option"
         optionsTitle="Options"
         open={open}
         onClose={() => setOpen(false)}
@@ -119,7 +119,7 @@ export const Dropdown = () => {
       <Select
         data-testid="select"
         variant="dropdown"
-        title="A Title"
+        title="Select an Option"
         optionsTitle="Options"
         open={open}
         onClose={() => setOpen(false)}
@@ -166,7 +166,7 @@ export const Modal = () => {
       <Select
         data-testid="select"
         variant="modal"
-        title="A Title"
+        title="Select an Option"
         open={open}
         onClose={() => setOpen(false)}
         target={
