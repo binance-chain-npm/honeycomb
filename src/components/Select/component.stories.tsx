@@ -149,6 +149,7 @@ export const Dropdown = () => {
     </>
   );
 };
+Dropdown.decorators = decorators;
 
 const StyledSelectOption = styled(Select.Option)`
   ${ListItem.Content} {
@@ -222,7 +223,7 @@ export const NonFilterable = () => {
         </ListItem>
         {new Array(5).fill(null).map((_, index) => (
           <Select.Option key={index} searchAs="" data-testid={`${index}`}>
-            {index + 1}
+            Option {index + 1}
           </Select.Option>
         ))}
       </Select>

@@ -1,14 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { Card } from '../Card';
 import { Space } from '../Space';
 import { TextInput } from '../TextInput';
 
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
 import { ResponsiveSelect } from './variant/ResponsiveSelect';
-import { Container, OptionsContainer, Search, Options, OptionsTitle } from './styled';
+import { Container, OptionsContainer, StyledCard, Options, OptionsTitle } from './styled';
 
 export const VARIANTS = ['responsive', 'dropdown', 'modal'] as const;
 export type Variant = typeof VARIANTS[number];
@@ -86,19 +85,13 @@ export const Component = ({
     return (
       <Container>
         {isFilterable && (
-          <Card position="top">
-            <Search>
-              <TextInput
-                value={search}
-                onChange={updateSearch}
-                data-testid={buildTestId('input')}
-              />
-            </Search>
-          </Card>
+          <StyledCard position="top">
+            <TextInput value={search} onChange={updateSearch} data-testid={buildTestId('input')} />
+          </StyledCard>
         )}
-        <Space size="normal" />
+        <Space size="small" />
         {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
-        <Space size="normal" />
+        <Space size="small" />
         <OptionsContainer position="bottom">
           <Options data-testid={buildTestId('options')}>
             {isFilterable ? filteredResults : children}
