@@ -12,6 +12,7 @@ export const Container = styled.div`
 
 export const StyledCard = styled(Card)`
   padding: ${({ theme }) => em(theme.honeycomb.size.small)};
+  box-shadow: none;
 `;
 
 export const StyledTextInput = styled(TextInput)`
@@ -38,4 +39,5 @@ export const OptionsContainer = styled(Card)`
   max-height: min(${em(392)}, 40vh);
   overflow: hidden;
   overflow-y: auto;
+  box-shadow: none;
 `;
