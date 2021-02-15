@@ -10,6 +10,7 @@ export const Styled = styled(Dropdown.DefaultTarget)<{ interactive: boolean }>`
   padding: ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)}
     ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
   cursor: auto;
+  width: min-content;
 
   ${({ interactive }) =>
     interactive &&
@@ -45,6 +46,7 @@ export const Address = styled.div`
 `;
 
 export const Network = styled.div`
-  font-size: ${({ theme }) => em(theme.honeycomb.size.small * 0.9, theme.honeycomb.size.reduced)};
+  font-size: ${({ theme }) => em(11, theme.honeycomb.size.reduced)};
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
+  white-space: nowrap;
 `;

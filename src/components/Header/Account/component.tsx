@@ -34,7 +34,7 @@ export const Component = ({
 
   const hasChildren = useMemo(() => !!children && children.length > 0, [children]);
 
-  const content = useMemo(() => {
+  const items = useMemo(() => {
     if (!children) return null;
 
     return children.map((it, index) => {
@@ -56,41 +56,45 @@ export const Component = ({
   }, [children, buildTestId]);
 
   const target = useMemo(() => {
-    switch (state) {
-      case 'pre':
-        return pre;
-      case 'post':
-        return (
-          <>
+    const content = (() => {
+      switch (state) {
+        case 'pre':
+          return pre;
+        case 'post':
+          return (
+            <>
+              <Row>
+                <Icon>{icon}</Icon>
+                <Address>{post.address}</Address>
+              </Row>
+              {post.network && <Network>{post.network}</Network>}
+            </>
+          );
+        case 'pending':
+          return (
             <Row>
               <Icon>{icon}</Icon>
-              <Address>{post.address}</Address>
+              {pending}
+              <StyledLoading />
             </Row>
-            {post.network && <Network>{post.network}</Network>}
-          </>
-        );
-      case 'pending':
-        return (
-          <Row>
-            <Icon>{icon}</Icon>
-            {pending}
-            <StyledLoading />
-          </Row>
-        );
-    }
-  }, [icon, pre, post, pending, state]);
+          );
+      }
+    })();
+
+    return (
+      <Styled arrow={false} highlightWhenOpen={hasChildren} interactive={hasChildren}>
+        {content}
+      </Styled>
+    );
+  }, [icon, pre, post, pending, state, hasChildren]);
+
+  if (!children) {
+    return target;
+  }
 
   return (
-    <Dropdown
-      target={
-        <Styled arrow={false} highlightWhenOpen={hasChildren} interactive={hasChildren}>
-          {target}
-        </Styled>
-      }
-      radius="reduced"
-      data-testid={buildTestId()}
-    >
-      {content}
+    <Dropdown target={target} radius="reduced" data-testid={buildTestId()}>
+      {items}
     </Dropdown>
   );
 };
