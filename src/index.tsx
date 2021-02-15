@@ -53,6 +53,6 @@ export { Text } from './components/Text';
 export { TextArea } from './components/TextArea';
 export { TextInput } from './components/TextInput';
 export { Toast } from './components/Toast';
-export { Toaster, toast } from './components/Toaster';
+export { Toaster, createToast } from './components/Toaster';
 export { Tooltip } from './components/Tooltip';
 export { Wallets, useWalletProviders } from './components/Wallets';

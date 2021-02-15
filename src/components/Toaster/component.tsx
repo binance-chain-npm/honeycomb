@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { Slide, ToastContainer } from 'react-toastify';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
@@ -6,13 +6,18 @@ import { Icon } from '../Icon';
 
 import { StyledButton, Styles } from './styled';
 
-export type Props = Omit<
+export const AUTO_CLOSE_DEFAULT_DURATION = 5000;
+
+export type Props = Pick<
   React.ComponentPropsWithoutRef<typeof ToastContainer>,
-  'closeButton' | 'hideProgressBar' | 'transition'
+  'position' | 'children' | 'className'
 > &
-  Testable;
+  Testable & {
+    autoClose?: boolean;
+  };
 
 export const Component = ({
+  autoClose = true,
   position = 'bottom-center',
   'data-testid': testId,
   ...otherProps
@@ -38,19 +43,15 @@ export const Component = ({
     [buildTestId],
   );
 
-  const newestOnTop = useMemo(
-    () => (position === 'bottom-center' ? true : otherProps.newestOnTop),
-    [position, otherProps.newestOnTop],
-  );
-
   return (
     <>
       <Styles />
       <ToastContainer
         {...otherProps}
+        autoClose={autoClose ? AUTO_CLOSE_DEFAULT_DURATION : false}
         closeButton={close}
         hideProgressBar
-        newestOnTop={newestOnTop}
+        newestOnTop={position === 'bottom-center'}
         position={position}
         transition={Slide}
         data-testid={buildTestId()}
