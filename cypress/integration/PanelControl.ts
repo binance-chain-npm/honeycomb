@@ -3,35 +3,35 @@ describe('PanelControl', () => {
     cy.visitStory({ storyId: 'elements-panelcontrol--horizontal', themeId: 'GoldLight' });
 
     cy.get('[data-testid="light.panel-control"]').should('be.visible');
-    cy.get('[data-testid="light.panel-control.item.0"]').should(
+    cy.get('[data-testid="light.panel-control.0"]').should(
       'have.attr',
       'data-testisselected',
       'true',
     );
-    cy.get('[data-testid="light.panel-control.item.1"]').should(
+    cy.get('[data-testid="light.panel-control.1"]').should(
       'have.attr',
       'data-testisselected',
       'false',
     );
-    cy.get('[data-testid="light.panel-control.item.2"]').should(
+    cy.get('[data-testid="light.panel-control.2"]').should(
       'have.attr',
       'data-testisselected',
       'false',
     );
-    cy.get('[data-testid="light.panel-control.item.disabled"]').should('be.disabled');
+    cy.get('[data-testid="light.panel-control.disabled"]').should('be.disabled');
 
-    cy.get('[data-testid="light.panel-control.item.1"]').click();
-    cy.get('[data-testid="light.panel-control.item.0"]').should(
+    cy.get('[data-testid="light.panel-control.1"]').click();
+    cy.get('[data-testid="light.panel-control.0"]').should(
       'have.attr',
       'data-testisselected',
       'false',
     );
-    cy.get('[data-testid="light.panel-control.item.1"]').should(
+    cy.get('[data-testid="light.panel-control.1"]').should(
       'have.attr',
       'data-testisselected',
       'true',
     );
-    cy.get('[data-testid="light.panel-control.item.2"]').should(
+    cy.get('[data-testid="light.panel-control.2"]').should(
       'have.attr',
       'data-testisselected',
       'false',
