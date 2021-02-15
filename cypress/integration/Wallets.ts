@@ -5,14 +5,14 @@ describe('Wallets', () => {
     cy.visitStory({ storyId: 'elements-wallets--responsive-with-description', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="light.wallets.item.0"]').should(
+    cy.get('[data-testid="light.wallets.0"]').should(
       'have.attr',
       'data-testisselected',
       'false',
     );
-    cy.get('[data-testid="light.wallets.item.0"]').click();
+    cy.get('[data-testid="light.wallets.0"]').click();
     cy.tick(10000);
-    cy.get('[data-testid="light.wallets.item.0"]').should(
+    cy.get('[data-testid="light.wallets.0"]').should(
       'have.attr',
       'data-testisselected',
       'true',
@@ -24,7 +24,7 @@ describe('Wallets', () => {
     cy.reload();
     cy.tick(10000);
 
-    cy.get('[data-testid="light.wallets.item.0"]').click();
+    cy.get('[data-testid="light.wallets.0"]').click();
     cy.tick(10000);
 
     cy.percySnapshot('Wallets with column layout', { widths: [768] });

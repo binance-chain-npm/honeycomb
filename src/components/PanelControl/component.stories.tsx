@@ -41,7 +41,7 @@ export const Horizontal = () => {
         <Text size="reduced">Item</Text>
       </Item>
       <Space size="normal" />
-      <Item disabled data-testid="disabled">
+      <Item disabled data-testid={buildTestId('disabled')}>
         <Text size="reduced">Disabled Item</Text>
       </Item>
     </PanelControl>

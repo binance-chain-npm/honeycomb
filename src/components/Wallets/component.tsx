@@ -48,7 +48,7 @@ export const Component = ({
                 onChange({ provider: element });
               }}
               columns={cols}
-              data-testid={`${index}`}
+              data-testid={buildTestId(`${index}`)}
             >
               {element.icon}
               <Space size="tiny" base="reduced" />
