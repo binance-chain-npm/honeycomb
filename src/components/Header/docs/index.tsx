@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArgsTable, Description, Heading, Source, Subheading } from '@storybook/addon-docs/blocks';
+import { ArgsTable, Description, Source, Subtitle } from '@storybook/addon-docs/blocks';
 
+import { DocsPropHeading } from '../../internal/DocsPropHeading';
 import { DocsTable } from '../../internal/DocsTable';
 import { Header } from '../../Header';
 
@@ -9,15 +10,14 @@ import { AccountDocs } from './Account';
 export const docs = {
   page: () => (
     <>
-      <Description>
+      <Subtitle>
         The header component is used for navigation on a site. It is designed to be versatile and
         responsive, rendering a full menu on large screens and collapsing into a drawer on small
         screens.
-      </Description>
-      <Heading>Props</Heading>
+      </Subtitle>
       <ArgsTable of={Header} />
 
-      <Subheading>HeaderItem</Subheading>
+      <DocsPropHeading>HeaderItem</DocsPropHeading>
       <Description>An item in the header.</Description>
       <DocsTable
         data={[
@@ -91,7 +91,7 @@ export const docs = {
       `}
       />
 
-      <Subheading>HeaderChildItem</Subheading>
+      <DocsPropHeading>HeaderChildItem</DocsPropHeading>
       <Description>
         A child of an item in the header. These will be rendered in a `Dropdown` component
         internally.
@@ -109,7 +109,7 @@ export const docs = {
         ]}
       />
 
-      <Subheading>NonCollapsibleHeaderItem</Subheading>
+      <DocsPropHeading>NonCollapsibleHeaderItem</DocsPropHeading>
       <Description>
         A header that does not collapse automatically based on screen width.
       </Description>
