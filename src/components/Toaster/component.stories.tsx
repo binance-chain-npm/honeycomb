@@ -13,7 +13,7 @@ import { Header } from '../Header';
 import { Icon } from '../Icon';
 import { Toast } from '../Toast';
 
-import { Toaster, toast } from './';
+import { Toaster, createToast } from './';
 
 export default {
   component: Toaster,
@@ -32,7 +32,7 @@ const Container = styled.div`
 const CONTENT = 'Some content...';
 
 const makeToast = () =>
-  toast(
+  createToast(
     <Toast icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}>
       {CONTENT}
     </Toast>,
@@ -45,7 +45,7 @@ export const Default = () => (
       <Button
         variant="success"
         onClick={() =>
-          toast(
+          createToast(
             <Toast icon={<Toast.Icon.Success />} data-testid="success-toast">
               {CONTENT}
             </Toast>,
@@ -58,7 +58,7 @@ export const Default = () => (
       <Button
         variant="primary"
         onClick={() =>
-          toast(
+          createToast(
             <Toast icon={<Toast.Icon.Warning />} data-testid="warning-toast">
               {CONTENT}
             </Toast>,
@@ -71,7 +71,7 @@ export const Default = () => (
       <Button
         variant="danger"
         onClick={() =>
-          toast(
+          createToast(
             <Toast icon={<Toast.Icon.Danger />} data-testid="danger-toast">
               {CONTENT}
             </Toast>,
@@ -100,7 +100,7 @@ export const WithComplexItems = () => (
     <Button
       variant="primary"
       onClick={() =>
-        toast(
+        createToast(
           <Toast icon={<Toast.Icon.Success />}>
             <Container>
               <div style={{ fontWeight: 'bold' }}>Limit Buy Order Created</div>
@@ -114,6 +114,10 @@ export const WithComplexItems = () => (
     </Button>
   </>
 );
+
+const StyledToaster = styled(Toaster)`
+  transform: translateY(calc(4em + 12px));
+`;
 
 export const UnderComponent = () => (
   <>
@@ -129,7 +133,7 @@ export const UnderComponent = () => (
         },
       ]}
     />
-    <Toaster position="top-right" style={{ marginTop: 'calc(4em + 12px)' }} />
+    <StyledToaster position="top-right" />
   </>
 );
 
