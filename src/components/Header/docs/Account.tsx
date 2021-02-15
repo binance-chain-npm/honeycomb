@@ -6,8 +6,7 @@ import { Description, Heading } from '@storybook/addon-docs/blocks';
 import { GoldLight } from '../../../modules/themes/themes/GoldLight';
 import { Header } from '../../Header';
 import { Icon } from '../../Icon';
-import { DocsComponentContainer } from '../../internal/DocsComponentContainer';
-import { DocsTable } from '../../internal/DocsTable';
+import { DocsComponentContainer, DocsTable } from '../../internal/Docs';
 import { Text } from '../../Text';
 
 const Column = styled.div`

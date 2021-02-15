@@ -1,8 +1,7 @@
 import React from 'react';
 import { ArgsTable, Description, Source, Subtitle } from '@storybook/addon-docs/blocks';
 
-import { DocsPropHeading } from '../../internal/DocsPropHeading';
-import { DocsTable } from '../../internal/DocsTable';
+import { DocsPropHeading, DocsTable } from '../../internal/Docs';
 import { Header } from '../../Header';
 
 import { AccountDocs } from './Account';

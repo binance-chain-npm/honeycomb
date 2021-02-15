@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { em } from 'polished';
 
-import { Table } from '../../Table';
+import { Table } from '../../../Table';
 
 export const Styled = styled(Table)`
   tr td:first-child {
