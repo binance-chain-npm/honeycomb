@@ -11,6 +11,7 @@ describe('ModalState', () => {
 
     cy.get('[data-testid="light.modal-state.content"]').should('be.visible');
     cy.get('[data-testid="light.modal-state.header.close-btn"]').click();
+    cy.tick(10000);
     cy.get('[data-testid="light.modal-state.content"]').should('not.be.visible');
 
     cy.get('[data-testid="dark.open-btn"]').click();
