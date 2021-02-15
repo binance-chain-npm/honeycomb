@@ -7,17 +7,16 @@ import { GoldLight } from '../../../modules/themes/themes/GoldLight';
 import { Header } from '../../Header';
 import { Icon } from '../../Icon';
 import { DocsComponentContainer } from '../../internal/DocsComponentContainer';
-import { DocsPropHeading } from '../../internal/DocsPropHeading';
 import { DocsTable } from '../../internal/DocsTable';
 import { Text } from '../../Text';
 
-const Container = styled.div`
+const Column = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
   > *:first-child {
-    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+    margin: ${({ theme }) => em(theme.honeycomb.size.normal)} 0;
   }
 `;
 
@@ -67,7 +66,17 @@ export const AccountDocs = () => (
       Headers have a `Header.Account` helper component. This component is shows logged in state of
       the user.
     </Description>
-    <DocsPropHeading>HeaderItem</DocsPropHeading>
+    <StyledDocsComponentContainer>
+      <Header
+        logo={<Header.Logo />}
+        nonCollapsible={[
+          {
+            element: <Account state="post" />,
+            styled: true,
+          },
+        ]}
+      />
+    </StyledDocsComponentContainer>
     <DocsTable
       data={[
         {
@@ -138,30 +147,19 @@ export const AccountDocs = () => (
         },
       ]}
     />
-    <StyledDocsComponentContainer>
-      <Header
-        logo={<Header.Logo />}
-        nonCollapsible={[
-          {
-            element: <Account state="post" />,
-            styled: true,
-          },
-        ]}
-      />
-    </StyledDocsComponentContainer>
     <Row>
-      <Container>
+      <Column>
         <Text size="reduced">Pre-login</Text>
         <Account state="pre" />
-      </Container>
-      <Container>
+      </Column>
+      <Column>
         <Text size="reduced">Post-login</Text>
         <Account state="post" />
-      </Container>
-      <Container>
+      </Column>
+      <Column>
         <Text size="reduced">Pending</Text>
         <Account state="pending" />
-      </Container>
+      </Column>
     </Row>
     <Description>`Header.Account` without `children` will have no cursor events.</Description>
     <Row>
