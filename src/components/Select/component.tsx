@@ -1,14 +1,22 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { Card } from '../Card';
 import { Space } from '../Space';
-import { TextInput } from '../TextInput';
+import { Icon } from '../Icon';
 
+import { Context } from './context';
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
-import { ResponsiveSelect } from './variant/ResponsiveSelect';
-import { Container, OptionsContainer, Search, Options, OptionsTitle } from './styled';
+import {
+  Container,
+  StyledCard,
+  StyledTextInput,
+  OptionsContainer,
+  OptionsTitle,
+  Options,
+} from './styled';
+import { useCurrentVariant } from './useCurrentVariant';
 
 export const VARIANTS = ['responsive', 'dropdown', 'modal'] as const;
 export type Variant = typeof VARIANTS[number];
@@ -18,6 +26,8 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     variant?: Variant;
     title?: React.ReactNode;
     optionsTitle?: React.ReactNode;
+    searchIcon?: boolean;
+    searchPlaceholder?: string;
     open: boolean;
     target: React.ReactNode;
     onClose?: () => void;
@@ -27,14 +37,25 @@ export const Component = ({
   variant = 'responsive',
   children,
   optionsTitle,
+  searchIcon = true,
+  searchPlaceholder,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
+  const theme = useTheme();
+  const currentVariant = useCurrentVariant({ variant });
+
   const [search, setSearch] = useState('');
+
   const updateSearch = useCallback(
     (evt: React.ChangeEvent<HTMLInputElement>) => setSearch(evt.target.value),
     [],
+  );
+
+  const context = useMemo(
+    () => ({ isShowing: otherProps.open, onClose: otherProps.onClose, variant, testId }),
+    [otherProps.open, otherProps.onClose, variant, testId],
   );
 
   const lowerCaseSearch = useMemo(() => search.toLowerCase(), [search]);
@@ -86,19 +107,28 @@ export const Component = ({
     return (
       <Container>
         {isFilterable && (
-          <Card position="top">
-            <Search>
-              <TextInput
-                value={search}
-                onChange={updateSearch}
-                data-testid={buildTestId('input')}
-              />
-            </Search>
-          </Card>
+          <StyledCard position="top">
+            <StyledTextInput
+              value={search}
+              onChange={updateSearch}
+              left={
+                searchIcon ? (
+                  <Icon.Search
+                    fontSize={theme.honeycomb.size.increased}
+                    color={theme.honeycomb.color.text.placeholder}
+                  />
+                ) : (
+                  undefined
+                )
+              }
+              placeholder={searchPlaceholder}
+              data-testid={buildTestId('input')}
+            />
+          </StyledCard>
         )}
-        <Space size="normal" />
+        <Space size="small" />
         {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
-        <Space size="normal" />
+        <Space size="small" />
         <OptionsContainer position="bottom">
           <Options data-testid={buildTestId('options')}>
             {isFilterable ? filteredResults : children}
@@ -106,28 +136,37 @@ export const Component = ({
         </OptionsContainer>
       </Container>
     );
-  }, [isFilterable, filteredResults, children, optionsTitle, search, updateSearch, buildTestId]);
+  }, [
+    isFilterable,
+    filteredResults,
+    search,
+    searchIcon,
+    searchPlaceholder,
+    theme.honeycomb.size.increased,
+    theme.honeycomb.color.text.placeholder,
+    optionsTitle,
+    children,
+    updateSearch,
+    buildTestId,
+  ]);
 
-  switch (variant) {
-    case 'dropdown':
+  const select = useMemo(() => {
+    if (currentVariant === 'dropdown') {
       return (
-        <DropdownSelect {...otherProps} data-testid={buildTestId()}>
+        <DropdownSelect {...otherProps} data-testid={buildTestId('dropdown')}>
           {content}
         </DropdownSelect>
       );
-    case 'modal':
-      return (
-        <ModalSelect {...otherProps} data-testid={buildTestId()}>
-          {content}
-        </ModalSelect>
-      );
-    default:
-      return (
-        <ResponsiveSelect {...otherProps} data-testid={buildTestId()}>
-          {content}
-        </ResponsiveSelect>
-      );
-  }
+    }
+
+    return (
+      <ModalSelect {...otherProps} data-testid={buildTestId('modal')}>
+        {content}
+      </ModalSelect>
+    );
+  }, [content, currentVariant, otherProps, buildTestId]);
+
+  return <Context.Provider value={context}>{select}</Context.Provider>;
 };
 
 Component.displayName = 'Select';

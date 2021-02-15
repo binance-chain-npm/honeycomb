@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { ListItem } from '../ListItem';
 
@@ -78,7 +79,7 @@ export const Responsive = () => {
     <>
       <Select
         data-testid="select"
-        title="A Title"
+        title="Select an Option"
         optionsTitle="Options"
         open={open}
         onClose={() => setOpen(false)}
@@ -86,7 +87,6 @@ export const Responsive = () => {
           <Select.DefaultTarget
             onClick={() => setOpen((value) => !value)}
             left={selected ? <selected.icon /> : undefined}
-            data-testid="select"
           >
             {selected ? selected.label : placeholder}
           </Select.DefaultTarget>
@@ -119,7 +119,7 @@ export const Dropdown = () => {
       <Select
         data-testid="select"
         variant="dropdown"
-        title="A Title"
+        title="Select an Option"
         optionsTitle="Options"
         open={open}
         onClose={() => setOpen(false)}
@@ -127,7 +127,6 @@ export const Dropdown = () => {
           <Select.DefaultTarget
             onClick={() => setOpen((value) => !value)}
             left={selected ? <selected.icon /> : undefined}
-            data-testid="select"
           >
             {selected ? selected.label : placeholder}
           </Select.DefaultTarget>
@@ -149,6 +148,7 @@ export const Dropdown = () => {
     </>
   );
 };
+Dropdown.decorators = decorators;
 
 const StyledSelectOption = styled(Select.Option)`
   ${ListItem.Content} {
@@ -161,15 +161,15 @@ export const Modal = () => {
   const [selected, setSelected] = useState('');
 
   return (
-    <>
+    <Card>
       <Select
         data-testid="select"
         variant="modal"
-        title="A Title"
+        title="Select an Option"
         open={open}
         onClose={() => setOpen(false)}
         target={
-          <Select.DefaultTarget onClick={() => setOpen((value) => !value)} data-testid="select">
+          <Select.DefaultTarget onClick={() => setOpen((value) => !value)}>
             {selected ? selected : placeholder}
           </Select.DefaultTarget>
         }
@@ -196,33 +196,34 @@ export const Modal = () => {
           </Select.Option>
         ))}
       </Select>
-    </>
+    </Card>
   );
 };
 
 export const NonFilterable = () => {
-  const [open, setOpen] = useState(false);
-
   return (
     <>
-      <Select
-        data-testid="select"
-        title="A Title"
-        optionsTitle="Options"
-        open={open}
-        onClose={() => setOpen(false)}
-        target={
-          <Select.DefaultTarget onClick={() => setOpen((value) => !value)} data-testid="select">
-            Select an option...
-          </Select.DefaultTarget>
-        }
-      >
+      <Select data-testid="select" optionsTitle="Non-Filterable Options" open={true} target={null}>
         <ListItem interactive={false} data-testid="non-filterable">
           Some non-filterable element
         </ListItem>
         {new Array(5).fill(null).map((_, index) => (
           <Select.Option key={index} searchAs="" data-testid={`${index}`}>
-            {index + 1}
+            Option {index + 1}
+          </Select.Option>
+        ))}
+      </Select>
+    </>
+  );
+};
+
+export const WithSearchPlaceholder = () => {
+  return (
+    <>
+      <Select open={true} target={null} searchPlaceholder="Search...">
+        {new Array(5).fill(null).map((_, index) => (
+          <Select.Option key={index} searchAs={`Option ${index + 1}`} data-testid={`${index}`}>
+            Option {index + 1}
           </Select.Option>
         ))}
       </Select>

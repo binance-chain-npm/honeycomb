@@ -10,9 +10,9 @@ export const DefaultTarget = styled.div`
 
   width: 100%;
   background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
   height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   cursor: pointer;
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
 `;

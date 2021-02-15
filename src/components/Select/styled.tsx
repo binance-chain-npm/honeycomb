@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { em } from 'polished';
 
 import { Card } from '../Card';
+import { TextInput } from '../TextInput';
 
 export const Container = styled.div`
   display: flex;
@@ -9,13 +10,21 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.accent};
 `;
 
-export const Search = styled.div`
-  padding: ${({ theme }) => em(theme.honeycomb.radius.increased)};
+export const StyledCard = styled(Card)`
+  padding: ${({ theme }) => em(theme.honeycomb.size.small)};
+  box-shadow: none;
+`;
+
+export const StyledTextInput = styled(TextInput)`
+  ${TextInput.Left} {
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.reduced)};
+  }
 `;
 
 export const OptionsTitle = styled.div`
+  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
   color: ${({ theme }) => theme.honeycomb.color.text.masked};
-  padding: 0 ${({ theme }) => em(theme.honeycomb.size.large)};
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.small)};
 `;
 
 export const Options = styled.div`
@@ -24,10 +33,11 @@ export const Options = styled.div`
 `;
 
 export const OptionsContainer = styled(Card)`
-  margin: 0 ${({ theme }) => em(theme.honeycomb.radius.increased)};
+  margin: 0 ${({ theme }) => em(theme.honeycomb.size.small)};
   padding: 0;
   scroll-behavior: smooth;
   max-height: min(${em(392)}, 40vh);
   overflow: hidden;
   overflow-y: auto;
+  box-shadow: none;
 `;
