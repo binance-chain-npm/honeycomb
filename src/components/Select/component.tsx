@@ -153,14 +153,14 @@ export const Component = ({
   const select = useMemo(() => {
     if (currentVariant === 'dropdown') {
       return (
-        <DropdownSelect {...otherProps} data-testid={buildTestId()}>
+        <DropdownSelect {...otherProps} data-testid={buildTestId('dropdown')}>
           {content}
         </DropdownSelect>
       );
     }
 
     return (
-      <ModalSelect {...otherProps} data-testid={buildTestId()}>
+      <ModalSelect {...otherProps} data-testid={buildTestId('modal')}>
         {content}
       </ModalSelect>
     );

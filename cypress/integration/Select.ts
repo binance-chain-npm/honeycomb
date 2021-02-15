@@ -4,7 +4,8 @@ describe('Select', () => {
     cy.visitStory({ storyId: 'elements-select--responsive', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="dark.select"]').click();
+    cy.get('[data-testid="dark.select.default-target.caret-right"]').should('be.visible');
+    cy.get('[data-testid="dark.select.default-target"]').click();
     cy.tick(10000);
 
     cy.get('[data-testid="dark.select.modal.content"]').should('be.visible');
@@ -19,8 +20,13 @@ describe('Select', () => {
     cy.visitStory({ storyId: 'elements-select--responsive', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="dark.select"]').click();
+    cy.get('[data-testid="dark.select.default-target.caret-down"]').should('be.visible');
+    cy.get('[data-testid="dark.select.default-target.caret-up"]').should('not.exist');
+    cy.get('[data-testid="dark.select.default-target.caret-right"]').should('not.exist');
+    cy.get('[data-testid="dark.select.default-target"]').click();
     cy.tick(10000);
+    cy.get('[data-testid="dark.select.default-target.caret-down"]').should('not.exist');
+    cy.get('[data-testid="dark.select.default-target.caret-up"]').should('be.visible');
 
     cy.get('[data-testid="dark.select.modal.content"]').should('not.exist');
     cy.get('[data-testid="dark.select.dropdown.content"]').should('be.visible');
@@ -37,7 +43,7 @@ describe('Select', () => {
     cy.get('[data-testid="select.input.native-input"]').should('not.exist');
 
     new Array(5).fill(null).forEach((_, index) => {
-      cy.get(`[data-testid="select.modal.item.${index}"]`).should('exist');
+      cy.get(`[data-testid="select.item.${index}"]`).should('exist');
     });
   });
 
@@ -46,24 +52,24 @@ describe('Select', () => {
     cy.visitStory({ storyId: 'elements-select--dropdown', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="select"]').click();
+    cy.get('[data-testid="light.select.default-target"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="select.item.0"]').should('be.visible');
-    cy.get('[data-testid="select.item.1"]').should('be.visible');
-    cy.get('[data-testid="select.item.2"]').should('be.visible');
+    cy.get('[data-testid="light.select.item.0"]').should('be.visible');
+    cy.get('[data-testid="light.select.item.1"]').should('be.visible');
+    cy.get('[data-testid="light.select.item.2"]').should('be.visible');
 
-    cy.get('[data-testid="select.item.0"]').click();
+    cy.get('[data-testid="light.select.item.0"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="select.content"]').should('not.exist');
+    cy.get('[data-testid="light.select.content"]').should('not.exist');
 
-    cy.get('[data-testid="select"]').click();
+    cy.get('[data-testid="light.select.default-target"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="select.item.0.tick"]').should('be.visible');
-    cy.get('[data-testid="select.item.1.tick"]').should('not.exist');
-    cy.get('[data-testid="select.item.2.tick"]').should('not.exist');
+    cy.get('[data-testid="light.select.item.0.tick"]').should('be.visible');
+    cy.get('[data-testid="light.select.item.1.tick"]').should('not.exist');
+    cy.get('[data-testid="light.select.item.2.tick"]').should('not.exist');
 
     cy.percySnapshot('Select variant="dropdown"');
   });
@@ -73,7 +79,7 @@ describe('Select', () => {
     cy.visitStory({ storyId: 'elements-select--modal', themeId: 'GoldLight' });
     cy.tick(10000);
 
-    cy.get('[data-testid="select"]').click();
+    cy.get('[data-testid="select.default-target"]').click();
     cy.tick(10000);
 
     cy.get('[data-testid="select.item.0"]').should('be.visible');
@@ -83,7 +89,7 @@ describe('Select', () => {
 
     cy.get('[data-testid="select.item.0"]').click();
     cy.tick(10000);
-    cy.get('[data-testid="select"]').click();
+    cy.get('[data-testid="select.default-target"]').click();
     cy.tick(10000);
 
     cy.get('[data-testid="select.item.0.tick"]').should('be.visible');
@@ -102,12 +108,12 @@ describe('Select', () => {
     cy.get('[data-testid="select.item.photo"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="select.box"]').should('not.exist');
+    cy.get('[data-testid="select.modal.box"]').should('not.exist');
 
-    cy.get('[data-testid="select"]').click();
+    cy.get('[data-testid="select.default-target"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="select.box"]').should('be.visible');
+    cy.get('[data-testid="select.modal.box"]').should('be.visible');
     cy.get('[data-testid="select.item.photo.tick"]').should('be.visible');
 
     cy.percySnapshot('Select variant="modal"');
