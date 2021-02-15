@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { transitions, em } from 'polished';
 
 import { styleless } from '../../Styleless';
 import { boxSizing } from '../../../modules/box-sizing';
 
-export const defaultTarget = css`
+export const DefaultTarget = styled.div`
   ${styleless};
   ${boxSizing};
 
@@ -15,8 +15,4 @@ export const defaultTarget = css`
   height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
   cursor: pointer;
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
-`;
-
-export const DefaultTarget = styled.div`
-  ${defaultTarget};
 `;

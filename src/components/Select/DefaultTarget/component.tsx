@@ -2,6 +2,7 @@ import React, { useContext, useMemo } from 'react';
 
 import { useBuildTestId } from '../../../modules/test-ids';
 import { Icon } from '../../Icon';
+import { DefaultTarget } from '../../internal/DefaultTarget';
 import { ListItem } from '../../ListItem';
 import { Context } from '../context';
 import { useCurrentVariant } from '../useCurrentVariant';
@@ -34,16 +35,18 @@ export const Component = ({ children, onClick, ...otherProps }: Props) => {
   }, [isShowing, currentVariant, buildTestId]);
 
   return (
-    <StyledListItem
-      right={right}
-      showBorder={false}
-      interactive={false}
-      onClick={onClick}
-      {...otherProps}
-      data-testid={buildTestId()}
-    >
-      {children}
-    </StyledListItem>
+    <DefaultTarget>
+      <StyledListItem
+        right={right}
+        showBorder={false}
+        interactive={false}
+        onClick={onClick}
+        {...otherProps}
+        data-testid={buildTestId()}
+      >
+        {children}
+      </StyledListItem>
+    </DefaultTarget>
   );
 };
 
