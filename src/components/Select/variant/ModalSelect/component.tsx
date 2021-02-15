@@ -1,9 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
 import { Modal } from '../../../Modal';
 import { Select } from '../../../Select';
-import { Context } from '../../context';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> &
   React.ComponentProps<typeof Select> & {
@@ -22,22 +21,13 @@ export const Component = ({
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
-  const context = useMemo(() => ({ isShowing: otherProps.open, onClose, variant, testId }), [
-    otherProps.open,
-    onClose,
-    variant,
-    testId,
-  ]);
-
   return (
     <>
       {target}
-      <Context.Provider value={context}>
-        <Modal {...otherProps} data-testid={buildTestId()}>
-          <Modal.Header title={title} loading={loading} onClose={onClose} />
-          <Modal.Content padding="none">{children}</Modal.Content>
-        </Modal>
-      </Context.Provider>
+      <Modal {...otherProps} data-testid={buildTestId()}>
+        <Modal.Header title={title} loading={loading} onClose={onClose} />
+        <Modal.Content padding="none">{children}</Modal.Content>
+      </Modal>
     </>
   );
 };

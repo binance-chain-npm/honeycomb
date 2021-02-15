@@ -5,6 +5,7 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Space } from '../Space';
 import { Icon } from '../Icon';
 
+import { Context } from './context';
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
 import {
@@ -50,6 +51,11 @@ export const Component = ({
   const updateSearch = useCallback(
     (evt: React.ChangeEvent<HTMLInputElement>) => setSearch(evt.target.value),
     [],
+  );
+
+  const context = useMemo(
+    () => ({ isShowing: otherProps.open, onClose: otherProps.onClose, variant, testId }),
+    [otherProps.open, otherProps.onClose, variant, testId],
   );
 
   const lowerCaseSearch = useMemo(() => search.toLowerCase(), [search]);
@@ -144,20 +150,23 @@ export const Component = ({
     buildTestId,
   ]);
 
-  switch (currentVariant) {
-    case 'dropdown':
+  const select = useMemo(() => {
+    if (currentVariant === 'dropdown') {
       return (
         <DropdownSelect {...otherProps} data-testid={buildTestId()}>
           {content}
         </DropdownSelect>
       );
-    case 'modal':
-      return (
-        <ModalSelect {...otherProps} data-testid={buildTestId()}>
-          {content}
-        </ModalSelect>
-      );
-  }
+    }
+
+    return (
+      <ModalSelect {...otherProps} data-testid={buildTestId()}>
+        {content}
+      </ModalSelect>
+    );
+  }, [content, currentVariant, otherProps, buildTestId]);
+
+  return <Context.Provider value={context}>{select}</Context.Provider>;
 };
 
 Component.displayName = 'Select';

@@ -1,9 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { useBuildTestId } from '../../../../modules/test-ids';
 import { Select } from '../../../Select';
 import { Tooltip } from '../../../Tooltip';
-import { Context } from '../../context';
 
 import { Styled } from './styled';
 
@@ -18,27 +17,18 @@ export const Component = ({
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
-  const context = useMemo(() => ({ isShowing: otherProps.open, onClose, variant, testId }), [
-    otherProps.open,
-    onClose,
-    variant,
-    testId,
-  ]);
-
   return (
-    <Context.Provider value={context}>
-      <Tooltip
-        interactive={true}
-        arrow={false}
-        content={<Styled>{otherProps.children}</Styled>}
-        visible={otherProps.open}
-        onClickOutside={onClose}
-        data-testid={buildTestId()}
-        bare
-      >
-        {target}
-      </Tooltip>
-    </Context.Provider>
+    <Tooltip
+      interactive={true}
+      arrow={false}
+      content={<Styled>{otherProps.children}</Styled>}
+      visible={otherProps.open}
+      onClickOutside={onClose}
+      data-testid={buildTestId()}
+      bare
+    >
+      {target}
+    </Tooltip>
   );
 };
 
