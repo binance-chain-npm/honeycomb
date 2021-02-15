@@ -7,7 +7,6 @@ import { Icon } from '../Icon';
 
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
-import { ResponsiveSelect } from './variant/ResponsiveSelect';
 import {
   Container,
   StyledCard,
@@ -16,6 +15,7 @@ import {
   OptionsTitle,
   Options,
 } from './styled';
+import { useCurrentVariant } from './useCurrentVariant';
 
 export const VARIANTS = ['responsive', 'dropdown', 'modal'] as const;
 export type Variant = typeof VARIANTS[number];
@@ -43,6 +43,7 @@ export const Component = ({
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
   const theme = useTheme();
+  const currentVariant = useCurrentVariant({ variant });
 
   const [search, setSearch] = useState('');
 
@@ -143,7 +144,7 @@ export const Component = ({
     buildTestId,
   ]);
 
-  switch (variant) {
+  switch (currentVariant) {
     case 'dropdown':
       return (
         <DropdownSelect {...otherProps} data-testid={buildTestId()}>
@@ -155,12 +156,6 @@ export const Component = ({
         <ModalSelect {...otherProps} data-testid={buildTestId()}>
           {content}
         </ModalSelect>
-      );
-    default:
-      return (
-        <ResponsiveSelect {...otherProps} data-testid={buildTestId()}>
-          {content}
-        </ResponsiveSelect>
       );
   }
 };
