@@ -44,53 +44,59 @@ export const Component = ({
   const boxRef = useRef<HTMLDivElement>(null);
 
   const containerTransitions = useTransition(open, null, {
+    initial: open ? { opacity: 1 } : { opacity: 0 },
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   });
 
+  const boxOpen = { opacity: 1, transform: position === 'center' ? 'scale(1)' : 'translateY(0)' };
+  const boxClosed = {
+    opacity: 0,
+    transform: position === 'center' ? 'scale(0.5)' : 'translateY(100vh)',
+  };
+
   const boxTransitions = useTransition(open, null, {
-    from: { opacity: 0, transform: position === 'center' ? 'scale(0.5)' : 'translateY(100vh)' },
-    enter: { opacity: 1, transform: position === 'center' ? 'scale(1)' : 'translateY(0)' },
-    leave: { opacity: 0, transform: position === 'center' ? 'scale(0.5)' : 'translateY(100vh)' },
+    initial: open ? boxOpen : boxClosed,
+    from: boxClosed,
+    enter: boxOpen,
+    leave: boxClosed,
   });
 
-  if (!MODAL_CONTAINER || !open) {
+  if (!MODAL_CONTAINER) {
     return null;
   }
 
   return (
     <>
       {ReactDOM.createPortal(
-        containerTransitions.map(
-          ({ item, key, props }) =>
-            item && (
-              <Container
-                as={animated.div}
-                key={key}
-                style={props}
-                data-testid={buildTestId('full-viewport-container')}
-              >
-                {boxTransitions.map(
-                  ({ item, key, props }) =>
-                    item && (
-                      <Box
-                        as={animated.div}
-                        key={key}
-                        style={props}
-                        ref={boxRef}
-                        data-testid={buildTestId('box')}
-                        position={position}
-                        className={className}
-                      >
-                        <TestIdContext.Provider value={buildTestId()}>
-                          {children}
-                        </TestIdContext.Provider>
-                      </Box>
-                    ),
-                )}
-              </Container>
-            ),
+        containerTransitions.map(({ item, key, props }) =>
+          item ? (
+            <Container
+              as={animated.div}
+              key={key}
+              style={props}
+              data-testid={buildTestId('full-viewport-container')}
+            >
+              {boxTransitions.map(({ item, key, props }) =>
+                item ? (
+                  <Box
+                    as={animated.div}
+                    key={key}
+                    style={props}
+                    ref={boxRef}
+                    data-testid={buildTestId('box')}
+                    position={position}
+                    className={className}
+                  >
+                    <TestIdContext.Provider value={buildTestId()}>
+                      {children}
+                    </TestIdContext.Provider>
+                  </Box>
+                ) : null,
+              )}
+            </Container>
+          ) : null,
         ),
         MODAL_CONTAINER,
       )}
