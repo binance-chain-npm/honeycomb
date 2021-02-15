@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { ListItem } from '../ListItem';
 
@@ -160,7 +161,7 @@ export const Modal = () => {
   const [selected, setSelected] = useState('');
 
   return (
-    <>
+    <Card>
       <Select
         data-testid="select"
         variant="modal"
@@ -195,7 +196,7 @@ export const Modal = () => {
           </Select.Option>
         ))}
       </Select>
-    </>
+    </Card>
   );
 };
 
