@@ -10,7 +10,6 @@ export type Props = Omit<React.ComponentProps<typeof Select>, 'variant'>;
 
 export const Component = ({ onClose, 'data-testid': testId, ...otherProps }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
-
   const { width } = useWindowSize();
 
   return (

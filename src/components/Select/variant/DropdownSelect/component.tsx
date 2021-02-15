@@ -7,12 +7,23 @@ import { Context } from '../../context';
 
 import { Styled } from './styled';
 
-export type Props = Omit<React.ComponentProps<typeof Select>, 'variant'>;
+export type Props = React.ComponentProps<typeof Select>;
 
-export const Component = ({ target, onClose, 'data-testid': testId, ...otherProps }: Props) => {
+export const Component = ({
+  target,
+  variant,
+  onClose,
+  'data-testid': testId,
+  ...otherProps
+}: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
-  const context = useMemo(() => ({ onClose, testId }), [onClose, testId]);
+  const context = useMemo(() => ({ isShowing: otherProps.open, onClose, variant, testId }), [
+    otherProps.open,
+    onClose,
+    variant,
+    testId,
+  ]);
 
   return (
     <Context.Provider value={context}>

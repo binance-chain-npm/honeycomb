@@ -1,3 +1,10 @@
 import React from 'react';
 
-export const Context = React.createContext<{ onClose?: () => void; testId?: string }>({});
+import { Variant } from './component';
+
+export const Context = React.createContext<{
+  onClose?: () => void;
+  variant?: Variant;
+  isShowing: boolean;
+  testId?: string;
+}>({ isShowing: false });

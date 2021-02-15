@@ -6,7 +6,7 @@ import { Select } from '../../../Select';
 import { Context } from '../../context';
 
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> &
-  Omit<React.ComponentProps<typeof Select>, 'variant'> & {
+  React.ComponentProps<typeof Select> & {
     loading?: boolean;
   };
 
@@ -15,12 +15,19 @@ export const Component = ({
   children,
   loading,
   target,
+  variant,
   onClose,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
-  const context = useMemo(() => ({ onClose, testId }), [onClose, testId]);
   const { buildTestId } = useBuildTestId({ id: testId });
+
+  const context = useMemo(() => ({ isShowing: otherProps.open, onClose, variant, testId }), [
+    otherProps.open,
+    onClose,
+    variant,
+    testId,
+  ]);
 
   return (
     <>
