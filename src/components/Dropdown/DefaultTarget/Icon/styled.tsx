@@ -5,6 +5,7 @@ import { Icon } from '../../../Icon';
 
 const icon = css`
   font-size: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.small)};
   flex-shrink: 0;
 `;
 

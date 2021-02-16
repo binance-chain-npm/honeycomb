@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 
 import { Context } from '../context';
-import { Space } from '../../Space';
 import { Styleless } from '../../Styleless';
 
 import { Icon } from './Icon';
@@ -29,12 +28,7 @@ export const Component = ({
       isShowing={isShowing}
     >
       {otherProps.children}
-      {arrow && (
-        <>
-          <Space size="micro" base="reduced" />
-          <Icon open={isShowing} />
-        </>
-      )}
+      {arrow && <Icon open={isShowing} />}
     </StyledDefaultTarget>
   );
 };
