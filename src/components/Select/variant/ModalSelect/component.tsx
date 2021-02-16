@@ -24,8 +24,8 @@ export const Component = ({
   return (
     <>
       {target}
-      <Modal {...otherProps} data-testid={buildTestId()}>
-        <Modal.Header title={title} loading={loading} onClose={onClose} />
+      <Modal {...otherProps} loading={loading} onClose={onClose} data-testid={buildTestId()}>
+        <Modal.Header title={title} />
         <Modal.Content padding="none">{children}</Modal.Content>
       </Modal>
     </>

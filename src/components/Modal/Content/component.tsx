@@ -1,22 +1,21 @@
 import React, { useContext } from 'react';
 
-import { useBuildTestId, Testable } from '../../../modules/test-ids';
-import { Modal } from '../../Modal';
-import { TestIdContext } from '../context';
+import { useBuildTestId } from '../../../modules/test-ids';
+import { Context } from '../context';
 import { Padding } from '../styled';
 
 import { Scroll, Content } from './styled';
 
-export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'children'> &
-  Testable & {
-    padding?: Padding;
-    className?: string;
-  };
+export type Props = {
+  children?: React.ReactNode;
+  className?: string;
+  padding?: Padding;
+};
 
-export const Component = ({ padding = 'normal', 'data-testid': testId, ...otherProps }: Props) => {
-  const parentTestId = useContext(TestIdContext);
+export const Component = ({ padding = 'normal', ...otherProps }: Props) => {
+  const { testId: parentTestId } = useContext(Context);
   const { buildTestId } = useBuildTestId({
-    id: testId ?? (parentTestId ? `${parentTestId}.content` : undefined),
+    id: parentTestId ? `${parentTestId}.content` : undefined,
   });
 
   return (

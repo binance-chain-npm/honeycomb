@@ -1,25 +1,22 @@
 import React, { useContext } from 'react';
 
-import { useBuildTestId, Testable } from '../../../modules/test-ids';
+import { useBuildTestId } from '../../../modules/test-ids';
 import { Button } from '../../Button';
 import { Icon } from '../../Icon';
 import { Loading } from '../../Loading';
-import { Modal } from '../../Modal';
-import { TestIdContext } from '../context';
+import { Context } from '../context';
 
 import { Header, Title, LoadingState } from './styled';
 
-export type Props = Pick<React.ComponentPropsWithoutRef<typeof Modal>, 'className'> &
-  Testable & {
-    title?: React.ReactNode;
-    loading?: boolean;
-    onClose?: () => void;
-  };
+export type Props = {
+  className?: string;
+  title?: React.ReactNode;
+};
 
-export const Component = ({ title, loading, className, onClose, 'data-testid': testId }: Props) => {
-  const parentTestId = useContext(TestIdContext);
+export const Component = ({ className, title }: Props) => {
+  const { testId: parentTestId, loading, onClose } = useContext(Context);
   const { buildTestId } = useBuildTestId({
-    id: testId ?? (parentTestId ? `${parentTestId}.header` : undefined),
+    id: parentTestId ? `${parentTestId}.header` : undefined,
   });
 
   return (
