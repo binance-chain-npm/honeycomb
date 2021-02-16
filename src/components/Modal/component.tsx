@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useTransition, animated } from 'react-spring';
 import ReactDOM from 'react-dom';
 
@@ -32,6 +32,7 @@ export type Props = Testable & {
   className?: string;
   position?: Position;
   loading?: boolean;
+  closeOnEscapeKeyDown?: boolean;
   onClose?: () => void;
 };
 
@@ -42,6 +43,7 @@ export const Component = ({
   className,
   position = 'center',
   loading,
+  closeOnEscapeKeyDown = false,
   onClose,
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
@@ -68,6 +70,17 @@ export const Component = ({
     enter: boxOpen,
     leave: boxClosed,
   });
+
+  useEffect(() => {
+    if (!closeOnEscapeKeyDown || !open) return;
+
+    const listener = (evt: KeyboardEvent) => {
+      if (evt.key === 'Escape') onClose?.();
+    };
+
+    window.addEventListener('keydown', listener);
+    return () => window.removeEventListener('keydown', listener);
+  }, [closeOnEscapeKeyDown, open, onClose]);
 
   if (!MODAL_CONTAINER) {
     return null;
