@@ -9,10 +9,8 @@ import { useCurrentVariant } from '../useCurrentVariant';
 
 import { StyledListItem } from './styled';
 
-export type Props = Pick<
-  React.ComponentPropsWithoutRef<typeof ListItem>,
-  'children' | 'left' | 'onClick'
->;
+export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
+  Pick<React.ComponentPropsWithoutRef<typeof ListItem>, 'children' | 'left' | 'onClick'>;
 
 export const Component = ({ children, onClick, ...otherProps }: Props) => {
   const { variant = 'responsive', isShowing, testId: parentTestId } = useContext(Context);
