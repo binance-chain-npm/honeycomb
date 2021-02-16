@@ -59,8 +59,12 @@ export const Component = ({
           {width < SIZES.md ? (
             <>
               {scanQrCodeButton}
-              <StyledModal open={showQRCode} data-testid={buildTestId('modal')}>
-                <Modal.Header onClose={() => setShowQRCode(false)} title="QR Code" />
+              <StyledModal
+                open={showQRCode}
+                onClose={() => setShowQRCode(false)}
+                data-testid={buildTestId('modal')}
+              >
+                <Modal.Header title="QR Code" />
                 {qRCode}
               </StyledModal>
             </>

@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { useTransition, animated } from 'react-spring';
 import ReactDOM from 'react-dom';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Container, Box, Position } from './styled';
-import { TestIdContext } from './context';
+import { Context } from './context';
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
@@ -31,6 +31,8 @@ export type Props = Testable & {
   children?: React.ReactNode;
   className?: string;
   position?: Position;
+  loading?: boolean;
+  onClose?: () => void;
 };
 
 export const Component = ({
@@ -39,9 +41,13 @@ export const Component = ({
   'data-testid': testId,
   className,
   position = 'center',
+  loading,
+  onClose,
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
   const boxRef = useRef<HTMLDivElement>(null);
+
+  const context = useMemo(() => ({ loading, onClose, testId }), [loading, onClose, testId]);
 
   const containerTransitions = useTransition(open, null, {
     initial: open ? { opacity: 1 } : { opacity: 0 },
@@ -89,9 +95,7 @@ export const Component = ({
                     position={position}
                     className={className}
                   >
-                    <TestIdContext.Provider value={buildTestId()}>
-                      {children}
-                    </TestIdContext.Provider>
+                    <Context.Provider value={context}>{children}</Context.Provider>
                   </Box>
                 ) : null,
               )}

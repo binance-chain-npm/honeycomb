@@ -53,8 +53,8 @@ export const Default: Story = () => {
           <Icon.Eye fontSize={GoldLight.honeycomb.size.increased} />
         )}
       </Button>
-      <Modal open={open} data-testid="modal">
-        <Modal.Header onClose={() => setOpen(false)} title="A Title" />
+      <Modal open={open} onClose={() => setOpen(false)} data-testid="modal">
+        <Modal.Header title="A Title" />
         <Modal.Content>
           <Text size="normal" alignSelf="start">
             Content that overflows will scroll.
@@ -69,8 +69,8 @@ export const Default: Story = () => {
 Default.decorators = decorators;
 
 export const WithLoading = () => (
-  <Modal open={true} data-testid="modal">
-    <Modal.Header loading={true} title={<div>A Title</div>} />
+  <Modal open={true} loading data-testid="modal">
+    <Modal.Header title={<div>A Title</div>} />
     <Modal.Content>{items}</Modal.Content>
   </Modal>
 );
@@ -129,14 +129,14 @@ export const WithNestedModal = () => {
       <Button variant="primary" onClick={() => setShow(true)} data-testid="open-btn-outer">
         Show outer modal
       </Button>
-      <Modal open={show} data-testid="modal-outer">
-        <Modal.Header onClose={() => setShow(false)} title="Outer Modal" />
+      <Modal open={show} onClose={() => setShow(false)} data-testid="modal-outer">
+        <Modal.Header title="Outer Modal" />
         <Modal.Content>
           <Button variant="primary" onClick={() => setShowInner(true)} data-testid="open-btn-inner">
             Show inner modal
           </Button>
-          <Modal open={showInner} data-testid="modal-inner">
-            <Modal.Header onClose={() => setShowInner(false)} title="Inner Modal" />
+          <Modal open={showInner} onClose={() => setShowInner(false)} data-testid="modal-inner">
+            <Modal.Header title="Inner Modal" />
             <Modal.Content>{items}</Modal.Content>
           </Modal>
         </Modal.Content>
