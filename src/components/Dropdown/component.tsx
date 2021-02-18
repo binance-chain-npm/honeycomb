@@ -10,7 +10,7 @@ import { TooltipContent } from './styled';
 export type TriggerValue = 'mouseenter' | 'focus' | 'click';
 
 export type Props = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'children'> &
-  Pick<React.ComponentPropsWithoutRef<typeof Tooltip>, 'radius'> &
+  Pick<React.ComponentPropsWithoutRef<typeof Tooltip>, 'radius' | 'appendTo'> &
   Testable & {
     target: React.ReactNode;
     onClick?: () => void;
