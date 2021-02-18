@@ -6,7 +6,7 @@ import { Description, Heading } from '@storybook/addon-docs/blocks';
 import { GoldLight } from '../../../modules/themes/themes/GoldLight';
 import { Header } from '../../Header';
 import { Icon } from '../../Icon';
-import { DocsComponentContainer, DocsTable } from '../../internal/Docs';
+import { Code, DocsComponentContainer, DocsTable } from '../../internal/Docs';
 import { Text } from '../../Text';
 
 const Column = styled.div`
@@ -80,7 +80,7 @@ export const AccountDocs = () => (
       data={[
         {
           name: 'children',
-          type: <code>HeaderAccountChildItem[]</code>,
+          type: <Code>HeaderAccountChildItem[]</Code>,
           default: '',
           description:
             'The dropdown content of the account. Actions for the account (e.g. log out) can go here.',
@@ -92,7 +92,7 @@ export const AccountDocs = () => (
               <DocsTable.Asterisk />
             </>
           ),
-          type: <code>node</code>,
+          type: <Code>node</Code>,
           default: '',
           description: 'The icon for account.',
         },
@@ -103,7 +103,7 @@ export const AccountDocs = () => (
               <DocsTable.Asterisk />
             </>
           ),
-          type: <code>node</code>,
+          type: <Code>node</Code>,
           default: '',
           description: 'The content of the account when state="pending".',
         },
@@ -114,7 +114,7 @@ export const AccountDocs = () => (
               <DocsTable.Asterisk />
             </>
           ),
-          type: <code>node</code>,
+          type: <Code>node</Code>,
           default: '',
           description: 'The content of the account when state="post".',
         },
@@ -125,7 +125,7 @@ export const AccountDocs = () => (
               <DocsTable.Asterisk />
             </>
           ),
-          type: <code>node</code>,
+          type: <Code>node</Code>,
           default: '',
           description: 'The content of the account when state="pre".',
         },
@@ -138,7 +138,7 @@ export const AccountDocs = () => (
           ),
           type: (
             <>
-              <code>pre</code> | <code>post</code> | <code>pending</code>
+              <Code>pre</Code> | <Code>post</Code> | <Code>pending</Code>
             </>
           ),
           default: '',
