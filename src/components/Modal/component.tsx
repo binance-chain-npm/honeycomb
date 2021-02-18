@@ -1,11 +1,13 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo } from 'react';
+import ReactModal from 'react-modal';
 import { useTransition, animated } from 'react-spring';
-import ReactDOM from 'react-dom';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Container, Box, Position } from './styled';
+import { Box, Container, Position } from './styled';
 import { Context } from './context';
+
+const CLOSE_MODAL_TIMEOUT = 250;
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
@@ -24,30 +26,36 @@ const MODAL_CONTAINER_ID = 'honeycomb-modal';
 })();
 
 const MODAL_CONTAINER =
-  typeof document !== 'undefined' ? document.querySelector(`#${MODAL_CONTAINER_ID}`) : null;
+  typeof document !== 'undefined'
+    ? document.querySelector<HTMLElement>(`#${MODAL_CONTAINER_ID}`) || undefined
+    : undefined;
 
-export type Props = Testable & {
-  open?: boolean;
-  children?: React.ReactNode;
-  className?: string;
-  position?: Position;
-  loading?: boolean;
-  closeOnEscapeKeyDown?: boolean;
-  onClose?: () => void;
-};
+const PARENT_SELECTOR = !!MODAL_CONTAINER ? () => MODAL_CONTAINER : undefined;
+
+export type Props = Pick<
+  React.ComponentProps<typeof ReactModal>,
+  'shouldCloseOnEsc' | 'shouldCloseOnOverlayClick'
+> &
+  Testable & {
+    open?: boolean;
+    children?: React.ReactNode;
+    className?: string;
+    loading?: boolean;
+    position?: Position;
+    onClose?: () => void;
+  };
 
 export const Component = ({
   open = false,
   children,
-  'data-testid': testId,
   className,
-  position = 'center',
   loading,
-  closeOnEscapeKeyDown = false,
+  position = 'center',
   onClose,
+  'data-testid': testId,
+  ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
-  const boxRef = useRef<HTMLDivElement>(null);
 
   const context = useMemo(() => ({ loading, onClose, testId }), [loading, onClose, testId]);
 
@@ -71,52 +79,56 @@ export const Component = ({
     leave: boxClosed,
   });
 
-  useEffect(() => {
-    if (!closeOnEscapeKeyDown || !open) return;
-
-    const listener = (evt: KeyboardEvent) => {
-      if (evt.key === 'Escape') onClose?.();
-    };
-
-    window.addEventListener('keydown', listener);
-    return () => window.removeEventListener('keydown', listener);
-  }, [closeOnEscapeKeyDown, open, onClose]);
-
-  if (!MODAL_CONTAINER) {
-    return null;
-  }
+  const close = useCallback(
+    (evt: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>) => {
+      evt.stopPropagation();
+      onClose?.();
+    },
+    [onClose],
+  );
 
   return (
     <>
-      {ReactDOM.createPortal(
-        containerTransitions.map(({ item, key, props }) =>
-          item ? (
-            <Container
-              as={animated.div}
-              key={key}
-              style={props}
-              data-testid={buildTestId('full-viewport-container')}
-            >
-              {boxTransitions.map(({ item, key, props }) =>
-                item ? (
-                  <Box
-                    as={animated.div}
-                    key={key}
-                    style={props}
-                    ref={boxRef}
-                    data-testid={buildTestId('box')}
-                    position={position}
-                    className={className}
-                  >
-                    <Context.Provider value={context}>{children}</Context.Provider>
-                  </Box>
-                ) : null,
-              )}
-            </Container>
-          ) : null,
-        ),
-        MODAL_CONTAINER,
-      )}
+      <ReactModal
+        {...otherProps}
+        isOpen={open}
+        onRequestClose={close}
+        className={className}
+        parentSelector={PARENT_SELECTOR}
+        appElement={MODAL_CONTAINER}
+        closeTimeoutMS={CLOSE_MODAL_TIMEOUT}
+        contentElement={(props, contentElement) => (
+          <>
+            {boxTransitions.map(({ item, props: transitionProps, key }) =>
+              item ? (
+                <Box
+                  {...props}
+                  as={animated.div}
+                  key={key}
+                  style={transitionProps}
+                  position={position}
+                  data-testId={buildTestId()}
+                >
+                  {contentElement}
+                </Box>
+              ) : null,
+            )}
+          </>
+        )}
+        overlayElement={(props, contentElement) => (
+          <>
+            {containerTransitions.map(({ item, props: transitionProps, key }) =>
+              item ? (
+                <Container {...props} as={animated.div} key={key} style={transitionProps}>
+                  {contentElement}
+                </Container>
+              ) : null,
+            )}
+          </>
+        )}
+      >
+        <Context.Provider value={context}>{children}</Context.Provider>
+      </ReactModal>
     </>
   );
 };

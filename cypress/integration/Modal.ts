@@ -7,34 +7,39 @@ describe('Modal', () => {
 
     cy.get('[data-testid="dark.btn-open"]').trigger('click');
     cy.tick(10000);
-    cy.get('[data-testid="dark.modal.box"]').should('be.visible');
+    cy.get('[data-testid="dark.modal"]').should('be.visible');
 
     cy.percySnapshot('Modal with Gold Dark theme');
 
     cy.get('[data-testid="dark.modal.header.close-btn"]').click();
     cy.tick(10000);
-    cy.get('[data-testid="dark.modal.box"]').should('not.be.visible');
+    cy.get('[data-testid="dark.modal"]').should('not.be.visible');
   });
 
   it('nested modal opens and closes', () => {
-    cy.visitStory({ storyId: 'elements-modal--with-nested-modal', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'tests-modal--default', themeId: 'GoldLight' });
 
     cy.get('[data-testid="open-btn-outer"]').trigger('click');
-    cy.get('[data-testid="modal-outer.box"]').should('be.visible');
-    cy.get('[data-testid="modal-inner.box"]').should('not.exist');
+    cy.get('[data-testid="modal-outer"]').should('be.visible');
+    cy.get('[data-testid="modal-inner"]').should('not.exist');
 
     cy.get('[data-testid="open-btn-inner"]').trigger('click');
-    cy.get('[data-testid="modal-outer.box"]').should('exist');
-    cy.get('[data-testid="modal-outer.box"]').should('not.be.visible');
-    cy.get('[data-testid="modal-inner.box"]').should('be.visible');
+    cy.get('[data-testid="modal-outer"]').should('exist');
+    cy.get('[data-testid="modal-outer"]').should('not.be.visible');
+    cy.get('[data-testid="modal-inner"]').should('be.visible');
+
+    cy.get('[data-testid="dropdown.target"]').click();
+    new Array(5).fill(null).forEach((_, index) => {
+      cy.get(`[data-testid="dropdown.${index}"]`).should('be.visible');
+    });
 
     cy.get('[data-testid="modal-inner.header.close-btn"]').click();
-    cy.get('[data-testid="modal-outer.box"]').should('be.visible');
-    cy.get('[data-testid="modal-inner.box"]').should('not.exist');
+    cy.get('[data-testid="modal-outer"]').should('be.visible');
+    cy.get('[data-testid="modal-inner"]').should('not.exist');
 
     cy.get('[data-testid="modal-outer.header.close-btn"]').click();
-    cy.get('[data-testid="modal-outer.box"]').should('not.exist');
-    cy.get('[data-testid="modal-inner.box"]').should('not.exist');
+    cy.get('[data-testid="modal-outer"]').should('not.exist');
+    cy.get('[data-testid="modal-inner"]').should('not.exist');
   });
 
   it('renders correctly with title', () => {
