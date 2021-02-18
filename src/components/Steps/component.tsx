@@ -21,7 +21,7 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
-  const context = useMemo(() => ({ orientation }), [orientation]);
+  const context = useMemo(() => ({ orientation, testId }), [orientation, testId]);
 
   const steps = useMemo(() => {
     const children = React.Children.toArray(otherProps.children);

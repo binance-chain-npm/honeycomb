@@ -11,10 +11,16 @@ export type Props = Omit<React.ComponentPropsWithoutRef<typeof ListItem>, 'showB
     variant?: Variant;
   };
 
-export const Component = ({ variant = 'normal', children, onClick, ...otherProps }: Props) => {
+export const Component = ({
+  variant = 'normal',
+  children,
+  onClick,
+  'data-testid': testId,
+  ...otherProps
+}: Props) => {
   const { testId: parentTestId } = useContext(ContentContext);
   const { buildTestId } = useBuildTestId({
-    id: otherProps['data-testid'] ? parentTestId : undefined,
+    id: testId ? parentTestId : undefined,
   });
   const { onClose } = useContext(Context);
 
@@ -37,7 +43,7 @@ export const Component = ({ variant = 'normal', children, onClick, ...otherProps
       onClick={click}
       showBorder={false}
       variant={variant}
-      data-testid={buildTestId(otherProps['data-testid'])}
+      data-testid={buildTestId(testId)}
     >
       {children}
     </StyledListItem>

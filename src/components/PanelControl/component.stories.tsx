@@ -4,7 +4,6 @@ import { em } from 'polished';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
-import { useBuildTestId } from '../../modules/test-ids';
 import { Space } from '../Space';
 import { Text } from '../Text';
 
@@ -25,23 +24,22 @@ const Item = styled(PanelControl.Item)`
 
 export const Horizontal = () => {
   const [selected, setSelected] = useState(0);
-  const { buildTestId } = useBuildTestId({ id: 'panel-control' });
 
   return (
-    <PanelControl orientation="horizontal" variant="solid" data-testid={buildTestId()}>
-      <Item selected={selected === 0} onClick={() => setSelected(0)} data-testid={buildTestId('0')}>
+    <PanelControl orientation="horizontal" variant="solid" data-testid="panel-control">
+      <Item selected={selected === 0} onClick={() => setSelected(0)} data-testid="0">
         <Text size="reduced">Item</Text>
       </Item>
       <Space size="normal" />
-      <Item selected={selected === 1} onClick={() => setSelected(1)} data-testid={buildTestId('1')}>
+      <Item selected={selected === 1} onClick={() => setSelected(1)} data-testid="1">
         <Text size="reduced">Item</Text>
       </Item>
       <Space size="normal" />
-      <Item selected={selected === 2} onClick={() => setSelected(2)} data-testid={buildTestId('2')}>
+      <Item selected={selected === 2} onClick={() => setSelected(2)} data-testid="2">
         <Text size="reduced">Item</Text>
       </Item>
       <Space size="normal" />
-      <Item disabled data-testid={buildTestId('disabled')}>
+      <Item disabled data-testid="disabled">
         <Text size="reduced">Disabled Item</Text>
       </Item>
     </PanelControl>

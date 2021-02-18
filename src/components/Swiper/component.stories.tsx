@@ -38,10 +38,10 @@ export const Default = () => {
   return (
     <Swiper data-testid={buildTestId()}>
       {new Array(5).fill(null).map((_, index) => (
-        <Swiper.Item data-testid={buildTestId(`item-${index}`)}>
+        <Swiper.Item data-testid={`${index}`}>
           <Container>
             <img alt="" src={placeholder} width="100%" />
-            <Label data-testid={buildTestId(`item-${index}.label`)}>{index + 1}</Label>
+            <Label data-testid={buildTestId(`${index}.label`)}>{index + 1}</Label>
           </Container>
         </Swiper.Item>
       ))}
