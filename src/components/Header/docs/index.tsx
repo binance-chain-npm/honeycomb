@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArgsTable, Description, Source, Subtitle } from '@storybook/addon-docs/blocks';
 
-import { DocsPropHeading, DocsTable } from '../../internal/Docs';
+import { Code, DocsPropHeading, DocsTable } from '../../internal/Docs';
 import { Header } from '../../Header';
 
 import { AccountDocs } from './Account';
@@ -27,17 +27,17 @@ export const docs = {
                 <DocsTable.Asterisk />
               </>
             ),
-            type: <code>HeaderChildItem[]</code>,
+            type: <Code>HeaderChildItem[]</Code>,
             default: '',
             description: 'The content of the header item.',
           },
           {
             name: 'disabled',
-            type: <code>boolean</code>,
-            default: <code>false</code>,
+            type: <Code>boolean</Code>,
+            default: <Code>false</Code>,
             description: (
               <>
-                If <code>true</code>, the element will be unusable.
+                If <Code>true</Code>, the element will be unusable.
               </>
             ),
           },
@@ -48,23 +48,23 @@ export const docs = {
                 <DocsTable.Asterisk />
               </>
             ),
-            type: <code>node</code>,
+            type: <Code>node</Code>,
             default: '',
             description: 'The content of the header item.',
           },
           {
             name: 'htmlTag',
-            type: <code>HTMLAttribute</code>,
+            type: <Code>HTMLAttribute</Code>,
             default: '',
             description: 'The HTML tag to cast this element into.',
           },
           {
             name: 'styled',
-            type: <code>boolean</code>,
-            default: <code>false</code>,
+            type: <Code>boolean</Code>,
+            default: <Code>false</Code>,
             description: (
               <>
-                If <code>true</code>, the element will be rendered as-is with no styling applied by
+                If <Code>true</Code>, the element will be rendered as-is with no styling applied by
                 the header component.
               </>
             ),
@@ -101,7 +101,7 @@ export const docs = {
         data={[
           {
             name: 'label',
-            type: <code>node</code>,
+            type: <Code>node</Code>,
             default: '',
             description: 'The label for this header child item.',
           },
@@ -119,7 +119,7 @@ export const docs = {
             name: 'collapseOn',
             type: (
               <>
-                <code>sm</code> | <code>md</code>
+                <Code>sm</Code> | <Code>md</Code>
               </>
             ),
             default: '',
