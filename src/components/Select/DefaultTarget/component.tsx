@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 
-import { useBuildTestId } from '../../../modules/test-ids';
+import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Icon } from '../../Icon';
 import { DefaultTarget } from '../../internal/DefaultTarget';
 import { ListItem } from '../../ListItem';
@@ -10,14 +10,12 @@ import { useCurrentVariant } from '../useCurrentVariant';
 import { StyledListItem } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
-  Pick<React.ComponentPropsWithoutRef<typeof ListItem>, 'children' | 'left' | 'onClick'>;
+  Pick<React.ComponentPropsWithoutRef<typeof ListItem>, 'children' | 'left' | 'onClick'> &
+  Testable;
 
-export const Component = ({ children, onClick, ...otherProps }: Props) => {
-  const { variant = 'responsive', isShowing, testId: parentTestId } = useContext(Context);
-  const { buildTestId: buildTestIdParent } = useBuildTestId({ id: parentTestId });
-  const { buildTestId } = useBuildTestId({
-    id: buildTestIdParent('default-target'),
-  });
+export const Component = ({ children, onClick, 'data-testid': testId, ...otherProps }: Props) => {
+  const { buildTestId } = useBuildTestId({ id: testId });
+  const { variant = 'responsive', isShowing } = useContext(Context);
   const currentVariant = useCurrentVariant({ variant });
 
   const right = useMemo(() => {
