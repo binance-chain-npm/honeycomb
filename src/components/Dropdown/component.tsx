@@ -42,7 +42,7 @@ export const Component = ({
         interactive={true}
         visible={isShowing}
         content={
-          <ContentContext.Provider value={{ testId: buildTestId('content') }}>
+          <ContentContext.Provider value={{ testId: buildTestId() }}>
             <TooltipContent>{children}</TooltipContent>
           </ContentContext.Provider>
         }

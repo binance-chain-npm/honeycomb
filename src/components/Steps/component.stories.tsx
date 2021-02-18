@@ -17,11 +17,17 @@ export default {
 const renderItems = (key: string) => {
   return (
     <>
-      <Steps.Item key={`${key}-1`}>1</Steps.Item>
-      <Steps.Connector />
-      <Steps.Item key={`${key}-2`}>2</Steps.Item>
-      <Steps.Connector />
-      <Steps.Item key={`${key}-3`}>3</Steps.Item>
+      <Steps.Item key={`${key}-1`} data-testid={`${key}-1`}>
+        1
+      </Steps.Item>
+      <Steps.Connector data-testid={`${key}-1.connector`} />
+      <Steps.Item key={`${key}-2`} data-testid={`${key}-2`}>
+        2
+      </Steps.Item>
+      <Steps.Connector data-testid={`${key}-2.connector`} />
+      <Steps.Item key={`${key}-3`} data-testid={`${key}-3`}>
+        3
+      </Steps.Item>
     </>
   );
 };
@@ -42,7 +48,7 @@ export const Horizontal = () => {
         const key = `steps-${index}`;
 
         return (
-          <Steps key={key} orientation="horizontal" activeStep={index - 1}>
+          <Steps key={key} orientation="horizontal" activeStep={index - 1} data-testid={key}>
             {renderItems(key)}
           </Steps>
         );

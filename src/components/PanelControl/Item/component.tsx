@@ -18,8 +18,10 @@ export const Component = ({
   'data-testid': testId,
   ...otherProps
 }: Props) => {
-  const { orientation, shape, variant } = useContext(Context);
-  const { buildTestId } = useBuildTestId({ id: testId });
+  const { orientation, shape, variant, testId: parentTestId } = useContext(Context);
+  const { buildTestId } = useBuildTestId({
+    id: testId ? parentTestId : undefined,
+  });
 
   return (
     <Styled
@@ -29,7 +31,7 @@ export const Component = ({
       $orientation={orientation}
       $shape={shape}
       variant={variant}
-      data-testid={buildTestId()}
+      data-testid={buildTestId(testId)}
       data-testisselected={!!selected}
     />
   );

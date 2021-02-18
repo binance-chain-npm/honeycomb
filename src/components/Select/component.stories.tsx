@@ -87,6 +87,7 @@ export const Responsive = () => {
           <Select.DefaultTarget
             onClick={() => setOpen((value) => !value)}
             left={selected ? <selected.icon /> : undefined}
+            data-testid="select.default-target"
           >
             {selected ? selected.label : placeholder}
           </Select.DefaultTarget>
@@ -127,6 +128,7 @@ export const Dropdown = () => {
           <Select.DefaultTarget
             onClick={() => setOpen((value) => !value)}
             left={selected ? <selected.icon /> : undefined}
+            data-testid="select.default-target"
           >
             {selected ? selected.label : placeholder}
           </Select.DefaultTarget>
@@ -169,7 +171,10 @@ export const Modal = () => {
         open={open}
         onClose={() => setOpen(false)}
         target={
-          <Select.DefaultTarget onClick={() => setOpen((value) => !value)}>
+          <Select.DefaultTarget
+            onClick={() => setOpen((value) => !value)}
+            data-testid="select.default-target"
+          >
             {selected ? selected : placeholder}
           </Select.DefaultTarget>
         }

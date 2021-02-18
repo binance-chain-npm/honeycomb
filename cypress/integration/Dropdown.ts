@@ -6,7 +6,7 @@ describe('Dropdown', () => {
     cy.get('[data-testid="light.dropdown.target"]').click();
     cy.get('[data-testid="light.dropdown.content"]').should('exist');
 
-    cy.get('[data-testid="light.dropdown.content.item1"]').should('exist');
+    cy.get('[data-testid="light.dropdown.item1"]').should('exist');
 
     cy.percySnapshot('Dropdown while open');
   });
@@ -28,7 +28,7 @@ describe('Dropdown', () => {
 
     cy.get('[data-testid="light.dropdown.target"]').click();
 
-    cy.get('[data-testid="light.dropdown.content.item1"]')
+    cy.get('[data-testid="light.dropdown.item1"]')
       .click()
       .then(() => {
         expect(stub.getCall(0)).to.be.calledWith('item1');
@@ -43,12 +43,12 @@ describe('Dropdown', () => {
     cy.get('[data-testid="light.dropdown.target"]').click();
 
     new Array(5).fill(null).forEach((_, index) => {
-      cy.get(`[data-testid="light.dropdown.content.${index}"]`).should('be.visible');
-      cy.get(`[data-testid="light.dropdown.content.${index}.tick"]`).should('not.exist');
+      cy.get(`[data-testid="light.dropdown.${index}"]`).should('be.visible');
+      cy.get(`[data-testid="light.dropdown.${index}.tick"]`).should('not.exist');
     });
 
-    cy.get(`[data-testid="light.dropdown.content.0"]`).click();
+    cy.get(`[data-testid="light.dropdown.0"]`).click();
     cy.get('[data-testid="light.dropdown.target"]').click();
-    cy.get(`[data-testid="light.dropdown.content.0.tick"]`).should('be.visible');
+    cy.get(`[data-testid="light.dropdown.0.tick"]`).should('be.visible');
   });
 });

@@ -41,13 +41,13 @@ describe('Table', () => {
     cy.get('[data-testid="table.row9.col1.td"]').should('contain.text', '10');
 
     cy.get('[data-testid="dropdown.target"]').click();
-    cy.get('[data-testid="dropdown.content.option-1"]').click();
+    cy.get('[data-testid="dropdown.option-1"]').click();
 
     cy.get('[data-testid="table.pagination.go-to-9-btn"]').click();
     cy.get('[data-testid="table.row9.col1.td"]').should('contain.text', '100');
 
     cy.get('[data-testid="dropdown.target"]').click();
-    cy.get('[data-testid="dropdown.content.option-0"]').click();
+    cy.get('[data-testid="dropdown.option-0"]').click();
 
     cy.get('[data-testid="table.pagination.go-to-1-btn"]').should('exist');
     cy.get('[data-testid="table.row9.col1.td"]').should('contain.text', '10');

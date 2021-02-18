@@ -12,9 +12,8 @@ export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & {
 
 export const Component = ({ children, onClick, 'data-testid': testId, ...otherProps }: Props) => {
   const { onClose, testId: parentTestId } = useContext(Context);
-  const { buildTestId: buildTestIdParent } = useBuildTestId({ id: parentTestId });
   const { buildTestId } = useBuildTestId({
-    id: buildTestIdParent(testId ? `item.${testId}` : undefined),
+    id: testId ? parentTestId : undefined,
   });
 
   const click = useCallback<NonNullable<Props['onClick']>>(
@@ -31,7 +30,7 @@ export const Component = ({ children, onClick, 'data-testid': testId, ...otherPr
   );
 
   return (
-    <StyledListItem {...otherProps} onClick={click} data-testid={buildTestId()}>
+    <StyledListItem {...otherProps} onClick={click} data-testid={buildTestId(testId)}>
       {children}
     </StyledListItem>
   );

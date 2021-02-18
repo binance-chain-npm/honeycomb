@@ -8,8 +8,8 @@ describe('Swiper', () => {
     .then((children) => {
       children[index].click();
 
-      cy.get(`[data-testid="${theme}.swiper.item-${index}.label"]`).should('be.visible');
-      cy.get(`[data-testid="${theme}.swiper.item-${index}.label"]`).should('have.text', index + 1);
+      cy.get(`[data-testid="${theme}.swiper.${index}.label"]`).should('be.visible');
+      cy.get(`[data-testid="${theme}.swiper.${index}.label"]`).should('have.text', index + 1);
     });
   };
 
