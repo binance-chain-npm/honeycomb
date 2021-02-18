@@ -108,12 +108,12 @@ describe('Select', () => {
     cy.get('[data-testid="select.photo"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="select.modal.box"]').should('not.exist');
+    cy.get('[data-testid="select.modal"]').should('not.exist');
 
     cy.get('[data-testid="select.default-target"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="select.modal.box"]').should('be.visible');
+    cy.get('[data-testid="select.modal"]').should('be.visible');
     cy.get('[data-testid="select.photo.tick"]').should('be.visible');
 
     cy.percySnapshot('Select variant="modal"');
