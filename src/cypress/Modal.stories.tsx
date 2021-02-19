@@ -45,8 +45,8 @@ export const Default = () => {
             <Modal.Header title="Inner Modal" />
             <Modal.Content>
               <Guide size="reduced">
-                If you put an element like <Code>Dropdown</Code> inside a modal, make sure you set
-                the modal <Code>shouldCloseOnOverlayClick=&#123;false&#125;</Code>.
+                If you put an element like <Code>Dropdown</Code> inside a modal, make sure
+                <Code>shouldCloseOnOverlayClick=&#123;false&#125;</Code> (default).
               </Guide>
               <Guide size="reduced">
                 Otherwise the modal will be closed when clicking outside of the dropdown.

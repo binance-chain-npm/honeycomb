@@ -51,6 +51,7 @@ export const Component = ({
   className,
   loading,
   position = 'center',
+  shouldCloseOnOverlayClick = false,
   onClose,
   'data-testid': testId,
   ...otherProps
@@ -97,6 +98,7 @@ export const Component = ({
         parentSelector={PARENT_SELECTOR}
         appElement={MODAL_CONTAINER}
         closeTimeoutMS={CLOSE_MODAL_TIMEOUT}
+        shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
         contentElement={(props, contentElement) => (
           <>
             {boxTransitions.map(({ item, props: transitionProps, key }) =>
