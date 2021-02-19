@@ -32,18 +32,16 @@ const MODAL_CONTAINER =
 
 const PARENT_SELECTOR = !!MODAL_CONTAINER ? () => MODAL_CONTAINER : undefined;
 
-export type Props = Pick<
-  React.ComponentProps<typeof ReactModal>,
-  'shouldCloseOnEsc' | 'shouldCloseOnOverlayClick'
-> &
-  Testable & {
-    open?: boolean;
-    children?: React.ReactNode;
-    className?: string;
-    loading?: boolean;
-    position?: Position;
-    onClose?: () => void;
-  };
+export type Props = Testable & {
+  open?: boolean;
+  children?: React.ReactNode;
+  className?: string;
+  loading?: boolean;
+  position?: Position;
+  closeOnEsc?: boolean;
+  closeOnBackgroundClick?: boolean;
+  onClose?: () => void;
+};
 
 export const Component = ({
   open = false,
@@ -51,10 +49,10 @@ export const Component = ({
   className,
   loading,
   position = 'center',
-  shouldCloseOnOverlayClick = false,
+  closeOnEsc = true,
+  closeOnBackgroundClick = false,
   onClose,
   'data-testid': testId,
-  ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
@@ -91,14 +89,14 @@ export const Component = ({
   return (
     <>
       <ReactModal
-        {...otherProps}
         isOpen={open}
         onRequestClose={close}
         className={className}
         parentSelector={PARENT_SELECTOR}
         appElement={MODAL_CONTAINER}
         closeTimeoutMS={CLOSE_MODAL_TIMEOUT}
-        shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
+        shouldCloseOnEsc={closeOnEsc}
+        shouldCloseOnOverlayClick={closeOnBackgroundClick}
         contentElement={(props, contentElement) => (
           <>
             {boxTransitions.map(({ item, props: transitionProps, key }) =>
