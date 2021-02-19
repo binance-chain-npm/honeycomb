@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
+import ReactModal from 'react-modal';
 
 import { boxSizing } from '../../modules/box-sizing';
 import { SIZES } from '../internal/useWindowSize';
@@ -11,6 +12,12 @@ export const POSITIONS = ['center', 'bottom'] as const;
 export type Position = typeof POSITIONS[number];
 
 export const mdScreen = `min-width: ${em(SIZES.md)}`;
+
+export const StyledReactModal = styled(ReactModal)`
+  :focus {
+    outline: none;
+  }
+`;
 
 export const Container = styled.div`
   ${boxSizing};

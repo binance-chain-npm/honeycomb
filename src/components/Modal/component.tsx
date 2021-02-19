@@ -1,10 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
-import ReactModal from 'react-modal';
 import { useTransition, animated } from 'react-spring';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Box, Container, Position } from './styled';
+import { StyledReactModal, Box, Container, Position } from './styled';
 import { Context } from './context';
 
 const CLOSE_MODAL_TIMEOUT = 250;
@@ -88,7 +87,7 @@ export const Component = ({
 
   return (
     <>
-      <ReactModal
+      <StyledReactModal
         isOpen={open}
         onRequestClose={close}
         className={className}
@@ -107,7 +106,7 @@ export const Component = ({
                   key={key}
                   style={transitionProps}
                   position={position}
-                  data-testId={buildTestId()}
+                  data-testid={buildTestId()}
                 >
                   {contentElement}
                 </Box>
@@ -128,7 +127,7 @@ export const Component = ({
         )}
       >
         <Context.Provider value={context}>{children}</Context.Provider>
-      </ReactModal>
+      </StyledReactModal>
     </>
   );
 };
