@@ -3,7 +3,6 @@ import { toast, ToastContent, ToastOptions } from 'react-toastify';
 import { AUTO_CLOSE_DEFAULT_DURATION } from '../component';
 
 type Options = {
-  content?: ToastContent;
   autoClose?: boolean | number;
   position?: ToastOptions['position'];
   toastId?: ToastOptions['toastId'];
