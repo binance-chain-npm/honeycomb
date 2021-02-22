@@ -108,6 +108,9 @@ export const AsAnchor = () => (
         </Container>
       )),
     )}
+    <Button href="https://binance.org" onClick={action('clicked')} variant="primary" disabled>
+      disabled
+    </Button>
   </Container>
 );
 

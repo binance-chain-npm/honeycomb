@@ -144,10 +144,12 @@ export const Styled = styled.button<Props>`
     text-decoration: none;
   }
 
-  :disabled {
-    opacity: 0.3;
-    pointer-events: none;
-  }
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      opacity: 0.3;
+      pointer-events: none;
+    `};
 
   ${({ variant }) => variant === 'success' && success};
   ${({ variant }) => variant === 'buy' && buy};
