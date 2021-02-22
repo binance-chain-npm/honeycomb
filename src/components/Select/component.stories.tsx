@@ -153,6 +153,8 @@ export const Dropdown = () => {
 Dropdown.decorators = decorators;
 
 const StyledSelectOption = styled(Select.Option)`
+  height: 4em;
+
   ${ListItem.Content} {
     height: 100%;
   }
