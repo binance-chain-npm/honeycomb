@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
+import { action } from '@storybook/addon-actions';
 
 import { Sections } from '../../modules/sections';
 import { HoneycombThemeProvider } from '../../modules/themes';
@@ -108,6 +109,23 @@ export const WithComplexItems = () => (
             </Container>
           </Toast>,
         )
+      }
+    >
+      Toast
+    </Button>
+  </>
+);
+
+export const WithCallback = () => (
+  <>
+    <Toaster position="top-right" />
+    <Button
+      variant="primary"
+      onClick={() =>
+        createToast(<Toast icon={<Toast.Icon.Success />}>{CONTENT}</Toast>, {
+          onOpen: () => action('open')(),
+          onClose: () => action('close')(),
+        })
       }
     >
       Toast
