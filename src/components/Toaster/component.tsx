@@ -6,14 +6,14 @@ import { Icon } from '../Icon';
 
 import { StyledButton, Styles } from './styled';
 
-export const AUTO_CLOSE_DEFAULT_DURATION = 5000;
+export const AUTO_CLOSE_DEFAULT_DURATION = 3000;
 
 export type Props = Pick<
   React.ComponentPropsWithoutRef<typeof ToastContainer>,
   'position' | 'children' | 'className'
 > &
   Testable & {
-    autoClose?: boolean;
+    autoClose?: boolean | number;
   };
 
 export const Component = ({
@@ -48,7 +48,7 @@ export const Component = ({
       <Styles />
       <ToastContainer
         {...otherProps}
-        autoClose={autoClose ? AUTO_CLOSE_DEFAULT_DURATION : false}
+        autoClose={autoClose === true ? AUTO_CLOSE_DEFAULT_DURATION : autoClose}
         closeButton={close}
         hideProgressBar
         newestOnTop={position === 'bottom-center'}
