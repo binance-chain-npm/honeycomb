@@ -35,6 +35,7 @@ export { ReactComponent as Hourglass } from './assets/Hourglass.svg';
 export { ReactComponent as InfoCircle } from './assets/InfoCircle.svg';
 export { ReactComponent as InfoCircleSolid } from './assets/InfoCircleSolid.svg';
 export { ReactComponent as Key } from './assets/Key.svg';
+export { ReactComponent as Lightbulb } from './assets/Lightbulb.svg';
 export { ReactComponent as Link } from './assets/Link.svg';
 export { ReactComponent as Lock } from './assets/Lock.svg';
 export { ReactComponent as Page403 } from './assets/Page403.svg';

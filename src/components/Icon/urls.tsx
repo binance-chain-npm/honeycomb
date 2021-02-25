@@ -35,6 +35,7 @@ export { default as Hourglass } from './assets/Hourglass.svg';
 export { default as InfoCircle } from './assets/InfoCircle.svg';
 export { default as InfoCircleSolid } from './assets/InfoCircleSolid.svg';
 export { default as Key } from './assets/Key.svg';
+export { default as Lightbulb } from './assets/Lightbulb.svg';
 export { default as Link } from './assets/Link.svg';
 export { default as Lock } from './assets/Lock.svg';
 export { default as Page403 } from './assets/Page403.svg';
