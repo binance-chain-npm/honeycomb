@@ -15,7 +15,11 @@ export default {
 };
 
 export const Bare = () => {
-  return <Dropdown target="Dropdown">Some content...</Dropdown>;
+  return (
+    <Dropdown target="Dropdown" bare>
+      Some content...
+    </Dropdown>
+  );
 };
 
 export const WithHelpers = () => {
