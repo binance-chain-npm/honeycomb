@@ -1,16 +1,16 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Tooltip } from '../Tooltip';
 import { Styleless } from '../Styleless';
 
 import { Context, ContentContext } from './context';
-import { TooltipContent } from './styled';
+import { Content } from './styled';
 
 export type TriggerValue = 'mouseenter' | 'focus' | 'click';
 
 export type Props = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'children'> &
-  Pick<React.ComponentPropsWithoutRef<typeof Tooltip>, 'radius' | 'appendTo'> &
+  Pick<React.ComponentPropsWithoutRef<typeof Tooltip>, 'appendTo' | 'bare' | 'radius'> &
   Testable & {
     target: React.ReactNode;
     onClick?: () => void;
@@ -20,6 +20,7 @@ export const Component = ({
   children,
   className,
   target,
+  bare,
   radius = 'normal',
   onClick,
   'data-testid': testId,
@@ -33,22 +34,31 @@ export const Component = ({
     onClick?.();
   }, [onClick]);
 
+  const content = useMemo(() => {
+    if (bare) {
+      return children;
+    }
+
+    return <Content>{children}</Content>;
+  }, [bare, children]);
+
   return (
     <Context.Provider value={{ isShowing, onClose: click }}>
       <Tooltip
-        radius={radius}
         {...otherProps}
         className={className}
         interactive={true}
         visible={isShowing}
         content={
           <ContentContext.Provider value={{ testId: buildTestId() }}>
-            <TooltipContent>{children}</TooltipContent>
+            {content}
           </ContentContext.Provider>
         }
-        data-testid={buildTestId()}
         onClickOutside={click}
+        bare={bare}
         padding="none"
+        radius={radius}
+        data-testid={buildTestId()}
       >
         <Styleless htmlTag="div" onClick={click}>
           {target}
