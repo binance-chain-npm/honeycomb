@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { em } from 'polished';
 
-export const TooltipContent = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   min-width: ${({ theme }) => em(200, theme.honeycomb.size.reduced)};

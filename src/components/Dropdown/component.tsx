@@ -5,7 +5,7 @@ import { Tooltip } from '../Tooltip';
 import { Styleless } from '../Styleless';
 
 import { Context, ContentContext } from './context';
-import { TooltipContent } from './styled';
+import { Content } from './styled';
 
 export type TriggerValue = 'mouseenter' | 'focus' | 'click';
 
@@ -39,7 +39,7 @@ export const Component = ({
       return children;
     }
 
-    return <TooltipContent>{children}</TooltipContent>;
+    return <Content>{children}</Content>;
   }, [bare, children]);
 
   return (
