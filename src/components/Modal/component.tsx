@@ -96,24 +96,6 @@ export const Component = ({
         closeTimeoutMS={CLOSE_MODAL_TIMEOUT}
         shouldCloseOnEsc={closeOnEsc}
         shouldCloseOnOverlayClick={closeOnBackgroundClick}
-        contentElement={(props, contentElement) => (
-          <>
-            {boxTransitions.map(({ item, props: transitionProps, key }) =>
-              item ? (
-                <Box
-                  {...props}
-                  as={animated.div}
-                  key={key}
-                  style={transitionProps}
-                  position={position}
-                  data-testid={buildTestId()}
-                >
-                  {contentElement}
-                </Box>
-              ) : null,
-            )}
-          </>
-        )}
         overlayElement={(props, contentElement) => (
           <>
             {containerTransitions.map(({ item, props: transitionProps, key }) =>
@@ -126,7 +108,19 @@ export const Component = ({
           </>
         )}
       >
-        <Context.Provider value={context}>{children}</Context.Provider>
+        {boxTransitions.map(({ item, props: transitionProps, key }) =>
+          item ? (
+            <Box
+              as={animated.div}
+              key={key}
+              style={transitionProps}
+              position={position}
+              data-testid={buildTestId()}
+            >
+              <Context.Provider value={context}>{children}</Context.Provider>
+            </Box>
+          ) : null,
+        )}
       </StyledReactModal>
     </>
   );
