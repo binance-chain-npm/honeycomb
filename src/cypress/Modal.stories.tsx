@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
+import { action } from '@storybook/addon-actions';
 
 import { Button } from '../components/Button';
 import { Dropdown } from '../components/Dropdown';
 import { Code } from '../components/internal/Docs';
 import { Modal } from '../components/Modal';
+import { Space } from '../components/Space';
 import { Text } from '../components/Text';
+import { TextInput } from '../components/TextInput';
 import { Sections } from '../modules/sections';
 
 const appendTo = typeof document === 'undefined' ? undefined : document.body;
@@ -66,6 +69,68 @@ export const Default = () => {
           </Modal>
         </Modal.Content>
       </Modal>
+    </>
+  );
+};
+
+type Props = Pick<React.ComponentProps<typeof Modal>, 'open' | 'onClose'> &
+  Pick<React.ComponentProps<typeof Modal.Header>, 'title'> & {
+    defaultName?: string;
+    callback: ({ name }: { name: string }) => void;
+  };
+
+const MemoryLeak = ({ open, onClose, title, defaultName, callback }: Props) => {
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    if (!defaultName) return;
+    setName(defaultName);
+  }, [defaultName]);
+
+  const change = useCallback<NonNullable<React.ComponentProps<typeof TextInput>['onChange']>>(
+    (evt) => setName(evt.target.value),
+    [],
+  );
+
+  const confirm = useCallback(() => {
+    callback({ name });
+    setName('');
+    onClose?.();
+  }, [name, callback, onClose]);
+
+  return (
+    <Modal open={open} onClose={onClose}>
+      <Modal.Header title={title} />
+      <Modal.Content>
+        <TextInput value={name} label="Label" onChange={change} />
+        <Space size="increased" />
+        <Button variant="secondary" onClick={onClose}>
+          Cancel
+        </Button>
+        <Button variant="primary" onClick={confirm}>
+          Confirm
+        </Button>
+      </Modal.Content>
+    </Modal>
+  );
+};
+
+export const MemoryLeakTest = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const open = useCallback(() => setIsOpen(true), []);
+  const close = useCallback(() => setIsOpen(false), []);
+
+  const callback = useCallback(({ name }: { name: string }) => {
+    action(name)();
+  }, []);
+
+  return (
+    <>
+      <Button variant="primary" onClick={open}>
+        Open
+      </Button>
+      <MemoryLeak open={isOpen} onClose={close} title="Memory Leak Modal" callback={callback} />
     </>
   );
 };
