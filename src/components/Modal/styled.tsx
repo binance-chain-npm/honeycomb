@@ -36,7 +36,7 @@ const contentClose = css<Props>`
   transform: ${({ position }) => (position === 'center' ? 'scale(0.9)' : 'translateY(100vh)')};
 `;
 
-export const Styles = createGlobalStyle<Props>`
+export const Styles = createGlobalStyle`
   .ReactModal__Overlay {
     ${overlayClose};
     ${transitions(['opacity'], `${CLOSE_MODAL_TIMEOUT}ms`)};
@@ -48,18 +48,11 @@ export const Styles = createGlobalStyle<Props>`
     ${overlayClose};
   }
   .ReactModal__Content {
-    ${contentClose};
     ${transitions(['opacity', 'transform'], `${CLOSE_MODAL_TIMEOUT}ms`)};
 
     :focus {
       outline: none;
     }
-  }
-  .ReactModal__Content--after-open {
-    ${contentOpen};
-  }
-  .ReactModal__Content--before-close {
-    ${contentClose};
   }
 `;
 
@@ -102,7 +95,7 @@ const bottom = css`
   }
 `;
 
-export const Box = styled.div<{ position: Position }>`
+export const Box = styled.div<Props>`
   background: ${({ theme }) => theme.honeycomb.color.bg.tooltip.normal};
   display: flex;
   flex-direction: column;
@@ -112,6 +105,16 @@ export const Box = styled.div<{ position: Position }>`
   overflow: hidden;
   ${({ position }) => position === 'center' && center};
   ${({ position }) => position === 'bottom' && bottom};
+
+  &.ReactModal__Content {
+    ${contentClose};
+  }
+  &.ReactModal__Content--after-open {
+    ${contentOpen};
+  }
+  &.ReactModal__Content--before-close {
+    ${contentClose};
+  }
 
   @media (${mdScreen}) {
     height: auto;
