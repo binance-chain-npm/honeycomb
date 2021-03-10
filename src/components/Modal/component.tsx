@@ -65,7 +65,7 @@ export const Component = ({
 
   return (
     <>
-      <Styles position={position} />
+      <Styles />
       <ReactModal
         isOpen={open}
         onRequestClose={close}
