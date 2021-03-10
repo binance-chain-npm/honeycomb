@@ -1,12 +1,10 @@
 import React, { useCallback, useMemo } from 'react';
-import { useTransition, animated } from 'react-spring';
+import ReactModal from 'react-modal';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { StyledReactModal, Box, Container, Position } from './styled';
+import { Box, CLOSE_MODAL_TIMEOUT, Container, Position, Styles } from './styled';
 import { Context } from './context';
-
-const CLOSE_MODAL_TIMEOUT = 250;
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
 
@@ -57,26 +55,6 @@ export const Component = ({
 
   const context = useMemo(() => ({ loading, onClose, testId }), [loading, onClose, testId]);
 
-  const containerTransitions = useTransition(open, null, {
-    initial: open ? { opacity: 1 } : { opacity: 0 },
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
-  });
-
-  const boxOpen = { opacity: 1, transform: position === 'center' ? 'scale(1)' : 'translateY(0)' };
-  const boxClosed = {
-    opacity: 0,
-    transform: position === 'center' ? 'scale(0.5)' : 'translateY(100vh)',
-  };
-
-  const boxTransitions = useTransition(open, null, {
-    initial: open ? boxOpen : boxClosed,
-    from: boxClosed,
-    enter: boxOpen,
-    leave: boxClosed,
-  });
-
   const close = useCallback(
     (evt: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>) => {
       evt.stopPropagation();
@@ -87,7 +65,8 @@ export const Component = ({
 
   return (
     <>
-      <StyledReactModal
+      <Styles position={position} />
+      <ReactModal
         isOpen={open}
         onRequestClose={close}
         className={className}
@@ -97,37 +76,18 @@ export const Component = ({
         shouldCloseOnEsc={closeOnEsc}
         shouldCloseOnOverlayClick={closeOnBackgroundClick}
         contentElement={(props, contentElement) => (
-          <>
-            {boxTransitions.map(({ item, props: transitionProps, key }) =>
-              item ? (
-                <Box
-                  {...props}
-                  as={animated.div}
-                  key={key}
-                  style={transitionProps}
-                  position={position}
-                  data-testid={buildTestId()}
-                >
-                  {contentElement}
-                </Box>
-              ) : null,
-            )}
-          </>
+          <Box {...props} style={{}} position={position} data-testid={buildTestId()}>
+            {contentElement}
+          </Box>
         )}
         overlayElement={(props, contentElement) => (
-          <>
-            {containerTransitions.map(({ item, props: transitionProps, key }) =>
-              item ? (
-                <Container {...props} as={animated.div} key={key} style={transitionProps}>
-                  {contentElement}
-                </Container>
-              ) : null,
-            )}
-          </>
+          <Container {...props} style={{}}>
+            {contentElement}
+          </Container>
         )}
       >
         <Context.Provider value={context}>{children}</Context.Provider>
-      </StyledReactModal>
+      </ReactModal>
     </>
   );
 };
