@@ -76,6 +76,7 @@ export const WithEnd = () => {
             </Button>
           </>
         }
+        description="Some description..."
       />
       <TextInput
         label="With End and Left/Right Appendixes"
