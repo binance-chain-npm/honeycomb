@@ -13,6 +13,7 @@ import {
   State,
   Left,
   Right,
+  End,
   DynamicTextContainer,
   DynamicText,
   ValidationMessage,
@@ -32,6 +33,7 @@ export type Props = Omit<
     value: NonNullable<React.InputHTMLAttributes<HTMLInputElement>['value']>;
     left?: React.ReactNode;
     right?: React.ReactNode;
+    end?: React.ReactNode;
     htmlTag?: 'input' | 'textarea';
     readOnly?: boolean;
     size?: Size;
@@ -50,6 +52,7 @@ export const Component = ({
   onChange,
   left,
   right,
+  end,
   htmlTag = 'input',
   readOnly = false,
   size = 'huge',
@@ -122,22 +125,79 @@ export const Component = ({
     return otherProps.validationMessages?.filter((it) => it.alwaysShow);
   }, [isPristine, otherProps.validationMessages]);
 
-  const input = (
-    <Input
-      {...otherProps}
-      data-testid={buildTestId('native-input')}
-      id={id}
-      value={value}
-      onFocus={readOnly ? undefined : focus}
-      onBlur={readOnly ? undefined : blur}
-      onChange={readOnly ? undefined : change}
-      readOnly={readOnly}
-      dynamic={dynamic}
-      $scale={scale}
-      size={size}
-      as={htmlTag as any}
-    />
-  );
+  const input = useMemo(() => {
+    let res = (
+      <Input
+        {...otherProps}
+        data-testid={buildTestId('native-input')}
+        id={id}
+        value={value}
+        onFocus={readOnly ? undefined : focus}
+        onBlur={readOnly ? undefined : blur}
+        onChange={readOnly ? undefined : change}
+        readOnly={readOnly}
+        dynamic={dynamic}
+        $scale={scale}
+        size={size}
+        as={htmlTag as any}
+      />
+    );
+
+    if (dynamic) {
+      res = (
+        <DynamicTextContainer>
+          {res}
+          <DynamicText ref={spanRef} size={size} $scale={scale}>
+            {value}
+          </DynamicText>
+        </DynamicTextContainer>
+      );
+    }
+
+    return res;
+  }, [
+    blur,
+    buildTestId,
+    change,
+    dynamic,
+    focus,
+    htmlTag,
+    id,
+    otherProps,
+    readOnly,
+    scale,
+    size,
+    value,
+  ]);
+
+  const container = useMemo(() => {
+    let res = (
+      <InputContainer
+        isFocused={isFocused}
+        state={state}
+        isPristine={isPristine}
+        dynamic={dynamic}
+        size={size}
+        $scale={scale}
+        hasEnd={!!end}
+      >
+        {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
+        {input}
+        {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
+      </InputContainer>
+    );
+
+    if (end) {
+      res = (
+        <End>
+          {res}
+          {end}
+        </End>
+      );
+    }
+
+    return res;
+  }, [buildTestId, dynamic, end, input, isFocused, isPristine, left, right, scale, size, state]);
 
   return (
     <Container className={className} data-testid={testId}>
@@ -146,27 +206,7 @@ export const Component = ({
           {label}
         </Label>
       )}
-      <InputContainer
-        isFocused={isFocused}
-        state={state}
-        isPristine={isPristine}
-        dynamic={dynamic}
-        size={size}
-        $scale={scale}
-      >
-        {left && <Left data-testid={buildTestId('left')}>{left}</Left>}
-        {dynamic ? (
-          <DynamicTextContainer>
-            {input}
-            <DynamicText ref={spanRef} size={size} $scale={scale}>
-              {value}
-            </DynamicText>
-          </DynamicTextContainer>
-        ) : (
-          <>{input}</>
-        )}
-        {right && <Right data-testid={buildTestId('right')}>{right}</Right>}
-      </InputContainer>
+      {container}
       {!!description && (
         <Description data-testid={buildTestId('description')}>{description}</Description>
       )}
@@ -190,3 +230,4 @@ Component.Input = Input;
 Component.InputContainer = InputContainer;
 Component.Left = Left;
 Component.Right = Right;
+Component.End = End;

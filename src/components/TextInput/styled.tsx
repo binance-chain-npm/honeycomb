@@ -54,6 +54,7 @@ type InputContainerProps = {
   dynamic: boolean;
   size: Size;
   $scale: number;
+  hasEnd: boolean;
 };
 
 export const InputContainer = styled.div<InputContainerProps>`
@@ -88,6 +89,11 @@ export const InputContainer = styled.div<InputContainerProps>`
 
   ${({ isFocused }) => isFocused && focused};
   ${({ state, isPristine }) => state === 'danger' && !isPristine && danger};
+  ${({ hasEnd }) =>
+    hasEnd &&
+    css`
+      flex-grow: 1;
+    `};
 `;
 
 const dynamicFontSize = ({ theme, size }: { theme: DefaultTheme; size: Size }) => {
@@ -155,7 +161,6 @@ export const Input = styled.div<InputProps>`
 
 export const Left = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
   margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
@@ -163,10 +168,15 @@ export const Left = styled.div`
 
 export const Right = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: stretch;
   justify-content: stretch;
   margin-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+`;
+
+export const End = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Label = styled.label`

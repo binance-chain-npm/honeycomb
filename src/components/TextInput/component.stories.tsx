@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { em } from 'polished';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { SIZES } from '../internal/Size';
 import { Button } from '../Button';
+import { Space } from '../Space';
 
 import { TextInput } from './';
 
@@ -13,6 +15,15 @@ export default {
   decorators,
   title: `${Sections.Inputs}/TextInput`,
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
 
 export const Text = () => {
   const [value, setValue] = useState('Some text…');
@@ -42,40 +53,93 @@ export const WithLeftAndRightAppendixes = () => (
     left={<div>€</div>}
     right={
       <Button variant="primary" size="increased" shape="fit">
-        MAX
+        Max
       </Button>
     }
   />
 );
 
+export const WithEnd = () => {
+  const [value, setValue] = useState('Some text...');
+
+  return (
+    <Container>
+      <TextInput
+        label="With End"
+        value={value}
+        onChange={(evt) => setValue(evt.target.value)}
+        end={
+          <>
+            <Space size="tiny" />
+            <Button variant="secondary" shape="fit">
+              Max
+            </Button>
+          </>
+        }
+        description="Some description..."
+      />
+      <TextInput
+        label="With End and Left/Right Appendixes"
+        value={value}
+        onChange={(evt) => setValue(evt.target.value)}
+        left={<div>€</div>}
+        right={
+          <Button variant="primary" size="increased" shape="fit">
+            Max
+          </Button>
+        }
+        end={
+          <>
+            <Space size="tiny" />
+            <Button variant="secondary" shape="fit">
+              Max
+            </Button>
+          </>
+        }
+      />
+      <TextInput
+        label="Dynamic With End"
+        value={value}
+        onChange={(evt) => setValue(evt.target.value)}
+        size="giant"
+        dynamic
+        end={
+          <>
+            <Space size="tiny" />
+            <Button variant="secondary" shape="fit" size="giant">
+              Max
+            </Button>
+          </>
+        }
+      />
+    </Container>
+  );
+};
+
 export const Dynamic = () => {
   const [value, setValue] = useState('Some text...');
 
   return (
-    <>
+    <Container>
       {SIZES.map((size) => (
-        <div style={{ marginBottom: '1em' }}>
-          <TextInput
-            value={value}
-            size={size}
-            onChange={(evt) => setValue(evt.target.value)}
-            data-testid={`input-${size}`}
-            dynamic
-          />
-        </div>
+        <TextInput
+          value={value}
+          size={size}
+          onChange={(evt) => setValue(evt.target.value)}
+          data-testid={`input-${size}`}
+          dynamic
+        />
       ))}
-    </>
+    </Container>
   );
 };
 
 export const Sizes = () => (
-  <>
+  <Container>
     {SIZES.map((size) => (
-      <div style={{ marginBottom: '1em' }}>
-        <TextInput key={`${size}`} size={size} value={`A ${size} text input`} />
-      </div>
+      <TextInput key={`${size}`} size={size} value={`A ${size} text input`} />
     ))}
-  </>
+  </Container>
 );
 
 const CustomTextInput = styled(TextInput)`
