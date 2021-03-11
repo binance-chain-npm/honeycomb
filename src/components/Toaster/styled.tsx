@@ -1,49 +1,52 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { em } from 'polished';
+import { ToastContainer } from 'react-toastify';
 
 import toastify from '../../../node_modules/react-toastify/dist/ReactToastify.min.css';
 import { Button } from '../Button';
 import { SIZES } from '../internal/useWindowSize';
 
-const TOAST_WIDTH = 278;
 const TOAST_HEIGHT = 56;
 
 export const mdScreen = `min-width: ${em(SIZES.md)}`;
 
 export const Styles = createGlobalStyle`
   ${toastify};
+`;
 
-  .Toastify__toast-container {
+export const StyledToastContainer = styled(ToastContainer)`
+  &.Toastify__toast-container {
     margin-left: ${({ theme }) => em(theme.honeycomb.size.small)};
     margin-right: ${({ theme }) => em(theme.honeycomb.size.small)};
     margin-bottom: -${({ theme }) => em(theme.honeycomb.size.small)};
+    padding: 0;
     width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.increased)});
 
     @media (${mdScreen}) {
-      max-width: ${em(TOAST_WIDTH)};
+      width: auto;
       margin: 0;
       margin-bottom: -${({ theme }) => em(theme.honeycomb.size.small)};
     }
   }
-  .Toastify__toast-container--top-left {
+  &.Toastify__toast-container--top-left {
     top: ${({ theme }) => em(theme.honeycomb.size.small)};
     left: ${({ theme }) => em(theme.honeycomb.size.small)};
   }
-  .Toastify__toast-container--top-center {
+  &.Toastify__toast-container--top-center {
     top: ${({ theme }) => em(theme.honeycomb.size.small)};
   }
-  .Toastify__toast-container--top-right {
+  &.Toastify__toast-container--top-right {
     top: ${({ theme }) => em(theme.honeycomb.size.small)};
     right: ${({ theme }) => em(theme.honeycomb.size.small)};
   }
-  .Toastify__toast-container--bottom-left {
+  &.Toastify__toast-container--bottom-left {
     bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
     left: ${({ theme }) => em(theme.honeycomb.size.small)};
   }
-  .Toastify__toast-container--bottom-center {
+  &.Toastify__toast-container--bottom-center {
     bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
   }
-  .Toastify__toast-container--bottom-right {
+  &.Toastify__toast-container--bottom-right {
     bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
     right: ${({ theme }) => em(theme.honeycomb.size.small)};
   }

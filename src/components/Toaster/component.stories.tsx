@@ -12,9 +12,9 @@ import { Card } from '../Card';
 import { Dropdown } from '../Dropdown';
 import { Header } from '../Header';
 import { Icon } from '../Icon';
-import { Toast } from '../Toast';
+import { createToast, Toast } from '../Toast';
 
-import { Toaster, createToast } from './';
+import { Toaster } from './';
 
 export default {
   component: Toaster,

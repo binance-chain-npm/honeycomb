@@ -4,7 +4,7 @@ import { Slide, ToastContainer } from 'react-toastify';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Icon } from '../Icon';
 
-import { StyledButton, Styles } from './styled';
+import { StyledToastContainer, StyledButton, Styles } from './styled';
 
 export const AUTO_CLOSE_DEFAULT_DURATION = 3000;
 
@@ -14,12 +14,10 @@ export type Props = Pick<
 > &
   Testable & {
     autoClose?: boolean | number;
-    showCloseButton?: boolean;
   };
 
 export const Component = ({
   autoClose = true,
-  showCloseButton = true,
   position = 'bottom-center',
   'data-testid': testId,
   ...otherProps
@@ -48,10 +46,10 @@ export const Component = ({
   return (
     <>
       <Styles />
-      <ToastContainer
+      <StyledToastContainer
         {...otherProps}
         autoClose={autoClose === true ? AUTO_CLOSE_DEFAULT_DURATION : autoClose}
-        closeButton={showCloseButton ? close : false}
+        closeButton={close}
         hideProgressBar
         newestOnTop={position === 'bottom-center'}
         position={position}

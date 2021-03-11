@@ -1,3 +1,4 @@
+export { createToast } from '../Toast/actions';
 import { Component } from './component';
 import { Icon } from './Icon';
 

@@ -4,7 +4,7 @@ import { em } from 'polished';
 export const Styled = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
+  height: 100%;
 `;
 
 const flex = css`
@@ -17,7 +17,7 @@ export const Left = styled.div`
   ${flex};
   justify-content: center;
   flex-shrink: 0;
-  width: ${em(60)};
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.reduced)};
   background-color: ${({ theme }) => theme.honeycomb.color.text.normal};
 `;
 
