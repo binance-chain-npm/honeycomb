@@ -12,6 +12,8 @@ import { Card } from '../Card';
 import { Dropdown } from '../Dropdown';
 import { Header } from '../Header';
 import { Icon } from '../Icon';
+import { Code } from '../internal/Docs';
+import { Text } from '../Text';
 import { createToast, Toast } from '../Toast';
 
 import { Toaster } from './';
@@ -86,24 +88,40 @@ export const Default = () => (
   </>
 );
 
-export const WithCustomIcon = () => {
-  useEffect(() => {
-    makeToast();
-  }, []);
+export const Variants = () => {
+  const Container = styled.div`
+    display: flex;
+    flex-direction: column;
 
-  return <Toaster autoClose={false} position="top-right" />;
-};
+    > *:not(:last-child) {
+      margin-bottom: ${({ theme }) => em(theme.honeycomb.size.tiny)};
+    }
+  `;
 
-export const WithComplexItems = () => {
   useEffect(() => {
     createToast(
+      <Toast icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}>
+        Custom icon.
+      </Toast>,
+    );
+    createToast(
       <Toast icon={<Toast.Icon.Success />}>
-        <Container>
-          <div style={{ fontWeight: 'bold' }}>Limit Buy Order Created</div>
-          <div>You have successfully created a limit order to buy 0.1 BTC</div>
+        <Container style={{}}>
+          <Text size="normal" alignSelf="start" weight="bold">
+            A Title
+          </Text>
+          <Text size="reduced" alignSelf="start">
+            {CONTENT}
+          </Text>
         </Container>
       </Toast>,
     );
+    createToast(<Toast icon={<Toast.Icon.Success />}>Without close button.</Toast>, {
+      showCloseButton: false,
+    });
+    createToast(<Toast icon={<Toast.Icon.Success />}><Code>size="reduced"</Code></Toast>, {
+      size: 'reduced',
+    });
   }, []);
 
   return <Toaster autoClose={false} position="top-right" />;
@@ -125,16 +143,6 @@ export const WithCallback = () => (
     </Button>
   </>
 );
-
-export const WithoutCloseButton = () => {
-  useEffect(() => {
-    createToast(<Toast icon={<Toast.Icon.Success />}>{CONTENT}</Toast>, {
-      showCloseButton: false,
-    });
-  }, []);
-
-  return <Toaster autoClose={false} position="top-right" />;
-};
 
 const StyledToaster = styled(Toaster)`
   transform: translateY(calc(4em + 12px));
