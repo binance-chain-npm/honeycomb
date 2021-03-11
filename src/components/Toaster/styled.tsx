@@ -18,42 +18,38 @@ export const StyledToastContainer = styled(ToastContainer)`
   &.Toastify__toast-container {
     display: flex;
     flex-direction: column;
-    margin-left: ${({ theme }) => em(theme.honeycomb.size.small)};
-    margin-right: ${({ theme }) => em(theme.honeycomb.size.small)};
     margin-bottom: -${({ theme }) => em(theme.honeycomb.size.small)};
-    padding: 0;
-    width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.increased)});
+    padding: ${({ theme }) => em(theme.honeycomb.size.small)};
+    width: 100%;
 
     @media (${mdScreen}) {
       width: auto;
-      margin: 0;
-      margin-bottom: -${({ theme }) => em(theme.honeycomb.size.small)};
     }
   }
   &.Toastify__toast-container--top-left {
-    top: ${({ theme }) => em(theme.honeycomb.size.small)};
-    left: ${({ theme }) => em(theme.honeycomb.size.small)};
+    top: 0;
+    left: 0;
     align-items: start;
   }
   &.Toastify__toast-container--top-center {
-    top: ${({ theme }) => em(theme.honeycomb.size.small)};
+    top: 0;
   }
   &.Toastify__toast-container--top-right {
-    top: ${({ theme }) => em(theme.honeycomb.size.small)};
-    right: ${({ theme }) => em(theme.honeycomb.size.small)};
+    top: 0;
+    right: 0;
     align-items: end;
   }
   &.Toastify__toast-container--bottom-left {
-    bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
-    left: ${({ theme }) => em(theme.honeycomb.size.small)};
+    bottom: 0;
+    left: 0;
     align-items: start;
   }
   &.Toastify__toast-container--bottom-center {
-    bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
+    bottom: 0;
   }
   &.Toastify__toast-container--bottom-right {
-    bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
-    right: ${({ theme }) => em(theme.honeycomb.size.small)};
+    bottom: 0;
+    right: 0;
     align-items: end;
   }
   .Toastify__toast {

@@ -119,9 +119,22 @@ export const Variants = () => {
     createToast(<Toast icon={<Toast.Icon.Success />}>Without close button.</Toast>, {
       showCloseButton: false,
     });
-    createToast(<Toast icon={<Toast.Icon.Success />}><Code>size="reduced"</Code></Toast>, {
-      size: 'reduced',
-    });
+    createToast(
+      <Toast icon={<Toast.Icon.Success />}>
+        <Code>size="reduced"</Code>
+      </Toast>,
+      {
+        size: 'reduced',
+      },
+    );
+    createToast(
+      <Toast icon={<Toast.Icon.Success />}>
+        <Code>position="bottom-left"</Code>
+      </Toast>,
+      {
+        position: 'bottom-left',
+      },
+    );
   }, []);
 
   return <Toaster autoClose={false} position="top-right" />;
