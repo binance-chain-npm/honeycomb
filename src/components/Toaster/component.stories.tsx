@@ -92,10 +92,15 @@ export const Variants = () => {
   const Container = styled.div`
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     > *:not(:last-child) {
       margin-bottom: ${({ theme }) => em(theme.honeycomb.size.tiny)};
     }
+  `;
+
+  const Hr = styled.hr`
+    opacity: 0.1;
   `;
 
   useEffect(() => {
@@ -106,13 +111,13 @@ export const Variants = () => {
     );
     createToast(
       <Toast icon={<Toast.Icon.Success />}>
-        <Container style={{}}>
+        <Container>
           <Text size="normal" alignSelf="start" weight="bold">
             A Title
           </Text>
-          <Text size="reduced" alignSelf="start">
-            {CONTENT}
-          </Text>
+          <div><Hr /></div>
+          <div><Hr /></div>
+          <div><Hr /></div>
         </Container>
       </Toast>,
     );
