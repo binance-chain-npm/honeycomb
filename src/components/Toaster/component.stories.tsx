@@ -133,6 +133,22 @@ export const WithCallback = () => (
   </>
 );
 
+export const WithoutCloseButton = () => (
+  <>
+    <Toaster />
+    <Button
+      variant="primary"
+      onClick={() =>
+        createToast(<Toast icon={<Toast.Icon.Success />}>{CONTENT}</Toast>, {
+          showCloseButton: undefined,
+        })
+      }
+    >
+      Toast
+    </Button>
+  </>
+);
+
 const StyledToaster = styled(Toaster)`
   transform: translateY(calc(4em + 12px));
 `;

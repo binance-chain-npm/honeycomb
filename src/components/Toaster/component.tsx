@@ -14,10 +14,12 @@ export type Props = Pick<
 > &
   Testable & {
     autoClose?: boolean | number;
+    showCloseButton?: boolean;
   };
 
 export const Component = ({
   autoClose = true,
+  showCloseButton = true,
   position = 'bottom-center',
   'data-testid': testId,
   ...otherProps
@@ -49,7 +51,7 @@ export const Component = ({
       <ToastContainer
         {...otherProps}
         autoClose={autoClose === true ? AUTO_CLOSE_DEFAULT_DURATION : autoClose}
-        closeButton={close}
+        closeButton={showCloseButton ? close : false}
         hideProgressBar
         newestOnTop={position === 'bottom-center'}
         position={position}
