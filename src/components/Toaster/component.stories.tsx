@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
 import { action } from '@storybook/addon-actions';
@@ -86,35 +86,28 @@ export const Default = () => (
   </>
 );
 
-export const WithCustomIcon = () => (
-  <>
-    <Toaster position="top-right" />
-    <Button variant="primary" onClick={makeToast}>
-      Toast
-    </Button>
-  </>
-);
+export const WithCustomIcon = () => {
+  useEffect(() => {
+    makeToast();
+  }, []);
 
-export const WithComplexItems = () => (
-  <>
-    <Toaster position="top-right" />
-    <Button
-      variant="primary"
-      onClick={() =>
-        createToast(
-          <Toast icon={<Toast.Icon.Success />}>
-            <Container>
-              <div style={{ fontWeight: 'bold' }}>Limit Buy Order Created</div>
-              <div>You have successfully created a limit order to buy 0.1 BTC</div>
-            </Container>
-          </Toast>,
-        )
-      }
-    >
-      Toast
-    </Button>
-  </>
-);
+  return <Toaster autoClose={false} position="top-right" />;
+};
+
+export const WithComplexItems = () => {
+  useEffect(() => {
+    createToast(
+      <Toast icon={<Toast.Icon.Success />}>
+        <Container>
+          <div style={{ fontWeight: 'bold' }}>Limit Buy Order Created</div>
+          <div>You have successfully created a limit order to buy 0.1 BTC</div>
+        </Container>
+      </Toast>,
+    );
+  }, []);
+
+  return <Toaster autoClose={false} position="top-right" />;
+};
 
 export const WithCallback = () => (
   <>
@@ -133,21 +126,15 @@ export const WithCallback = () => (
   </>
 );
 
-export const WithoutCloseButton = () => (
-  <>
-    <Toaster />
-    <Button
-      variant="primary"
-      onClick={() =>
-        createToast(<Toast icon={<Toast.Icon.Success />}>{CONTENT}</Toast>, {
-          showCloseButton: undefined,
-        })
-      }
-    >
-      Toast
-    </Button>
-  </>
-);
+export const WithoutCloseButton = () => {
+  useEffect(() => {
+    createToast(<Toast icon={<Toast.Icon.Success />}>{CONTENT}</Toast>, {
+      showCloseButton: false,
+    });
+  }, []);
+
+  return <Toaster autoClose={false} position="top-right" />;
+};
 
 const StyledToaster = styled(Toaster)`
   transform: translateY(calc(4em + 12px));
