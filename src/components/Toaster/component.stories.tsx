@@ -115,17 +115,23 @@ export const Variants = () => {
           <Text size="normal" alignSelf="start" weight="bold">
             A Title
           </Text>
-          <div><Hr /></div>
-          <div><Hr /></div>
-          <div><Hr /></div>
+          <div>
+            <Hr />
+          </div>
+          <div>
+            <Hr />
+          </div>
+          <div>
+            <Hr />
+          </div>
         </Container>
       </Toast>,
     );
-    createToast(<Toast icon={<Toast.Icon.Success />}>Without close button.</Toast>, {
+    createToast(<Toast icon={<Toast.Icon.Warning />}>Without close button.</Toast>, {
       showCloseButton: false,
     });
     createToast(
-      <Toast icon={<Toast.Icon.Success />}>
+      <Toast icon={<Toast.Icon.Danger />}>
         <Code>size="reduced"</Code>
       </Toast>,
       {
@@ -133,7 +139,7 @@ export const Variants = () => {
       },
     );
     createToast(
-      <Toast icon={<Toast.Icon.Success />}>
+      <Toast icon={<Icon.Binance color={GoldLight.honeycomb.color.primary.normal} />}>
         <Code>position="bottom-left"</Code>
       </Toast>,
       {
@@ -191,7 +197,7 @@ export const WithTheme = () => {
     <HoneycombThemeProvider variant={selected}>
       <Toaster position="top-right" />
       <Card>
-        <Dropdown target={<Dropdown.DefaultTarget>With {selected} theme</Dropdown.DefaultTarget>}>
+        <Dropdown target={<Dropdown.DefaultTarget>{selected}</Dropdown.DefaultTarget>}>
           {['accent', 'dark', 'light'].map((it) => (
             <Dropdown.Item
               key={it}
@@ -224,20 +230,22 @@ export const DismissToast = () => {
               <Toast icon={<Toast.Icon.Success />}>
                 This toast has a custom ID that we can use to dismiss it.
               </Toast>,
-                {
-                  toastId: 'toast',
-                }
+              {
+                toastId: 'toast',
+              },
             );
-            setToastId(createToast(
-              <Toast icon={<Toast.Icon.Success />}>
-                <Code>createToast</Code> returns a generated ID that we can also use.
-              </Toast>,
-            ));
+            setToastId(
+              createToast(
+                <Toast icon={<Toast.Icon.Success />}>
+                  <Code>createToast</Code> returns a generated ID that we can also use.
+                </Toast>,
+              ),
+            );
           }}
           disabled={!!toastId}
         >
           Create
-      </Button>
+        </Button>
         <Button
           variant="secondary"
           onClick={() => {
@@ -248,7 +256,7 @@ export const DismissToast = () => {
           disabled={!toastId}
         >
           Dismiss
-      </Button>
+        </Button>
       </Container>
     </>
   );
