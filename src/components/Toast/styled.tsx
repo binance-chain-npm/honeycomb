@@ -27,6 +27,5 @@ export const Right = styled.div`
   flex-grow: 1;
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  margin: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
-  margin-right: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
+  padding: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.reduced)};
 `;

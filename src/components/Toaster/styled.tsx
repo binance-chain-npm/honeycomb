@@ -72,6 +72,6 @@ export const StyledToastContainer = styled(ToastContainer)`
 `;
 
 export const StyledButton = styled(Button)`
-  margin-top: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.small)};
-  margin-right: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.small)};
+  margin: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.small)};
+  margin-left: 0;
 `;
