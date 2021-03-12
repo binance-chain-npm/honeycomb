@@ -52,7 +52,7 @@ export { Table } from './components/Table';
 export { Text } from './components/Text';
 export { TextArea } from './components/TextArea';
 export { TextInput } from './components/TextInput';
-export { createToast, Toast } from './components/Toast';
+export { createToast, dismissToast, Toast } from './components/Toast';
 export { Toaster } from './components/Toaster';
 export { Tooltip } from './components/Tooltip';
 export { Wallets, useWalletProviders } from './components/Wallets';

@@ -14,7 +14,7 @@ import { Header } from '../Header';
 import { Icon } from '../Icon';
 import { Code } from '../internal/Docs';
 import { Text } from '../Text';
-import { createToast, Toast } from '../Toast';
+import { createToast, dismissToast, Toast } from '../Toast';
 
 import { Toaster } from './';
 
@@ -207,5 +207,49 @@ export const WithTheme = () => {
         </Dropdown>
       </Card>
     </HoneycombThemeProvider>
+  );
+};
+
+export const DismissToast = () => {
+  const [toastId, setToastId] = useState<React.ReactText>();
+
+  return (
+    <>
+      <Toaster autoClose={false} position="top-right" />
+      <Container>
+        <Button
+          variant="primary"
+          onClick={() => {
+            createToast(
+              <Toast icon={<Toast.Icon.Success />}>
+                This toast has a custom ID that we can use to dismiss it.
+              </Toast>,
+                {
+                  toastId: 'toast',
+                }
+            );
+            setToastId(createToast(
+              <Toast icon={<Toast.Icon.Success />}>
+                <Code>createToast</Code> returns a generated ID that we can also use.
+              </Toast>,
+            ));
+          }}
+          disabled={!!toastId}
+        >
+          Create
+      </Button>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            dismissToast({ toastId: 'toast' });
+            dismissToast({ toastId: toastId as React.ReactText });
+            setToastId(undefined);
+          }}
+          disabled={!toastId}
+        >
+          Dismiss
+      </Button>
+      </Container>
+    </>
   );
 };

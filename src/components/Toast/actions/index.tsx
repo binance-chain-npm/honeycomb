@@ -26,7 +26,7 @@ export const createToast = (content: React.ReactNode, options: Options = {}) => 
     onClose,
   } = options;
 
-  toast(
+  return toast(
     <Styled hasCloseButton={showCloseButton as boolean} size={size as Size}>
       {content}
     </Styled>,
@@ -40,4 +40,8 @@ export const createToast = (content: React.ReactNode, options: Options = {}) => 
       onClose,
     },
   );
+};
+
+export const dismissToast = ({ toastId }: { toastId: NonNullable<ToastOptions['toastId']> }) => {
+  toast.dismiss(toastId);
 };
