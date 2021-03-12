@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
 import { action } from '@storybook/addon-actions';
@@ -12,9 +12,11 @@ import { Card } from '../Card';
 import { Dropdown } from '../Dropdown';
 import { Header } from '../Header';
 import { Icon } from '../Icon';
-import { Toast } from '../Toast';
+import { Code } from '../internal/Docs';
+import { Text } from '../Text';
+import { createToast, dismissToast, Toast } from '../Toast';
 
-import { Toaster, createToast } from './';
+import { Toaster } from './';
 
 export default {
   component: Toaster,
@@ -86,35 +88,68 @@ export const Default = () => (
   </>
 );
 
-export const WithCustomIcon = () => (
-  <>
-    <Toaster position="top-right" />
-    <Button variant="primary" onClick={makeToast}>
-      Toast
-    </Button>
-  </>
-);
+export const Variants = () => {
+  const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
-export const WithComplexItems = () => (
-  <>
-    <Toaster position="top-right" />
-    <Button
-      variant="primary"
-      onClick={() =>
-        createToast(
-          <Toast icon={<Toast.Icon.Success />}>
-            <Container>
-              <div style={{ fontWeight: 'bold' }}>Limit Buy Order Created</div>
-              <div>You have successfully created a limit order to buy 0.1 BTC</div>
-            </Container>
-          </Toast>,
-        )
-      }
-    >
-      Toast
-    </Button>
-  </>
-);
+    > *:not(:last-child) {
+      margin-bottom: ${({ theme }) => em(theme.honeycomb.size.tiny)};
+    }
+  `;
+
+  const Hr = styled.hr`
+    opacity: 0.1;
+  `;
+
+  useEffect(() => {
+    createToast(
+      <Toast icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}>
+        Custom icon.
+      </Toast>,
+    );
+    createToast(
+      <Toast icon={<Toast.Icon.Success />}>
+        <Container>
+          <Text size="normal" alignSelf="start" weight="bold">
+            A Title
+          </Text>
+          <div>
+            <Hr />
+          </div>
+          <div>
+            <Hr />
+          </div>
+          <div>
+            <Hr />
+          </div>
+        </Container>
+      </Toast>,
+    );
+    createToast(<Toast icon={<Toast.Icon.Warning />}>Without close button.</Toast>, {
+      showCloseButton: false,
+    });
+    createToast(
+      <Toast icon={<Toast.Icon.Danger />}>
+        <Code>size="reduced"</Code>
+      </Toast>,
+      {
+        size: 'reduced',
+      },
+    );
+    createToast(
+      <Toast icon={<Icon.Binance color={GoldLight.honeycomb.color.primary.normal} />}>
+        <Code>position="bottom-left"</Code>
+      </Toast>,
+      {
+        position: 'bottom-left',
+      },
+    );
+  }, []);
+
+  return <Toaster autoClose={false} position="top-right" />;
+};
 
 export const WithCallback = () => (
   <>
@@ -162,7 +197,7 @@ export const WithTheme = () => {
     <HoneycombThemeProvider variant={selected}>
       <Toaster position="top-right" />
       <Card>
-        <Dropdown target={<Dropdown.DefaultTarget>With {selected} theme</Dropdown.DefaultTarget>}>
+        <Dropdown target={<Dropdown.DefaultTarget>{selected}</Dropdown.DefaultTarget>}>
           {['accent', 'dark', 'light'].map((it) => (
             <Dropdown.Item
               key={it}
@@ -178,5 +213,51 @@ export const WithTheme = () => {
         </Dropdown>
       </Card>
     </HoneycombThemeProvider>
+  );
+};
+
+export const DismissToast = () => {
+  const [toastId, setToastId] = useState<React.ReactText>();
+
+  return (
+    <>
+      <Toaster autoClose={false} position="top-right" />
+      <Container>
+        <Button
+          variant="primary"
+          onClick={() => {
+            createToast(
+              <Toast icon={<Toast.Icon.Success />}>
+                This toast has a custom ID that we can use to dismiss it.
+              </Toast>,
+              {
+                toastId: 'toast',
+              },
+            );
+            setToastId(
+              createToast(
+                <Toast icon={<Toast.Icon.Success />}>
+                  <Code>createToast</Code> returns a generated ID that we can also use.
+                </Toast>,
+              ),
+            );
+          }}
+          disabled={!!toastId}
+        >
+          Create
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            dismissToast({ toastId: 'toast' });
+            dismissToast({ toastId: toastId as React.ReactText });
+            setToastId(undefined);
+          }}
+          disabled={!toastId}
+        >
+          Dismiss
+        </Button>
+      </Container>
+    </>
   );
 };

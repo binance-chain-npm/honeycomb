@@ -24,3 +24,6 @@ export const Component = ({ children, icon, 'data-testid': testId }: Props) => {
 };
 
 Component.displayName = 'Toast';
+
+Component.Left = Left;
+Component.Right = Right;

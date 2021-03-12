@@ -1,58 +1,68 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { em } from 'polished';
+import { ToastContainer } from 'react-toastify';
 
 import toastify from '../../../node_modules/react-toastify/dist/ReactToastify.min.css';
 import { Button } from '../Button';
 import { SIZES } from '../internal/useWindowSize';
 
-const TOAST_WIDTH = 278;
 const TOAST_HEIGHT = 56;
 
 export const mdScreen = `min-width: ${em(SIZES.md)}`;
 
 export const Styles = createGlobalStyle`
   ${toastify};
+`;
 
-  .Toastify__toast-container {
-    margin-left: ${({ theme }) => em(theme.honeycomb.size.small)};
-    margin-right: ${({ theme }) => em(theme.honeycomb.size.small)};
+export const StyledToastContainer = styled(ToastContainer)`
+  &.Toastify__toast-container {
+    display: flex;
+    flex-direction: column;
     margin-bottom: -${({ theme }) => em(theme.honeycomb.size.small)};
-    width: calc(100vw - ${({ theme }) => em(theme.honeycomb.size.increased)});
+    padding: ${({ theme }) => em(theme.honeycomb.size.small)};
+    width: 100%;
 
     @media (${mdScreen}) {
-      max-width: ${em(TOAST_WIDTH)};
-      margin: 0;
-      margin-bottom: -${({ theme }) => em(theme.honeycomb.size.small)};
+      width: auto;
     }
   }
-  .Toastify__toast-container--top-left {
-    top: ${({ theme }) => em(theme.honeycomb.size.small)};
-    left: ${({ theme }) => em(theme.honeycomb.size.small)};
+  &.Toastify__toast-container--top-left {
+    top: 0;
+    left: 0;
+    align-items: start;
   }
-  .Toastify__toast-container--top-center {
-    top: ${({ theme }) => em(theme.honeycomb.size.small)};
+  &.Toastify__toast-container--top-center {
+    top: 0;
   }
-  .Toastify__toast-container--top-right {
-    top: ${({ theme }) => em(theme.honeycomb.size.small)};
-    right: ${({ theme }) => em(theme.honeycomb.size.small)};
+  &.Toastify__toast-container--top-right {
+    top: 0;
+    right: 0;
+    align-items: end;
   }
-  .Toastify__toast-container--bottom-left {
-    bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
-    left: ${({ theme }) => em(theme.honeycomb.size.small)};
+  &.Toastify__toast-container--bottom-left {
+    bottom: 0;
+    left: 0;
+    align-items: start;
   }
-  .Toastify__toast-container--bottom-center {
-    bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
+  &.Toastify__toast-container--bottom-center {
+    bottom: 0;
   }
-  .Toastify__toast-container--bottom-right {
-    bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
-    right: ${({ theme }) => em(theme.honeycomb.size.small)};
+  &.Toastify__toast-container--bottom-right {
+    bottom: 0;
+    right: 0;
+    align-items: end;
   }
   .Toastify__toast {
-    min-height: ${em(TOAST_HEIGHT)};
     box-shadow: ${({ theme }) => theme.honeycomb.shadow.box.normal};
     margin-bottom: ${({ theme }) => em(theme.honeycomb.size.small)};
     padding: 0;
     background-color: ${({ theme }) => theme.honeycomb.color.bg.normal};
+    width: 100%;
+    min-height: ${em(TOAST_HEIGHT)};
+
+    @media (${mdScreen}) {
+      width: min-content;
+    }
   }
   .Toastify__toast-body {
     display: flex;
@@ -62,6 +72,6 @@ export const Styles = createGlobalStyle`
 `;
 
 export const StyledButton = styled(Button)`
-  margin-top: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.small)};
-  margin-right: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.small)};
+  margin: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.small)};
+  margin-left: 0;
 `;

@@ -4,7 +4,7 @@ import { Slide, ToastContainer } from 'react-toastify';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Icon } from '../Icon';
 
-import { StyledButton, Styles } from './styled';
+import { StyledToastContainer, StyledButton, Styles } from './styled';
 
 export const AUTO_CLOSE_DEFAULT_DURATION = 3000;
 
@@ -46,7 +46,7 @@ export const Component = ({
   return (
     <>
       <Styles />
-      <ToastContainer
+      <StyledToastContainer
         {...otherProps}
         autoClose={autoClose === true ? AUTO_CLOSE_DEFAULT_DURATION : autoClose}
         closeButton={close}
