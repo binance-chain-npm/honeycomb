@@ -41,7 +41,7 @@ export const GoldDark = {
 
       readable,
 
-      border: '#474d57',
+      border: '#2e323a',
 
       primary: {
         normal: '#f0b90b',
