@@ -159,7 +159,6 @@ export const Sortable = () => {
         pageCount={Math.ceil(data.length / pageSize)}
         pageIndex={pageIndex}
         onPageIndexChange={({ pageIndex }) => setPageIndex(pageIndex)}
-        data-testid="table"
       />
     </Card>
   );
