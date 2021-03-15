@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { Story } from '@storybook/react/types-6-0';
 
@@ -92,16 +92,14 @@ ControlledWithPagination.decorators = decorators;
 
 export const Sortable = () => {
   const [pageIndex, setPageIndex] = useState(0);
-  const pageSize = 10;
-
-  const decimals = [1, 2, 10, 20, 50, 5, 9, 0, 0.8, 1.0];
+  const pageSize = 5;
 
   const data = new Array(10).fill(null).map(
     (_, index) =>
       ({
-        col1: <Header>{10 ** index}</Header>,
-        col2: <Header>{decimals[index]}</Header>,
-        col3: <Header>{String.fromCharCode(index + 65).toUpperCase()}</Header>,
+        col1: 10 ** index,
+        col2: 10 - index,
+        col3: String.fromCharCode(index + 65).toUpperCase(),
         col4: (
           <Header>
             <AbstractAvatar value={`${index}`} />
@@ -110,24 +108,40 @@ export const Sortable = () => {
       } as const),
   );
 
+  const sortCustom = useCallback((a: any, b: any) => {
+    return a > b ? 1 : -1;
+  }, []);
+
+  const renderCustom = useCallback(
+    ({ value }: { value: any }) => (
+      <Header>
+        <AbstractAvatar value={value} />
+        <Space size="small" />
+        {value}
+      </Header>
+    ),
+    [],
+  );
+
   const columns = [
     {
-      Header: 'Integers',
+      Header: 'Primitive Sorting',
       accessor: 'col1',
       defaultCanSort: true,
       sortType: 'basic',
     } as const,
     {
-      Header: 'Decimals',
+      Header: 'Custom Sorting',
       accessor: 'col2',
       defaultCanSort: true,
-      sortType: 'basic',
+      sortMethod: sortCustom,
     } as const,
     {
-      Header: 'Strings',
+      Header: 'Custom Node Sorting',
       accessor: 'col3',
       defaultCanSort: true,
-      sortType: 'basic',
+      sortType: 'alphanumeric',
+      Cell: renderCustom,
     } as const,
     {
       Header: 'Unsortable',
