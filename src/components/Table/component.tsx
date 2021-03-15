@@ -1,8 +1,8 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
-import { useTable, TableOptions, usePagination } from 'react-table';
+import { useTable, TableOptions, usePagination, useSortBy } from 'react-table';
 
-import { Button } from '../Button';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
+import { Button } from '../Button';
 
 import {
   Container,
@@ -13,6 +13,9 @@ import {
   Th,
   TbodyTr,
   Td,
+  Sort,
+  SortAscending,
+  SortDescending,
   Pagination,
   PaginationWrapper,
   PaginationEllipsis,
@@ -77,7 +80,9 @@ export const Component = <Data extends object>({
           [state],
         );
       },
+      autoResetSortBy: false,
     },
+    useSortBy,
     usePagination,
   );
 
@@ -116,8 +121,19 @@ export const Component = <Data extends object>({
               {headerGroups.map((headerGroup) => (
                 <TheadTr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => (
-                    <Th {...column.getHeaderProps()} data-testid={buildTestId(`${column.id}.th`)}>
+                    <Th
+                      {...column.getHeaderProps(
+                        column.defaultCanSort ? column.getSortByToggleProps() : undefined,
+                      )}
+                      data-testid={buildTestId(`${column.id}.th`)}
+                    >
                       {column.render('Header')}
+                      {column.defaultCanSort && (
+                        <Sort>
+                          <SortAscending selected={column.isSorted && !column.isSortedDesc} />
+                          <SortDescending selected={column.isSorted && !!column.isSortedDesc} />
+                        </Sort>
+                      )}
                     </Th>
                   ))}
                 </TheadTr>

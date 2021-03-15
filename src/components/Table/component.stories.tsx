@@ -89,3 +89,64 @@ export const ControlledWithPagination: Story = () => {
   );
 };
 ControlledWithPagination.decorators = decorators;
+
+export const Sortable = () => {
+  const [pageIndex, setPageIndex] = useState(0);
+  const pageSize = 10;
+
+  const decimals = [1, 2, 10, 20, 50, 5, 9, 0, 0.8, 1.0];
+
+  const data = new Array(10).fill(null).map(
+    (_, index) =>
+      ({
+        col1: <Header>{10 ** index}</Header>,
+        col2: <Header>{decimals[index]}</Header>,
+        col3: <Header>{String.fromCharCode(index + 65).toUpperCase()}</Header>,
+        col4: (
+          <Header>
+            <AbstractAvatar value={`${index}`} />
+          </Header>
+        ),
+      } as const),
+  );
+
+  const columns = [
+    {
+      Header: 'Integers',
+      accessor: 'col1',
+      defaultCanSort: true,
+      sortType: 'basic',
+    } as const,
+    {
+      Header: 'Decimals',
+      accessor: 'col2',
+      defaultCanSort: true,
+      sortType: 'basic',
+    } as const,
+    {
+      Header: 'Strings',
+      accessor: 'col3',
+      defaultCanSort: true,
+      sortType: 'basic',
+    } as const,
+    {
+      Header: 'Unsortable',
+      accessor: 'col4',
+    } as const,
+  ];
+
+  return (
+    <Card padding="none" shadow="increased">
+      <Table
+        data={data.slice(pageSize * pageIndex, pageSize * pageIndex + pageSize)}
+        columns={columns}
+        hasPagination
+        pageSize={pageSize}
+        pageCount={Math.ceil(data.length / pageSize)}
+        pageIndex={pageIndex}
+        onPageIndexChange={({ pageIndex }) => setPageIndex(pageIndex)}
+        data-testid="table"
+      />
+    </Card>
+  );
+};
