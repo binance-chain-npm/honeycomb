@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
 import { Button } from '../Button';
 import { hoverEffect } from '../HoverEffect';
+import { Icon } from '../Icon';
 
 const ROW_HEIGHT = 56;
 
@@ -59,9 +60,36 @@ export const TbodyTr = styled.tr<{ interactive: boolean }>`
   ${({ interactive }) => interactive && hoverEffect};
 `;
 
+interface SortProps {
+  selected: boolean;
+}
+
+const sortArrowStyles = css<SortProps>`
+  ${({ selected }) =>
+    selected &&
+    css`
+      color: ${({ theme }) => theme.honeycomb.color.primary.normal};
+    `};
+`;
+
+export const SortAscending = styled(Icon.TriangleUp)<SortProps>`
+  ${sortArrowStyles};
+`;
+
+export const SortDescending = styled(Icon.TriangleDown)<SortProps>`
+  ${sortArrowStyles};
+  margin-top: -${({ theme }) => em(6, theme.honeycomb.size.small)};
+`;
+
+export const Sort = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.small)};
+`;
+
 export const Pagination = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   border-top: 1px solid ${({ theme }) => theme.honeycomb.color.border};
