@@ -52,4 +52,82 @@ describe('Table', () => {
     cy.get('[data-testid="table.pagination.go-to-1-btn"]').should('exist');
     cy.get('[data-testid="table.row9.col1.td"]').should('contain.text', '10');
   });
+
+  it('sorting works correctly', () => {
+    cy.visitStory({ storyId: 'elements-table--sortable', themeId: 'GoldLight' });
+    cy.clock();
+
+    for (let i = 10; i > 0; i--) {
+      cy.get(`[data-testid="table.row${10 - i}.col2.td"]`).should('have.text', i);
+    }
+    cy.get('[data-testid="table.col2.th"]').click();
+    cy.tick(10000);
+    for (let i = 0; i < 10; i++) {
+      cy.get(`[data-testid="table.row${i}.col2.td"]`).should('have.text', 10 - i);
+    }
+  });
+
+  it('manual sorting works correctly', () => {
+    cy.visitStory({ storyId: 'elements-table--sortable-with-pagination', themeId: 'GoldLight' });
+    cy.clock();
+
+    cy.get('[data-testid="table.name.th.sort-asc-btn"]').should(
+      'have.attr',
+      'data-testisselected',
+      'false',
+    );
+    cy.get('[data-testid="table.name.th.sort-desc-btn"]').should(
+      'have.attr',
+      'data-testisselected',
+      'false',
+    );
+
+    cy.get('[data-testid="table.name.th"]').click();
+    cy.tick(10000);
+
+    cy.get('[data-testid="table.name.th.sort-asc-btn"]').should(
+      'have.attr',
+      'data-testisselected',
+      'true',
+    );
+    cy.get('[data-testid="table.name.th.sort-desc-btn"]').should(
+      'have.attr',
+      'data-testisselected',
+      'false',
+    );
+
+    let lastElementOnFirstPage = '';
+    cy.get(`[data-testid="table.row4.name.td"]`).invoke('text').then((it) => lastElementOnFirstPage = it);
+
+    for (let i = 0; i < 4; i++) {
+      cy.get(`[data-testid="table.row${i}.name.td"]`).invoke('text').then((a) => {
+        cy.get(`[data-testid="table.row${i + 1}.name.td"]`).invoke('text').then((b) => {
+          expect(a < b).to.be.true;
+        })
+      });
+    }
+
+    cy.get('[data-testid="table.pagination.go-to-1-btn"]').click();
+    cy.tick(10000);
+
+    cy.get('[data-testid="table.name.th.sort-asc-btn"]').should(
+      'have.attr',
+      'data-testisselected',
+      'true',
+    );
+    cy.get('[data-testid="table.name.th.sort-desc-btn"]').should(
+      'have.attr',
+      'data-testisselected',
+      'false',
+    );
+
+    for (let i = 0; i < 4; i++) {
+      cy.get(`[data-testid="table.row${i}.name.td"]`).invoke('text').then((a) => {
+        expect(lastElementOnFirstPage < a).to.be.true;
+        cy.get(`[data-testid="table.row${i + 1}.name.td"]`).invoke('text').then((b) => {
+          expect(a < b).to.be.true;
+        })
+      });
+    }
+  });
 });

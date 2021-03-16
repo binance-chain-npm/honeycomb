@@ -152,7 +152,7 @@ export const Sortable = () => {
 
   return (
     <Card padding="none" shadow="increased">
-      <Table data={data} columns={columns} />
+      <Table data={data} columns={columns} data-testid="table" />
     </Card>
   );
 };
@@ -278,6 +278,7 @@ export const SortableWithPagination = () => {
         onPageIndexChange={({ pageIndex }) => setPageIndex(pageIndex)}
         manualSortBy
         onSort={sortBy}
+        data-testid="table"
       />
     </Card>
   );
