@@ -1,5 +1,12 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
-import { useTable, TableOptions, usePagination, useSortBy } from 'react-table';
+import {
+  useTable,
+  TableOptions,
+  usePagination,
+  useSortBy,
+  HeaderGroup,
+  SortingRule,
+} from 'react-table';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Button } from '../Button';
@@ -32,7 +39,9 @@ export type Props<Data extends object> = Testable & {
   hasHeader?: boolean;
   interactive?: boolean;
   className?: string;
+  manualSortBy?: TableOptions<Data>['manualSortBy'];
   onPageIndexChange?: (params: { pageIndex: number }) => void;
+  onSort?: (params: { sortBy: SortingRule<Data>[] }) => void;
 };
 
 export const Component = <Data extends object>({
@@ -44,7 +53,9 @@ export const Component = <Data extends object>({
   hasHeader = true,
   interactive = false,
   className,
+  manualSortBy,
   onPageIndexChange,
+  onSort,
   'data-testid': testId,
   ...otherProps
 }: Props<Data>) => {
@@ -64,6 +75,7 @@ export const Component = <Data extends object>({
     rows,
     pageOptions,
     pageCount,
+    state: { sortBy },
   } = useTable(
     {
       columns,
@@ -80,7 +92,7 @@ export const Component = <Data extends object>({
           [state],
         );
       },
-      autoResetSortBy: false,
+      manualSortBy,
     },
     useSortBy,
     usePagination,
@@ -107,6 +119,38 @@ export const Component = <Data extends object>({
   );
 
   useEffect(() => {
+    onSort?.({ sortBy });
+  }, [onSort, sortBy]);
+
+  const getHeader = useCallback(
+    (column: HeaderGroup<Data>) => {
+      if (!column.defaultCanSort) {
+        return (
+          <Th {...column.getHeaderProps()} data-testid={buildTestId(`${column.id}.th`)}>
+            {column.render('Header')}
+          </Th>
+        );
+      }
+
+      return (
+        <Th
+          {...column.getHeaderProps(column.getSortByToggleProps())}
+          data-testid={buildTestId(`${column.id}.th`)}
+        >
+          {column.render('Header')}
+          {column.defaultCanSort && (
+            <Sort>
+              <SortAscending selected={column.isSorted && !column.isSortedDesc} />
+              <SortDescending selected={column.isSorted && !!column.isSortedDesc} />
+            </Sort>
+          )}
+        </Th>
+      );
+    },
+    [buildTestId],
+  );
+
+  useEffect(() => {
     if (isControlled && pageIndex !== 0 && pageIndex >= pageCount) {
       navigate(0);
     }
@@ -120,22 +164,7 @@ export const Component = <Data extends object>({
             <Thead>
               {headerGroups.map((headerGroup) => (
                 <TheadTr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => (
-                    <Th
-                      {...column.getHeaderProps(
-                        column.defaultCanSort ? column.getSortByToggleProps() : undefined,
-                      )}
-                      data-testid={buildTestId(`${column.id}.th`)}
-                    >
-                      {column.render('Header')}
-                      {column.defaultCanSort && (
-                        <Sort>
-                          <SortAscending selected={column.isSorted && !column.isSortedDesc} />
-                          <SortDescending selected={column.isSorted && !!column.isSortedDesc} />
-                        </Sort>
-                      )}
-                    </Th>
-                  ))}
+                  {headerGroup.headers.map(getHeader)}
                 </TheadTr>
               ))}
             </Thead>
