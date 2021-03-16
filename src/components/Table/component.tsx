@@ -138,20 +138,18 @@ export const Component = <Data extends object>({
           data-testid={buildTestId(`${column.id}.th`)}
         >
           {column.render('Header')}
-          {column.defaultCanSort && (
-            <Sort>
-              <SortAscending
-                selected={column.isSorted && !column.isSortedDesc}
-                data-testisselected={column.isSorted && !column.isSortedDesc}
-                data-testid={buildTestId(`${column.id}.th.sort-asc-btn`)}
-              />
-              <SortDescending
-                selected={column.isSorted && !!column.isSortedDesc}
-                data-testisselected={column.isSorted && !!column.isSortedDesc}
-                data-testid={buildTestId(`${column.id}.th.sort-desc-btn`)}
-              />
-            </Sort>
-          )}
+          <Sort>
+            <SortAscending
+              selected={column.isSorted && !column.isSortedDesc}
+              data-testisselected={column.isSorted && !column.isSortedDesc}
+              data-testid={buildTestId(`${column.id}.th.sort-asc-btn`)}
+            />
+            <SortDescending
+              selected={column.isSorted && !!column.isSortedDesc}
+              data-testisselected={column.isSorted && !!column.isSortedDesc}
+              data-testid={buildTestId(`${column.id}.th.sort-desc-btn`)}
+            />
+          </Sort>
         </Th>
       );
     },
