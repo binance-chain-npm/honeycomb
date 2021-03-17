@@ -29,6 +29,7 @@ export { ReactComponent as Email } from './assets/Email.svg';
 export { ReactComponent as Eye } from './assets/Eye.svg';
 export { ReactComponent as EyeBlocked } from './assets/EyeBlocked.svg';
 export { ReactComponent as Faucet } from './assets/Faucet.svg';
+export { ReactComponent as Filter } from './assets/Filter.svg';
 export { ReactComponent as Globe } from './assets/Globe.svg';
 export { ReactComponent as HamburgerMenu } from './assets/HamburgerMenu.svg';
 export { ReactComponent as Hourglass } from './assets/Hourglass.svg';
