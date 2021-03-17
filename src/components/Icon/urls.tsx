@@ -29,6 +29,7 @@ export { default as Email } from './assets/Email.svg';
 export { default as Eye } from './assets/Eye.svg';
 export { default as EyeBlocked } from './assets/EyeBlocked.svg';
 export { default as Faucet } from './assets/Faucet.svg';
+export { default as Filter } from './assets/Filter.svg';
 export { default as Globe } from './assets/Globe.svg';
 export { default as HamburgerMenu } from './assets/HamburgerMenu.svg';
 export { default as Hourglass } from './assets/Hourglass.svg';
