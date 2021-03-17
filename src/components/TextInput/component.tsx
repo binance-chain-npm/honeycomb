@@ -231,3 +231,6 @@ Component.InputContainer = InputContainer;
 Component.Left = Left;
 Component.Right = Right;
 Component.End = End;
+Component.Description = Description;
+Component.ValidationMessageContainer = ValidationMessageContainer;
+Component.ValidationMessage = ValidationMessageItem;
