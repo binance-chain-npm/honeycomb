@@ -157,6 +157,53 @@ export const Sortable = () => {
   );
 };
 
+export const SortableWithDefaultSorting = () => {
+  const data = useMemo(
+    () =>
+      new Array(10).fill(null).map(
+        (_, index) =>
+          ({
+            col1: index + 1,
+            col2: (
+              <Header>
+                <AbstractAvatar value={`${index}`} />
+              </Header>
+            ),
+          } as const),
+      ),
+    [],
+  );
+
+  const columns = [
+    {
+      Header: 'Column 1',
+      accessor: 'col1',
+      defaultCanSort: true,
+      sortType: 'basic',
+    } as const,
+    {
+      Header: 'Column 2',
+      accessor: 'col2',
+    } as const,
+  ];
+
+  const sortBy = useMemo(
+    () => [
+      {
+        id: 'col1',
+        desc: true,
+      },
+    ],
+    [],
+  );
+
+  return (
+    <Card padding="none" shadow="increased">
+      <Table data={data} columns={columns} sortBy={sortBy} />
+    </Card>
+  );
+};
+
 interface Data {
   name: string;
   apr: number;
