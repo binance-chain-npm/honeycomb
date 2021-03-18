@@ -40,6 +40,7 @@ export type Props<Data extends object> = Testable & {
   interactive?: boolean;
   className?: string;
   manualSortBy?: TableOptions<Data>['manualSortBy'];
+  sortBy?: SortingRule<Data>[];
   onPageIndexChange?: (params: { pageIndex: number }) => void;
   onSort?: (params: { sortBy: SortingRule<Data>[] }) => void;
 };
@@ -66,6 +67,20 @@ export const Component = <Data extends object>({
     otherProps.pageCount,
   ]);
 
+  const initialState = useMemo(() => {
+    const props = {
+      pageIndex,
+      pageSize,
+    };
+
+    return otherProps.sortBy
+      ? {
+          ...props,
+          sortBy: otherProps.sortBy,
+        }
+      : props;
+  }, [pageIndex, pageSize, otherProps.sortBy]);
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -80,7 +95,7 @@ export const Component = <Data extends object>({
     {
       columns,
       data,
-      initialState: { pageIndex, pageSize },
+      initialState,
       manualPagination: isControlled,
       pageCount: otherProps.pageCount,
       useControlledState: (state) => {
