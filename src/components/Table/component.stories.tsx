@@ -145,10 +145,12 @@ export const Sortable = () => {
 
   const columns = [
     {
-      Header: <>
-        <Title>Primitive Sorting</Title>
-        <Info />
-      </>,
+      Header: (
+        <>
+          <Title>Primitive Sorting</Title>
+          <Info />
+        </>
+      ),
       accessor: 'col1',
       defaultCanSort: true,
       sortType: 'basic',
