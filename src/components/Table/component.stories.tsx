@@ -1,11 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
+import { em } from 'polished';
 import { Story } from '@storybook/react/types-6-0';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
-import { Card } from '../Card';
 import { AbstractAvatar } from '../AbstractAvatar';
+import { Card } from '../Card';
+import { Icon } from '../Icon';
 import { Space } from '../Space';
 
 import { Table } from './';
@@ -90,6 +92,23 @@ export const ControlledWithPagination: Story = () => {
 };
 ControlledWithPagination.decorators = decorators;
 
+const StyledTable = styled(Table)`
+  ${Table.Sort} {
+    order: 2;
+  }
+`;
+
+const Title = styled.span`
+  display: flex;
+  order: 1;
+`;
+
+const Info = styled(Icon.InfoCircle)`
+  display: flex;
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.small)};
+  order: 3;
+`;
+
 export const Sortable = () => {
   const data = useMemo(
     () =>
@@ -126,7 +145,12 @@ export const Sortable = () => {
 
   const columns = [
     {
-      Header: 'Primitive Sorting',
+      Header: (
+        <>
+          <Title>Primitive Sorting</Title>
+          <Info />
+        </>
+      ),
       accessor: 'col1',
       defaultCanSort: true,
       sortType: 'basic',
@@ -199,7 +223,7 @@ export const SortableWithDefaultSorting = () => {
 
   return (
     <Card padding="none" shadow="increased">
-      <Table data={data} columns={columns} sortBy={sortBy} />
+      <StyledTable data={data} columns={columns} sortBy={sortBy} />
     </Card>
   );
 };

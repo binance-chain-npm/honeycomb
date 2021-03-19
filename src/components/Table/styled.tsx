@@ -60,6 +60,11 @@ export const TbodyTr = styled.tr<{ interactive: boolean }>`
   ${({ interactive }) => interactive && hoverEffect};
 `;
 
+export const SortWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 interface SortProps {
   selected: boolean;
 }
@@ -82,7 +87,7 @@ export const SortDescending = styled(Icon.TriangleDown)<SortProps>`
 `;
 
 export const Sort = styled.div`
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin-left: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.small)};

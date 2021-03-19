@@ -20,6 +20,7 @@ import {
   Th,
   TbodyTr,
   Td,
+  SortWrapper,
   Sort,
   SortAscending,
   SortDescending,
@@ -152,19 +153,21 @@ export const Component = <Data extends object>({
           {...column.getHeaderProps(column.getSortByToggleProps())}
           data-testid={buildTestId(`${column.id}.th`)}
         >
-          {column.render('Header')}
-          <Sort>
-            <SortAscending
-              selected={column.isSorted && !column.isSortedDesc}
-              data-testisselected={column.isSorted && !column.isSortedDesc}
-              data-testid={buildTestId(`${column.id}.th.sort-asc-btn`)}
-            />
-            <SortDescending
-              selected={column.isSorted && !!column.isSortedDesc}
-              data-testisselected={column.isSorted && !!column.isSortedDesc}
-              data-testid={buildTestId(`${column.id}.th.sort-desc-btn`)}
-            />
-          </Sort>
+          <SortWrapper>
+            {column.render('Header')}
+            <Sort>
+              <SortAscending
+                selected={column.isSorted && !column.isSortedDesc}
+                data-testisselected={column.isSorted && !column.isSortedDesc}
+                data-testid={buildTestId(`${column.id}.th.sort-asc-btn`)}
+              />
+              <SortDescending
+                selected={column.isSorted && !!column.isSortedDesc}
+                data-testisselected={column.isSorted && !!column.isSortedDesc}
+                data-testid={buildTestId(`${column.id}.th.sort-desc-btn`)}
+              />
+            </Sort>
+          </SortWrapper>
         </Th>
       );
     },
@@ -262,3 +265,5 @@ export const Component = <Data extends object>({
 };
 
 Component.displayName = 'Table';
+
+Component.Sort = Sort;
