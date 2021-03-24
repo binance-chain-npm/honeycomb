@@ -7,7 +7,7 @@ import { Sections } from '../../modules/sections';
 import { HoneycombThemeProvider } from '../../modules/themes';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Variant } from '../../modules/themes/HoneycombThemeProvider';
-import { ToastProvider } from '../../modules/toast';
+import { createToast, dismissToast, ToastProvider } from '../../modules/toast';
 import { Button } from '../Button';
 import { Card } from '../Card';
 import { Dropdown } from '../Dropdown';
@@ -16,7 +16,7 @@ import { Icon } from '../Icon';
 import { Code } from '../internal/Docs';
 import { Text } from '../Text';
 
-import { createToast, dismissToast, Toast } from './';
+import { Toast } from './';
 
 export default {
   component: Toast,

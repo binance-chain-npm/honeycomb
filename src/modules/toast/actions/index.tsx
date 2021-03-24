@@ -1,8 +1,8 @@
 import React from 'react';
 import { toast, ToastOptions } from 'react-toastify';
 
-import { ToastProvider } from '../../../modules/toast/ToastProvider';
-import { AUTO_CLOSE_DEFAULT_DURATION } from '../../../modules/toast/ToastProvider/component';
+import { ToastProvider } from '../ToastProvider';
+import { AUTO_CLOSE_DEFAULT_DURATION } from '../ToastProvider/component';
 
 import { Size, Styled } from './styled';
 
