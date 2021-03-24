@@ -1,7 +1,7 @@
 import styled, { DefaultTheme } from 'styled-components';
 import { em } from 'polished';
 
-import { SIZES as WINDOW_SIZES } from '../../internal/useWindowSize';
+import { SIZES as WINDOW_SIZES } from '../../../components/internal/useWindowSize';
 
 const WIDTHS = {
   reduced: 280,

@@ -2,9 +2,9 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { em } from 'polished';
 import { ToastContainer } from 'react-toastify';
 
-import toastify from '../../../node_modules/react-toastify/dist/ReactToastify.min.css';
-import { Button } from '../Button';
-import { SIZES } from '../internal/useWindowSize';
+import toastify from '../../../../node_modules/react-toastify/dist/ReactToastify.min.css';
+import { Button } from '../../../components/Button';
+import { SIZES } from '../../../components/internal/useWindowSize';
 
 const TOAST_HEIGHT = 56;
 
