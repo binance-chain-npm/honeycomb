@@ -1,7 +1,7 @@
-describe('Toaster', () => {
+describe('Toast', () => {
   it('renders correctly on small screens', () => {
     cy.clock();
-    cy.visitStory({ storyId: 'elements-toaster--default', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-toast--default', themeId: 'GoldLight' });
 
     cy.get('[data-testid="success-btn"]').click();
     cy.get('[data-testid="warning-btn"]').click();
@@ -12,13 +12,13 @@ describe('Toaster', () => {
     cy.get('[data-testid="warning-toast"]').should('be.visible');
     cy.get('[data-testid="danger-toast"]').should('be.visible');
 
-    cy.percySnapshot('Toaster while open on a small screen');
+    cy.percySnapshot('Toast while open on a small screen');
   });
 
   it('renders correctly on medium screens', () => {
     cy.customViewport({ size: 'md' });
     cy.clock();
-    cy.visitStory({ storyId: 'elements-toaster--default', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-toast--default', themeId: 'GoldLight' });
 
     cy.get('[data-testid="success-btn"]').click();
     cy.get('[data-testid="warning-btn"]').click();
@@ -29,6 +29,6 @@ describe('Toaster', () => {
     cy.get('[data-testid="warning-toast"]').should('be.visible');
     cy.get('[data-testid="danger-toast"]').should('be.visible');
 
-    cy.percySnapshot('Toaster while open on a medium screen', { widths: [768] });
+    cy.percySnapshot('Toast while open on a medium screen', { widths: [768] });
   });
 });

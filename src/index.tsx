@@ -13,6 +13,7 @@ export {
 } from './modules/core';
 export { useBreadcrumbs, useAddBreadcrumbEffect, BreadcrumbProvider } from './modules/breadcrumbs';
 export { useBuildTestId, Testable } from './modules/test-ids';
+export { ToastProvider } from './modules/toast';
 export { useMoonPayUrl, buildMoonPayUrl } from './modules/moonpay';
 export { formatCryptoAsset, formatFiatAsset } from './modules/intl';
 
@@ -53,6 +54,5 @@ export { Text } from './components/Text';
 export { TextArea } from './components/TextArea';
 export { TextInput } from './components/TextInput';
 export { createToast, dismissToast, Toast } from './components/Toast';
-export { Toaster } from './components/Toaster';
 export { Tooltip } from './components/Tooltip';
 export { Wallets, useWalletProviders } from './components/Wallets';

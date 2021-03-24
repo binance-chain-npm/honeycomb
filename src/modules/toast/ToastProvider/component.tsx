@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { Slide, ToastContainer } from 'react-toastify';
 
-import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { Icon } from '../Icon';
+import { Testable, useBuildTestId } from '../../test-ids';
+import { Icon } from '../../../components/Icon';
 
 import { StyledToastContainer, StyledButton, Styles } from './styled';
 
@@ -60,4 +60,4 @@ export const Component = ({
   );
 };
 
-Component.displayName = 'Toaster';
+Component.displayName = 'ToastProvider';

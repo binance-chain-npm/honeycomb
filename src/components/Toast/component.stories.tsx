@@ -7,6 +7,7 @@ import { Sections } from '../../modules/sections';
 import { HoneycombThemeProvider } from '../../modules/themes';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Variant } from '../../modules/themes/HoneycombThemeProvider';
+import { ToastProvider } from '../../modules/toast';
 import { Button } from '../Button';
 import { Card } from '../Card';
 import { Dropdown } from '../Dropdown';
@@ -14,13 +15,12 @@ import { Header } from '../Header';
 import { Icon } from '../Icon';
 import { Code } from '../internal/Docs';
 import { Text } from '../Text';
-import { createToast, dismissToast, Toast } from '../Toast';
 
-import { Toaster } from './';
+import { createToast, dismissToast, Toast } from './';
 
 export default {
-  component: Toaster,
-  title: `${Sections.Elements}/Toaster`,
+  component: Toast,
+  title: `${Sections.Elements}/Toast`,
 };
 
 const Container = styled.div`
@@ -43,7 +43,7 @@ const makeToast = () =>
 
 export const Default = () => (
   <>
-    <Toaster autoClose={false} />
+    <ToastProvider autoClose={false} />
     <Container>
       <Button
         variant="success"
@@ -148,12 +148,12 @@ export const Variants = () => {
     );
   }, []);
 
-  return <Toaster autoClose={false} position="top-right" />;
+  return <ToastProvider autoClose={false} position="top-right" />;
 };
 
 export const WithCallback = () => (
   <>
-    <Toaster position="top-right" />
+    <ToastProvider position="top-right" />
     <Button
       variant="primary"
       onClick={() =>
@@ -168,7 +168,7 @@ export const WithCallback = () => (
   </>
 );
 
-const StyledToaster = styled(Toaster)`
+const StyledToaster = styled(ToastProvider)`
   transform: translateY(calc(4em + 12px));
 `;
 
@@ -195,7 +195,7 @@ export const WithTheme = () => {
 
   return (
     <HoneycombThemeProvider variant={selected}>
-      <Toaster position="top-right" />
+      <ToastProvider position="top-right" />
       <Card>
         <Dropdown target={<Dropdown.DefaultTarget>{selected}</Dropdown.DefaultTarget>}>
           {['accent', 'dark', 'light'].map((it) => (
@@ -221,7 +221,7 @@ export const DismissToast = () => {
 
   return (
     <>
-      <Toaster autoClose={false} position="top-right" />
+      <ToastProvider autoClose={false} position="top-right" />
       <Container>
         <Button
           variant="primary"

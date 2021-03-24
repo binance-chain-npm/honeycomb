@@ -1,12 +1,12 @@
 import React from 'react';
 import { toast, ToastOptions } from 'react-toastify';
 
-import { Toaster } from '../../Toaster';
-import { AUTO_CLOSE_DEFAULT_DURATION } from '../../Toaster/component';
+import { ToastProvider } from '../../../modules/toast/ToastProvider';
+import { AUTO_CLOSE_DEFAULT_DURATION } from '../../../modules/toast/ToastProvider/component';
 
 import { Size, Styled } from './styled';
 
-type Options = Pick<React.ComponentProps<typeof Toaster>, 'autoClose'> & {
+type Options = Pick<React.ComponentProps<typeof ToastProvider>, 'autoClose'> & {
   position?: ToastOptions['position'];
   toastId?: ToastOptions['toastId'];
   onOpen?: ToastOptions['onOpen'];
