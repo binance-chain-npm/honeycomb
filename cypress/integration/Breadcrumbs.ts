@@ -1,4 +1,9 @@
 describe('Breadcrumbs', () => {
+  it('renders correctly', () => {
+    cy.visitStory({ storyId: 'elements-breadcrumb--default', themeId: 'GoldLight' });
+    cy.percySnapshot('Breadcrumb');
+  });
+
   it('works when clicking on label', () => {
     cy.visitStory({ storyId: 'tests-breadcrumbs--default', themeId: 'GoldLight' });
 
