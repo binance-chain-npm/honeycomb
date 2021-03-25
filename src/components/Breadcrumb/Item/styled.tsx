@@ -18,11 +18,16 @@ const previous = css`
   }
 `;
 
-export const Label = styled.span<{ active: boolean }>`
-  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
+export const Styled = styled.li<{ active: boolean }>`
+  display: flex;
+  align-items: center;
 
   ${({ active }) => active && current};
   ${({ active }) => !active && previous};
+`;
+
+export const Label = styled.span`
+  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
 `;
 
 export const Caret = styled(Icon.CaretRight)`

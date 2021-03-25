@@ -4,7 +4,7 @@ import { useBuildTestId, Testable } from '../../../modules/test-ids';
 import { Context } from '../context';
 
 import { Context as ItemContext } from './context';
-import { Label, Caret } from './styled';
+import { Styled, Caret, Label } from './styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> & Testable;
 
@@ -16,12 +16,10 @@ export const Component = ({ children, 'data-testid': testId, ...otherProps }: Pr
   const { active } = useContext(ItemContext);
 
   return (
-    <>
-      <Label {...otherProps} active={active} data-testid={buildTestId(testId)}>
-        {children}
-      </Label>
+    <Styled {...otherProps} active={active} data-testid={buildTestId(testId)}>
+      <Label>{children}</Label>
       {!active && <Caret />}
-    </>
+    </Styled>
   );
 };
 
