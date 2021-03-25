@@ -1,8 +1,8 @@
 import { Component } from './component';
 import { Item } from './Item';
 
-export const Breadcrumb = Component as typeof Component & {
+export const Breadcrumbs = Component as typeof Component & {
   Item: typeof Item;
 };
 
-Breadcrumb.Item = Item;
+Breadcrumbs.Item = Item;

@@ -23,4 +23,4 @@ export const Component = ({ children, 'data-testid': testId, ...otherProps }: Pr
   );
 };
 
-Component.displayName = 'Breadcrumb.Item';
+Component.displayName = 'Breadcrumbs.Item';

@@ -3,12 +3,12 @@ import React, { useMemo, useState } from 'react';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
-import { Breadcrumb } from './';
+import { Breadcrumbs } from './';
 
 export default {
-  component: Breadcrumb,
+  component: Breadcrumbs,
   decorators,
-  title: `${Sections.Elements}/Breadcrumb`,
+  title: `${Sections.Elements}/Breadcrumbs`,
 };
 
 const map: { [key: string]: string } = {
@@ -26,14 +26,14 @@ export const Default = () => {
     let index = 0;
     for (const [key, value] of Object.entries(map)) {
       res.push(
-        <Breadcrumb.Item
+        <Breadcrumbs.Item
           key={key}
           href={key}
           onClick={() => setPage(value)}
           data-testid={`${index}`}
         >
           {value}
-        </Breadcrumb.Item>,
+        </Breadcrumbs.Item>,
       );
       if (value === page) break;
       index++;
@@ -55,7 +55,7 @@ export const Default = () => {
 
   return (
     <>
-      <Breadcrumb data-testid="breadcrumbs">{breadcrumbs}</Breadcrumb>
+      <Breadcrumbs data-testid="breadcrumbs">{breadcrumbs}</Breadcrumbs>
       <h1>{page}</h1>
       {buttons}
     </>

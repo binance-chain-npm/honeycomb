@@ -21,6 +21,7 @@ export { AbstractAvatar } from './components/AbstractAvatar';
 export { Accordion } from './components/Accordion';
 export { Badge } from './components/Badge';
 export { Balance } from './components/Balance';
+export { Breadcrumbs } from './components/Breadcrumbs';
 export { Button } from './components/Button';
 export { BuyWithMoonPay } from './components/BuyWithMoonPay';
 export { Card } from './components/Card';
