@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { em } from 'polished';
+import { em, transitions } from 'polished';
 
 import { Icon } from '../../Icon';
 
@@ -21,6 +21,7 @@ const previous = css`
 export const Styled = styled.li<{ active: boolean }>`
   display: flex;
   align-items: center;
+  ${({ theme }) => transitions(['color'], theme.honeycomb.duration.normal)};
 
   ${({ active }) => active && current};
   ${({ active }) => !active && previous};
