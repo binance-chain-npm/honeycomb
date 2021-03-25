@@ -23,13 +23,20 @@ export const Default = () => {
 
   const breadcrumbs = useMemo(() => {
     const res: React.ReactNode[] = [];
+    let index = 0;
     for (const [key, value] of Object.entries(map)) {
       res.push(
-        <Breadcrumb.Item key={key} href={key} onClick={() => setPage(value)}>
+        <Breadcrumb.Item
+          key={key}
+          href={key}
+          onClick={() => setPage(value)}
+          data-testid={`${index}`}
+        >
           {value}
         </Breadcrumb.Item>,
       );
       if (value === page) break;
+      index++;
     }
     return res;
   }, [page]);
@@ -48,7 +55,7 @@ export const Default = () => {
 
   return (
     <>
-      <Breadcrumb>{breadcrumbs}</Breadcrumb>
+      <Breadcrumb data-testid="breadcrumbs">{breadcrumbs}</Breadcrumb>
       <h1>{page}</h1>
       {buttons}
     </>
