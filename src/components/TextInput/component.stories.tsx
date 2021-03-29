@@ -143,11 +143,21 @@ export const Sizes = () => (
 );
 
 const CustomTextInput = styled(TextInput)`
+  align-items: end;
   ${TextInput.Label} {
     color: #f8bbd0;
   }
+  ${TextInput.Input} {
+    width: 100%;
+    text-align: right;
+    line-height: ${({ theme }) => em(theme.honeycomb.size.reduced, theme.honeycomb.size.small)};
+  }
+  ${TextInput.Right} {
+    margin-left: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.small)};
+  }
 
   ${TextInput.InputContainer} {
+    max-width: ${em(100)};
     background: #e8f5e9;
     color: #64b5f6;
 
@@ -158,5 +168,25 @@ const CustomTextInput = styled(TextInput)`
 `;
 
 export const CustomStyles = () => (
-  <CustomTextInput placeholder="Some placeholder…" label="A label" value="" />
+  <>
+    <CustomTextInput
+      placeholder="Some placeholder…"
+      label="A label"
+      value="10"
+      right="gwei"
+      size="increased"
+    />
+    <CustomTextInput
+      placeholder="Some placeholder…"
+      label="A label"
+      value="215510"
+      size="increased"
+      validationMessages={[
+        {
+          label: 'test message allalals dsjguhdsuoid sadjksah sadhlasdh',
+          state: 'danger',
+        },
+      ]}
+    />
+  </>
 );
