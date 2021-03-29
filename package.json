@@ -81,7 +81,7 @@
     "svg-inline-loader": "^0.8.2",
     "ts-loader": "^7.0.5",
     "tsdx": "^0.13.2",
-    "tslib": "^2.0.0",
+    "tslib": "^2.1.0",
     "typescript": "^3.9.6",
     "url-loader": "^4.1.0"
   },

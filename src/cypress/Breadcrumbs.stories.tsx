@@ -7,7 +7,7 @@ import { useBuildTestId } from '../modules/test-ids';
 
 export default {
   decorators,
-  title: `${Sections.Elements}/Breadcrumbs`,
+  title: `${Sections.Tests}/Breadcrumbs`,
 };
 
 const PageA = () => {
