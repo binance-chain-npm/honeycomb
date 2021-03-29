@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { SIZES as WINDOW_SIZES } from '../internal/useWindowSize';
@@ -10,9 +10,21 @@ export const mdScreen = `min-width: ${em(WINDOW_SIZES.md)}`;
 export const SIZES = ['increased', 'huge'] as const;
 export type Size = typeof SIZES[number];
 
-const getBorderRadius = ({ theme, size }: { theme: DefaultTheme; size: Size }) => {
-  return size === 'huge' ? theme.honeycomb.radius.normal : theme.honeycomb.radius.reduced;
-};
+const increased = css`
+  height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+  line-height: ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.reduced)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced, theme.honeycomb.size.reduced)};
+  padding-left: ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)};
+  padding-right: ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)};
+`;
+
+const huge = css`
+  height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+  line-height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
+  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
+  padding-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -25,15 +37,13 @@ export const Container = styled.div`
 `;
 
 export const CryptoAddress = styled.span<{ size: Size }>`
-  background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
-  border-radius: ${({ theme, size }) =>
-    em(getBorderRadius({ theme, size }), theme.honeycomb.size.reduced)};
-  height: ${({ theme, size }) => em(theme.honeycomb.size[size], theme.honeycomb.size.reduced)};
-  line-height: ${({ theme, size }) => em(theme.honeycomb.size[size], theme.honeycomb.size.reduced)};
-  padding: 0 ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)};
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   overflow: hidden;
   text-overflow: ellipsis;
+  background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
+
+  ${({ size }) => size === 'increased' && increased};
+  ${({ size }) => size === 'huge' && huge};
 `;
 
 export const ButtonWrapper = styled.div`
