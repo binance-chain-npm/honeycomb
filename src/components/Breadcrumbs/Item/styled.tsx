@@ -23,8 +23,7 @@ export const Styled = styled.li<{ active: boolean }>`
   align-items: center;
   ${({ theme }) => transitions(['color'], theme.honeycomb.duration.normal)};
 
-  ${({ active }) => active && current};
-  ${({ active }) => !active && previous};
+  ${({ active }) => (active ? current : previous)};
 `;
 
 export const Label = styled.span`

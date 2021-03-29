@@ -18,18 +18,16 @@ export const Component = ({ 'data-testid': testId, ...otherProps }: Props) => {
   const breadcrumbs = useMemo(() => {
     const children = React.Children.toArray(otherProps.children);
 
-    return children.map((it, index) => {
-      return (
-        <ItemContext.Provider
-          key={index}
-          value={{
-            active: index === children.length - 1,
-          }}
-        >
-          {it}
-        </ItemContext.Provider>
-      );
-    });
+    return children.map((it, index) => (
+      <ItemContext.Provider
+        key={index}
+        value={{
+          active: index === children.length - 1,
+        }}
+      >
+        {it}
+      </ItemContext.Provider>
+    ));
   }, [otherProps.children]);
 
   return (
