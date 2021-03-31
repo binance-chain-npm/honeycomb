@@ -42,3 +42,5 @@ export const Sizes = () => (
     ))}
   </Container>
 );
+
+export const Wrap = () => <CryptoAddress value={ADDRESS} wrap />;
