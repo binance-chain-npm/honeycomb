@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { em } from 'polished';
 
 import { Button } from '../Button';
@@ -58,12 +58,16 @@ export const ButtonWrapper = styled.div<{ wrap: boolean }>`
     `};
 `;
 
-export const QRCodeButton = styled(Button)`
-  margin-left: 8px;
+const baseSize = ({ theme, size }: { theme: DefaultTheme; size: Size }) => {
+  return size === 'huge' ? theme.honeycomb.size.reduced : theme.honeycomb.size.small;
+};
+
+export const QRCodeButton = styled(Button)<{ size: Size }>`
+  margin-left: ${({ theme, size }) => em(theme.honeycomb.size.tiny, baseSize({ theme, size }))};
 `;
 
-export const StyledCopyToClipboard = styled(CopyToClipboard)`
-  margin-left: 8px;
+export const StyledCopyToClipboard = styled(CopyToClipboard)<{ size: Size }>`
+  margin-left: ${({ theme, size }) => em(theme.honeycomb.size.tiny, baseSize({ theme, size }))};
 `;
 
 export const StyledModal = styled(Modal)`
