@@ -28,10 +28,6 @@ const Container = styled.div`
 
 export const Default = () => <CryptoAddress value={ADDRESS} data-testid="crypto-address" />;
 
-export const Format = () => (
-  <CryptoAddress value={ADDRESS} text="0xb38784***e967Ece49" data-testid="crypto-address" />
-);
-
 export const Sizes = () => (
   <Container>
     {SIZES.map((size) => (
@@ -41,4 +37,10 @@ export const Sizes = () => (
       </div>
     ))}
   </Container>
+);
+
+export const Wrap = () => <CryptoAddress value={ADDRESS} wrap data-testid="crypto-address" />;
+
+export const WithText = () => (
+  <CryptoAddress value={ADDRESS} text="0xb00000...00000000" data-testid="crypto-address" />
 );

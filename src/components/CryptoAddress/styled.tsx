@@ -1,11 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { em } from 'polished';
 
-import { SIZES as WINDOW_SIZES } from '../internal/useWindowSize';
+import { Button } from '../Button';
+import { CopyToClipboard } from '../CopyToClipboard';
 import { Modal } from '../Modal';
 import { QRCode } from '../QRCode';
-
-export const mdScreen = `min-width: ${em(WINDOW_SIZES.md)}`;
 
 export const SIZES = ['increased', 'huge'] as const;
 export type Size = typeof SIZES[number];
@@ -26,17 +25,18 @@ const huge = css`
   padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<{ wrap: boolean }>`
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
 
-  @media (${mdScreen}) {
-    flex-wrap: nowrap;
-  }
+  ${({ wrap }) =>
+    wrap &&
+    css`
+      flex-wrap: wrap;
+    `};
 `;
 
-export const CryptoAddress = styled.span<{ size: Size }>`
+export const CryptoAddress = styled.div<{ size: Size }>`
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   overflow: hidden;
   text-overflow: ellipsis;
@@ -46,15 +46,28 @@ export const CryptoAddress = styled.span<{ size: Size }>`
   ${({ size }) => size === 'huge' && huge};
 `;
 
-export const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div<{ wrap: boolean }>`
   display: flex;
-  flex-basis: 100%;
-  margin-top: ${({ theme }) => em(theme.honeycomb.size.tiny)};
 
-  @media (${mdScreen}) {
-    flex-basis: auto;
-    margin-top: 0;
-  }
+  ${({ wrap }) =>
+    wrap &&
+    css`
+      flex-basis: 100%;
+      margin-top: ${({ theme }) => em(theme.honeycomb.size.tiny)};
+      margin-left: -${({ theme }) => em(theme.honeycomb.size.tiny)};
+    `};
+`;
+
+const baseSize = ({ theme, size }: { theme: DefaultTheme; size: Size }) => {
+  return size === 'huge' ? theme.honeycomb.size.reduced : theme.honeycomb.size.small;
+};
+
+export const QRCodeButton = styled(Button)<{ size: Size }>`
+  margin-left: ${({ theme, size }) => em(theme.honeycomb.size.tiny, baseSize({ theme, size }))};
+`;
+
+export const StyledCopyToClipboard = styled(CopyToClipboard)<{ size: Size }>`
+  margin-left: ${({ theme, size }) => em(theme.honeycomb.size.tiny, baseSize({ theme, size }))};
 `;
 
 export const StyledModal = styled(Modal)`

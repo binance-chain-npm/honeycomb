@@ -1,7 +1,7 @@
 describe('CryptoAddress', () => {
   it('displays modal on small screens', () => {
     cy.clock();
-    cy.visitStory({ storyId: 'elements-cryptoaddress--default', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-cryptoaddress--wrap', themeId: 'GoldLight' });
 
     cy.get('[data-testid="light.crypto-address.modal.content"]').should('not.exist');
 
@@ -30,7 +30,7 @@ describe('CryptoAddress', () => {
 
   it('displays formatted text correctly', () => {
     cy.clock();
-    cy.visitStory({ storyId: 'elements-cryptoaddress--format', themeId: 'GoldLight' });
+    cy.visitStory({ storyId: 'elements-cryptoaddress--with-text', themeId: 'GoldLight' });
 
     cy.get('[data-testid="light.crypto-address.btn-copy"]').click();
     cy.tick(10000);
@@ -43,7 +43,7 @@ describe('CryptoAddress', () => {
       })
     });
 
-    cy.get('[data-testid="light.crypto-address.address"]').should('have.text', '0xb38784***e967Ece49');
+    cy.get('[data-testid="light.crypto-address.address"]').should('have.text', '0xb00000...00000000');
 
     cy.percySnapshot('CryptoAddress displaying different text than the clipboard value');
   });

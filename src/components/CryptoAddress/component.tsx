@@ -1,15 +1,21 @@
 import React, { useMemo, useState } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { Button } from '../Button';
-import { CopyToClipboard } from '../CopyToClipboard';
 import { Icon } from '../Icon';
 import { useWindowSize, SIZES } from '../internal/useWindowSize';
 import { Modal } from '../Modal';
 import { Tooltip } from '../Tooltip';
-import { Space } from '../Space';
 
-import { ButtonWrapper, Container, CryptoAddress, Size, StyledModal, StyledQRCode } from './styled';
+import {
+  ButtonWrapper,
+  Container,
+  CryptoAddress,
+  QRCodeButton,
+  Size,
+  StyledCopyToClipboard,
+  StyledModal,
+  StyledQRCode,
+} from './styled';
 
 export type Props = Testable & {
   value: string;
@@ -18,6 +24,7 @@ export type Props = Testable & {
   canCopyToClipboard?: boolean;
   canScanQrCode?: boolean;
   size?: Size;
+  wrap?: boolean;
 };
 
 export const Component = ({
@@ -27,6 +34,7 @@ export const Component = ({
   canCopyToClipboard = true,
   canScanQrCode = true,
   size = 'increased',
+  wrap = false,
   'data-testid': testId,
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
@@ -46,7 +54,7 @@ export const Component = ({
 
   const scanQrCodeButton = useMemo(
     () => (
-      <Button
+      <QRCodeButton
         variant="secondary"
         shape="square"
         size={size}
@@ -54,17 +62,17 @@ export const Component = ({
         data-testid={buildTestId('btn-scan-qr-code')}
       >
         <Icon.QRCode />
-      </Button>
+      </QRCodeButton>
     ),
     [size, buildTestId],
   );
 
   return (
-    <Container className={className} data-testid={buildTestId()}>
+    <Container className={className} wrap={wrap} data-testid={buildTestId()}>
       <CryptoAddress size={size} data-testid={buildTestId('address')}>
         {text || value}
       </CryptoAddress>
-      <ButtonWrapper>
+      <ButtonWrapper wrap={wrap}>
         {canScanQrCode && (
           <>
             {isSm ? (
@@ -80,34 +88,28 @@ export const Component = ({
                 </StyledModal>
               </>
             ) : (
-              <>
-                <Space size="tiny" />
-                <Tooltip
-                  placement="bottom"
-                  visible={showQRCode}
-                  interactive={true}
-                  content={qRCode}
-                  data-testid={buildTestId('tooltip')}
-                  padding="none"
-                  radius="normal"
-                >
-                  {scanQrCodeButton}
-                </Tooltip>
-              </>
+              <Tooltip
+                placement="bottom"
+                visible={showQRCode}
+                interactive={true}
+                content={qRCode}
+                data-testid={buildTestId('tooltip')}
+                padding="none"
+                radius="normal"
+              >
+                {scanQrCodeButton}
+              </Tooltip>
             )}
           </>
         )}
         {canCopyToClipboard && (
-          <>
-            <Space size="tiny" />
-            <CopyToClipboard
-              value={value}
-              variant="secondary"
-              shape="square"
-              size={size}
-              data-testid={buildTestId('btn-copy')}
-            />
-          </>
+          <StyledCopyToClipboard
+            value={value}
+            variant="secondary"
+            shape="square"
+            size={size}
+            data-testid={buildTestId('btn-copy')}
+          />
         )}
       </ButtonWrapper>
     </Container>
