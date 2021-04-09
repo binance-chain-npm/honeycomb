@@ -71,6 +71,50 @@ export const Interactive = () => (
   </Card>
 );
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
+
+const StyledTableA = styled(Table)`
+  ${Table.TheadTr}, ${Table.TbodyTr} {
+    height: ${em(32)};
+  }
+`;
+
+const StyledTableB = styled(Table)`
+  ${Table.TheadTr}, ${Table.TbodyTr} {
+    height: ${em(72)};
+  }
+`;
+
+const StyledTableC = styled(Table)`
+  ${Table.TheadTr}, ${Table.TbodyTr} {
+    height: ${em(94)};
+  }
+`;
+
+export const CustomRowHeight = () => (
+  <Container>
+    <Card padding="none" shadow="increased">
+      <StyledTableA data={data.slice(0, 3)} columns={columns} />
+    </Card>
+    <Card padding="none" shadow="increased">
+      <Table data={data.slice(0, 3)} columns={columns} />
+    </Card>
+    <Card padding="none" shadow="increased">
+      <StyledTableB data={data.slice(0, 3)} columns={columns} />
+    </Card>
+    <Card padding="none" shadow="increased">
+      <StyledTableC data={data.slice(0, 3)} columns={columns} />
+    </Card>
+  </Container>
+);
+
 export const ControlledWithPagination: Story = () => {
   const [pageIndex, setPageIndex] = useState(5);
   const pageSize = 3;
