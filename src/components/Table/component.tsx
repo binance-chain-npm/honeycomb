@@ -267,3 +267,7 @@ export const Component = <Data extends object>({
 Component.displayName = 'Table';
 
 Component.Sort = Sort;
+Component.Th = Th;
+Component.TheadTr = TheadTr;
+Component.TbodyTr = TbodyTr;
+Component.Td = Td;
