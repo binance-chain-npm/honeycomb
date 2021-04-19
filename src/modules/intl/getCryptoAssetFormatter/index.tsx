@@ -12,7 +12,7 @@ export const getCryptoAssetFormatter = ({
     maximumFractionDigits: 20,
   });
 
-  const format: typeof formatter.format = (number) =>
+  const format: typeof formatter.format = (number: number) =>
     `${formatter.format(number)}${displaySymbol ? NON_BREAKING_SPACE : ''}${displaySymbol}`;
 
   const formatToParts: typeof formatter.formatToParts = (number) => [
