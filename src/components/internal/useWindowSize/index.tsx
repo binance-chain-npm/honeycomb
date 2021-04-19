@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export const SIZES = {
   xs: 0,
@@ -9,11 +9,12 @@ export const SIZES = {
 } as const;
 
 const getWidth = () => (typeof window === 'undefined' ? 0 : window.innerWidth);
-const getHeight = () => (typeof window === 'undefined' ? 0 : window.innerHeight);
 
 export const useWindowSize = () => {
   const [width, setWidth] = useState(getWidth());
-  const [height, setHeight] = useState(getHeight());
+
+  const isSm = useMemo(() => width < SIZES.md, [width]);
+  const isMd = useMemo(() => width < SIZES.lg, [width]);
 
   useEffect(() => {
     let timeoutId: number | undefined = undefined;
@@ -22,7 +23,6 @@ export const useWindowSize = () => {
       clearTimeout(timeoutId);
       timeoutId = window.setTimeout(() => {
         setWidth(getWidth());
-        setHeight(getHeight());
       }, 150);
     };
 
@@ -31,5 +31,5 @@ export const useWindowSize = () => {
     return () => window.removeEventListener('resize', resizeListener);
   }, []);
 
-  return { width, height };
+  return { isSm, isMd };
 };

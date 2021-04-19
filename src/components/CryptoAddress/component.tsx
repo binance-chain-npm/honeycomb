@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Icon } from '../Icon';
-import { useWindowSize, SIZES } from '../internal/useWindowSize';
+import { useWindowSize } from '../internal/useWindowSize';
 import { Modal } from '../Modal';
 import { Tooltip } from '../Tooltip';
 
@@ -38,11 +38,9 @@ export const Component = ({
   'data-testid': testId,
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
+  const { isSm } = useWindowSize();
+
   const [showQRCode, setShowQRCode] = useState(false);
-
-  const { width } = useWindowSize();
-
-  const isSm = useMemo(() => width < SIZES.md, [width]);
 
   const qRCode = useMemo(() => {
     return (
