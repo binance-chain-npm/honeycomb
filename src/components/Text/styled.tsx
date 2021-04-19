@@ -22,7 +22,7 @@ export type Weight = typeof WEIGHTS[number];
 export const Styled = styled.div<{
   alignItems?: AlignItemsProperty;
   alignSelf?: AlignSelfProperty;
-  color?: string;
+  $color?: string;
   size: Size;
   weight?: Weight;
 }>`
@@ -47,7 +47,7 @@ export const Styled = styled.div<{
       align-self: ${alignSelf};
     `};
 
-  ${({ color }) =>
+  ${({ $color: color }) =>
     color &&
     css`
       color: ${color};

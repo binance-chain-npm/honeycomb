@@ -16,8 +16,8 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
     weight?: Weight;
   };
 
-export const Component = ({ htmlTag, 'data-testid': testId, ...otherProps }: Props) => {
-  return <Styled {...otherProps} as={htmlTag as any} data-testid={testId} />;
+export const Component = ({ htmlTag, color, 'data-testid': testId, ...otherProps }: Props) => {
+  return <Styled {...otherProps} $color={color} as={htmlTag as any} data-testid={testId} />;
 };
 
 Component.displayName = 'Text';
