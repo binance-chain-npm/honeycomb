@@ -47,6 +47,7 @@ export { ReactComponent as PowerOff } from './assets/PowerOff.svg';
 export { ReactComponent as PrivateKey } from './assets/PrivateKey.svg';
 export { ReactComponent as Pulse } from './assets/Pulse.svg';
 export { ReactComponent as QRCode } from './assets/QRCode.svg';
+export { ReactComponent as Question } from './assets/Question.svg';
 export { ReactComponent as Search } from './assets/Search.svg';
 export { ReactComponent as Settings } from './assets/Settings.svg';
 export { ReactComponent as Shield } from './assets/Shield.svg';
