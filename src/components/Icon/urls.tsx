@@ -47,6 +47,7 @@ export { default as PowerOff } from './assets/PowerOff.svg';
 export { default as PrivateKey } from './assets/PrivateKey.svg';
 export { default as Pulse } from './assets/Pulse.svg';
 export { default as QRCode } from './assets/QRCode.svg';
+export { default as Question } from './assets/Question.svg';
 export { default as Search } from './assets/Search.svg';
 export { default as Settings } from './assets/Settings.svg';
 export { default as Shield } from './assets/Shield.svg';
