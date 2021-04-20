@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "BinancePlex";
+  font-display: swap;
+  src: url('./BinancePlex-Light.woff2') format('woff2'),
+    url('./BinancePlex-Light.otf') format('opentype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "BinancePlex";
+  font-display: swap;
+  src: url('./BinancePlex-Light.woff2') format('woff2'),
+    url('./BinancePlex-Light.otf') format('opentype');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "BinancePlex";
+  font-display: swap;
+  src: url('./BinancePlex-Regular.woff2') format('woff2'),
+    url('./BinancePlex-Regular.otf') format('opentype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "BinancePlex";
+  src: url('./BinancePlex-Regular.woff2') format('woff2'),
+    url('./BinancePlex-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "BinancePlex";
+  font-display: swap;
+  src: url('./BinancePlex-Medium.woff2') format('woff2'),
+    url('./BinancePlex-Medium.otf') format('opentype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "BinancePlex";
+  font-display: swap;
+  src: url('./BinancePlex-Medium.woff2') format('woff2'),
+    url('./BinancePlex-Medium.otf') format('opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "BinancePlex";
+  font-display: swap;
+  src: url('./BinancePlex-SemiBold.woff2') format('woff2'),
+    url('./BinancePlex-SemiBold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "BinancePlex";
+  font-display: swap;
+  src: url('./BinancePlex-SemiBold.woff2') format('woff2'),
+    url('./BinancePlex-SemiBold.otf') format('opentype');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "BinancePlex";
+  font-display: swap;
+  src: url('./BinancePlex-SemiBold.woff2') format('woff2'),
+    url('./BinancePlex-SemiBold.otf') format('opentype');
+  font-weight: 900;
+}
+
+:root {
+  font-family: BinancePlex, -apple-system, '.SFNSText-Regular', 'San Francisco',
+  BlinkMacSystemFont, '.PingFang-SC-Regular', 'Microsoft YaHei', 'Segoe UI', 'Helvetica Neue',
+  Helvetica, Arial, sans-serif;
+}
+
+body,
+*,
+*::before,
+*::after {
+  font-family: inherit;
+}
