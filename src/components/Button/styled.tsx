@@ -14,6 +14,7 @@ export const VARIANTS = [
   'danger',
   'buy',
   'sell',
+  'link',
 ] as const;
 export type Variant = typeof VARIANTS[number];
 
@@ -120,6 +121,21 @@ const transparent = css`
   }
 `;
 
+const link = css`
+  background: transparent;
+  color: ${({ theme }) => theme.honeycomb.color.text.primary};
+
+  :hover,
+  :active {
+    color: ${({ theme }) => theme.honeycomb.color.primary.normal};
+    text-decoration: underline;
+  }
+
+  ${Shadow} {
+    color: transparent;
+  }
+`;
+
 export const Styled = styled.button<Props>`
   ${stylelessCommon};
   ${boxSizing};
@@ -158,6 +174,7 @@ export const Styled = styled.button<Props>`
   ${({ variant }) => variant === 'secondary' && secondary};
   ${({ variant }) => variant === 'primary' && primary};
   ${({ variant }) => variant === 'transparent' && transparent};
+  ${({ variant }) => variant === 'link' && link};
 
   font-size: ${({ theme, size }) => em(fontSize({ theme, size }))};
   ${({ size }) => size === 'normal' && normal};
