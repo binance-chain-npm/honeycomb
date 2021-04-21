@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import { decorators } from '../../modules/decorators';
@@ -6,7 +6,7 @@ import { Sections } from '../../modules/sections';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
-import { SIZES, useWindowSize } from '../internal/useWindowSize';
+import { useWindowSize } from '../internal/useWindowSize';
 
 import { docs } from './docs';
 import { Account } from './docs/Account';
@@ -101,10 +101,7 @@ export const WithDropdownItems = () => (
 );
 
 export const WithNonCollapsibleItems = () => {
-  const { width } = useWindowSize();
-
-  const isMd = useMemo(() => width < SIZES.lg, [width]);
-  const isSm = useMemo(() => width < SIZES.md, [width]);
+  const { isSm, isMd } = useWindowSize();
 
   return (
     <>

@@ -80,14 +80,14 @@ export const WithCustomWalletProvider: Story = () => {
 WithCustomWalletProvider.decorators = decorators;
 
 export const ResponsiveWithDescription: Story = () => {
-  const { width } = useWindowSize();
+  const { isSm } = useWindowSize();
   const [selected, setSelected] = useState<WalletProvider>();
 
   const change = useCallback(({ provider }) => {
     setSelected(provider);
   }, []);
 
-  const cols = useMemo(() => (width < SIZES.md ? 0 : 4), [width]);
+  const cols = useMemo(() => (isSm ? 0 : 4), [isSm]);
 
   return (
     <Wallets

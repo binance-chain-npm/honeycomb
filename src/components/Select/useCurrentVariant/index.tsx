@@ -1,10 +1,10 @@
-import { SIZES, useWindowSize } from '../../internal/useWindowSize';
+import { useWindowSize } from '../../internal/useWindowSize';
 import { Variant } from '../component';
 
 export const useCurrentVariant = ({ variant }: { variant: Variant }) => {
-  const { width } = useWindowSize();
+  const { isSm } = useWindowSize();
 
-  if (variant === 'responsive') return width < SIZES.md ? 'modal' : 'dropdown';
+  if (variant === 'responsive') return isSm ? 'modal' : 'dropdown';
 
   return variant;
 };
