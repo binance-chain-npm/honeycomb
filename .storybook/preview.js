@@ -4,6 +4,7 @@ import { DocsContainer, Title } from '@storybook/addon-docs/blocks';
 
 import { HoneycombThemeProvider } from '../src/modules/themes';
 import { GlobalStyles } from '../src/modules/core';
+import '../src/modules/core/fonts/plex/index.css';
 
 const customViewports = {
   small: {

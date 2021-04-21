@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import { SHA1 } from 'crypto-js';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { fontFamily } from '../../modules/core';
 import { SOLID_AVATAR_COLORS } from '../internal/avatar-colors';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
 
@@ -17,7 +16,6 @@ export type Props = Testable & {
 const style: React.CSSProperties = {
   fontStyle: 'normal',
   fontSize: '14px',
-  fontFamily,
 };
 
 export const Component = ({ 'data-testid': testId, value, initial, className }: Props) => {

@@ -1,8 +1,4 @@
-import { fontFaces as plexFontFaces, fontName as plexFontName } from './plex';
-
-export const fontNames = [plexFontName];
-
-export const fontFaces = [plexFontFaces];
+export const fontNames = ['BinancePlex'];
 
 export const fontFamily = `${fontNames.join(
   ',',

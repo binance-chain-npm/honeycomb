@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "start-storybook -p 6006",
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build && yarn build:font",
+    "build:font": "node font.config.js",
     "test": "tsdx test --env=jsdom --passWithNoTests",
     "cypress": "cypress",
     "lint": "tsdx lint src",

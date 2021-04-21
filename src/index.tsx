@@ -4,13 +4,7 @@ export {
   HoneycombThemeType,
   useSystemTheme,
 } from './modules/themes';
-export {
-  GlobalFontFaces,
-  GlobalColors,
-  GlobalSizing,
-  GlobalFonts,
-  GlobalStyles,
-} from './modules/core';
+export { GlobalColors, GlobalSizing, GlobalStyles } from './modules/core';
 export { useBreadcrumbs, useAddBreadcrumbEffect, BreadcrumbProvider } from './modules/breadcrumbs';
 export { useBuildTestId, Testable } from './modules/test-ids';
 export { createToast, dismissToast, ToastProvider } from './modules/toast';
