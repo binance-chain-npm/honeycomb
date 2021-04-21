@@ -14,8 +14,8 @@ export const Container = styled.div`
 
 export const DefaultTarget = () => (
   <Container>
-    <Tooltip arrow content="Targets can have an icon, text, or any node." shape="fit">
-      <Tooltip.DefaultTarget>
+    <Tooltip arrow content="Targets can have an icon, text, or any node.">
+      <Tooltip.DefaultTarget shape="fit">
         <Icon.InfoCircle />
       </Tooltip.DefaultTarget>
     </Tooltip>

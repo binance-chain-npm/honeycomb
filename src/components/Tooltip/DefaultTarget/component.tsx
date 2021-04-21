@@ -6,11 +6,14 @@ import { Styled } from './styled';
 
 export type Props = {
   children: React.ReactNode;
+  className?: string;
   shape?: Shape;
 };
 
-export const Component = ({ children, shape = 'fill' }: Props) => (
-  <Styled $shape={shape}>{children}</Styled>
+export const Component = ({ children, shape = 'fill', ...otherProps }: Props) => (
+  <Styled {...otherProps} $shape={shape}>
+    {children}
+  </Styled>
 );
 
 Component.displayName = 'Tooltip.DefaultTarget';
