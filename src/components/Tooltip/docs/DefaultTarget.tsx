@@ -48,6 +48,12 @@ export const DefaultTargetDocs = () => (
           description: 'The content of the target.',
         },
         {
+          name: 'className',
+          type: <Code>string</Code>,
+          default: '',
+          description: 'The class name to apply to the element.',
+        },
+        {
           name: 'shape',
           type: (
             <>
