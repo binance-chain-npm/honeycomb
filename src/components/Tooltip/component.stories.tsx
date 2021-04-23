@@ -19,7 +19,7 @@ export default {
   component: Tooltip,
   title: `${Sections.Elements}/Tooltip`,
   parameters: {
-    docs: docs,
+    docs,
   },
 };
 

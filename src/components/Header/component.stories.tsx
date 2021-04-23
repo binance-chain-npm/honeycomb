@@ -18,7 +18,7 @@ export default {
   decorators,
   title: `${Sections.Elements}/Header`,
   parameters: {
-    docs: docs,
+    docs,
   },
 };
 
