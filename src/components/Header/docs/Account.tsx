@@ -27,10 +27,6 @@ export const Row = styled.div`
   }
 `;
 
-export const StyledDocsComponentContainer = styled(DocsComponentContainer)`
-  margin: ${({ theme }) => em(theme.honeycomb.size.increased)} 0;
-`;
-
 export const Account = ({ state }: { state: State }) => (
   <Header.Account
     icon={<Icon.BinanceChain color={GoldLight.honeycomb.color.primary.normal} />}
@@ -65,7 +61,7 @@ export const AccountDocs = () => (
       Headers have a `Header.Account` helper component. This component is shows logged in state of
       the user.
     </Description>
-    <StyledDocsComponentContainer>
+    <DocsComponentContainer>
       <Header
         logo={<Header.Logo />}
         nonCollapsible={[
@@ -75,7 +71,7 @@ export const AccountDocs = () => (
           },
         ]}
       />
-    </StyledDocsComponentContainer>
+    </DocsComponentContainer>
     <DocsTable
       data={[
         {

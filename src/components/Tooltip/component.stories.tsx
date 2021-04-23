@@ -10,6 +10,7 @@ import { Button } from '../Button';
 import { Space } from '../Space';
 import { Text } from '../Text';
 
+import { docs } from './docs';
 import { RADII, SIZES, VARIANTS } from './styled';
 
 import { Tooltip } from './';
@@ -17,6 +18,9 @@ import { Tooltip } from './';
 export default {
   component: Tooltip,
   title: `${Sections.Elements}/Tooltip`,
+  parameters: {
+    docs,
+  },
 };
 
 export const Default: Story = () => {
