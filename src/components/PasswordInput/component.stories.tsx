@@ -12,33 +12,33 @@ export default {
 };
 
 export const Default = () => {
-  const [value, setValue] = useState('Some text…');
-  const validationProps = usePasswordInputValidation({ value });
+  const [value, setValue] = useState('');
+  const validationProps = usePasswordInputValidation({ value, 'data-testid': 'password-input' });
 
   return (
     <PasswordInput
       {...validationProps}
       value={value}
       onChange={(evt) => setValue(evt.target.value)}
-      description="Some description about the password."
+      label="Password"
+      data-testid="password-input"
     />
   );
 };
 
-export const WithValidationIcons = () => {
-  const [value, setValue] = useState('');
+export const WithoutValidationIcons = () => {
+  const [value, setValue] = useState('Some text…');
   const validationProps = usePasswordInputValidation({
     value,
     'data-testid': 'password-input',
-    icons: true,
+    icons: false,
   });
 
   return (
     <PasswordInput
       {...validationProps}
-      label="Password"
+      description="Some description about the password."
       onChange={(evt) => setValue(evt.target.value)}
-      data-testid="password-input"
       value={value}
     />
   );

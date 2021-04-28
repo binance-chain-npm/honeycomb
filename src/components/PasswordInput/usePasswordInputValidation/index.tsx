@@ -17,7 +17,7 @@ export type Params = Pick<React.ComponentProps<typeof TextInput>, 'value'> &
 
 export const usePasswordInputValidation = ({
   value,
-  icons = false,
+  icons = true,
   minLength = 8,
   mustHaveDigit = true,
   mustHaveSymbol = true,
