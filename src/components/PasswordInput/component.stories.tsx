@@ -20,6 +20,7 @@ export const Default = () => {
       {...validationProps}
       value={value}
       onChange={(evt) => setValue(evt.target.value)}
+      label="Password"
       data-testid="password-input"
     />
   );
@@ -36,7 +37,6 @@ export const WithoutValidationIcons = () => {
   return (
     <PasswordInput
       {...validationProps}
-      label="Password"
       description="Some description about the password."
       onChange={(evt) => setValue(evt.target.value)}
       value={value}
