@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { HtmlTag } from '../../../modules/html-tag';
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 
 import { Content, Styled } from './styled';
@@ -8,7 +7,6 @@ import { Content, Styled } from './styled';
 export type Panel = {
   element: React.ReactNode;
   children?: React.ReactNode;
-  htmlTag?: HtmlTag;
 };
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
@@ -24,7 +22,6 @@ export const Component = ({
   children,
   activePanel,
   index,
-  htmlTag,
   onChange,
   onClick,
   'data-testid': testId,
@@ -65,14 +62,22 @@ export const Component = ({
     [onChange, onClick],
   );
 
+  const panel = useMemo(() => {
+    const it = element as React.ReactElement;
+    return (
+      <it.type
+        {...it.props}
+        onClick={(evt: React.MouseEvent<HTMLElement, MouseEvent>) => {
+          click(evt, index);
+          it.props.onClick?.();
+        }}
+      />
+    );
+  }, [click, element, index]);
+
   return (
-    <Styled
-      {...otherProps}
-      onClick={(evt: React.MouseEvent<HTMLElement, MouseEvent>) => click(evt, index)}
-      as={htmlTag as any}
-      data-testid={buildTestId()}
-    >
-      {element}
+    <Styled {...otherProps} data-testid={buildTestId()}>
+      {panel}
       {children && (
         <Content ref={contentRef} style={style} data-testid={buildTestId('children')}>
           {children}
