@@ -54,15 +54,13 @@ export const Component = ({
   );
 
   return (
-    <>
-      <Styled
-        {...otherProps}
-        onClick={(evt: React.MouseEvent<HTMLElement, MouseEvent>) => click(evt, index)}
-        as={htmlTag as any}
-        data-testid={buildTestId()}
-      >
-        {element}
-      </Styled>
+    <Styled
+      {...otherProps}
+      onClick={(evt: React.MouseEvent<HTMLElement, MouseEvent>) => click(evt, index)}
+      as={htmlTag as any}
+      data-testid={buildTestId()}
+    >
+      {element}
       {children &&
         boxTransitions.map(
           ({ item, key, props }) =>
@@ -72,7 +70,7 @@ export const Component = ({
               </animated.div>
             ),
         )}
-    </>
+    </Styled>
   );
 };
 

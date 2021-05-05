@@ -3,6 +3,7 @@ import React from 'react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Panel, PanelItem } from './PanelItem';
+import { Styled } from './PanelItem/styled';
 
 export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'children'> &
   Testable & {
@@ -37,3 +38,4 @@ export const Component = ({
 };
 
 Component.displayName = 'Accordion';
+Component.PanelItem = Styled;
