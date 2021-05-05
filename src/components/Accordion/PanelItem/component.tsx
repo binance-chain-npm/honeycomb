@@ -1,10 +1,9 @@
-import React, { useCallback, useMemo } from 'react';
-import { animated, useTransition } from 'react-spring';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { HtmlTag } from '../../../modules/html-tag';
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 
-import { Styled } from './styled';
+import { Content, Styled } from './styled';
 
 export type Panel = {
   element: React.ReactNode;
@@ -32,13 +31,26 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
+  const [height, setHeight] = useState(0);
 
-  const isActive = useMemo(() => activePanel === index, [activePanel, index]);
-  const boxTransitions = useTransition(isActive ? children : null, null, {
-    from: { opacity: 0, maxHeight: '0px' },
-    enter: { opacity: 1, maxHeight: '1000px' },
-    leave: { opacity: 0, maxHeight: '0px' },
-  });
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const active = useMemo(() => activePanel === index, [activePanel, index]);
+
+  const style = useMemo(() => {
+    return {
+      height: active ? `${height}px` : 0,
+    };
+  }, [active, height]);
+
+  useEffect(() => {
+    let timeoutId: number | undefined = undefined;
+
+    clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      setHeight(contentRef.current!.scrollHeight);
+    }, 150);
+  }, []);
 
   const click = useCallback(
     (evt: React.MouseEvent<HTMLElement, MouseEvent>, index: number) => {
@@ -61,15 +73,11 @@ export const Component = ({
       data-testid={buildTestId()}
     >
       {element}
-      {children &&
-        boxTransitions.map(
-          ({ item, key, props }) =>
-            item && (
-              <animated.div key={key} style={props} data-testid={buildTestId('children')}>
-                {children}
-              </animated.div>
-            ),
-        )}
+      {children && (
+        <Content ref={contentRef} style={style} data-testid={buildTestId('children')}>
+          {children}
+        </Content>
+      )}
     </Styled>
   );
 };
