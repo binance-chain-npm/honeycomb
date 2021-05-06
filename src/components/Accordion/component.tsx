@@ -5,7 +5,7 @@ import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Panel, PanelItem } from './PanelItem';
 import { Styled } from './PanelItem/styled';
 
-export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'children'> &
+export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'children'> &
   Testable & {
     panels: Panel[];
     activePanel: number;
