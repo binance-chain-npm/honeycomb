@@ -41,6 +41,8 @@ export const Component = ({
   }, [active, height]);
 
   useEffect(() => {
+    if (!contentRef.current) return;
+
     let timeoutId: number | undefined = undefined;
 
     clearTimeout(timeoutId);
