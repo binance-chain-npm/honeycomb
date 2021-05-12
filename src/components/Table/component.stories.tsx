@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
+import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react/types-6-0';
 
 import { decorators } from '../../modules/decorators';
@@ -10,7 +11,7 @@ import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { Space } from '../Space';
 
-import { Table } from './';
+import { Table } from '.';
 
 export default {
   component: Table,
@@ -34,7 +35,7 @@ const data = new Array(200).fill(null).map(
       ),
       col2: (
         <Header>
-          <AbstractAvatar value="World" />
+          <AbstractAvatar value="world" />
           <Space size="small" />
           World
         </Header>
@@ -70,6 +71,59 @@ export const Interactive = () => (
     <Table data={data.slice(0, 10)} columns={columns} interactive />
   </Card>
 );
+
+export const Selectable = () => {
+  interface Data {
+    index: number;
+  }
+
+  const data: Array<Data> = useMemo(
+    () =>
+      new Array(10).fill(null).map<Data>((_, index) => ({ index })),
+    [],
+  );
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Column 1',
+        Cell: ({ value }: { value: any }) => (
+          <Header>
+            <AbstractAvatar value="hello" />
+            <Space size="small" />
+            {value + 1} Hello
+          </Header>
+        ),
+        accessor: (it: Data) => it.index,
+        id: 'col1',
+      } as const,
+      {
+        Header: 'Column 2',
+        Cell: () => (
+          <Header>
+            <AbstractAvatar value="world" />
+            <Space size="small" />
+            World
+          </Header>
+        ),
+        accessor: (it: Data) => it.index,
+        id: 'col2',
+      } as const,
+    ],
+    [],
+  );
+
+  return (
+    <Card padding="none" shadow="increased">
+      <Table
+        data={data.slice(0, 10)}
+        columns={columns}
+        interactive
+        onRowClick={action('clicked')}
+      />
+    </Card>
+  );
+};
 
 const Container = styled.div`
   display: flex;
@@ -231,10 +285,16 @@ export const SortableWithDefaultSorting = () => {
       new Array(10).fill(null).map(
         (_, index) =>
           ({
-            col1: index + 1,
+            col1: (
+              <Header>
+                <AbstractAvatar value="hello" />
+                <Space size="small" />
+                {index + 1} Hello
+              </Header>
+            ),
             col2: (
               <Header>
-                <AbstractAvatar value={`${index}`} />
+                <AbstractAvatar value="world" />
               </Header>
             ),
           } as const),
@@ -272,13 +332,13 @@ export const SortableWithDefaultSorting = () => {
   );
 };
 
-interface Data {
-  name: string;
-  apr: number;
-  apy: number;
-}
-
 export const SortableWithPagination = () => {
+  interface Data {
+    name: string;
+    apr: number;
+    apy: number;
+  }
+
   const initialData: Array<Data> = useMemo(
     () => [
       {
