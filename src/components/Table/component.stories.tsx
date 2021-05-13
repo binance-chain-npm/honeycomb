@@ -18,6 +18,15 @@ export default {
   title: `${Sections.Elements}/Table`,
 };
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
+
 const Header = styled.div`
   display: flex;
   align-items: center;
@@ -125,49 +134,42 @@ export const Selectable = () => {
   );
 };
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+export const CustomRowHeight = () => {
+  const StyledTableA = styled(Table)`
+    ${Table.TheadTr}, ${Table.TbodyTr} {
+      height: ${em(32)};
+    }
+  `;
 
-  > *:not(:last-child) {
-    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
-  }
-`;
+  const StyledTableB = styled(Table)`
+    ${Table.TheadTr}, ${Table.TbodyTr} {
+      height: ${em(72)};
+    }
+  `;
 
-const StyledTableA = styled(Table)`
-  ${Table.TheadTr}, ${Table.TbodyTr} {
-    height: ${em(32)};
-  }
-`;
+  const StyledTableC = styled(Table)`
+    ${Table.TheadTr}, ${Table.TbodyTr} {
+      height: ${em(94)};
+    }
+  `;
 
-const StyledTableB = styled(Table)`
-  ${Table.TheadTr}, ${Table.TbodyTr} {
-    height: ${em(72)};
-  }
-`;
-
-const StyledTableC = styled(Table)`
-  ${Table.TheadTr}, ${Table.TbodyTr} {
-    height: ${em(94)};
-  }
-`;
-
-export const CustomRowHeight = () => (
-  <Container>
-    <Card padding="none" shadow="increased">
-      <StyledTableA data={data.slice(0, 3)} columns={columns} />
-    </Card>
-    <Card padding="none" shadow="increased">
-      <Table data={data.slice(0, 3)} columns={columns} />
-    </Card>
-    <Card padding="none" shadow="increased">
-      <StyledTableB data={data.slice(0, 3)} columns={columns} />
-    </Card>
-    <Card padding="none" shadow="increased">
-      <StyledTableC data={data.slice(0, 3)} columns={columns} />
-    </Card>
-  </Container>
-);
+  return (
+    <Container>
+      <Card padding="none" shadow="increased">
+        <StyledTableA data={data.slice(0, 3)} columns={columns} />
+      </Card>
+      <Card padding="none" shadow="increased">
+        <Table data={data.slice(0, 3)} columns={columns} />
+      </Card>
+      <Card padding="none" shadow="increased">
+        <StyledTableB data={data.slice(0, 3)} columns={columns} />
+      </Card>
+      <Card padding="none" shadow="increased">
+        <StyledTableC data={data.slice(0, 3)} columns={columns} />
+      </Card>
+    </Container>
+  );
+};
 
 export const ControlledWithPagination: Story = () => {
   const [pageIndex, setPageIndex] = useState(5);
@@ -295,6 +297,8 @@ export const SortableWithDefaultSorting = () => {
             col2: (
               <Header>
                 <AbstractAvatar value="world" />
+                <Space size="small" />
+                World
               </Header>
             ),
           } as const),
