@@ -1,11 +1,13 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
 import {
-  useTable,
+  HeaderGroup,
+  Row,
+  SortingRule,
   TableOptions,
   usePagination,
+  useRowSelect,
   useSortBy,
-  HeaderGroup,
-  SortingRule,
+  useTable,
 } from 'react-table';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
@@ -44,6 +46,7 @@ export type Props<Data extends object> = Testable & {
   sortBy?: SortingRule<Data>[];
   onPageIndexChange?: (params: { pageIndex: number }) => void;
   onSort?: (params: { sortBy: SortingRule<Data>[] }) => void;
+  onRowClick?: (params: { data: Row<Data> }) => void;
 };
 
 export const Component = <Data extends object>({
@@ -58,6 +61,7 @@ export const Component = <Data extends object>({
   manualSortBy,
   onPageIndexChange,
   onSort,
+  onRowClick,
   'data-testid': testId,
   ...otherProps
 }: Props<Data>) => {
@@ -112,6 +116,7 @@ export const Component = <Data extends object>({
     },
     useSortBy,
     usePagination,
+    useRowSelect,
   );
 
   const filteredPageOptions = useMemo(
@@ -134,9 +139,23 @@ export const Component = <Data extends object>({
     [onPageIndexChange],
   );
 
+  const clickRow = useCallback(
+    ({ row }: { row: Row<Data> }) => {
+      row.toggleRowSelected();
+      onRowClick?.({ data: row });
+    },
+    [onRowClick],
+  );
+
   useEffect(() => {
     onSort?.({ sortBy });
   }, [onSort, sortBy]);
+
+  useEffect(() => {
+    if (isControlled && pageIndex !== 0 && pageIndex >= pageCount) {
+      navigate(0);
+    }
+  }, [isControlled, pageCount, pageIndex, navigate]);
 
   const getHeader = useCallback(
     (column: HeaderGroup<Data>) => {
@@ -174,12 +193,6 @@ export const Component = <Data extends object>({
     [buildTestId],
   );
 
-  useEffect(() => {
-    if (isControlled && pageIndex !== 0 && pageIndex >= pageCount) {
-      navigate(0);
-    }
-  }, [isControlled, pageCount, pageIndex, navigate]);
-
   return (
     <Container data-testid={buildTestId()}>
       <Scroll>
@@ -198,7 +211,11 @@ export const Component = <Data extends object>({
             {(isControlled ? page : rows).map((row) => {
               prepareRow(row);
               return (
-                <TbodyTr {...row.getRowProps()} interactive={interactive}>
+                <TbodyTr
+                  {...row.getRowProps()}
+                  interactive={interactive}
+                  onClick={() => clickRow({ row })}
+                >
                   {row.cells.map((cell) => {
                     return (
                       <Td
