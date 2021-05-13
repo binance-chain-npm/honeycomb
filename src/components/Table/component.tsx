@@ -9,6 +9,7 @@ import {
   useSortBy,
   useTable,
 } from 'react-table';
+import { Property } from 'csstype';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Button } from '../Button';
@@ -35,11 +36,15 @@ import {
 export type Props<Data extends object> = Testable & {
   data: TableOptions<Data>['data'];
   columns: TableOptions<Data>['columns'];
+  header?: {
+    display?: boolean;
+    fixed?: boolean;
+    background?: Property.Color;
+  };
   pageIndex?: number;
   pageSize?: number;
   pageCount?: number;
   hasPagination?: boolean;
-  hasHeader?: boolean;
   interactive?: boolean;
   className?: string;
   manualSortBy?: TableOptions<Data>['manualSortBy'];
@@ -52,10 +57,10 @@ export type Props<Data extends object> = Testable & {
 export const Component = <Data extends object>({
   data,
   columns,
+  header,
   pageIndex = 0,
   pageSize = 10,
   hasPagination = false,
-  hasHeader = true,
   interactive = false,
   className,
   manualSortBy,
@@ -117,6 +122,14 @@ export const Component = <Data extends object>({
     useSortBy,
     usePagination,
     useRowSelect,
+  );
+
+  const { isHeaderDisplayed, isHeaderFixed } = useMemo(
+    () => ({
+      isHeaderDisplayed: header?.display ?? true,
+      isHeaderFixed: header?.fixed ?? false,
+    }),
+    [header],
   );
 
   const filteredPageOptions = useMemo(
@@ -197,8 +210,8 @@ export const Component = <Data extends object>({
     <Container data-testid={buildTestId()}>
       <Scroll>
         <Table {...getTableProps()} className={className}>
-          {hasHeader && (
-            <Thead>
+          {isHeaderDisplayed && (
+            <Thead fixed={isHeaderFixed} background={header?.background}>
               {headerGroups.map((headerGroup) => (
                 <TheadTr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map(getHeader)}

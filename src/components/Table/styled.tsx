@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { em } from 'polished';
+import { Property } from 'csstype';
 
 import { boxSizing } from '../../modules/box-sizing';
 import { Button } from '../Button';
@@ -10,24 +11,46 @@ const ROW_HEIGHT = 56;
 
 export const Container = styled.div`
   ${boxSizing};
-  display: block;
+  display: flex;
+  flex-direction: column;
   max-width: 100%;
+  overflow: hidden;
 `;
 
 export const Scroll = styled.div`
-  display: block;
+  display: flex;
+  flex-grow: 1;
   max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto;
   scroll-behavior: smooth;
 `;
 
 export const Table = styled.table`
   width: 100%;
   border-spacing: 0;
+  z-index: ${({ theme }) => theme.honeycomb.zIndexes.normal};
 `;
 
-export const Thead = styled.thead``;
+interface HeaderProps {
+  fixed: boolean;
+  background?: Property.Color;
+}
+
+export const Thead = styled.thead<HeaderProps>`
+  ${({ fixed }) =>
+    fixed &&
+    css`
+      position: sticky;
+      top: 0;
+      z-index: ${({ theme }) => theme.honeycomb.zIndexes.normal + 2};
+    `};
+
+  ${({ background }) =>
+    background &&
+    css`
+      background: ${background};
+    `};
+`;
 
 export const TheadTr = styled.tr`
   height: ${em(ROW_HEIGHT)};

@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { em } from 'polished';
 import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react/types-6-0';
@@ -69,11 +69,45 @@ export const Default = () => (
   </Card>
 );
 
-export const NoHeader = () => (
-  <Card padding="none" shadow="increased">
-    <Table data={data.slice(0, 10)} columns={columns} hasHeader={false} />
-  </Card>
-);
+export const HeaderStyles = () => {
+  const theme = useTheme();
+
+  const StyledContainer = styled(Container)`
+    height: calc(100vh - 2em);
+  `;
+
+  const FixedTableContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  `;
+
+  const StyledCard = styled(Card)`
+    display: flex;
+    flex-direction: column;
+  `;
+
+  return (
+    <StyledContainer>
+      <div>
+        <h3>no header</h3>
+        <Card padding="none" shadow="increased">
+          <Table data={data.slice(0, 3)} columns={columns} header={{ display: false }} />
+        </Card>
+      </div>
+      <FixedTableContainer>
+        <h3>fixed</h3>
+        <StyledCard padding="none" shadow="increased">
+          <Table
+            data={data.slice(0, 50)}
+            columns={columns}
+            header={{ fixed: true, background: theme.honeycomb.color.bg.normal }}
+          />
+        </StyledCard>
+      </FixedTableContainer>
+    </StyledContainer>
+  );
+};
 
 export const Interactive = () => (
   <Card padding="none" shadow="increased">
