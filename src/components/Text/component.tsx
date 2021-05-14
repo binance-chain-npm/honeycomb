@@ -11,7 +11,7 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
     htmlTag?: HtmlTag;
     alignItems?: Property.AlignItems;
     alignSelf?: Property.AlignSelf;
-    color?: string;
+    color?: Property.Color;
     size: Size;
     weight?: Weight;
   };
