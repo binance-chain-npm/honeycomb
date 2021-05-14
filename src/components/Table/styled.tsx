@@ -8,6 +8,7 @@ import { hoverEffect } from '../HoverEffect';
 import { Icon } from '../Icon';
 
 const ROW_HEIGHT = 56;
+const ZINDEX_THEAD_FIXED = 2;
 
 export const Container = styled.div`
   ${boxSizing};
@@ -42,7 +43,7 @@ export const Thead = styled.thead<HeaderProps>`
     css`
       position: sticky;
       top: 0;
-      z-index: ${({ theme }) => theme.honeycomb.zIndexes.normal + 2};
+      z-index: ${({ theme }) => theme.honeycomb.zIndexes.normal + ZINDEX_THEAD_FIXED};
     `};
 
   ${({ background }) =>
