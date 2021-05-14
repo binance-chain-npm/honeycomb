@@ -39,7 +39,7 @@ export type Props<Data extends object> = Testable & {
   header?: {
     display?: boolean;
     fixed?: boolean;
-    background?: Property.Color;
+    background?: Property.Background;
   };
   pageIndex?: number;
   pageSize?: number;

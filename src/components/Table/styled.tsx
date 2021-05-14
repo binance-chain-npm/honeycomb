@@ -33,7 +33,7 @@ export const Table = styled.table`
 
 interface HeaderProps {
   fixed: boolean;
-  background?: Property.Color;
+  background?: Property.Background;
 }
 
 export const Thead = styled.thead<HeaderProps>`
