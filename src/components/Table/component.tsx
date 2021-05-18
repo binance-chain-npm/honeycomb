@@ -207,9 +207,9 @@ export const Component = <Data extends object>({
   );
 
   return (
-    <Container data-testid={buildTestId()}>
+    <Container data-testid={buildTestId()} className={className}>
       <Scroll>
-        <Table {...getTableProps()} className={className}>
+        <Table {...getTableProps()}>
           {isHeaderDisplayed && (
             <Thead fixed={isHeaderFixed} background={header?.background}>
               {headerGroups.map((headerGroup) => (
@@ -296,6 +296,8 @@ export const Component = <Data extends object>({
 
 Component.displayName = 'Table';
 
+Component.Scroll = Scroll;
+Component.Table = Table;
 Component.Sort = Sort;
 Component.Th = Th;
 Component.TheadTr = TheadTr;
