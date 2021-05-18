@@ -32,12 +32,25 @@ export const Table = styled.table`
   z-index: ${({ theme }) => theme.honeycomb.zIndexes.normal};
 `;
 
-interface HeaderProps {
+export const Thead = styled.thead``;
+
+export const TheadTr = styled.tr`
+  height: ${em(ROW_HEIGHT)};
+`;
+
+export interface ThProps {
   fixed: boolean;
   background?: Property.Background;
 }
 
-export const Thead = styled.thead<HeaderProps>`
+export const Th = styled.th<ThProps>`
+  border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
+  text-align: left;
+  padding: 0 ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.small)};
+  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
+  color: ${({ theme }) => theme.honeycomb.color.text.masked};
+  font-weight: 400;
+
   ${({ fixed }) =>
     fixed &&
     css`
@@ -51,19 +64,6 @@ export const Thead = styled.thead<HeaderProps>`
     css`
       background: ${background};
     `};
-`;
-
-export const TheadTr = styled.tr`
-  height: ${em(ROW_HEIGHT)};
-`;
-
-export const Th = styled.th`
-  border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
-  text-align: left;
-  padding: 0 ${({ theme }) => em(theme.honeycomb.size.increased, theme.honeycomb.size.small)};
-  font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
-  color: ${({ theme }) => theme.honeycomb.color.text.masked};
-  font-weight: 400;
 `;
 
 export const Td = styled.td`
@@ -89,7 +89,7 @@ export const SortWrapper = styled.div`
   align-items: center;
 `;
 
-interface SortProps {
+export interface SortProps {
   selected: boolean;
 }
 

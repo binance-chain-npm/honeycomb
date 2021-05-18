@@ -174,7 +174,12 @@ export const Component = <Data extends object>({
     (column: HeaderGroup<Data>) => {
       if (!column.defaultCanSort) {
         return (
-          <Th {...column.getHeaderProps()} data-testid={buildTestId(`${column.id}.th`)}>
+          <Th
+            {...column.getHeaderProps()}
+            fixed={isHeaderFixed}
+            background={header?.background}
+            data-testid={buildTestId(`${column.id}.th`)}
+          >
             {column.render('Header')}
           </Th>
         );
@@ -183,6 +188,8 @@ export const Component = <Data extends object>({
       return (
         <Th
           {...column.getHeaderProps(column.getSortByToggleProps())}
+          fixed={isHeaderFixed}
+          background={header?.background}
           data-testid={buildTestId(`${column.id}.th`)}
         >
           <SortWrapper>
@@ -203,7 +210,7 @@ export const Component = <Data extends object>({
         </Th>
       );
     },
-    [buildTestId],
+    [buildTestId, isHeaderFixed, header],
   );
 
   return (
@@ -211,7 +218,7 @@ export const Component = <Data extends object>({
       <Scroll>
         <Table {...getTableProps()}>
           {isHeaderDisplayed && (
-            <Thead fixed={isHeaderFixed} background={header?.background}>
+            <Thead>
               {headerGroups.map((headerGroup) => (
                 <TheadTr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map(getHeader)}
