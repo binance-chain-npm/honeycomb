@@ -61,6 +61,7 @@ export { ReactComponent as Wallet } from './assets/Wallet.svg';
 export { ReactComponent as WalletConnectColor } from './assets/WalletConnectColor.svg';
 export { ReactComponent as WarningCircle } from './assets/WarningCircle.svg';
 export { ReactComponent as WarningCircleSolid } from './assets/WarningCircleSolid.svg';
+export { ReactComponent as WarningTriangleSolid } from './assets/WarningTriangleSolid.svg';
 export { ReactComponent as Write } from './assets/Write.svg';
 
 // Payment.
