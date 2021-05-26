@@ -61,6 +61,7 @@ export { default as Wallet } from './assets/Wallet.svg';
 export { default as WalletConnectColor } from './assets/WalletConnectColor.svg';
 export { default as WarningCircle } from './assets/WarningCircle.svg';
 export { default as WarningCircleSolid } from './assets/WarningCircleSolid.svg';
+export { default as WarningTriangleSolid } from './assets/WarningTriangleSolid.svg';
 export { default as Write } from './assets/Write.svg';
 
 // Payment.
