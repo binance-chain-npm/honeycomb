@@ -11,7 +11,7 @@ import { SIZES } from '../internal/Size';
 
 import { VARIANTS } from './styled';
 
-import { Button } from './';
+import { Button } from '.';
 
 export default {
   component: Button,

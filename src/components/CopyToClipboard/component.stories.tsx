@@ -3,7 +3,7 @@ import React from 'react';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
-import { CopyToClipboard } from './';
+import { CopyToClipboard } from '.';
 
 export default {
   component: CopyToClipboard,

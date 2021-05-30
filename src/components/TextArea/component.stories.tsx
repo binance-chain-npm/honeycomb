@@ -5,7 +5,7 @@ import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 
-import { TextArea } from './';
+import { TextArea } from '.';
 
 export default {
   component: TextArea,

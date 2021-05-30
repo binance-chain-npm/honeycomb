@@ -8,7 +8,7 @@ import { SIZES } from '../internal/Size';
 import { Button } from '../Button';
 import { Space } from '../Space';
 
-import { TextInput } from './';
+import { TextInput } from '.';
 
 export default {
   component: TextInput,

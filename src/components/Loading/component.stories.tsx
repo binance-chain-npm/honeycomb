@@ -5,7 +5,7 @@ import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Button } from '../Button';
 
-import { Loading } from './';
+import { Loading } from '.';
 
 export default {
   component: Loading,

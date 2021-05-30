@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
-import { PasswordInput, usePasswordInputValidation } from './';
+import { PasswordInput, usePasswordInputValidation } from '.';
 
 export default {
   component: PasswordInput,

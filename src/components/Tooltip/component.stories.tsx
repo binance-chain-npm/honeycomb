@@ -13,7 +13,7 @@ import { Text } from '../Text';
 import { docs } from './docs';
 import { RADII, SIZES, VARIANTS } from './styled';
 
-import { Tooltip } from './';
+import { Tooltip } from '.';
 
 export default {
   component: Tooltip,
