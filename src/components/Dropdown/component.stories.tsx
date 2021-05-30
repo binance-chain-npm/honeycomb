@@ -6,7 +6,7 @@ import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 
-import { Dropdown } from './';
+import { Dropdown } from '.';
 
 export default {
   component: Dropdown,

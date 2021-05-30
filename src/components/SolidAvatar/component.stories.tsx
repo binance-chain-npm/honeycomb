@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
-import { SolidAvatar } from './';
+import { SolidAvatar } from '.';
 
 export default {
   component: SolidAvatar,

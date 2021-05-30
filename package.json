@@ -46,7 +46,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "@binance-chain/prettier-config": "^1.0.1",
+    "@binance-chain/commitlint-config": "^0.2.0",
+    "@binance-chain/prettier-config": "^0.2.0",
     "@percy/cypress": "^2.3.0",
     "@rollup/plugin-image": "^2.0.5",
     "@rollup/plugin-url": "^5.0.1",
@@ -100,7 +101,10 @@
     "react-toastify": "^7.0.1",
     "swiper": "^6.4.5"
   },
-  "resolutions": {
-    "@types/react": "16.9.35"
-  }
+  "commitlint": {
+    "extends": [
+      "@binance-chain/commitlint-config"
+    ]
+  },
+  "prettier": "@binance-chain/prettier-config"
 }

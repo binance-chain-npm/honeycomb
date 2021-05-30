@@ -5,7 +5,7 @@ import { em } from 'polished';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
-import { QRCode } from './';
+import { QRCode } from '.';
 
 export default {
   component: QRCode,
