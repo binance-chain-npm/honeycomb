@@ -1,11 +1,6 @@
-import styled, { createGlobalStyle, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
-import tippy from '../../../node_modules/tippy.js/dist/tippy.css';
-import tippyAnimations from '../../../node_modules/tippy.js/animations/shift-away.css';
-import { boxSizing } from '../../modules/box-sizing';
-import { GoldDark } from '../../modules/themes/themes/GoldDark';
-import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { fit } from '../internal/Shape';
 
 export const SIZES = ['reduced', 'small', 'tiny', 'micro', 'none'] as const;
@@ -19,56 +14,6 @@ export type Variant = typeof VARIANTS[number];
 
 export const SHAPES = ['fill', 'fit'] as const;
 export type Shape = typeof SHAPES[number];
-
-export const Styles = createGlobalStyle<{ variant: Variant }>`
-  ${tippy};
-  ${tippyAnimations};
-
-  .tippy-box {
-    &[data-theme*='bc-honeycomb-bare'] {
-      ${boxSizing};
-
-      font-size: 1rem;
-      background: transparent;
-      border-radius: 0;
-      box-shadow: none;
-      overflow: visible;
-
-      .tippy-content {
-        padding: 0;
-        z-index: ${({ theme }) => theme.honeycomb.zIndexes.tooltips};
-      }
-
-      .tippy-arrow {
-        z-index: ${({ theme }) => theme.honeycomb.zIndexes.tooltips + 2};
-      }
-
-      &[data-theme*='-GoldDark-normal'] {
-        .tippy-arrow {
-          color: ${GoldDark.honeycomb.color.bg.tooltip.normal};
-        }
-      }
-
-      &[data-theme*='-GoldLight-normal'] {
-        .tippy-arrow {
-          color: ${GoldLight.honeycomb.color.bg.tooltip.normal};
-        }
-      }
-
-      &[data-theme*='-GoldDark-accent'] {
-        .tippy-arrow {
-          color: ${GoldDark.honeycomb.color.bg.tooltip.accent};
-        }
-      }
-
-      &[data-theme*='-GoldLight-accent'] {
-        .tippy-arrow {
-          color: ${GoldLight.honeycomb.color.bg.tooltip.accent};
-        }
-      }
-    }
-  }
-`;
 
 export const Target = styled.div<{ $shape?: Shape }>`
   ${({ $shape: shape }) => shape === 'fit' && fit};

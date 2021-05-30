@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
 
-import { Styles, Content, Target, Radius, Shape, Size, Variant } from './styled';
+import { Content, Target, Radius, Shape, Size, Variant } from './styled';
 
 export type TriggerValue = 'mouseenter' | 'click' | 'manual';
 
@@ -75,24 +75,21 @@ export const Component = ({
   }, [contentProp, bare, padding, radius, variant, buildTestId]);
 
   return (
-    <>
-      <Styles variant={variant} />
-      <Tippy
-        {...otherProps}
-        className={className || ''} // Tippy throws error if className is undefined.
-        trigger={trigger}
-        theme={`bc-honeycomb-bare-${theme.honeycomb.id}-${variant}`}
-        arrow={otherProps.arrow}
-        animation="shift-away"
-        placement={otherProps.placement ?? 'bottom-start'}
-        zIndex={theme.honeycomb.zIndexes.tooltips}
-        content={content}
-      >
-        <Target $shape={shape} data-testid={buildTestId('target')}>
-          {children}
-        </Target>
-      </Tippy>
-    </>
+    <Tippy
+      {...otherProps}
+      className={className || ''} // Tippy throws error if className is undefined.
+      trigger={trigger}
+      theme={`bc-honeycomb-bare-${theme.honeycomb.id}-${variant}`}
+      arrow={otherProps.arrow}
+      animation="shift-away"
+      placement={otherProps.placement ?? 'bottom-start'}
+      zIndex={theme.honeycomb.zIndexes.tooltips}
+      content={content}
+    >
+      <Target $shape={shape} data-testid={buildTestId('target')}>
+        {children}
+      </Target>
+    </Tippy>
   );
 };
 
