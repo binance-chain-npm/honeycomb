@@ -5,7 +5,7 @@ import { Swiper } from 'swiper/react';
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
 import { Context } from './context';
-import { MARGIN_WIDTH, Styled, Styles } from './styled';
+import { MARGIN_WIDTH, Styled } from './styled';
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -21,7 +21,6 @@ export const Component = ({ children, 'data-testid': testId, ...otherProps }: Pr
 
   return (
     <Context.Provider value={context}>
-      <Styles />
       <Styled
         {...otherProps}
         spaceBetween={MARGIN_WIDTH}

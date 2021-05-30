@@ -4,7 +4,7 @@ import { Slide, ToastContainer } from 'react-toastify';
 import { Testable, useBuildTestId } from '../../test-ids';
 import { Icon } from '../../../components/Icon';
 
-import { StyledToastContainer, StyledButton, Styles } from './styled';
+import { StyledToastContainer, StyledButton } from './styled';
 
 export const AUTO_CLOSE_DEFAULT_DURATION = 3000;
 
@@ -44,19 +44,16 @@ export const Component = ({
   );
 
   return (
-    <>
-      <Styles />
-      <StyledToastContainer
-        {...otherProps}
-        autoClose={autoClose === true ? AUTO_CLOSE_DEFAULT_DURATION : autoClose}
-        closeButton={close}
-        hideProgressBar
-        newestOnTop={position === 'bottom-center'}
-        position={position}
-        transition={Slide}
-        data-testid={buildTestId()}
-      />
-    </>
+    <StyledToastContainer
+      {...otherProps}
+      autoClose={autoClose === true ? AUTO_CLOSE_DEFAULT_DURATION : autoClose}
+      closeButton={close}
+      hideProgressBar
+      newestOnTop={position === 'bottom-center'}
+      position={position}
+      transition={Slide}
+      data-testid={buildTestId()}
+    />
   );
 };
 

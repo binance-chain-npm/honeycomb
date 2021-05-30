@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 import { em } from 'polished';
 
 import { boxSizing } from '../../modules/box-sizing';
+import { Dropdown } from '../Dropdown';
 import { ListItem } from '../ListItem';
 import { styleless } from '../Styleless';
-import { Dropdown } from '../Dropdown';
 
 import { HeaderItems } from './HeaderItems';
 

@@ -3,10 +3,11 @@ import ReactModal from 'react-modal';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
 
-import { Box, CLOSE_MODAL_TIMEOUT, Container, Position, Styles } from './styled';
+import { Box, Container, Position } from './styled';
 import { Context } from './context';
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
+const CLOSE_MODAL_TIMEOUT = 250;
 
 (() => {
   if (typeof document === 'undefined') {
@@ -64,31 +65,28 @@ export const Component = ({
   );
 
   return (
-    <>
-      <Styles />
-      <ReactModal
-        isOpen={open}
-        onRequestClose={close}
-        className={className}
-        parentSelector={PARENT_SELECTOR}
-        appElement={MODAL_CONTAINER}
-        closeTimeoutMS={CLOSE_MODAL_TIMEOUT}
-        shouldCloseOnEsc={closeOnEsc}
-        shouldCloseOnOverlayClick={closeOnBackgroundClick}
-        contentElement={(props, contentElement) => (
-          <Box {...props} style={{}} position={position} data-testid={buildTestId()}>
-            {contentElement}
-          </Box>
-        )}
-        overlayElement={(props, contentElement) => (
-          <Container {...props} style={{}}>
-            {contentElement}
-          </Container>
-        )}
-      >
-        <Context.Provider value={context}>{children}</Context.Provider>
-      </ReactModal>
-    </>
+    <ReactModal
+      isOpen={open}
+      onRequestClose={close}
+      className={className}
+      parentSelector={PARENT_SELECTOR}
+      appElement={MODAL_CONTAINER}
+      closeTimeoutMS={CLOSE_MODAL_TIMEOUT}
+      shouldCloseOnEsc={closeOnEsc}
+      shouldCloseOnOverlayClick={closeOnBackgroundClick}
+      contentElement={(props, contentElement) => (
+        <Box {...props} style={{}} position={position} data-testid={buildTestId()}>
+          {contentElement}
+        </Box>
+      )}
+      overlayElement={(props, contentElement) => (
+        <Container {...props} style={{}}>
+          {contentElement}
+        </Container>
+      )}
+    >
+      <Context.Provider value={context}>{children}</Context.Provider>
+    </ReactModal>
   );
 };
 
