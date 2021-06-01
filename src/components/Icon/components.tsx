@@ -18,6 +18,7 @@ export { ReactComponent as Copy } from './assets/Copy.svg';
 export { ReactComponent as Cross } from './assets/Cross.svg';
 export { ReactComponent as CrossCircle } from './assets/CrossCircle.svg';
 export { ReactComponent as CrossCircleSolid } from './assets/CrossCircleSolid.svg';
+export { ReactComponent as Currency } from './assets/Currency.svg';
 export { ReactComponent as Delete } from './assets/Delete.svg';
 export { ReactComponent as Disconnect } from './assets/Disconnect.svg';
 export { ReactComponent as Docs } from './assets/Docs.svg';

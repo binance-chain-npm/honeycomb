@@ -18,6 +18,7 @@ export { default as Copy } from './assets/Copy.svg';
 export { default as Cross } from './assets/Cross.svg';
 export { default as CrossCircle } from './assets/CrossCircle.svg';
 export { default as CrossCircleSolid } from './assets/CrossCircleSolid.svg';
+export { default as Currency } from './assets/Currency.svg';
 export { default as Delete } from './assets/Delete.svg';
 export { default as Disconnect } from './assets/Disconnect.svg';
 export { default as Docs } from './assets/Docs.svg';
