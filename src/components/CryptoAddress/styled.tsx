@@ -25,11 +25,11 @@ const huge = css`
   padding-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
 `;
 
-export const Container = styled.div<{ wrap: boolean }>`
+export const Container = styled.div<{ $wrap: boolean }>`
   display: flex;
   align-items: center;
 
-  ${({ wrap }) =>
+  ${({ $wrap: wrap }) =>
     wrap &&
     css`
       flex-wrap: wrap;
@@ -46,10 +46,10 @@ export const CryptoAddress = styled.div<{ size: Size }>`
   ${({ size }) => size === 'huge' && huge};
 `;
 
-export const ButtonWrapper = styled.div<{ wrap: boolean }>`
+export const ButtonWrapper = styled.div<{ $wrap: boolean }>`
   display: flex;
 
-  ${({ wrap }) =>
+  ${({ $wrap: wrap }) =>
     wrap &&
     css`
       flex-basis: 100%;

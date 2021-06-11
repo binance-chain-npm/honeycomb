@@ -66,11 +66,11 @@ export const Component = ({
   );
 
   return (
-    <Container className={className} wrap={wrap} data-testid={buildTestId()}>
+    <Container className={className} $wrap={wrap} data-testid={buildTestId()}>
       <CryptoAddress size={size} data-testid={buildTestId('address')}>
         {text || value}
       </CryptoAddress>
-      <ButtonWrapper wrap={wrap}>
+      <ButtonWrapper $wrap={wrap}>
         {canScanQrCode && (
           <>
             {isSm ? (
