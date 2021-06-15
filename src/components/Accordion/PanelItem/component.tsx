@@ -47,7 +47,7 @@ export const Component = ({
 
     clearTimeout(timeoutId);
     timeoutId = window.setTimeout(() => {
-      setHeight(contentRef.current!.scrollHeight);
+      setHeight(contentRef.current?.scrollHeight ?? 0);
     }, 150);
   }, []);
 
