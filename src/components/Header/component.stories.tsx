@@ -11,7 +11,7 @@ import { useWindowSize } from '../internal/useWindowSize';
 import { docs } from './docs';
 import { Account } from './docs/Account';
 
-import { Header } from './';
+import { Header } from '.';
 
 export default {
   component: Header,
