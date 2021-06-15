@@ -8,7 +8,7 @@ import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Icon } from '../Icon';
 import { ListItem } from '../ListItem';
 
-import { Accordion } from './';
+import { Accordion } from '.';
 
 export default {
   component: Accordion,
