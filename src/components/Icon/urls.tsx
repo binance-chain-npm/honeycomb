@@ -30,6 +30,7 @@ export { default as Disconnect } from './assets/Disconnect.svg';
 export { default as Docs } from './assets/Docs.svg';
 export { default as Download } from './assets/Download.svg';
 export { default as DownloadDevices } from './assets/DownloadDevices.svg';
+export { default as Forum } from './assets/Forum.svg';
 export { default as Earth } from './assets/Earth.svg';
 export { default as Ecosystem } from './assets/Ecosystem.svg';
 export { default as Edit } from './assets/Edit.svg';

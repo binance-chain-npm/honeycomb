@@ -30,6 +30,7 @@ export { ReactComponent as Disconnect } from './assets/Disconnect.svg';
 export { ReactComponent as Docs } from './assets/Docs.svg';
 export { ReactComponent as Download } from './assets/Download.svg';
 export { ReactComponent as DownloadDevices } from './assets/DownloadDevices.svg';
+export { ReactComponent as Forum } from './assets/Forum.svg';
 export { ReactComponent as Earth } from './assets/Earth.svg';
 export { ReactComponent as Ecosystem } from './assets/Ecosystem.svg';
 export { ReactComponent as Edit } from './assets/Edit.svg';
