@@ -70,6 +70,7 @@ export { ReactComponent as TickCircleSolid } from './assets/TickCircleSolid.svg'
 export { ReactComponent as TriangleDown } from './assets/TriangleDown.svg';
 export { ReactComponent as TriangleUp } from './assets/TriangleUp.svg';
 export { ReactComponent as Tutorial } from './assets/Tutorial.svg';
+export { ReactComponent as Vault } from './assets/Vault.svg';
 export { ReactComponent as Video } from './assets/Video.svg';
 export { ReactComponent as Wallet } from './assets/Wallet.svg';
 export { ReactComponent as WalletConnectColor } from './assets/WalletConnectColor.svg';
