@@ -70,6 +70,7 @@ export { default as TickCircleSolid } from './assets/TickCircleSolid.svg';
 export { default as TriangleDown } from './assets/TriangleDown.svg';
 export { default as TriangleUp } from './assets/TriangleUp.svg';
 export { default as Tutorial } from './assets/Tutorial.svg';
+export { default as Vault } from './assets/Vault.svg';
 export { default as Video } from './assets/Video.svg';
 export { default as Wallet } from './assets/Wallet.svg';
 export { default as WalletConnectColor } from './assets/WalletConnectColor.svg';
