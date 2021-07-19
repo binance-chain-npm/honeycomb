@@ -62,6 +62,7 @@ export { ReactComponent as Pulse } from './assets/Pulse.svg';
 export { ReactComponent as QRCode } from './assets/QRCode.svg';
 export { ReactComponent as Question } from './assets/Question.svg';
 export { ReactComponent as Search } from './assets/Search.svg';
+export { ReactComponent as Seed } from './assets/Seed.svg';
 export { ReactComponent as Settings } from './assets/Settings.svg';
 export { ReactComponent as Shield } from './assets/Shield.svg';
 export { ReactComponent as Tick } from './assets/Tick.svg';
