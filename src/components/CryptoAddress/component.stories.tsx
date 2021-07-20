@@ -7,7 +7,7 @@ import { Sections } from '../../modules/sections';
 
 import { SIZES } from './styled';
 
-import { CryptoAddress } from './';
+import { CryptoAddress } from '.';
 
 export default {
   component: CryptoAddress,
