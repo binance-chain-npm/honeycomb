@@ -60,11 +60,12 @@ export const Element = styled.li<ElementProps>`
   ${({ variant }) =>
     variant === 'tab' &&
     css`
-      border-bottom: 2px solid transparent;
+      border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
       border-radius: 0;
+      color: ${({ theme }) =>theme.honeycomb.color.text.masked};
     `};
 
-  ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
+  ${({ theme }) => transitions(['background', 'border', 'color'], theme.honeycomb.duration.normal)};
   ${({ active }) => active && activeElement}
 `;
 
@@ -101,7 +102,6 @@ export const Container = styled.ul<ContainerProps>`
       `) ||
     (variant === 'tab' &&
       css`
-        border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
         border-radius: 0;
       `)};
 `;
