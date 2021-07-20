@@ -2,18 +2,29 @@ import React, { useContext, useMemo } from 'react';
 
 import { Testable, useBuildTestId } from '../../../modules/test-ids';
 import { Icon } from '../../Icon';
-import { DefaultTarget } from '../../internal/DefaultTarget';
+import { DefaultTarget, Shape, Size } from '../../internal/DefaultTarget';
 import { ListItem } from '../../ListItem';
 import { Context } from '../context';
 import { useCurrentVariant } from '../useCurrentVariant';
 
 import { StyledListItem } from './styled';
 
-export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as'> &
+export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
   Pick<React.ComponentPropsWithoutRef<typeof ListItem>, 'children' | 'left' | 'onClick'> &
-  Testable;
+  Testable & {
+    shape?: Shape;
+    size?: Size;
+  };
 
-export const Component = ({ children, onClick, 'data-testid': testId, ...otherProps }: Props) => {
+export const Component = ({
+  children,
+  className,
+  onClick,
+  shape = 'fill',
+  size = 'huge',
+  'data-testid': testId,
+  ...otherProps
+}: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
   const { variant = 'responsive', isShowing } = useContext(Context);
   const currentVariant = useCurrentVariant({ variant });
@@ -31,14 +42,14 @@ export const Component = ({ children, onClick, 'data-testid': testId, ...otherPr
   }, [isShowing, currentVariant, buildTestId]);
 
   return (
-    <DefaultTarget>
+    <DefaultTarget shape={shape} size={size} className={className} data-testid={buildTestId()}>
       <StyledListItem
+        htmlTag="div"
         right={right}
         showBorder={false}
         interactive={false}
         onClick={onClick}
         {...otherProps}
-        data-testid={buildTestId()}
       >
         {children}
       </StyledListItem>

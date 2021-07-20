@@ -62,7 +62,7 @@ export const Element = styled.li<ElementProps>`
     css`
       border-bottom: 1px solid ${({ theme }) => theme.honeycomb.color.border};
       border-radius: 0;
-      color: ${({ theme }) =>theme.honeycomb.color.text.masked};
+      color: ${({ theme }) => theme.honeycomb.color.text.masked};
     `};
 
   ${({ theme }) => transitions(['background', 'border', 'color'], theme.honeycomb.duration.normal)};
