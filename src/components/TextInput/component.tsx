@@ -181,9 +181,17 @@ export const Component = ({
         $scale={scale}
         hasEnd={!!end}
       >
-        {left && <Left size={size} data-testid={buildTestId('left')}>{left}</Left>}
+        {left && (
+          <Left size={size} data-testid={buildTestId('left')}>
+            {left}
+          </Left>
+        )}
         {input}
-        {right && <Right size={size} data-testid={buildTestId('right')}>{right}</Right>}
+        {right && (
+          <Right size={size} data-testid={buildTestId('right')}>
+            {right}
+          </Right>
+        )}
       </InputContainer>
     );
 

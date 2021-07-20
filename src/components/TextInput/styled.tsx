@@ -169,14 +169,16 @@ export const Left = styled.div<Pick<InputProps, 'size'>>`
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  margin-right: ${({ theme, size }) => em(marginSize({ theme, size }), theme.honeycomb.size.reduced)};
+  margin-right: ${({ theme, size }) =>
+    em(marginSize({ theme, size }), theme.honeycomb.size.reduced)};
 `;
 
 export const Right = styled.div<Pick<InputProps, 'size'>>`
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  margin-left: ${({ theme, size }) => em(marginSize({ theme, size }), theme.honeycomb.size.reduced)};
+  margin-left: ${({ theme, size }) =>
+    em(marginSize({ theme, size }), theme.honeycomb.size.reduced)};
 `;
 
 export const End = styled.div`

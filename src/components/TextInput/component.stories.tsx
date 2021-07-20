@@ -39,9 +39,7 @@ export const WithLabel = () => (
   <TextInput placeholder="Some placeholder" label="A label" value="" />
 );
 
-export const WithDescription = () => (
-  <TextInput description="Some description." value="" />
-);
+export const WithDescription = () => <TextInput description="Some description." value="" />;
 
 export const WithPlaceholder = () => <TextInput placeholder="Some placeholder" value="" />;
 
