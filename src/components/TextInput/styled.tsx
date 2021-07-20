@@ -159,18 +159,24 @@ export const Input = styled.div<InputProps>`
     `};
 `;
 
-export const Left = styled.div`
+const marginSize = ({ theme, size }: { theme: DefaultTheme; size: Size }) => {
+  return size === 'normal' || size === 'increased'
+    ? theme.honeycomb.size.micro
+    : theme.honeycomb.size.small;
+};
+
+export const Left = styled.div<Pick<InputProps, 'size'>>`
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  margin-right: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  margin-right: ${({ theme, size }) => em(marginSize({ theme, size }), theme.honeycomb.size.reduced)};
 `;
 
-export const Right = styled.div`
+export const Right = styled.div<Pick<InputProps, 'size'>>`
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  margin-left: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
+  margin-left: ${({ theme, size }) => em(marginSize({ theme, size }), theme.honeycomb.size.reduced)};
 `;
 
 export const End = styled.div`
