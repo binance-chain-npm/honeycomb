@@ -129,7 +129,7 @@ export const Input = styled.div<InputProps>`
   ${({ theme }) => transitions(['color'], `${theme.honeycomb.duration.normal} ease-in-out`)};
 
   ::placeholder {
-    color: ${({ theme }) => theme.honeycomb.color.text.masked};
+    color: ${({ theme }) => theme.honeycomb.color.text.disabled};
   }
 
   ${({ size }) =>
