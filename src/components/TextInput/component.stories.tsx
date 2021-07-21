@@ -26,29 +26,27 @@ const Container = styled.div`
 `;
 
 export const Text = () => {
-  const [value, setValue] = useState('Some text…');
+  const [value, setValue] = useState('Some text...');
   return <TextInput value={value} onChange={(evt) => setValue(evt.target.value)} />;
 };
 
 export const InvalidText = () => {
-  const [value, setValue] = useState('Invalid text…');
+  const [value, setValue] = useState('Invalid text');
   return <TextInput state="danger" value={value} onChange={(evt) => setValue(evt.target.value)} />;
 };
 
 export const WithLabel = () => (
-  <TextInput placeholder="Some placeholder…" label="A label" value="" />
+  <TextInput placeholder="Some placeholder" label="A label" value="" />
 );
 
-export const WithDescription = () => (
-  <TextInput placeholder="Some placeholder…" label="A label" value="" />
-);
+export const WithDescription = () => <TextInput description="Some description." value="" />;
 
-export const WithPlaceholder = () => <TextInput placeholder="Some placeholder…" value="" />;
+export const WithPlaceholder = () => <TextInput placeholder="Some placeholder" value="" />;
 
 export const WithLeftAndRightAppendixes = () => (
   <TextInput
     label="Amount"
-    placeholder="Some placeholder…"
+    placeholder="Some placeholder"
     value=""
     left={<div>€</div>}
     right={
@@ -76,7 +74,7 @@ export const WithEnd = () => {
             </Button>
           </>
         }
-        description="Some description..."
+        description="Some description."
       />
       <TextInput
         label="With End and Left/Right Appendixes"
@@ -170,14 +168,14 @@ const CustomTextInput = styled(TextInput)`
 export const CustomStyles = () => (
   <>
     <CustomTextInput
-      placeholder="Some placeholder…"
+      placeholder="Some placeholder"
       label="A label"
       value="10"
       right="gwei"
       size="increased"
     />
     <CustomTextInput
-      placeholder="Some placeholder…"
+      placeholder="Some placeholder"
       label="A label"
       value="215510"
       size="increased"

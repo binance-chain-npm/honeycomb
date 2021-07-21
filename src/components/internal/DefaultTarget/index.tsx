@@ -3,16 +3,26 @@ import { transitions, em } from 'polished';
 
 import { styleless } from '../../Styleless';
 import { boxSizing } from '../../../modules/box-sizing';
+import { fontSize, huge, increased } from '../Size';
+import { fill, fit } from '../Shape';
 
-export const DefaultTarget = styled.div`
+export const SHAPES = ['fill', 'fit'] as const;
+export type Shape = typeof SHAPES[number];
+
+export const SIZES = ['increased', 'huge'] as const;
+export type Size = typeof SIZES[number];
+
+export const DefaultTarget = styled.div<{ shape: Shape; size: Size }>`
   ${styleless};
   ${boxSizing};
 
-  width: 100%;
   background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  border-radius: ${({ theme }) => em(theme.honeycomb.radius.normal, theme.honeycomb.size.reduced)};
-  height: ${({ theme }) => em(theme.honeycomb.size.huge, theme.honeycomb.size.reduced)};
-  cursor: pointer;
   ${({ theme }) => transitions(['background', 'color'], theme.honeycomb.duration.normal)};
+
+  ${({ shape }) => shape === 'fill' && fill};
+  ${({ shape }) => shape === 'fit' && fit};
+
+  font-size: ${({ theme, size }) => em(fontSize({ theme, size }))};
+  ${({ size }) => size === 'increased' && increased};
+  ${({ size }) => size === 'huge' && huge};
 `;

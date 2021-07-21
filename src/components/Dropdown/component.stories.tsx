@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import { em } from 'polished';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
+import { SHAPES, SIZES } from '../internal/DefaultTarget';
 
 import { Dropdown } from '.';
 
@@ -94,5 +97,29 @@ export const Selectable = () => {
         </Dropdown.Item>
       ))}
     </Dropdown>
+  );
+};
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
+
+export const TargetVariants = () => {
+  return (
+    <Container>
+      <h3>size</h3>
+      {SIZES.map((size) => (
+        <Dropdown.DefaultTarget size={size}>{size}</Dropdown.DefaultTarget>
+      ))}
+      <h3>shape</h3>
+      {SHAPES.map((shape) => (
+        <Dropdown.DefaultTarget shape={shape}>{shape}</Dropdown.DefaultTarget>
+      ))}
+    </Container>
   );
 };

@@ -33,7 +33,7 @@ export const Component = ({
   className,
   canCopyToClipboard = true,
   canScanQrCode = true,
-  size = 'increased',
+  size = 'huge',
   wrap = false,
   'data-testid': testId,
 }: Props) => {

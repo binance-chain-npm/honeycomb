@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { em } from 'polished';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 import { Card } from '../Card';
 import { Icon } from '../Icon';
+import { SHAPES, SIZES } from '../internal/DefaultTarget';
 import { ListItem } from '../ListItem';
 
 // @ts-ignore
 import pic from './pic.png';
 
-import { Select } from './';
+import { Select } from '.';
 
 export default {
   component: Select,
@@ -237,3 +239,28 @@ export const WithSearchPlaceholder = () => {
     </>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  > *:not(:last-child) {
+    margin-bottom: ${({ theme }) => em(theme.honeycomb.size.normal)};
+  }
+`;
+
+export const TargetVariants = () => {
+  return (
+    <Container>
+      <h3>size</h3>
+      {SIZES.map((size) => (
+        <Select.DefaultTarget size={size}>{size}</Select.DefaultTarget>
+      ))}
+      <h3>shape</h3>
+      {SHAPES.map((shape) => (
+        <Select.DefaultTarget shape={shape}>{shape}</Select.DefaultTarget>
+      ))}
+    </Container>
+  );
+};
+TargetVariants.decorators = decorators;

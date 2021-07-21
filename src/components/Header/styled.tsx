@@ -81,6 +81,7 @@ export const Item = styled(ListItem)<{ isMenu?: boolean }>`
 
 export const StyledDropdownDefaultTarget = styled(Dropdown.DefaultTarget)`
   ${headerItem};
+  padding: 0;
 `;
 
 export const StyledDropdownItem = styled(Dropdown.Item)`
