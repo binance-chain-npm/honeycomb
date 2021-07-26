@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { transitions, em } from 'polished';
+import { em, transitions } from 'polished';
 
 import { Shape, fill, fit, square } from '../internal/Shape';
 import { Size, normal, increased, huge, giant, fontSize } from '../internal/Size';
@@ -41,10 +41,16 @@ const primary = css`
     theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.normal)};
 
   :hover,
-  :active {
+  :active,
+  :focus,
+  :focus-within {
     background: ${({ theme }) => theme.honeycomb.color.primary.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.active)};
+  }
+
+  :active {
+    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary.normal};
   }
 
   ${Shadow} {
@@ -63,6 +69,10 @@ const secondary = css`
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.secondary.active)};
   }
 
+  :active {
+    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary.normal};
+  }
+
   ${Shadow} {
     color: ${({ theme }) => theme.honeycomb.color.secondary.active};
   }
@@ -74,10 +84,16 @@ const success = css`
     theme.honeycomb.color.readable.normal(theme.honeycomb.color.success.normal)};
 
   :hover,
-  :active {
+  :active,
+  :focus,
+  :focus-within {
     background: ${({ theme }) => theme.honeycomb.color.success.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.success.active)};
+  }
+
+  :active {
+    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.success.normal};
   }
 
   ${Shadow} {
@@ -91,10 +107,16 @@ const danger = css`
     theme.honeycomb.color.readable.normal(theme.honeycomb.color.danger.normal)};
 
   :hover,
-  :active {
+  :active,
+  :focus,
+  :focus-within {
     background: ${({ theme }) => theme.honeycomb.color.danger.active};
     color: ${({ theme }) =>
       theme.honeycomb.color.readable.normal(theme.honeycomb.color.danger.active)};
+  }
+
+  :active {
+    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.danger.normal};
   }
 
   ${Shadow} {
@@ -149,11 +171,6 @@ export const Styled = styled.button<Props>`
   flex-shrink: 0;
   position: relative;
   ${({ theme }) => transitions(['background', 'color', 'border'], theme.honeycomb.duration.normal)};
-
-  :focus,
-  :focus-within {
-    box-shadow: 0 0 5px 1px ${({ theme }) => theme.honeycomb.color.primary.normal};
-  }
 
   :hover,
   :active {
