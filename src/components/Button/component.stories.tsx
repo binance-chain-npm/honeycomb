@@ -117,17 +117,25 @@ export const AsAnchor = () => (
 export const WithIconAndText = () => (
   <Container>
     {VARIANTS.map((variant) => (
-      <Container>
-        <Button
-          href="https://binance.org"
-          onClick={action('clicked')}
-          key={`${variant}`}
-          variant={variant}
-          icon={<Icon.BinanceChain />}
-        >
-          A button
-        </Button>
-      </Container>
+      <Button
+        href="https://binance.org"
+        onClick={action('clicked')}
+        key={`${variant}`}
+        variant={variant}
+        icon={<Icon.BinanceChain />}
+      >
+        A button
+      </Button>
+    ))}
+  </Container>
+);
+
+export const Outlined = () => (
+  <Container>
+    {VARIANTS.map((variant) => (
+      <Button key={`${variant}-outlined`} variant={variant} outlined>
+        An outlined {variant} button
+      </Button>
     ))}
   </Container>
 );

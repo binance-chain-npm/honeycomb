@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { em, transitions } from 'polished';
+import { Property } from 'csstype';
 
 import { Shape, fill, fit, square } from '../internal/Shape';
 import { Size, normal, increased, huge, giant, fontSize } from '../internal/Size';
@@ -23,6 +24,7 @@ export interface Props {
   size: Size;
   $shape: Shape;
   disabled?: boolean;
+  outlined?: boolean;
 }
 
 export const Shadow = styled.div`
@@ -158,6 +160,75 @@ const link = css`
   }
 `;
 
+export const outlineColor = ({
+  theme,
+  variant,
+}: {
+  theme: DefaultTheme;
+  variant: Variant;
+}): {
+  normal: Property.Color;
+  active: Property.Color;
+} => {
+  switch (variant) {
+    case 'transparent':
+      return {
+        normal: theme.honeycomb.color.text.normal,
+        active: theme.honeycomb.color.primary.normal,
+      };
+    case 'primary':
+      return {
+        normal: theme.honeycomb.color.primary.normal,
+        active: theme.honeycomb.color.primary.active,
+      };
+    case 'secondary':
+      return {
+        normal: theme.honeycomb.color.secondary.normal,
+        active: theme.honeycomb.color.secondary.active,
+      };
+    case 'success':
+      return {
+        normal: theme.honeycomb.color.success.normal,
+        active: theme.honeycomb.color.success.active,
+      };
+    case 'danger':
+      return {
+        normal: theme.honeycomb.color.danger.normal,
+        active: theme.honeycomb.color.danger.active,
+      };
+    case 'buy':
+      return {
+        normal: theme.honeycomb.color.success.normal,
+        active: theme.honeycomb.color.success.active,
+      };
+    case 'sell':
+      return {
+        normal: theme.honeycomb.color.danger.normal,
+        active: theme.honeycomb.color.danger.active,
+      };
+    case 'link':
+      return {
+        normal: theme.honeycomb.color.primary.normal,
+        active: theme.honeycomb.color.primary.active,
+      };
+  }
+};
+
+export const outlined = css<{ variant: Variant }>`
+  border: 1px solid ${({ theme, variant }) => outlineColor({ theme, variant }).normal};
+  color: ${({ theme, variant }) => outlineColor({ theme, variant }).normal};
+  background: transparent;
+
+  :hover,
+  :active,
+  :focus,
+  :focus-within {
+    border-color: ${({ theme, variant }) => outlineColor({ theme, variant }).active};
+    color: ${({ theme, variant }) => outlineColor({ theme, variant }).active};
+    background: transparent;
+  }
+`;
+
 export const Styled = styled.button<Props>`
   ${stylelessCommon};
   ${boxSizing};
@@ -192,6 +263,8 @@ export const Styled = styled.button<Props>`
   ${({ variant }) => variant === 'primary' && primary};
   ${({ variant }) => variant === 'transparent' && transparent};
   ${({ variant }) => variant === 'link' && link};
+
+  ${({ outlined: isOutlined }) => isOutlined && outlined};
 
   font-size: ${({ theme, size }) => em(fontSize({ theme, size }))};
   ${({ size }) => size === 'normal' && normal};
