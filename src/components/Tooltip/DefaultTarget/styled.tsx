@@ -12,7 +12,6 @@ export const Styled = styled.div<{ $shape: Shape }>`
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
   ${({ theme }) => transitions(['color'], theme.honeycomb.duration.normal)};
 
-  :focus,
   :hover,
   :active {
     color: ${({ theme }) => theme.honeycomb.color.primary.normal};

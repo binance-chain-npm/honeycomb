@@ -13,15 +13,10 @@ export const POSITIONS = ['center', 'top', 'right', 'bottom', 'left'] as const;
 export type Position = typeof POSITIONS[number];
 
 export interface Props {
-  outlined: boolean;
   padding: Padding;
   position: Position;
   shadow: Shadow;
 }
-
-const outline = css`
-  border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
-`;
 
 const center = css`
   border-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
@@ -60,8 +55,6 @@ export const Container = styled.div<Props>`
 
   background: ${({ theme }) => theme.honeycomb.color.bg.normal};
   overflow: hidden;
-
-  ${({ outlined }) => outlined && outline};
 
   ${({ position }) => position === 'center' && center};
   ${({ position }) => position === 'top' && top};

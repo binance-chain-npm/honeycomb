@@ -57,7 +57,6 @@ export const headerItem = css`
   background: transparent;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
 
-  :focus,
   :hover,
   :active {
     background-color: transparent;
@@ -88,7 +87,6 @@ export const StyledDropdownItem = styled(Dropdown.Item)`
   padding-left: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
   padding-right: ${({ theme }) => em(theme.honeycomb.size.normal, theme.honeycomb.size.reduced)};
 
-  :focus,
   :hover,
   :active {
     color: ${({ theme }) => theme.honeycomb.color.primary.normal};
