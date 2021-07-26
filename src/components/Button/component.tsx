@@ -16,6 +16,7 @@ export type Props = Omit<React.AllHTMLAttributes<HTMLElement>, 'as' | 'size'> &
     size?: Size;
     shape?: Shape;
     icon?: React.ReactNode;
+    outlined?: boolean;
   };
 
 export const Component = ({
@@ -31,6 +32,7 @@ export const Component = ({
   variant,
   size = 'huge',
   shape = 'fill',
+  outlined,
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
@@ -65,6 +67,7 @@ export const Component = ({
       variant={variant}
       size={size}
       $shape={shape}
+      outlined={outlined}
       onClick={click}
     >
       {icon && (
