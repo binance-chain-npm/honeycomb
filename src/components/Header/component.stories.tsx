@@ -82,6 +82,27 @@ export const WithAccount = () => (
   />
 );
 
+export const WithItems = () => (
+  <Header
+    logo={<Header.Logo />}
+    left={[
+      {
+        element: 'Left Item',
+      },
+    ]}
+    center={[
+      {
+        element: 'Center Item',
+      },
+    ]}
+    right={[
+      {
+        element: 'Right Item',
+      },
+    ]}
+  />
+);
+
 export const WithDropdownItems = () => (
   <Header
     logo={<Header.Logo />}
