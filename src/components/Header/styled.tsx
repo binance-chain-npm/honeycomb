@@ -14,6 +14,7 @@ export const Styled = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: ${em(64)};
   padding-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
   padding-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
@@ -22,13 +23,23 @@ export const Styled = styled.div`
 
 export const LeftContainer = styled.div`
   display: flex;
-  flex-grow: 1;
+`;
+
+export const CenterContainer = styled.div`
+  display: flex;
+`;
+
+export const RightContainer = styled.div`
+  display: flex;
 `;
 
 export const Logo = styled.div`
   display: flex;
   align-items: center;
-  margin-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
+
+  :not(:last-child) {
+    margin-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
+  }
 `;
 
 export const LeftHeaderItems = styled(HeaderItems)`

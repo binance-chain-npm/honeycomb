@@ -8,16 +8,19 @@ import { ListItem } from '../ListItem';
 import { HeaderDrawer } from './HeaderDrawer';
 import {
   Styled,
-  LeftContainer,
   Logo,
   LeftHeaderItems,
   RightHeaderItems,
   NonCollapsibleHeaderItems,
+  LeftContainer,
+  CenterContainer,
+  RightContainer,
 } from './styled';
 
 export type Props = Testable & {
   logo?: React.ReactNode;
   left?: HeaderItem[];
+  center?: HeaderItem[];
   right?: HeaderItem[];
   nonCollapsible?: NonCollapsibleHeaderItem[];
 };
@@ -44,6 +47,7 @@ export type Panels = React.ComponentPropsWithoutRef<typeof Accordion>['panels'];
 export const Component = ({
   logo,
   left,
+  center,
   right,
   nonCollapsible,
   'data-testid': testId,
@@ -63,9 +67,24 @@ export const Component = ({
     setActivePanel((prev) => (prev === index ? -1 : index));
   }, []);
 
+  const leftHeaderItems = useMemo(() => {
+    if (!left || left.length === 0 || isSm) return null;
+
+    return <LeftHeaderItems items={left} data-testid={buildTestId('left')} />;
+  }, [left, isSm, buildTestId]);
+
+  const centerHeaderItems = useMemo(() => {
+    if (!center || center.length === 0 || isSm) return null;
+
+    return <LeftHeaderItems items={center} data-testid={buildTestId('center')} />;
+  }, [center, isSm, buildTestId]);
+
   const rightHeaderItems = useMemo(() => {
     let rightElements: HeaderItem[] = [];
     if (right && right.length > 0) rightElements = right;
+
+    let centerElements: HeaderItem[] = [];
+    if (center && center.length > 0) centerElements = center;
 
     let leftElements: HeaderItem[] = [];
     if (left && left.length > 0) leftElements = left;
@@ -82,7 +101,7 @@ export const Component = ({
     if (isSm) {
       return (
         <HeaderDrawer
-          items={[...leftElements, ...rightElements, ...nonCollapsibleElements]}
+          items={[...leftElements, ...centerElements, ...rightElements, ...nonCollapsibleElements]}
           open={open}
           activePanel={activePanel}
           onChange={changePanel}
@@ -111,6 +130,7 @@ export const Component = ({
     return <RightHeaderItems items={rightElements} data-testid={buildTestId('right')} />;
   }, [
     left,
+    center,
     right,
     nonCollapsible,
     isSm,
@@ -121,12 +141,6 @@ export const Component = ({
     toggleDrawer,
     buildTestId,
   ]);
-
-  const leftHeaderItems = useMemo(() => {
-    if (!left || left.length === 0 || isSm) return null;
-
-    return <LeftHeaderItems items={left} data-testid={buildTestId('left')} />;
-  }, [left, isSm, buildTestId]);
 
   const nonCollapsibleHeaderItems = useMemo(() => {
     if (!nonCollapsible || nonCollapsible.length === 0) return null;
@@ -148,8 +162,11 @@ export const Component = ({
         {logo && <Logo>{logo}</Logo>}
         {leftHeaderItems}
       </LeftContainer>
-      {rightHeaderItems}
-      {nonCollapsibleHeaderItems}
+      <CenterContainer>{centerHeaderItems}</CenterContainer>
+      <RightContainer>
+        {rightHeaderItems}
+        {nonCollapsibleHeaderItems}
+      </RightContainer>
     </Styled>
   );
 };
