@@ -8,7 +8,6 @@ import { Container, Padding, Position, Shadow } from './styled';
 export type Props = Pick<React.AllHTMLAttributes<HTMLElement>, 'className' | 'children'> &
   Testable & {
     htmlTag?: HtmlTag;
-    outlined?: boolean;
     padding?: Padding;
     position?: Position;
     shadow?: Shadow;
@@ -18,7 +17,6 @@ export const Component = ({
   children,
   className,
   htmlTag,
-  outlined = false,
   padding = 'normal',
   position = 'center',
   shadow = 'normal',
@@ -27,7 +25,6 @@ export const Component = ({
   <Container
     className={className}
     as={htmlTag as any}
-    outlined={outlined}
     padding={padding}
     position={position}
     shadow={shadow}

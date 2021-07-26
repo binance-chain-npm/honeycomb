@@ -25,7 +25,8 @@ export const Styles = createGlobalStyle`
   .ReactModal__Content {
     ${transitions(['opacity', 'transform'], `${CLOSE_MODAL_TIMEOUT}ms`)};
 
-    :focus {
+    :focus,
+    :focus-within {
       outline: none;
     }
   }

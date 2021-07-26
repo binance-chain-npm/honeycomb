@@ -46,10 +46,5 @@ export const Default = () => (
         <div>A card with shadow={shadow}</div>
       </Card>
     ))}
-
-    <h3>outlined</h3>
-    <Card shadow="none" outlined>
-      <div>An outlined card</div>
-    </Card>
   </Container>
 );

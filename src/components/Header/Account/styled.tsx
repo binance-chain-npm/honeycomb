@@ -17,7 +17,6 @@ export const Styled = styled(Dropdown.DefaultTarget)<{ interactive: boolean }>`
     css`
       cursor: pointer;
 
-      :focus,
       :hover,
       :active {
         color: ${({ theme }) => theme.honeycomb.color.primary.normal};
