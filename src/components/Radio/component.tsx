@@ -3,9 +3,9 @@ import { nanoid } from 'nanoid';
 import { useTheme } from 'styled-components';
 
 import { useBuildTestId, Testable } from '../../modules/test-ids';
-import { Input, LabelContent } from '../Checkbox/styled';
+import { Input, LabelContent, Styled } from '../Checkbox/styled';
 
-import { Styled, Label, Svg } from './styled';
+import { Label, Svg } from './styled';
 
 export type Props = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> &
   Testable & {
