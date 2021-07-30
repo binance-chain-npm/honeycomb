@@ -6,8 +6,9 @@ import { action } from '@storybook/addon-actions';
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
 
-import { Switch } from '.';
 import { SIZES } from './styled';
+
+import { Switch } from '.';
 
 export default {
   component: Switch,
