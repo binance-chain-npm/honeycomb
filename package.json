@@ -15,7 +15,7 @@
     "build:font": "node font.config.js",
     "test": "tsdx test --env=jsdom --passWithNoTests",
     "cypress": "cypress",
-    "lint": "tsdx lint src",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,css,json,md,mdx,html}'",
     "clean": "rimraf .rts2_cache_cjs .rts2_cache_esm dist public storybook-static *.log stats.*",
     "semantic-release": "semantic-release"
