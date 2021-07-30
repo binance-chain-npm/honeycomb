@@ -4,6 +4,12 @@ import { em, transitions } from 'polished';
 import { icons } from '../Icon';
 import { boxSizing } from '../../modules/box-sizing';
 
+export const Styled = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
 export const Input = styled.input`
   ${boxSizing};
 
@@ -65,4 +71,5 @@ export const LabelContent = styled.span`
   cursor: pointer;
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   margin-left: ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)};
+  white-space: nowrap;
 `;

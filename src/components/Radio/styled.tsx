@@ -3,12 +3,6 @@ import { em, transitions } from 'polished';
 
 import { Input, label } from '../Checkbox/styled';
 
-export const Styled = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-`;
-
 export const Label = styled.label`
   ${label};
 

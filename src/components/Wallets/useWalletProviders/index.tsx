@@ -37,13 +37,12 @@ export const useWalletProviders = () => {
 
   return {
     providers: {
-      /* eslint-disable prettier/prettier */
       'Binance Chain Wallet': {
         name: 'Binance Chain Wallet',
         icon: <BinanceChainWallet />,
         href: binanceWalletUrl,
       },
-      'Ledger': {
+      Ledger: {
         name: 'Ledger',
         icon: <Ledger />,
         href: 'https://www.ledger.com',
@@ -53,12 +52,12 @@ export const useWalletProviders = () => {
         icon: <MathWallet />,
         href: 'https://mathwallet.org',
       },
-      'MetaMask': {
+      MetaMask: {
         name: 'MetaMask',
         icon: <MetaMask />,
         href: 'https://metamask.io/index.html',
       },
-      'TokenPocket': {
+      TokenPocket: {
         name: 'TokenPocket',
         icon: <TokenPocket />,
         href: 'https://www.tokenpocket.pro',
@@ -68,7 +67,6 @@ export const useWalletProviders = () => {
         icon: <TrustWallet />,
         href: 'https://trustwallet.com',
       },
-      /* eslint-enable prettier/prettier */
     },
   };
 };
