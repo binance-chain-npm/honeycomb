@@ -44,6 +44,7 @@ export { Space } from './components/Space';
 export { Steps } from './components/Steps';
 export { Styleless, styleless } from './components/Styleless';
 export { Swiper } from './components/Swiper';
+export { Switch } from './components/Switch';
 export { Table } from './components/Table';
 export { Text } from './components/Text';
 export { TextArea } from './components/TextArea';
