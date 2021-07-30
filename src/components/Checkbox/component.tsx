@@ -15,9 +15,9 @@ export const Component = ({ className, label, 'data-testid': testId, ...otherPro
   const id = useMemo(() => otherProps.id || `id-${nanoid()}`, [otherProps.id]);
 
   return (
-    <Styled>
+    <Styled className={className}>
       <Input {...otherProps} id={id} type="checkbox" data-testid={buildTestId('native-input')} />
-      <Label htmlFor={id} className={className} data-testid={buildTestId('label')}>
+      <Label htmlFor={id} data-testid={buildTestId('label')}>
         {!!label && <LabelContent data-testid={buildTestId('label-content')}>{label}</LabelContent>}
       </Label>
     </Styled>
