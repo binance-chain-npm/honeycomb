@@ -1,71 +1,54 @@
 import styled, { css } from 'styled-components';
 import { em, transitions } from 'polished';
 
-import { icons } from '../Icon';
-import { boxSizing } from '../../modules/box-sizing';
+import { GoldLight } from '../../modules/themes/themes/GoldLight';
+import { Input, label } from '../Checkbox/styled';
 
-export const SIZES = ['normal', 'increased'] as const;
-export type Sizes = typeof SIZES[number];
+export const SIZES = ['normal', 'increased', 'large', 'huge'] as const;
+export type Size = typeof SIZES[number];
 
-export const Input = styled.input`
-  ${boxSizing};
+export interface Props {
+  size: Size;
+}
 
-  position: absolute;
-  width: 0;
-  height: 0;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  cursor: inherit;
-  opacity: 0;
-`;
+export const padding = ({ size }: { size: Size }) => {
+  return size === 'normal' || size === 'increased' ? 1 : 2;
+};
 
-export const label = css`
-  ${boxSizing};
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-
-  ::before {
-    content: '';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: ${({ theme }) => em(theme.honeycomb.size.normal)};
-    height: ${({ theme }) => em(theme.honeycomb.size.normal)};
-    background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
-    border: 1px solid ${({ theme }) => theme.honeycomb.color.border};
-    ${({ theme }) => transitions(['background-color', 'border'], theme.honeycomb.duration.normal)};
-  }
-`;
-
-export const Label = styled.label`
+export const Label = styled.label<Props>`
   ${label};
 
   ::before {
-    border-radius: ${({ theme }) => em(theme.honeycomb.radius.reduced)};
+    border: none;
+    position: relative;
+    border-radius: ${({ theme, size }) => em(theme.honeycomb.size[size] / 2)};
+    width: ${({ theme, size }) => em(theme.honeycomb.size[size] * 1.625)};
+    height: ${({ theme, size }) => em(theme.honeycomb.size[size])};
+    background: ${({ theme }) => theme.honeycomb.color.bg.input.normal};
+    ${({ theme }) => transitions(['background-color'], theme.honeycomb.duration.normal)};
   }
 
   ${Input}:checked ~ & {
     ::before {
-      color: ${({ theme }) =>
-        theme.honeycomb.color.readable.normal(theme.honeycomb.color.primary.normal)};
-      border-color: transparent;
-      background: ${({ theme }) => theme.honeycomb.color.primary.normal};
-      background-image: url(${icons.Tick});
-      background-size: ${({ theme }) => em(theme.honeycomb.size.tiny)};
-      background-repeat: no-repeat;
-      background-position: center;
+      background: ${({ theme }) => theme.honeycomb.color.success.normal};
     }
   }
 `;
 
-export const LabelContent = styled.span`
-  cursor: pointer;
-  font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
-  margin-left: ${({ theme }) => em(theme.honeycomb.size.tiny, theme.honeycomb.size.reduced)};
+export const Control = styled.div<Props & { checked: boolean }>`
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  width: ${({ theme, size }) => em(theme.honeycomb.size[size] - padding({ size }) * 2)};
+  height: ${({ theme, size }) => em(theme.honeycomb.size[size] - padding({ size }) * 2)};
+  margin: ${({ size }) => em(padding({ size }))};
+  box-shadow: ${GoldLight.honeycomb.shadow.box.normal};
+  transition: ${({ theme }) => theme.honeycomb.duration.normal} linear;
+
+  ${({ checked }) =>
+    checked &&
+    css<{ size: Size }>`
+      transform: translateX(${({ theme, size }) => em(theme.honeycomb.size[size] * 0.625)});
+    `};
 `;
