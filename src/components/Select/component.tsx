@@ -60,26 +60,34 @@ export const Component = ({
 
   const lowerCaseSearch = useMemo(() => search.toLowerCase(), [search]);
 
-  const filterableChildren = useMemo(() => {
-    let hasError = false;
-
-    const res = React.Children.toArray(children).flatMap((it) => {
+  const { filterable, filterableChildren } = useMemo(() => {
+    const items = React.Children.toArray(children);
+    const filterableChildren = items.flatMap((it) => {
       if (React.isValidElement<{ searchAs?: string[] | string }>(it)) {
         if (it.props.searchAs && it.props.searchAs.length > 0) {
           return [it];
         }
-
-        hasError = true;
       }
 
       return [];
     });
 
-    if (process.env.NODE_ENV !== 'production' && hasError) {
-      console.error('Select has filterable children with an invalid "searchAs" prop');
+    const filterable = (() => {
+      if (filterableChildren.length === 0 && items.length !== 0) return false;
+      return items.length === filterableChildren.length;
+    })();
+
+    if (
+      process.env.NODE_ENV !== 'production' &&
+      filterableChildren.length !== 0 &&
+      items.length !== filterableChildren.length
+    ) {
+      console.error(
+        'Select has children with mixed "searchAs" prop. Either add a valid "searchAs" to all children or remove the prop.',
+      );
     }
 
-    return res;
+    return { filterable, filterableChildren };
   }, [children]);
 
   const filteredResults = useMemo(
@@ -101,12 +109,10 @@ export const Component = ({
     [filterableChildren, lowerCaseSearch],
   );
 
-  const isFilterable = useMemo(() => filterableChildren.length > 0, [filterableChildren]);
-
   const content = useMemo(() => {
     return (
       <Container>
-        {isFilterable && (
+        {filterable && (
           <StyledCard position="top">
             <StyledTextInput
               value={search}
@@ -117,9 +123,7 @@ export const Component = ({
                     fontSize={theme.honeycomb.size.increased}
                     color={theme.honeycomb.color.text.placeholder}
                   />
-                ) : (
-                  undefined
-                )
+                ) : undefined
               }
               placeholder={searchPlaceholder}
               data-testid={buildTestId('input')}
@@ -131,13 +135,13 @@ export const Component = ({
         <Space size="small" />
         <OptionsContainer position="bottom">
           <Options data-testid={buildTestId('options')}>
-            {isFilterable ? filteredResults : children}
+            {filterable ? filteredResults : children}
           </Options>
         </OptionsContainer>
       </Container>
     );
   }, [
-    isFilterable,
+    filterable,
     filteredResults,
     search,
     searchIcon,
