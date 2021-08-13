@@ -211,32 +211,28 @@ export const Modal = () => {
 
 export const NonFilterable = () => {
   return (
-    <>
-      <Select data-testid="select" optionsTitle="Non-Filterable Options" open={true} target={null}>
-        <ListItem interactive={false} data-testid="non-filterable">
-          Some non-filterable element
-        </ListItem>
-        {new Array(5).fill(null).map((_, index) => (
-          <Select.Option key={index} searchAs="" data-testid={`${index}`}>
-            Option {index + 1}
-          </Select.Option>
-        ))}
-      </Select>
-    </>
+    <Select data-testid="select" optionsTitle="Non-Filterable Options" open={true} target={null}>
+      <ListItem interactive={false} data-testid="non-filterable">
+        Non-filterable element
+      </ListItem>
+      {new Array(5).fill(null).map((_, index) => (
+        <Select.Option key={index} data-testid={`${index}`}>
+          Option {index + 1}
+        </Select.Option>
+      ))}
+    </Select>
   );
 };
 
 export const WithSearchPlaceholder = () => {
   return (
-    <>
-      <Select open={true} target={null} searchPlaceholder="Search...">
-        {new Array(5).fill(null).map((_, index) => (
-          <Select.Option key={index} searchAs={`Option ${index + 1}`} data-testid={`${index}`}>
-            Option {index + 1}
-          </Select.Option>
-        ))}
-      </Select>
-    </>
+    <Select open={true} target={null} searchPlaceholder="Search...">
+      {new Array(5).fill(null).map((_, index) => (
+        <Select.Option key={index} searchAs={`Option ${index + 1}`} data-testid={`${index}`}>
+          Option {index + 1}
+        </Select.Option>
+      ))}
+    </Select>
   );
 };
 
