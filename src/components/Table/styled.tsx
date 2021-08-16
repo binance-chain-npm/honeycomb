@@ -18,12 +18,19 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 
-export const Scroll = styled.div`
+/* Fixed header does not work in Chrome unless `display: block` is added to the scroll wrapper. */
+export const Scroll = styled.div<{ fixed: boolean }>`
   display: flex;
   flex-grow: 1;
   max-width: 100%;
   overflow: auto;
   scroll-behavior: smooth;
+
+  ${({ fixed }) =>
+    fixed &&
+    css`
+      display: block;
+    `};
 `;
 
 export const Table = styled.table`

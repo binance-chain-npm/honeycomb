@@ -215,7 +215,7 @@ export const Component = <Data extends object>({
 
   return (
     <Container data-testid={buildTestId()} className={className}>
-      <Scroll>
+      <Scroll fixed={isHeaderFixed}>
         <Table {...getTableProps()}>
           {isHeaderDisplayed && (
             <Thead>
