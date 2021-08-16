@@ -58,9 +58,12 @@ export const Component = ({
 
   const close = useCallback(() => {
     onClose?.();
-    setTimeout(() => {
-      setMounted(false);
-    }, CLOSE_MODAL_TIMEOUT);
+
+    if (typeof window !== 'undefined') {
+      window.setTimeout(() => {
+        setMounted(false);
+      }, CLOSE_MODAL_TIMEOUT);
+    }
   }, [onClose]);
 
   const context = useMemo(() => ({ loading, onClose: close, testId }), [loading, close, testId]);
