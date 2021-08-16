@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import ReactModal from 'react-modal';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
@@ -54,15 +54,35 @@ export const Component = ({
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
-  const context = useMemo(() => ({ loading, onClose, testId }), [loading, onClose, testId]);
+  const isMounted = useRef(true);
 
-  const close = useCallback(
-    (evt: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>) => {
-      evt.stopPropagation();
-      onClose?.();
-    },
-    [onClose],
-  );
+  const [show, setShow] = useState(false);
+
+  const close = useCallback(() => {
+    onClose?.();
+
+    if (typeof window !== 'undefined') {
+      window.setTimeout(() => {
+        if (isMounted) setShow(false);
+      }, CLOSE_MODAL_TIMEOUT);
+    }
+  }, [onClose]);
+
+  const context = useMemo(() => ({ loading, onClose: close, testId }), [loading, close, testId]);
+
+  useEffect(() => {
+    if (open) setShow(true);
+  }, [open]);
+
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+  if (!show) {
+    return null;
+  }
 
   return (
     <ReactModal
@@ -70,7 +90,6 @@ export const Component = ({
       onRequestClose={close}
       className={className}
       parentSelector={PARENT_SELECTOR}
-      appElement={MODAL_CONTAINER}
       closeTimeoutMS={CLOSE_MODAL_TIMEOUT}
       shouldCloseOnEsc={closeOnEsc}
       shouldCloseOnOverlayClick={closeOnBackgroundClick}
@@ -84,6 +103,7 @@ export const Component = ({
           {contentElement}
         </Container>
       )}
+      portalClassName=""
     >
       <Context.Provider value={context}>{children}</Context.Provider>
     </ReactModal>
@@ -91,3 +111,4 @@ export const Component = ({
 };
 
 Component.displayName = 'Modal';
+Component.setAppElement = ReactModal.setAppElement;

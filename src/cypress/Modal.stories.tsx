@@ -69,3 +69,21 @@ export const Default = () => {
     </>
   );
 };
+
+export const ControlledModal = () => {
+  const [show, setShow] = useState(false);
+
+  return (
+    <>
+      <Button variant="primary" onClick={() => setShow(true)}>
+        Show modal
+      </Button>
+      {show && (
+        <Modal open={show} onClose={() => setShow(false)}>
+          <Modal.Header title="Modal" />
+          <Modal.Content>When this modal is closed, there should be no errors.</Modal.Content>
+        </Modal>
+      )}
+    </>
+  );
+};
