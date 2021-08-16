@@ -18,6 +18,8 @@ export default {
   title: `${Sections.Elements}/Modal`,
 };
 
+Modal.setAppElement('#root');
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
