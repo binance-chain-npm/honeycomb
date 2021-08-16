@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import ReactModal from 'react-modal';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
@@ -54,14 +54,16 @@ export const Component = ({
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
-  const [mounted, setMounted] = useState(false);
+  const isMounted = useRef(true);
+
+  const [show, setShow] = useState(false);
 
   const close = useCallback(() => {
     onClose?.();
 
     if (typeof window !== 'undefined') {
       window.setTimeout(() => {
-        setMounted(false);
+        if (isMounted) setShow(false);
       }, CLOSE_MODAL_TIMEOUT);
     }
   }, [onClose]);
@@ -69,10 +71,16 @@ export const Component = ({
   const context = useMemo(() => ({ loading, onClose: close, testId }), [loading, close, testId]);
 
   useEffect(() => {
-    if (open) setMounted(true);
+    if (open) setShow(true);
   }, [open]);
 
-  if (!mounted) {
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+  if (!show) {
     return null;
   }
 
