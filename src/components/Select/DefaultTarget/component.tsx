@@ -26,7 +26,7 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
-  const { variant = 'responsive', isShowing } = useContext(Context);
+  const { variant, isShowing } = useContext(Context);
   const currentVariant = useCurrentVariant({ variant });
 
   const right = useMemo(() => {

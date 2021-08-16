@@ -48,7 +48,7 @@ export const Component = ({
   loading,
   position = 'center',
   closeOnEsc = true,
-  closeOnBackgroundClick = false,
+  closeOnBackgroundClick = true,
   onClose,
   'data-testid': testId,
 }: Props) => {

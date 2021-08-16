@@ -24,14 +24,14 @@ export const Component = ({
   });
   const { onClose } = useContext(Context);
 
-  const click = useCallback<NonNullable<Props['onClick']>>(
+  const click = useCallback(
     (evt) => {
       try {
         onClick?.(evt);
       } catch (e) {
         throw e;
       } finally {
-        onClose?.();
+        onClose?.(evt);
       }
     },
     [onClick, onClose],
