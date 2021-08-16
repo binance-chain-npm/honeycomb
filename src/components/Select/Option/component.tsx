@@ -4,7 +4,7 @@ import { useBuildTestId } from '../../../modules/test-ids';
 import { ListItem } from '../../ListItem';
 import { Context } from '../context';
 
-import { StyledListItem } from './styled';
+import { StyledDropdownItem } from './styled';
 
 export type Props = React.ComponentPropsWithoutRef<typeof ListItem> & {
   searchAs?: string | string[];
@@ -30,9 +30,9 @@ export const Component = ({ children, onClick, 'data-testid': testId, ...otherPr
   );
 
   return (
-    <StyledListItem {...otherProps} onClick={click} data-testid={buildTestId(testId)}>
+    <StyledDropdownItem {...otherProps} onClick={click} data-testid={buildTestId(testId)}>
       {children}
-    </StyledListItem>
+    </StyledDropdownItem>
   );
 };
 

@@ -29,10 +29,14 @@ export const Component = ({
   const [isShowing, setIsShowing] = useState(false);
   const { buildTestId } = useBuildTestId({ id: testId });
 
-  const click = useCallback<NonNullable<Props['onClick']>>(() => {
-    setIsShowing((value) => !value);
-    onClick?.();
-  }, [onClick]);
+  const click = useCallback(
+    (evt) => {
+      evt.stopPropagation();
+      setIsShowing((value) => !value);
+      onClick?.();
+    },
+    [onClick],
+  );
 
   const content = useMemo(() => {
     if (bare) {
@@ -54,7 +58,7 @@ export const Component = ({
             {content}
           </ContentContext.Provider>
         }
-        onClickOutside={click}
+        onClickOutside={(_, evt) => click(evt)}
         bare={bare}
         padding="none"
         radius={radius}

@@ -31,7 +31,9 @@ describe('Select', () => {
     cy.get('[data-testid="dark.select.modal.content"]').should('not.exist');
     cy.get('[data-testid="dark.select.dropdown.content"]').should('be.visible');
 
-    cy.percySnapshot('Select with Gold Dark theme while open on a large screen', { widths: [1280] });
+    cy.percySnapshot('Select with Gold Dark theme while open on a large screen', {
+      widths: [1280],
+    });
   });
 
   it('search input not rendered when children are not filterable', () => {
@@ -55,21 +57,21 @@ describe('Select', () => {
     cy.get('[data-testid="light.select.default-target"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="light.select.0"]').should('be.visible');
-    cy.get('[data-testid="light.select.1"]').should('be.visible');
-    cy.get('[data-testid="light.select.2"]').should('be.visible');
+    cy.get('[data-testid="light.select.dropdown.0"]').should('be.visible');
+    cy.get('[data-testid="light.select.dropdown.1"]').should('be.visible');
+    cy.get('[data-testid="light.select.dropdown.2"]').should('be.visible');
 
-    cy.get('[data-testid="light.select.0"]').click();
+    cy.get('[data-testid="light.select.dropdown.0"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="light.select.content"]').should('not.exist');
+    cy.get('[data-testid="light.select.dropdown.content"]').should('not.exist');
 
     cy.get('[data-testid="light.select.default-target"]').click();
     cy.tick(10000);
 
-    cy.get('[data-testid="light.select.0.tick"]').should('be.visible');
-    cy.get('[data-testid="light.select.1.tick"]').should('not.exist');
-    cy.get('[data-testid="light.select.2.tick"]').should('not.exist');
+    cy.get('[data-testid="light.select.dropdown.0.tick"]').should('be.visible');
+    cy.get('[data-testid="light.select.dropdown.1.tick"]').should('not.exist');
+    cy.get('[data-testid="light.select.dropdown.2.tick"]').should('not.exist');
 
     cy.percySnapshot('Select variant="dropdown"');
   });

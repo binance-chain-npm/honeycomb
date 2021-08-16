@@ -4,8 +4,9 @@ import { em } from 'polished';
 
 import { Button } from '../components/Button';
 import { Dropdown } from '../components/Dropdown';
-import { Code } from '../components/internal/Docs';
 import { Modal } from '../components/Modal';
+import { Select } from '../components/Select';
+import { Space } from '../components/Space';
 import { Text } from '../components/Text';
 import { Sections } from '../modules/sections';
 
@@ -24,6 +25,7 @@ const Guide = styled(Text)`
 export const Default = () => {
   const [show, setShow] = useState(false);
   const [showInner, setShowInner] = useState(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   return (
     <>
@@ -36,32 +38,34 @@ export const Default = () => {
           <Button variant="primary" onClick={() => setShowInner(true)} data-testid="open-btn-inner">
             Show inner modal
           </Button>
-          <Modal
-            open={showInner}
-            onClose={() => setShowInner(false)}
-            closeOnBackgroundClick={false}
-            data-testid="modal-inner"
-          >
+          <Modal open={showInner} onClose={() => setShowInner(false)} data-testid="modal-inner">
             <Modal.Header title="Inner Modal" />
             <Modal.Content>
               <Guide size="reduced">
-                If you put an element like <Code>Dropdown</Code> inside a modal, make sure
-                <Code>closeOnBackgroundClick=&#123;false&#125;</Code> (default).
-              </Guide>
-              <Guide size="reduced">
-                Otherwise the modal will be closed when clicking outside of the dropdown.
+                This is to test that closing a dropdown by background click does not close the
+                modal.
               </Guide>
               <Dropdown
                 target={<Dropdown.DefaultTarget>Dropdown</Dropdown.DefaultTarget>}
                 appendTo={appendTo}
                 data-testid="dropdown"
               >
-                {new Array(5).fill(null).map((_, index) => (
-                  <Dropdown.Item key={index} data-testid={`${index}`}>
-                    Option {index + 1}
-                  </Dropdown.Item>
-                ))}
+                <Dropdown.Item data-testid="option">Option</Dropdown.Item>
               </Dropdown>
+              <Space size="normal" />
+              <Select
+                open={isSelectOpen}
+                onClose={() => setIsSelectOpen(false)}
+                variant="dropdown"
+                target={
+                  <Select.DefaultTarget onClick={() => setIsSelectOpen((value) => !value)}>
+                    Select
+                  </Select.DefaultTarget>
+                }
+                data-testid="select"
+              >
+                <Select.Option data-testid="option">Option</Select.Option>
+              </Select>
             </Modal.Content>
           </Modal>
         </Modal.Content>

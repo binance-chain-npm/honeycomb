@@ -29,11 +29,11 @@ describe('Modal', () => {
     cy.get('[data-testid="modal-inner"]').should('be.visible');
 
     cy.get('[data-testid="dropdown.target"]').click();
-    new Array(5).fill(null).forEach((_, index) => {
-      cy.get(`[data-testid="dropdown.${index}"]`).should('be.visible');
-    });
+    cy.get('[data-testid="dropdown.option"]').should('be.visible');
+    cy.get('body').click(0, 0);
+    cy.get('[data-testid="dropdown.option"]').should('not.exist');
 
-    cy.get('[data-testid="modal-inner.header.close-btn"]').click();
+    cy.get('[data-testid="modal-inner"]').type('{esc}');
     cy.get('[data-testid="modal-outer"]').should('be.visible');
     cy.get('[data-testid="modal-inner"]').should('not.exist');
 

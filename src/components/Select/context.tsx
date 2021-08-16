@@ -4,7 +4,7 @@ import { Variant } from './component';
 
 export const Context = React.createContext<{
   onClose?: () => void;
-  variant?: Variant;
+  variant: Variant;
   isShowing: boolean;
   testId?: string;
-}>({ isShowing: false });
+}>({ isShowing: false, variant: 'responsive' });
