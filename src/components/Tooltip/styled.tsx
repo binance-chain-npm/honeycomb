@@ -3,7 +3,7 @@ import { em } from 'polished';
 
 import { fit } from '../internal/Shape';
 
-export const SIZES = ['reduced', 'small', 'tiny', 'micro', 'none'] as const;
+export const SIZES = ['reduced', 'small', 'tiny', 'micro'] as const;
 export type Size = typeof SIZES[number];
 
 export const RADII = ['increased', 'normal', 'reduced'] as const;
@@ -27,12 +27,12 @@ export const tooltip = css`
   overflow: hidden;
 `;
 
-export const Content = styled.div<{ padding: Size; $radius: Radius; variant: Variant }>`
+export const Content = styled.div<{ padding: Size | null; $radius: Radius; variant: Variant }>`
   ${tooltip};
 
   font-size: ${({ theme }) => em(theme.honeycomb.size.reduced)};
   padding: ${({ theme, padding }) =>
-    padding !== 'none' &&
+    padding &&
     css`
       ${em(theme.honeycomb.size[padding], theme.honeycomb.size.reduced)}
     `};

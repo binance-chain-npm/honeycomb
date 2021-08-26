@@ -83,6 +83,9 @@ export const Variants = () => {
             <div />
           </Tooltip>
         ))}
+        <Tooltip visible content="{null}" padding={null}>
+          <div />
+        </Tooltip>
       </Row>
       <Space size="increased" />
 

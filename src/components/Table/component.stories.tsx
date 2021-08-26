@@ -32,6 +32,10 @@ const Header = styled.div`
   align-items: center;
 `;
 
+const StyledCard = styled(Card)`
+  padding: 0;
+`;
+
 const data = new Array(200).fill(null).map(
   (_, index) =>
     ({
@@ -64,9 +68,9 @@ const columns = [
 ];
 
 export const Default = () => (
-  <Card padding="none" shadow="increased">
+  <StyledCard shadow="increased">
     <Table data={data.slice(0, 10)} columns={columns} />
-  </Card>
+  </StyledCard>
 );
 
 export const HeaderStyles = () => {
@@ -85,19 +89,20 @@ export const HeaderStyles = () => {
   const StyledCard = styled(Card)`
     display: flex;
     flex-direction: column;
+    padding: 0;
   `;
 
   return (
     <StyledContainer>
       <div>
         <h3>no header</h3>
-        <Card padding="none" shadow="increased">
+        <StyledCard shadow="increased">
           <Table data={data.slice(0, 3)} columns={columns} header={{ display: false }} />
-        </Card>
+        </StyledCard>
       </div>
       <FixedTableContainer>
         <h3>fixed</h3>
-        <StyledCard padding="none" shadow="increased">
+        <StyledCard shadow="increased">
           <Table
             data={data.slice(0, 50)}
             columns={columns}
@@ -110,9 +115,9 @@ export const HeaderStyles = () => {
 };
 
 export const Interactive = () => (
-  <Card padding="none" shadow="increased">
+  <StyledCard shadow="increased">
     <Table data={data.slice(0, 10)} columns={columns} interactive />
-  </Card>
+  </StyledCard>
 );
 
 export const Selectable = () => {
@@ -157,14 +162,14 @@ export const Selectable = () => {
   );
 
   return (
-    <Card padding="none" shadow="increased">
+    <StyledCard shadow="increased">
       <Table
         data={data.slice(0, 10)}
         columns={columns}
         interactive
         onRowClick={action('clicked')}
       />
-    </Card>
+    </StyledCard>
   );
 };
 
@@ -189,18 +194,18 @@ export const CustomRowHeight = () => {
 
   return (
     <Container>
-      <Card padding="none" shadow="increased">
+      <StyledCard shadow="increased">
         <StyledTableA data={data.slice(0, 3)} columns={columns} />
-      </Card>
-      <Card padding="none" shadow="increased">
+      </StyledCard>
+      <StyledCard shadow="increased">
         <Table data={data.slice(0, 3)} columns={columns} />
-      </Card>
-      <Card padding="none" shadow="increased">
+      </StyledCard>
+      <StyledCard shadow="increased">
         <StyledTableB data={data.slice(0, 3)} columns={columns} />
-      </Card>
-      <Card padding="none" shadow="increased">
+      </StyledCard>
+      <StyledCard shadow="increased">
         <StyledTableC data={data.slice(0, 3)} columns={columns} />
-      </Card>
+      </StyledCard>
     </Container>
   );
 };
@@ -210,7 +215,7 @@ export const ControlledWithPagination: Story = () => {
   const pageSize = 3;
 
   return (
-    <Card padding="none" shadow="increased">
+    <StyledCard shadow="increased">
       <Table
         data={data.slice(pageSize * pageIndex, pageSize * pageIndex + pageSize)}
         columns={columns}
@@ -221,7 +226,7 @@ export const ControlledWithPagination: Story = () => {
         onPageIndexChange={({ pageIndex }) => setPageIndex(pageIndex)}
         data-testid="table"
       />
-    </Card>
+    </StyledCard>
   );
 };
 ControlledWithPagination.decorators = decorators;
@@ -309,9 +314,9 @@ export const Sortable = () => {
   ];
 
   return (
-    <Card padding="none" shadow="increased">
+    <StyledCard shadow="increased">
       <Table data={data} columns={columns} data-testid="table" />
-    </Card>
+    </StyledCard>
   );
 };
 
@@ -364,9 +369,9 @@ export const SortableWithDefaultSorting = () => {
   );
 
   return (
-    <Card padding="none" shadow="increased">
+    <StyledCard shadow="increased">
       <StyledTable data={data} columns={columns} sortBy={sortBy} />
-    </Card>
+    </StyledCard>
   );
 };
 
@@ -480,7 +485,7 @@ export const SortableWithPagination = () => {
   );
 
   return (
-    <Card padding="none" shadow="increased">
+    <StyledCard shadow="increased">
       <Table
         data={data}
         columns={columns}
@@ -493,6 +498,6 @@ export const SortableWithPagination = () => {
         onSort={sortBy}
         data-testid="table"
       />
-    </Card>
+    </StyledCard>
   );
 };

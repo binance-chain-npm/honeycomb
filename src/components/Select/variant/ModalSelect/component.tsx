@@ -4,6 +4,8 @@ import { useBuildTestId } from '../../../../modules/test-ids';
 import { Modal } from '../../../Modal';
 import { Select } from '../../../Select';
 
+import { Container } from './styled';
+
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> &
   React.ComponentProps<typeof Select> & {
     loading?: boolean;
@@ -26,7 +28,7 @@ export const Component = ({
       {target}
       <Modal {...otherProps} loading={loading} onClose={onClose} data-testid={buildTestId()}>
         <Modal.Header title={title} />
-        <Modal.Content padding="none">{children}</Modal.Content>
+        <Container>{children}</Container>
       </Modal>
     </>
   );

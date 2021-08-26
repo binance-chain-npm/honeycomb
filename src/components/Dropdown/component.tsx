@@ -60,7 +60,7 @@ export const Component = ({
         }
         onClickOutside={(_, evt) => click(evt)}
         bare={bare}
-        padding="none"
+        padding={null}
         radius={radius}
         data-testid={buildTestId()}
       >

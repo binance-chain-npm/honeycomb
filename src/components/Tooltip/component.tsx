@@ -28,7 +28,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children' | 'style'> &
   Testable & {
     content: React.ReactNode;
     trigger?: TriggerValue | TriggerValue[];
-    padding?: Size;
+    padding?: Size | null;
     radius?: Radius;
     shape?: Shape;
     variant?: Variant;
@@ -81,7 +81,7 @@ export const Component = ({
       trigger={trigger}
       theme={`bc-honeycomb-bare-${theme.honeycomb.id}-${variant}`}
       arrow={otherProps.arrow}
-      animation="shift-away"
+      animation="shift-away-subtle"
       placement={otherProps.placement ?? 'bottom-start'}
       zIndex={theme.honeycomb.zIndexes.tooltips}
       content={content}
