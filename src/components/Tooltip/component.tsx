@@ -28,7 +28,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children' | 'style'> &
   Testable & {
     content: React.ReactNode;
     trigger?: TriggerValue | TriggerValue[];
-    padding?: Size;
+    padding?: Size | null;
     radius?: Radius;
     shape?: Shape;
     variant?: Variant;

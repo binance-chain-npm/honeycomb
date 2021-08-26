@@ -92,7 +92,7 @@ export const Component = ({
                 interactive={true}
                 content={qRCode}
                 data-testid={buildTestId('tooltip')}
-                padding="none"
+                padding={null}
                 radius="normal"
               >
                 {scanQrCodeButton}
