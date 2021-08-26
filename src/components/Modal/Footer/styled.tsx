@@ -1,11 +1,8 @@
 import styled from 'styled-components';
+import { em } from 'polished';
 
-import { none, normal, Padding } from '../styled';
-
-export const Footer = styled.div<{ padding: Padding }>`
+export const Footer = styled.div`
   display: flex;
   flex-direction: column;
-
-  ${({ padding }) => padding === 'normal' && normal};
-  ${({ padding }) => padding === 'none' && none};
+  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;

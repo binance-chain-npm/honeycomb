@@ -4,9 +4,6 @@ import { em } from 'polished';
 import { boxSizing } from '../../modules/box-sizing';
 import { SIZES } from '../internal/useWindowSize';
 
-export const PADDING = ['normal', 'none'] as const;
-export type Padding = typeof PADDING[number];
-
 export const POSITIONS = ['center', 'bottom'] as const;
 export type Position = typeof POSITIONS[number];
 
@@ -92,12 +89,4 @@ export const Box = styled.div<Props>`
     max-height: min(${em(620)}, 75vh);
     max-width: ${em(500)};
   }
-`;
-
-export const normal = css`
-  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
-`;
-
-export const none = css`
-  padding: 0;
 `;

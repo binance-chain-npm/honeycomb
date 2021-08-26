@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import styled from 'styled-components';
 
 import { Sections } from '../modules/sections';
 import { Card } from '../components/Card';
@@ -9,6 +10,10 @@ export default {
   component: Table,
   title: `${Sections.Tests}/Table`,
 };
+
+const StyledCard = styled(Card)`
+  padding: 0;
+`;
 
 export const Default = () => {
   const pageSize = 10;
@@ -95,7 +100,7 @@ export const Default = () => {
   );
 
   return (
-    <Card padding="none">
+    <StyledCard>
       <Table
         data={data}
         columns={columns}
@@ -106,6 +111,6 @@ export const Default = () => {
         onPageIndexChange={updateData}
         data-testid={'table'}
       />
-    </Card>
+    </StyledCard>
   );
 };

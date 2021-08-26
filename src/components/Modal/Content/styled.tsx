@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import { none, normal, Padding } from '../styled';
+import { em } from 'polished';
 
 export const Scroll = styled.div`
   flex: 1;
@@ -9,7 +8,7 @@ export const Scroll = styled.div`
   overflow-y: auto;
 `;
 
-export const Content = styled.div<{ padding: Padding }>`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -19,7 +18,5 @@ export const Content = styled.div<{ padding: Padding }>`
   align-items: stretch;
   min-height: 100%;
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
-
-  ${({ padding }) => padding === 'normal' && normal};
-  ${({ padding }) => padding === 'none' && none};
+  padding: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;
