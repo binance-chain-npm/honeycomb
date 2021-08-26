@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import tippy from '../../../../../node_modules/tippy.js/dist/tippy.css';
-import tippyAnimations from '../../../../../node_modules/tippy.js/animations/shift-away.css';
+import tippyAnimations from '../../../../../node_modules/tippy.js/animations/shift-away-subtle.css';
 import { boxSizing } from '../../../box-sizing';
 import { GoldDark } from '../../../themes/themes/GoldDark';
 import { GoldLight } from '../../../themes/themes/GoldLight';
