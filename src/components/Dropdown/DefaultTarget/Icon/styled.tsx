@@ -4,15 +4,15 @@ import { em } from 'polished';
 import { Icon } from '../../../Icon';
 
 const icon = css`
-  font-size: ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.reduced)};
-  margin-left: ${({ theme }) => em(theme.honeycomb.size.micro, theme.honeycomb.size.small)};
+  font-size: ${({ theme }) => em(10, theme.honeycomb.size.reduced)};
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.micro, 10)};
   flex-shrink: 0;
 `;
 
-export const Close = styled(Icon.TriangleUp)`
+export const Close = styled(Icon.CaretUp)`
   ${icon};
 `;
 
-export const Open = styled(Icon.TriangleDown)`
+export const Open = styled(Icon.CaretDown)`
   ${icon};
 `;
