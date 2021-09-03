@@ -17,6 +17,7 @@ export { default as CaretDown } from './assets/CaretDown.svg';
 export { default as CaretLeft } from './assets/CaretLeft.svg';
 export { default as CaretRight } from './assets/CaretRight.svg';
 export { default as CaretUp } from './assets/CaretUp.svg';
+export { default as Checklist } from './assets/Checklist.svg';
 export { default as Code } from './assets/Code.svg';
 export { default as CodeTerminal } from './assets/CodeTerminal.svg';
 export { default as Connect } from './assets/Connect.svg';
