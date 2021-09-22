@@ -42,22 +42,20 @@ export const Logo = styled.div`
   }
 `;
 
+export const ItemSpace = styled.div`
+  width: ${({ theme }) => em(theme.honeycomb.size.increased)};
+`;
+
 export const LeftHeaderItems = styled(HeaderItems)`
-  > *:not(:last-child) {
-    margin-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
-  }
+  margin-right: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;
 
 export const RightHeaderItems = styled(HeaderItems)`
-  > *:not(:first-child) {
-    margin-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
-  }
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;
 
 export const NonCollapsibleHeaderItems = styled(HeaderItems)`
-  > * {
-    margin-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
-  }
+  margin-left: ${({ theme }) => em(theme.honeycomb.size.increased)};
 `;
 
 export const headerItem = css`
