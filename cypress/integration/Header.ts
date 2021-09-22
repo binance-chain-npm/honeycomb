@@ -43,7 +43,7 @@ describe('Header', () => {
     cy.get('[data-testid="light.header.drawer.container"]').should('be.visible');
     cy.get('[data-testid="light.header.drawer.content"]').should('be.visible');
     cy.get('[data-testid="light.header.accordion"]').should('be.visible');
-    
+
     cy.get('[data-testid="light.header.accordion"]')
       .children()
       .then((children) => {
@@ -75,7 +75,7 @@ describe('Header', () => {
     cy.get('[data-testid="light.header.drawer.container"]').should('be.visible');
     cy.get('[data-testid="light.header.drawer.content"]').should('be.visible');
     cy.get('[data-testid="light.header.accordion"]').should('be.visible');
-    
+
     cy.get('[data-testid="light.header.accordion"]')
       .children()
       .then((children) => {
@@ -90,7 +90,7 @@ describe('Header', () => {
     cy.visitStory({ storyId: 'elements-header--with-complex-items', themeId: 'GoldLight' });
 
     cy.get('[data-testid="light.header.left.dropdown.target"]').click();
-    
+
     cy.get('[data-testid="light.header.left.dropdown.content"]')
       .children()
       .children()
@@ -104,7 +104,7 @@ describe('Header', () => {
 
     cy.get('[data-testid="light.header.menu"]').click();
     cy.get('[data-testid="light.header.accordion.1"]').click();
-    
+
     cy.get('[data-testid="light.header.accordion.1.children"]')
       .children()
       .then((children) => {
@@ -130,10 +130,10 @@ describe('Header', () => {
     cy.get('[data-testid="light.header.non-collapsible"]')
       .children()
       .then((children) => {
-        expect(children.length).to.equal(3);
+        expect(children.length).to.equal(5);
         expect(children[0]).to.have.attr('data-testid', 'light.non-collapsible');
-        expect(children[1]).to.have.attr('data-testid', 'light.non-collapsible.md');
-        expect(children[2]).to.have.attr('data-testid', 'light.non-collapsible.sm');
+        expect(children[2]).to.have.attr('data-testid', 'light.non-collapsible.md');
+        expect(children[4]).to.have.attr('data-testid', 'light.non-collapsible.sm');
       });
     cy.get('[data-testid="light.header.menu"]').should('not.exist');
 
@@ -143,9 +143,9 @@ describe('Header', () => {
     cy.get('[data-testid="light.header.non-collapsible"]')
       .children()
       .then((children) => {
-        expect(children.length).to.equal(2);
+        expect(children.length).to.equal(3);
         expect(children[0]).to.have.attr('data-testid', 'light.non-collapsible');
-        expect(children[1]).to.have.attr('data-testid', 'light.non-collapsible.sm');
+        expect(children[2]).to.have.attr('data-testid', 'light.non-collapsible.sm');
       });
     cy.get('[data-testid="light.header.menu"]').click();
     cy.get('[data-testid="light.header.accordion.1"]')
