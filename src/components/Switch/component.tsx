@@ -26,7 +26,13 @@ export const Component = ({
 
   return (
     <Styled className={className}>
-      <Input {...otherProps} id={id} type="checkbox" data-testid={buildTestId('native-input')} />
+      <Input
+        {...otherProps}
+        checked={checked}
+        id={id}
+        type="checkbox"
+        data-testid={buildTestId('native-input')}
+      />
       <Label htmlFor={id} size={size} checked={checked} data-testid={buildTestId('label')}>
         <Control size={size} checked={checked} />
         {!!label && <LabelContent data-testid={buildTestId('label-content')}>{label}</LabelContent>}
