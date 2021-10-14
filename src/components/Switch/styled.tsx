@@ -2,13 +2,14 @@ import styled, { css } from 'styled-components';
 import { em, transitions } from 'polished';
 
 import { GoldLight } from '../../modules/themes/themes/GoldLight';
-import { Input, label } from '../Checkbox/styled';
+import { label } from '../Checkbox/styled';
 
 export const SIZES = ['normal', 'increased', 'large', 'huge'] as const;
 export type Size = typeof SIZES[number];
 
 export interface Props {
   size: Size;
+  checked: boolean;
 }
 
 export const padding = ({ size }: { size: Size }) => {
@@ -28,14 +29,16 @@ export const Label = styled.label<Props>`
     ${({ theme }) => transitions(['background-color'], theme.honeycomb.duration.normal)};
   }
 
-  ${Input}:checked ~ & {
-    ::before {
-      background: ${({ theme }) => theme.honeycomb.color.success.normal};
-    }
-  }
+  ${({ checked }) =>
+    checked &&
+    css<{ size: Size }>`
+      ::before {
+        background: ${({ theme }) => theme.honeycomb.color.success.normal};
+      }
+    `};
 `;
 
-export const Control = styled.div<Props & { checked: boolean }>`
+export const Control = styled.div<Props>`
   position: absolute;
   background: #fff;
   border-radius: 50%;
