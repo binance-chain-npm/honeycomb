@@ -28,6 +28,7 @@ export const Component = ({
   href,
   disabled,
   htmlTag,
+  type,
   'data-testid': testId,
   variant,
   size = 'huge',
@@ -41,6 +42,12 @@ export const Component = ({
   const asProp = useMemo(() => {
     if (!!htmlTag) return htmlTag;
     if (!!href) return 'a';
+    return 'button';
+  }, [htmlTag, href]);
+
+  const typeProp = useMemo(() => {
+    if (!!type) return type;
+    if (!!href) return;
     return 'button';
   }, [htmlTag, href]);
 
@@ -61,14 +68,15 @@ export const Component = ({
     <Styled
       {...otherProps}
       as={asProp as any}
+      type={typeProp}
       href={disabled ? undefined : href}
-      data-testid={buildTestId()}
       disabled={disabled}
       variant={variant}
       size={size}
       $shape={shape}
       outlined={outlined}
       onClick={click}
+      data-testid={buildTestId()}
     >
       {icon && (
         <>
