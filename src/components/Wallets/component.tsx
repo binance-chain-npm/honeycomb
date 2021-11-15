@@ -51,7 +51,7 @@ export const Component = ({
               data-testid={buildTestId(`${index}`)}
             >
               {element.icon}
-              <Space size="tiny" base="reduced" />
+              <Space size="tiny" />
               {element.name}
               {element.description && (
                 <Description columns={cols}>{element.description}</Description>

@@ -1,18 +1,14 @@
 import styled, { css } from 'styled-components';
-import { em } from 'polished';
 
 import { HoneycombThemeType } from '../../modules/themes';
 import { boxSizing } from '../../modules/box-sizing';
 
 export type Props = {
   size: keyof HoneycombThemeType['honeycomb']['size'] | 'fill';
-  base?: keyof HoneycombThemeType['honeycomb']['size'];
 };
 
-const sizes = css<{ size: Props['size']; base?: Props['base'] }>`
-  flex-basis: ${({ size, base, theme }) =>
-    size !== 'fill' &&
-    em(theme.honeycomb.size[size], base ? theme.honeycomb.size[base] : undefined)};
+const sizes = css<{ size: Props['size'] }>`
+  flex-basis: ${({ size, theme }) => size !== 'fill' && theme.honeycomb.size[size]}px;
   flex-shrink: 0;
 `;
 

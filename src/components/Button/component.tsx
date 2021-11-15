@@ -81,7 +81,7 @@ export const Component = ({
       {icon && (
         <>
           {icon}
-          <Space size="micro" base="reduced" />
+          <Space size="micro" />
         </>
       )}
       {children}
