@@ -5,6 +5,7 @@ export { ReactComponent as AddressBook } from './assets/AddressBook.svg';
 export { ReactComponent as ArrowDown } from './assets/ArrowDown.svg';
 export { ReactComponent as ArrowLeft } from './assets/ArrowLeft.svg';
 export { ReactComponent as ArrowRight } from './assets/ArrowRight.svg';
+export { ReactComponent as ArrowSwap } from './assets/ArrowSwap.svg';
 export { ReactComponent as ArrowTopRight } from './assets/ArrowTopRight.svg';
 export { ReactComponent as ArrowUp } from './assets/ArrowUp.svg';
 export { ReactComponent as Binance } from './assets/Binance.svg';
