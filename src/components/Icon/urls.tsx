@@ -85,6 +85,7 @@ export { default as WarningCircle } from './assets/WarningCircle.svg';
 export { default as WarningCircleSolid } from './assets/WarningCircleSolid.svg';
 export { default as WarningTriangleSolid } from './assets/WarningTriangleSolid.svg';
 export { default as Write } from './assets/Write.svg';
+export { default as UpAndDown } from './assets/UpAndDown.svg';
 
 // Payment.
 export { default as MastercardColor } from './assets/payment/MastercardColor.svg';
