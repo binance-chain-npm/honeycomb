@@ -5,6 +5,7 @@ export { default as AddressBook } from './assets/AddressBook.svg';
 export { default as ArrowDown } from './assets/ArrowDown.svg';
 export { default as ArrowLeft } from './assets/ArrowLeft.svg';
 export { default as ArrowRight } from './assets/ArrowRight.svg';
+export { default as ArrowSwap } from './assets/ArrowSwap.svg';
 export { default as ArrowTopRight } from './assets/ArrowTopRight.svg';
 export { default as ArrowUp } from './assets/ArrowUp.svg';
 export { default as Binance } from './assets/Binance.svg';
