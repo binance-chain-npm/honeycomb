@@ -4,12 +4,10 @@ import { em } from 'polished';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
-import { Button } from '../Button';
 import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { SHAPES, SIZES } from '../internal/DefaultTarget';
 import { ListItem } from '../ListItem';
-import { CLOSE_MODAL_TIMEOUT } from '../Modal/component';
 
 // @ts-ignore
 import pic from './pic.png';
@@ -213,7 +211,7 @@ export const Modal = () => {
 
 export const NonFilterable = () => {
   return (
-    <Select data-testid="select" optionsTitle="Non-Filterable Options" target="Select">
+    <Select target="" open={true} onClose={() => {}} data-testid="select">
       <ListItem interactive={false} data-testid="non-filterable">
         Non-filterable element
       </ListItem>
@@ -228,7 +226,12 @@ export const NonFilterable = () => {
 
 export const WithSearchPlaceholder = () => {
   return (
-    <Select target="Select" searchPlaceholder="Search...">
+    <Select
+      target={
+        <Select.DefaultTarget data-testid="select.default-target">Select</Select.DefaultTarget>
+      }
+      searchPlaceholder="Search..."
+    >
       {new Array(5).fill(null).map((_, index) => (
         <Select.Option key={index} searchAs={`Option ${index + 1}`} data-testid={`${index}`}>
           Option {index + 1}
@@ -242,25 +245,20 @@ export const Controlled = () => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
 
-  const close = useCallback(() => {
-    setOpen(false);
-    if (typeof window !== 'undefined') {
-      // Wait until the component is closed before clearing the text input.
-      window.setTimeout(() => {
-        setSearch('');
-      }, CLOSE_MODAL_TIMEOUT);
-    }
-  }, []);
+  const click = useCallback(() => {
+    if (!open) setSearch('');
+    setOpen((value) => !value);
+  }, [open]);
 
   return (
     <Select
       target={
-        <Button variant="primary" onClick={() => setOpen((value) => !value)}>
+        <Select.DefaultTarget onClick={click} data-testid="select.default-target">
           Select
-        </Button>
+        </Select.DefaultTarget>
       }
       open={open}
-      onClose={close}
+      onClose={() => setOpen(false)}
       search={search}
       onChangeSearch={(evt) => setSearch(evt.target.value)}
     >

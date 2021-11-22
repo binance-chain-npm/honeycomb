@@ -7,7 +7,7 @@ import { Box, Container, Position } from './styled';
 import { Context } from './context';
 
 const MODAL_CONTAINER_ID = 'honeycomb-modal';
-export const CLOSE_MODAL_TIMEOUT = 250;
+const CLOSE_MODAL_TIMEOUT = 250;
 
 (() => {
   if (typeof document === 'undefined') {
