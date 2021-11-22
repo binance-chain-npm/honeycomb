@@ -23,19 +23,19 @@ export const Component = ({
   size = 'huge',
   ...otherProps
 }: Partial<Props>) => {
-  const { isShowing } = useContext(Context);
+  const { open } = useContext(Context);
 
   return (
     <StyledDefaultTarget
       {...otherProps}
       as={htmlTag as any}
       highlightWhenOpen={highlightWhenOpen}
-      isShowing={isShowing}
+      open={open}
       shape={shape}
       size={size}
     >
       {otherProps.children}
-      {arrow && <Icon open={isShowing} />}
+      {arrow && <Icon open={open} />}
     </StyledDefaultTarget>
   );
 };

@@ -4,12 +4,12 @@ import { DefaultTarget } from '../../internal/DefaultTarget';
 
 export const StyledDefaultTarget = styled(DefaultTarget)<{
   highlightWhenOpen: boolean;
-  isShowing: boolean;
+  open: boolean;
 }>`
   color: ${({ theme }) => theme.honeycomb.color.text.normal};
 
-  ${({ isShowing, highlightWhenOpen }) =>
-    isShowing &&
+  ${({ open, highlightWhenOpen }) =>
+    open &&
     highlightWhenOpen &&
     css`
       color: ${({ theme }) => theme.honeycomb.color.primary.normal};
