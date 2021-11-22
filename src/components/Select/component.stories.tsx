@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { em } from 'polished';
 
 import { decorators } from '../../modules/decorators';
 import { Sections } from '../../modules/sections';
+import { Button } from '../Button';
 import { Card } from '../Card';
 import { Icon } from '../Icon';
 import { SHAPES, SIZES } from '../internal/DefaultTarget';
 import { ListItem } from '../ListItem';
+import { CLOSE_MODAL_TIMEOUT } from '../Modal/component';
 
 // @ts-ignore
 import pic from './pic.png';
@@ -211,7 +213,7 @@ export const Modal = () => {
 
 export const NonFilterable = () => {
   return (
-    <Select data-testid="select" optionsTitle="Non-Filterable Options" open={true} target={null}>
+    <Select data-testid="select" optionsTitle="Non-Filterable Options" target="Select">
       <ListItem interactive={false} data-testid="non-filterable">
         Non-filterable element
       </ListItem>
@@ -226,7 +228,42 @@ export const NonFilterable = () => {
 
 export const WithSearchPlaceholder = () => {
   return (
-    <Select open={true} target={null} searchPlaceholder="Search...">
+    <Select target="Select" searchPlaceholder="Search...">
+      {new Array(5).fill(null).map((_, index) => (
+        <Select.Option key={index} searchAs={`Option ${index + 1}`} data-testid={`${index}`}>
+          Option {index + 1}
+        </Select.Option>
+      ))}
+    </Select>
+  );
+};
+
+export const Controlled = () => {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const close = useCallback(() => {
+    setOpen(false);
+    if (typeof window !== 'undefined') {
+      // Wait until the component is closed before clearing the text input.
+      window.setTimeout(() => {
+        setSearch('');
+      }, CLOSE_MODAL_TIMEOUT);
+    }
+  }, []);
+
+  return (
+    <Select
+      target={
+        <Button variant="primary" onClick={() => setOpen((value) => !value)}>
+          Select
+        </Button>
+      }
+      open={open}
+      onClose={close}
+      search={search}
+      onChangeSearch={(evt) => setSearch(evt.target.value)}
+    >
       {new Array(5).fill(null).map((_, index) => (
         <Select.Option key={index} searchAs={`Option ${index + 1}`} data-testid={`${index}`}>
           Option {index + 1}
