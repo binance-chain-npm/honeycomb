@@ -26,12 +26,12 @@ export const Component = ({
   ...otherProps
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
-  const { variant, isShowing } = useContext(Context);
+  const { variant, open } = useContext(Context);
   const currentVariant = useCurrentVariant({ variant });
 
   const right = useMemo(() => {
     if (currentVariant === 'dropdown') {
-      return isShowing ? (
+      return open ? (
         <Icon.CaretUp data-testid={buildTestId('caret-up')} />
       ) : (
         <Icon.CaretDown data-testid={buildTestId('caret-down')} />
@@ -39,7 +39,7 @@ export const Component = ({
     }
 
     return <Icon.CaretRight data-testid={buildTestId('caret-right')} />;
-  }, [isShowing, currentVariant, buildTestId]);
+  }, [open, currentVariant, buildTestId]);
 
   return (
     <DefaultTarget shape={shape} size={size} className={className} data-testid={buildTestId()}>

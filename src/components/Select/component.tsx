@@ -1,9 +1,10 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
-import { Space } from '../Space';
 import { Icon } from '../Icon';
+import { Space } from '../Space';
+import { TextInput } from '../TextInput';
 
 import { Context } from './context';
 import { DropdownSelect } from './variant/DropdownSelect';
@@ -26,10 +27,12 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     variant?: Variant;
     title?: React.ReactNode;
     optionsTitle?: React.ReactNode;
+    search?: React.ComponentProps<typeof TextInput>['value'];
+    onChangeSearch?: React.ComponentProps<typeof TextInput>['onChange'];
     searchIcon?: boolean;
     searchPlaceholder?: string;
     target: React.ReactNode;
-    open: boolean;
+    open?: boolean;
     onClose?: () => void;
   };
 
@@ -37,6 +40,8 @@ export const Component = ({
   variant = 'responsive',
   children,
   optionsTitle,
+  search: searchProp,
+  onChangeSearch,
   searchIcon = true,
   searchPlaceholder,
   'data-testid': testId,
@@ -46,15 +51,31 @@ export const Component = ({
   const theme = useTheme();
   const currentVariant = useCurrentVariant({ variant });
 
-  const [search, setSearch] = useState('');
+  const controlled = useMemo(() => typeof searchProp !== 'undefined' && !!onChangeSearch, [
+    onChangeSearch,
+    searchProp,
+  ]);
+
+  const [search, setSearch] = useState(searchProp ? (searchProp as string) : '');
+
+  useEffect(() => {
+    if (!controlled) return;
+    setSearch(searchProp as string);
+  }, [controlled, searchProp]);
 
   const updateSearch = useCallback(
-    (evt: React.ChangeEvent<HTMLInputElement>) => setSearch(evt.target.value),
-    [],
+    (evt: React.ChangeEvent<HTMLInputElement>) => {
+      if (!controlled) {
+        setSearch(evt.target.value);
+      } else {
+        onChangeSearch?.(evt);
+      }
+    },
+    [controlled, onChangeSearch],
   );
 
   const context = useMemo(
-    () => ({ isShowing: otherProps.open, onClose: otherProps.onClose, variant, testId }),
+    () => ({ open: otherProps.open, onClose: otherProps.onClose, variant, testId }),
     [otherProps.open, otherProps.onClose, variant, testId],
   );
 
