@@ -49,7 +49,7 @@ export const WithHelpers = () => {
   );
 };
 
-export const WithClickHandler = () => {
+export const Controlled = () => {
   const [open, setOpen] = useState(false);
 
   return (

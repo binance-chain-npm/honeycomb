@@ -22,7 +22,7 @@ export const Component = ({
   const { buildTestId } = useBuildTestId({
     id: testId ? parentTestId : undefined,
   });
-  const { onClose } = useContext(Context);
+  const { controlled, onClose } = useContext(Context);
 
   const click = useCallback(
     (evt) => {
@@ -31,10 +31,12 @@ export const Component = ({
       } catch (e) {
         throw e;
       } finally {
-        onClose?.(evt);
+        if (!controlled) {
+          onClose?.(evt);
+        }
       }
     },
-    [onClick, onClose],
+    [controlled, onClick, onClose],
   );
 
   return (

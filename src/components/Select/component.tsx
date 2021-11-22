@@ -28,8 +28,8 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     optionsTitle?: React.ReactNode;
     searchIcon?: boolean;
     searchPlaceholder?: string;
-    open: boolean;
     target: React.ReactNode;
+    open: boolean;
     onClose?: () => void;
   };
 

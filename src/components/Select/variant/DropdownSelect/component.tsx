@@ -8,11 +8,11 @@ import { Styled } from './styled';
 
 export type Props = React.ComponentProps<typeof Select>;
 
-export const Component = ({ children, target, 'data-testid': testId }: Props) => {
+export const Component = ({ children, open, onClose, target, 'data-testid': testId }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
   return (
-    <Dropdown bare target={target} data-testid={buildTestId()}>
+    <Dropdown bare target={target} open={open} onClose={onClose} data-testid={buildTestId()}>
       <Styled>{children}</Styled>
     </Dropdown>
   );

@@ -49,7 +49,7 @@ export const Component = ({
     if (!!type) return type;
     if (!!href) return;
     return 'button';
-  }, [htmlTag, href]);
+  }, [href, type]);
 
   const click = useCallback<NonNullable<Props['onClick']>>(
     (evt) => {
