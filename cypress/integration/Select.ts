@@ -89,7 +89,7 @@ describe('Select', () => {
     cy.get('[data-testid="select.2"]').should('be.visible');
     cy.get('[data-testid="select.photo"]').should('be.visible');
 
-    cy.get('[data-testid="select.0"]').click();
+    cy.get('[data-testid="select.0"]').click({ force: true });
     cy.tick(10000);
     cy.get('[data-testid="select.default-target"]').click();
     cy.tick(10000);

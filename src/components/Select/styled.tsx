@@ -27,17 +27,10 @@ export const OptionsTitle = styled.div`
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.small)};
 `;
 
-export const Options = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const OptionsContainer = styled(Card)`
+export const OptionsContainer = styled.div`
+  background: ${({ theme }) => theme.honeycomb.color.bg.normal};
+  border-top-left-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
+  border-top-right-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
   margin: 0 ${({ theme }) => em(theme.honeycomb.size.small)};
-  padding: 0;
-  scroll-behavior: smooth;
-  max-height: min(${em(392)}, 40vh);
   overflow: hidden;
-  overflow-y: auto;
-  box-shadow: none;
 `;
