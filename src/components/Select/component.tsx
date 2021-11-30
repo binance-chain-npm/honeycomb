@@ -16,7 +16,7 @@ import { useCurrentVariant } from './useCurrentVariant';
 export const VARIANTS = ['responsive', 'dropdown', 'modal'] as const;
 export type Variant = typeof VARIANTS[number];
 
-const DEFAULT_OPTION_CONTAINER_HEIGHT = 392;
+const DEFAULT_OPTION_CONTAINER_HEIGHT = 364;
 const DEFAULT_OPTION_ITEM_HEIGHT = 52;
 
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
