@@ -82,7 +82,7 @@ export const Responsive = () => {
       <Select
         data-testid="select"
         title="Select an Option"
-        optionsTitle="Options"
+        optionTitle="Options"
         open={open}
         onClose={() => setOpen(false)}
         target={
@@ -123,7 +123,7 @@ export const Dropdown = () => {
         data-testid="select"
         variant="dropdown"
         title="Select an Option"
-        optionsTitle="Options"
+        optionTitle="Options"
         open={open}
         onClose={() => setOpen(false)}
         target={
@@ -236,6 +236,33 @@ export const WithSearchPlaceholder = () => {
         <Select.Option key={index} searchAs={`Option ${index + 1}`} data-testid={`${index}`}>
           Option {index + 1}
         </Select.Option>
+      ))}
+    </Select>
+  );
+};
+
+export const WithManyOptions = () => {
+  const StyledSelectOption = styled(Select.Option)`
+    height: ${({ theme }) => em(100, theme.honeycomb.size.reduced)};
+  `;
+
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Select
+      variant="dropdown"
+      open={open}
+      target={
+        <Select.DefaultTarget onClick={() => setOpen((value) => !value)}>
+          Select
+        </Select.DefaultTarget>
+      }
+      optionItemHeight={100}
+    >
+      {new Array(1000).fill(null).map((_, index) => (
+        <StyledSelectOption key={index} searchAs={`Option ${index + 1}`} data-testid={`${index}`}>
+          Option {index + 1}
+        </StyledSelectOption>
       ))}
     </Select>
   );

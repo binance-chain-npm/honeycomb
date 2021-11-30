@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { FixedSizeList } from 'react-window';
 import { useTheme } from 'styled-components';
 
 import { Testable, useBuildTestId } from '../../modules/test-ids';
@@ -9,24 +10,22 @@ import { TextInput } from '../TextInput';
 import { Context } from './context';
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
-import {
-  Container,
-  StyledCard,
-  StyledTextInput,
-  OptionsContainer,
-  OptionsTitle,
-  Options,
-} from './styled';
+import { Container, StyledCard, StyledTextInput, OptionsContainer, OptionsTitle } from './styled';
 import { useCurrentVariant } from './useCurrentVariant';
 
 export const VARIANTS = ['responsive', 'dropdown', 'modal'] as const;
 export type Variant = typeof VARIANTS[number];
 
+const DEFAULT_OPTION_CONTAINER_HEIGHT = 392;
+const DEFAULT_OPTION_ITEM_HEIGHT = 52;
+
 export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
   Testable & {
     variant?: Variant;
     title?: React.ReactNode;
-    optionsTitle?: React.ReactNode;
+    optionTitle?: React.ReactNode;
+    optionContainerHeight?: number;
+    optionItemHeight?: number;
     search?: React.ComponentProps<typeof TextInput>['value'];
     onChangeSearch?: React.ComponentProps<typeof TextInput>['onChange'];
     searchIcon?: boolean;
@@ -39,7 +38,9 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
 export const Component = ({
   variant = 'responsive',
   children,
-  optionsTitle,
+  optionTitle,
+  optionContainerHeight,
+  optionItemHeight = DEFAULT_OPTION_ITEM_HEIGHT,
   search: searchProp,
   onChangeSearch,
   searchIcon = true,
@@ -130,6 +131,19 @@ export const Component = ({
     [filterableChildren, lowerCaseSearch],
   );
 
+  const { items, itemCount } = useMemo(() => {
+    if (filterable) return { items: filteredResults, itemCount: filteredResults.length };
+    const items = React.Children.toArray(children) as React.ReactElement[];
+    return { items, itemCount: items.length };
+  }, [children, filterable, filteredResults]);
+
+  const row = useCallback(
+    ({ index, style }: { index: number; style: React.CSSProperties }) => {
+      return <div style={style}>{items[index]}</div>;
+    },
+    [items],
+  );
+
   const content = useMemo(() => {
     return (
       <Container>
@@ -152,27 +166,37 @@ export const Component = ({
           </StyledCard>
         )}
         <Space size="small" />
-        {optionsTitle && <OptionsTitle>{optionsTitle}</OptionsTitle>}
+        {optionTitle && <OptionsTitle>{optionTitle}</OptionsTitle>}
         <Space size="small" />
-        <OptionsContainer position="bottom">
-          <Options data-testid={buildTestId('options')}>
-            {filterable ? filteredResults : children}
-          </Options>
+        <OptionsContainer data-testid={buildTestId('options')}>
+          <FixedSizeList
+            width="100%"
+            height={Math.min(
+              optionContainerHeight ?? DEFAULT_OPTION_CONTAINER_HEIGHT,
+              itemCount * (optionItemHeight ?? DEFAULT_OPTION_ITEM_HEIGHT),
+            )}
+            itemCount={itemCount}
+            itemSize={optionItemHeight}
+          >
+            {row}
+          </FixedSizeList>
         </OptionsContainer>
       </Container>
     );
   }, [
+    buildTestId,
     filterable,
-    filteredResults,
+    itemCount,
+    optionContainerHeight,
+    optionItemHeight,
+    optionTitle,
+    row,
     search,
     searchIcon,
     searchPlaceholder,
     theme.honeycomb.size.increased,
     theme.honeycomb.color.text.placeholder,
-    optionsTitle,
-    children,
     updateSearch,
-    buildTestId,
   ]);
 
   const select = useMemo(() => {

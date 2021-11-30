@@ -67,6 +67,7 @@
     "@types/react-dom": "^17.0.3",
     "@types/react-modal": "^3.12.0",
     "@types/react-table": "^7.0.24",
+    "@types/react-window": "^1.8.5",
     "@types/styled-components": "^5.1.11",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
@@ -100,6 +101,7 @@
     "react-spring": "^8.0.27",
     "react-table": "^7.6.0",
     "react-toastify": "^7.0.1",
+    "react-window": "^1.8.6",
     "swiper": "^6.4.5"
   },
   "commitlint": {
