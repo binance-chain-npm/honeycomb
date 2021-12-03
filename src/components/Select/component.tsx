@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
 import { FixedSizeList } from 'react-window';
 import { useTheme } from 'styled-components';
 
@@ -10,7 +10,13 @@ import { TextInput } from '../TextInput';
 import { Context } from './context';
 import { DropdownSelect } from './variant/DropdownSelect';
 import { ModalSelect } from './variant/ModalSelect';
-import { Container, StyledCard, StyledTextInput, OptionsContainer, OptionsTitle } from './styled';
+import {
+  Container,
+  StyledCard,
+  StyledTextInput,
+  OptionContainer as DefaultOptionContainer,
+  OptionTitle,
+} from './styled';
 import { useCurrentVariant } from './useCurrentVariant';
 
 export const VARIANTS = ['responsive', 'dropdown', 'modal'] as const;
@@ -24,12 +30,14 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     variant?: Variant;
     title?: React.ReactNode;
     optionTitle?: React.ReactNode;
+    optionContainer?: React.ReactNode;
     optionContainerHeight?: number;
     optionItemHeight?: number;
     search?: React.ComponentProps<typeof TextInput>['value'];
     onChangeSearch?: React.ComponentProps<typeof TextInput>['onChange'];
     searchIcon?: boolean;
     searchPlaceholder?: string;
+    showSearch?: boolean;
     target: React.ReactNode;
     open?: boolean;
     onClose?: () => void;
@@ -39,12 +47,14 @@ export const Component = ({
   variant = 'responsive',
   children,
   optionTitle,
+  optionContainer: optionContainerProp,
   optionContainerHeight,
   optionItemHeight = DEFAULT_OPTION_ITEM_HEIGHT,
   search: searchProp,
   onChangeSearch,
   searchIcon = true,
   searchPlaceholder,
+  showSearch,
   'data-testid': testId,
   ...otherProps
 }: Props) => {
@@ -144,10 +154,19 @@ export const Component = ({
     [items],
   );
 
+  const OptionContainer = forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(
+    (props, ref) => {
+      if (React.isValidElement(optionContainerProp)) {
+        return React.cloneElement(optionContainerProp, { ...props, ref });
+      }
+      return <DefaultOptionContainer {...props} as="div" ref={ref} />;
+    },
+  );
+
   const content = useMemo(() => {
     return (
       <Container>
-        {filterable && (
+        {(filterable || showSearch) && (
           <StyledCard position="top">
             <StyledTextInput
               value={search}
@@ -166,27 +185,32 @@ export const Component = ({
           </StyledCard>
         )}
         <Space size="small" />
-        {optionTitle && <OptionsTitle>{optionTitle}</OptionsTitle>}
+        {optionTitle && <OptionTitle>{optionTitle}</OptionTitle>}
         <Space size="small" />
-        <OptionsContainer data-testid={buildTestId('options')}>
-          <FixedSizeList
-            width="100%"
-            height={Math.min(
-              optionContainerHeight ?? DEFAULT_OPTION_CONTAINER_HEIGHT,
-              itemCount * (optionItemHeight ?? DEFAULT_OPTION_ITEM_HEIGHT),
-            )}
-            itemCount={itemCount}
-            itemSize={optionItemHeight}
-          >
-            {row}
-          </FixedSizeList>
-        </OptionsContainer>
+        <OptionContainer data-testid={buildTestId('options')}>
+          {filterable ? (
+            <FixedSizeList
+              width="100%"
+              height={Math.min(
+                optionContainerHeight ?? DEFAULT_OPTION_CONTAINER_HEIGHT,
+                itemCount * (optionItemHeight ?? DEFAULT_OPTION_ITEM_HEIGHT),
+              )}
+              itemCount={itemCount}
+              itemSize={optionItemHeight}
+            >
+              {row}
+            </FixedSizeList>
+          ) : (
+            items
+          )}
+        </OptionContainer>
       </Container>
     );
   }, [
     buildTestId,
     filterable,
     itemCount,
+    items,
     optionContainerHeight,
     optionItemHeight,
     optionTitle,
@@ -194,6 +218,7 @@ export const Component = ({
     search,
     searchIcon,
     searchPlaceholder,
+    showSearch,
     theme.honeycomb.size.increased,
     theme.honeycomb.color.text.placeholder,
     updateSearch,
