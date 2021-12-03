@@ -21,13 +21,13 @@ export const StyledTextInput = styled(TextInput)`
   }
 `;
 
-export const OptionsTitle = styled.div`
+export const OptionTitle = styled.div`
   font-size: ${({ theme }) => em(theme.honeycomb.size.small)};
   color: ${({ theme }) => theme.honeycomb.color.text.masked};
   padding: 0 ${({ theme }) => em(theme.honeycomb.size.small, theme.honeycomb.size.small)};
 `;
 
-export const OptionsContainer = styled.div`
+export const OptionContainer = styled.div`
   background: ${({ theme }) => theme.honeycomb.color.bg.normal};
   border-top-left-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
   border-top-right-radius: ${({ theme }) => em(theme.honeycomb.radius.increased)};
