@@ -30,7 +30,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     variant?: Variant;
     title?: React.ReactNode;
     optionTitle?: React.ReactNode;
-    optionContainer?: React.ReactNode;
+    optionContainerElement?: React.ReactNode;
     optionContainerHeight?: number;
     optionItemHeight?: number;
     search?: React.ComponentProps<typeof TextInput>['value'];
@@ -47,7 +47,7 @@ export const Component = ({
   variant = 'responsive',
   children,
   optionTitle,
-  optionContainer: optionContainerProp,
+  optionContainerElement: optionContainerElementProp,
   optionContainerHeight,
   optionItemHeight = DEFAULT_OPTION_ITEM_HEIGHT,
   search: searchProp,
@@ -156,8 +156,8 @@ export const Component = ({
 
   const OptionContainer = forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>(
     (props, ref) => {
-      if (React.isValidElement(optionContainerProp)) {
-        return React.cloneElement(optionContainerProp, { ...props, ref });
+      if (React.isValidElement(optionContainerElementProp)) {
+        return React.cloneElement(optionContainerElementProp, { ...props, ref });
       }
       return <DefaultOptionContainer {...props} as="div" ref={ref} />;
     },
