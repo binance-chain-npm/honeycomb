@@ -19,6 +19,7 @@ export { ReactComponent as CaretLeft } from './assets/CaretLeft.svg';
 export { ReactComponent as CaretRight } from './assets/CaretRight.svg';
 export { ReactComponent as CaretUp } from './assets/CaretUp.svg';
 export { ReactComponent as Checklist } from './assets/Checklist.svg';
+export { ReactComponent as Clock } from './assets/Clock.svg';
 export { ReactComponent as Code } from './assets/Code.svg';
 export { ReactComponent as CodeTerminal } from './assets/CodeTerminal.svg';
 export { ReactComponent as Connect } from './assets/Connect.svg';
