@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { action } from '@storybook/addon-actions';
 
 import { decorators } from '../../modules/decorators';
@@ -90,11 +91,6 @@ export const WithItems = () => (
         element: 'Left Item',
       },
     ]}
-    center={[
-      {
-        element: 'Center Item',
-      },
-    ]}
     right={[
       {
         element: 'Right Item',
@@ -102,6 +98,30 @@ export const WithItems = () => (
     ]}
   />
 );
+
+export const WithCenteredItems = () => {
+  const Styled = styled(Header.Logo)`
+    position: absolute;
+  `;
+
+  return (
+    <Header
+      logo={<Styled />}
+      center={[
+        {
+          element: 'Item 1',
+        },
+        {
+          element: 'Item 2',
+        },
+        {
+          element: 'Trade',
+          children: dropdown,
+        },
+      ]}
+    />
+  );
+};
 
 export const WithDropdownItems = () => (
   <Header
