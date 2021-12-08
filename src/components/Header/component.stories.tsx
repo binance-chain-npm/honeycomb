@@ -110,13 +110,13 @@ export const WithCenteredItems = () => {
       center={[
         {
           element: 'Item 1',
+          children: dropdown,
         },
         {
           element: 'Item 2',
         },
         {
-          element: 'Trade',
-          children: dropdown,
+          element: 'Item 3',
         },
       ]}
     />
