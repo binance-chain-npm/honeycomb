@@ -14,3 +14,5 @@ export default {
 export const Default = () => (
   <CopyToClipboard value="a value here" data-testid="copy-to-clipboard" />
 );
+
+export const WithText = () => <CopyToClipboard value="a value here" shape="fit" text="Copy" />;
