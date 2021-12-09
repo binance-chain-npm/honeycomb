@@ -1,24 +1,27 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
 
+import { Testable, useBuildTestId } from '../../modules/test-ids';
 import { Button } from '../Button';
 import { Variant } from '../Button/styled';
 import { Icon } from '../Icon';
-import { Testable, useBuildTestId } from '../../modules/test-ids';
+import { Space } from '../Space';
 
 import { Container, IconContainer, IconWrapper } from './styled';
 
 export type Props = Pick<React.ComponentProps<typeof Button>, 'size' | 'shape'> &
   Testable & {
     className?: string;
+    text?: string;
     value: string;
     variant?: Variant;
   };
 
 export const Component = ({
   className,
+  text,
   value,
-  size,
+  size = 'huge',
   variant = 'secondary',
   shape = 'square',
   'data-testid': testId,
@@ -53,7 +56,7 @@ export const Component = ({
       onClick={copy}
       data-testid={buildTestId()}
     >
-      <IconContainer>
+      <IconContainer size={size}>
         {transitions.map(({ item, key, props }) =>
           item ? (
             <IconWrapper as={animated.div} key={key} style={props}>
@@ -66,6 +69,12 @@ export const Component = ({
           ),
         )}
       </IconContainer>
+      {!!text && (
+        <>
+          <Space size="micro" />
+          {text}
+        </>
+      )}
     </Container>
   );
 };
