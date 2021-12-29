@@ -9,6 +9,7 @@ import { Container } from './styled';
 export type Props = React.ComponentPropsWithoutRef<typeof Modal> &
   React.ComponentProps<typeof Select> & {
     loading?: boolean;
+    closeTimeoutMS?: number;
   };
 
 export const Component = ({
