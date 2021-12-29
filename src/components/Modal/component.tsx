@@ -39,6 +39,7 @@ export type Props = Testable & {
   closeOnEsc?: boolean;
   closeOnBackgroundClick?: boolean;
   onClose?: () => void;
+  closeTimeoutMS?: number;
 };
 
 export const Component = ({
@@ -51,6 +52,7 @@ export const Component = ({
   closeOnBackgroundClick = true,
   onClose,
   'data-testid': testId,
+  closeTimeoutMS = CLOSE_MODAL_TIMEOUT,
 }: Props) => {
   const { buildTestId } = useBuildTestId({ id: testId });
 
@@ -60,13 +62,13 @@ export const Component = ({
 
   const close = useCallback(() => {
     onClose?.();
-
-    if (typeof window !== 'undefined') {
-      window.setTimeout(() => {
-        if (isMounted) setShow(false);
-      }, CLOSE_MODAL_TIMEOUT);
-    }
   }, [onClose]);
+
+  const handleOnAfterClose = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      if (isMounted) setShow(false);
+    }
+  }, []);
 
   const context = useMemo(() => ({ loading, onClose: close, testId }), [loading, close, testId]);
 
@@ -88,9 +90,10 @@ export const Component = ({
     <ReactModal
       isOpen={open}
       onRequestClose={close}
+      onAfterClose={handleOnAfterClose}
       className={className}
       parentSelector={PARENT_SELECTOR}
-      closeTimeoutMS={CLOSE_MODAL_TIMEOUT}
+      closeTimeoutMS={closeTimeoutMS}
       shouldCloseOnEsc={closeOnEsc}
       shouldCloseOnOverlayClick={closeOnBackgroundClick}
       contentElement={(props, contentElement) => (
