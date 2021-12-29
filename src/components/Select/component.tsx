@@ -41,6 +41,7 @@ export type Props = Pick<React.HTMLProps<HTMLElement>, 'children'> &
     target: React.ReactNode;
     open?: boolean;
     onClose?: () => void;
+    className?: string;
   };
 
 export const Component = ({
