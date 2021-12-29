@@ -61,8 +61,14 @@ export const Component = ({
   const [show, setShow] = useState(false);
 
   const close = useCallback(() => {
-    onClose?.();
-  }, [onClose]);
+    if (closeTimeoutMS === CLOSE_MODAL_TIMEOUT) {
+      onClose?.();
+      return;
+    }
+    window.setTimeout(() => {
+      onClose?.();
+    }, closeTimeoutMS);
+  }, [closeTimeoutMS, onClose]);
 
   const handleOnAfterClose = useCallback(() => {
     if (typeof window !== 'undefined') {
