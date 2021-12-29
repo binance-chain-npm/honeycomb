@@ -65,15 +65,15 @@ export const Component = ({
       onClose?.();
       return;
     }
-    window.setTimeout(() => {
-      onClose?.();
-    }, closeTimeoutMS);
+    if (typeof window !== 'undefined') {
+      window.setTimeout(() => {
+        onClose?.();
+      }, closeTimeoutMS);
+    }
   }, [closeTimeoutMS, onClose]);
 
   const handleOnAfterClose = useCallback(() => {
-    if (typeof window !== 'undefined') {
-      if (isMounted) setShow(false);
-    }
+    if (isMounted) setShow(false);
   }, []);
 
   const context = useMemo(() => ({ loading, onClose: close, testId }), [loading, close, testId]);
