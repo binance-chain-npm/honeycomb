@@ -29,8 +29,8 @@ export const Component = ({
       <Modal.Header {...otherProps} />
       <StyledModalContent>
         {icon && <Icon icon={icon} />}
-        <Title>{title}</Title>
-        <Description>{description}</Description>
+        {title && <Title>{title}</Title>}
+        {description && <Description>{description}</Description>}
         {children}
       </StyledModalContent>
     </Modal>
