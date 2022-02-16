@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { FixedSizeList } from 'react-window';
 import { useTheme } from 'styled-components';
 
@@ -163,8 +163,19 @@ export const Component = ({
       return <DefaultOptionContainer {...props} as="div" ref={ref} />;
     },
   );
-
+  const [prevItems, setPrevItems] = useState(items);
+  const [prevSearch, setPrevSearch] = useState(search);
+  const scrollOffsetRef = useRef(0);
+  const [initialScrollOffset, setInitialScrollOffset] = useState(0);
   const content = useMemo(() => {
+    if (prevItems !== items) {
+      setInitialScrollOffset(scrollOffsetRef.current);
+      setPrevItems(items);
+    }
+    if (prevSearch !== search) {
+      setInitialScrollOffset(0);
+      setPrevSearch(search);
+    }
     return (
       <Container>
         {(filterable || showSearch) && (
@@ -191,6 +202,10 @@ export const Component = ({
         <OptionContainer data-testid={buildTestId('options')}>
           {filterable ? (
             <FixedSizeList
+              initialScrollOffset={initialScrollOffset}
+              onScroll={({ scrollOffset }) => {
+                scrollOffsetRef.current = scrollOffset;
+              }}
               width="100%"
               height={Math.min(
                 optionContainerHeight ?? DEFAULT_OPTION_CONTAINER_HEIGHT,
@@ -212,11 +227,14 @@ export const Component = ({
     filterable,
     itemCount,
     items,
+    prevItems,
+    initialScrollOffset,
     optionContainerHeight,
     optionItemHeight,
     optionTitle,
     row,
     search,
+    prevSearch,
     searchIcon,
     searchPlaceholder,
     showSearch,
