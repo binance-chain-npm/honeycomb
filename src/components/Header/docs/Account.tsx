@@ -44,7 +44,7 @@ export const Account = ({ state }: { state: State }) => (
     pre="Connect"
     post={{
       address: 'bnb1...ur8v',
-      network: 'Binance Smart Chain Test Network',
+      network: 'BNB Smart Chain Test Network',
     }}
     pending="Pending"
     state={state}
@@ -163,7 +163,7 @@ export const AccountDocs = () => (
         pre={null}
         post={{
           address: 'bnb1...ur8v',
-          network: 'Binance Smart Chain Test Network',
+          network: 'BNB Smart Chain Test Network',
         }}
         pending={null}
         state="post"

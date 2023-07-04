@@ -97,7 +97,7 @@ export const AsAnchor = () => (
       SHAPES.map((shape) => (
         <Container>
           <Button
-            href="https://binance.org"
+            href="https://bnbchain.org"
             onClick={action('clicked')}
             key={`${variant}`}
             variant={variant}
@@ -108,7 +108,7 @@ export const AsAnchor = () => (
         </Container>
       )),
     )}
-    <Button href="https://binance.org" onClick={action('clicked')} variant="primary" disabled>
+    <Button href="https://bnbchain.org" onClick={action('clicked')} variant="primary" disabled>
       disabled
     </Button>
   </Container>
@@ -118,7 +118,7 @@ export const WithIconAndText = () => (
   <Container>
     {VARIANTS.map((variant) => (
       <Button
-        href="https://binance.org"
+        href="https://bnbchain.org"
         onClick={action('clicked')}
         key={`${variant}`}
         variant={variant}
