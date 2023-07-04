@@ -5,7 +5,7 @@ Honeycomb is a collection of reusable UI components based on [React](https://rea
 
 ## Getting started
 
-Install this library as a dependency with `yarn add @binance-chain/honeycomb` and start using our
+Install this library as a dependency with `yarn add @bnb-chain/honeycomb` and start using our
 components.
 
 Make sure you choose a theme with `<HoneycombThemeProvider />` in your app before using any
@@ -13,7 +13,7 @@ Honeycomb components.
 
 ```tsx
 import React from 'react';
-import { HoneycombThemeProvider, Button } from '@binance-chain/honeycomb';
+import { HoneycombThemeProvider, Button } from '@bnb-chain/honeycomb';
 
 export const MyApp = () => {
   return (
@@ -40,7 +40,7 @@ file as shown below.
 ```tsx
 // DefaultTheme.d.ts
 import 'styled-components';
-import { HoneycombThemeType } from '@binance-chain/honeycomb';
+import { HoneycombThemeType } from '@bnb-chain/honeycomb';
 
 import { YourOwnTheme } from './your-own-theme';
 
@@ -61,7 +61,7 @@ For example, in the code below we use `TextInput.Label` and `TextInput.Input` to
 ```tsx
 import React from 'react';
 import styled from 'styled-components';
-import { TextInput } from '@binance-chain/honeycomb';
+import { TextInput } from '@bnb-chain/honeycomb';
 
 const CustomTextInput = styled(TextInput)`
   ${TextInput.Label} {

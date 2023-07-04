@@ -8,7 +8,7 @@ import { ReactComponent as TokenPocket } from './Logos/TokenPocket.svg';
 import { ReactComponent as TrustWallet } from './Logos/TrustWallet.svg';
 
 export const DEFAULT_WALLET_PROVIDERS = [
-  'Binance Chain Wallet',
+  'Binance Wallet',
   'Ledger',
   'Math Wallet',
   'MetaMask',
@@ -32,13 +32,13 @@ export const useWalletProviders = () => {
       }
     }
 
-    return 'https://chrome.google.com/webstore/detail/binance-chain-wallet/fhbohimaelbohpjbbldcngcnapndodjp';
+    return 'https://chrome.google.com/webstore/detail/binance-wallet/fhbohimaelbohpjbbldcngcnapndodjp';
   }, []);
 
   return {
     providers: {
-      'Binance Chain Wallet': {
-        name: 'Binance Chain Wallet',
+      'Binance Wallet': {
+        name: 'Binance Wallet',
         icon: <BinanceChainWallet />,
         href: binanceWalletUrl,
       },

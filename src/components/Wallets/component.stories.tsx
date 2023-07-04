@@ -72,7 +72,7 @@ export const WithCustomWalletProvider: Story = () => {
     <Wallets
       selected={selected}
       onChange={change}
-      providers={['Binance Chain Wallet', ...wallets]}
+      providers={['Binance Wallet', ...wallets]}
       columns={4}
     />
   );
@@ -138,7 +138,7 @@ export const InsideModal = () => {
           onChange={change}
           providers={[
             'Trust Wallet',
-            'Binance Chain Wallet',
+            'Binance Wallet',
             'MetaMask',
             'Math Wallet',
             'Ledger',

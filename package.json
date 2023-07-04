@@ -1,5 +1,5 @@
 {
-  "name": "@binance-chain/honeycomb",
+  "name": "@bnb-chain/honeycomb",
   "version": "0.0.0-development",
   "license": "MIT",
   "main": "dist/index.js",
