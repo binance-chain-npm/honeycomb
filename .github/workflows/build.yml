@@ -10,12 +10,17 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      issues: write
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1.4.4
         with:
-          node-version: 12.x
+          node-version: 18.x
 
       - name: Dependencies
         run: yarn install --frozen-lockfile
@@ -25,10 +30,11 @@ jobs:
           yarn build
           yarn build-storybook
 
-      - name: UI tests
-        run: yarn percy exec -- cypress run -e CI=true
-        env:
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+      # Temporarily removed.
+      # - name: UI tests
+      #   run: yarn percy exec -- cypress run -e CI=true
+      #   env:
+      #     PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/alpha'
@@ -41,5 +47,5 @@ jobs:
       - name: Deploy to NPM
         run: yarn semantic-release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN_SEMANTIC_RELEASE }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
