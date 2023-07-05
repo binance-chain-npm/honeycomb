@@ -21,8 +21,6 @@ jobs:
       - uses: actions/setup-node@v1.4.4
         with:
           node-version: 18.x
-      # export NODE_OPTIONS=--openssl-legacy-provider
-      - run: echo 'NODE_OPTIONS="--openssl-legacy-provider"' >> $GITHUB_ENV
 
       - name: Dependencies
         run: yarn install --frozen-lockfile
@@ -31,6 +29,9 @@ jobs:
         run: |
           yarn build
           yarn build-storybook
+        env:
+          NODE_OPTIONS: '--openssl-legacy-provider'
+      # export NODE_OPTIONS=--openssl-legacy-provider
 
       # Temporarily removed.
       # - name: UI tests
