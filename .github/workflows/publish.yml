@@ -19,7 +19,7 @@ jobs:
       - name: Build
         run: yarn build
 
-      - run: npm ci
-      - run: npm publish --dry-run
+      # - run: npm ci
+      - run: npm publish --dry-run --tag 1.1.0-alpha-305
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
