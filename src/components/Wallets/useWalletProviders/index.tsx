@@ -32,14 +32,14 @@ export const useWalletProviders = () => {
       }
     }
 
-    return 'https://chrome.google.com/webstore/detail/binance-chain-wallet/fhbohimaelbohpjbbldcngcnapndodjp';
+    return 'https://chrome.google.com/webstore/detail/binance-wallet/fhbohimaelbohpjbbldcngcnapndodjp';
   }, []);
 
   return {
     providers: {
       /* eslint-disable prettier/prettier */
-      'Binance Chain Wallet': {
-        name: 'Binance Chain Wallet',
+      'Binance Wallet': {
+        name: 'Binance Wallet',
         icon: <BinanceChainWallet />,
         href: binanceWalletUrl,
       },
