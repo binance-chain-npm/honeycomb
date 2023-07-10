@@ -1,3 +1,6 @@
+# This is a temporary workflow to publish a legacy version of our package manually.
+# Remember to change the version in `package.json`.
+
 name: Publish Package to npmjs
 on:
   push:
@@ -19,7 +22,6 @@ jobs:
       - name: Build
         run: yarn build
 
-      # - run: npm ci
-      - run: npm publish --dry-run --tag legacy
+      - run: npm publish --tag legacy
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
