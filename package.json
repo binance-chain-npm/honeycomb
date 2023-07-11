@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
     "@percy/cypress": "^2.3.0",
     "@rollup/plugin-image": "^2.0.5",
@@ -73,7 +74,7 @@
     "babel-preset-react-app": "^9.1.2",
     "cypress": "^4.10.0",
     "fork-ts-checker-webpack-plugin": "^5.0.7",
-    "husky": "^4.2.5",
+    "husky": "^8.0.3",
     "prettier": "3.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -103,47 +104,5 @@
     "react-toastify": "^7.0.1",
     "react-window": "^1.8.6",
     "swiper": "^6.4.5"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "subject-empty": [
-        2,
-        "never"
-      ],
-      "subject-case": [
-        2,
-        "always",
-        [
-          "sentence-case"
-        ]
-      ],
-      "type-case": [
-        2,
-        "always",
-        "lower-case"
-      ],
-      "type-empty": [
-        2,
-        "never"
-      ],
-      "type-enum": [
-        2,
-        "always",
-        [
-          "chore",
-          "docs",
-          "feat",
-          "fix",
-          "perf",
-          "refactor",
-          "revert",
-          "style",
-          "test"
-        ]
-      ]
-    }
   }
 }
