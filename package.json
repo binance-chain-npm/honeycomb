@@ -46,8 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "@binance-chain/commitlint-config": "^0.2.0",
-    "@binance-chain/prettier-config": "^0.2.0",
+    "@commitlint/config-conventional": "^17.6.6",
     "@percy/cypress": "^2.3.0",
     "@rollup/plugin-image": "^2.0.5",
     "@rollup/plugin-url": "^5.0.1",
@@ -75,6 +74,7 @@
     "cypress": "^4.10.0",
     "fork-ts-checker-webpack-plugin": "^5.0.7",
     "husky": "^4.2.5",
+    "prettier": "3.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
@@ -106,8 +106,44 @@
   },
   "commitlint": {
     "extends": [
-      "@binance-chain/commitlint-config"
-    ]
-  },
-  "prettier": "@binance-chain/prettier-config"
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "subject-empty": [
+        2,
+        "never"
+      ],
+      "subject-case": [
+        2,
+        "always",
+        [
+          "sentence-case"
+        ]
+      ],
+      "type-case": [
+        2,
+        "always",
+        "lower-case"
+      ],
+      "type-empty": [
+        2,
+        "never"
+      ],
+      "type-enum": [
+        2,
+        "always",
+        [
+          "chore",
+          "docs",
+          "feat",
+          "fix",
+          "perf",
+          "refactor",
+          "revert",
+          "style",
+          "test"
+        ]
+      ]
+    }
+  }
 }
