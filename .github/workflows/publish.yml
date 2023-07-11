@@ -1,0 +1,29 @@
+# This is a temporary workflow to publish a legacy version of our package manually.
+# Remember to change the version in `package.json`.
+
+name: Publish Package to npmjs
+on:
+  push:
+    branches:
+      - chore/publish
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1.4.4
+        with:
+          node-version: 12.x
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@bnb-chain'
+
+      - name: Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      - run: npm publish --tag legacy
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
