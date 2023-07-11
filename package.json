@@ -46,8 +46,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "@binance-chain/commitlint-config": "^0.2.0",
-    "@binance-chain/prettier-config": "^0.2.0",
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
     "@percy/cypress": "^2.3.0",
     "@rollup/plugin-image": "^2.0.5",
     "@rollup/plugin-url": "^5.0.1",
@@ -74,7 +74,8 @@
     "babel-preset-react-app": "^9.1.2",
     "cypress": "^4.10.0",
     "fork-ts-checker-webpack-plugin": "^5.0.7",
-    "husky": "^4.2.5",
+    "husky": "^8.0.3",
+    "prettier": "3.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
@@ -103,11 +104,5 @@
     "react-toastify": "^7.0.1",
     "react-window": "^1.8.6",
     "swiper": "^6.4.5"
-  },
-  "commitlint": {
-    "extends": [
-      "@binance-chain/commitlint-config"
-    ]
-  },
-  "prettier": "@binance-chain/prettier-config"
+  }
 }
